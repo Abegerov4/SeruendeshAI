@@ -1,4 +1,4 @@
-.PHONY: setup api test eval eval-llm data data-build embed graph events contract docker
+.PHONY: setup api web test eval eval-llm data data-build embed graph events contract docker deploy
 
 UV := cd backend && uv run
 CAP := systemd-run --user --scope -p MemoryMax=2500M -p MemorySwapMax=0 --quiet
@@ -6,8 +6,11 @@ CAP := systemd-run --user --scope -p MemoryMax=2500M -p MemorySwapMax=0 --quiet
 setup:            ## install backend deps (runtime + pipeline + dev)
 	cd backend && uv sync --all-groups
 
-api:              ## run the API on :8000
+api:              ## run the API on :8000 (also serves frontend/dist if built)
 	$(UV) uvicorn app.main:app --port 8000 --reload
+
+web:              ## frontend dev server on :5173 (proxies /api to :8000)
+	cd frontend && npm install && npm run dev
 
 test:             ## unit + contract tests (no API key needed)
 	$(UV) pytest -q
@@ -38,3 +41,6 @@ contract:         ## export OpenAPI + example responses for the frontend
 
 docker:
 	docker compose up --build
+
+deploy:           ## deploy the latest commit of branch ayat to Railway (seruendesh.site)
+	bash scripts/deploy_railway.sh

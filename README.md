@@ -12,6 +12,7 @@
 
 | | |
 |---|---|
+| Демо | **https://seruendesh.site** (резерв: https://seruendesh-production.up.railway.app) |
 | Данные | **2307 мест Астаны**, собранных автоматически: OSM + Overture + Wikidata/Wikipedia; события Ticketon/Sxodim; погода Open-Meteo |
 | RAG | Сначала структурный поиск (граф улиц, часы работы, безопасность) → гибрид BM25 + e5 → LLM `gpt-6-luna` выбирает и объясняет → валидатор |
 | Языки | RU / KK / EN |
@@ -59,7 +60,7 @@ curl -s localhost:8000/api/recommend -H 'content-type: application/json' -d '{
 
 Docker: `docker compose up --build` (из корня, использует `.env`): один контейнер отдаёт и API, и собранный фронт.
 
-Хостинг: Railway собирает корневой `Dockerfile` из ветки `ayat` (`railway.json`, healthcheck `/api/health`); каждый push в `ayat` = новый деплой.
+Хостинг: Railway (проект `seruendesh`) собирает корневой `Dockerfile` из ветки `ayat` (`railway.json`, healthcheck `/api/health`). Деплой свежего `ayat`: `make deploy`.
 
 ### Команды
 
