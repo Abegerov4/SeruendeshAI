@@ -1,0 +1,34 @@
+# Локальные материалы (база знаний и ТЗ) — не в репо
+/rag.md
+/mcp.md
+/data_extraction.md
+/ai_engineering.md
+/prompting_memory_tools.md
+/ai_security.md
+/FINAL Задачи_хакатона.docx.pdf
+
+# Секреты
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+
+# Данные и индексы
+data/raw/
+rag/chroma/
+.cache/
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
