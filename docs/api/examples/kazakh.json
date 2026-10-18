@@ -1,0 +1,247 @@
+{
+ "api_version": "1.0",
+ "request_id": "f85626ccff35",
+ "lang": "kk",
+ "summary": "Бәйтерек маңындағы серуенге саябақ пен скверді қосып, ашық ауада тынығып қайтыңыз.",
+ "recommendations": [
+  {
+   "poi_id": "osm:w734514013",
+   "name": "Сызықтық саябақ",
+   "category": "park",
+   "lat": 51.118568,
+   "lon": 71.426647,
+   "distance_m": 1113,
+   "travel_min": 18,
+   "why": "Саябақта таза ауада серуендеуге болады; жаяу бағыт пен бір сағаттық уақытыңызға сай келеді.",
+   "visit_min": [
+    20,
+    45
+   ],
+   "what_to_do": "Саябақтың ішімен асықпай жүріп, айналаға көз салыңыз.",
+   "open_status": "open",
+   "open_confidence": "low",
+   "source": "poi_data",
+   "source_url": "https://www.openstreetmap.org/way/734514013",
+   "rating": null,
+   "rank": 1,
+   "category_detail": "park",
+   "category_label": "Саябақ",
+   "icon": "trees",
+   "walk_distance_m": 1320,
+   "travel_mode": "walk",
+   "visit_suggested_min": 30,
+   "leave_by": null,
+   "opening": {
+    "status": "always",
+    "confidence": "medium",
+    "label": "Ашық аумақ — уақыт шектелмеген",
+    "raw": null,
+    "next_change": null
+   },
+   "source_label": "POI деректері",
+   "data_sources": [
+    "osm"
+   ],
+   "popularity": 0.0,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [
+    "outdoor",
+    "kids",
+    "free"
+   ],
+   "event": null,
+   "address": null,
+   "description": "Парк.",
+   "description_source": "template"
+  },
+  {
+   "poi_id": "ov:05a08159-b2a2-4f",
+   "name": "Дөңгелек алаң / Круглая Площадь / Round Square",
+   "category": "park",
+   "lat": 51.130733,
+   "lon": 71.414005,
+   "distance_m": 1180,
+   "travel_min": 19,
+   "why": "Нұржол бульварындағы сквер серуенді жалғастыруға лайық; салқын желді ескеріп, жылырақ киініңіз.",
+   "visit_min": [
+    15,
+    30
+   ],
+   "what_to_do": "Скверді аралап, ұнаған көріністі суретке түсіріңіз.",
+   "open_status": "open",
+   "open_confidence": "low",
+   "source": "poi_data",
+   "source_url": null,
+   "rating": null,
+   "rank": 2,
+   "category_detail": "garden",
+   "category_label": "Гүлзар / бақ",
+   "icon": "flower",
+   "walk_distance_m": 1410,
+   "travel_mode": "walk",
+   "visit_suggested_min": 20,
+   "leave_by": null,
+   "opening": {
+    "status": "always",
+    "confidence": "medium",
+    "label": "Ашық аумақ — уақыт шектелмеген",
+    "raw": null,
+    "next_change": null
+   },
+   "source_label": "POI деректері",
+   "data_sources": [
+    "overture"
+   ],
+   "popularity": 0.018,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [
+    "outdoor",
+    "free"
+   ],
+   "event": null,
+   "address": "бульвар Нуржол",
+   "description": "Сквер / сад. Адрес: бульвар Нуржол.",
+   "description_source": "template"
+  },
+  {
+   "poi_id": "idea-3",
+   "name": "Көрініс іздеу",
+   "category": "park",
+   "lat": 51.130733,
+   "lon": 71.414005,
+   "distance_m": 1180,
+   "travel_min": 19,
+   "why": "Серуен бойы көзге түскен ең қызық сәулет бөлшегін тауып, суретке түсіріңіз.",
+   "visit_min": [
+    5,
+    20
+   ],
+   "what_to_do": "Серуен бойы көзге түскен ең қызық сәулет бөлшегін тауып, суретке түсіріңіз.",
+   "open_status": "unknown",
+   "open_confidence": "none",
+   "source": "generated",
+   "source_url": null,
+   "rating": null,
+   "rank": 3,
+   "category_detail": "idea",
+   "category_label": "ЖИ идеясы",
+   "icon": "sparkles",
+   "walk_distance_m": null,
+   "travel_mode": "walk",
+   "visit_suggested_min": 10,
+   "leave_by": null,
+   "opening": {
+    "status": "unknown",
+    "confidence": "low",
+    "label": "Жұмыс уақыты белгісіз — алдын ала нақтылаңыз",
+    "raw": null,
+    "next_change": null
+   },
+   "source_label": "ЖИ идеясы",
+   "data_sources": [
+    "llm"
+   ],
+   "popularity": null,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [
+    "ai_idea"
+   ],
+   "event": null,
+   "address": "Жанында: Дөңгелек алаң / Круглая Площадь / Round Square",
+   "description": null,
+   "description_source": "generated"
+  }
+ ],
+ "route": null,
+ "used_context": {
+  "location_source": "landmark",
+  "location_label": "Байтерек",
+  "radius_m": 1757,
+  "time_budget_min": 60,
+  "mode": "walk",
+  "filters": [],
+  "now": "2026-10-18T16:00:00+05:00",
+  "location": {
+   "source": "text_landmark",
+   "label": "Байтерек",
+   "lat": 51.128,
+   "lon": 71.43,
+   "precision_m": 50
+  },
+  "local_time": "16:00",
+  "weekday": "жексенбі",
+  "is_holiday": null,
+  "is_dark": false,
+  "weather": {
+   "temperature_c": 9.0,
+   "feels_like_c": 6.0,
+   "wind_ms": 5.0,
+   "precipitation": false,
+   "description": "9°C (6°C сезіледі), жел 5 м/с",
+   "max_outdoor_min": 60,
+   "source": "demo override"
+  },
+  "speed_kmh": 4.5,
+  "party": "solo",
+  "parsed_from_query": {
+   "categories": [],
+   "preferences": [
+    "park",
+    "garden",
+    "landmark",
+    "viewpoint",
+    "museum"
+   ],
+   "needs": [],
+   "time_budget_min": 60,
+   "deadline": null,
+   "deadline_in_min": null,
+   "landmark": "Бәйтеректің",
+   "night": false,
+   "surprise": false,
+   "parser": "llm+rules (gpt-6-luna)"
+  },
+  "relaxations": [],
+  "funnel": {
+   "total": 2307,
+   "within_reach": 424,
+   "after_filters": 161,
+   "shown": 2
+  },
+  "data_sources": [
+   "OpenStreetMap (ODbL)",
+   "Wikidata (CC0)",
+   "Wikipedia (CC BY-SA)",
+   "Overture Maps (CDLA)",
+   "Ticketon / Sxodim",
+   "Open-Meteo (CC BY 4.0)"
+  ],
+  "data_built_at": "2026-10-18T18:20:55+00:00",
+  "privacy": "Орналасу ~100 м-ге дейін дөңгелектенген, тек осы сұрауға қолданылады және сақталмайды. Координаттар тілдік модельге жіберілмейді."
+ },
+ "considered": [
+  {
+   "name": "Алматыкітап",
+   "reason": "барған кезде жабық"
+  },
+  {
+   "name": "Coffee Like",
+   "reason": "барған кезде жабық"
+  },
+  {
+   "name": "Starbucks",
+   "reason": "барған кезде жабық"
+  }
+ ],
+ "notes": [],
+ "disclaimer": "Жауапты ЖИ ашық деректер негізінде құрастырды (OpenStreetMap, Wikidata/Wikipedia және т.б.). Жұмыс уақыты өзгеруі мүмкін — барар алдында тексеріңіз.",
+ "ai_generated": true,
+ "llm": {
+  "mode": "llm",
+  "model": "gpt-6-luna",
+  "latency_ms": 3657
+ }
+}

@@ -1,0 +1,257 @@
+{
+ "api_version": "1.0",
+ "request_id": "4231a94a0b95",
+ "lang": "ru",
+ "summary": "Для позднего вечера подойдут крытый бар и необычная фотопауза у символа столицы.",
+ "recommendations": [
+  {
+   "poi_id": "osm:n4199896989",
+   "name": "Avtor",
+   "category": "bar",
+   "lat": 51.128084,
+   "lon": 71.43654,
+   "distance_m": 456,
+   "travel_min": 8,
+   "why": "Avtor — бар с круглосуточным режимом, подходящий для позднего выхода; в прохладную ветреную погоду приятно выбрать место в помещении.",
+   "visit_min": [
+    45,
+    75
+   ],
+   "what_to_do": "Загляните на напиток и устройте неспешную паузу перед завершением вечера.",
+   "open_status": "open",
+   "open_confidence": "high",
+   "source": "poi_data",
+   "source_url": "https://www.openstreetmap.org/node/4199896989",
+   "rating": null,
+   "rank": 1,
+   "category_detail": "bar",
+   "category_label": "Бар / паб",
+   "icon": "beer",
+   "walk_distance_m": 580,
+   "travel_mode": "walk",
+   "visit_suggested_min": 60,
+   "leave_by": null,
+   "opening": {
+    "status": "open",
+    "confidence": "medium",
+    "label": "Открыто по данным часов работы · 24/7 (данные OSM)",
+    "raw": "24/7",
+    "next_change": null
+   },
+   "source_label": "Данные POI",
+   "data_sources": [
+    "osm"
+   ],
+   "popularity": 0.036,
+   "features": [
+    "круглосуточно"
+   ],
+   "accessibility": "unknown",
+   "badges": [
+    "indoor",
+    "night"
+   ],
+   "event": null,
+   "address": null,
+   "description": "Бар / паб. Удобства: круглосуточно.",
+   "description_source": "template"
+  },
+  {
+   "poi_id": "osm:w230401645",
+   "name": "Байтерек",
+   "category": "attraction",
+   "lat": 51.128288,
+   "lon": 71.430455,
+   "distance_m": 45,
+   "travel_min": 2,
+   "why": "Бәйтерек — монумент и смотровая башня, ставшая символом переноса столицы; ночной визит добавит прогулке необычную точку.",
+   "visit_min": [
+    15,
+    30
+   ],
+   "what_to_do": "Остановитесь у монумента и сделайте ночное фото его силуэта.",
+   "open_status": "open",
+   "open_confidence": "low",
+   "source": "poi_data",
+   "source_url": "https://www.openstreetmap.org/way/230401645",
+   "rating": null,
+   "rank": 2,
+   "category_detail": "landmark",
+   "category_label": "Достопримечательность",
+   "icon": "landmark",
+   "walk_distance_m": 110,
+   "travel_mode": "walk",
+   "visit_suggested_min": 20,
+   "leave_by": null,
+   "opening": {
+    "status": "always",
+    "confidence": "medium",
+    "label": "Открытая территория — часы не ограничены",
+    "raw": null,
+    "next_change": null
+   },
+   "source_label": "Данные POI",
+   "data_sources": [
+    "osm",
+    "overture",
+    "wikidata",
+    "wikipedia"
+   ],
+   "popularity": 0.82,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [
+    "outdoor",
+    "popular"
+   ],
+   "event": null,
+   "address": "Нұржол желек жолы, 14",
+   "description": "«Байтере́к» — монумент и смотровая башня в столице Казахстана — Астане. Монумент был построен как символ переноса столицы Казахстана в 1997 году.",
+   "description_source": "wikipedia"
+  },
+  {
+   "poi_id": "idea-3",
+   "name": "Ночной силуэт",
+   "category": "attraction",
+   "lat": 51.128288,
+   "lon": 71.430455,
+   "distance_m": 45,
+   "travel_min": 2,
+   "why": "Сфотографируйте Бәйтерек так, чтобы его силуэт стал главным акцентом кадра.",
+   "visit_min": [
+    5,
+    20
+   ],
+   "what_to_do": "Сфотографируйте Бәйтерек так, чтобы его силуэт стал главным акцентом кадра.",
+   "open_status": "unknown",
+   "open_confidence": "none",
+   "source": "generated",
+   "source_url": null,
+   "rating": null,
+   "rank": 3,
+   "category_detail": "idea",
+   "category_label": "Идея ИИ",
+   "icon": "sparkles",
+   "walk_distance_m": null,
+   "travel_mode": "walk",
+   "visit_suggested_min": 10,
+   "leave_by": null,
+   "opening": {
+    "status": "unknown",
+    "confidence": "low",
+    "label": "Часы работы неизвестны — уточните перед визитом",
+    "raw": null,
+    "next_change": null
+   },
+   "source_label": "Идея ИИ",
+   "data_sources": [
+    "llm"
+   ],
+   "popularity": null,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [
+    "ai_idea"
+   ],
+   "event": null,
+   "address": "Рядом с: Байтерек",
+   "description": null,
+   "description_source": "generated"
+  }
+ ],
+ "route": null,
+ "used_context": {
+  "location_source": "gps_rounded",
+  "location_label": "~ район «Байтерек» (округлено)",
+  "radius_m": 2050,
+  "time_budget_min": 120,
+  "mode": "walk",
+  "filters": [
+   "вечер/ночь"
+  ],
+  "now": "2026-10-18T23:00:00+05:00",
+  "location": {
+   "source": "gps_rounded",
+   "label": "~ район «Байтерек» (округлено)",
+   "lat": 51.128,
+   "lon": 71.43,
+   "precision_m": 100
+  },
+  "local_time": "23:00",
+  "weekday": "воскресенье",
+  "is_holiday": null,
+  "is_dark": true,
+  "weather": {
+   "temperature_c": 2.0,
+   "feels_like_c": -2.0,
+   "wind_ms": 4.0,
+   "precipitation": false,
+   "description": "2°C (ощущается -2°C), ветер 4 м/с",
+   "max_outdoor_min": 60,
+   "source": "demo override"
+  },
+  "speed_kmh": 4.5,
+  "party": "solo",
+  "parsed_from_query": {
+   "categories": [],
+   "preferences": [
+    "arts_centre",
+    "gallery",
+    "viewpoint",
+    "active",
+    "karaoke"
+   ],
+   "needs": [],
+   "time_budget_min": 120,
+   "deadline": null,
+   "deadline_in_min": null,
+   "landmark": null,
+   "night": true,
+   "surprise": true,
+   "parser": "llm+rules (gpt-6-luna)"
+  },
+  "relaxations": [],
+  "funnel": {
+   "total": 2307,
+   "within_reach": 554,
+   "after_filters": 121,
+   "shown": 2
+  },
+  "data_sources": [
+   "OpenStreetMap (ODbL)",
+   "Wikidata (CC0)",
+   "Wikipedia (CC BY-SA)",
+   "Overture Maps (CDLA)",
+   "Ticketon / Sxodim",
+   "Open-Meteo (CC BY 4.0)"
+  ],
+  "data_built_at": "2026-10-18T18:20:55+00:00",
+  "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+ },
+ "considered": [
+  {
+   "name": "Ádemi ai",
+   "reason": "закрыто к моменту прихода"
+  },
+  {
+   "name": "Дебют",
+   "reason": "закрыто к моменту прихода"
+  },
+  {
+   "name": "Tequila bar",
+   "reason": "закрыто к моменту прихода"
+  },
+  {
+   "name": "Алматыкітап",
+   "reason": "закрыто к моменту прихода"
+  }
+ ],
+ "notes": [],
+ "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+ "ai_generated": true,
+ "llm": {
+  "mode": "llm",
+  "model": "gpt-6-luna",
+  "latency_ms": 3547
+ }
+}
