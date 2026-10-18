@@ -21,7 +21,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "backend"))
+sys.path.insert(0, str(ROOT))
 
 CHECKS = ["C1 schema", "C2 1–3 items", "C3 grounded ids", "C4 time budget", "C5 categories", "C6 source labels",
           "C7 language", "C8 no invented hours", "C9 coords rounded", "C10 safety rules", "C11 not closed",

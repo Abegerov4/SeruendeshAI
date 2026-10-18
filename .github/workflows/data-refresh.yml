@@ -12,10 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
-      - working-directory: backend
+      - working-directory: ayat_backend
         run: uv sync --all-groups
       - name: Collect and build
-        working-directory: backend
+        working-directory: ayat_backend
         run: |
           uv run python -m pipeline.cli fetch
           uv run python -m pipeline.cli build

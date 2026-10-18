@@ -37,7 +37,7 @@
 
 ```bash
 cp .env.example .env            # вписать OPENAI_API_KEY
-cd backend
+cd ayat_backend
 uv sync                         # зависимости рантайма + dev
 uv run uvicorn app.main:app --port 8000
 ```

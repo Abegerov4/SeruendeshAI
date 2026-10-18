@@ -1,4 +1,4 @@
-name: ci
+name: ayat-backend
 on:
   push:
   pull_request:
@@ -9,13 +9,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
       - name: Install
-        working-directory: backend
+        working-directory: ayat_backend
         run: uv sync --group dev --no-group pipeline
       - name: Tests (template mode, no secrets needed)
-        working-directory: backend
+        working-directory: ayat_backend
         env: {LLM_ENABLED: "false", EMBED_MODEL: "off", WEATHER_ENABLED: "false"}
         run: uv run pytest -q
       - name: Scenario eval (template mode)
-        working-directory: backend
+        working-directory: ayat_backend
         env: {LLM_ENABLED: "false", EMBED_MODEL: "off"}
-        run: uv run python ../eval/run_eval.py --no-llm --out /tmp/eval.md
+        run: uv run python eval/run_eval.py --no-llm --out /tmp/eval.md
