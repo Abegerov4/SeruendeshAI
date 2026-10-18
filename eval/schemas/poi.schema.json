@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "name_en": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "name_kk": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "lat": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "lon": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "category": {
+      "enum": [
+        "cafe",
+        "restaurant",
+        "bar",
+        "nightlife",
+        "museum",
+        "gallery",
+        "theatre",
+        "cinema",
+        "park",
+        "viewpoint",
+        "monument",
+        "attraction",
+        "playground",
+        "mall",
+        "library",
+        "coworking",
+        "sport",
+        "other"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "description_source": {
+      "enum": [
+        "osm",
+        "wikipedia",
+        "website",
+        "llm_generated",
+        null
+      ]
+    },
+    "address": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "opening_hours": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "phone": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "website": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^https?://[^\\s/]+(?:[^\\s]*)$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rating": {
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rating_count": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "wheelchair": {
+      "enum": [
+        "yes",
+        "limited",
+        "no",
+        null
+      ]
+    },
+    "kid_friendly": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "source_url": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^https?://[^\\s/]+(?:[^\\s]*)$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "updated_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "open_status": {
+      "enum": [
+        "open",
+        "closed",
+        "unknown",
+        null
+      ]
+    },
+    "open_confidence": {
+      "enum": [
+        "high",
+        "low",
+        "none",
+        null
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "lat",
+    "lon",
+    "category",
+    "source",
+    "source_url"
+  ],
+  "additionalProperties": true,
+  "$comment": "Core fields required; missing optional metadata establishes no factual claim. Generic validator accepts explicitly synthetic IDs/source labels."
+}

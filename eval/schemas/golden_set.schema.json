@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "scenario": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "request": {
+        "type": "object"
+      },
+      "expect": {
+        "type": "object",
+        "properties": {
+          "status_codes": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
+            }
+          },
+          "outcome": {
+            "enum": [
+              "recommendations",
+              "clarification",
+              "rejection",
+              "validation_error",
+              "safe_response"
+            ]
+          },
+          "count_between": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "max_distance_m": {
+            "type": "number",
+            "minimum": 0
+          },
+          "categories_any": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "cafe",
+                "restaurant",
+                "bar",
+                "nightlife",
+                "museum",
+                "gallery",
+                "theatre",
+                "cinema",
+                "park",
+                "viewpoint",
+                "monument",
+                "attraction",
+                "playground",
+                "mall",
+                "library",
+                "coworking",
+                "sport",
+                "other"
+              ]
+            }
+          },
+          "forbidden_output": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "relevant_poi_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "candidate_poi_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          }
+        },
+        "required": [
+          "status_codes",
+          "outcome",
+          "relevant_poi_ids"
+        ],
+        "additionalProperties": true
+      },
+      "tags": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "required": [
+      "id",
+      "scenario",
+      "request",
+      "expect",
+      "tags"
+    ],
+    "additionalProperties": true
+  },
+  "$comment": "request intentionally permits invalid bodies for validation_error cases; request.schema.json defines valid product requests. Empty relevant_poi_ids means unannotated, never zero recall."
+}

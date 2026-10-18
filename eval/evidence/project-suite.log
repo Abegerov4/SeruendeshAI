@@ -1,0 +1,104 @@
+..........................................FFFF...............sssssssssss [ 16%]
+ssssssssssssssss........................................................ [ 32%]
+........................................................................ [ 49%]
+...............................sssssssssssssssss........................ [ 65%]
+................................sssssssssssss........................... [ 82%]
+........................................................................ [ 98%]
+......                                                                   [100%]
+=================================== FAILURES ===================================
+____ test_dodo_uses_restaurant_week_seconds_and_excludes_temporary_closure _____
+
+    def test_dodo_uses_restaurant_week_seconds_and_excludes_temporary_closure():
+        from data.collect import web_sources as web
+        week = [{"DayIndex": n, "DayAlias": name, "WorkingTimeStart": 32400, "WorkingTimeEnd": 0}
+                for n, name in enumerate(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])]
+        active = {"Id": "active", "Name": "Астана-1", "State": 1, "Type": 1,
+                  "Location": {"Latitude": 51.13, "Longitude": 71.43}, "RestaurantWeekWorkingTime": week,
+                  "IsTemporarilyClosed": False, "AddressDetails": {"LocalityName": "Астана"}}
+        closed = {**active, "Id": "temp", "IsTemporarilyClosed": True}
+        records = web.parse_dodo([active, closed])
+>       assert [p["id"] for p in records] == ["dodo:active"]
+E       AssertionError: assert ['dodo:active', 'dodo:temp'] == ['dodo:active']
+E         
+E         Left contains one more item: 'dodo:temp'
+E         Use -v to get more diff
+
+data/tests/test_web_sources.py:52: AssertionError
+____ test_citypass_reads_every_hydrated_attraction_with_source_coordinates _____
+
+    def test_citypass_reads_every_hydrated_attraction_with_source_coordinates():
+        from data.collect import web_sources as web
+        rows = [{"id": n, "slug": "museum-" + str(n), "title": "Museum " + str(n), "address": "Street " + str(n),
+                 "latitude": "51.13", "longitude": "71.43", "work_period": "Daily", "work_time": "09:00-21:00",
+                 "tags": [{"slug": "museum", "name": "Museum"}], "description": "not copied"} for n in range(1,15)]
+        payload = '5:' + json.dumps(["$", "Component", None, {"initialItems": rows, "totalCount": 14}])
+        html = '<script>self.__next_f.push(' + json.dumps([1, payload]) + ')</script>'
+>       result = web.parse_citypass(html, "https://astana.citypass.kz/en/attractions")
+                 ^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'data.collect.web_sources' has no attribute 'parse_citypass'
+
+data/tests/test_web_sources.py:65: AttributeError
+_______ test_sxodim_listing_keeps_card_address_and_excludes_event_links ________
+
+    def test_sxodim_listing_keeps_card_address_and_excludes_event_links():
+        from data.collect import web_sources as web
+        html = '''<div class="impression-card" data-id="7" data-title="Real Coffee">
+          <a class="impression-card-title" href="https://sxodim.com/astana/place/real-coffee">Real Coffee</a>
+          <div class="impression-card-info">Астана, улица Мира, 7</div></div>
+          <a href="https://sxodim.com/astana/event/party">Party</a>'''
+>       records = web.parse_sxodim(html, "https://sxodim.com/astana/places/kofejni", "cafe")
+                  ^^^^^^^^^^^^^^^^
+E       AttributeError: module 'data.collect.web_sources' has no attribute 'parse_sxodim'. Did you mean: 'parse_dodo'?
+
+data/tests/test_web_sources.py:80: AttributeError
+_ test_pagination_follows_all_advertised_same_directory_pages_without_total_cap _
+
+    def test_pagination_follows_all_advertised_same_directory_pages_without_total_cap():
+        from data.collect import web_sources as web
+        pages = {
+          "https://sxodim.com/astana/places/kofejni": '<a href="?page=2" rel="next">Next</a>',
+          "https://sxodim.com/astana/places/kofejni?page=2": '<a href="?page=3">3</a>',
+          "https://sxodim.com/astana/places/kofejni?page=3": '<a href="?page=2">2</a><a href="https://other.test/?page=4">4</a>',
+        }
+        class LocalFetcher:
+            def get(self, url):
+                return pages[url]
+>       result = list(web.iter_directory_pages(LocalFetcher(), next(iter(pages))))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'data.collect.web_sources' has no attribute 'iter_directory_pages'
+
+data/tests/test_web_sources.py:96: AttributeError
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_api_contract.py:14: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:23: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:31: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [6] tests/test_api_contract.py:39: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:50: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [6] tests/test_backend_guards.py:10: Actual backend guards NOT TESTED: enable --live-backend to run
+SKIPPED [4] tests/test_backend_guards.py:28: Actual backend guards NOT TESTED: enable --live-backend to run
+SKIPPED [1] tests/test_backend_guards.py:39: Actual backend guards NOT TESTED: enable --live-backend to run
+SKIPPED [1] tests/test_dataset.py:13: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:17: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:21: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:26: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:32: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:39: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [12] tests/test_rag.py:12: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [3] tests/test_rag.py:32: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_rag.py:41: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_rag.py:56: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [4] tests/test_safety.py:13: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_safety.py:28: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_safety.py:41: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_ui.py:26: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:40: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:49: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:61: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:73: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:96: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:106: Product backend NOT TESTED: enable --live-api to run
+FAILED data/tests/test_web_sources.py::test_dodo_uses_restaurant_week_seconds_and_excludes_temporary_closure
+FAILED data/tests/test_web_sources.py::test_citypass_reads_every_hydrated_attraction_with_source_coordinates
+FAILED data/tests/test_web_sources.py::test_sxodim_listing_keeps_card_address_and_excludes_event_links
+FAILED data/tests/test_web_sources.py::test_pagination_follows_all_advertised_same_directory_pages_without_total_cap
+4 failed, 377 passed, 57 skipped in 1.99s

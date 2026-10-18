@@ -1,0 +1,25 @@
+{
+  "client_date": "2026-10-18",
+  "git_head": "4e4448a3acff3c5de846383d6cf6205d596360c3",
+  "git_write_operations": "none",
+  "qa_suite": {
+    "total": 377,
+    "passed": 320,
+    "failed": 0,
+    "skipped": 57
+  },
+  "whole_repository_snapshot": {
+    "total": 438,
+    "passed": 377,
+    "failed": 4,
+    "skipped": 57
+  },
+  "snapshot": {
+    "exit_code": 1,
+    "data_source_sha256_before": "3c3f4de40a50842dbc8e29a93607ffec10b640b7031d69dd900559d4a2e4ea6d",
+    "data_source_sha256_after": "3c3f4de40a50842dbc8e29a93607ffec10b640b7031d69dd900559d4a2e4ea6d",
+    "data_source_changed_during_run": false
+  },
+  "golden_set_sha256": "ed8d6e7a742fe9070dc56a6a7d6f09a4248c79bed4ddbb2b61bafa2c783bad30",
+  "scope": "QA infrastructure verified; actual product integrations not executed"
+}
