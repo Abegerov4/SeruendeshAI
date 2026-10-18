@@ -33,9 +33,14 @@ class LlmAnswer(BaseModel):
     notes: list[str] = Field(default_factory=list)
 
 
+def human_tags(poi: dict) -> list[str]:
+    """Без служебных OSM-тегов вида amenity=cafe / wikipedia=kk:… — они шумят в промпте."""
+    return [t for t in poi.get("tags", []) if "=" not in t]
+
+
 def _candidate_view(c: dict) -> dict:
     return {
-        "poi_id": c["id"], "name": c["name"], "category": c["category"], "tags": c.get("tags", []),
+        "poi_id": c["id"], "name": c["name"], "category": c["category"], "tags": human_tags(c),
         "description": (c.get("description") or "")[:400], "distance_m": c.get("distance_m"),
         "travel_min": c.get("travel_min"), "open_status": c["open_status"], "rating": c.get("rating"),
         "kid_friendly": c.get("kid_friendly"), "wheelchair": c.get("wheelchair"),
@@ -81,9 +86,13 @@ def llm_generate(query: str, intent: Intent, candidates: list[dict], location_la
                 "what_to_do": clean_llm_text(r.what_to_do),
                 "source": "generated" if r.source == "generated" else "poi_data",
             })
+        notes = [clean_llm_text(n, 200) for n in ans.notes if n.strip() and not DUP_NOTE.search(n)]
         if recs:
-            notes = [clean_llm_text(n, 200) for n in ans.notes if n.strip() and not DUP_NOTE.search(n)]
             return recs[:3], notes[:1]
+        if not ans.recommendations:
+            # модель осознанно решила, что ничего не подходит — это ответ, а не сбой: шаблон не подставляем
+            return [], notes[:1]
+        # все poi_id невалидны (галлюцинация) — ретрай
     return None
 
 

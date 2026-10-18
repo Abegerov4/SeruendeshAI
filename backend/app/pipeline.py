@@ -175,7 +175,7 @@ def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str
             notes.append(_t(lang, "outside"))
     if lat is None:
         lm = rag.resolve_landmark(intent.landmark) if intent.landmark else None
-        lm = lm or rag.resolve_landmark(query)
+        lm = lm or rag.resolve_landmark(query, allow_network=False)  # фразу пользователя наружу не шлём
         if lm:
             lat, lon, loc_source, loc_label = lm["lat"], lm["lon"], "landmark", f"~ {lm['label']}"
     if lat is None and not notes:
@@ -197,7 +197,9 @@ def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str
 
     # 6. фильтры кодом; сам ориентир («я возле Mega Silk Way») не советуем
     if loc_source == "landmark":
-        hits = [h for h in hits if (h.get("distance_m") or 0) > 60]
+        stem = (loc_label or "").removeprefix("~ ").split(" (")[0].casefold()[:6]
+        hits = [h for h in hits if (h.get("distance_m") or 0) > 60
+                and not (stem and (h.get("distance_m") or 0) < 400 and h["name"].casefold().startswith(stem))]
     candidates, had_closed = _filter_candidates(hits, intent, now)
     if had_closed:
         notes.append(_t(lang, "closed"))
@@ -206,9 +208,11 @@ def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str
 
     # 7. генерация
     generated = llm_generate(query, intent, candidates, loc_label)
-    if generated:
+    if generated is not None:
         picks, llm_notes = generated
         notes += llm_notes
+        if not picks:
+            return _empty(request_id, req, now, lang, _t(lang, "nothing"), intent, radius, loc_source, loc_label, notes)
     else:
         picks = template_generate(intent, candidates)
 

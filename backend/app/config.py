@@ -13,6 +13,10 @@ REPO_ROOT = BACKEND_DIR.parent
 load_dotenv(REPO_ROOT / ".env")
 load_dotenv(BACKEND_DIR / ".env")
 
+# OpenAI SDK (и эмбеддинги в rag/) читают ключ только из OPENAI_API_KEY — пробрасываем другие написания
+if not os.getenv("OPENAI_API_KEY") and (os.getenv("LLM_API_KEY") or os.getenv("openai_api_key")):
+    os.environ["OPENAI_API_KEY"] = (os.getenv("LLM_API_KEY") or os.getenv("openai_api_key") or "").strip()
+
 # Казахстан с 2024 года живёт в едином поясе UTC+5
 ASTANA_TZ = timezone(timedelta(hours=5), "Asia/Astana")
 

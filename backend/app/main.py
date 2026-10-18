@@ -40,6 +40,7 @@ def health() -> dict:
         "status": "ok",
         "pois": len(rag.all_pois()),
         "rag": rag.backend_name(),
+        "search": rag.search_mode(),
         "llm": "ok" if llm.is_enabled() else "disabled",
         "models": llm.models() if llm.is_enabled() else None,
         "tracing": "langfuse" if tracing.is_enabled() else "disabled",

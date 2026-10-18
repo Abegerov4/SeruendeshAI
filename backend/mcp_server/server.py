@@ -23,6 +23,7 @@ from pydantic import BaseModel, Field
 
 from backend.app import rag_adapter as rag
 from backend.app.config import ASTANA_TZ
+from backend.app.generate import human_tags
 from backend.app.pipeline import recommend_with_stats
 from backend.app.routing import build_route, default_visit, travel_min
 from backend.app.schemas import Location, Profile, RecommendRequest, RecommendResponse
@@ -155,7 +156,7 @@ def search_pois(
     results = [PoiHit(
         poi_id=h["id"], name=h["name"], category=h["category"], distance_m=h.get("distance_m"),
         travel_min=travel_min(h.get("distance_m"), mode), open_status=rag.open_status(h.get("opening_hours"), now)[0],
-        description=(h.get("description") or "")[:300] or None, tags=h.get("tags", []),
+        description=(h.get("description") or "")[:300] or None, tags=human_tags(h),
         rating=h.get("rating"), source_url=h.get("source_url"),
     ) for h in hits]
     return SearchResult(location_label=label, radius_m=radius_m, results=results)
