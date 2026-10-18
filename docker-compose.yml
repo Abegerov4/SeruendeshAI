@@ -1,0 +1,20 @@
+# Запуск всего проекта одной командой:  docker compose up --build
+# Секреты берутся из .env в корне (в git не коммитится).
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file: .env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  # Frontend добавит свой сервис после merge feature/frontend, например:
+  # frontend:
+  #   build: ./frontend
+  #   environment:
+  #     - VITE_API_URL=http://localhost:8000
+  #   ports:
+  #     - "5173:80"
+  #   depends_on: [backend]
