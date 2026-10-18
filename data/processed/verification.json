@@ -1,0 +1,17 @@
+{
+  "dataset_sha256": "1f815df354ad990d902d76c8676a91013f2d8288a7330e8c3b75a2666db29b74",
+  "poi_count": 14009,
+  "unique_id_count": 14009,
+  "outside_boundary": 0,
+  "nonfinite_coordinates": 0,
+  "missing_source_license": 0,
+  "non_null_ratings": 0,
+  "offline_rebuild_identical": true,
+  "test_command": ".venv/bin/python -m pytest data/tests tests --pois data/processed/pois.json -q",
+  "tests_passed": 445,
+  "tests_skipped": 51,
+  "tests_failed": 0,
+  "skip_note": "Live backend, RAG and UI checks require their implementations or explicit live opt-ins; these were not exercised.",
+  "sample_file": "review_sample.json",
+  "reviewed_on": "2026-10-18"
+}

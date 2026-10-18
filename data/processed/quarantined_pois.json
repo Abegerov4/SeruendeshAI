@@ -1,0 +1,220 @@
+[
+  {
+    "id": "overture:ed179237-7b99-4c2b-a230-a39ac348a5a8",
+    "name": "Nursultan Nazarbayev International Airport",
+    "name_en": null,
+    "name_kk": null,
+    "lat": 51.138,
+    "lon": 71.4249,
+    "category": "other",
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
+    "tags": [
+      "airport",
+      "travel_and_transportation",
+      "air_transport_facility_or_service"
+    ],
+    "raw_tags": {
+      "id": "ed179237-7b99-4c2b-a230-a39ac348a5a8",
+      "confidence": 0.7759349346160889,
+      "websites": null,
+      "emails": null,
+      "socials": [
+        "https://www.facebook.com/111622323732690"
+      ],
+      "phones": null,
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": "Nursultan Nazarbayev International Airport ",
+          "locality": "Астана",
+          "postcode": null,
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "Nursultan Nazarbayev International Airport",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "111622323732690",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.7759349346160889,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "airport",
+      "taxonomy": {
+        "primary": "airport",
+        "hierarchy": [
+          "travel_and_transportation",
+          "air_transport_facility_or_service",
+          "airport"
+        ],
+        "alternates": null
+      },
+      "version": 9,
+      "bbox": {
+        "xmin": 71.42489624023438,
+        "xmax": 71.42491149902344,
+        "ymin": 51.13799285888672,
+        "ymax": 51.13800048828125
+      }
+    },
+    "raw_taxonomy": {
+      "basic_category": "airport",
+      "taxonomy": {
+        "primary": "airport",
+        "hierarchy": [
+          "travel_and_transportation",
+          "air_transport_facility_or_service",
+          "airport"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "description": null,
+    "description_source": null,
+    "description_source_url": null,
+    "address": "Nursultan Nazarbayev International Airport",
+    "opening_hours": null,
+    "phone": null,
+    "website": null,
+    "rating": null,
+    "rating_count": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=ed179237-7b99-4c2b-a230-a39ac348a5a8",
+    "source_license": "CDLA-Permissive-2.0",
+    "sources": [
+      {
+        "property": "",
+        "dataset": "meta",
+        "license": "CDLA-Permissive-2.0",
+        "record_id": "111622323732690",
+        "update_time": "2026-09-14T00:00:00.000Z",
+        "confidence": 0.7759349346160889,
+        "between": null,
+        "provider": "meta",
+        "resource": "meta",
+        "version": "2026-09-14"
+      },
+      {
+        "property": "/properties/confidence",
+        "dataset": "Overture",
+        "license": "CDLA-Permissive-2.0",
+        "record_id": null,
+        "update_time": "2026-09-17T22:52:12Z",
+        "confidence": null,
+        "between": null,
+        "provider": "overture",
+        "resource": "confidence_calculation",
+        "version": "2026-09-17"
+      }
+    ],
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "release": "2026-09-23.1",
+    "source_release": "2026-09-23.1",
+    "source_license_url": "https://docs.overturemaps.org/attribution/",
+    "updated_at": "2026-09-23",
+    "collected_at": "2026-10-18T17:17:59.182870+00:00",
+    "source_records": [
+      {
+        "id": "overture:ed179237-7b99-4c2b-a230-a39ac348a5a8",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=ed179237-7b99-4c2b-a230-a39ac348a5a8",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "111622323732690",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.7759349346160889,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "airport",
+          "taxonomy": {
+            "primary": "airport",
+            "hierarchy": [
+              "travel_and_transportation",
+              "air_transport_facility_or_service",
+              "airport"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "quality_review_notes": [
+      {
+        "action": "quarantine",
+        "when": {
+          "lat": 51.138,
+          "lon": 71.4249
+        },
+        "reviewed_on": "2026-10-18",
+        "reason": "Airport-category record is at 51.138,71.4249 in the city centre, 12,796.8 m from the OSM aerodrome envelope centre. It may represent an office or a social-page geotag; do not use it as the airport landmark without verification. Original coordinates are retained in quarantined_pois.json.",
+        "comparison_source_id": "osm:way/507841374",
+        "evidence_urls": [
+          "https://www.openstreetmap.org/way/507841374",
+          "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=ed179237-7b99-4c2b-a230-a39ac348a5a8"
+        ]
+      }
+    ]
+  }
+]

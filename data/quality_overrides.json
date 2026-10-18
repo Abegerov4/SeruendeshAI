@@ -1,0 +1,32 @@
+{
+  "overture:ed179237-7b99-4c2b-a230-a39ac348a5a8": {
+    "action": "quarantine",
+    "when": {"lat": 51.138, "lon": 71.4249},
+    "reviewed_on": "2026-10-18",
+    "reason": "Airport-category record is at 51.138,71.4249 in the city centre, 12,796.8 m from the OSM aerodrome envelope centre. It may represent an office or a social-page geotag; do not use it as the airport landmark without verification. Original coordinates are retained in quarantined_pois.json.",
+    "comparison_source_id": "osm:way/507841374",
+    "evidence_urls": ["https://www.openstreetmap.org/way/507841374", "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=ed179237-7b99-4c2b-a230-a39ac348a5a8"]
+  },
+  "osm:node/4916060859": {
+    "action": "suppress_wikimedia",
+    "when_raw_tags": {"wikidata": "Q1804795", "wikipedia": "en:Ministry of Agriculture (Kazakhstan)"},
+    "reviewed_on": "2026-10-18",
+    "reason": "The OSM name and amenity identify the Kazakhstan branch of Moscow State University, but its attached Wikipedia title and cached Q1804795 labels identify the Ministry of Agriculture. Retain the source metadata, but do not import that article as the university description.",
+    "evidence_urls": ["https://www.openstreetmap.org/node/4916060859", "https://www.wikidata.org/wiki/Q1804795", "https://en.wikipedia.org/wiki/Ministry_of_Agriculture_(Kazakhstan)"]
+  },
+  "overture:46573c6a-5595-469a-bc39-b28953af231a": {
+    "action": "verified_same_place",
+    "target_id": "osm:way/230401645",
+    "when": {"name": "Baiterek", "lat": 51.1282117, "lon": 71.43043788, "category": "monument"},
+    "reviewed_on": "2026-10-18",
+    "reason": "The source identifies Baiterek monument, links its official website astana-bayterek.kz and locates it about 9 m from the OSM Bayterek monument. Treat as the same place; keep the conflicting source address for audit rather than dropping it.",
+    "evidence_urls": ["https://www.openstreetmap.org/way/230401645", "https://www.wikidata.org/wiki/Q804210", "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=46573c6a-5595-469a-bc39-b28953af231a"]
+  },
+  "osm:node/4361681890": {
+    "action": "suppress_cuisine_text",
+    "when_raw_tags": {"cuisine": "russian;italian_pizza;hot_dog;fish_and_chips;fine_dining;oriental;filipino;ethiopian;diner;chicken;cake;buschenschank;burger;coffee_shop;crepe;chinese;curry;deli;croatian"},
+    "reviewed_on": "2026-10-18",
+    "reason": "One cafe has 19 disparate cuisine tags. This unverified anomalous list remains in raw_tags, but is excluded from the derived description and flat retrieval tags until checked.",
+    "evidence_urls": ["https://www.openstreetmap.org/node/4361681890"]
+  }
+}

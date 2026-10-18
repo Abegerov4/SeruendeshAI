@@ -1,37 +1,68 @@
-# Dataset statistics
+# Данные POI Астаны
 
-POIs: 832; updated: 2026-10-18
+Собрано **14,009** уникальных именованных объектов без лимита количества.
+Из них **2,761** относятся к категориям прогулок, еды, культуры, спорта и досуга; остальные сохранены с категорией `other`.
 
-| Category | Count |
+География: `administrative_polygon`. Отброшено записей: 619; объединено дублей: 598.
+
+## Заполненность
+
+| Поле | Объектов | Доля |
+|---|---:|---:|
+| description | 14009 | 100.00% |
+| opening_hours | 2083 | 14.87% |
+| rating | 0 | 0.00% |
+| wheelchair | 305 | 2.18% |
+| address | 8487 | 60.58% |
+| phone | 7917 | 56.51% |
+| website | 5896 | 42.09% |
+| name_en | 900 | 6.42% |
+| name_kk | 709 | 5.06% |
+
+Авторские описания из источников: **251**. Фактические шаблоны из структурированных полей: **13758**.
+Шаблоны отмечены `description_kind=structured_template`, отдельно от исходных описаний. LLM не использовалась. Шаблоны не подтверждают тишину, розетки, Wi-Fi, цены или пригодность для детей.
+Неизвестные часы, рейтинги и доступность остаются null. Наличие объекта в источнике не доказывает, что он работает сегодня.
+
+## Категории
+
+| Категория | Объектов |
 |---|---:|
-| attraction | 16 |
-| bar | 106 |
-| cafe | 315 |
-| cinema | 10 |
-| gallery | 8 |
-| library | 9 |
-| mall | 52 |
-| monument | 53 |
-| museum | 8 |
-| nightlife | 3 |
-| other | 6 |
-| park | 38 |
-| playground | 1 |
-| restaurant | 176 |
-| sport | 22 |
+| attraction | 140 |
+| bar | 308 |
+| cafe | 658 |
+| cinema | 24 |
+| coworking | 1 |
+| gallery | 14 |
+| library | 19 |
+| mall | 116 |
+| monument | 54 |
+| museum | 33 |
+| nightlife | 18 |
+| other | 11248 |
+| park | 78 |
+| playground | 4 |
+| restaurant | 1122 |
+| sport | 163 |
 | theatre | 9 |
 
-| Field | Coverage |
-|---|---:|
-| description | 100.0% |
-| opening_hours | 32.2% |
-| wheelchair | 7.6% |
-| rating | 0.0% |
+## Источники
 
-Description sources: {'llm_generated': 819, 'osm': 1, 'wikipedia': 12}
+| Источник | Участие в итоговых POI | Статус сбора |
+|---|---:|---|
+| citypass | 17 | см. manifest |
+| directory_join | 0 | ok |
+| dodo | 23 | см. manifest |
+| geonames | 41 | ok |
+| khanshatyr | 4 | см. manifest |
+| marwin | 8 | см. manifest |
+| mega_silkway | 3 | см. manifest |
+| osm | 5592 | ok |
+| overture | 8473 | ok |
+| sxodim | 13 | см. manifest |
+| web | 0 | partial |
+| wikimedia | 0 | partial |
+| wikimedia_enrichment | 0 | partial |
+| wikipedia | 189 | см. manifest |
 
-Generated descriptions are category-only LLM-authored templates, not verified editorial descriptions.
-No ratings or quietness are inferred. Unknown child suitability is null.
-© OpenStreetMap contributors — https://www.openstreetmap.org/copyright (ODbL).
-Wikipedia extracts, when present: CC BY-SA; linked article identifiers remain in tags.
-QA golden Recall@5: not measured until the independent QA set is available.
+Полные ошибки, даты, релизы, ограничения и лицензии находятся в `processed/source_manifest.json`; первичные записи каждого объекта — в `source_records`.
+Это доступное покрытие перечисленных источников, а не перепись всех заведений города. Сайты без установленной лицензии отмечены отдельно; публичный доступ не равен открытой лицензии.
