@@ -32,6 +32,7 @@ test('API recommendation maps to a card with honest labels', () => {
   assert.equal(p.distance, '650 м');
   assert.match(p.imageNote, /не фото/);
   assert.equal(toPlace(rec('idea-2', {source: 'generated'})).source, 'Идея ИИ');
+  assert.equal(toPlace(rec('osm:2', {opening: {status: 'always', label: 'x'}, website: 'https://a.kz'})).openingKind, 'always');
   assert.equal(formatDistance(1530), '1,5 км');
 });
 

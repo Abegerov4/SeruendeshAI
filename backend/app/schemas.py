@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 API_VERSION = "1.0"
 
@@ -21,12 +21,14 @@ class _Out(BaseModel):
 
 
 class LatLon(BaseModel):
+    model_config = ConfigDict(strict=True)
     lat: float = Field(ge=-90, le=90, description="Latitude; the client should round to 3 decimals (~100 m)")
     lon: float = Field(ge=-180, le=180, description="Longitude; the client should round to 3 decimals")
 
 
 class WeatherOverride(BaseModel):
-    """Demo/test override of live weather (e.g. show the winter mode in July)."""
+    """Test override of live weather (reproducible evaluations)."""
+    model_config = ConfigDict(strict=True)
     temperature_c: float = Field(ge=-60, le=60)
     feels_like_c: float = Field(ge=-70, le=60)
     wind_ms: float = Field(0, ge=0, le=60)
@@ -34,6 +36,7 @@ class WeatherOverride(BaseModel):
 
 
 class Profile(BaseModel):
+    model_config = ConfigDict(strict=True)
     with_kids: bool = False
     tourist: bool = False
     accessibility: bool = False
@@ -41,7 +44,13 @@ class Profile(BaseModel):
 
 
 class RecommendRequest(BaseModel):
-    query: str = Field("", max_length=500, description="Free text in RU/KK/EN, e.g. «Я возле Байтерека, хочу погулять час»")
+    model_config = ConfigDict(strict=True)  # "51.1" / "true" strings are rejected (422), like the team contract tests expect
+    query: str = Field(description="Free text in RU/KK/EN, e.g. «Я возле Байтерека, хочу погулять час» (long text is truncated)")
+
+    @field_validator("query", mode="before")
+    @classmethod
+    def _truncate(cls, v):
+        return v[:1000] if isinstance(v, str) else v
     lang: Lang | None = Field(None, description="UI language; null = detect from the query")
     location: LatLon | None = Field(None, description="Approximate user position (rounded). Server rounds again.")
     landmark: str | None = Field(None, max_length=80, description="Landmark key or name from GET /api/meta instead of GPS")
@@ -54,8 +63,8 @@ class RecommendRequest(BaseModel):
     accessibility: bool | None = Field(None, description="Need step-free / wheelchair-accessible places")
     group_size: int | None = Field(None, ge=1, le=20)
     want_route: bool | None = Field(None, description="Ask for a 2–3 stop mini-route (default: auto)")
-    now: str | None = Field(None, description="ISO datetime override for demos/tests, e.g. 2026-10-18T19:30:00+05:00")
-    weather: WeatherOverride | None = Field(None, description="Weather override for demos/tests (null = live Open-Meteo)")
+    now: str | None = Field(None, description="ISO datetime override for tests, e.g. 2026-10-18T19:30:00+05:00")
+    weather: WeatherOverride | None = Field(None, description="Weather override for tests (null = live Open-Meteo)")
     refine: list[Literal["closer", "no_coffee", "indoor"]] = Field(
         default_factory=list, description="Follow-up refinements of the previous request: closer, no_coffee, indoor")
 
@@ -91,8 +100,9 @@ class Recommendation(_Out):
     open_status: Literal["open", "closed", "unknown"]
     open_confidence: Literal["high", "low", "none"]
     source: Literal["poi_data", "generated"] = Field(description="poi_data = collected dataset; generated = AI idea")
-    source_url: str | None
+    source_url: str | None = Field(description="Exactly the dataset source (OSM / Wikidata / Wikipedia page) or null")
     rating: float | None = Field(description="Always null in v1: no open rating source exists for Astana")
+    website: str | None = Field(description="The place's own website, if known")
     # --- extensions (superset of the contract)
     rank: int
     category_detail: str = Field(description="Fine-grained category key (33 types), see GET /api/meta")
@@ -191,7 +201,8 @@ class RecommendResponse(_Out):
     request_id: str
     lang: Lang
     summary: str
-    recommendations: list[Recommendation]
+    recommendations: list[Recommendation] = Field(description="1–3 places from the dataset (source=poi_data)")
+    ideas: list[Recommendation] = Field(description="AI-generated micro-activities (source=generated), anchored to a recommended place")
     route: Route | None
     used_context: UsedContext
     considered: list[Considered] = Field(description="A few places that were rejected and why (transparency)")

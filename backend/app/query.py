@@ -51,7 +51,8 @@ Rules:
 - needs: power outlet/розетка -> power_outlets; Wi-Fi -> wifi; quiet/тихо/тыныш -> quiet; stroller/wheelchair/коляска/арба -> wheelchair; with a child -> kids; warm/тепло -> warm.
 - time_budget_min: "30–60 минут" -> 60; "пару часов" -> 120; "полчаса" -> 30; "1-2 сағат" -> 120.
 - "2 hours before my flight" -> deadline_kind=flight, deadline_in_min=120, time_budget_min=null.
-- landmark_text: copy the landmark/mall/street name exactly as written (keep original language).
+- landmark_text: ONLY the place where the user is right now ("я у X", "возле X", "X-тың жанында", "I'm at X"), copied as written.
+  A place the user wants to go to ("хочу в X", "как попасть в X", "X-қа барғым келеді") is NOT landmark_text: keep it in search_text_ru.
 - night=true for late-evening/night requests ("ночью", "түнде", "late night", "последние пару часов" at night).
 - search_text_ru and keywords_ru: always in Russian, even for Kazakh/English input.
 - lang: language of the user's text (kk if it contains Kazakh words/letters)."""
@@ -144,6 +145,9 @@ _RULES: list[tuple[str, dict]] = [
 ]
 
 
+_RULES = [(fold(p), a) for p, a in _RULES]
+
+
 def _num(s: str) -> float | None:
     s = s.replace(",", ".")
     try:
@@ -184,6 +188,8 @@ def parse_rules(text: str) -> Parsed:
     for pat, act in _RULES:
         if not re.search(pat, s):
             continue
+        if p.lang == "kk" and act.get("cat") == ["bar"] and not re.search(r"\bpub\b|\bbar\b|пиво|сыра|коктейл", s):
+            continue  # Kazakh "бар" = "there is", not a bar
         cats += act.get("cat", [])
         p.needs.update(act.get("need", []))
         if "party" in act:
@@ -265,6 +271,57 @@ _GENERIC = {"парк", "сквер", "кафе", "музей", "бар", "ре�
             "cafe", "museum", "детская площадка", "площадка", "рынок", "базар", "сад", "центр", "дом", "тц", "трц"}
 
 
+# where the user IS vs where they want TO GO (texts are folded: Kazakh letters -> Russian ones)
+_ORIGIN_BEFORE = re.compile(r"(?:\bя\s+)?(?:\bу|возле|около|рядом\s+с|рядом|недалеко\s+от|напротив|в\s+районе|\bнахожусь\s+(?:у|в|возле)|"
+                            r"\bnear|\bat|\bby|i'?m\s+(?:at|near|by|in)|i\s+am\s+(?:at|near|by|in))\s*$")
+_ORIGIN_AFTER = re.compile(r"^\w*\s*(?:жанында|манында|касында|алдында)|^(?:да|де|та|те)\b")
+_DEST_BEFORE = re.compile(r"(?:хочу|хотим|хотел\w*|надо|нужно)\s+(?:в|на|до|к|попасть\s+(?:в|на|к))\s*$|(?:попасть|пойти|сходить|дойти|добраться|"
+                          r"доехать|пройти|проехать|едем|иду|идти)\s+(?:в|на|до|к)\s*$|как\s+(?:пройти|дойти|доехать|попасть|добраться)\s+(?:в|на|до|к)?\s*$|"
+                          r"(?:go|get|walk|drive|head)\s+to\s*(?:the\s*)?$|\bvisit\s*$")
+_DEST_AFTER = re.compile(r"^(?:га|ге|ка|ке)\b|^\w*\s*(?:баргым|баруга|барамын|бару)")
+
+
+KIND_BONUS = {"landmark": 50, "airport": 40, "station": 30, "hotel": 12, "university": 10, "hospital": 8,
+              "government": 8, "stadium": 8, "place": 5, "poi": 0}
+
+
+def landmark_mentions(text: str, gazetteer: list[dict]) -> list[dict]:
+    """All gazetteer names mentioned in the text with their role: origin / dest / unknown."""
+    s = " " + fold(text) + " "
+    cands = []
+    for g in gazetteer:
+        for k in g["keys"]:
+            if len(k) < 4 or k in _GENERIC:
+                continue
+            pos = s.find(k)
+            if pos < 0 or (g["kind"] != "landmark" and (not s[pos - 1].isspace() or len(k) < 6)):
+                continue
+            score = len(k) + KIND_BONUS.get(g["kind"], 0)
+            cands.append((score, pos, pos + len(k), g))
+    cands.sort(key=lambda c: -c[0])
+    taken: list[tuple[int, int]] = []
+    out = []
+    for score, a, b, g in cands:
+        if any(a < y and x < b for x, y in taken):
+            continue  # overlaps a better mention of the same words
+        taken.append((a, b))
+        before, after = s[max(0, a - 32):a], s[b:b + 24]
+        role = ("dest" if _DEST_BEFORE.search(before) or _DEST_AFTER.search(after)
+                else "origin" if _ORIGIN_BEFORE.search(before) or _ORIGIN_AFTER.search(after) else "unknown")
+        out.append({"entry": g, "role": role, "pos": a})
+    return sorted(out, key=lambda m: m["pos"])
+
+
+def split_mentions(text: str, gazetteer: list[dict]) -> tuple[dict | None, list[dict]]:
+    """(origin gazetteer entry or None, destination entries)."""
+    ms = landmark_mentions(text, gazetteer)
+    dests = [m["entry"] for m in ms if m["role"] == "dest"]
+    origin = next((m["entry"] for m in ms if m["role"] == "origin"), None)
+    if origin is None:
+        origin = next((m["entry"] for m in ms if m["role"] == "unknown"), None)
+    return origin, dests
+
+
 def find_landmark_in_text(text: str, gazetteer: list[dict]) -> dict | None:
     """Exact (folded) mention of a gazetteer name inside the query, preferring curated landmarks."""
     s = " " + fold(text) + " "
@@ -278,7 +335,7 @@ def find_landmark_in_text(text: str, gazetteer: list[dict]) -> dict | None:
                 continue
             if g["kind"] != "landmark" and (not s[pos - 1].isspace() or len(k) < 6):
                 continue
-            score = len(k) + {"landmark": 50, "airport": 40, "station": 30, "place": 5, "poi": 0}.get(g["kind"], 0)
+            score = len(k) + KIND_BONUS.get(g["kind"], 0)
             if best is None or score > best[0]:
                 best = (score, g)
     return best[1] if best else None

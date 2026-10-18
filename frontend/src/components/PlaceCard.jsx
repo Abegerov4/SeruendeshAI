@@ -4,7 +4,7 @@ import PlaceDetails from './PlaceDetails';
 import { Heart, Footprints, Car, Clock3, MapPin, Sparkles, ChevronDown, Check } from 'lucide-react';
 import { BADGE_LABELS } from '../api';
 
-const SOURCE_NAMES = {osm: 'OpenStreetMap', wikidata: 'Wikidata', wikipedia: 'Wikipedia', overture: 'Overture Maps', ticketon: 'Ticketon', sxodim: 'Sxodim', llm: 'ИИ'};
+const SOURCE_NAMES = {osm: 'OpenStreetMap', wikidata: 'Wikidata', wikipedia: 'Wikipedia', overture: 'Overture Maps', ticketon: 'Ticketon', sxodim: 'Sxodim', citypass: 'CityPass Astana', khanshatyr: 'Хан Шатыр', mega_silkway: 'Mega Silk Way', llm: 'ИИ'};
 const DESC_SOURCE = {wikipedia: 'описание из Википедии', osm: 'описание из OSM', template: 'описание собрано из тегов', generated: 'текст ИИ'};
 
 export function TrustList({ p }) {
@@ -20,8 +20,8 @@ export function TrustList({ p }) {
 
 function shortHours(p) {
   const label = (p.status || '').replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s*·.*$/, '').trim();
+  if (p.openingKind === 'always') return tr('Открытая территория');
   if (p.openConfidence === 'none') return tr('Часы уточняй');
-  if (p.openStatus === 'open' && /Открытая территория|Ашық аумақ|Open public space/.test(label)) return tr('Открыто всегда');
   return label.length > 26 ? label.slice(0, 26) + '…' : label;
 }
 
@@ -42,7 +42,7 @@ export default function PlaceCard({ place: p, index = 0, selected, onSelect, sav
       {!p.generated && <div className="place-action"><span><Check size={12} />{tr("Что делать")}</span><p>{p.action}</p></div>}
       {(p.leaveBy || p.event) && <div className="badge-row">{p.leaveBy && <span className="leave">{tr('Выйти до')} {p.leaveBy}</span>}{p.event && <span className="event">{tr('Событие в')} {p.event.starts_at}</span>}</div>}
       {p.event && <p className="event-line">🎟 {p.event.title}{p.event.url && <> · <a href={p.event.url} target="_blank" rel="noreferrer">{p.event.source === 'sxodim' ? 'Sxodim' : 'Ticketon'}</a></>}</p>}
-      <div className="place-bottom"><div className="card-chips">{!p.generated && <span className={'hours-chip ' + (p.openStatus === 'open' && p.openConfidence === 'high' ? 'open' : p.openConfidence === 'none' ? 'unknown' : 'maybe')}><Clock3 size={12} />{shortHours(p)}</span>}<span className={'source ' + (p.generated ? 'ai-source' : '')}>{p.generated ? <Sparkles size={12} /> : <MapPin size={12} />} {tr(p.generated ? 'Идея Серу' : 'Из базы мест')}</span></div><button className="detail-toggle" onClick={() => setExpanded(true)} aria-haspopup="dialog">{tr("Подробнее")}<ChevronDown size={13} /></button></div>
+      <div className="place-bottom"><div className="card-chips">{!p.generated && <span className={'hours-chip ' + (p.openingKind === 'always' ? 'open' : p.openStatus === 'open' && p.openConfidence === 'high' ? 'open' : p.openConfidence === 'none' ? 'unknown' : 'maybe')}><Clock3 size={12} />{shortHours(p)}</span>}<span className={'source ' + (p.generated ? 'ai-source' : '')}>{p.generated ? <Sparkles size={12} /> : <MapPin size={12} />} {tr(p.generated ? 'Идея Серу' : 'Из базы мест')}</span></div><button className="detail-toggle" onClick={() => setExpanded(true)} aria-haspopup="dialog">{tr("Подробнее")}<ChevronDown size={13} /></button></div>
     </div></article>{expanded && <PlaceDetails place={p} saved={saved} onSave={onSave} onClose={() => setExpanded(false)} onMap={onSelect} />}</>;
 }
 

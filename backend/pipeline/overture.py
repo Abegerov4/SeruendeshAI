@@ -8,11 +8,12 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 
 from rapidfuzz import fuzz
 
 from app.paths import BOUNDARY_FILE, RAW_DIR
-from app.textnorm import match_key
+from app.textnorm import contains_name, match_key, same_name
 
 log = logging.getLogger("pipeline.overture")
 
@@ -44,6 +45,10 @@ OV_MAP = {
     "cultural_center": "arts_centre", "muslim_place_of_worship": "worship", "christian_place_of_worship": "worship",
     "brewery": "bar", "non_alcoholic_beverage_venue": "cafe", "books_music_and_video_store": "souvenir",
 }
+
+
+# names that are a web domain or a street address, not a place ("gorkytheatre.kz", "ул.Абылай хана 5/2")
+JUNK_NAME = re.compile(r"^\s*[\w.-]+\.(kz|com|ru|org|net|info)\s*$|^\s*(ул\.|улица|пр\.|проспект|көшесі|даңғылы)[^,]*\d", re.I)
 
 
 def extract() -> list[dict]:
@@ -85,18 +90,24 @@ def merge_overture(pois: list[dict], places: list[dict]) -> list[dict]:
         if not cat or not o.get("name"):
             skipped["category"] += 1
             continue
+        if JUNK_NAME.search(o["name"]):
+            skipped["junk_name"] += 1
+            continue
         if (o.get("confidence") or 0) < 0.6:
             skipped["confidence"] += 1
             continue
         if stack[(round(o["lat"], 5), round(o["lon"], 5))] >= 3:
             skipped["stacked"] += 1
             continue
-        k = match_key(o["name"])
         best = None
         for d, p in grid.near(o["lat"], o["lon"], 150):
-            sc = max(fuzz.token_set_ratio(k, match_key(n)) for n in {p["name"], *p["names"].values()})
-            if sc >= 85 and (best is None or d < best[0]):
-                best = (d, p)
+            names = {p["name"], *p["names"].values()}
+            # strict names at any distance; "ПИНТА Bar & Grill" ~ "Пинта" only when they are next door
+            near = 100 if p["category"] == cat else 60
+            if (any(same_name(o["name"], n) for n in names) or d <= near and any(contains_name(o["name"], n) for n in names)
+                    or d <= 40 and p["category"] == cat and any(fuzz.token_set_ratio(match_key(o["name"]), match_key(n)) >= 75 for n in names)):
+                if best is None or d < best[0]:
+                    best = (d, p)
         if best:
             p = best[1]
             p["website"] = p.get("website") or o.get("website")

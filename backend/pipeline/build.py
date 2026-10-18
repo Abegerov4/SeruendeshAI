@@ -15,7 +15,7 @@ from shapely.prepared import prep
 from app.categories import CATEGORIES, category_from_osm, label
 from app.features import cuisine_ru, feature_labels, features_from_osm
 from app.paths import BOUNDARY_FILE, GAZETTEER_FILE, MANIFEST_FILE, POIS_FILE, RIVER_FILE
-from app.textnorm import fold, match_key
+from app.textnorm import contains_name, fold, match_key, same_name
 from pipeline.common import write_jsonl
 from pipeline.landmarks import LANDMARKS
 from pipeline.osm import element_latlon, element_url
@@ -162,6 +162,19 @@ def label_unnamed(pois: list[dict], context: list[dict]) -> None:
     log.info("auto-labelled unnamed places: %s", dict(stats))
 
 
+SETTLEMENT = re.compile(r"\b(city|capital|human settlement|settlement|administrative|district|country|region|oblast|"
+                        r"municipality|big city|million city|city of kazakhstan|neighborhood|neighbourhood|microdistrict)\b")
+
+
+FOOD_NIGHT = {"cafe", "restaurant", "bar", "fast_food", "sweets", "hookah", "nightclub", "karaoke", "coworking"}
+
+
+def wd_compatible(p: dict, it: dict) -> bool:
+    """A café called "Mega" must not inherit the article about the Mega mall."""
+    wc = wikidata_category(it["classes"])
+    return (p["category"] in FOOD_NIGHT) == (wc in FOOD_NIGHT) if wc else p["category"] not in FOOD_NIGHT
+
+
 def merge_wikidata(pois: list[dict], items: list[dict], inside) -> list[dict]:
     by_qid = {p["wikidata"]: p for p in pois if p.get("wikidata")}
     grid = Grid([p for p in pois if not p["name_auto"]])
@@ -169,14 +182,22 @@ def merge_wikidata(pois: list[dict], items: list[dict], inside) -> list[dict]:
     for it in items:
         if not inside(it["lat"], it["lon"]):
             continue
+        if SETTLEMENT.search(" | ".join(it["classes"]).lower()):
+            continue  # a city/district/region is not a café (bug found by the team QA suite)
         target = by_qid.get(it["qid"])
+        if target and not wd_compatible(target, it):
+            target["wikidata"] = None  # OSM brand/operator tag pointing at an unrelated item
+            target = None
         if not target:
-            keys = [match_key(x) for x in (it["label_ru"], it["label_en"], it["label_kk"]) if x]
+            labels = [x for x in (it["label_ru"], it["label_en"], it["label_kk"]) if x]
             best = None
             for d, p in grid.near(it["lat"], it["lon"], 300):
-                pk = match_key(p["name"])
-                sc = max((fuzz.token_set_ratio(k, pk) for k in keys if k), default=0)
-                if sc >= 85 and (best is None or d < best[0]):
+                if not wd_compatible(p, it):
+                    continue
+                # same name, or a longer/shorter variant next door, or the same kind of place a few metres away
+                # ("Парк Влюбленных" = "Ғашықтар саябағы")
+                if (any(same_name(lb, p["name"]) for lb in labels) or d <= 100 and any(contains_name(lb, p["name"]) for lb in labels)
+                        or d <= 40 and p["category"] == wikidata_category(it["classes"])) and (best is None or d < best[0]):
                     best = (d, p)
             target = best[1] if best else None
         if target:
@@ -227,10 +248,48 @@ def merge_wikipedia(pois: list[dict], articles: dict[str, list[dict]]) -> None:
                 p["description"] = _clean_extract(a["extract"])
                 p["description_source"], p["description_lang"] = "wikipedia", lang
                 p["description_url"] = a["url"]
+                p["description_title"] = a["title"]
+                p["description_license"] = "CC BY-SA 4.0 · Wikipedia contributors"
             if "wikipedia" not in p["sources"]:
                 p["sources"].append("wikipedia")
             n[lang] += 1
     log.info("wikipedia extracts attached: %s", dict(n))
+
+
+def add_sitelink_extracts(pois: list[dict], wd_items: list[dict]) -> None:
+    """POIs with a Wikidata id but no Wikipedia text: fetch the article by sitelink (ru -> kk -> en).
+    Method from the team's data pipeline (enrich_wiki.py by Denis)."""
+    from pipeline.wiki import fetch_extract
+    by_qid = {it["qid"]: it for it in wd_items}
+    n = 0
+    for p in pois:
+        if p.get("description_source") == "wikipedia" or not p.get("wikidata") or p["wikidata"] not in by_qid:
+            continue
+        it = by_qid[p["wikidata"]]
+        for lang in ("ru", "kk", "en"):
+            url = it.get(f"{lang}wiki")
+            art = fetch_extract(url) if url else None
+            if art and art["extract"]:
+                p["description"] = _clean_extract(art["extract"])
+                p.update(description_source="wikipedia", description_lang=lang, description_url=url,
+                         description_title=art["title"], description_license="CC BY-SA 4.0 · Wikipedia contributors")
+                if "wikipedia" not in p["sources"]:
+                    p["sources"].append("wikipedia")
+                n += 1
+                break
+    log.info("wikipedia extracts via sitelinks: %d", n)
+
+
+def apply_quarantine(pois: list[dict]) -> list[dict]:
+    """Drop records reviewed as wrong (data/quarantine.json: id + reason); idea from the team's quality_review.md."""
+    from app.paths import DATA_DIR
+    qf = DATA_DIR / "quarantine.json"
+    if not qf.exists():
+        return pois
+    bad = {q["id"]: q["reason"] for q in json.loads(qf.read_text())}
+    kept = [p for p in pois if p["id"] not in bad]
+    log.info("quarantine: dropped %d records", len(pois) - len(kept))
+    return kept
 
 
 def _clean_extract(s: str) -> str:
@@ -268,8 +327,14 @@ OV_GAZ_KINDS = {"train_station": ("station", 0.6), "airport": ("airport", 0.6), 
                "college_university": ("university", 0.5), "government_office": ("government", 0.65)}
 
 
-def build_gazetteer(pois: list[dict], context: list[dict], overture: list[dict] | None = None) -> list[dict]:
-    entries = []
+def merge_directory_layer(pois: list[dict], directory: list[dict]) -> list[dict]:
+    from pipeline.team_data import merge_directory
+    return merge_directory(pois, directory) if directory else pois
+
+
+def build_gazetteer(pois: list[dict], context: list[dict], overture: list[dict] | None = None,
+                    anchors: list[dict] | None = None) -> list[dict]:
+    entries = list(anchors or [])  # hotels, universities, hospitals... (team big-data layer): origins only
     for o in overture or []:
         kind, min_conf = OV_GAZ_KINDS.get(o.get("basic_category") or "", (None, 1))
         if kind and o.get("name") and (o.get("confidence") or 0) >= min_conf:
@@ -347,6 +412,11 @@ def build(osm_pois: dict, osm_context: dict, river: list, wd_items: list[dict], 
         pois = merge_overture(pois, overture)
     pois = merge_wikidata(pois, wd_items, inside)
     merge_wikipedia(pois, wp)
+    add_sitelink_extracts(pois, wd_items)
+    pois = apply_quarantine(pois)
+    from pipeline import team_data
+    team = team_data.load()
+    pois = merge_directory_layer(pois, team["directory"])
     for p in pois:
         if not p.get("description"):
             p["description"] = template_description(p)
@@ -355,7 +425,8 @@ def build(osm_pois: dict, osm_context: dict, river: list, wd_items: list[dict], 
     compute_popularity(pois)
     pois.sort(key=lambda p: p["id"])
     write_jsonl(POIS_FILE, pois)
-    gaz = build_gazetteer(pois, osm_context["elements"] + (gaz_extra or []), overture)
+    gaz = build_gazetteer(pois, osm_context["elements"] + (gaz_extra or []), overture,
+                          team_data.gazetteer_anchors(team["anchors"]))
     GAZETTEER_FILE.write_text(json.dumps(gaz, ensure_ascii=False, separators=(",", ":")))
     RIVER_FILE.write_text(json.dumps(river))
     import hashlib
@@ -373,6 +444,9 @@ def build(osm_pois: dict, osm_context: dict, river: list, wd_items: list[dict], 
             "wikidata": "Wikidata, CC0",
             "wikipedia": "Wikipedia (ru/en) intro extracts, CC BY-SA 4.0 — linked per POI",
             **({"overture": "Overture Maps Foundation Places, CDLA-Permissive-2.0 / Apache-2.0 / CC0 per record"} if overture else {}),
+            **({"team_bigdata": "Team collection (branch big-data, Aslan, 2026-10-18): CityPass Astana and mall directory "
+                                "facts with links (licence not specified - facts only), anchors from OSM ODbL / Overture"}
+               if team["directory"] or team["anchors"] else {}),
         },
     }
     for k in ("embedding_model", "embedding_dim", "embedding_pois_sha"):  # keep embeddings valid if POIs unchanged

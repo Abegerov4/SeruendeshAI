@@ -44,6 +44,7 @@ export function toPlace(r) {
     why: r.why, action: r.what_to_do, rating: r.rating,
     source: generated ? 'Идея ИИ' : 'Данные POI', generated, url: r.source_url,
     lat: r.lat, lon: r.lon, status: r.opening?.label || '', openStatus: r.open_status, openConfidence: r.open_confidence,
+    openingKind: r.opening?.status, website: r.website || null,
     confidence: CONFIDENCE_TEXT[r.open_confidence] || '', openingRaw: r.opening?.raw,
     features: r.features || [], badges: r.badges || [], leaveBy: r.leave_by, event: r.event,
     description: r.description, descriptionSource: r.description_source, dataSources: r.data_sources || [],
@@ -67,7 +68,7 @@ export function buildRequest(text, ctx, lang) {
 
 export function toPlan(resp, ctx, text) {
   return {
-    places: (resp.recommendations || []).map(toPlace), route: resp.route, used: resp.used_context, notes: resp.notes || [],
+    places: [...(resp.recommendations || []), ...(resp.ideas || [])].map(toPlace), route: resp.route, used: resp.used_context, notes: resp.notes || [],
     considered: resp.considered || [], summary: resp.summary, disclaimer: resp.disclaimer, llm: resp.llm, lang: resp.lang,
     context: {...ctx}, query: text,
   };

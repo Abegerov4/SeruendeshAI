@@ -112,4 +112,11 @@ frontend/         интерфейс (React + Vite)
 - время на машине оценивается эвристикой, без пробок в реальном времени.
 
 ## Лицензии данных
-© OpenStreetMap contributors (ODbL) · Overture Maps Foundation (CDLA-Permissive-2.0 / Apache-2.0 / CC0) · Wikidata (CC0) · Wikipedia (CC BY-SA 4.0, ссылки в карточках) · Open-Meteo (CC BY 4.0) · события: Ticketon, Sxodim (только факты и ссылка).
+© OpenStreetMap contributors (ODbL) · Overture Maps Foundation (CDLA-Permissive-2.0 / Apache-2.0 / CC0) · Wikidata (CC0) · Wikipedia (CC BY-SA 4.0, ссылки в карточках) · Open-Meteo (CC BY 4.0) · события: Ticketon, Sxodim · CityPass Astana (только факты и ссылка).
+
+## Команда
+- **Ayat** — бэкенд RAG, конвейер данных, оценка, деплой.
+- **Abegerov4** — интеграция бэкенда, защита от инъекций и маскирование ПД, бот и MCP-коннектор.
+- **Denis** — RAG и обогащение данных из Википедии.
+- **Aslan** — QA-набор тестов по контракту, большой сбор данных с происхождением записей (ветка `big-data`): из него взяты часы CityPass и 861 точка отсчёта.
+- **Codex** — интерфейс и маскот Серу.

@@ -145,7 +145,8 @@ def compute_reach(store: Store, graph: WalkGraph | None, poi_nodes: np.ndarray |
 
 
 def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Parsed, plan: Plan, ctx: Context,
-         lang: str, qvec: np.ndarray | None, k: int = 10, exclude_keys: set[str] | None = None) -> tuple[list[Cand], list[dict]]:
+         lang: str, qvec: np.ndarray | None, k: int = 10, exclude_keys: set[str] | None = None,
+         target_ids: set[str] | None = None) -> tuple[list[Cand], list[dict]]:
     """Return (top-k candidate cards, considered/rejected list)."""
     req_cats = [c for c in parsed.categories if c in CATEGORIES]
     req_groups = {CATEGORIES[c].group for c in req_cats}
@@ -166,14 +167,23 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         rrf += 1.0 / (60 + ranks + 1)
 
     exclude_keys = exclude_keys or set()
+    target_ids = target_ids or set()
+    target_idx = {store.by_id[t_] for t_ in target_ids if t_ in store.by_id}
     exact_cnt = {"n": 0}
     ev_by_poi = _events_by_poi(store, ctx, plan)
 
     def eligible(i: int, t_max: float, relaxed_needs: bool) -> tuple[bool, str | None, dict | None]:
         p = store.pois[i]
         c = CATEGORIES[p["category"]]
-        if not np.isfinite(mins[i]) or mins[i] > t_max:
+        is_target = i in target_idx
+        if not np.isfinite(mins[i]) or mins[i] > (plan.budget if is_target else t_max):
             return False, None, None
+        if is_target:  # the place the user named as a destination: only hours/safety rules apply
+            v, vr = visit_minutes(p["category"], plan.budget, plan.mode)
+            op = opening_status(p, now + dt.timedelta(minutes=float(mins[i])), v, lang, ctx.holiday)
+            if plan.with_child and c.adult_only:
+                return False, t("rej_kids", lang), None
+            return (True, None, op) if op["ok"] else (False, t("rej_closed", lang), op)
         if parsed.avoid and p["category"] in parsed.avoid:
             return False, None, None
         if exclude_keys and mins[i] <= 8 and _is_origin(p["name"], exclude_keys):
@@ -197,6 +207,8 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
                 return False, None, None
             if p["category"] == "restaurant" and not (parsed.night or plan.budget >= 90):
                 return False, None, None
+            if parsed.walk_intent and c.group == "food" and ctx.max_outdoor_min >= 60 and plan.budget < 120:
+                return False, None, None  # "a walk" means walking places, not a café (unless it's cold or long)
         if plan.with_child and c.adult_only:
             return False, t("rej_kids", lang), None
         if plan.accessibility and p.get("features", {}).get("wheelchair") == "no":
@@ -225,7 +237,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         out, rej = [], []
         within = np.isfinite(mins) & (mins <= t_max)
         exact_cnt["n"] = int(np.sum(within & np.isin(store.cats, req_cats))) if req_cats else 0
-        for i in np.nonzero(np.isfinite(mins) & (mins <= t_max))[0]:
+        for i in sorted(set(np.nonzero(np.isfinite(mins) & (mins <= t_max))[0].tolist()) | target_idx):
             ok, why, op = eligible(int(i), t_max, relaxed)
             if ok:
                 out.append((int(i), op))
@@ -261,7 +273,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
             plan.filters.append("wheelchair_confirmed")
     plan.funnel["after_filters"] = len(pool)
     plan.t_max = int(t_max)
-    plan.radius_m = int(t_max * plan.m_per_min / (1.28 if plan.mode == "walk" else 1.35))
+    plan.radius_m = int(t_max * plan.m_per_min / 1.28) if plan.mode == "walk" else int(max(t_max - 5, 3) * 41000 / 60 / 1.3 / 1.35)
 
     # --- deadline (flight/train): the place must leave enough time to get back
     cands: list[Cand] = []
@@ -269,6 +281,14 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         p = store.pois[i]
         v, vr = visit_minutes(p["category"], plan.budget, plan.mode)
         c = Cand(idx=i, poi=p, distance_m=int(dist[i]), travel_min=int(mins[i]), visit_min=v, visit_range=vr, opening=op)
+        if plan.deadline_min is None:
+            room = plan.budget - c.travel_min
+            if room < max(5, min(vr[0], 10)) and room < vr[0]:
+                rejected.append((i, t("rej_far", lang, m=c.travel_min)))
+                continue
+            if room < c.visit_min:
+                c.visit_min = int(max(5, room))
+            c.visit_range = (min(vr[0], max(5, room)), min(vr[1], max(5, room)))
         if plan.deadline_min is not None and plan.deadline_back_target is not None:
             back_straight = float(hav_m(p["lat"], p["lon"], *plan.deadline_back_target))
             back = car_minutes(back_straight, ctx.now.hour, ctx.snowing)[1]
@@ -317,6 +337,8 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
                     tag *= 0.8
         if parsed.wants_event and p["id"] in ev_by_poi:
             tag = 1.0
+        if c.idx in target_idx:
+            tag, rt = 1.0, 1.0
         rel = 0.5 * tag + 0.5 * float(rt)
         if p.get("name_auto") and p["category"] != "playground":
             rel *= 0.6  # unnamed squares are fine fillers but rarely the answer

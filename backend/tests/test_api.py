@@ -132,3 +132,28 @@ def test_accounts_flow(client):
     assert client.delete("/api/me").status_code == 204
     assert client.get("/api/auth/me").status_code == 401
     assert client.post("/api/auth/login", json={"email": email, "password": "correct horse 1"}).status_code == 401
+
+
+def test_strict_schema_and_query_truncation(client):
+    bad = {"query": "кофе", "location": {"lat": "51.128", "lon": 71.43}}  # numbers as strings are not coerced
+    assert client.post("/api/recommend", json=bad).status_code == 422
+    d = post(client, query="кофе " * 400, landmark="baiterek")
+    assert d["recommendations"]
+
+
+def test_pii_is_masked_and_noted(client):
+    d = post(client, query="кофе рядом, мой номер +7 701 123 45 67", landmark="baiterek")
+    assert any("личн" in n.lower() for n in d["notes"])
+
+
+def test_destination_is_recommended_and_ideas_are_separate(client):
+    d = post(client, query="я у Байтерека, хочу дойти до Хан Шатыра", time_budget_min=90)
+    assert d["used_context"]["location_label"].startswith("Байтерек")
+    assert any("Хан Шатыр" in r["name"] or "Khan Shatyr" in r["name"] for r in d["recommendations"])
+    assert all(r["source"] == "poi_data" for r in d["recommendations"])
+    assert all(i["source"] == "generated" for i in d.get("ideas", []))
+
+
+def test_hotel_is_a_valid_origin(client):
+    d = post(client, query="я в отеле Hilton, где выпить кофе в 15 минутах пешком?")
+    assert d["used_context"]["location_source"] == "landmark" and d["recommendations"]

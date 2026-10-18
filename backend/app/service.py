@@ -24,8 +24,9 @@ from app.i18n import t, weekday
 from app.llm import client as llm_client
 from app.llm import parse as llm_parse
 from app.planner import plan_route, route_wanted
-from app.query import (PARSE_SYSTEM, LLMParsed, Parsed, deadline_minutes, find_landmark_in_text, merge_llm,
-                       parse_rules, resolve_landmark)
+from app.guards import mask_pii, strip_injection
+from app.query import (PARSE_SYSTEM, LLMParsed, Parsed, deadline_minutes, merge_llm, parse_rules, resolve_landmark,
+                       split_mentions)
 from app.retrieval import Cand, Plan, rank
 from app.schemas import RecommendRequest
 from app.store import Store
@@ -67,11 +68,7 @@ def _strip_terms(text: str, keys: list[str]) -> str:
 
 
 def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: list[str], lang: str, hit=None):
-    """Text landmark > rounded GPS > UI landmark > default (Baiterek)."""
-    if not hit and parsed.landmark_text:
-        hit = resolve_landmark(parsed.landmark_text, store.gazetteer)
-    if hit:
-        return (hit["lat"], hit["lon"]), {"source": "text_landmark", "label": hit["name"], "precision_m": 50}, hit
+    """Rounded GPS (inside Astana) > where the text says the user is > LLM landmark > UI landmark."""
     if req.location:
         lat, lon = round_coord(req.location.lat), round_coord(req.location.lon)
         if in_astana(lat, lon):
@@ -82,11 +79,29 @@ def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: 
                    "kk": "~ сіздің орналасуыңыз (100 м-ге дейін)", "en": "~ your location (rounded to 100 m)"}[lang]
             return (lat, lon), {"source": "gps_rounded", "label": lbl, "precision_m": 100}, None
         notes.append(t("note_outside_city", lang))
+    if not hit and parsed.landmark_text:
+        hit = resolve_landmark(parsed.landmark_text, store.gazetteer)
+    if hit:
+        return (hit["lat"], hit["lon"]), {"source": "text_landmark", "label": hit["name"], "precision_m": 50}, hit
     if req.landmark:
         g = resolve_landmark(req.landmark, store.gazetteer)
         if g:
             return (g["lat"], g["lon"]), {"source": "landmark", "label": g["name"], "precision_m": 50}, g
     return None, {"source": "none", "label": None, "precision_m": 0}, None
+
+
+def _target_ids(store: Store, dests: list[dict]) -> set[str]:
+    """POIs the user explicitly wants to go to ("хочу в Хан Шатыр"): always considered, never dropped as origin."""
+    out: set[str] = set()
+    for g in dests:
+        if g.get("poi_id"):
+            out.add(g["poi_id"])
+            continue
+        d = hav_m(g["lat"], g["lon"], store.lat, store.lon)
+        for i in np.argsort(d)[:5]:
+            if d[i] <= 250 and any(k in fold(store.pois[i]["name"]) or fold(store.pois[i]["name"]) in k for k in g["keys"] if len(k) >= 4):
+                out.add(store.pois[i]["id"])
+    return out
 
 
 def _cache_key(req: RecommendRequest, now: dt.datetime) -> str:
@@ -109,9 +124,13 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
         out["request_id"] = uuid.uuid4().hex[:12]
         return out
 
-    rules = parse_rules(req.query or "")
-    text_hit = find_landmark_in_text(req.query, rt.store.gazetteer) if req.query else None
-    query_wo_landmark = _strip_terms(req.query or "", text_hit["keys"] + [fold(text_hit["name"])]) if text_hit else (req.query or "")
+    raw_query = req.query or ""
+    safe_query, had_pii = mask_pii(raw_query)          # phones/emails/IINs never reach the LLM or logs
+    safe_query, had_injection = strip_injection(safe_query)
+    req = req.model_copy(update={"query": safe_query})
+    rules = parse_rules(req.query)
+    text_hit, dest_entries = split_mentions(req.query, rt.store.gazetteer) if req.query else (None, [])
+    query_wo_landmark = _strip_terms(req.query, text_hit["keys"] + [fold(text_hit["name"])]) if text_hit else req.query
     # parse (LLM), weather and query embedding run concurrently
     llm_task = None
     if req.query.strip() and llm_client() is not None:
@@ -135,13 +154,18 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     qvec = await emb_task if emb_task else None
 
     has_text = sum(ch.isalpha() for ch in (req.query or "")) >= 3
-    lang = parsed.lang if has_text else (req.lang or "ru")
+    lang = req.lang or (parsed.lang if has_text else "ru")  # explicit UI language wins (team contract)
     if lang not in ("ru", "kk", "en"):
         lang = "ru"
     notes: list[str] = []
+    if had_pii:
+        notes.append(t("note_pii", lang))
+    if had_injection:
+        notes.append(t("note_injection", lang))
 
     origin, origin_info, hit = _resolve_origin(req, parsed, rt.store, notes, lang, text_hit)
     exclude_keys: set[str] = set()
+    target_ids = _target_ids(rt.store, dest_entries)
     if hit and origin_info["source"] in ("text_landmark", "landmark"):
         exclude_keys = set(hit["keys"]) | {fold(hit["name"])}
         parsed.search_text = _strip_terms(parsed.search_text, list(exclude_keys))
@@ -217,7 +241,7 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
         notes.append(t("note_deadline_tight", lang))
     else:
         cands, considered = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, parsed, plan, ctx, lang, qvec,
-                                 exclude_keys=exclude_keys)
+                                 exclude_keys=exclude_keys, target_ids=target_ids)
 
     route = None
     if route_wanted(parsed, req.want_route, plan, len(cands)):
@@ -243,13 +267,12 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
         if llm_client() is not None or s.llm_enabled:
             notes.append(t("note_template", lang))
 
-    items = []
+    items, ideas = [], []
     if gen:
         for rank_i, pk in enumerate(gen.picks, 1):
             items.append(_item(cmap[pk.cand], pk.why, pk.what_to_do, pk.visit_min, rank_i, plan, lang, out_mode))
         if gen.idea and gen.idea.text and gen.idea.near in cmap:
-            anchor = cmap.get(gen.idea.near) if gen.idea.near else None
-            items.append(_idea_item(gen.idea, anchor, len(items) + 1, plan, lang, out_mode))
+            ideas.append(_idea_item(gen.idea, cmap[gen.idea.near], len(items) + 1, plan, lang, out_mode))
 
     # route output (ids must match item ids)
     route_out = None
@@ -317,6 +340,8 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     ds = ["OpenStreetMap (ODbL)", "Wikidata (CC0)", "Wikipedia (CC BY-SA)"]
     if "overture" in rt.store.manifest.get("sources", {}):
         ds.append("Overture Maps (CDLA)")
+    if "team_bigdata" in rt.store.manifest.get("sources", {}):
+        ds.append("CityPass Astana (факты со ссылкой)")
     if rt.store.events:
         ds.append("Ticketon / Sxodim")
     if ctx.weather:
@@ -340,11 +365,12 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     }
     resp = {
         "api_version": "1.0", "request_id": uuid.uuid4().hex[:12], "lang": lang, "summary": summary,
-        "recommendations": items, "route": route_out, "used_context": used, "considered": considered[:4],
+        "recommendations": items, "ideas": ideas, "route": route_out, "used_context": used, "considered": considered[:4],
         "notes": list(dict.fromkeys(notes)), "disclaimer": t("disclaimer", lang), "ai_generated": True,
         "llm": {"mode": "llm" if model else "template", "model": model, "latency_ms": int((time.perf_counter() - t0) * 1000)},
     }
-    rt.cache[key] = (time.time(), json.dumps(resp, ensure_ascii=False))
+    if model or llm_client() is None:
+        rt.cache[key] = (time.time(), json.dumps(resp, ensure_ascii=False))
     if len(rt.cache) > 500:
         for k in sorted(rt.cache, key=lambda k: rt.cache[k][0])[:100]:
             rt.cache.pop(k, None)
@@ -378,7 +404,7 @@ def _contract_open(op: dict) -> tuple[str, str]:
     if st in ("open", "closing_soon"):
         return "open", "high" if conf in ("high", "medium") else "low"
     if st == "always":
-        return "open", "low"  # public space without listed hours: inferred, not verified
+        return "unknown", "none"  # public space without listed hours: we don't claim it is open
     if st == "closed":
         return "closed", "high" if conf in ("high", "medium") else "low"
     return "unknown", "none"
@@ -387,14 +413,14 @@ def _contract_open(op: dict) -> tuple[str, str]:
 def _item(c: Cand, why: str, todo: str, visit: int, rank_i: int, plan: Plan, lang: str, out_mode: str) -> dict:
     p = c.poi
     srcs = list(p.get("sources", []))
-    url = p.get("source_url") or p.get("description_url") or p.get("website")
-    if not url and p.get("wikidata"):
-        url = f"https://www.wikidata.org/wiki/{p['wikidata']}"
+    url = p.get("source_url")  # exactly the dataset value (team contract), website is a separate field
     if c.event:
         srcs.append(c.event["source"])
     w = p.get("features", {}).get("wheelchair")
     lo, hi = c.visit_range
-    vmin = [max(5, min(visit, lo)), max(visit, hi)]
+    room = plan.budget - c.travel_min - (c.return_min or 0)  # time left for the visit itself
+    visit = int(max(5, min(visit, room)))
+    vmin = [max(5, min(visit, lo)), max(visit, min(hi, max(room, visit)))]
     ost, oconf = _contract_open(c.opening)
     straight = int(round(float(hav_m(plan.origin[0], plan.origin[1], p["lat"], p["lon"]))))
     return {
@@ -404,6 +430,7 @@ def _item(c: Cand, why: str, todo: str, visit: int, rank_i: int, plan: Plan, lan
         "distance_m": straight, "travel_min": max(1, c.travel_min), "why": why, "visit_min": vmin, "what_to_do": todo,
         "open_status": ost, "open_confidence": oconf, "source": "poi_data",
         "source_url": url if (url or "").startswith("http") else None, "rating": None,
+        "website": p.get("website") if (p.get("website") or "").startswith("http") else None,
         # extensions
         "rank": rank_i, "category_detail": p["category"], "category_label": label(p["category"], lang),
         "icon": CATEGORIES[p["category"]].icon, "walk_distance_m": int(round(c.distance_m / 10) * 10),
@@ -427,6 +454,7 @@ def _idea_item(idea, anchor: Cand, rank_i: int, plan: Plan, lang: str, out_mode:
         "distance_m": int(round(float(hav_m(plan.origin[0], plan.origin[1], p["lat"], p["lon"])))),
         "travel_min": max(1, anchor.travel_min), "why": idea.text, "visit_min": [5, 20], "what_to_do": idea.text,
         "open_status": "unknown", "open_confidence": "none", "source": "generated", "source_url": None, "rating": None,
+        "website": None,
         "rank": rank_i, "category_detail": "idea", "category_label": t("src_generated", lang), "icon": "sparkles",
         "walk_distance_m": None, "travel_mode": out_mode, "visit_suggested_min": 10, "leave_by": None,
         "opening": {"status": "unknown", "confidence": "low", "label": t("oh_unknown", lang), "raw": None, "next_change": None},
@@ -454,6 +482,6 @@ def _no_location_response(rt: Runtime, req: RecommendRequest, parsed: Parsed, no
                                   "needs": sorted(parsed.needs), "parser": parsed.source},
             "relaxations": [], "funnel": {"total": rt.store.size}, "data_sources": [],
             "data_built_at": rt.store.manifest.get("built_at"), "privacy": t("privacy", lang)},
-        "considered": [], "notes": list(dict.fromkeys(notes + [t("ask_location", lang)])), "disclaimer": t("disclaimer", lang), "ai_generated": True,
+        "ideas": [], "considered": [], "notes": list(dict.fromkeys(notes + [t("ask_location", lang)])), "disclaimer": t("disclaimer", lang), "ai_generated": True,
         "llm": {"mode": "template", "model": None, "latency_ms": int((time.perf_counter() - t0) * 1000)},
     }
