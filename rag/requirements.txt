@@ -1,3 +1,4 @@
 chromadb>=1.0,<2
 openai>=1.50,<3
+python-dotenv>=1.0,<2
 # Optional local BGE-M3: pip install sentence-transformers
