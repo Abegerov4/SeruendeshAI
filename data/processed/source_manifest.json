@@ -1,6 +1,6 @@
 {
   "status": "partial",
-  "generated_at": "2026-10-18T17:44:08.137405+00:00",
+  "generated_at": "2026-10-18T20:24:54.948842+00:00",
   "city": "Astana",
   "record_limit": null,
   "offline": true,
@@ -2457,12 +2457,83 @@
       "descriptions_added": 275,
       "output_count": 15226,
       "finished_at": "2026-10-18T17:43:24.829486+00:00"
+    },
+    "cached_descriptions": {
+      "status": "ok",
+      "candidate_count": 34,
+      "source_description_count": 33,
+      "held_description_count": 1,
+      "by_source": {
+        "citypass": 17,
+        "mega_silkway": 17
+      },
+      "cache_reads": [
+        {
+          "url": "https://astana.citypass.kz/en/attractions",
+          "raw_cache": "68eff04957b762ba3106102ec64d7c43c93b708974bb6d0583e1d35af8295ae6.txt",
+          "sha256": "203ef8e419278d1cfb6dc8cfd882336a59c1fd407345a36a563a24f8aed3e6e4",
+          "record_count": 34
+        },
+        {
+          "url": "https://astana.citypass.kz/ru/attractions",
+          "raw_cache": "251abf414342917fc99883438fc9750333a710d4090ac4f583c0dd32c0621114.txt",
+          "sha256": "2420934da4e992c6dde8883b2ea8eb61cc3323614df10fd89a5d145b72f16a43",
+          "record_count": 34
+        },
+        {
+          "url": "https://restaurants.mega.kz/ru/?sm=2",
+          "raw_cache": "37cb119dcae5c70926109b0b725c2f80c00a47866a006cfd3e26d6adb23273ec.txt",
+          "sha256": "108449f3f845a231c3428c3a63370786f627bae6003a128febc5fefc40eb2327",
+          "record_count": 17
+        }
+      ],
+      "missing_caches": [],
+      "errors": [],
+      "coordinate_policy": "existing source IDs only; no coordinates returned",
+      "applied_source_ids": [
+        "citypass:119",
+        "citypass:120",
+        "citypass:121",
+        "citypass:122",
+        "citypass:142",
+        "citypass:157",
+        "citypass:57",
+        "citypass:63",
+        "citypass:64",
+        "citypass:65",
+        "citypass:81",
+        "citypass:84",
+        "citypass:88",
+        "citypass:89",
+        "citypass:94",
+        "citypass:97",
+        "citypass:98",
+        "mega_silkway:8b7d434c817aed75",
+        "mega_silkway:8c61bf3ecd65602e",
+        "mega_silkway:fc3fbb7bcb8ebff2"
+      ],
+      "unmatched_source_ids": [
+        "mega_silkway:0415e3f7e3e6f77c",
+        "mega_silkway:165a2d8a869c22dd",
+        "mega_silkway:29529879fb36c79c",
+        "mega_silkway:4400ad9c9276732e",
+        "mega_silkway:4fef00f19e668373",
+        "mega_silkway:50a2d578e5659f0d",
+        "mega_silkway:544e00673c3d5a7b",
+        "mega_silkway:57f13a7d87a2cc59",
+        "mega_silkway:6b1fec2b468292c6",
+        "mega_silkway:76707a5d2ced3fb9",
+        "mega_silkway:ac9d0a6a802ac582",
+        "mega_silkway:c0e5eb088f978bbd",
+        "mega_silkway:da580b67af42da02",
+        "mega_silkway:e77182b875999e48"
+      ]
     }
   },
   "quality": {
     "input_count": 15226,
-    "output_count": 14009,
-    "merged_count": 598,
+    "output_count": 14006,
+    "merged_count": 601,
     "rejected_count": 619,
     "rejections": {
       "outside_city_boundary": 619
@@ -2471,16 +2542,16 @@
     "categories": {
       "attraction": 140,
       "bar": 308,
-      "cafe": 658,
+      "cafe": 657,
       "cinema": 24,
       "coworking": 1,
       "gallery": 14,
       "library": 19,
       "mall": 116,
-      "monument": 54,
+      "monument": 53,
       "museum": 33,
       "nightlife": 18,
-      "other": 11248,
+      "other": 11247,
       "park": 78,
       "playground": 4,
       "restaurant": 1122,
@@ -2488,20 +2559,20 @@
       "theatre": 9
     },
     "primary_sources": {
-      "citypass": 17,
+      "citypass": 16,
       "dodo": 23,
       "geonames": 30,
       "khanshatyr": 2,
       "marwin": 8,
       "osm": 5592,
-      "overture": 8159,
+      "overture": 8158,
       "sxodim": 12,
-      "wikipedia": 166
+      "wikipedia": 165
     },
-    "source_description_count": 251,
-    "template_description_count": 13758,
-    "unknown_opening_hours": 11926,
-    "collected_at": "2026-10-18",
+    "source_description_count": 269,
+    "template_description_count": 13737,
+    "unknown_opening_hours": 11923,
+    "collected_at": "2026-10-19",
     "quarantine_count": 1,
     "applied_overrides": [
       {
@@ -2519,6 +2590,18 @@
       {
         "id": "overture:ed179237-7b99-4c2b-a230-a39ac348a5a8",
         "action": "quarantine"
+      },
+      {
+        "id": "overture:d7cf8227-6a5d-4079-a09e-bf874cd9e267",
+        "action": "verified_same_place"
+      },
+      {
+        "id": "wikipedia:en:7148733",
+        "action": "verified_same_place"
+      },
+      {
+        "id": "citypass:57",
+        "action": "verified_same_place"
       }
     ]
   },

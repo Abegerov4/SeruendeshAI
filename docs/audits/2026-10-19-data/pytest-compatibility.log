@@ -1,0 +1,182 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0
+rootdir: /Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data
+configfile: pytest.ini
+testpaths: .
+plugins: anyio-4.15.1
+collected 640 items / 3 errors
+
+==================================== ERRORS ====================================
+_______________ ERROR collecting ayat_backend/tests/test_api.py ________________
+ImportError while importing test module '/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/ayat_backend/tests/test_api.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../../../../.local/share/uv/python/cpython-3.12.15-macos-aarch64-none/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ayat_backend/tests/test_api.py:12: in <module>
+    from app.main import app  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'app'
+______________ ERROR collecting ayat_backend/tests/test_units.py _______________
+ImportError while importing test module '/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/ayat_backend/tests/test_units.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../../../../.local/share/uv/python/cpython-3.12.15-macos-aarch64-none/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ayat_backend/tests/test_units.py:3: in <module>
+    from app.categories import category_from_osm
+E   ModuleNotFoundError: No module named 'app'
+___________________ ERROR collecting rag/tests/test_data.py ____________________
+ImportError while importing test module '/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/rag/tests/test_data.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../../../../.local/share/uv/python/cpython-3.12.15-macos-aarch64-none/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rag/tests/test_data.py:4: in <module>
+    from data.collect.normalize import normalize, ALLOWED
+E   ImportError: cannot import name 'normalize' from 'data.collect.normalize' (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/collect/normalize.py)
+=========================== short test summary info ============================
+ERROR ayat_backend/tests/test_api.py
+ERROR ayat_backend/tests/test_units.py
+ERROR rag/tests/test_data.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 3 errors during collection !!!!!!!!!!!!!!!!!!!!
+============================== 3 errors in 1.06s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0
+rootdir: /Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data
+configfile: pytest.ini
+testpaths: .
+plugins: anyio-4.15.1
+collected 640 items / 3 errors
+
+backend/tests/test_api.py ...........................                    [  4%]
+backend/tests/test_integration_rag.py ..                                 [  4%]
+backend/tests/test_mcp.py ......                                         [  5%]
+backend/tests/test_photo.py .....                                        [  6%]
+backend/tests/test_telegram.py ....                                      [  6%]
+data/tests/test_geonames.py ....                                         [  7%]
+data/tests/test_identity.py ..........................                   [ 11%]
+data/tests/test_normalize.py ............                                [ 13%]
+data/tests/test_osm.py ................                                  [ 15%]
+data/tests/test_overture.py .............                                [ 17%]
+data/tests/test_pipeline.py ....                                         [ 18%]
+data/tests/test_quality.py .....                                         [ 19%]
+data/tests/test_web_sources.py ...................                       [ 22%]
+data/tests/test_wiki.py ....................                             [ 25%]
+rag/tests/test_core.py ....F                                             [ 26%]
+tests/test_api_contract.py ssssssssss                                    [ 27%]
+tests/test_backend_dataset_local.py ssss                                 [ 28%]
+tests/test_backend_golden_local.py ..................................... [ 34%]
+.............................                                            [ 38%]
+tests/test_backend_guards.py sssssssssss                                 [ 40%]
+tests/test_backend_languages_local.py ....                               [ 41%]
+tests/test_backend_safety_local.py ...............                       [ 43%]
+tests/test_dataset.py ssssssssssss                                       [ 45%]
+tests/test_golden_set.py ............................................... [ 52%]
+........................................................................ [ 63%]
+............                                                             [ 65%]
+tests/test_judge.py ...........                                          [ 67%]
+tests/test_metrics.py .................                                  [ 70%]
+tests/test_rag.py sssssssssssssssss                                      [ 72%]
+tests/test_readiness.py ..................                               [ 75%]
+tests/test_run_eval.py ......................................            [ 81%]
+tests/test_safety.py ssssss                                              [ 82%]
+tests/test_ui.py sssssss                                                 [ 83%]
+tests/test_validators.py ............................................... [ 90%]
+..........................................................               [100%]
+
+==================================== ERRORS ====================================
+_______________ ERROR collecting ayat_backend/tests/test_api.py ________________
+ImportError while importing test module '/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/ayat_backend/tests/test_api.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../../../../.local/share/uv/python/cpython-3.12.15-macos-aarch64-none/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ayat_backend/tests/test_api.py:12: in <module>
+    from app.main import app  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'app'
+______________ ERROR collecting ayat_backend/tests/test_units.py _______________
+ImportError while importing test module '/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/ayat_backend/tests/test_units.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../../../../.local/share/uv/python/cpython-3.12.15-macos-aarch64-none/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ayat_backend/tests/test_units.py:3: in <module>
+    from app.categories import category_from_osm
+E   ModuleNotFoundError: No module named 'app'
+___________________ ERROR collecting rag/tests/test_data.py ____________________
+ImportError while importing test module '/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/rag/tests/test_data.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../../../../.local/share/uv/python/cpython-3.12.15-macos-aarch64-none/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rag/tests/test_data.py:4: in <module>
+    from data.collect.normalize import normalize, ALLOWED
+E   ImportError: cannot import name 'normalize' from 'data.collect.normalize' (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/collect/normalize.py)
+=================================== FAILURES ===================================
+_____________________ RetrievalTests.test_landmark_aliases _____________________
+
+self = <test_core.RetrievalTests testMethod=test_landmark_aliases>
+
+    @patch.dict(os.environ, {'RAG_SEARCH_MODE': 'bm25'})
+    def test_landmark_aliases(self):
+        from rag.retriever import search
+        for query in ('Байтерек', 'Бәйтерек', 'Bayterek'):
+>           self.assertEqual(search(query, None, None, top_k=1)[0]['id'], 'osm:way/230401645')
+E           AssertionError: 'wikipedia:en:7148733' != 'osm:way/230401645'
+E           - wikipedia:en:7148733
+E           + osm:way/230401645
+
+rag/tests/test_core.py:42: AssertionError
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_api_contract.py:14: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:23: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:31: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [6] tests/test_api_contract.py:39: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:50: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_backend_dataset_local.py:13: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [2] tests/test_backend_dataset_local.py:23: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_backend_dataset_local.py:57: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [6] tests/test_backend_guards.py:10: Actual backend guards NOT TESTED: enable --live-backend to run
+SKIPPED [4] tests/test_backend_guards.py:28: Actual backend guards NOT TESTED: enable --live-backend to run
+SKIPPED [1] tests/test_backend_guards.py:39: Actual backend guards NOT TESTED: enable --live-backend to run
+SKIPPED [1] tests/test_dataset.py:13: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:17: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:21: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:26: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:32: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:39: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:63: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:78: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:100: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:128: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:143: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:155: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [12] tests/test_rag.py:12: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [3] tests/test_rag.py:32: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_rag.py:41: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_rag.py:56: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [4] tests/test_safety.py:13: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_safety.py:28: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_safety.py:41: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_ui.py:26: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:40: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:49: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:61: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:73: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:96: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:106: Product backend NOT TESTED: enable --live-api to run
+ERROR ayat_backend/tests/test_api.py
+ERROR ayat_backend/tests/test_units.py
+ERROR rag/tests/test_data.py
+FAILED rag/tests/test_core.py::RetrievalTests::test_landmark_aliases - Assert...
+============= 1 failed, 572 passed, 67 skipped, 3 errors in 6.19s ==============
+{"cases": 0, "recall_at_5_any_expected": null}
+No golden cases with expected POI IDs

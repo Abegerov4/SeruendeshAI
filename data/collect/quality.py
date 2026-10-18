@@ -2,11 +2,19 @@
 from copy import deepcopy
 
 
-def apply_quality_overrides(candidates, overrides):
+def apply_quality_overrides(candidates, overrides, *, phase="before_enrichment"):
+    phases = {"before_enrichment", "after_enrichment"}
+    if phase not in phases:
+        raise ValueError(f"Unknown quality review phase: {phase}")
+    for ident, rule in overrides.items():
+        if rule.get("phase", "before_enrichment") not in phases:
+            raise ValueError(f"Unknown quality review phase for {ident}: {rule.get('phase')}")
     safe, quarantined, applied = [], [], []
     for original in candidates:
         poi = deepcopy(original)
         rule = overrides.get(poi["id"])
+        if rule and rule.get("phase", "before_enrichment") != phase:
+            rule = None
         if rule and (any(poi.get(key) != value for key, value in rule.get("when", {}).items()) or
                      any(poi.get("raw_tags", {}).get(key) != value for key, value in rule.get("when_raw_tags", {}).items())):
             rule = None

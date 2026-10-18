@@ -1,0 +1,120 @@
+{
+  "errors": [],
+  "provenance": {
+    "dataset": {
+      "path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/processed/pois.json",
+      "sha256": "1f815df354ad990d902d76c8676a91013f2d8288a7330e8c3b75a2666db29b74",
+      "count": 14009
+    },
+    "golden": {
+      "path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/backend/experiments/retrieval_golden.json",
+      "sha256": "1c9600083f22cfa77b89c4ce29823d9ecb851d4f95d2fab54bb639d443de96a8",
+      "count": 30
+    },
+    "config": {
+      "mode": "bm25",
+      "top_k": 5,
+      "default_radius_m": 2500,
+      "search_path": "rag.retriever.search",
+      "location_scope": "explicit_coordinates_only",
+      "missing_location_scope": "citywide",
+      "categories_scope": "explicit_request_categories_only",
+      "evaluation_scope": "retrieval_only_no_intent_generation_geocoding_or_cloud",
+      "label_scope": "provided_ID_labels_or_dataset_geo_category_structure_not_human_semantic_judgement",
+      "metric_denominator": "successfully_retrieved_cases_with_positive_labels_only",
+      "hit_at_5_definition": "fraction_of_evaluated_cases_with_any_expected_ID_in_top5",
+      "macro_recall_at_5_definition": "mean_per_case_fraction_of_relevant_IDs_retrieved",
+      "micro_recall_at_5_definition": "sum_matched_relevant_IDs_divided_by_sum_relevant_IDs"
+    },
+    "source_files": {
+      "rag/evaluate.py": "cd86e9283367d79b0ad4eb2dce4bca88b1853ea8539922f8bede5677bd81a2f6",
+      "rag/retriever.py": "1af8c42923e9b0fab9cea8b5032b6f0c90411c13ccddd8a0780c234e7a429d3a",
+      "rag/text.py": "582747a872a87cbcd9257c0b43228330b981ab6b6b717c43d1f4b8fb638f959b",
+      "rag/geo.py": "1bb9d7640415b9dd76b95d02ee811fcf5cec98b805a1a04f01d5e5b58161acd8"
+    },
+    "code_sha256": "800afdb8cb5d105721197878f8e361af99ea44649c0e59605b92642509b84d22"
+  },
+  "summary": {
+    "total_cases": 30,
+    "evaluated_cases": 30,
+    "not_evaluated_cases": 0,
+    "error_cases": 0,
+    "hit_cases": 21,
+    "miss_cases": 9,
+    "relevant_ids": 314,
+    "matched_relevant_ids": 52,
+    "hit_at_5": 0.7,
+    "macro_recall_at_5": 0.5250465381173478,
+    "micro_recall_at_5": 0.16560509554140126,
+    "by_type": {
+      "named": {
+        "total_cases": 20,
+        "evaluated_cases": 20,
+        "not_evaluated_cases": 0,
+        "error_cases": 0,
+        "hit_cases": 12,
+        "miss_cases": 8,
+        "relevant_ids": 23,
+        "matched_relevant_ids": 12,
+        "hit_at_5": 0.6,
+        "macro_recall_at_5": 0.6,
+        "micro_recall_at_5": 0.5217391304347826
+      },
+      "nearby": {
+        "total_cases": 10,
+        "evaluated_cases": 10,
+        "not_evaluated_cases": 0,
+        "error_cases": 0,
+        "hit_cases": 9,
+        "miss_cases": 1,
+        "relevant_ids": 291,
+        "matched_relevant_ids": 40,
+        "hit_at_5": 0.9,
+        "macro_recall_at_5": 0.37513961435204335,
+        "micro_recall_at_5": 0.13745704467353953
+      }
+    },
+    "by_lang": {
+      "en": {
+        "total_cases": 4,
+        "evaluated_cases": 4,
+        "not_evaluated_cases": 0,
+        "error_cases": 0,
+        "hit_cases": 3,
+        "miss_cases": 1,
+        "relevant_ids": 19,
+        "matched_relevant_ids": 7,
+        "hit_at_5": 0.75,
+        "macro_recall_at_5": 0.578125,
+        "micro_recall_at_5": 0.3684210526315789
+      },
+      "kk": {
+        "total_cases": 2,
+        "evaluated_cases": 2,
+        "not_evaluated_cases": 0,
+        "error_cases": 0,
+        "hit_cases": 2,
+        "miss_cases": 0,
+        "relevant_ids": 30,
+        "matched_relevant_ids": 6,
+        "hit_at_5": 1.0,
+        "macro_recall_at_5": 0.5862068965517242,
+        "micro_recall_at_5": 0.2
+      },
+      "ru": {
+        "total_cases": 24,
+        "evaluated_cases": 24,
+        "not_evaluated_cases": 0,
+        "error_cases": 0,
+        "hit_cases": 16,
+        "miss_cases": 8,
+        "relevant_ids": 265,
+        "matched_relevant_ids": 39,
+        "hit_at_5": 0.6666666666666666,
+        "macro_recall_at_5": 0.5111034312673745,
+        "micro_recall_at_5": 0.1471698113207547
+      }
+    }
+  },
+  "exit_code": 0
+}

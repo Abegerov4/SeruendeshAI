@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from copy import deepcopy
 from datetime import datetime, timezone
 import importlib
 import hashlib
@@ -15,7 +16,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from data.collect.normalize import normalize_candidates
-from data.collect.web_sources import attach_directory_facts
+from data.collect.web_sources import attach_directory_facts, cached_descriptions
 from data.collect.quality import apply_quality_overrides
 
 SOURCES = ("osm", "overture", "wikimedia", "web", "geonames")
@@ -82,6 +83,24 @@ def _fingerprint(candidates):
     return hashlib.sha256(json.dumps(candidates, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
 
+def _apply_description_patches(candidates, patches):
+    """Update source text only; a listing cache cannot create or relocate a POI."""
+    fields = {"description", "description_source", "description_kind", "description_source_detail",
+              "description_url", "description_license", "description_attribution", "held_description",
+              "description_review_status", "description_review_reason", "description_review_evidence"}
+    by_id = {}
+    for patch in patches:
+        unexpected = set(patch) - fields - {"id"}
+        if unexpected or not isinstance(patch.get("id"), str) or patch["id"] in by_id:
+            raise ValueError(f"Invalid description patch: {patch.get('id')}; unsupported fields: {sorted(unexpected)}")
+        by_id[patch["id"]] = patch
+    present = {poi["id"] for poi in candidates}
+    updated = [{**poi, **deepcopy({key: value for key, value in by_id.get(poi["id"], {}).items() if key != "id"})}
+               for poi in candidates]
+    return updated, {"applied_source_ids": sorted(present & by_id.keys()),
+                     "unmatched_source_ids": sorted(by_id.keys() - present)}
+
+
 def _stats(pois, quality, reports):
     total = len(pois)
     counts = {key: sum(p.get(key) is not None for p in pois) for key in
@@ -137,7 +156,8 @@ def run_pipeline(raw_dir=ROOT / "data/raw", processed_dir=ROOT / "data/processed
     if not boundary and not allow_bbox:
         raise RuntimeError("Administrative boundary unavailable; previous exports preserved. Use --allow-bbox only for explicitly approximate output.")
     candidates = [poi for result in results.values() for poi in result["pois"]]
-    candidates, quarantined, review = apply_quality_overrides(candidates, read_json(ROOT / "data/quality_overrides.json", {}))
+    overrides = read_json(ROOT / "data/quality_overrides.json", {})
+    candidates, quarantined, review = apply_quality_overrides(candidates, overrides)
     if not candidates:
         raise RuntimeError("No source candidates available; previous exports preserved")
     # Match directory facts after base deduplication, so equivalent source IDs are not false ambiguities.
@@ -166,6 +186,16 @@ def run_pipeline(raw_dir=ROOT / "data/raw", processed_dir=ROOT / "data/processed
         candidates = [lookup.get(p["id"], p) for p in candidates]
         if enriched:
             reports["wikimedia_enrichment"] = read_json(raw_dir / "wikimedia/enrichment_report.json", {"status": "cached"})
+    # Source text and new review decisions are intentionally applied after exact
+    # Wiki-cache matching, so they cannot invalidate or bypass its input guard.
+    patches, description_report = cached_descriptions(raw_dir / "web")
+    candidates, applied = _apply_description_patches(candidates, patches)
+    if patches or description_report.get("cache_reads"):
+        reports["cached_descriptions"] = {**description_report, **applied}
+    candidates, post_quarantined, post_review = apply_quality_overrides(candidates, overrides, phase="after_enrichment")
+    quarantined.extend(post_quarantined)
+    review["quarantine_count"] += post_review["quarantine_count"]
+    review["applied_overrides"].extend(post_review["applied_overrides"])
     pois, quality = normalize_candidates(candidates, boundary)
     quality.update(review)
     if not pois:

@@ -1,8 +1,8 @@
 """Small, polite factual supplements from public official directories.
 
 Public access is not an open-data licence: every record retains that distinction.
-Narrative copy and photographs are not mirrored. Unlocated facts are retained for
-an unambiguous join, never assigned guessed coordinates.
+Descriptions are bounded, attributed source excerpts; photographs are not mirrored.
+Unlocated facts are retained for an unambiguous join, never assigned guessed coordinates.
 """
 from __future__ import annotations
 
@@ -139,8 +139,8 @@ def parse_dodo(payload) -> list[dict]:
     return result
 
 
-def _next_payloads(html: str):
-    """Read public Next.js hydration JSON without executing page JavaScript."""
+def _next_packets(html: str):
+    """Read public Next.js Flight text without executing page JavaScript."""
     for script in BeautifulSoup(html, "html.parser").find_all("script"):
         match = re.search(r"self\.__next_f\.push\((\[.*\])\)", script.string or script.get_text(), re.S)
         if not match:
@@ -148,10 +148,82 @@ def _next_payloads(html: str):
         try:
             packet = json.loads(match.group(1))
             text = packet[1] if len(packet) > 1 else None
-            if isinstance(text, str) and ":" in text and "initialItems" in text:
-                yield json.loads(text.split(":", 1)[1])
+            if isinstance(text, str):
+                yield text
         except (ValueError, TypeError, IndexError):
             continue
+
+
+def _next_payloads(html: str):
+    for text in _next_packets(html):
+        if ":" in text and "initialItems" in text:
+            try:
+                yield json.loads(text.split(":", 1)[1])
+            except (ValueError, TypeError):
+                continue
+
+
+def _flight_strings(html: str) -> dict[str, str]:
+    """Resolve length-prefixed Flight strings across script packet boundaries.
+
+    T record lengths are hexadecimal UTF-8 byte counts, not Python character
+    counts. Skip each complete body before looking for another record header so
+    record-like text inside a description is never interpreted as another string.
+    """
+    stream = "".join(_next_packets(html)).encode("utf-8")
+    found, position = {}, 0
+    header = re.compile(rb"([0-9a-f]+):T([0-9a-f]+),")
+    while match := header.search(stream, position):
+        start = match.end()
+        end = start + int(match.group(2), 16)
+        position = max(end, start)
+        if end > len(stream):
+            continue
+        # A wrong length must not consume adjacent Flight JSON or split a codepoint.
+        if end < len(stream) and not re.match(rb"\n?[0-9a-f]+:", stream[end:]):
+            continue
+        try:
+            found[match.group(1).decode("ascii")] = stream[start:end].decode("utf-8")
+        except UnicodeDecodeError:
+            continue
+    return found
+
+
+def _source_excerpt(html) -> str | None:
+    if not isinstance(html, str) or re.fullmatch(r"\$[A-Za-z0-9]+", html.strip()):
+        return None
+    soup = BeautifulSoup(html, "html.parser")
+    for node in soup.select("script, style, template, noscript"):
+        node.decompose()
+    text = re.sub(r"\s+", " ", soup.get_text(" ", strip=True)).strip()
+    text = " ".join(re.split(r"(?<=[.!?])\s+", text, maxsplit=2)[:2])
+    if len(text) > 400:
+        prefix = text[:400]
+        text = prefix.rsplit(" ", 1)[0] if len(text) > 400 and text[400] != " " and " " in prefix else prefix
+    return text.strip() or None
+
+
+def _description_fields(poi: dict, html, language: str, *, raw_description=None) -> dict:
+    excerpt = _source_excerpt(html)
+    if not excerpt:
+        return {}
+    fields = {
+        "description_url": poi["source_url"], "description_license": poi["source_license"],
+        "description_attribution": {"source": poi["source"], "source_id": poi["id"],
+                                    "source_title": poi["name"], "url": poi["source_url"],
+                                    "language": language, "origin": "official_directory_description"},
+    }
+    if poi["id"] == "citypass:121":
+        fields.update(
+            held_description=excerpt, description_review_status="pending",
+            description_review_reason="The source title identifies Museum of Art, but its description concerns a musical-instrument collection; content review is required.",
+            description_review_evidence={"source_id": poi["id"], "source_url": poi["source_url"],
+                                         "language": language, "raw_description": raw_description,
+                                         "resolved_description_html": html})
+    else:
+        fields.update(description=excerpt, description_source="website", description_kind="source",
+                      description_source_detail="verbatim source excerpt, at most two sentences and 400 characters; HTML markup removed")
+    return fields
 
 
 def _daily_hours(period, schedule) -> str | None:
@@ -194,6 +266,7 @@ def _posted_hours(period, schedule) -> str | None:
 def parse_citypass(html: str, url: str) -> list[dict]:
     found = {}
     lang = urlsplit(url).path.strip("/").split("/")[0]
+    strings = _flight_strings(html)
     category_tags = {"monument": "monument", "park": "park", "theatre": "theatre", "museum": "museum", "entertainment": "attraction", "sight": "attraction"}
     for payload in _next_payloads(html):
         for node in _walk(payload):
@@ -205,6 +278,10 @@ def parse_citypass(html: str, url: str) -> list[dict]:
                 category = next((category_tags[tag] for tag in category_tags if tag in slugs), "attraction")
                 link = urljoin(url.rstrip("/") + "/", row["slug"])
                 poi = _base("citypass", row["id"], name, link, category)
+                description = row.get("description")
+                if isinstance(description, str) and re.fullmatch(r"\$[0-9a-f]+", description):
+                    description = strings.get(description[1:])
+                poi.update(_description_fields(poi, description, lang, raw_description=row.get("description")))
                 poi.update(address=row.get("address"), opening_hours=_posted_hours(row.get("work_period"), row.get("work_time")))
                 poi["raw_tags"] = {"schedule_text": row.get("work_time"), "schedule_period": row.get("work_period"), "source_tags": [tag.get("name") for tag in row.get("tags", []) if isinstance(tag, dict)]}
                 lat, lon = _number(row.get("latitude")), _number(row.get("longitude"))
@@ -254,7 +331,7 @@ def iter_directory_pages(fetcher, start_url: str):
 
 
 def parse_mega_restaurants(html: str, url: str) -> list[dict]:
-    """Retain brand, mall/floor and posted hours, not copyrighted narrative."""
+    """Retain brand, mall/floor, posted hours and a bounded source excerpt."""
     found = {}
     for card in BeautifulSoup(html, "html.parser").select(".rest-card"):
         address_node, logo = card.select_one(".address"), card.select_one("img.logo")
@@ -286,6 +363,8 @@ def parse_mega_restaurants(html: str, url: str) -> list[dict]:
         ident = hashlib.sha256(("MEGA Silk Way:" + raw_name).encode()).hexdigest()[:16]
         category = "cafe" if re.search(r"кафе|кофеен|кофей|пекарн", text, re.I) or "starbucks" in name.casefold() else "restaurant"
         poi = _base("mega_silkway", ident, name, url, category)
+        poi.update(_description_fields(poi, str(paragraph) if paragraph else None,
+                                       urlsplit(url).path.strip("/").split("/")[0]))
         schedule = " ".join(lines[1:]).strip()
         daily = re.match(r"Ежедневно\s+(.+)", schedule, re.I)
         poi.update(address=lines[0], opening_hours=_daily_hours("ежедневно", daily.group(1)) if daily else None)
@@ -295,6 +374,62 @@ def parse_mega_restaurants(html: str, url: str) -> list[dict]:
             poi["raw_tags"]["menu_url"] = urljoin(url, menu["href"])
         found[poi["id"]] = poi
     return list(found.values())
+
+
+def cached_descriptions(raw_dir: Path) -> tuple[list[dict], dict]:
+    """Read only the three known listing caches and return source-ID text patches.
+
+    ``raw_dir`` is the web-cache directory (normally ``data/raw/web``). No
+    fetcher is instantiated and no cache is written. CityPass needs explicit
+    coordinates inside the existing collector envelope; MEGA facts remain
+    unlocated. Callers must apply patches only through existing source IDs.
+    Names, coordinates, categories, joins and opening hours are never returned.
+    """
+    raw_dir = Path(raw_dir)
+    pages = [("citypass", "https://astana.citypass.kz/en/attractions", parse_citypass),
+             ("citypass", "https://astana.citypass.kz/ru/attractions", parse_citypass),
+             ("mega_silkway", "https://restaurants.mega.kz/ru/?sm=2", parse_mega_restaurants)]
+    fields = ("description", "description_source", "description_kind", "description_source_detail",
+              "description_url", "description_license", "description_attribution", "held_description",
+              "description_review_status", "description_review_reason", "description_review_evidence")
+    patches, reads, missing, errors = {}, [], [], []
+    for source, url, parser in pages:
+        filename = hashlib.sha256(url.encode()).hexdigest() + ".txt"
+        path = raw_dir / filename
+        if not path.is_file():
+            missing.append({"url": url, "raw_cache": filename})
+            continue
+        try:
+            contents = path.read_bytes()
+            records = parser(contents.decode("utf-8"), url)
+        except (OSError, UnicodeDecodeError, ValueError) as error:
+            errors.append({"url": url, "raw_cache": filename, "error": f"{type(error).__name__}: {error}"})
+            continue
+        digest = hashlib.sha256(contents).hexdigest()
+        reads.append({"url": url, "raw_cache": filename, "sha256": digest, "record_count": len(records)})
+        if not records:
+            errors.append({"url": url, "raw_cache": filename, "error": "No recognized directory records"})
+        for record in records:
+            if source == "citypass" and not (
+                record.get("lat") is not None and record.get("lon") is not None
+                and 50.9 <= record["lat"] <= 51.4 and 71 <= record["lon"] <= 71.9
+            ):
+                continue
+            if not (record.get("description") or record.get("held_description")):
+                continue
+            patch = {"id": record["id"], **{key: record[key] for key in fields if key in record}}
+            patch["description_attribution"] = {**patch["description_attribution"], "raw_cache": filename,
+                                                "raw_cache_sha256": digest, "listing_url": url}
+            patches[record["id"]] = patch  # Russian source text takes precedence over English fallback.
+    values = sorted(patches.values(), key=lambda row: row["id"])
+    by_source = defaultdict(int)
+    for patch in values:
+        by_source[patch["id"].split(":", 1)[0]] += 1
+    return values, {"status": "partial" if missing or errors else "ok", "candidate_count": len(values),
+                    "source_description_count": sum(bool(row.get("description")) for row in values),
+                    "held_description_count": sum(bool(row.get("held_description")) for row in values),
+                    "by_source": dict(by_source), "cache_reads": reads, "missing_caches": missing,
+                    "errors": errors, "coordinate_policy": "existing source IDs only; no coordinates returned"}
 
 
 def attach_directory_facts(base_candidates: list[dict], facts: list[dict]) -> tuple[list[dict], list[dict]]:

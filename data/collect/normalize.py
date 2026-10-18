@@ -12,6 +12,7 @@ from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 
 from data.collect.identity import addresses_compatible, same_name
+from data.collect.amenities import extract_source_amenities
 
 
 CATEGORIES = {"cafe", "restaurant", "bar", "nightlife", "museum", "gallery", "theatre",
@@ -118,7 +119,8 @@ def _normalize_one(raw, collected_at):
     poi["website"] = _url(raw.get("website"))
     poi["wheelchair"] = raw.get("wheelchair") if raw.get("wheelchair") in {"yes", "limited", "no"} else None
     poi["kid_friendly"] = raw.get("kid_friendly") if isinstance(raw.get("kid_friendly"), bool) else None
-    if poi["category"] == "playground" and poi["kid_friendly"] is None:
+    if (poi["category"] == "playground" and poi["kid_friendly"] is None
+            and "source_classification_unverified" not in raw.get("quality_flags", [])):
         poi["kid_friendly"] = True
         poi["kid_friendly_basis"] = "category:playground"
     # Popularity, Wikimedia sitelinks and Overture confidence are not visitor ratings.
@@ -131,6 +133,9 @@ def _normalize_one(raw, collected_at):
     if isinstance(tags, str):
         tags = [tags]
     poi["tags"] = sorted({_text(x) for x in tags if _text(x)})
+    facts, _ = extract_source_amenities(raw)
+    if facts:
+        poi["amenity_facts"] = facts
     poi["raw_tags"] = deepcopy(raw.get("raw_tags") or {})
     poi["source_records"] = deepcopy(raw.get("source_records") or [_record({**raw, "source": source})])
     for key in ("wikidata_ids", "wikidata_descriptions", "description_attribution", "source_refs", "aliases", "raw_taxonomy",
@@ -157,6 +162,21 @@ def _normalize_one(raw, collected_at):
     poi["description_kind"] = raw.get("description_kind", "source") if description else None
     if raw.get("description_source_detail"):
         poi["description_source_detail"] = raw["description_source_detail"]
+    if raw.get("description_lang"):
+        poi["description_lang"] = raw["description_lang"]
+    if _text(raw.get("held_description")):
+        poi["held_descriptions"] = [{"text": _text(raw["held_description"]),
+                                     "source_id": poi["id"], "source_url": poi["source_url"],
+                                     "description_url": raw.get("description_url"),
+                                     "description_license": raw.get("description_license"),
+                                     "description_attribution": deepcopy(raw.get("description_attribution")),
+                                     "review_evidence": deepcopy(raw.get("description_review_evidence")),
+                                     "status": raw.get("description_review_status", "pending"),
+                                     "reason": raw.get("description_review_reason"),
+                                     "collected_at": raw.get("collected_at")}]
+        if not description:
+            for key in ("description_attribution", "description_url", "description_license"):
+                poi.pop(key, None)
     return poi, None
 
 
@@ -195,14 +215,14 @@ def _same_place(a, b):
 def _merge(primary, secondary):
     if not primary.get("description") and secondary.get("description"):
         for key in ("description", "description_source", "description_kind", "description_attribution", "description_source_detail",
-                    "description_url", "description_license", "wikipedia_attribution"):
+                    "description_url", "description_license", "description_lang", "wikipedia_attribution"):
             if key in secondary:
                 primary[key] = deepcopy(secondary[key])
     for key in (*OPTIONAL_TEXT, "website", "wheelchair", "kid_friendly", "rating", "rating_count"):
         if primary.get(key) is None and secondary.get(key) is not None:
             primary[key] = secondary[key]
         elif primary.get(key) is not None and secondary.get(key) is not None and primary[key] != secondary[key]:
-            if key in {"opening_hours", "wheelchair", "kid_friendly", "address"}:
+            if key in {"opening_hours", "wheelchair", "kid_friendly", "address", "phone", "website"}:
                 primary.setdefault("field_conflicts", []).append({"field": key, "value": secondary[key], "source_id": secondary["id"]})
     if primary["category"] == "other" and secondary["category"] != "other":
         primary["category"] = secondary["category"]
@@ -217,6 +237,15 @@ def _merge(primary, secondary):
         values = [*primary.get(field, []), *secondary.get(field, [])]
         if values:
             primary[field] = sorted(set(values))
+    # Preserve full source names for retrieval after deduplication has finished;
+    # adding them to matching aliases here would change later identity decisions.
+    names = [*primary.get("_merged_names", []), *secondary.get("_merged_names", [])]
+    names += [p[k] for p in (primary, secondary) for k in ("name", "name_en", "name_kk") if p.get(k)]
+    primary["_merged_names"] = sorted(set(names))
+    for field in ("amenity_facts", "held_descriptions"):
+        for fact in secondary.get(field, []):
+            if fact not in primary.setdefault(field, []):
+                primary[field].append(deepcopy(fact))
     if secondary.get("wikidata_descriptions"):
         primary.setdefault("wikidata_descriptions", {}).update(secondary["wikidata_descriptions"])
     if secondary.get("source_refs"):
@@ -260,6 +289,27 @@ def _describe(poi):
     poi["description_source_detail"] = "deterministic text from attributed structured fields; no LLM used"
 
 
+def _amenity_tags(poi):
+    """Derive positive search terms only from non-conflicting attributable facts."""
+    facts = poi.get("amenity_facts", [])
+    if not facts:
+        return
+    values = {f["value"] for f in facts if f["field"] == "internet_access"}
+    derived = {"Wi-Fi", "internet_access=wlan", "internet_access=yes", "интернет"}
+    tags = set(poi["tags"]) - derived
+    positive = values & {"yes", "wlan"}
+    if positive and "no" in values:
+        poi["quality_flags"] = sorted(set(poi.get("quality_flags", [])) | {"conflicting_internet_access"})
+    elif positive:
+        tags.add("интернет")
+        if "wlan" in positive:
+            tags.update({"Wi-Fi", "internet_access=wlan"})
+        if "yes" in positive:
+            tags.add("internet_access=yes")
+    poi["tags"] = sorted(tags)
+    poi["amenity_facts"] = sorted(facts, key=lambda f: json.dumps(f, sort_keys=True))
+
+
 def normalize_candidates(candidates: list[dict], boundary: dict | None = None,
                          collected_at: str | None = None) -> tuple[list[dict], dict]:
     """Return all valid city POIs and a quality report; never cap the record count."""
@@ -279,7 +329,8 @@ def normalize_candidates(candidates: list[dict], boundary: dict | None = None,
                 continue
         normalized.append(poi)
     normalized.sort(key=lambda p: (-SOURCE_PRIORITY.get(p["source"], 70),
-                                  -sum(v is not None for v in p.values()),
+                                  -sum(v is not None for k, v in p.items()
+                                       if k not in {"amenity_facts", "held_descriptions", "description_lang"}),
                                   p["id"], json.dumps(p, ensure_ascii=False, sort_keys=True)))
     results, grid, identities = [], defaultdict(list), {}
     merged = 0
@@ -306,6 +357,10 @@ def normalize_candidates(candidates: list[dict], boundary: dict | None = None,
             identities[poi["id"]] = match
             merged += 1
     for poi in results:
+        names = poi.pop("_merged_names", [])
+        if names:
+            poi["aliases"] = sorted(set(poi.get("aliases", [])) | set(names))
+        _amenity_tags(poi)
         _describe(poi)
         poi["source_records"] = sorted(poi["source_records"], key=lambda r: r["id"])
         if poi.get("field_conflicts"):

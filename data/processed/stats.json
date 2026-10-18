@@ -1,7 +1,7 @@
 {
   "input_count": 15226,
-  "output_count": 14009,
-  "merged_count": 598,
+  "output_count": 14006,
+  "merged_count": 601,
   "rejected_count": 619,
   "rejections": {
     "outside_city_boundary": 619
@@ -10,16 +10,16 @@
   "categories": {
     "attraction": 140,
     "bar": 308,
-    "cafe": 658,
+    "cafe": 657,
     "cinema": 24,
     "coworking": 1,
     "gallery": 14,
     "library": 19,
     "mall": 116,
-    "monument": 54,
+    "monument": 53,
     "museum": 33,
     "nightlife": 18,
-    "other": 11248,
+    "other": 11247,
     "park": 78,
     "playground": 4,
     "restaurant": 1122,
@@ -27,20 +27,20 @@
     "theatre": 9
   },
   "primary_sources": {
-    "citypass": 17,
+    "citypass": 16,
     "dodo": 23,
     "geonames": 30,
     "khanshatyr": 2,
     "marwin": 8,
     "osm": 5592,
-    "overture": 8159,
+    "overture": 8158,
     "sxodim": 12,
-    "wikipedia": 166
+    "wikipedia": 165
   },
-  "source_description_count": 251,
-  "template_description_count": 13758,
-  "unknown_opening_hours": 11926,
-  "collected_at": "2026-10-18",
+  "source_description_count": 269,
+  "template_description_count": 13737,
+  "unknown_opening_hours": 11923,
+  "collected_at": "2026-10-19",
   "quarantine_count": 1,
   "applied_overrides": [
     {
@@ -58,17 +58,29 @@
     {
       "id": "overture:ed179237-7b99-4c2b-a230-a39ac348a5a8",
       "action": "quarantine"
+    },
+    {
+      "id": "overture:d7cf8227-6a5d-4079-a09e-bf874cd9e267",
+      "action": "verified_same_place"
+    },
+    {
+      "id": "wikipedia:en:7148733",
+      "action": "verified_same_place"
+    },
+    {
+      "id": "citypass:57",
+      "action": "verified_same_place"
     }
   ],
   "field_counts": {
-    "description": 14009,
+    "description": 14006,
     "opening_hours": 2083,
     "rating": 0,
     "wheelchair": 305,
-    "address": 8487,
-    "phone": 7917,
+    "address": 8485,
+    "phone": 7916,
     "website": 5896,
-    "name_en": 900,
+    "name_en": 898,
     "name_kk": 709
   },
   "field_coverage_percent": {
@@ -77,9 +89,9 @@
     "rating": 0.0,
     "wheelchair": 2.18,
     "address": 60.58,
-    "phone": 56.51,
-    "website": 42.09,
-    "name_en": 6.42,
+    "phone": 56.52,
+    "website": 42.1,
+    "name_en": 6.41,
     "name_kk": 5.06
   },
   "source_participation": {
@@ -92,9 +104,9 @@
     "osm": 5592,
     "overture": 8473,
     "sxodim": 13,
-    "wikipedia": 189
+    "wikipedia": 188
   },
-  "leisure_count": 2761,
+  "leisure_count": 2759,
   "source_status": {
     "osm": "ok",
     "overture": "ok",
@@ -102,6 +114,7 @@
     "web": "partial",
     "geonames": "ok",
     "directory_join": "ok",
-    "wikimedia_enrichment": "partial"
+    "wikimedia_enrichment": "partial",
+    "cached_descriptions": "ok"
   }
 }

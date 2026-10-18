@@ -2,241 +2,2479 @@
   {
     "id": "overture:17dac8fb-8cc7-4387-a9e4-56c55aa8c554",
     "name": "Караоткель karaotkel'",
-    "category": "attraction",
     "lat": 51.151573120366,
     "lon": 71.404283519584,
+    "category": "attraction",
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=17dac8fb-8cc7-4387-a9e4-56c55aa8c554",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "name_en": null,
+    "name_kk": null,
+    "address": "Недалеко От Меги",
     "opening_hours": null,
+    "phone": null,
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "cultural_and_historic",
+      "historic_site"
+    ],
+    "raw_tags": {
+      "id": "17dac8fb-8cc7-4387-a9e4-56c55aa8c554",
+      "confidence": 0.5949573516845703,
+      "websites": null,
+      "emails": null,
+      "socials": [
+        "https://www.facebook.com/359746587899781"
+      ],
+      "phones": null,
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": "Недалеко От Меги",
+          "locality": "Астана",
+          "postcode": "",
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "Караоткель karaotkel'",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "359746587899781",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.5949573516845703,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "historic_site",
+      "taxonomy": {
+        "primary": "historic_site",
+        "hierarchy": [
+          "cultural_and_historic",
+          "historic_site"
+        ],
+        "alternates": null
+      },
+      "version": 11,
+      "bbox": {
+        "xmin": 71.40428161621094,
+        "xmax": 71.40428924560547,
+        "ymin": 51.15156555175781,
+        "ymax": 51.151573181152344
+      }
+    },
+    "source_records": [
+      {
+        "id": "overture:17dac8fb-8cc7-4387-a9e4-56c55aa8c554",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=17dac8fb-8cc7-4387-a9e4-56c55aa8c554",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "359746587899781",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.5949573516845703,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "historic_site",
+          "taxonomy": {
+            "primary": "historic_site",
+            "hierarchy": [
+              "cultural_and_historic",
+              "historic_site"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "raw_taxonomy": {
+      "basic_category": "historic_site",
+      "taxonomy": {
+        "primary": "historic_site",
+        "hierarchy": [
+          "cultural_and_historic",
+          "historic_site"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
     "description": "Достопримечательность «Караоткель karaotkel'» в Астане. Адрес из источника: Недалеко От Меги.",
-    "description_kind": "structured_template",
     "description_source": "website",
-    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=17dac8fb-8cc7-4387-a9e4-56c55aa8c554"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "overture:48b2a664-9cc7-4e81-8391-ed178f2f3c5a",
     "name": "Barkhat Bar",
-    "category": "bar",
     "lat": 51.13289265,
     "lon": 71.40540095,
+    "category": "bar",
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=48b2a664-9cc7-4e81-8391-ed178f2f3c5a",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "name_en": null,
+    "name_kk": null,
+    "address": "Turan Ave 37",
     "opening_hours": null,
+    "phone": null,
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "alcoholic_beverage_venue",
+      "bar",
+      "food_and_drink"
+    ],
+    "raw_tags": {
+      "id": "48b2a664-9cc7-4e81-8391-ed178f2f3c5a",
+      "confidence": 0.2642022967338562,
+      "websites": null,
+      "emails": null,
+      "socials": [
+        "https://www.facebook.com/519704888056547"
+      ],
+      "phones": null,
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": "Turan Ave 37",
+          "locality": "Астана",
+          "postcode": "020000",
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "Barkhat Bar",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "519704888056547",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.2642022967338562,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "bar",
+      "taxonomy": {
+        "primary": "bar",
+        "hierarchy": [
+          "food_and_drink",
+          "alcoholic_beverage_venue",
+          "bar"
+        ],
+        "alternates": null
+      },
+      "version": 4,
+      "bbox": {
+        "xmin": 71.4053955078125,
+        "xmax": 71.40540313720703,
+        "ymin": 51.13289260864258,
+        "ymax": 51.13290023803711
+      }
+    },
+    "source_records": [
+      {
+        "id": "overture:48b2a664-9cc7-4e81-8391-ed178f2f3c5a",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=48b2a664-9cc7-4e81-8391-ed178f2f3c5a",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "519704888056547",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.2642022967338562,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "bar",
+          "taxonomy": {
+            "primary": "bar",
+            "hierarchy": [
+              "food_and_drink",
+              "alcoholic_beverage_venue",
+              "bar"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "raw_taxonomy": {
+      "basic_category": "bar",
+      "taxonomy": {
+        "primary": "bar",
+        "hierarchy": [
+          "food_and_drink",
+          "alcoholic_beverage_venue",
+          "bar"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
     "description": "Бар «Barkhat Bar» в Астане. Адрес из источника: Turan Ave 37.",
-    "description_kind": "structured_template",
     "description_source": "website",
-    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=48b2a664-9cc7-4e81-8391-ed178f2f3c5a"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "osm:node/12744521222",
     "name": "Boba",
-    "category": "cafe",
     "lat": 51.1637745,
     "lon": 71.4170517,
+    "category": "cafe",
+    "source": "osm",
+    "source_url": "https://www.openstreetmap.org/node/12744521222",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": null,
+    "name_en": null,
+    "name_kk": null,
+    "address": null,
     "opening_hours": "Mo-Su 11:00-22:00",
+    "phone": null,
+    "website": null,
+    "wheelchair": "yes",
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "amenity=cafe",
+      "cuisine=bubble_tea"
+    ],
+    "raw_tags": {
+      "amenity": "cafe",
+      "cuisine": "bubble_tea",
+      "indoor_seating": "yes",
+      "name": "Boba",
+      "opening_hours": "Mo-Su 11:00-22:00",
+      "outdoor_seating": "no",
+      "wheelchair": "yes"
+    },
+    "source_records": [
+      {
+        "id": "osm:node/12744521222",
+        "source": "osm",
+        "source_url": "https://www.openstreetmap.org/node/12744521222",
+        "license": "ODbL-1.0",
+        "source_updated_at": null,
+        "collected_at": "2026-10-18T17:33:47.211954+00:00"
+      }
+    ],
     "description": "Кафе «Boba» в Астане. Сведения источника: кухня: bubble_tea.",
-    "description_kind": "structured_template",
     "description_source": "osm",
-    "source_url": "https://www.openstreetmap.org/node/12744521222"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "overture:808c4fbc-cebc-44e7-a0a9-4fb230648633",
     "name": "Chaplin Cinemas",
-    "category": "cinema",
     "lat": 51.09409,
     "lon": 71.40454,
+    "category": "cinema",
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=808c4fbc-cebc-44e7-a0a9-4fb230648633",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "name_en": null,
+    "name_kk": null,
+    "address": "проспект Кабанбай батыра 60",
     "opening_hours": null,
+    "phone": null,
+    "website": "http://chaplin.kz/",
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "arts_and_entertainment",
+      "movie_theater"
+    ],
+    "raw_tags": {
+      "id": "808c4fbc-cebc-44e7-a0a9-4fb230648633",
+      "confidence": 0.9434807300567627,
+      "websites": [
+        "http://chaplin.kz/"
+      ],
+      "emails": null,
+      "socials": [
+        "https://www.facebook.com/540999646361064"
+      ],
+      "phones": null,
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": "проспект Кабанбай батыра 60",
+          "locality": "Астана",
+          "postcode": "010000",
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "Chaplin Cinemas",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "540999646361064",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.9434807300567627,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "movie_theater",
+      "taxonomy": {
+        "primary": "movie_theater",
+        "hierarchy": [
+          "arts_and_entertainment",
+          "movie_theater"
+        ],
+        "alternates": null
+      },
+      "version": 4,
+      "bbox": {
+        "xmin": 71.40453338623047,
+        "xmax": 71.404541015625,
+        "ymin": 51.09408950805664,
+        "ymax": 51.09409713745117
+      }
+    },
+    "source_records": [
+      {
+        "id": "overture:808c4fbc-cebc-44e7-a0a9-4fb230648633",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=808c4fbc-cebc-44e7-a0a9-4fb230648633",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "540999646361064",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.9434807300567627,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "movie_theater",
+          "taxonomy": {
+            "primary": "movie_theater",
+            "hierarchy": [
+              "arts_and_entertainment",
+              "movie_theater"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "raw_taxonomy": {
+      "basic_category": "movie_theater",
+      "taxonomy": {
+        "primary": "movie_theater",
+        "hierarchy": [
+          "arts_and_entertainment",
+          "movie_theater"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
     "description": "Кинотеатр «Chaplin Cinemas» в Астане. Адрес из источника: проспект Кабанбай батыра 60.",
-    "description_kind": "structured_template",
     "description_source": "website",
-    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=808c4fbc-cebc-44e7-a0a9-4fb230648633"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "osm:node/12917061572",
     "name": "Flex office",
-    "category": "coworking",
     "lat": 51.1394933,
     "lon": 71.3890413,
+    "category": "coworking",
+    "source": "osm",
+    "source_url": "https://www.openstreetmap.org/node/12917061572",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": null,
+    "name_en": null,
+    "name_kk": null,
+    "address": null,
     "opening_hours": "Mo-Su,PH 09:00-24:00",
+    "phone": null,
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "office=coworking"
+    ],
+    "raw_tags": {
+      "check_date:opening_hours": "2026-10-03",
+      "name": "Flex office",
+      "office": "coworking",
+      "opening_hours": "Mo-Su,PH 09:00-24:00"
+    },
+    "source_records": [
+      {
+        "id": "osm:node/12917061572",
+        "source": "osm",
+        "source_url": "https://www.openstreetmap.org/node/12917061572",
+        "license": "ODbL-1.0",
+        "source_updated_at": null,
+        "collected_at": "2026-10-18T17:33:47.211954+00:00"
+      }
+    ],
     "description": "Коворкинг «Flex office» в Астане.",
-    "description_kind": "structured_template",
     "description_source": "osm",
-    "source_url": "https://www.openstreetmap.org/node/12917061572"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "overture:effb1a1c-c1f1-46cc-9b5c-5bdf9d466bca",
     "name": "1.5 idea art gallery",
-    "category": "gallery",
     "lat": 51.15584,
     "lon": 71.42814,
+    "category": "gallery",
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=effb1a1c-c1f1-46cc-9b5c-5bdf9d466bca",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "name_en": null,
+    "name_kk": null,
+    "address": "Самал шағын ауданы 9",
     "opening_hours": null,
+    "phone": null,
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "art_gallery",
+      "arts_and_crafts_space",
+      "arts_and_entertainment"
+    ],
+    "raw_tags": {
+      "id": "effb1a1c-c1f1-46cc-9b5c-5bdf9d466bca",
+      "confidence": 0.4526791274547577,
+      "websites": null,
+      "emails": null,
+      "socials": [
+        "https://www.facebook.com/717520481440534"
+      ],
+      "phones": null,
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": "Самал шағын ауданы 9",
+          "locality": "Астана",
+          "postcode": "010000",
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "1.5 idea art gallery",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "717520481440534",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.4526791274547577,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "art_gallery",
+      "taxonomy": {
+        "primary": "art_gallery",
+        "hierarchy": [
+          "arts_and_entertainment",
+          "arts_and_crafts_space",
+          "art_gallery"
+        ],
+        "alternates": null
+      },
+      "version": 1,
+      "bbox": {
+        "xmin": 71.42813873291016,
+        "xmax": 71.42814636230469,
+        "ymin": 51.15583419799805,
+        "ymax": 51.15584182739258
+      }
+    },
+    "source_records": [
+      {
+        "id": "overture:effb1a1c-c1f1-46cc-9b5c-5bdf9d466bca",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=effb1a1c-c1f1-46cc-9b5c-5bdf9d466bca",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "717520481440534",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.4526791274547577,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "art_gallery",
+          "taxonomy": {
+            "primary": "art_gallery",
+            "hierarchy": [
+              "arts_and_entertainment",
+              "arts_and_crafts_space",
+              "art_gallery"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "raw_taxonomy": {
+      "basic_category": "art_gallery",
+      "taxonomy": {
+        "primary": "art_gallery",
+        "hierarchy": [
+          "arts_and_entertainment",
+          "arts_and_crafts_space",
+          "art_gallery"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
     "description": "Галерея «1.5 idea art gallery» в Астане. Адрес из источника: Самал шағын ауданы 9.",
-    "description_kind": "structured_template",
     "description_source": "website",
-    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=effb1a1c-c1f1-46cc-9b5c-5bdf9d466bca"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "osm:way/241241552",
     "name": "ЕҰУ Кітапханасы",
-    "category": "library",
     "lat": 51.1604358,
     "lon": 71.4652674,
+    "category": "library",
+    "source": "osm",
+    "source_url": "https://www.openstreetmap.org/way/241241552",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": null,
+    "name_en": null,
+    "name_kk": "ЕҰУ Кітапханасы",
+    "address": "Пушкин көшесі, 11",
     "opening_hours": "Mo-Fr 09:00-19:00; Sa 09:00-14:00; Su off",
+    "phone": null,
+    "website": "https://library.enu.kz",
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "Wi-Fi",
+      "access=private",
+      "amenity=library",
+      "internet_access=wlan",
+      "интернет"
+    ],
+    "amenity_facts": [
+      {
+        "field": "internet_access",
+        "value": "wlan",
+        "source_id": "osm:way/241241552",
+        "source_url": "https://www.openstreetmap.org/way/241241552",
+        "collected_at": "2026-10-18T17:33:47.211954+00:00",
+        "source_updated_at": null
+      },
+      {
+        "field": "internet_access:fee",
+        "value": "no",
+        "source_id": "osm:way/241241552",
+        "source_url": "https://www.openstreetmap.org/way/241241552",
+        "collected_at": "2026-10-18T17:33:47.211954+00:00",
+        "source_updated_at": null
+      }
+    ],
+    "raw_tags": {
+      "access": "private",
+      "addr:city": "Астана",
+      "addr:country": "KZ",
+      "addr:housenumber": "11",
+      "addr:street": "Пушкин көшесі",
+      "amenity": "library",
+      "building": "yes",
+      "building:levels": "2",
+      "check_date": "2023-01-20",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name:kk": "ЕҰУ Кітапханасы",
+      "name:ru": "Библиотека ЕНУ",
+      "opening_hours": "Mo-Fr 09:00-19:00; Sa 09:00-14:00; Su off",
+      "website": "https://library.enu.kz"
+    },
+    "source_records": [
+      {
+        "id": "osm:way/241241552",
+        "source": "osm",
+        "source_url": "https://www.openstreetmap.org/way/241241552",
+        "license": "ODbL-1.0",
+        "source_updated_at": null,
+        "collected_at": "2026-10-18T17:33:47.211954+00:00"
+      }
+    ],
+    "aliases": [
+      "Библиотека ЕНУ",
+      "ЕҰУ Кітапханасы"
+    ],
     "description": "Библиотека «ЕҰУ Кітапханасы» в Астане. Адрес из источника: Пушкин көшесі, 11.",
-    "description_kind": "structured_template",
     "description_source": "osm",
-    "source_url": "https://www.openstreetmap.org/way/241241552"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "overture:f5d71858-2f82-4cd4-b9d5-b13752266f76",
     "name": "Торгово-развлекательный центр «Сарыарка»",
-    "category": "mall",
     "lat": 51.1383286,
     "lon": 71.4106293,
+    "category": "mall",
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=f5d71858-2f82-4cd4-b9d5-b13752266f76",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "name_en": null,
+    "name_kk": null,
+    "address": "проспект Туран 24",
     "opening_hours": null,
+    "phone": "+77172515606",
+    "website": "http://saryarka.com/",
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "shopping",
+      "shopping_mall"
+    ],
+    "raw_tags": {
+      "id": "f5d71858-2f82-4cd4-b9d5-b13752266f76",
+      "confidence": 0.9951902282238007,
+      "websites": [
+        "http://saryarka.com/"
+      ],
+      "emails": [
+        "info@saryarka.com"
+      ],
+      "socials": [
+        "https://www.facebook.com/261779220607991"
+      ],
+      "phones": [
+        "+77172515606"
+      ],
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": "проспект Туран 24",
+          "locality": "Астана",
+          "postcode": "010000",
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "Торгово-развлекательный центр «Сарыарка»",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "261779220607991",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.9790879487991333,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "shopping_mall",
+      "taxonomy": {
+        "primary": "shopping_mall",
+        "hierarchy": [
+          "shopping",
+          "shopping_mall"
+        ],
+        "alternates": null
+      },
+      "version": 10,
+      "bbox": {
+        "xmin": 71.41062927246094,
+        "xmax": 71.41063690185547,
+        "ymin": 51.138328552246094,
+        "ymax": 51.138336181640625
+      }
+    },
+    "source_records": [
+      {
+        "id": "overture:f5d71858-2f82-4cd4-b9d5-b13752266f76",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=f5d71858-2f82-4cd4-b9d5-b13752266f76",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "261779220607991",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.9790879487991333,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "shopping_mall",
+          "taxonomy": {
+            "primary": "shopping_mall",
+            "hierarchy": [
+              "shopping",
+              "shopping_mall"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "raw_taxonomy": {
+      "basic_category": "shopping_mall",
+      "taxonomy": {
+        "primary": "shopping_mall",
+        "hierarchy": [
+          "shopping",
+          "shopping_mall"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
     "description": "Торговый центр «Торгово-развлекательный центр «Сарыарка»» в Астане. Адрес из источника: проспект Туран 24.",
-    "description_kind": "structured_template",
     "description_source": "website",
-    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=f5d71858-2f82-4cd4-b9d5-b13752266f76"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "osm:node/11500907369",
     "name": "Городские часы",
-    "category": "monument",
     "lat": 51.1533667,
     "lon": 71.4139175,
+    "category": "monument",
+    "source": "osm",
+    "source_url": "https://www.openstreetmap.org/node/11500907369",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": null,
+    "name_en": null,
+    "name_kk": null,
+    "address": null,
     "opening_hours": null,
+    "phone": null,
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "historic=monument"
+    ],
+    "raw_tags": {
+      "historic": "monument",
+      "name:ru": "Городские часы"
+    },
+    "source_records": [
+      {
+        "id": "osm:node/11500907369",
+        "source": "osm",
+        "source_url": "https://www.openstreetmap.org/node/11500907369",
+        "license": "ODbL-1.0",
+        "source_updated_at": null,
+        "collected_at": "2026-10-18T17:33:47.211954+00:00"
+      }
+    ],
+    "aliases": [
+      "Городские часы"
+    ],
     "description": "Памятник «Городские часы» в Астане.",
-    "description_kind": "structured_template",
     "description_source": "osm",
-    "source_url": "https://www.openstreetmap.org/node/11500907369"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "overture:32f0c5c2-2477-47e0-a184-02a129fd3cb5",
     "name": "Museum of Railway History of Kazakhstan",
-    "category": "museum",
     "lat": 51.19312,
     "lon": 71.34063,
+    "category": "museum",
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=32f0c5c2-2477-47e0-a184-02a129fd3cb5",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "name_en": null,
+    "name_kk": null,
+    "address": "улица Сарайшык 9",
     "opening_hours": null,
+    "phone": "+77020000934",
+    "website": "https://railwaymuseumkz.taplink.kz/",
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "arts_and_entertainment",
+      "museum"
+    ],
+    "raw_tags": {
+      "id": "32f0c5c2-2477-47e0-a184-02a129fd3cb5",
+      "confidence": 0.2826954126358032,
+      "websites": [
+        "https://railwaymuseumkz.taplink.kz/"
+      ],
+      "emails": [
+        "railmusemkz@gmail.com"
+      ],
+      "socials": [
+        "https://www.facebook.com/944694262068106"
+      ],
+      "phones": [
+        "+77020000934"
+      ],
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": "улица Сарайшык 9",
+          "locality": "Астана",
+          "postcode": "010001",
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "Museum of Railway History of Kazakhstan",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "944694262068106",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.2826954126358032,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "museum",
+      "taxonomy": {
+        "primary": "museum",
+        "hierarchy": [
+          "arts_and_entertainment",
+          "museum"
+        ],
+        "alternates": null
+      },
+      "version": 2,
+      "bbox": {
+        "xmin": 71.34062957763672,
+        "xmax": 71.34063720703125,
+        "ymin": 51.193119049072266,
+        "ymax": 51.1931266784668
+      }
+    },
+    "source_records": [
+      {
+        "id": "overture:32f0c5c2-2477-47e0-a184-02a129fd3cb5",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=32f0c5c2-2477-47e0-a184-02a129fd3cb5",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "944694262068106",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.2826954126358032,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "museum",
+          "taxonomy": {
+            "primary": "museum",
+            "hierarchy": [
+              "arts_and_entertainment",
+              "museum"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "raw_taxonomy": {
+      "basic_category": "museum",
+      "taxonomy": {
+        "primary": "museum",
+        "hierarchy": [
+          "arts_and_entertainment",
+          "museum"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
     "description": "Музей «Museum of Railway History of Kazakhstan» в Астане. Адрес из источника: улица Сарайшык 9.",
-    "description_kind": "structured_template",
     "description_source": "website",
-    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=32f0c5c2-2477-47e0-a184-02a129fd3cb5"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "overture:7801f013-8652-42fc-96e5-eaf0ab6f440b",
     "name": "Tundra BHB",
-    "category": "nightlife",
     "lat": 51.14677,
     "lon": 71.41727,
+    "category": "nightlife",
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=7801f013-8652-42fc-96e5-eaf0ab6f440b",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "name_en": null,
+    "name_kk": null,
+    "address": "Коргалжын 2а",
     "opening_hours": null,
+    "phone": null,
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "arts_and_entertainment",
+      "dance_club",
+      "nightlife_venue"
+    ],
+    "raw_tags": {
+      "id": "7801f013-8652-42fc-96e5-eaf0ab6f440b",
+      "confidence": 0.6768298745155334,
+      "websites": null,
+      "emails": null,
+      "socials": [
+        "https://www.facebook.com/322075017650615"
+      ],
+      "phones": null,
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": "Коргалжын 2а",
+          "locality": "Астана",
+          "postcode": "010000",
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "Tundra BHB",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "322075017650615",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.6768298745155334,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "dance_club",
+      "taxonomy": {
+        "primary": "dance_club",
+        "hierarchy": [
+          "arts_and_entertainment",
+          "nightlife_venue",
+          "dance_club"
+        ],
+        "alternates": null
+      },
+      "version": 3,
+      "bbox": {
+        "xmin": 71.41726684570312,
+        "xmax": 71.41728210449219,
+        "ymin": 51.14676284790039,
+        "ymax": 51.14677047729492
+      }
+    },
+    "source_records": [
+      {
+        "id": "overture:7801f013-8652-42fc-96e5-eaf0ab6f440b",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=7801f013-8652-42fc-96e5-eaf0ab6f440b",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "322075017650615",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.6768298745155334,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "dance_club",
+          "taxonomy": {
+            "primary": "dance_club",
+            "hierarchy": [
+              "arts_and_entertainment",
+              "nightlife_venue",
+              "dance_club"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "raw_taxonomy": {
+      "basic_category": "dance_club",
+      "taxonomy": {
+        "primary": "dance_club",
+        "hierarchy": [
+          "arts_and_entertainment",
+          "nightlife_venue",
+          "dance_club"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
     "description": "Ночное заведение «Tundra BHB» в Астане. Адрес из источника: Коргалжын 2а.",
-    "description_kind": "structured_template",
     "description_source": "website",
-    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=7801f013-8652-42fc-96e5-eaf0ab6f440b"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "overture:f1816ce2-7a42-4046-94a4-92a431579c73",
     "name": "Северный Казахстан, Казахстан",
-    "category": "park",
     "lat": 51.1688469,
     "lon": 71.43331754,
+    "category": "park",
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=f1816ce2-7a42-4046-94a4-92a431579c73",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "name_en": null,
+    "name_kk": null,
+    "address": null,
     "opening_hours": null,
+    "phone": null,
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "park",
+      "sports_and_recreation"
+    ],
+    "raw_tags": {
+      "id": "f1816ce2-7a42-4046-94a4-92a431579c73",
+      "confidence": 0.7207186818122864,
+      "websites": null,
+      "emails": null,
+      "socials": [
+        "https://www.facebook.com/1181226365232787"
+      ],
+      "phones": null,
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": null,
+          "locality": "Астана",
+          "postcode": null,
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "Северный Казахстан, Казахстан",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1181226365232787",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.7207186818122864,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "park",
+      "taxonomy": {
+        "primary": "park",
+        "hierarchy": [
+          "sports_and_recreation",
+          "park"
+        ],
+        "alternates": null
+      },
+      "version": 2,
+      "bbox": {
+        "xmin": 71.43331146240234,
+        "xmax": 71.43331909179688,
+        "ymin": 51.168846130371094,
+        "ymax": 51.168853759765625
+      }
+    },
+    "source_records": [
+      {
+        "id": "overture:f1816ce2-7a42-4046-94a4-92a431579c73",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=f1816ce2-7a42-4046-94a4-92a431579c73",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "1181226365232787",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.7207186818122864,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "park",
+          "taxonomy": {
+            "primary": "park",
+            "hierarchy": [
+              "sports_and_recreation",
+              "park"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "raw_taxonomy": {
+      "basic_category": "park",
+      "taxonomy": {
+        "primary": "park",
+        "hierarchy": [
+          "sports_and_recreation",
+          "park"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
     "description": "Парк или сад «Северный Казахстан, Казахстан» в Астане.",
-    "description_kind": "structured_template",
     "description_source": "website",
-    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=f1816ce2-7a42-4046-94a4-92a431579c73"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "overture:151d0bdc-e684-46ad-9477-4d6b71696efd",
     "name": "PrimaFieri.kz",
-    "category": "playground",
     "lat": 51.12023,
     "lon": 71.40187,
+    "category": "playground",
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=151d0bdc-e684-46ad-9477-4d6b71696efd",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "name_en": null,
+    "name_kk": null,
+    "address": "проспект Туран 51",
     "opening_hours": null,
+    "phone": "+77025555496",
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "park",
+      "playground",
+      "sports_and_recreation"
+    ],
+    "raw_tags": {
+      "id": "151d0bdc-e684-46ad-9477-4d6b71696efd",
+      "confidence": 0.6563006639480591,
+      "websites": null,
+      "emails": [
+        "primafieri.kz@mail.ru"
+      ],
+      "socials": [
+        "https://www.facebook.com/162644223599814"
+      ],
+      "phones": [
+        "+77025555496"
+      ],
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": "проспект Туран 51",
+          "locality": "Астана",
+          "postcode": "010000",
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "PrimaFieri.kz",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "162644223599814",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.6563006639480591,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "playground",
+      "taxonomy": {
+        "primary": "playground",
+        "hierarchy": [
+          "sports_and_recreation",
+          "park",
+          "playground"
+        ],
+        "alternates": null
+      },
+      "version": 6,
+      "bbox": {
+        "xmin": 71.40186309814453,
+        "xmax": 71.40187072753906,
+        "ymin": 51.12022399902344,
+        "ymax": 51.12023162841797
+      }
+    },
+    "source_records": [
+      {
+        "id": "overture:151d0bdc-e684-46ad-9477-4d6b71696efd",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=151d0bdc-e684-46ad-9477-4d6b71696efd",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "162644223599814",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.6563006639480591,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "playground",
+          "taxonomy": {
+            "primary": "playground",
+            "hierarchy": [
+              "sports_and_recreation",
+              "park",
+              "playground"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "raw_taxonomy": {
+      "basic_category": "playground",
+      "taxonomy": {
+        "primary": "playground",
+        "hierarchy": [
+          "sports_and_recreation",
+          "park",
+          "playground"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
     "description": "Детская площадка «PrimaFieri.kz» в Астане. Адрес из источника: проспект Туран 51.",
-    "description_kind": "structured_template",
     "description_source": "website",
-    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=151d0bdc-e684-46ad-9477-4d6b71696efd"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "overture:fd3bdff1-e1f5-412e-83ea-a9c7ed8eb063",
     "name": "Zp_food_astana",
-    "category": "restaurant",
     "lat": 51.1276363,
     "lon": 71.4275864,
+    "category": "restaurant",
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=fd3bdff1-e1f5-412e-83ea-a9c7ed8eb063",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "name_en": null,
+    "name_kk": null,
+    "address": "Нұр-Сұлтан, Қазақстан",
     "opening_hours": null,
+    "phone": null,
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "food_and_drink",
+      "restaurant"
+    ],
+    "raw_tags": {
+      "id": "fd3bdff1-e1f5-412e-83ea-a9c7ed8eb063",
+      "confidence": 0.307937353849411,
+      "websites": null,
+      "emails": null,
+      "socials": [
+        "https://www.facebook.com/105055598406563"
+      ],
+      "phones": null,
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": "Нұр-Сұлтан, Қазақстан",
+          "locality": "Астана",
+          "postcode": "010000",
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "Zp_food_astana",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "105055598406563",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.307937353849411,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "restaurant",
+      "taxonomy": {
+        "primary": "restaurant",
+        "hierarchy": [
+          "food_and_drink",
+          "restaurant"
+        ],
+        "alternates": null
+      },
+      "version": 8,
+      "bbox": {
+        "xmin": 71.42757415771484,
+        "xmax": 71.4275894165039,
+        "ymin": 51.12763595581055,
+        "ymax": 51.12764358520508
+      }
+    },
+    "source_records": [
+      {
+        "id": "overture:fd3bdff1-e1f5-412e-83ea-a9c7ed8eb063",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=fd3bdff1-e1f5-412e-83ea-a9c7ed8eb063",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "105055598406563",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.307937353849411,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "restaurant",
+          "taxonomy": {
+            "primary": "restaurant",
+            "hierarchy": [
+              "food_and_drink",
+              "restaurant"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "raw_taxonomy": {
+      "basic_category": "restaurant",
+      "taxonomy": {
+        "primary": "restaurant",
+        "hierarchy": [
+          "food_and_drink",
+          "restaurant"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
     "description": "Ресторан «Zp_food_astana» в Астане. Адрес из источника: Нұр-Сұлтан, Қазақстан.",
-    "description_kind": "structured_template",
     "description_source": "website",
-    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=fd3bdff1-e1f5-412e-83ea-a9c7ed8eb063"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "overture:ba98f664-f51a-49c7-803b-073928c94668",
     "name": "Sky Wellness",
-    "category": "sport",
     "lat": 51.094790225799,
     "lon": 71.445808410645,
+    "category": "sport",
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=ba98f664-f51a-49c7-803b-073928c94668",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "name_en": null,
+    "name_kk": null,
+    "address": "38-ая, 13",
     "opening_hours": null,
+    "phone": "+77768555578",
+    "website": "https://www.instagram.com/sky_wellness_ast/",
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "gym",
+      "sport_or_fitness_facility",
+      "sports_and_recreation"
+    ],
+    "raw_tags": {
+      "id": "ba98f664-f51a-49c7-803b-073928c94668",
+      "confidence": 0.9053446054458618,
+      "websites": [
+        "https://www.instagram.com/sky_wellness_ast/"
+      ],
+      "emails": [
+        "skywellness.d.and.f@gmail.com"
+      ],
+      "socials": [
+        "https://www.facebook.com/109617041453568"
+      ],
+      "phones": [
+        "+77768555578"
+      ],
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": "38-ая, 13",
+          "locality": "Астана",
+          "postcode": null,
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "Sky Wellness",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "109617041453568",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.9053446054458618,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "gym",
+      "taxonomy": {
+        "primary": "gym",
+        "hierarchy": [
+          "sports_and_recreation",
+          "sport_or_fitness_facility",
+          "gym"
+        ],
+        "alternates": null
+      },
+      "version": 9,
+      "bbox": {
+        "xmin": 71.44580841064453,
+        "xmax": 71.44581604003906,
+        "ymin": 51.094783782958984,
+        "ymax": 51.094791412353516
+      }
+    },
+    "source_records": [
+      {
+        "id": "overture:ba98f664-f51a-49c7-803b-073928c94668",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=ba98f664-f51a-49c7-803b-073928c94668",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "109617041453568",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.9053446054458618,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "gym",
+          "taxonomy": {
+            "primary": "gym",
+            "hierarchy": [
+              "sports_and_recreation",
+              "sport_or_fitness_facility",
+              "gym"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "raw_taxonomy": {
+      "basic_category": "gym",
+      "taxonomy": {
+        "primary": "gym",
+        "hierarchy": [
+          "sports_and_recreation",
+          "sport_or_fitness_facility",
+          "gym"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
     "description": "Спортивный объект «Sky Wellness» в Астане. Адрес из источника: 38-ая, 13.",
-    "description_kind": "structured_template",
     "description_source": "website",
-    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=ba98f664-f51a-49c7-803b-073928c94668"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "osm:node/2349675581",
     "name": "Театр кукол",
-    "category": "theatre",
     "lat": 51.1584852,
     "lon": 71.4287068,
+    "category": "theatre",
+    "source": "osm",
+    "source_url": "https://www.openstreetmap.org/node/2349675581",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": null,
+    "name_en": null,
+    "name_kk": null,
+    "address": null,
     "opening_hours": null,
+    "phone": null,
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "amenity=theatre"
+    ],
+    "raw_tags": {
+      "amenity": "theatre",
+      "check_date": "2024-07-27",
+      "name": "Театр кукол"
+    },
+    "source_records": [
+      {
+        "id": "osm:node/2349675581",
+        "source": "osm",
+        "source_url": "https://www.openstreetmap.org/node/2349675581",
+        "license": "ODbL-1.0",
+        "source_updated_at": null,
+        "collected_at": "2026-10-18T17:33:47.211954+00:00"
+      }
+    ],
     "description": "Театр «Театр кукол» в Астане.",
-    "description_kind": "structured_template",
     "description_source": "osm",
-    "source_url": "https://www.openstreetmap.org/node/2349675581"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "osm:way/1456208634",
     "name": "Арман қала",
-    "category": "other",
     "lat": 51.098255449999996,
     "lon": 71.42382245,
+    "category": "other",
+    "source": "osm",
+    "source_url": "https://www.openstreetmap.org/way/1456208634",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": null,
+    "name_en": null,
+    "name_kk": null,
+    "address": null,
     "opening_hours": null,
+    "phone": null,
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "landuse=residential"
+    ],
+    "raw_tags": {
+      "landuse": "residential",
+      "name": "Арман қала",
+      "name:ru": "Арман кала",
+      "residential": "apartments"
+    },
+    "source_records": [
+      {
+        "id": "osm:way/1456208634",
+        "source": "osm",
+        "source_url": "https://www.openstreetmap.org/way/1456208634",
+        "license": "ODbL-1.0",
+        "source_updated_at": null,
+        "collected_at": "2026-10-18T17:33:47.211954+00:00"
+      }
+    ],
+    "aliases": [
+      "Арман кала"
+    ],
     "description": "Место «Арман қала» в Астане.",
-    "description_kind": "structured_template",
     "description_source": "osm",
-    "source_url": "https://www.openstreetmap.org/way/1456208634"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "osm:node/4355311090",
     "name": "Aisha",
-    "category": "other",
     "lat": 51.1289726,
     "lon": 71.3772976,
+    "category": "other",
+    "source": "osm",
+    "source_url": "https://www.openstreetmap.org/node/4355311090",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": null,
+    "name_en": null,
+    "name_kk": null,
+    "address": null,
     "opening_hours": "Mo-Su 10:00-20:00",
+    "phone": "87711780984",
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "shop=beauty"
+    ],
+    "raw_tags": {
+      "name": "Aisha",
+      "opening_hours": "Mo-Su 10:00-20:00",
+      "phone": "87711780984",
+      "shop": "beauty"
+    },
+    "source_records": [
+      {
+        "id": "osm:node/4355311090",
+        "source": "osm",
+        "source_url": "https://www.openstreetmap.org/node/4355311090",
+        "license": "ODbL-1.0",
+        "source_updated_at": null,
+        "collected_at": "2026-10-18T17:33:47.211954+00:00"
+      }
+    ],
     "description": "Место «Aisha» в Астане. Сведения источника: тип магазина: beauty.",
-    "description_kind": "structured_template",
     "description_source": "osm",
-    "source_url": "https://www.openstreetmap.org/node/4355311090"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "overture:eb3f87b7-58c5-49f2-9e63-0b69d7d57c39",
     "name": "\"Акимат района \"Алматы\"\"",
-    "category": "other",
     "lat": 51.150034850106,
     "lon": 71.456623076804,
+    "category": "other",
+    "source": "overture",
+    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=eb3f87b7-58c5-49f2-9e63-0b69d7d57c39",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": "2026-09-14T00:00:00.000Z",
+    "name_en": null,
+    "name_kk": null,
+    "address": null,
     "opening_hours": null,
+    "phone": null,
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "community_and_government",
+      "government_office"
+    ],
+    "raw_tags": {
+      "id": "eb3f87b7-58c5-49f2-9e63-0b69d7d57c39",
+      "confidence": 0.6340703964233398,
+      "websites": null,
+      "emails": null,
+      "socials": [
+        "https://www.facebook.com/1584744481669817"
+      ],
+      "phones": null,
+      "brand": {
+        "wikidata": null,
+        "names": {
+          "primary": null,
+          "common": null,
+          "rules": null
+        }
+      },
+      "addresses": [
+        {
+          "freeform": "",
+          "locality": "Астана",
+          "postcode": "",
+          "region": null,
+          "country": "KZ"
+        }
+      ],
+      "names": {
+        "primary": "\"Акимат района \"Алматы\"\"",
+        "common": null,
+        "rules": null
+      },
+      "sources": [
+        {
+          "property": "",
+          "dataset": "meta",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": "1584744481669817",
+          "update_time": "2026-09-14T00:00:00.000Z",
+          "confidence": 0.6340703964233398,
+          "between": null,
+          "provider": "meta",
+          "resource": "meta",
+          "version": "2026-09-14"
+        },
+        {
+          "property": "/properties/confidence",
+          "dataset": "Overture",
+          "license": "CDLA-Permissive-2.0",
+          "record_id": null,
+          "update_time": "2026-09-17T22:52:12Z",
+          "confidence": null,
+          "between": null,
+          "provider": "overture",
+          "resource": "confidence_calculation",
+          "version": "2026-09-17"
+        }
+      ],
+      "operating_status": null,
+      "basic_category": "government_office",
+      "taxonomy": {
+        "primary": "government_office",
+        "hierarchy": [
+          "community_and_government",
+          "government_office"
+        ],
+        "alternates": null
+      },
+      "version": 11,
+      "bbox": {
+        "xmin": 71.45661926269531,
+        "xmax": 71.45663452148438,
+        "ymin": 51.150028228759766,
+        "ymax": 51.1500358581543
+      }
+    },
+    "source_records": [
+      {
+        "id": "overture:eb3f87b7-58c5-49f2-9e63-0b69d7d57c39",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=eb3f87b7-58c5-49f2-9e63-0b69d7d57c39",
+        "license": "CDLA-Permissive-2.0",
+        "release": "2026-09-23.1",
+        "collected_at": "2026-10-18T17:17:59.182870+00:00",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "upstream_sources": [
+          {
+            "property": "",
+            "dataset": "meta",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": "1584744481669817",
+            "update_time": "2026-09-14T00:00:00.000Z",
+            "confidence": 0.6340703964233398,
+            "between": null,
+            "provider": "meta",
+            "resource": "meta",
+            "version": "2026-09-14"
+          },
+          {
+            "property": "/properties/confidence",
+            "dataset": "Overture",
+            "license": "CDLA-Permissive-2.0",
+            "record_id": null,
+            "update_time": "2026-09-17T22:52:12Z",
+            "confidence": null,
+            "between": null,
+            "provider": "overture",
+            "resource": "confidence_calculation",
+            "version": "2026-09-17"
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "government_office",
+          "taxonomy": {
+            "primary": "government_office",
+            "hierarchy": [
+              "community_and_government",
+              "government_office"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        }
+      }
+    ],
+    "raw_taxonomy": {
+      "basic_category": "government_office",
+      "taxonomy": {
+        "primary": "government_office",
+        "hierarchy": [
+          "community_and_government",
+          "government_office"
+        ],
+        "alternates": null
+      },
+      "categories": null
+    },
+    "quality_flags": [
+      "source_classification_unverified"
+    ],
     "description": "Место «\"Акимат района \"Алматы\"\"» в Астане. Сведения источника: basic_category: government_office.",
-    "description_kind": "structured_template",
     "description_source": "website",
-    "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=eb3f87b7-58c5-49f2-9e63-0b69d7d57c39"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   },
   {
     "id": "osm:node/2715298255",
     "name": "трасса Каркаралы",
-    "category": "other",
     "lat": 51.0681204,
     "lon": 71.3999959,
+    "category": "other",
+    "source": "osm",
+    "source_url": "https://www.openstreetmap.org/node/2715298255",
+    "updated_at": "2026-10-19",
+    "collected_at": "2026-10-19",
+    "source_updated_at": null,
+    "name_en": null,
+    "name_kk": null,
+    "address": null,
     "opening_hours": null,
+    "phone": null,
+    "website": null,
+    "wheelchair": null,
+    "kid_friendly": null,
+    "rating": null,
+    "rating_count": null,
+    "tags": [
+      "public_transport=platform"
+    ],
+    "raw_tags": {
+      "bench": "yes",
+      "bus": "yes",
+      "highway": "bus_stop",
+      "name": "трасса Каркаралы",
+      "public_transport": "platform",
+      "shelter": "yes"
+    },
+    "source_records": [
+      {
+        "id": "osm:node/2715298255",
+        "source": "osm",
+        "source_url": "https://www.openstreetmap.org/node/2715298255",
+        "license": "ODbL-1.0",
+        "source_updated_at": null,
+        "collected_at": "2026-10-18T17:33:47.211954+00:00"
+      }
+    ],
     "description": "Место «трасса Каркаралы» в Астане. Сведения источника: public_transport: platform.",
-    "description_kind": "structured_template",
     "description_source": "osm",
-    "source_url": "https://www.openstreetmap.org/node/2715298255"
+    "description_kind": "structured_template",
+    "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
   }
 ]

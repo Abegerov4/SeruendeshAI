@@ -67,7 +67,7 @@ def test_citypass_reads_every_hydrated_attraction_with_source_coordinates():
     assert result[-1]["id"] == "citypass:14"
     assert result[0]["lat"] == 51.13 and result[0]["address"] == "Street 1"
     assert result[0]["opening_hours"] == "Mo-Su 09:00-21:00"
-    assert result[0]["description"] is None
+    assert result[0]["description"] == "not copied"
     assert result[0]["category"] == "museum"
 
 
@@ -247,3 +247,105 @@ def test_greenmall_name_uses_brand_heading_and_preserves_hours_separately():
     assert rows[0]['name'] == 'Espresso Day'
     assert rows[0]['raw_tags']['schedule_text'] == '10:00-21:00'
     assert rows[0]['opening_hours'] is None
+
+
+def _citypass_description_page(rows, *text_chunks):
+    payload = '5:' + json.dumps(["$", "Component", None, {"initialItems": rows}])
+    return ''.join('<script>self.__next_f.push(' + json.dumps([1, chunk]) + ')</script>'
+                   for chunk in (*text_chunks, payload))
+
+
+def _citypass_description_row(ident=7, **fields):
+    return {"id": ident, "slug": "museum-" + str(ident), "title": "Museum " + str(ident),
+            "latitude": "51.13", "longitude": "71.43", "tags": [], **fields}
+
+
+def test_citypass_resolves_split_utf8_flight_text_without_newlines_between_records():
+    from data.collect import web_sources as web
+    # Using character counts or treating each script as a whole record corrupts this text.
+    first = '<p>Кофе и өнер.</p>'
+    second = '<p>Мұражай &amp; парк.</p><p>Visit today. Third sentence.</p>'
+    chunks = ('1b:T' + format(len(first.encode('utf-8')), 'x') + ',', first[:8], first[8:],
+              '1c:T' + format(len(second.encode('utf-8')), 'x') + ',', second)
+    html = _citypass_description_page([_citypass_description_row(description='$1c')], *chunks)
+    record, = web.parse_citypass(html, 'https://astana.citypass.kz/ru/attractions')
+    assert record['description'] == 'Мұражай & парк. Visit today.'
+    assert record['description_kind'] == 'source'
+    assert record['description_source'] == 'website'
+    assert record['description_url'] == 'https://astana.citypass.kz/ru/attractions/museum-7'
+    assert record['description_attribution']['language'] == 'ru'
+    assert record['description_attribution']['source_id'] == 'citypass:7'
+    assert record['description_license'] == 'not_specified'
+
+
+def test_citypass_does_not_publish_missing_or_truncated_flight_references():
+    from data.collect import web_sources as web
+    rows = [_citypass_description_row(7, description='$1b'),
+            _citypass_description_row(8, description='$missing')]
+    html = _citypass_description_page(rows, '1b:Tffff,', '<p>Incomplete text</p>')
+    records = web.parse_citypass(html, 'https://astana.citypass.kz/en/attractions')
+    assert [record['description'] for record in records] == [None, None]
+    assert all(record.get('description_kind') is None for record in records)
+
+
+def test_citypass_holds_known_inconsistent_description_with_source_evidence():
+    from data.collect import web_sources as web
+    raw = '<p>Коллекция музыкальных инструментов.</p>'
+    html = _citypass_description_page([_citypass_description_row(121, title='Музей Искусств', description=raw)])
+    record, = web.parse_citypass(html, 'https://astana.citypass.kz/ru/attractions')
+    assert record['description'] is None
+    assert record['held_description'] == 'Коллекция музыкальных инструментов.'
+    assert record['description_review_status'] == 'pending'
+    assert record['description_review_reason']
+    assert record['description_review_evidence']['raw_description'] == raw
+    assert record['description_review_evidence']['source_id'] == 'citypass:121'
+    assert record['lat'] == 51.13
+
+
+def test_mega_description_is_plain_bounded_source_text_without_changing_hours():
+    from data.collect import web_sources as web
+    html = '''<div class="rest-card"><img class="logo" alt="logo_starbucks" src="/logo.svg">
+      <div class="rest-card__description"><p>Кофе &amp; выпечка.</p><p>Можно взять с собой.</p>
+      <script>Do not publish this.</script><p>Third sentence.</p></div>
+      <span class="address">MEGA Silk Way, 1 этаж<br>10:00-23:00</span></div>'''
+    record, = web.parse_mega_restaurants(html, 'https://restaurants.mega.kz/ru/?sm=2')
+    assert record['description'] == 'Кофе & выпечка. Можно взять с собой.'
+    assert record['description_source'] == 'website'
+    assert record['description_kind'] == 'source'
+    assert record['description_attribution']['language'] == 'ru'
+    assert record['opening_hours'] is None
+    assert record.get('lat') is None
+    long_html = html.replace('Кофе &amp; выпечка.', 'Слово ' * 100)
+    long_record, = web.parse_mega_restaurants(long_html, 'https://restaurants.mega.kz/ru/?sm=2')
+    assert 0 < len(long_record['description']) <= 400
+    assert '<' not in long_record['description']
+
+
+def test_cached_descriptions_reads_known_files_and_emits_only_source_id_patches(tmp_path):
+    import hashlib
+    from data.collect import web_sources as web
+    citypass_url = 'https://astana.citypass.kz/ru/attractions'
+    mega_url = 'https://restaurants.mega.kz/ru/?sm=2'
+    rows = [_citypass_description_row(description='<p>Музей Астаны.</p>'),
+            _citypass_description_row(121, description='<p>Музыкальная коллекция.</p>'),
+            _citypass_description_row(9, latitude=None, longitude=None, description='<p>Unlocated.</p>'),
+            _citypass_description_row(93, longitude='70.97', description='<p>Outside.</p>')]
+    citypass_html = _citypass_description_page(rows)
+    mega_html = '''<div class="rest-card"><img class="logo" alt="logo_starbucks" src="/logo.svg">
+        <p class="rest-card__description">Кофейня в торговом центре.</p>
+        <span class="address">MEGA Silk Way, 1 этаж<br>Ежедневно 08:00-23:00</span></div>'''
+    for url, html in [(citypass_url, citypass_html), (mega_url, mega_html)]:
+        (tmp_path / (hashlib.sha256(url.encode()).hexdigest() + '.txt')).write_text(html)
+    (tmp_path / 'unrelated.txt').write_text('Do not discover or parse arbitrary cache files.')
+    before = {path.name: path.read_bytes() for path in tmp_path.iterdir()}
+    patches, report = web.cached_descriptions(tmp_path)
+    assert len(patches) == 3
+    assert {patch['id'] for patch in patches if patch.get('description')} == {
+        'citypass:7', 'mega_silkway:8c61bf3ecd65602e'}
+    assert not any({'lat', 'lon', 'name', 'category', 'opening_hours'} & patch.keys() for patch in patches)
+    assert next(patch for patch in patches if patch['id'] == 'citypass:121')['description_review_status'] == 'pending'
+    assert all(patch['description_attribution']['raw_cache'] in before for patch in patches)
+    assert report['source_description_count'] == 2
+    assert report['held_description_count'] == 1
+    assert report['status'] == 'partial'  # English fallback cache is absent, never fetched.
+    assert {path.name: path.read_bytes() for path in tmp_path.iterdir()} == before

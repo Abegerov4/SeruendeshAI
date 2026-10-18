@@ -115,3 +115,84 @@ def test_cached_rerun_is_order_independent_and_does_not_drop_same_id_metadata():
     backward, _ = run([b, a])
     assert forward == backward
     assert len(forward) == 1 and forward[0]["phone"] == "+7 7172 123456"
+
+
+def test_secondary_source_name_survives_as_searchable_alias():
+    base = candidate(name="MEGA Silk Way", name_en="Mega Silkway", category="mall")
+    alternate = candidate("osm:node/2", name="Мега Силк Вей", category="mall",
+                          name_en="MEGA Silk Way Shopping Centre", name_kk="МЕГА сауда орталығы",
+                          verified_identity_parent_id=base["id"])
+    pois, _ = run([base, alternate])
+    assert len(pois) == 1
+    assert {"MEGA Silk Way", "Мега Силк Вей"} <= set(pois[0]["aliases"])
+    assert {"Mega Silkway", "MEGA Silk Way Shopping Centre", "МЕГА сауда орталығы"} <= set(pois[0]["aliases"])
+
+
+def test_wifi_fact_from_secondary_source_keeps_its_own_provenance():
+    base = candidate()
+    alternate = candidate("osm:node/2", source_url="https://www.openstreetmap.org/node/2",
+                          collected_at="2026-10-10", source_updated_at="2026-10-09",
+                          raw_tags={"internet_access": "wlan", "internet_access:fee": "customers"})
+    pois, _ = run([base, alternate])
+    assert len(pois) == 1
+    assert {"Wi-Fi", "интернет"} <= set(pois[0]["tags"])
+    assert {"field": "internet_access", "value": "wlan", "source_id": "osm:node/2",
+            "source_url": "https://www.openstreetmap.org/node/2", "collected_at": "2026-10-10",
+            "source_updated_at": "2026-10-09"} in pois[0]["amenity_facts"]
+    assert not any("free" in tag.casefold() or "бесплат" in tag.casefold() for tag in pois[0]["tags"])
+
+
+def test_conflicting_internet_sources_do_not_produce_unqualified_wifi_tag():
+    yes = candidate(raw_tags={"internet_access": "wlan"})
+    no = candidate("osm:node/2", raw_tags={"internet_access": "no"})
+    pois, _ = run([yes, no])
+    assert len(pois) == 1
+    assert "Wi-Fi" not in pois[0]["tags"]
+    assert {fact["value"] for fact in pois[0]["amenity_facts"]} == {"wlan", "no"}
+    assert "conflicting_internet_access" in pois[0]["quality_flags"]
+
+
+def test_held_source_description_is_auditable_and_not_used_as_description():
+    raw = candidate(held_description="Disputed identity text.", description_review_status="pending",
+                    description_review_reason="Source title and text identify different museums.",
+                    description_url="https://example.org/museum", description_license="not_specified",
+                    description_attribution={"language": "ru", "raw_cache_sha256": "original-cache-hash"},
+                    description_review_evidence={"resolved_description_html": "<p>Disputed identity text.</p>"})
+    pois, _ = run([raw])
+    assert pois[0]["description_kind"] == "structured_template"
+    assert "Disputed identity" not in pois[0]["description"]
+    assert pois[0]["held_descriptions"][0]["text"] == "Disputed identity text."
+    assert pois[0]["held_descriptions"][0]["source_id"] == raw["id"]
+    assert "description_attribution" not in pois[0]
+    base = candidate("osm:node/2", description="Existing source text.", description_source="osm")
+    merged = run([base, raw])[0][0]
+    held = merged["held_descriptions"][0]
+    assert held["description_attribution"] == {"language": "ru", "raw_cache_sha256": "original-cache-hash"}
+    assert held["description_license"] == "not_specified"
+    assert held["review_evidence"] == {"resolved_description_html": "<p>Disputed identity text.</p>"}
+
+
+def test_unverified_provider_category_does_not_confirm_child_suitability():
+    raw = candidate(category="playground", source="overture", quality_flags=["source_classification_unverified"])
+    poi = run([raw])[0][0]
+    assert poi["category"] == "playground"
+    assert poi["kid_friendly"] is None
+    assert "source_classification_unverified" in poi["quality_flags"]
+
+
+def test_derived_metadata_does_not_change_existing_primary_identity():
+    base = candidate("osm:node/2", aliases=["Coffee point"], phone="111")
+    secondary = candidate("osm:node/1", raw_tags={"internet_access": "wlan"}, phone="222")
+    pois, _ = run([base, secondary])
+    assert pois[0]["id"] == "osm:node/2"
+    assert pois[0]["phone"] == "111"
+    assert {"field": "phone", "value": "222", "source_id": "osm:node/1"} in pois[0]["field_conflicts"]
+
+
+def test_preserved_search_names_do_not_expand_identity_matching_mid_pass():
+    base = candidate(name="Alpha", name_en="Alpha")
+    translated = candidate("wikipedia:1", name="Beta", name_en="Alpha", source="wikipedia")
+    possible_namesake = candidate("overture:1", name="Beta", source="overture")
+    pois, _ = run([base, translated, possible_namesake])
+    assert {p["id"] for p in pois} == {base["id"], "overture:1"}
+    assert "Beta" in next(p for p in pois if p["id"] == base["id"])["aliases"]

@@ -1,0 +1,1188 @@
+{
+  "reviewed_on": "2026-10-19",
+  "mode": "bm25",
+  "paid_provider_calls": 0,
+  "baseline": {
+    "dataset_sha256": "1f815df354ad990d902d76c8676a91013f2d8288a7330e8c3b75a2666db29b74",
+    "summary": {
+      "total_cases": 35,
+      "evaluated_cases": 35,
+      "not_evaluated_cases": 0,
+      "error_cases": 0,
+      "hit_cases": 23,
+      "miss_cases": 12,
+      "relevant_ids": 324,
+      "matched_relevant_ids": 58,
+      "hit_at_5": 0.6571428571428571,
+      "macro_recall_at_5": 0.49646846124344096,
+      "micro_recall_at_5": 0.17901234567901234,
+      "by_type": {
+        "fact": {
+          "total_cases": 4,
+          "evaluated_cases": 4,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 1,
+          "miss_cases": 3,
+          "relevant_ids": 4,
+          "matched_relevant_ids": 1,
+          "hit_at_5": 0.25,
+          "macro_recall_at_5": 0.25,
+          "micro_recall_at_5": 0.25
+        },
+        "named": {
+          "total_cases": 20,
+          "evaluated_cases": 20,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 12,
+          "miss_cases": 8,
+          "relevant_ids": 21,
+          "matched_relevant_ids": 12,
+          "hit_at_5": 0.6,
+          "macro_recall_at_5": 0.6,
+          "micro_recall_at_5": 0.5714285714285714
+        },
+        "nearby": {
+          "total_cases": 11,
+          "evaluated_cases": 11,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 10,
+          "miss_cases": 1,
+          "relevant_ids": 299,
+          "matched_relevant_ids": 45,
+          "hit_at_5": 0.9090909090909091,
+          "macro_recall_at_5": 0.39785419486549395,
+          "micro_recall_at_5": 0.1505016722408027
+        }
+      },
+      "by_lang": {
+        "en": {
+          "total_cases": 5,
+          "evaluated_cases": 5,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 3,
+          "miss_cases": 2,
+          "relevant_ids": 20,
+          "matched_relevant_ids": 7,
+          "hit_at_5": 0.6,
+          "macro_recall_at_5": 0.4625,
+          "micro_recall_at_5": 0.35
+        },
+        "kk": {
+          "total_cases": 3,
+          "evaluated_cases": 3,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 2,
+          "miss_cases": 1,
+          "relevant_ids": 31,
+          "matched_relevant_ids": 6,
+          "hit_at_5": 0.6666666666666666,
+          "macro_recall_at_5": 0.39080459770114945,
+          "micro_recall_at_5": 0.1935483870967742
+        },
+        "ru": {
+          "total_cases": 27,
+          "evaluated_cases": 27,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 18,
+          "miss_cases": 9,
+          "relevant_ids": 273,
+          "matched_relevant_ids": 45,
+          "hit_at_5": 0.6666666666666666,
+          "macro_recall_at_5": 0.5144993463117402,
+          "micro_recall_at_5": 0.16483516483516483
+        }
+      }
+    },
+    "data_stats": {
+      "count": 14009,
+      "leisure_count": 2761,
+      "source_description_count": 251,
+      "leisure_source_description_count": 19,
+      "cafe_source_description_count": 0,
+      "opening_hours_count": 2083,
+      "leisure_opening_hours_count": 388,
+      "kid_friendly_true_count": 6,
+      "cafe_wlan_source_count": 23,
+      "cafe_searchable_wifi_count": 0
+    }
+  },
+  "after": {
+    "dataset_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+    "summary": {
+      "total_cases": 35,
+      "evaluated_cases": 35,
+      "not_evaluated_cases": 0,
+      "error_cases": 0,
+      "hit_cases": 32,
+      "miss_cases": 3,
+      "relevant_ids": 324,
+      "matched_relevant_ids": 68,
+      "hit_at_5": 0.9142857142857143,
+      "macro_recall_at_5": 0.7536113183862981,
+      "micro_recall_at_5": 0.20987654320987653,
+      "by_type": {
+        "fact": {
+          "total_cases": 4,
+          "evaluated_cases": 4,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 4,
+          "miss_cases": 0,
+          "relevant_ids": 4,
+          "matched_relevant_ids": 4,
+          "hit_at_5": 1.0,
+          "macro_recall_at_5": 1.0,
+          "micro_recall_at_5": 1.0
+        },
+        "named": {
+          "total_cases": 20,
+          "evaluated_cases": 20,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 18,
+          "miss_cases": 2,
+          "relevant_ids": 21,
+          "matched_relevant_ids": 19,
+          "hit_at_5": 0.9,
+          "macro_recall_at_5": 0.9,
+          "micro_recall_at_5": 0.9047619047619048
+        },
+        "nearby": {
+          "total_cases": 11,
+          "evaluated_cases": 11,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 10,
+          "miss_cases": 1,
+          "relevant_ids": 299,
+          "matched_relevant_ids": 45,
+          "hit_at_5": 0.9090909090909091,
+          "macro_recall_at_5": 0.39785419486549395,
+          "micro_recall_at_5": 0.1505016722408027
+        }
+      },
+      "by_lang": {
+        "en": {
+          "total_cases": 5,
+          "evaluated_cases": 5,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 5,
+          "miss_cases": 0,
+          "relevant_ids": 20,
+          "matched_relevant_ids": 9,
+          "hit_at_5": 1.0,
+          "macro_recall_at_5": 0.8625,
+          "micro_recall_at_5": 0.45
+        },
+        "kk": {
+          "total_cases": 3,
+          "evaluated_cases": 3,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 3,
+          "miss_cases": 0,
+          "relevant_ids": 31,
+          "matched_relevant_ids": 7,
+          "hit_at_5": 1.0,
+          "macro_recall_at_5": 0.7241379310344828,
+          "micro_recall_at_5": 0.22580645161290322
+        },
+        "ru": {
+          "total_cases": 27,
+          "evaluated_cases": 27,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 24,
+          "miss_cases": 3,
+          "relevant_ids": 273,
+          "matched_relevant_ids": 52,
+          "hit_at_5": 0.8888888888888888,
+          "macro_recall_at_5": 0.7367215685339624,
+          "micro_recall_at_5": 0.19047619047619047
+        }
+      }
+    },
+    "data_stats": {
+      "count": 14006,
+      "leisure_count": 2759,
+      "source_description_count": 269,
+      "leisure_source_description_count": 37,
+      "cafe_source_description_count": 1,
+      "opening_hours_count": 2083,
+      "leisure_opening_hours_count": 388,
+      "kid_friendly_true_count": 3,
+      "cafe_wlan_source_count": 23,
+      "cafe_searchable_wifi_count": 23
+    }
+  },
+  "golden_sha256": "aa146a675a7ba6f09959f5c12fc8e6723c0424efd8938d9039c5558074c98c8b",
+  "evaluator_unchanged": true,
+  "gained_case_ids": [
+    "n04",
+    "n09",
+    "n10",
+    "n13",
+    "n15",
+    "n18",
+    "s01",
+    "s02",
+    "s03"
+  ],
+  "regressed_case_ids": [],
+  "remaining_miss_case_ids": [
+    "n11",
+    "n14",
+    "g08"
+  ],
+  "case_changes": [
+    {
+      "id": "n01",
+      "query": "Байтерек",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "wikipedia:en:7148733",
+        "osm:node/13612447987",
+        "osm:way/1513435684",
+        "osm:way/230401645",
+        "citypass:57"
+      ],
+      "after_top5_ids": [
+        "osm:way/230401645",
+        "osm:node/13612447987",
+        "osm:way/1513435684",
+        "overture:34dd9c9c-c302-4c9e-a202-3f907ebe2171",
+        "osm:node/10576157316"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n02",
+      "query": "монумент со смотровой площадкой Байтерек",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:node/2636792628",
+        "citypass:57",
+        "osm:way/230401645",
+        "wikipedia:ru:8905878",
+        "wikipedia:en:7148733"
+      ],
+      "after_top5_ids": [
+        "osm:way/230401645",
+        "osm:node/2636792628",
+        "osm:node/13612447987",
+        "wikipedia:ru:8905878",
+        "osm:way/1513435684"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n03",
+      "query": "торговый центр Хан Шатыр",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:way/460703779",
+        "osm:node/4109037548",
+        "osm:node/4109037549",
+        "overture:7a588df2-8753-400a-9c06-c9a727127be9",
+        "marwin:s17"
+      ],
+      "after_top5_ids": [
+        "osm:way/460703779",
+        "osm:node/4109037548",
+        "osm:node/4109037549",
+        "marwin:s17",
+        "overture:7a588df2-8753-400a-9c06-c9a727127be9"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n04",
+      "query": "Мега Силк Вей",
+      "before_hit": false,
+      "after_hit": true,
+      "before_top5_ids": [
+        "wikipedia:ru:10039145",
+        "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+        "overture:a0b198d9-e501-4375-b903-d4985d8fd169",
+        "overture:65ef2c59-cc6b-49f3-9193-9b4af81e01be",
+        "osm:node/13397061028"
+      ],
+      "after_top5_ids": [
+        "wikipedia:ru:10039145",
+        "osm:way/499328514",
+        "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+        "overture:a0b198d9-e501-4375-b903-d4985d8fd169",
+        "overture:65ef2c59-cc6b-49f3-9193-9b4af81e01be"
+      ],
+      "before_recall_at_5": 0.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n05",
+      "query": "театр оперы и балета Астана Опера",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:way/917478479",
+        "overture:d030a466-7c5e-40ce-807f-1942fe0348fb",
+        "wikipedia:ru:8732079",
+        "osm:node/4109037546",
+        "osm:node/4109037547"
+      ],
+      "after_top5_ids": [
+        "osm:way/917478479",
+        "overture:d030a466-7c5e-40ce-807f-1942fe0348fb",
+        "wikipedia:ru:8732079",
+        "osm:node/4109037546",
+        "osm:node/4109037547"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n06",
+      "query": "Национальный музей Казахстана",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "wikipedia:ru:5116239",
+        "wikipedia:ru:10287708",
+        "osm:node/13926684562",
+        "osm:node/4894937300",
+        "overture:95554f09-c92a-4889-a581-6b43aba78128"
+      ],
+      "after_top5_ids": [
+        "wikipedia:ru:5116239",
+        "osm:node/13926684562",
+        "osm:node/4894937300",
+        "wikipedia:ru:10287708",
+        "overture:95554f09-c92a-4889-a581-6b43aba78128"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n07",
+      "query": "ботанический сад",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:way/1456208630",
+        "osm:way/1196402246",
+        "osm:way/1470723968",
+        "osm:way/556574284",
+        "osm:node/4929468025"
+      ],
+      "after_top5_ids": [
+        "osm:way/1196402246",
+        "osm:way/1456208630",
+        "osm:node/10677613224",
+        "osm:node/10677632238",
+        "osm:way/1470723968"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n08",
+      "query": "карта Казахстана в миниатюре Атамекен",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "overture:95554f09-c92a-4889-a581-6b43aba78128",
+        "overture:8ac37848-609b-4fb5-9ab2-c76a52562788",
+        "osm:node/13081694250",
+        "osm:way/1460700597",
+        "overture:43d86c92-e07d-457f-9f97-d44035f28e67"
+      ],
+      "after_top5_ids": [
+        "overture:95554f09-c92a-4889-a581-6b43aba78128",
+        "osm:way/1460700597",
+        "osm:way/242364773",
+        "osm:node/13081694250",
+        "overture:8ac37848-609b-4fb5-9ab2-c76a52562788"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n09",
+      "query": "парк влюблённых",
+      "before_hit": false,
+      "after_hit": true,
+      "before_top5_ids": [
+        "wikipedia:ru:9433896",
+        "osm:way/258158810",
+        "osm:way/258173901",
+        "osm:way/556574299",
+        "overture:e9f26578-8d9c-4ed0-ad8b-75bb19f54cde"
+      ],
+      "after_top5_ids": [
+        "wikipedia:ru:9433896",
+        "osm:way/37884583",
+        "osm:way/258158810",
+        "osm:way/258173901",
+        "osm:way/556574299"
+      ],
+      "before_recall_at_5": 0.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n10",
+      "query": "Президентский парк",
+      "before_hit": false,
+      "after_hit": true,
+      "before_top5_ids": [
+        "wikipedia:ru:8781717",
+        "overture:e265b4b3-b422-4390-be13-b880558923de",
+        "osm:way/258158810",
+        "osm:way/258173901",
+        "osm:way/556574299"
+      ],
+      "after_top5_ids": [
+        "wikipedia:ru:8781717",
+        "osm:way/112177946",
+        "osm:way/243041606",
+        "overture:e265b4b3-b422-4390-be13-b880558923de",
+        "osm:way/258158810"
+      ],
+      "before_recall_at_5": 0.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n11",
+      "query": "триумфальная арка Мангилик Ел",
+      "before_hit": false,
+      "after_hit": false,
+      "before_top5_ids": [
+        "osm:node/12725611629",
+        "osm:node/12725611631",
+        "citypass:84",
+        "osm:relation/19999762",
+        "overture:9cfd893d-a2ee-44dc-aba9-9d3112f81590"
+      ],
+      "after_top5_ids": [
+        "osm:node/12725611629",
+        "osm:node/12725611631",
+        "citypass:84",
+        "osm:relation/19999762",
+        "overture:9cfd893d-a2ee-44dc-aba9-9d3112f81590"
+      ],
+      "before_recall_at_5": 0.0,
+      "after_recall_at_5": 0.0
+    },
+    {
+      "id": "n12",
+      "query": "ледовый дворец Алау, покататься на коньках",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "overture:ba9f57f1-1df9-46b1-8d8a-a8e35d0edc04",
+        "wikipedia:ru:3433053",
+        "osm:way/166267459",
+        "osm:way/663143306",
+        "wikipedia:ru:2960585"
+      ],
+      "after_top5_ids": [
+        "wikipedia:ru:3433053",
+        "overture:ba9f57f1-1df9-46b1-8d8a-a8e35d0edc04",
+        "osm:node/2715048959",
+        "osm:node/2715048960",
+        "osm:way/166267459"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n13",
+      "query": "библиотека первого президента",
+      "before_hit": false,
+      "after_hit": true,
+      "before_top5_ids": [
+        "citypass:97",
+        "overture:5d3730f6-1558-4b1c-8e96-15f76a18cb86",
+        "overture:352f77f3-6bd5-4438-83b6-b10c3c765f06",
+        "wikipedia:ru:8835041",
+        "wikipedia:ru:2398188"
+      ],
+      "after_top5_ids": [
+        "osm:way/424923382",
+        "wikipedia:ru:8835041",
+        "overture:5d3730f6-1558-4b1c-8e96-15f76a18cb86",
+        "overture:352f77f3-6bd5-4438-83b6-b10c3c765f06",
+        "citypass:97"
+      ],
+      "before_recall_at_5": 0.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n14",
+      "query": "монумент Казак Ели",
+      "before_hit": false,
+      "after_hit": false,
+      "before_top5_ids": [
+        "wikipedia:ru:9962917",
+        "wikipedia:ru:8905878",
+        "osm:node/2636792628",
+        "wikipedia:ru:8326781",
+        "citypass:57"
+      ],
+      "after_top5_ids": [
+        "wikipedia:ru:9962917",
+        "wikipedia:ru:8905878",
+        "osm:node/2636792628",
+        "wikipedia:ru:8326781",
+        "osm:way/230401645"
+      ],
+      "before_recall_at_5": 0.0,
+      "after_recall_at_5": 0.0
+    },
+    {
+      "id": "n15",
+      "query": "музей первого президента",
+      "before_hit": false,
+      "after_hit": true,
+      "before_top5_ids": [
+        "citypass:97",
+        "overture:5d3730f6-1558-4b1c-8e96-15f76a18cb86",
+        "wikipedia:ru:8835041",
+        "overture:352f77f3-6bd5-4438-83b6-b10c3c765f06",
+        "wikipedia:ru:2398188"
+      ],
+      "after_top5_ids": [
+        "overture:5d3730f6-1558-4b1c-8e96-15f76a18cb86",
+        "wikipedia:ru:8835041",
+        "citypass:97",
+        "osm:way/51431624",
+        "overture:352f77f3-6bd5-4438-83b6-b10c3c765f06"
+      ],
+      "before_recall_at_5": 0.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n16",
+      "query": "японский сад",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:way/1470723968",
+        "overture:d6b953ec-f122-47d7-8ad3-274e6bafe449",
+        "osm:way/556574284",
+        "osm:node/4929468025",
+        "osm:node/4763352922"
+      ],
+      "after_top5_ids": [
+        "osm:way/1470723968",
+        "overture:d6b953ec-f122-47d7-8ad3-274e6bafe449",
+        "osm:way/556574284",
+        "osm:node/4929468025",
+        "osm:node/4763352922"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n17",
+      "query": "Kazakhstan national museum",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "wikipedia:en:58149328",
+        "osm:node/4894937300",
+        "overture:32f0c5c2-2477-47e0-a184-02a129fd3cb5",
+        "wikipedia:en:62054606",
+        "wikipedia:en:79854310"
+      ],
+      "after_top5_ids": [
+        "osm:node/4894937300",
+        "wikipedia:en:58149328",
+        "overture:32f0c5c2-2477-47e0-a184-02a129fd3cb5",
+        "wikipedia:en:62054606",
+        "wikipedia:en:79854310"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n18",
+      "query": "Khan Shatyr shopping center",
+      "before_hit": false,
+      "after_hit": true,
+      "before_top5_ids": [
+        "overture:2d5ab331-ac7a-44d3-ba58-cac35ece112e",
+        "overture:574cc53e-7bd6-46ce-b6d7-da2d24b4cf75",
+        "overture:00d5ed59-84d0-4b9d-b41a-cca14a22f1a1",
+        "overture:8e86a815-5fe5-4b85-87fc-19497bfcc00c",
+        "overture:4dcd5841-d1f8-4fd9-bed4-295be918d6d6"
+      ],
+      "after_top5_ids": [
+        "osm:way/460703779",
+        "overture:2d5ab331-ac7a-44d3-ba58-cac35ece112e",
+        "overture:574cc53e-7bd6-46ce-b6d7-da2d24b4cf75",
+        "overture:00d5ed59-84d0-4b9d-b41a-cca14a22f1a1",
+        "overture:8e86a815-5fe5-4b85-87fc-19497bfcc00c"
+      ],
+      "before_recall_at_5": 0.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n19",
+      "query": "Abu Dhabi Plaza mall",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:way/762780007",
+        "overture:6a6492a4-0062-467a-802f-1eaca3fdacd0",
+        "overture:5aa01ab3-c62a-4a1f-9149-c8d6cb8c27ac",
+        "overture:799f02dd-fa0c-4cd0-bd98-b270024a8b8d",
+        "osm:node/10170946745"
+      ],
+      "after_top5_ids": [
+        "osm:way/762780007",
+        "overture:6a6492a4-0062-467a-802f-1eaca3fdacd0",
+        "overture:5aa01ab3-c62a-4a1f-9149-c8d6cb8c27ac",
+        "overture:799f02dd-fa0c-4cd0-bd98-b270024a8b8d",
+        "osm:node/10170946745"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "n20",
+      "query": "Бәйтерек мұнарасы",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "wikipedia:en:7148733",
+        "osm:node/13612447987",
+        "osm:way/1513435684",
+        "osm:way/230401645",
+        "citypass:57"
+      ],
+      "after_top5_ids": [
+        "osm:way/230401645",
+        "osm:node/13612447987",
+        "osm:way/1513435684",
+        "overture:34dd9c9c-c302-4c9e-a202-3f907ebe2171",
+        "osm:node/10576157316"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "g01",
+      "query": "выпить кофе",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:node/10564988185",
+        "overture:d12137df-ec03-4ce0-af89-b80381b763fa",
+        "osm:node/12041597369",
+        "osm:node/14089471172",
+        "osm:node/1843876259"
+      ],
+      "after_top5_ids": [
+        "osm:node/10564988185",
+        "overture:d12137df-ec03-4ce0-af89-b80381b763fa",
+        "osm:node/12041597369",
+        "osm:node/14089471172",
+        "osm:node/1843876259"
+      ],
+      "before_recall_at_5": 0.08064516129032258,
+      "after_recall_at_5": 0.08064516129032258
+    },
+    {
+      "id": "g02",
+      "query": "где поесть",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:node/12917092385",
+        "osm:node/12917095584",
+        "osm:way/1449317875",
+        "osm:node/12917108965",
+        "osm:node/3404172551"
+      ],
+      "after_top5_ids": [
+        "osm:node/12917092385",
+        "osm:node/12917095584",
+        "osm:way/1449317875",
+        "osm:node/12917108965",
+        "osm:node/3404172551"
+      ],
+      "before_recall_at_5": 0.044642857142857144,
+      "after_recall_at_5": 0.044642857142857144
+    },
+    {
+      "id": "g03",
+      "query": "погулять в парке",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:way/1467797207",
+        "osm:way/1470723968",
+        "osm:way/1456208624"
+      ],
+      "after_top5_ids": [
+        "osm:way/1467797207",
+        "osm:way/1470723968",
+        "osm:way/1456208624"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "g04",
+      "query": "бар посидеть вечером",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:node/2826184438",
+        "osm:node/2825987611",
+        "osm:node/4199896989",
+        "osm:node/8595205064",
+        "osm:node/10170592263"
+      ],
+      "after_top5_ids": [
+        "osm:node/2826184438",
+        "osm:node/2825987611",
+        "osm:node/4199896989",
+        "osm:node/8595205064",
+        "osm:node/10170592263"
+      ],
+      "before_recall_at_5": 0.13157894736842105,
+      "after_recall_at_5": 0.13157894736842105
+    },
+    {
+      "id": "g05",
+      "query": "сходить в музей",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "overture:d8618d37-bebb-42da-b23d-0f9009deead7",
+        "overture:dd3617a1-a856-439a-919d-306b4f7c1c9e",
+        "osm:node/4894937300",
+        "overture:1d46ff10-4188-4495-b4a5-0501cf6120bf",
+        "osm:way/963855443"
+      ],
+      "after_top5_ids": [
+        "overture:d8618d37-bebb-42da-b23d-0f9009deead7",
+        "overture:dd3617a1-a856-439a-919d-306b4f7c1c9e",
+        "osm:node/4894937300",
+        "overture:1d46ff10-4188-4495-b4a5-0501cf6120bf",
+        "osm:way/963855443"
+      ],
+      "before_recall_at_5": 0.625,
+      "after_recall_at_5": 0.625
+    },
+    {
+      "id": "g06",
+      "query": "театр или спектакль",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:way/917478479",
+        "osm:way/1460537088"
+      ],
+      "after_top5_ids": [
+        "osm:way/917478479",
+        "osm:way/1460537088"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "g07",
+      "query": "торговый центр, шопинг",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "overture:14e81466-6409-4d4a-a57e-e8652808d93c",
+        "overture:dd46eb5e-8065-42e5-accc-52dcf8718026",
+        "overture:f5d71858-2f82-4cd4-b9d5-b13752266f76",
+        "osm:way/240909210",
+        "osm:way/915690898"
+      ],
+      "after_top5_ids": [
+        "overture:14e81466-6409-4d4a-a57e-e8652808d93c",
+        "overture:dd46eb5e-8065-42e5-accc-52dcf8718026",
+        "overture:f5d71858-2f82-4cd4-b9d5-b13752266f76",
+        "osm:way/915690898",
+        "osm:way/240909210"
+      ],
+      "before_recall_at_5": 0.38461538461538464,
+      "after_recall_at_5": 0.38461538461538464
+    },
+    {
+      "id": "g08",
+      "query": "тихо почитать книги",
+      "before_hit": false,
+      "after_hit": false,
+      "before_top5_ids": [],
+      "after_top5_ids": [],
+      "before_recall_at_5": 0.0,
+      "after_recall_at_5": 0.0
+    },
+    {
+      "id": "g09",
+      "query": "coffee",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:node/14275682079",
+        "osm:node/9047331879",
+        "overture:6e82f8c5-48f7-4fab-b0c6-929cb742c9fc",
+        "overture:59c3c433-1bde-4053-8691-11339b02c551",
+        "overture:a949d17c-3b84-4fc1-9ecc-e2cfaf1d3cba"
+      ],
+      "after_top5_ids": [
+        "osm:node/14275682079",
+        "osm:node/9047331879",
+        "overture:6e82f8c5-48f7-4fab-b0c6-929cb742c9fc",
+        "overture:59c3c433-1bde-4053-8691-11339b02c551",
+        "overture:a949d17c-3b84-4fc1-9ecc-e2cfaf1d3cba"
+      ],
+      "before_recall_at_5": 0.3125,
+      "after_recall_at_5": 0.3125
+    },
+    {
+      "id": "g10",
+      "query": "кофе ішу",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:node/11131442512",
+        "osm:node/13448000429",
+        "osm:node/12917060979",
+        "osm:node/12917095126",
+        "osm:node/13333371893"
+      ],
+      "after_top5_ids": [
+        "osm:node/11131442512",
+        "osm:node/13448000429",
+        "osm:node/12917060979",
+        "osm:node/12917095126",
+        "osm:node/13333371893"
+      ],
+      "before_recall_at_5": 0.1724137931034483,
+      "after_recall_at_5": 0.1724137931034483
+    },
+    {
+      "id": "s01",
+      "query": "кафе с Wi-Fi",
+      "before_hit": false,
+      "after_hit": true,
+      "before_top5_ids": [
+        "overture:b33e2fbe-39f8-44bb-be37-28cb323733fa",
+        "overture:42683af7-67a1-4103-b024-96c3f811abcf",
+        "osm:node/10564988185",
+        "osm:node/12041597369",
+        "osm:node/14089471172"
+      ],
+      "after_top5_ids": [
+        "osm:node/4853972122",
+        "overture:b33e2fbe-39f8-44bb-be37-28cb323733fa",
+        "overture:42683af7-67a1-4103-b024-96c3f811abcf",
+        "osm:node/10564988185",
+        "osm:node/12041597369"
+      ],
+      "before_recall_at_5": 0.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "s02",
+      "query": "cafe with Wi-Fi",
+      "before_hit": false,
+      "after_hit": true,
+      "before_top5_ids": [
+        "overture:705289e4-54b5-4c6e-b496-0a233e14ff91",
+        "overture:9492449d-ff2c-45a5-a88c-7bbfaf329dd0",
+        "osm:node/10564988185",
+        "osm:node/12041597369",
+        "osm:node/14089471172"
+      ],
+      "after_top5_ids": [
+        "osm:node/4853972122",
+        "overture:705289e4-54b5-4c6e-b496-0a233e14ff91",
+        "overture:9492449d-ff2c-45a5-a88c-7bbfaf329dd0",
+        "osm:node/10564988185",
+        "osm:node/12041597369"
+      ],
+      "before_recall_at_5": 0.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "s03",
+      "query": "Wi-Fi бар кофехана",
+      "before_hit": false,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:node/10564988185",
+        "osm:node/12041597369",
+        "osm:node/14089471172",
+        "osm:node/1843876259",
+        "osm:node/4133854089"
+      ],
+      "after_top5_ids": [
+        "osm:node/4853972122",
+        "osm:node/10564988185",
+        "osm:node/12041597369",
+        "osm:node/14089471172",
+        "osm:node/1843876259"
+      ],
+      "before_recall_at_5": 0.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "s04",
+      "query": "детская площадка",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:node/2691137163",
+        "overture:151d0bdc-e684-46ad-9477-4d6b71696efd",
+        "overture:f2169d69-4ea3-491c-9796-bbb0b395efd9",
+        "overture:9745e38e-d61a-4031-addc-56d62beb5ed2",
+        "overture:dfc5801a-b1c5-4db1-b0c6-e141364b7878"
+      ],
+      "after_top5_ids": [
+        "osm:node/2691137163",
+        "overture:151d0bdc-e684-46ad-9477-4d6b71696efd",
+        "overture:f2169d69-4ea3-491c-9796-bbb0b395efd9",
+        "overture:9745e38e-d61a-4031-addc-56d62beb5ed2",
+        "overture:dfc5801a-b1c5-4db1-b0c6-e141364b7878"
+      ],
+      "before_recall_at_5": 1.0,
+      "after_recall_at_5": 1.0
+    },
+    {
+      "id": "s05",
+      "query": "кафе рядом с аэропортом",
+      "before_hit": true,
+      "after_hit": true,
+      "before_top5_ids": [
+        "osm:node/13408518301",
+        "osm:node/6552437087",
+        "osm:node/10976892637",
+        "overture:53abf1d7-d3f8-4f75-9df7-f6909a6c32d2",
+        "overture:cb7d45f2-581f-4c72-9383-1fae80798ff5"
+      ],
+      "after_top5_ids": [
+        "osm:node/13408518301",
+        "osm:node/6552437087",
+        "osm:node/10976892637",
+        "overture:53abf1d7-d3f8-4f75-9df7-f6909a6c32d2",
+        "overture:cb7d45f2-581f-4c72-9383-1fae80798ff5"
+      ],
+      "before_recall_at_5": 0.625,
+      "after_recall_at_5": 0.625
+    }
+  ],
+  "legacy30": {
+    "before": {
+      "total_cases": 30,
+      "evaluated_cases": 30,
+      "not_evaluated_cases": 0,
+      "error_cases": 0,
+      "hit_cases": 21,
+      "miss_cases": 9,
+      "relevant_ids": 314,
+      "matched_relevant_ids": 52,
+      "hit_at_5": 0.7,
+      "macro_recall_at_5": 0.5250465381173478,
+      "micro_recall_at_5": 0.16560509554140126,
+      "by_type": {
+        "named": {
+          "total_cases": 20,
+          "evaluated_cases": 20,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 12,
+          "miss_cases": 8,
+          "relevant_ids": 23,
+          "matched_relevant_ids": 12,
+          "hit_at_5": 0.6,
+          "macro_recall_at_5": 0.6,
+          "micro_recall_at_5": 0.5217391304347826
+        },
+        "nearby": {
+          "total_cases": 10,
+          "evaluated_cases": 10,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 9,
+          "miss_cases": 1,
+          "relevant_ids": 291,
+          "matched_relevant_ids": 40,
+          "hit_at_5": 0.9,
+          "macro_recall_at_5": 0.37513961435204335,
+          "micro_recall_at_5": 0.13745704467353953
+        }
+      },
+      "by_lang": {
+        "en": {
+          "total_cases": 4,
+          "evaluated_cases": 4,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 3,
+          "miss_cases": 1,
+          "relevant_ids": 19,
+          "matched_relevant_ids": 7,
+          "hit_at_5": 0.75,
+          "macro_recall_at_5": 0.578125,
+          "micro_recall_at_5": 0.3684210526315789
+        },
+        "kk": {
+          "total_cases": 2,
+          "evaluated_cases": 2,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 2,
+          "miss_cases": 0,
+          "relevant_ids": 30,
+          "matched_relevant_ids": 6,
+          "hit_at_5": 1.0,
+          "macro_recall_at_5": 0.5862068965517242,
+          "micro_recall_at_5": 0.2
+        },
+        "ru": {
+          "total_cases": 24,
+          "evaluated_cases": 24,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 16,
+          "miss_cases": 8,
+          "relevant_ids": 265,
+          "matched_relevant_ids": 39,
+          "hit_at_5": 0.6666666666666666,
+          "macro_recall_at_5": 0.5111034312673745,
+          "micro_recall_at_5": 0.1471698113207547
+        }
+      }
+    },
+    "after": {
+      "total_cases": 30,
+      "evaluated_cases": 30,
+      "not_evaluated_cases": 0,
+      "error_cases": 0,
+      "hit_cases": 27,
+      "miss_cases": 3,
+      "relevant_ids": 314,
+      "matched_relevant_ids": 59,
+      "hit_at_5": 0.9,
+      "macro_recall_at_5": 0.6917132047840144,
+      "micro_recall_at_5": 0.18789808917197454,
+      "by_type": {
+        "named": {
+          "total_cases": 20,
+          "evaluated_cases": 20,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 18,
+          "miss_cases": 2,
+          "relevant_ids": 23,
+          "matched_relevant_ids": 19,
+          "hit_at_5": 0.9,
+          "macro_recall_at_5": 0.85,
+          "micro_recall_at_5": 0.8260869565217391
+        },
+        "nearby": {
+          "total_cases": 10,
+          "evaluated_cases": 10,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 9,
+          "miss_cases": 1,
+          "relevant_ids": 291,
+          "matched_relevant_ids": 40,
+          "hit_at_5": 0.9,
+          "macro_recall_at_5": 0.37513961435204335,
+          "micro_recall_at_5": 0.13745704467353953
+        }
+      },
+      "by_lang": {
+        "en": {
+          "total_cases": 4,
+          "evaluated_cases": 4,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 4,
+          "miss_cases": 0,
+          "relevant_ids": 19,
+          "matched_relevant_ids": 8,
+          "hit_at_5": 1.0,
+          "macro_recall_at_5": 0.828125,
+          "micro_recall_at_5": 0.42105263157894735
+        },
+        "kk": {
+          "total_cases": 2,
+          "evaluated_cases": 2,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 2,
+          "miss_cases": 0,
+          "relevant_ids": 30,
+          "matched_relevant_ids": 6,
+          "hit_at_5": 1.0,
+          "macro_recall_at_5": 0.5862068965517242,
+          "micro_recall_at_5": 0.2
+        },
+        "ru": {
+          "total_cases": 24,
+          "evaluated_cases": 24,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 21,
+          "miss_cases": 3,
+          "relevant_ids": 265,
+          "matched_relevant_ids": 45,
+          "hit_at_5": 0.875,
+          "macro_recall_at_5": 0.6777700979340411,
+          "micro_recall_at_5": 0.16981132075471697
+        }
+      }
+    }
+  },
+  "source_preservation": {
+    "before_unique_source_ids": 14607,
+    "after_unique_source_ids": 14607,
+    "lost_source_ids": [],
+    "new_source_ids": [],
+    "changed_primary_ids": [
+      {
+        "source_id": "citypass:57",
+        "primary_id": "osm:way/230401645"
+      },
+      {
+        "source_id": "overture:d7cf8227-6a5d-4079-a09e-bf874cd9e267",
+        "primary_id": "osm:node/14270648501"
+      },
+      {
+        "source_id": "wikipedia:en:7148733",
+        "primary_id": "osm:way/230401645"
+      }
+    ],
+    "raw_cache_files_checked": 311,
+    "raw_cache_files_changed": 0
+  },
+  "limits": [
+    "Small reviewed retrieval benchmark; not a representative test of every city request.",
+    "Nearby labels confirm category/radius only, not quietness, child safety, hours today or travel feasibility.",
+    "No hybrid embeddings, external LLM, live HTTP frontend or second Ayat runtime validated.",
+    "Source operating facts were not refreshed online; original collection dates remain in source_records."
+  ]
+}

@@ -1,4 +1,33 @@
+import pytest
+
 from data.collect.quality import apply_quality_overrides
+
+
+def test_post_enrichment_review_does_not_change_pre_enrichment_candidates():
+    rows = [{"id": "osm:1", "name": "Place"}, {"id": "citypass:1", "name": "Place"}]
+    overrides = {"citypass:1": {"phase": "after_enrichment", "action": "verified_same_place",
+                               "target_id": "osm:1", "reason": "Reviewed identity"}}
+    before, quarantine, report = apply_quality_overrides(rows, overrides)
+    assert before == rows and not quarantine and not report["applied_overrides"]
+    after, _, report = apply_quality_overrides(rows, overrides, phase="after_enrichment")
+    assert after[1]["verified_identity_parent_id"] == "osm:1"
+    assert report["applied_overrides"] == [{"id": "citypass:1", "action": "verified_same_place"}]
+    assert "verified_identity_parent_id" not in rows[1]
+
+
+def test_legacy_review_is_applied_only_before_enrichment():
+    rows = [{"id": "osm:1", "name": "Place"}]
+    overrides = {"osm:1": {"action": "quarantine", "reason": "Reviewed source error"}}
+    after, quarantine, report = apply_quality_overrides(rows, overrides, phase="after_enrichment")
+    assert after == rows and not quarantine and not report["applied_overrides"]
+
+
+@pytest.mark.parametrize("phase", ["typo", None, ""])
+def test_unknown_review_phase_fails_instead_of_silently_ignoring_rules(phase):
+    with pytest.raises(ValueError, match="phase"):
+        apply_quality_overrides([{"id": "osm:1"}], {"osm:1": {"phase": phase, "action": "quarantine"}})
+    with pytest.raises(ValueError, match="phase"):
+        apply_quality_overrides([{"id": "osm:1"}], {}, phase=phase)
 
 
 def test_review_quarantines_suspect_location_without_rewriting_source_coordinates():
