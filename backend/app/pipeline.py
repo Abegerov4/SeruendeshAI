@@ -1,5 +1,6 @@
 """Оркестрация /api/recommend — 8 шагов из team/01_backend.md."""
 import logging
+import re
 import time
 import uuid
 from datetime import datetime
@@ -103,7 +104,9 @@ def recommend(req: RecommendRequest) -> RecommendResponse:
     return resp
 
 
-def recommend_with_stats(req: RecommendRequest, use_cache: bool = True) -> tuple[RecommendResponse, dict]:
+def recommend_with_stats(req: RecommendRequest, use_cache: bool = True,
+                         photo_landmark: dict | None = None) -> tuple[RecommendResponse, dict]:
+    """photo_landmark — место, распознанное по фото ({"lat","lon","label"}); заменяет GPS/ориентир из текста."""
     t0 = time.perf_counter()
     request_id = uuid.uuid4().hex[:12]
     now = (req.now or datetime.now(ASTANA_TZ))
@@ -115,6 +118,7 @@ def recommend_with_stats(req: RecommendRequest, use_cache: bool = True) -> tuple
         "t": req.time_budget_min, "m": req.mode, "l": req.lang,
         "p": req.profile.model_dump() if req.profile else None,
         "models": llm.models(), "override": llm.current_override(),
+        "photo": photo_landmark["label"] if photo_landmark else None,
     })
     if use_cache and (hit := cache.responses.get(key)):
         resp = RecommendResponse.model_validate({**hit, "request_id": request_id})
@@ -126,7 +130,7 @@ def recommend_with_stats(req: RecommendRequest, use_cache: bool = True) -> tuple
         "recommend", input={"query": query, "time_budget_min": req.time_budget_min, "mode": req.mode,
                             "has_location": loc is not None},
     ) as root:
-        resp = _recommend(req, request_id, now, query)
+        resp = _recommend(req, request_id, now, query, photo_landmark)
         usage = llm.summarize(calls)
         root.update(output={"recommendations": [r.name for r in resp.recommendations], "notes": resp.notes},
                     metadata={"request_id": request_id, **usage})
@@ -140,7 +144,8 @@ def recommend_with_stats(req: RecommendRequest, use_cache: bool = True) -> tuple
     return resp, stats
 
 
-def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str) -> RecommendResponse:
+def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str,
+               photo_landmark: dict | None = None) -> RecommendResponse:
     notes: list[str] = []
 
     # 1. вход: injection (PII уже замаскирован)
@@ -159,7 +164,10 @@ def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str
     # 3. локация: GPS (округлённый) → ориентир → нет
     lat = lon = None
     loc_source, loc_label = "none", None
-    if req.location:
+    if photo_landmark:
+        lat, lon = photo_landmark["lat"], photo_landmark["lon"]
+        loc_source, loc_label = "landmark", f"~ {photo_landmark['label']} (по фото)"
+    elif req.location:
         rlat, rlon = round(req.location.lat, 3), round(req.location.lon, 3)
         if _in_astana(rlat, rlon):
             lat, lon, loc_source, loc_label = rlat, rlon, "gps_rounded", "~ ваша локация (±100 м)"
@@ -255,3 +263,13 @@ def _empty(request_id, req, now, lang, note, intent=None, radius=None, loc_sourc
         notes=list(dict.fromkeys([*(notes or []), note])),
         disclaimer=_t(lang, "disclaimer"),
     )
+
+
+def photo_not_recognized(req: RecommendRequest, seen: str) -> RecommendResponse:
+    lang = req.lang or "ru"
+    now = (req.now or datetime.now(ASTANA_TZ)).astimezone(ASTANA_TZ)
+    seen = re.sub(r"^на фото[:,]?\s*", "", seen.strip(), flags=re.IGNORECASE).rstrip(".")
+    seen_part = f" На фото: {seen[:1].lower() + seen[1:]}." if seen and lang != "en" else ""
+    note = ("Could not recognise the place in the photo. Please name a landmark or enable geolocation." if lang == "en"
+            else f"Не удалось узнать место по фото.{seen_part} Напишите ориентир или включите геолокацию.")
+    return _empty(uuid.uuid4().hex[:12], req, now, lang, note)

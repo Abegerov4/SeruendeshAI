@@ -116,6 +116,18 @@ def _call(client: OpenAI, model: str, messages: list[dict], extra: dict, timeout
         raise
 
 
+def _for_trace(messages: list[dict]) -> list[dict]:
+    """Фото пользователя в трейсы не отправляем — заменяем заглушкой."""
+    out = []
+    for m in messages:
+        if isinstance(m["content"], list):
+            parts = [p if p.get("type") != "image_url" else {"type": "text", "text": "[image omitted]"}
+                     for p in m["content"]]
+            m = {**m, "content": parts}
+        out.append(m)
+    return out
+
+
 def chat_json(system: str, user: str | list, role: Role = "fast", name: str = "llm",
               model_override: str | None = None) -> dict | None:
     """Один вызов LLM, ответ — JSON-объект. None при любой ошибке.
@@ -141,7 +153,7 @@ def chat_json(system: str, user: str | list, role: Role = "fast", name: str = "l
     for model, extra, timeout in attempts:
         t0 = time.perf_counter()
         try:
-            with tracing.generation(name, model, messages, extra) as gen:
+            with tracing.generation(name, model, _for_trace(messages), extra) as gen:
                 resp = _call(client, model, messages, extra, timeout)
                 content = resp.choices[0].message.content or ""
                 u = resp.usage

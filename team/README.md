@@ -169,6 +169,13 @@ Response:
 - `route` равен `null`, если мини-маршрут не строился
 - Ошибки: `422` при невалидном вводе, `200` с пустым `recommendations` и `notes: ["Не удалось определить локацию…"]`, если локации нет
 
+**`POST /api/recommend/photo`** (multipart/form-data) — мультимодальный режим «сфоткай, что видишь».
+Поля: `image` (файл JPEG/PNG/WEBP, ≤ 8 МБ, обязательно) и необязательные `query`, `time_budget_min`, `mode`, `lang`, `now`, `with_kids`, `tourist`, `accessibility`, `group_size`.
+- Ответ в том же формате, что у `/api/recommend`.
+- Если место узнано, `used_context.location_label` заканчивается на `(по фото)`, а первая строка `notes` начинается с «По фото … определили: …».
+- Если не узнано, `recommendations: []` и `notes` с просьбой указать ориентир.
+- Фото не сохраняется, EXIF (в том числе GPS) удаляется до отправки в модель.
+
 **`GET /api/pois?lat=&lon=&radius_m=`** возвращает POI для карты (краткие поля: id, name, category, lat, lon).
 **`GET /api/health`** возвращает `{"status":"ok","pois":1234,"llm":"ok"}`.
 
