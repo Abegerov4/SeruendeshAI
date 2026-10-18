@@ -59,6 +59,10 @@ curl -s localhost:8000/api/recommend -H 'Content-Type: application/json' -d '{
 curl -s localhost:8000/api/recommend/photo -F image=@khan_shatyr.jpg -F query="куда дальше на часик?"
 ```
 
+## MCP-сервер
+
+Те же возможности доступны как MCP-tools для Claude Desktop, Claude Code и Cursor: `recommend_places`, `search_pois`, `check_open_status`, `plan_route`, `get_poi`. К серверу прилагается Skill с инструкцией для ассистента. Подробности в [mcp_server/README.md](mcp_server/README.md).
+
 ## Наблюдаемость, стоимость, кэш
 - **Langfuse** (если в `.env` есть `LANGFUSE_*`): трейс `recommend` → `parse-intent` (generation) → `poi-search` (retriever) → `decide-recommendations` (generation). В трейсах видны токены, стоимость и latency. Координат там нет.
 - **Стоимость** около **$0.005 за запрос** (sol ≈ $0.0044, mini ≈ $0.0007). Каждый запрос пишет в лог токены и `cost_usd`.
