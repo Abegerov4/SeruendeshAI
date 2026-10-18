@@ -61,14 +61,30 @@ def _filters_label(intent: Intent) -> list[str]:
     return out
 
 
-def _search(query: str, lat, lon, radius: int, categories: list[str]) -> list[dict]:
-    """Сначала по категориям; если мало — добираем без фильтра категорий (поиск по смыслу сам отранжирует)."""
-    hits = rag.search(query, lat, lon, radius_m=radius, categories=categories or None, top_k=15)
-    if categories and len(hits) < 4:
-        seen = {h["id"] for h in hits}
-        extra = rag.search(query, lat, lon, radius_m=radius, categories=None, top_k=15)
-        hits += [{**h, "score": h.get("score", 0) * 0.7} for h in extra if h["id"] not in seen]
-    return hits
+def _search(query: str, lat, lon, radius: int, categories: list[str], raw_query: str | None = None) -> list[dict]:
+    """Multi-query retrieval + RRF.
+
+    1) переписанный LLM запрос с фильтром категорий (точность по смыслу);
+    2) если мало — он же без категорий;
+    3) исходная фраза пользователя без категорий: LLM при переписывании может выкинуть название места
+       («торговый центр Хан Шатыр» → «торговый центр»), а исходник его сохраняет.
+       В retrieval-eval это подняло NDCG@5 по запросам-названиям (см. experiments/README.md).
+    """
+    lists = [rag.search(query, lat, lon, radius_m=radius, categories=categories or None, top_k=15)]
+    if categories and len(lists[0]) < 4:
+        lists.append(rag.search(query, lat, lon, radius_m=radius, categories=None, top_k=15))
+    if raw_query and raw_query.strip().casefold() != query.strip().casefold():
+        lists.append(rag.search(raw_query, lat, lon, radius_m=radius, categories=None, top_k=15))
+    if len(lists) == 1:
+        return lists[0]
+    fused: dict[str, float] = {}
+    by_id: dict[str, dict] = {}
+    for weight, hits in zip([1.0, 0.7, 1.0], lists):
+        for rank, h in enumerate(hits, 1):
+            fused[h["id"]] = fused.get(h["id"], 0.0) + weight / (60 + rank)
+            by_id.setdefault(h["id"], h)
+    ordered = sorted(fused, key=lambda i: -fused[i])[:15]
+    return [{**by_id[i], "score": round(fused[i] * 60, 4)} for i in ordered]
 
 
 def _filter_candidates(hits: list[dict], intent: Intent, now: datetime) -> tuple[list[dict], bool]:
@@ -186,10 +202,10 @@ def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str
     search_q = intent.search_query or query
     with tracing.span("poi-search", as_type="retriever",
                       input={"query": search_q, "radius_m": radius, "categories": intent.categories}) as r:
-        hits = _search(search_q, lat, lon, radius, intent.categories)
+        hits = _search(search_q, lat, lon, radius, intent.categories, raw_query=query)
         if len(hits) < 2 and lat is not None and radius < MAX_RADIUS:  # одно расширение радиуса
             radius = min(MAX_RADIUS, radius * 2)
-            hits = _search(search_q, lat, lon, radius, intent.categories)
+            hits = _search(search_q, lat, lon, radius, intent.categories, raw_query=query)
             if hits:
                 notes.append(_t(lang, "widened"))
         r.update(output=[{"id": h["id"], "name": h["name"], "distance_m": h.get("distance_m"),

@@ -1,0 +1,36 @@
+{
+  "_doc": "Golden set для оценки ПОИСКА (без генерации). type=named: relevant — {poi_id: оценка 2/1}; type=nearby: релевантно всё, что подходит по категории и лежит в радиусе от точки (оценка 1).",
+  "queries": [
+    {"id": "n01", "type": "named", "lang": "ru", "query": "Байтерек", "relevant": {"osm:way/230401645": 2}},
+    {"id": "n02", "type": "named", "lang": "ru", "query": "монумент со смотровой площадкой Байтерек", "relevant": {"osm:way/230401645": 2}},
+    {"id": "n03", "type": "named", "lang": "ru", "query": "торговый центр Хан Шатыр", "relevant": {"osm:way/460703779": 2}},
+    {"id": "n04", "type": "named", "lang": "ru", "query": "Мега Силк Вей", "relevant": {"osm:way/499328514": 2, "osm:node/4965336822": 2}},
+    {"id": "n05", "type": "named", "lang": "ru", "query": "театр оперы и балета Астана Опера", "relevant": {"osm:way/917478479": 2}},
+    {"id": "n06", "type": "named", "lang": "ru", "query": "Национальный музей Казахстана", "relevant": {"osm:node/4894937300": 2}},
+    {"id": "n07", "type": "named", "lang": "ru", "query": "ботанический сад", "relevant": {"osm:way/1196402246": 2}},
+    {"id": "n08", "type": "named", "lang": "ru", "query": "карта Казахстана в миниатюре Атамекен", "relevant": {"osm:way/1460700597": 2}},
+    {"id": "n09", "type": "named", "lang": "ru", "query": "парк влюблённых", "relevant": {"osm:way/37884583": 2}},
+    {"id": "n10", "type": "named", "lang": "ru", "query": "Президентский парк", "relevant": {"osm:way/243041606": 2, "osm:way/112177946": 2}},
+    {"id": "n11", "type": "named", "lang": "ru", "query": "триумфальная арка Мангилик Ел", "relevant": {"osm:way/549307755": 2}},
+    {"id": "n12", "type": "named", "lang": "ru", "query": "ледовый дворец Алау, покататься на коньках", "relevant": {"osm:way/166267459": 2}},
+    {"id": "n13", "type": "named", "lang": "ru", "query": "библиотека первого президента", "relevant": {"osm:way/424923382": 2, "osm:way/230358855": 1}},
+    {"id": "n14", "type": "named", "lang": "ru", "query": "монумент Казак Ели", "relevant": {"osm:node/2681623412": 2}},
+    {"id": "n15", "type": "named", "lang": "ru", "query": "музей первого президента", "relevant": {"osm:way/51431624": 2, "osm:way/1428966977": 1}},
+    {"id": "n16", "type": "named", "lang": "ru", "query": "японский сад", "relevant": {"osm:way/1470723968": 2}},
+    {"id": "n17", "type": "named", "lang": "en", "query": "Kazakhstan national museum", "relevant": {"osm:node/4894937300": 2}},
+    {"id": "n18", "type": "named", "lang": "en", "query": "Khan Shatyr shopping center", "relevant": {"osm:way/460703779": 2}},
+    {"id": "n19", "type": "named", "lang": "en", "query": "Abu Dhabi Plaza mall", "relevant": {"osm:way/762780007": 2}},
+    {"id": "n20", "type": "named", "lang": "kk", "query": "Бәйтерек мұнарасы", "relevant": {"osm:way/230401645": 2}},
+
+    {"id": "g01", "type": "nearby", "lang": "ru", "query": "выпить кофе", "lat": 51.128, "lon": 71.430, "radius_m": 800, "categories": ["cafe"]},
+    {"id": "g02", "type": "nearby", "lang": "ru", "query": "где поесть", "lat": 51.132, "lon": 71.404, "radius_m": 1000, "categories": ["restaurant", "cafe"]},
+    {"id": "g03", "type": "nearby", "lang": "ru", "query": "погулять в парке", "lat": 51.089, "lon": 71.407, "radius_m": 1500, "categories": ["park"]},
+    {"id": "g04", "type": "nearby", "lang": "ru", "query": "бар посидеть вечером", "lat": 51.128, "lon": 71.430, "radius_m": 1000, "categories": ["bar", "nightlife"]},
+    {"id": "g05", "type": "nearby", "lang": "ru", "query": "сходить в музей", "lat": 51.120, "lon": 71.460, "radius_m": 2500, "categories": ["museum", "gallery"]},
+    {"id": "g06", "type": "nearby", "lang": "ru", "query": "театр или спектакль", "lat": 51.128, "lon": 71.430, "radius_m": 3000, "categories": ["theatre"]},
+    {"id": "g07", "type": "nearby", "lang": "ru", "query": "торговый центр, шопинг", "lat": 51.128, "lon": 71.430, "radius_m": 2000, "categories": ["mall"]},
+    {"id": "g08", "type": "nearby", "lang": "ru", "query": "тихо почитать книги", "lat": 51.128, "lon": 71.430, "radius_m": 3000, "categories": ["library"]},
+    {"id": "g09", "type": "nearby", "lang": "en", "query": "coffee", "lat": 51.089, "lon": 71.407, "radius_m": 1000, "categories": ["cafe"]},
+    {"id": "g10", "type": "nearby", "lang": "kk", "query": "кофе ішу", "lat": 51.132, "lon": 71.404, "radius_m": 1000, "categories": ["cafe"]}
+  ]
+}
