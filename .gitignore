@@ -7,6 +7,7 @@
 /ai_security.md
 /FINAL Задачи_хакатона.docx.pdf
 /Final project-2.pdf
+/03_frontend.md
 
 # Секреты
 .env
@@ -16,17 +17,21 @@
 # Python
 __pycache__/
 *.pyc
+*.egg-info/
 .venv/
 venv/
 .pytest_cache/
+.ruff_cache/
 
 # Node
 node_modules/
 dist/
 
-# Данные и индексы
+# Данные, индексы, модели
 data/raw/
+data/cache/
 rag/chroma/
+models/
 .cache/
 
 # OS / IDE

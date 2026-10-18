@@ -1,0 +1,60 @@
+{
+ "built_at": "2026-10-18T18:20:55+00:00",
+ "pois_sha": "8284a057dda358d2",
+ "poi_count": 2307,
+ "by_category": {
+  "cafe": 506,
+  "restaurant": 466,
+  "playground": 282,
+  "bar": 207,
+  "park": 137,
+  "fast_food": 136,
+  "mall": 90,
+  "sweets": 69,
+  "monument": 47,
+  "karaoke": 47,
+  "garden": 36,
+  "worship": 30,
+  "active": 27,
+  "spa": 22,
+  "hookah": 20,
+  "souvenir": 20,
+  "library": 18,
+  "museum": 17,
+  "theatre": 17,
+  "market": 16,
+  "cinema": 15,
+  "artwork": 14,
+  "event_venue": 14,
+  "landmark": 12,
+  "gallery": 10,
+  "arts_centre": 9,
+  "theme_park": 8,
+  "nightclub": 6,
+  "coworking": 4,
+  "kids_indoor": 3,
+  "zoo_aquarium": 1,
+  "water_park": 1
+ },
+ "by_source": {
+  "osm": 1524,
+  "overture": 1003,
+  "wikidata": 47,
+  "wikipedia": 40
+ },
+ "with_opening_hours": 421,
+ "description_sources": {
+  "template": 2266,
+  "wikipedia": 39,
+  "osm": 2
+ },
+ "sources": {
+  "osm": "© OpenStreetMap contributors, ODbL 1.0 (Overpass API, Astana admin boundary R3087155)",
+  "wikidata": "Wikidata, CC0",
+  "wikipedia": "Wikipedia (ru/en) intro extracts, CC BY-SA 4.0 — linked per POI",
+  "overture": "Overture Maps Foundation Places, CDLA-Permissive-2.0 / Apache-2.0 / CC0 per record"
+ },
+ "embedding_model": "e5-large",
+ "embedding_dim": 1024,
+ "embedding_pois_sha": "8284a057dda358d2"
+}
