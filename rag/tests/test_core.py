@@ -36,6 +36,24 @@ class GeoTests(unittest.TestCase):
 
 class RetrievalTests(unittest.TestCase):
     @patch.dict(os.environ, {'RAG_SEARCH_MODE': 'bm25'})
+    def test_landmark_aliases(self):
+        from rag.retriever import search
+        for query in ('Байтерек', 'Бәйтерек', 'Bayterek'):
+            self.assertEqual(search(query, None, None, top_k=1)[0]['id'], 'osm:way/230401645')
+
+    @patch.dict(os.environ, {'RAG_SEARCH_MODE': 'hybrid'})
+    def test_dense_receives_only_geo_candidates(self):
+        from rag.retriever import search
+        def dense(query, pois, indices, digest):
+            self.assertTrue(indices)
+            self.assertTrue(all(pois[i]['category'] == 'cafe' and haversine_m(51.128, 71.430, pois[i]['lat'], pois[i]['lon']) <= 1500 for i in indices))
+            return list(reversed(indices))[:30]
+        with patch('rag.retriever._dense', side_effect=dense) as mocked:
+            rows = search('кофе', 51.128, 71.430, 1500, ['cafe'], top_k=5)
+            self.assertEqual(len(rows), 5)
+            mocked.assert_called_once()
+
+    @patch.dict(os.environ, {'RAG_SEARCH_MODE': 'bm25'})
     def test_geo_and_category(self):
         from rag.retriever import search
         rows = search('кофе тихо', 51.128, 71.430, 1500, ['cafe'])
