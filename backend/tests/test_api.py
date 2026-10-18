@@ -157,3 +157,9 @@ def test_destination_is_recommended_and_ideas_are_separate(client):
 def test_hotel_is_a_valid_origin(client):
     d = post(client, query="я в отеле Hilton, где выпить кофе в 15 минутах пешком?")
     assert d["used_context"]["location_source"] == "landmark" and d["recommendations"]
+
+
+def test_requested_destination_closed_is_explained(client):
+    d = post(client, query="я у Байтерека, хочу дойти до Хан Шатыра", time_budget_min=90, now="2026-10-19T01:00:00+05:00")
+    if not any("Шатыр" in r["name"] for r in d["recommendations"]):
+        assert "Хан Шатыр" in d["summary"] and any("Хан Шатыр" in n for n in d["notes"])

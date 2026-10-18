@@ -71,6 +71,8 @@ T: dict[str, dict[str, str]] = {
                  "kk": "дүйсенбі,сейсенбі,сәрсенбі,бейсенбі,жұма,сенбі,жексенбі",
                  "en": "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday"},
     # considered reasons
+    "rej_unreachable": {"ru": "не помещается в это время и маршрут", "kk": "бұл уақыт пен бағытқа сыймайды", "en": "does not fit this time and route"},
+    "note_target_missing": {"ru": "{name}: {reason}, поэтому показываю, что подходит сейчас.", "kk": "{name}: {reason}, сондықтан қазір лайық орындарды көрсетемін.", "en": "{name}: {reason}, so here is what works right now."},
     "rej_closed": {"ru": "закрыто к моменту прихода", "kk": "барған кезде жабық", "en": "closed by the time you arrive"},
     "rej_far": {"ru": "дорога ~{m} мин — не укладывается во время", "kk": "жол ~{m} мин — уақытқа сыймайды", "en": "~{m} min away — does not fit your time"},
     "rej_kids": {"ru": "не для детей", "kk": "балаларға арналмаған", "en": "not suitable for children"},

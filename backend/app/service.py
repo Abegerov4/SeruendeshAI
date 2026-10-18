@@ -267,7 +267,7 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
         if llm_client() is not None or s.llm_enabled:
             notes.append(t("note_template", lang))
 
-    items, ideas = [], []
+    items, ideas, missed = [], [], []
     if gen:
         for rank_i, pk in enumerate(gen.picks, 1):
             items.append(_item(cmap[pk.cand], pk.why, pk.what_to_do, pk.visit_min, rank_i, plan, lang, out_mode))
@@ -311,6 +311,16 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
         notes.append(t("note_transit", lang))
     notes.extend(plan.relaxations)
 
+    # a place the user named but we could not include (closed, too far): say so instead of silently dropping it
+    shown_ids = {it["poi_id"] for it in items}
+    for g in dest_entries:
+        ids = _target_ids(rt.store, [g])
+        if ids and not ids & shown_ids:
+            names = {fold(rt.store.pois[rt.store.by_id[i]]["name"]) for i in ids if i in rt.store.by_id}
+            reason = next((c["reason"] for c in considered if fold(c["name"]) in names), t("rej_unreachable", lang))
+            missed.append(t("note_target_missing", lang, name=g["name"], reason=reason))
+    notes[:0] = missed
+
     poi_items = [it for it in items if it["source"] == "poi_data"]
     shown = {fold(it["name"]) for it in items}
     considered = [c for c in considered if fold(c["name"]) not in shown]
@@ -320,6 +330,8 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
                    t("summary", lang, n=len(poi_items), places=t("place_1" if len(poi_items) == 1 else "place_2", lang), names=nm))
     else:
         summary = t("summary_none", lang)
+    if missed:
+        summary = f"{missed[0]} {summary}"
     plan.funnel["shown"] = len(poi_items)
 
     filters = []

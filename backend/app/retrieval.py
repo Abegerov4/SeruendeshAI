@@ -309,7 +309,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         if closed_req and not any(c.poi["category"] in req_cats for c in cands) and not plan.relaxations:
             plan.relaxations.append(t("note_requested_closed", lang, what=label(req_cats[0], lang), n=len(closed_req)))
     if not cands:
-        for i, why in rejected[:4]:
+        for i, why in sorted(rejected, key=lambda x: x[0] not in target_idx)[:4]:
             considered.append({"name": store.pois[i]["name"], "reason": why})
         return [], considered
 
@@ -391,7 +391,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
 
     cands.sort(key=lambda c: -c.score)
     chosen = _mmr(cands, k, single_cat=len(set(req_cats)) == 1)
-    for i, why in sorted(rejected, key=lambda x: -rrf[x[0]])[:4]:
+    for i, why in sorted(rejected, key=lambda x: (x[0] not in target_idx, -rrf[x[0]]))[:4]:  # requested places first
         considered.append({"name": store.pois[i]["name"], "reason": why})
     plan.funnel["shown"] = 0
     return chosen, considered
