@@ -88,6 +88,74 @@ def synthetic_response():
 
 
 @pytest.fixture
+def qa_backend(monkeypatch, tmp_path, synthetic_pois, pytestconfig):
+    """Actual local API with temporary data and no external model/tracing calls.
+
+    This exercises the backend's keyword fallback, not the absent real RAG.
+    Tests may replace only the external provider boundary with deterministic
+    replies; request parsing, guards, selection validation and routing stay real.
+    """
+    from copy import deepcopy
+    from types import SimpleNamespace
+
+    if not (ROOT / "backend/app/main.py").is_file():
+        message = "Local backend NOT TESTED: this QA checkout needs backend source to run local API checks"
+        if pytestconfig.getoption("--live-backend"):
+            pytest.fail(message)
+        pytest.skip(message)
+
+    for name in ("OPENAI_API_KEY", "LLM_API_KEY", "openai_api_key", "LANGFUSE_PUBLIC_KEY", "LANGFUSE_SECRET_KEY"):
+        monkeypatch.setenv(name, "")
+    monkeypatch.setenv("MOCK_RAG", "1")
+    fixture_path = tmp_path / "qa-pois.json"
+    monkeypatch.setenv("POI_FIXTURE", str(fixture_path))
+
+    try:
+        from fastapi.testclient import TestClient
+        from backend.app import cache, config, generate, intent, llm, mock_rag, pipeline, rag_adapter, tracing
+        from backend.app.main import app
+    except ImportError as error:
+        pytest.fail(f"Local backend QA requires backend/requirements.txt: {error}")
+
+    config.get_settings.cache_clear()
+    llm._client.cache_clear()
+    tracing._client.cache_clear()
+    monkeypatch.setattr(rag_adapter, "_backend", "mock")
+    for name in ("_geo", "_hours", "_retriever"):
+        monkeypatch.setattr(rag_adapter, name, mock_rag)
+    monkeypatch.setattr(cache, "responses", cache.TTLCache(ttl_s=900, max_items=100))
+
+    def deny_provider_call(*args, **kwargs):
+        raise AssertionError("Local QA must not call an external LLM provider")
+
+    monkeypatch.setattr(llm, "_call", deny_provider_call)
+    harness = SimpleNamespace(
+        llm=llm, tracing=tracing, pipeline=pipeline, rag=rag_adapter,
+        mock_rag=mock_rag, generate=generate, intent=intent,
+        fixture_path=fixture_path, evidence_kind="local_backend_keyword_fallback",
+    )
+
+    def set_pois(rows):
+        harness.pois = deepcopy(rows)
+        fixture_path.write_text(json.dumps(harness.pois, ensure_ascii=False), encoding="utf-8")
+        mock_rag.load_pois.cache_clear()
+        cache.responses.clear()
+
+    harness.set_pois = set_pois
+    set_pois(synthetic_pois)
+    try:
+        with TestClient(app, raise_server_exceptions=False) as client:
+            harness.client = client
+            yield harness
+    finally:
+        mock_rag.load_pois.cache_clear()
+        cache.responses.clear()
+        config.get_settings.cache_clear()
+        llm._client.cache_clear()
+        tracing._client.cache_clear()
+
+
+@pytest.fixture
 def ui_page(pytestconfig):
     if not pytestconfig.getoption("--live-ui"):
         pytest.skip("Frontend NOT TESTED: enable --live-ui and install Playwright")

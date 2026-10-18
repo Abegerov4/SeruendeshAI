@@ -1,0 +1,84 @@
+Local QA privacy masking mutation — 2026-10-18
+
+Scope: one synthetic email integration case; actual local backend pipeline and
+provider/trace argument capture. No external model or network request. Only the
+pipeline's imported mask_pii function is replaced in memory through pytest's
+monkeypatch fixture. The fixture restores it at teardown, and this mutation runs
+in its own process. No production, dataset or golden-set file is edited.
+
+Reproduce from the repository root (expected process exit status: 1):
+
+.venv/bin/python - <<'MUTATION_PY'
+from pathlib import Path
+import hashlib
+import json
+import pytest
+
+paths = [Path("backend/app") / name for name in ("guards.py", "pipeline.py", "generate.py")]
+paths += [Path("data/processed/pois.json"), Path("eval/golden_set.json")]
+before = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
+
+class DisableMasking:
+    @pytest.hookimpl(tryfirst=True)
+    def pytest_runtest_call(self, item):
+        backend = item.funcargs.get("qa_backend")
+        if backend is not None:
+            item.funcargs["monkeypatch"].setattr(backend.pipeline, "mask_pii", lambda text: text)
+
+code = pytest.main([
+    "tests/test_backend_safety_local.py::test_pii_is_masked_before_model_requests_and_backend_telemetry[email]",
+    "-q", "--tb=short",
+], plugins=[DisableMasking()])
+after = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
+print("PYTEST_TARGET_EXIT", int(code))
+print("PRODUCTION_DATA_GOLDEN_BYTES_UNCHANGED", before == after)
+print("BEFORE_SHA256", json.dumps(before, sort_keys=True))
+print("AFTER_SHA256", json.dumps(after, sort_keys=True))
+if before != after:
+    raise SystemExit(2)
+raise SystemExit(int(code))
+MUTATION_PY
+
+Expected failed assertion:
+  assert pii not in payload, 'Raw synthetic PII reached a provider or backend telemetry'
+The failure must show the synthetic qa.person@example.com in captured provider
+or backend telemetry payloads. This proves the integration assertion detects a
+removed masking step; it is not a production failure in the unmodified case.
+
+Recorded mutation process exit status: 1
+Recorded mutation stdout:
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____ test_pii_is_masked_before_model_requests_and_backend_telemetry[email] _____
+tests/test_backend_safety_local.py:110: in test_pii_is_masked_before_model_requests_and_backend_telemetry
+    assert pii not in payload, 'Raw synthetic PII reached a provider or backend telemetry'
+E   AssertionError: Raw synthetic PII reached a provider or backend telemetry
+E   assert 'qa.person@example.com' not in '{"provider"...ency_ms=2"]}'
+E     
+E     'qa.person@example.com' is contained here:
+E     ?           ^
+E       : контакт qa.person@example.com. Хочу парк рядом\n</user_query>", "name": "parse-intent"}, {"system": "Ты городской помощник по прогулкам в Астане. Из списка кандидатов выбери 1–3 места, которые лучше всего подходят пользователю, и коротко объясни выбор.\n\nВерни ТОЛЬКО JSON-объект:\n{\n  \"recommendations\": [\n    {\n      \"poi_id\": \"...\",            // ТОЛЬКО id из списка кандидатов\n      \"why\": \"...\",               // 1 предложение: почему подходит именно под этот запрос (расстояние, время, интересы, огран...
+E     
+E     ...Full output truncated (2 lines hidden), use '-vv' to show
+------------------------------ Captured log call -------------------------------
+DEBUG    backend.pipeline:pipeline.py:233 request_id=823b4ff71f8f candidates=1 intent_llm=False
+INFO     backend.pipeline:pipeline.py:141 request_id=823b4ff71f8f recs=1 llm_calls=0 tokens=0/0 cost_usd=None latency_ms=2
+=========================== short test summary info ============================
+FAILED tests/test_backend_safety_local.py::test_pii_is_masked_before_model_requests_and_backend_telemetry[email]
+1 failed in 0.25s
+PYTEST_TARGET_EXIT 1
+PRODUCTION_DATA_GOLDEN_BYTES_UNCHANGED True
+BEFORE_SHA256 {"backend/app/generate.py": "cf9713826b17525b0f69a8d15b88a569d741826e6507e2ba4c776c3ae0c0d787", "backend/app/guards.py": "bead8932b05b1a5c72a1ef0a9e4b1c184ef007c123c1f486c00c5d0f83534570", "backend/app/pipeline.py": "7a78688676415fc17b0e747b2d4d8330ec46a4c14efdcc2f469074252c18a9b5", "data/processed/pois.json": "1f815df354ad990d902d76c8676a91013f2d8288a7330e8c3b75a2666db29b74", "eval/golden_set.json": "ed8d6e7a742fe9070dc56a6a7d6f09a4248c79bed4ddbb2b61bafa2c783bad30"}
+AFTER_SHA256 {"backend/app/generate.py": "cf9713826b17525b0f69a8d15b88a569d741826e6507e2ba4c776c3ae0c0d787", "backend/app/guards.py": "bead8932b05b1a5c72a1ef0a9e4b1c184ef007c123c1f486c00c5d0f83534570", "backend/app/pipeline.py": "7a78688676415fc17b0e747b2d4d8330ec46a4c14efdcc2f469074252c18a9b5", "data/processed/pois.json": "1f815df354ad990d902d76c8676a91013f2d8288a7330e8c3b75a2666db29b74", "eval/golden_set.json": "ed8d6e7a742fe9070dc56a6a7d6f09a4248c79bed4ddbb2b61bafa2c783bad30"}
+
+Recorded mutation stderr:
+
+Normal verification in a separate fresh process (expected exit status: 0):
+.venv/bin/python -m pytest 'tests/test_backend_safety_local.py::test_pii_is_masked_before_model_requests_and_backend_telemetry[email]' -q --tb=short
+
+Recorded normal process exit status: 0
+Recorded normal stdout:
+.                                                                        [100%]
+1 passed in 0.25s
+
+Recorded normal stderr:

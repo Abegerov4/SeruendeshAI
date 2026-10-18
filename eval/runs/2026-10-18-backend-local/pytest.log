@@ -1,0 +1,1551 @@
+ssssssssss....FFFFFFFFFFFFFFFF...FFF..F.FFFFF.FF......F..F....F..FF..F.. [ 11%]
+...F.F..............F.F........F..FFFF.................................. [ 22%]
+........................................................................ [ 34%]
+.................................................................sssssss [ 45%]
+ssssssssss........................................................ssssss [ 57%]
+sssssss................................................................. [ 68%]
+........................................................................ [ 79%]
+........................................................................ [ 91%]
+.......................................................                  [100%]
+=================================== FAILURES ===================================
+__________ test_existing_golden_through_local_api[organizer_walk_ru] ___________
+
+case = {'id': 'organizer_walk_ru', 'scenario': 'Пример организаторов: прогулка 30–60 минут (ru)', 'request': {'location': Non...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x111d66520>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_walk_ru', 'scenario': 'Пример организаторов: прогулка 30–60 минут (ru)', 'request': {'location': Non...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_walk_ru: fixture:nur_alem: travel plus minimum visit exceeds budget
+E         fixture:nur_alem: category not in expected categories
+E         fixture:cafe_expo: category not in expected categories
+E         fixture:playground_expo: category not in expected categories
+E       assert not ['fixture:nur_alem: travel plus minimum visit exceeds budget', 'fixture:nur_alem: category not in expected categories'...ixture:cafe_expo: category not in expected categories', 'fixture:playground_expo: category not in expected categories']
+
+tests/test_backend_golden_local.py:34: AssertionError
+__________ test_existing_golden_through_local_api[organizer_work_ru] ___________
+
+case = {'id': 'organizer_work_ru', 'scenario': 'Пример организаторов: тишина, кофе и розетка (ru)', 'request': {'location': N...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112366e80>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_work_ru', 'scenario': 'Пример организаторов: тишина, кофе и розетка (ru)', 'request': {'location': N...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_work_ru: fixture:coworking: travel plus minimum visit exceeds budget
+E         fixture:lovers_park: category not in expected categories
+E       assert not ['fixture:coworking: travel plus minimum visit exceeds budget', 'fixture:lovers_park: category not in expected categories']
+
+tests/test_backend_golden_local.py:34: AssertionError
+__________ test_existing_golden_through_local_api[organizer_kids_ru] ___________
+
+case = {'id': 'organizer_kids_ru', 'scenario': 'Пример организаторов: площадка или интерактивный музей (ru)', 'request': {'lo...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x1123671a0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_kids_ru', 'scenario': 'Пример организаторов: площадка или интерактивный музей (ru)', 'request': {'lo...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_kids_ru: fixture:mega_silk_way: travel plus minimum visit exceeds budget
+E         fixture:mega_silk_way: category not in expected categories
+E         fixture:cafe_expo: category not in expected categories
+E       assert not ['fixture:mega_silk_way: travel plus minimum visit exceeds budget', 'fixture:mega_silk_way: category not in expected categories', 'fixture:cafe_expo: category not in expected categories']
+
+tests/test_backend_golden_local.py:34: AssertionError
+_________ test_existing_golden_through_local_api[organizer_airport_ru] _________
+
+case = {'id': 'organizer_airport_ru', 'scenario': 'Пример организаторов: турист перед вылетом (ru)', 'request': {'location': ... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112367420>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_airport_ru', 'scenario': 'Пример организаторов: турист перед вылетом (ru)', 'request': {'location': ... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_airport_ru: fixture:nur_alem: travel plus minimum visit exceeds budget
+E         fixture:mega_silk_way: travel plus minimum visit exceeds budget
+E       assert not ['fixture:nur_alem: travel plus minimum visit exceeds budget', 'fixture:mega_silk_way: travel plus minimum visit exceeds budget']
+
+tests/test_backend_golden_local.py:34: AssertionError
+__________ test_existing_golden_through_local_api[organizer_night_ru] __________
+
+case = {'id': 'organizer_night_ru', 'scenario': 'Пример организаторов: необычное ночью (ru)', 'request': {'location': None, '... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x1123807c0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_night_ru', 'scenario': 'Пример организаторов: необычное ночью (ru)', 'request': {'location': None, '... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_night_ru: fixture:bar_night: travel plus minimum visit exceeds budget
+E       assert not ['fixture:bar_night: travel plus minimum visit exceeds budget']
+
+tests/test_backend_golden_local.py:34: AssertionError
+__________ test_existing_golden_through_local_api[organizer_walk_kk] ___________
+
+case = {'id': 'organizer_walk_kk', 'scenario': 'Пример организаторов: прогулка 30–60 минут (kk)', 'request': {'location': Non...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112380360>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_walk_kk', 'scenario': 'Пример организаторов: прогулка 30–60 минут (kk)', 'request': {'location': Non...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_walk_kk: fixture:nur_alem: travel plus minimum visit exceeds budget
+E         fixture:nur_alem: category not in expected categories
+E         fixture:cafe_expo: category not in expected categories
+E         fixture:playground_expo: category not in expected categories
+E       assert not ['fixture:nur_alem: travel plus minimum visit exceeds budget', 'fixture:nur_alem: category not in expected categories'...ixture:cafe_expo: category not in expected categories', 'fixture:playground_expo: category not in expected categories']
+
+tests/test_backend_golden_local.py:34: AssertionError
+__________ test_existing_golden_through_local_api[organizer_work_kk] ___________
+
+case = {'id': 'organizer_work_kk', 'scenario': 'Пример организаторов: тишина, кофе и розетка (kk)', 'request': {'location': N...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112380e00>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_work_kk', 'scenario': 'Пример организаторов: тишина, кофе и розетка (kk)', 'request': {'location': N...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_work_kk: recommendation count 0 outside [1, 3]
+E       assert not ['recommendation count 0 outside [1, 3]']
+
+tests/test_backend_golden_local.py:34: AssertionError
+__________ test_existing_golden_through_local_api[organizer_kids_kk] ___________
+
+case = {'id': 'organizer_kids_kk', 'scenario': 'Пример организаторов: площадка или интерактивный музей (kk)', 'request': {'lo...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x1123823e0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_kids_kk', 'scenario': 'Пример организаторов: площадка или интерактивный музей (kk)', 'request': {'lo...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_kids_kk: fixture:mega_silk_way: travel plus minimum visit exceeds budget
+E         fixture:mega_silk_way: category not in expected categories
+E         fixture:cafe_expo: category not in expected categories
+E       assert not ['fixture:mega_silk_way: travel plus minimum visit exceeds budget', 'fixture:mega_silk_way: category not in expected categories', 'fixture:cafe_expo: category not in expected categories']
+
+tests/test_backend_golden_local.py:34: AssertionError
+_________ test_existing_golden_through_local_api[organizer_airport_kk] _________
+
+case = {'id': 'organizer_airport_kk', 'scenario': 'Пример организаторов: турист перед вылетом (kk)', 'request': {'location': ... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112366b60>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_airport_kk', 'scenario': 'Пример организаторов: турист перед вылетом (kk)', 'request': {'location': ... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_airport_kk: recommendation count 0 outside [1, 3]
+E       assert not ['recommendation count 0 outside [1, 3]']
+
+tests/test_backend_golden_local.py:34: AssertionError
+__________ test_existing_golden_through_local_api[organizer_night_kk] __________
+
+case = {'id': 'organizer_night_kk', 'scenario': 'Пример организаторов: необычное ночью (kk)', 'request': {'location': None, '... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x1123827a0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_night_kk', 'scenario': 'Пример организаторов: необычное ночью (kk)', 'request': {'location': None, '... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_night_kk: recommendation count 0 outside [1, 3]
+E       assert not ['recommendation count 0 outside [1, 3]']
+
+tests/test_backend_golden_local.py:34: AssertionError
+__________ test_existing_golden_through_local_api[organizer_walk_en] ___________
+
+case = {'id': 'organizer_walk_en', 'scenario': 'Пример организаторов: прогулка 30–60 минут (en)', 'request': {'location': Non...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x1123816c0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_walk_en', 'scenario': 'Пример организаторов: прогулка 30–60 минут (en)', 'request': {'location': Non...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_walk_en: fixture:cafe_expo: category not in expected categories
+E         fixture:playground_expo: category not in expected categories
+E         fixture:nur_alem: travel plus minimum visit exceeds budget
+E         fixture:nur_alem: category not in expected categories
+E       assert not ['fixture:cafe_expo: category not in expected categories', 'fixture:playground_expo: category not in expected categori... 'fixture:nur_alem: travel plus minimum visit exceeds budget', 'fixture:nur_alem: category not in expected categories']
+
+tests/test_backend_golden_local.py:34: AssertionError
+__________ test_existing_golden_through_local_api[organizer_work_en] ___________
+
+case = {'id': 'organizer_work_en', 'scenario': 'Пример организаторов: тишина, кофе и розетка (en)', 'request': {'location': N...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112381f80>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_work_en', 'scenario': 'Пример организаторов: тишина, кофе и розетка (en)', 'request': {'location': N...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_work_en: fixture:coworking: travel plus minimum visit exceeds budget
+E         fixture:lovers_park: category not in expected categories
+E       assert not ['fixture:coworking: travel plus minimum visit exceeds budget', 'fixture:lovers_park: category not in expected categories']
+
+tests/test_backend_golden_local.py:34: AssertionError
+__________ test_existing_golden_through_local_api[organizer_kids_en] ___________
+
+case = {'id': 'organizer_kids_en', 'scenario': 'Пример организаторов: площадка или интерактивный музей (en)', 'request': {'lo...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112382d40>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_kids_en', 'scenario': 'Пример организаторов: площадка или интерактивный музей (en)', 'request': {'lo...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_kids_en: fixture:cafe_expo: category not in expected categories
+E         fixture:mega_silk_way: travel plus minimum visit exceeds budget
+E         fixture:mega_silk_way: category not in expected categories
+E       assert not ['fixture:cafe_expo: category not in expected categories', 'fixture:mega_silk_way: travel plus minimum visit exceeds budget', 'fixture:mega_silk_way: category not in expected categories']
+
+tests/test_backend_golden_local.py:34: AssertionError
+_________ test_existing_golden_through_local_api[organizer_airport_en] _________
+
+case = {'id': 'organizer_airport_en', 'scenario': 'Пример организаторов: турист перед вылетом (en)', 'request': {'location': ... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112383920>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_airport_en', 'scenario': 'Пример организаторов: турист перед вылетом (en)', 'request': {'location': ... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_airport_en: fixture:nur_alem: travel plus minimum visit exceeds budget
+E         fixture:mega_silk_way: travel plus minimum visit exceeds budget
+E       assert not ['fixture:nur_alem: travel plus minimum visit exceeds budget', 'fixture:mega_silk_way: travel plus minimum visit exceeds budget']
+
+tests/test_backend_golden_local.py:34: AssertionError
+__________ test_existing_golden_through_local_api[organizer_night_en] __________
+
+case = {'id': 'organizer_night_en', 'scenario': 'Пример организаторов: необычное ночью (en)', 'request': {'location': None, '... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112382ca0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'organizer_night_en', 'scenario': 'Пример организаторов: необычное ночью (en)', 'request': {'location': None, '... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: organizer_night_en: fixture:bar_night: travel plus minimum visit exceeds budget
+E       assert not ['fixture:bar_night: travel plus minimum visit exceeds budget']
+
+tests/test_backend_golden_local.py:34: AssertionError
+______ test_existing_golden_through_local_api[gps_denied_typed_landmark] _______
+
+case = {'id': 'gps_denied_typed_landmark', 'scenario': 'GPS запрещён, ориентир введён вручную', 'request': {'location': None,... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112382f20>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'gps_denied_typed_landmark', 'scenario': 'GPS запрещён, ориентир введён вручную', 'request': {'location': None,... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: gps_denied_typed_landmark: fixture:coworking: travel plus minimum visit exceeds budget
+E       assert not ['fixture:coworking: travel plus minimum visit exceeds budget']
+
+tests/test_backend_golden_local.py:34: AssertionError
+_____________ test_existing_golden_through_local_api[empty_query] ______________
+
+case = {'id': 'empty_query', 'scenario': 'Пустая строка без придуманного ограничения', 'request': {'location': {'lat': 51.128...}, 'expect': {'status_codes': [200], 'outcome': 'safe_response', 'relevant_poi_ids': [], 'count_between': [0, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11ae44040>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'empty_query', 'scenario': 'Пустая строка без придуманного ограничения', 'request': {'location': {'lat': 51.128...}, 'expect': {'status_codes': [200], 'outcome': 'safe_response', 'relevant_poi_ids': [], 'count_between': [0, 3]}, ...}
+response = <Response [422 Unprocessable Content]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+>       assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+E       AssertionError: empty_query: HTTP 422, expected [200]. Golden expectations are unchanged. Empty/long-query limits require policy review.
+E       assert 422 in [200]
+E        +  where 422 = <Response [422 Unprocessable Content]>.status_code
+
+tests/test_backend_golden_local.py:29: AssertionError
+___________ test_existing_golden_through_local_api[whitespace_query] ___________
+
+case = {'id': 'whitespace_query', 'scenario': 'Пробельная строка', 'request': {'location': {'lat': 51.128, 'lon': 71.43}, 'ti...}, 'expect': {'status_codes': [200], 'outcome': 'safe_response', 'relevant_poi_ids': [], 'count_between': [0, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11ae44180>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'whitespace_query', 'scenario': 'Пробельная строка', 'request': {'location': {'lat': 51.128, 'lon': 71.43}, 'ti...}, 'expect': {'status_codes': [200], 'outcome': 'safe_response', 'relevant_poi_ids': [], 'count_between': [0, 3]}, ...}
+response = <Response [422 Unprocessable Content]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+>       assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+E       AssertionError: whitespace_query: HTTP 422, expected [200]. Golden expectations are unchanged. Empty/long-query limits require policy review.
+E       assert 422 in [200]
+E        +  where 422 = <Response [422 Unprocessable Content]>.status_code
+
+tests/test_backend_golden_local.py:29: AssertionError
+__________ test_existing_golden_through_local_api[kids_late_evening] ___________
+
+case = {'id': 'kids_late_evening', 'scenario': 'Ребёнок поздним вечером', 'request': {'location': None, 'time_budget_min': 30... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112382700>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'kids_late_evening', 'scenario': 'Ребёнок поздним вечером', 'request': {'location': None, 'time_budget_min': 30... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: kids_late_evening: fixture:playground_expo: travel plus minimum visit exceeds budget
+E         fixture:cafe_expo: travel plus minimum visit exceeds budget
+E       assert not ['fixture:playground_expo: travel plus minimum visit exceeds budget', 'fixture:cafe_expo: travel plus minimum visit exceeds budget']
+
+tests/test_backend_golden_local.py:34: AssertionError
+______________ test_existing_golden_through_local_api[group_five] ______________
+
+case = {'id': 'group_five', 'scenario': 'Группа из пяти', 'request': {'location': {'lat': 51.128, 'lon': 71.43}, 'time_budget...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11ae44e00>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'group_five', 'scenario': 'Группа из пяти', 'request': {'location': {'lat': 51.128, 'lon': 71.43}, 'time_budget...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: group_five: fixture:coworking: travel plus minimum visit exceeds budget
+E         fixture:bayterek: category not in expected categories
+E       assert not ['fixture:coworking: travel plus minimum visit exceeds budget', 'fixture:bayterek: category not in expected categories']
+
+tests/test_backend_golden_local.py:34: AssertionError
+_____________ test_existing_golden_through_local_api[walk_fifteen] _____________
+
+case = {'id': 'walk_fifteen', 'scenario': 'Короткий пеший бюджет', 'request': {'location': {'lat': 51.128, 'lon': 71.43}, 'ti...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11ae44cc0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'walk_fifteen', 'scenario': 'Короткий пеший бюджет', 'request': {'location': {'lat': 51.128, 'lon': 71.43}, 'ti...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: walk_fifteen: fixture:lovers_park: travel plus minimum visit exceeds budget
+E         fixture:cafe_center: travel plus minimum visit exceeds budget
+E       assert not ['fixture:lovers_park: travel plus minimum visit exceeds budget', 'fixture:cafe_center: travel plus minimum visit exceeds budget']
+
+tests/test_backend_golden_local.py:34: AssertionError
+______________ test_existing_golden_through_local_api[car_sixty] _______________
+
+case = {'id': 'car_sixty', 'scenario': 'Автомобильный режим', 'request': {'location': {'lat': 51.128, 'lon': 71.43}, 'time_bu... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11ae44680>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'car_sixty', 'scenario': 'Автомобильный режим', 'request': {'location': {'lat': 51.128, 'lon': 71.43}, 'time_bu... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: car_sixty: fixture:national_museum: travel plus minimum visit exceeds budget
+E       assert not ['fixture:national_museum: travel plus minimum visit exceeds budget']
+
+tests/test_backend_golden_local.py:34: AssertionError
+____________ test_existing_golden_through_local_api[transit_sixty] _____________
+
+case = {'id': 'transit_sixty', 'scenario': 'Общественный транспорт', 'request': {'location': {'lat': 51.128, 'lon': 71.43}, '... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11ae459e0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'transit_sixty', 'scenario': 'Общественный транспорт', 'request': {'location': {'lat': 51.128, 'lon': 71.43}, '... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: transit_sixty: fixture:coworking: travel plus minimum visit exceeds budget
+E       assert not ['fixture:coworking: travel plus minimum visit exceeds budget']
+
+tests/test_backend_golden_local.py:34: AssertionError
+____ test_existing_golden_through_local_api[explicit_fields_override_text] _____
+
+case = {'id': 'explicit_fields_override_text', 'scenario': 'Явные поля при конфликте с текстом', 'request': {'location': {'la... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x1123822a0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'explicit_fields_override_text', 'scenario': 'Явные поля при конфликте с текстом', 'request': {'location': {'la... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: explicit_fields_override_text: fixture:lovers_park: travel plus minimum visit exceeds budget
+E         fixture:presidential_park: travel plus minimum visit exceeds budget
+E       assert not ['fixture:lovers_park: travel plus minimum visit exceeds budget', 'fixture:presidential_park: travel plus minimum visit exceeds budget']
+
+tests/test_backend_golden_local.py:34: AssertionError
+____________ test_existing_golden_through_local_api[cross_midnight] ____________
+
+case = {'id': 'cross_midnight', 'scenario': 'Переход даты и часы работы', 'request': {'location': {'lat': 51.128, 'lon': 71.4... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x1123832e0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'cross_midnight', 'scenario': 'Переход даты и часы работы', 'request': {'location': {'lat': 51.128, 'lon': 71.4... 'expect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: cross_midnight: fixture:lovers_park: travel plus minimum visit exceeds budget
+E       assert not ['fixture:lovers_park: travel plus minimum visit exceeds budget']
+
+tests/test_backend_golden_local.py:34: AssertionError
+________ test_existing_golden_through_local_api[outside_astana_london] _________
+
+case = {'id': 'outside_astana_london', 'scenario': 'Корректные координаты далеко от Астаны', 'request': {'location': {'lat': ...}, 'expect': {'status_codes': [200], 'outcome': 'safe_response', 'relevant_poi_ids': [], 'count_between': [0, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11ae45e40>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'outside_astana_london', 'scenario': 'Корректные координаты далеко от Астаны', 'request': {'location': {'lat': ...}, 'expect': {'status_codes': [200], 'outcome': 'safe_response', 'relevant_poi_ids': [], 'count_between': [0, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: outside_astana_london: response.recommendations.0.distance_m: None is not of type 'number'
+E         response.recommendations.0.travel_min: None is not of type 'number'
+E         response.recommendations.1.distance_m: None is not of type 'number'
+E         response.recommendations.1.travel_min: None is not of type 'number'
+E         response.recommendations.2.distance_m: None is not of type 'number'
+E         response.recommendations.2.travel_min: None is not of type 'number'
+E       assert not ["response.recommendations.0.distance_m: None is not of type 'number'", "response.recommendations.0.travel_min: None i...ons.2.distance_m: None is not of type 'number'", "response.recommendations.2.travel_min: None is not of type 'number'"]
+
+tests/test_backend_golden_local.py:34: AssertionError
+_______ test_existing_golden_through_local_api[valid_polar_coordinates] ________
+
+case = {'id': 'valid_polar_coordinates', 'scenario': 'Допустимая географическая граница вне покрытия', 'request': {'location'...}, 'expect': {'status_codes': [200], 'outcome': 'safe_response', 'relevant_poi_ids': [], 'count_between': [0, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11ae453a0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'valid_polar_coordinates', 'scenario': 'Допустимая географическая граница вне покрытия', 'request': {'location'...}, 'expect': {'status_codes': [200], 'outcome': 'safe_response', 'relevant_poi_ids': [], 'count_between': [0, 3]}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: valid_polar_coordinates: response.recommendations.0.distance_m: None is not of type 'number'
+E         response.recommendations.0.travel_min: None is not of type 'number'
+E         response.recommendations.1.distance_m: None is not of type 'number'
+E         response.recommendations.1.travel_min: None is not of type 'number'
+E         response.recommendations.2.distance_m: None is not of type 'number'
+E         response.recommendations.2.travel_min: None is not of type 'number'
+E       assert not ["response.recommendations.0.distance_m: None is not of type 'number'", "response.recommendations.0.travel_min: None i...ons.2.distance_m: None is not of type 'number'", "response.recommendations.2.travel_min: None is not of type 'number'"]
+
+tests/test_backend_golden_local.py:34: AssertionError
+___________ test_existing_golden_through_local_api[latitude_string] ____________
+
+case = {'id': 'latitude_string', 'scenario': 'Строковая широта', 'request': {'location': {'lat': '51.128', 'lon': 71.43}, 'ti... 'group_size': 1}, ...}, 'expect': {'status_codes': [422], 'outcome': 'validation_error', 'relevant_poi_ids': []}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112380400>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'latitude_string', 'scenario': 'Строковая широта', 'request': {'location': {'lat': '51.128', 'lon': 71.43}, 'ti... 'group_size': 1}, ...}, 'expect': {'status_codes': [422], 'outcome': 'validation_error', 'relevant_poi_ids': []}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+>       assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+E       AssertionError: latitude_string: HTTP 200, expected [422]. Golden expectations are unchanged.
+E       assert 200 in [422]
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/test_backend_golden_local.py:29: AssertionError
+___________ test_existing_golden_through_local_api[latitude_boolean] ___________
+
+case = {'id': 'latitude_boolean', 'scenario': 'Булево вместо широты', 'request': {'location': {'lat': True, 'lon': 71.43}, 't... 'group_size': 1}, ...}, 'expect': {'status_codes': [422], 'outcome': 'validation_error', 'relevant_poi_ids': []}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x112381580>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'latitude_boolean', 'scenario': 'Булево вместо широты', 'request': {'location': {'lat': True, 'lon': 71.43}, 't... 'group_size': 1}, ...}, 'expect': {'status_codes': [422], 'outcome': 'validation_error', 'relevant_poi_ids': []}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+>       assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+E       AssertionError: latitude_boolean: HTTP 200, expected [422]. Golden expectations are unchanged.
+E       assert 200 in [422]
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/test_backend_golden_local.py:29: AssertionError
+____________ test_existing_golden_through_local_api[budget_string] _____________
+
+case = {'id': 'budget_string', 'scenario': 'Строковый бюджет', 'request': {'location': {'lat': 51.128, 'lon': 71.43}, 'time_b... 'group_size': 1}, ...}, 'expect': {'status_codes': [422], 'outcome': 'validation_error', 'relevant_poi_ids': []}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11ae47f60>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'budget_string', 'scenario': 'Строковый бюджет', 'request': {'location': {'lat': 51.128, 'lon': 71.43}, 'time_b... 'group_size': 1}, ...}, 'expect': {'status_codes': [422], 'outcome': 'validation_error', 'relevant_poi_ids': []}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+>       assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+E       AssertionError: budget_string: HTTP 200, expected [422]. Golden expectations are unchanged.
+E       assert 200 in [422]
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/test_backend_golden_local.py:29: AssertionError
+___________ test_existing_golden_through_local_api[with_kids_string] ___________
+
+case = {'id': 'with_kids_string', 'scenario': 'Строка вместо with_kids', 'request': {'location': {'lat': 51.128, 'lon': 71.43...h_kids': 'false'}, ...}, 'expect': {'status_codes': [422], 'outcome': 'validation_error', 'relevant_poi_ids': []}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11ae47380>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'with_kids_string', 'scenario': 'Строка вместо with_kids', 'request': {'location': {'lat': 51.128, 'lon': 71.43...h_kids': 'false'}, ...}, 'expect': {'status_codes': [422], 'outcome': 'validation_error', 'relevant_poi_ids': []}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+>       assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+E       AssertionError: with_kids_string: HTTP 200, expected [422]. Golden expectations are unchanged.
+E       assert 200 in [422]
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/test_backend_golden_local.py:29: AssertionError
+_________ test_existing_golden_through_local_api[accessibility_string] _________
+
+case = {'id': 'accessibility_string', 'scenario': 'Строка вместо accessibility', 'request': {'location': {'lat': 51.128, 'lon...sibility': 'yes'}, ...}, 'expect': {'status_codes': [422], 'outcome': 'validation_error', 'relevant_poi_ids': []}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11aeb91c0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'accessibility_string', 'scenario': 'Строка вместо accessibility', 'request': {'location': {'lat': 51.128, 'lon...sibility': 'yes'}, ...}, 'expect': {'status_codes': [422], 'outcome': 'validation_error', 'relevant_poi_ids': []}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+>       assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+E       AssertionError: accessibility_string: HTTP 200, expected [422]. Golden expectations are unchanged.
+E       assert 200 in [422]
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/test_backend_golden_local.py:29: AssertionError
+__________ test_existing_golden_through_local_api[group_size_string] ___________
+
+case = {'id': 'group_size_string', 'scenario': 'Строковый размер группы', 'request': {'location': {'lat': 51.128, 'lon': 71.4...group_size': '5'}, ...}, 'expect': {'status_codes': [422], 'outcome': 'validation_error', 'relevant_poi_ids': []}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11ae47c40>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'group_size_string', 'scenario': 'Строковый размер группы', 'request': {'location': {'lat': 51.128, 'lon': 71.4...group_size': '5'}, ...}, 'expect': {'status_codes': [422], 'outcome': 'validation_error', 'relevant_poi_ids': []}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+>       assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+E       AssertionError: group_size_string: HTTP 200, expected [422]. Golden expectations are unchanged.
+E       assert 200 in [422]
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/test_backend_golden_local.py:29: AssertionError
+________ test_existing_golden_through_local_api[synthetic_pii_masking] _________
+
+case = {'id': 'synthetic_pii_masking', 'scenario': 'Синтетические контактные данные и тестовый номер', 'request': {'location'...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11aeba2a0>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'synthetic_pii_masking', 'scenario': 'Синтетические контактные данные и тестовый номер', 'request': {'location'...ect': {'status_codes': [200], 'outcome': 'recommendations', 'relevant_poi_ids': [], 'count_between': [1, 3], ...}, ...}
+response = <Response [200 OK]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+        assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+        errors = validate_response(response.json(), case["request"], pois, expected)
+>       assert not errors, f"{case['id']}: " + "\n".join(errors)
+E       AssertionError: synthetic_pii_masking: fixture:coworking: travel plus minimum visit exceeds budget
+E       assert not ['fixture:coworking: travel plus minimum visit exceeds budget']
+
+tests/test_backend_golden_local.py:34: AssertionError
+_____ test_existing_golden_through_local_api[long_query_no_invented_limit] _____
+
+case = {'id': 'long_query_no_invented_limit', 'scenario': 'Длинный текст без придуманного лимита', 'request': {'location': {'...}, 'expect': {'status_codes': [200], 'outcome': 'safe_response', 'relevant_poi_ids': [], 'count_between': [0, 3]}, ...}
+golden_backend = (namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>,...'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...])
+record_property = <function record_property.<locals>.append_property at 0x11aeb9620>
+
+    @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
+    def test_existing_golden_through_local_api(case, golden_backend, record_property):
+        """Every existing case keeps its original request, status and expectations."""
+        backend, pois = golden_backend
+        record_property("evidence_mode", EVIDENCE_MODE)
+        record_property("golden_id", case["id"])
+        response = backend.client.post("/api/recommend", json=deepcopy(case["request"]))
+>       assert_golden_result(case, response, pois)
+
+tests/test_backend_golden_local.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+case = {'id': 'long_query_no_invented_limit', 'scenario': 'Длинный текст без придуманного лимита', 'request': {'location': {'...}, 'expect': {'status_codes': [200], 'outcome': 'safe_response', 'relevant_poi_ids': [], 'count_between': [0, 3]}, ...}
+response = <Response [422 Unprocessable Content]>
+pois = [{'id': 'fixture:bayterek', 'name': 'Байтерек', 'name_en': 'Bayterek Tower', 'name_kk': 'Бәйтерек', ...}, {'id': 'fixt... 'fixture:central_park', 'name': 'Центральный парк', 'name_en': 'Central Park', 'name_kk': 'Орталық саябақ', ...}, ...]
+
+    def assert_golden_result(case, response, pois):
+        """Apply the runner's HTTP and independent response checks without changes."""
+        expected = case["expect"]
+        policy_note = (" Empty/long-query limits require policy review."
+                       if case["id"] in {"empty_query", "whitespace_query", "long_query_no_invented_limit"} else "")
+>       assert response.status_code in expected["status_codes"], (
+            f"{case['id']}: HTTP {response.status_code}, expected {expected['status_codes']}. "
+            "Golden expectations are unchanged." + policy_note
+        )
+E       AssertionError: long_query_no_invented_limit: HTTP 422, expected [200]. Golden expectations are unchanged. Empty/long-query limits require policy review.
+E       assert 422 in [200]
+E        +  where 422 = <Response [422 Unprocessable Content]>.status_code
+
+tests/test_backend_golden_local.py:29: AssertionError
+__ test_requested_language_has_distinct_generated_fallback[clarification-kk] ___
+
+qa_backend = namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>, ...s://example.com/qa/park', 'updated_at': '2026-10-18'}], client=<starlette.testclient.TestClient object at 0x11b2a0350>)
+lang = 'kk', scenario = 'clarification'
+
+    @pytest.mark.parametrize("lang", ["en", "kk"])
+    @pytest.mark.parametrize("scenario", ["clarification", "recommendation"])
+    def test_requested_language_has_distinct_generated_fallback(qa_backend, lang, scenario):
+        # A single controlled candidate isolates generated helper text from ranking.
+        park = next(p for p in qa_backend.pois if p["id"] == "test:park")
+        qa_backend.set_pois([park])
+        request = {"query": "Хочу парк рядом", "lang": "ru", "now": "2026-10-18T17:00:00+05:00"}
+        if scenario == "recommendation":
+            request["location"] = {"lat": 51.128, "lon": 71.430}
+            request["time_budget_min"] = 60
+        russian = qa_backend.client.post("/api/recommend", json=request)
+        translated = qa_backend.client.post("/api/recommend", json={**deepcopy(request), "lang": lang})
+        assert russian.status_code == translated.status_code == 200
+        before, after = russian.json(), translated.json()
+>       assert after["disclaimer"] != before["disclaimer"], f"lang={lang} reused the Russian disclaimer"
+E       AssertionError: lang=kk reused the Russian disclaimer
+E       assert 'Рекомендации основаны на открытых данных о местах (POI). Приблизительная локация используется только для этого запроса и не сохраняется.' != 'Рекомендации основаны на открытых данных о местах (POI). Приблизительная локация используется только для этого запроса и не сохраняется.'
+
+tests/test_backend_languages_local.py:26: AssertionError
+__ test_requested_language_has_distinct_generated_fallback[recommendation-kk] __
+
+qa_backend = namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>, ...s://example.com/qa/park', 'updated_at': '2026-10-18'}], client=<starlette.testclient.TestClient object at 0x11ae02fc0>)
+lang = 'kk', scenario = 'recommendation'
+
+    @pytest.mark.parametrize("lang", ["en", "kk"])
+    @pytest.mark.parametrize("scenario", ["clarification", "recommendation"])
+    def test_requested_language_has_distinct_generated_fallback(qa_backend, lang, scenario):
+        # A single controlled candidate isolates generated helper text from ranking.
+        park = next(p for p in qa_backend.pois if p["id"] == "test:park")
+        qa_backend.set_pois([park])
+        request = {"query": "Хочу парк рядом", "lang": "ru", "now": "2026-10-18T17:00:00+05:00"}
+        if scenario == "recommendation":
+            request["location"] = {"lat": 51.128, "lon": 71.430}
+            request["time_budget_min"] = 60
+        russian = qa_backend.client.post("/api/recommend", json=request)
+        translated = qa_backend.client.post("/api/recommend", json={**deepcopy(request), "lang": lang})
+        assert russian.status_code == translated.status_code == 200
+        before, after = russian.json(), translated.json()
+>       assert after["disclaimer"] != before["disclaimer"], f"lang={lang} reused the Russian disclaimer"
+E       AssertionError: lang=kk reused the Russian disclaimer
+E       assert 'Рекомендации основаны на открытых данных о местах (POI). Приблизительная локация используется только для этого запроса и не сохраняется.' != 'Рекомендации основаны на открытых данных о местах (POI). Приблизительная локация используется только для этого запроса и не сохраняется.'
+
+tests/test_backend_languages_local.py:26: AssertionError
+________ test_unknown_hours_cannot_be_contradicted_by_model_explanation ________
+
+qa_backend = namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>, ...s://example.com/qa/park', 'updated_at': '2026-10-18'}], client=<starlette.testclient.TestClient object at 0x11ae9cdd0>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x11ae9d820>
+
+    def test_unknown_hours_cannot_be_contradicted_by_model_explanation(qa_backend, monkeypatch):
+        """QA honesty + docs/ethics_privacy.md: an LLM summary cannot prove open hours."""
+        park = _single_park(qa_backend)
+        _provider(qa_backend, monkeypatch, _answer(park['id'], why='Место сейчас открыто круглосуточно, часы подтверждены.'))
+        body = _post(qa_backend)
+        assert body['recommendations'][0]['open_status'] == 'unknown'
+        explanation = body['recommendations'][0]['why'].casefold()
+>       assert 'сейчас открыто' not in explanation and 'часы подтверждены' not in explanation, 'A structured unknown badge does not make a contradictory opening claim safe'
+E       AssertionError: A structured unknown badge does not make a contradictory opening claim safe
+E       assert ('сейчас открыто' not in 'место сейча...одтверждены.'
+E         
+E         'сейчас открыто' is contained here:
+E           место сейчас открыто круглосуточно, часы подтверждены.
+E         ?       ++++++++++++++)
+
+tests/test_backend_safety_local.py:197: AssertionError
+______ test_url_cleaning_cannot_leave_an_empty_successful_recommendation _______
+
+qa_backend = namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>, ...s://example.com/qa/park', 'updated_at': '2026-10-18'}], client=<starlette.testclient.TestClient object at 0x11ae76120>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x11ae74c50>
+
+    def test_url_cleaning_cannot_leave_an_empty_successful_recommendation(qa_backend, monkeypatch):
+        """QA stage2 requires nonempty why/what_to_do after all rendering cleaners."""
+        park = _single_park(qa_backend)
+        _provider(qa_backend, monkeypatch, _answer(park['id'], why='https://qa-exfil.invalid/pixel',
+                                                 what_to_do='![map](https://qa-exfil.invalid/map)'))
+        rec = _post(qa_backend)['recommendations'][0]
+>       assert rec['why'].strip(), 'Sanitized-empty model text must trigger rejection or factual fallback'
+E       AssertionError: Sanitized-empty model text must trigger rejection or factual fallback
+E       assert ''
+E        +  where '' = <built-in method strip of str object at 0x101801628>()
+E        +    where <built-in method strip of str object at 0x101801628> = ''.strip
+
+tests/test_backend_safety_local.py:219: AssertionError
+_ test_model_output_cannot_expose_non_http_exfiltration_links[scheme-relative] _
+
+qa_backend = namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>, ...s://example.com/qa/park', 'updated_at': '2026-10-18'}], client=<starlette.testclient.TestClient object at 0x11ae54b90>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x11ae57b00>
+unsafe = 'Посмотреть [карту](//qa-exfil.invalid/collect?token=synthetic).'
+
+    @pytest.mark.parametrize('unsafe', [
+        'Посмотреть [карту](//qa-exfil.invalid/collect?token=synthetic).',
+        "Посмотреть [фото](javascript:fetch('/collect')).",
+    ], ids=['scheme-relative', 'javascript'])
+    def test_model_output_cannot_expose_non_http_exfiltration_links(qa_backend, monkeypatch, unsafe):
+        """Privacy safe-display target and Backend README: model links are stripped."""
+        park = _single_park(qa_backend)
+        _provider(qa_backend, monkeypatch, _answer(park['id'], why=unsafe, what_to_do=unsafe))
+        body = _post(qa_backend)
+        rendered = json.dumps([(r['why'], r['what_to_do']) for r in body['recommendations']], ensure_ascii=False)
+>       assert 'qa-exfil.invalid' not in rendered and 'javascript:' not in rendered, 'Unsafe link targets survived the backend output cleaner'
+E       AssertionError: Unsafe link targets survived the backend output cleaner
+E       assert ('qa-exfil.invalid' not in '[["Посмотре...nthetic)."]]'
+E         
+E         'qa-exfil.invalid' is contained here:
+E           [["Посмотреть [карту](//qa-exfil.invalid/collect?token=synthetic).", "Посмотреть [карту](//qa-exfil.invalid/collect?token=synthetic)."]]
+E         ?                         ++++++++++++++++)
+
+tests/test_backend_safety_local.py:233: AssertionError
+___ test_model_output_cannot_expose_non_http_exfiltration_links[javascript] ____
+
+qa_backend = namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>, ...s://example.com/qa/park', 'updated_at': '2026-10-18'}], client=<starlette.testclient.TestClient object at 0x1123c4920>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x11ae579e0>
+unsafe = "Посмотреть [фото](javascript:fetch('/collect'))."
+
+    @pytest.mark.parametrize('unsafe', [
+        'Посмотреть [карту](//qa-exfil.invalid/collect?token=synthetic).',
+        "Посмотреть [фото](javascript:fetch('/collect')).",
+    ], ids=['scheme-relative', 'javascript'])
+    def test_model_output_cannot_expose_non_http_exfiltration_links(qa_backend, monkeypatch, unsafe):
+        """Privacy safe-display target and Backend README: model links are stripped."""
+        park = _single_park(qa_backend)
+        _provider(qa_backend, monkeypatch, _answer(park['id'], why=unsafe, what_to_do=unsafe))
+        body = _post(qa_backend)
+        rendered = json.dumps([(r['why'], r['what_to_do']) for r in body['recommendations']], ensure_ascii=False)
+>       assert 'qa-exfil.invalid' not in rendered and 'javascript:' not in rendered, 'Unsafe link targets survived the backend output cleaner'
+E       AssertionError: Unsafe link targets survived the backend output cleaner
+E       assert ('qa-exfil.invalid' not in '[["Посмотре...lect\'))."]]'
+E         
+E         'qa-exfil.invalid' is contained here:
+E           lect'))."]] and 'javascript:' not in '[["Посмотре...lect\'))."]]'
+E         
+E         'javascript:' is contained here:
+E           [["Посмотреть [фото](javascript:fetch('/collect')).", "Посмотреть [фото](javascript:fetch('/collect'))."]]
+E         ?                      +++++++++++)
+
+tests/test_backend_safety_local.py:233: AssertionError
+________ test_template_cannot_label_unsupported_quietness_as_a_poi_fact ________
+
+qa_backend = namespace(llm=<module 'backend.app.llm' from '/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/backend/app/llm.py'>, ...s://example.com/qa/cafe', 'updated_at': '2026-10-18'}], client=<starlette.testclient.TestClient object at 0x11af9df10>)
+
+    def test_template_cannot_label_unsupported_quietness_as_a_poi_fact(qa_backend):
+        """QA honesty: a category does not establish quietness; label any idea generated."""
+        cafe = deepcopy(next(p for p in qa_backend.pois if p['id'] == 'test:cafe'))
+        cafe.update(description='Тестовое кафе с напитками и столами.', description_source='website', tags=[])
+        qa_backend.set_pois([cafe])
+        rec = _post(qa_backend, query='Хочу кофе рядом')['recommendations'][0]
+        unsupported = re.search(r'тих|quiet', rec['what_to_do'], flags=re.IGNORECASE)
+>       assert rec['source'] == 'generated' or not unsupported, 'Generic cafe facts cannot support a quiet-corner claim labelled poi_data'
+E       AssertionError: Generic cafe facts cannot support a quiet-corner claim labelled poi_data
+E       assert ('poi_data' == 'generated'
+E         
+E         - generated
+E         + poi_data or not <re.Match object; span=(21, 24), match='тих'>)
+
+tests/test_backend_safety_local.py:243: AssertionError
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_api_contract.py:14: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:23: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:31: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [6] tests/test_api_contract.py:39: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:50: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [12] tests/test_rag.py:12: Actual RAG NOT TESTED: enable --live-rag to run
+SKIPPED [3] tests/test_rag.py:32: Actual RAG NOT TESTED: enable --live-rag to run
+SKIPPED [1] tests/test_rag.py:41: Actual RAG NOT TESTED: enable --live-rag to run
+SKIPPED [1] tests/test_rag.py:56: Actual RAG NOT TESTED: enable --live-rag to run
+SKIPPED [4] tests/test_safety.py:13: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_safety.py:28: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_safety.py:41: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_ui.py:26: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:40: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:49: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:61: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:73: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:96: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:106: Product backend NOT TESTED: enable --live-api to run
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_walk_ru]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_work_ru]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_kids_ru]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_airport_ru]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_night_ru]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_walk_kk]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_work_kk]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_kids_kk]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_airport_kk]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_night_kk]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_walk_en]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_work_en]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_kids_en]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_airport_en]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_night_en]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[gps_denied_typed_landmark]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[empty_query]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[whitespace_query]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[kids_late_evening]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[group_five]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[walk_fifteen]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[car_sixty]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[transit_sixty]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[explicit_fields_override_text]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[cross_midnight]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[outside_astana_london]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[valid_polar_coordinates]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[latitude_string]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[latitude_boolean]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[budget_string]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[with_kids_string]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[accessibility_string]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[group_size_string]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[synthetic_pii_masking]
+FAILED tests/test_backend_golden_local.py::test_existing_golden_through_local_api[long_query_no_invented_limit]
+FAILED tests/test_backend_languages_local.py::test_requested_language_has_distinct_generated_fallback[clarification-kk]
+FAILED tests/test_backend_languages_local.py::test_requested_language_has_distinct_generated_fallback[recommendation-kk]
+FAILED tests/test_backend_safety_local.py::test_unknown_hours_cannot_be_contradicted_by_model_explanation
+FAILED tests/test_backend_safety_local.py::test_url_cleaning_cannot_leave_an_empty_successful_recommendation
+FAILED tests/test_backend_safety_local.py::test_model_output_cannot_expose_non_http_exfiltration_links[scheme-relative]
+FAILED tests/test_backend_safety_local.py::test_model_output_cannot_expose_non_http_exfiltration_links[javascript]
+FAILED tests/test_backend_safety_local.py::test_template_cannot_label_unsupported_quietness_as_a_poi_fact
+42 failed, 549 passed, 40 skipped in 11.92s
