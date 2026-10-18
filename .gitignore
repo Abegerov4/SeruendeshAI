@@ -38,3 +38,6 @@ models/
 .DS_Store
 .vscode/
 .idea/
+
+# local SQLite for accounts
+backend/.local/

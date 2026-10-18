@@ -25,6 +25,15 @@ class Settings(BaseSettings):
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173"
     cors_origin_regex: str = r"https://.*\.(vercel\.app|netlify\.app|pages\.dev)"
     response_cache_ttl_s: int = 600
+    # accounts
+    database_url: str = ""          # Railway Postgres DATABASE_URL; empty -> local SQLite (backend/.local/app.db)
+    secret_key: str = ""            # signs session cookies; set in production
+    public_url: str = ""            # e.g. https://seruendesh.site (links in emails)
+    smtp_host: str = ""
+    smtp_port: int = 587
+    smtp_user: str = ""
+    smtp_password: str = ""
+    smtp_from: str = ""
     rate_limit_per_min: int = 30
     log_level: str = "INFO"
 

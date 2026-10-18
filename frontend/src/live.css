@@ -54,3 +54,49 @@
 .leaflet-container img.leaflet-tile{max-width:none!important;width:256px;height:256px}
 .osm-tiles{filter:saturate(.75) sepia(.12) brightness(1.03)}
 .leaflet-canvas .leaflet-pane img{max-width:none}
+
+/* language switcher (custom listbox) */
+.lang-switch{position:relative;flex-shrink:0}
+.lang-trigger{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 12px 0 11px;border:1px solid #d7dfd5;border-radius:999px;background:#fffdf5;color:#123e30;font-size:12.5px;font-weight:700;letter-spacing:.3px;transition:border-color .2s,box-shadow .2s,background .2s}
+.lang-trigger:hover{border-color:#a9c08f;background:#fff}
+.lang-switch.open .lang-trigger{border-color:#397257;box-shadow:0 0 0 4px #c6e73040}
+.lang-chevron{transition:transform .2s;opacity:.7}
+.lang-switch.open .lang-chevron{transform:rotate(180deg)}
+.lang-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:60;min-width:178px;margin:0;padding:6px;list-style:none;background:#fffef9;border:1px solid #dfe6d6;border-radius:16px;box-shadow:0 18px 40px #1d3a2a26,0 2px 6px #1d3a2a14;outline:none;animation:lang-pop .16s ease-out}
+.lang-menu li{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:11px;cursor:pointer;color:#253e34;font-size:13.5px}
+.lang-menu li.active{background:#f0f5e6}
+.lang-menu li.selected{color:#174432;font-weight:600}
+.lang-menu li svg{margin-left:auto;color:#397257}
+.lang-code{display:inline-grid;place-items:center;min-width:38px;height:24px;padding:0 6px;border-radius:7px;background:#eaf1df;color:#2c5a3f;font-size:11px;font-weight:800;letter-spacing:.4px}
+.lang-menu li.selected .lang-code{background:#174432;color:#d3eb77}
+@keyframes lang-pop{from{opacity:0;transform:translateY(-4px) scale(.98)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.lang-menu{animation:none}}
+@media (max-width:640px){.lang-trigger{height:34px;padding:0 9px}.lang-trigger>svg:first-child{display:none}}
+
+/* account menu */
+.account-menu{position:relative}
+.account-button{display:inline-flex;align-items:center;gap:7px}
+.account-dropdown{position:absolute;right:0;top:calc(100% + 8px);z-index:60;min-width:220px;padding:6px;background:#fffef9;border:1px solid #dfe6d6;border-radius:16px;box-shadow:0 18px 40px #1d3a2a26;display:flex;flex-direction:column;animation:lang-pop .16s ease-out}
+.account-dropdown .account-email{font-size:12px;color:#7d8a7f;padding:8px 10px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.account-dropdown a,.account-dropdown button{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:11px;font-size:13.5px;color:#253e34;text-align:left}
+.account-dropdown a:hover,.account-dropdown button:hover{background:#f0f5e6}
+.account-dropdown .danger{color:#a2412b}
+.form-feedback.ok{border-color:#b7d79a;background:#f3faea}
+
+/* friendly chips */
+.card-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.hours-chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;padding:4px 9px;border-radius:20px;background:#f2f4ee;color:#5a6b5f}
+.hours-chip.open{background:#e6f3d8;color:#2f6a2a}
+.hours-chip.maybe{background:#f4f1e2;color:#73622a}
+.hours-chip.unknown{background:#f2f2ef;color:#7d8277}
+.refine-chips{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px}
+.refine-chips>span{font-size:12px;color:#7d8a7f;margin-right:2px}
+.refine-chips button{display:inline-flex;align-items:center;gap:5px;font-size:13px;padding:7px 13px;border-radius:999px;border:1px solid #d7dfd5;background:#fffdf5;color:#294d3d;transition:background .2s,border-color .2s}
+.refine-chips button:hover{border-color:#a9c08f;background:#fff}
+.refine-chips button.on{background:#174432;color:#e9f6c8;border-color:#174432}
+.friendly-note{margin:2px 0 0;font-size:13px;color:#46594c;line-height:1.45}
+.why-toggle{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#397257;padding:0;align-self:flex-start}
+.why-details{font-size:12px;color:#5a6b5f;line-height:1.5}
+.why-details p{margin:2px 0}
+.why-details .muted{color:#8a948c}
+.detail-note{font-size:11px;color:#8a948c}

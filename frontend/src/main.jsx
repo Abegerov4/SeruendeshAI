@@ -6,6 +6,7 @@ import { Header, Footer } from './components/Layout';
 import Explore from './pages/Explore';
 import Auth from './pages/Auth';
 import Saved from './pages/Saved';
+import { useAuth, loadMe, fetchSaved, putSaved, deleteSaved } from './auth';
 import './design.css';
 import './life.css';
 import './motion.css';
@@ -13,16 +14,32 @@ import './details.css';
 import './scrollbars.css';
 import './planner.css';
 import './live.css';
+
 function App() {
   const language = useLocale();
   const path = usePath();
+  const { user } = useAuth();
   const [saved, setSaved] = useState([]);
-  const toggleSaved = place => setSaved(prev => prev.some(x => x.id === place.id) ? prev.filter(x => x.id !== place.id) : [...prev, place]);
+  useEffect(() => { loadMe(); }, []);
+  useEffect(() => {  // logged in: favourites live in the account; guests keep them for this tab only
+    if (!user) return;
+    fetchSaved().then(server => setSaved(prev => {
+      const ids = new Set(server.map(p => p.id));
+      prev.filter(p => !ids.has(p.id)).forEach(p => putSaved(p).catch(() => {}));  // keep what a guest saved before logging in
+      return [...server, ...prev.filter(p => !ids.has(p.id))];
+    })).catch(() => {});
+  }, [user?.id]);
+  const toggleSaved = place => setSaved(prev => {
+    const exists = prev.some(x => x.id === place.id);
+    if (user) (exists ? deleteSaved(place.id) : putSaved(place)).catch(() => {});
+    return exists ? prev.filter(x => x.id !== place.id) : [...prev, place];
+  });
   useEffect(() => {
     if (path === '/') document.title = tr('SeruendeshAI — открой свою Астану');
     if (path === '/saved') document.title = tr('Избранное — SeruendeshAI');
   }, [path, language]);
-  if (['/login', '/register', '/forgot-password'].includes(path)) return <Auth key={path} mode={path === '/register' ? 'register' : path === '/forgot-password' ? 'reset' : 'login'} />;
+  const authMode = { '/login': 'login', '/register': 'register', '/forgot-password': 'reset', '/reset-password': 'confirm' }[path];
+  if (authMode) return <Auth key={path} mode={authMode} />;
   return <div className="app"><a className="skip-link" href="#content">{tr("Перейти к содержимому")}</a><Header path={path} savedCount={saved.length} /><div id="content">{path === '/' ? <Explore saved={saved} toggleSaved={toggleSaved} /> : path === '/saved' ? <Saved saved={saved} toggleSaved={toggleSaved} /> : <main className="not-found"><span className="section-eyebrow">{tr("404 / НЕМНОГО СВЕРНУЛИ С МАРШРУТА")}</span><h1>{tr("Здесь пока тихо.")}</h1><p>{tr("Вернёмся туда, где начинаются открытия?")}</p><Link to="/" className="primary-button">{tr("На главную ↗")}</Link></main>}</div><Footer /></div>;
 }
 createRoot(document.getElementById('root')).render(<App />);

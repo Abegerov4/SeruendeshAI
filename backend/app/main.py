@@ -19,8 +19,10 @@ from fastapi.staticfiles import StaticFiles
 
 from app.paths import ROOT_DIR
 
+from app.auth import router as auth_router
 from app.categories import CATEGORIES
 from app.config import get_settings
+from app.db import db_kind, init_db
 from app.embedder import get_embedder
 from app.geo import load_graph
 from app.llm import client as llm_client
@@ -41,6 +43,9 @@ FEEDBACK: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))  # a
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     t0 = time.perf_counter()
+    init_db()
+    if not settings.secret_key:
+        log.warning("SECRET_KEY is not set: sessions will reset on restart")
     store = load_store(settings.embed_model)
     graph = load_graph()
     nodes, snap = snap_pois(store, graph)
@@ -53,8 +58,8 @@ async def lifespan(app: FastAPI):
     RT["rt"] = Runtime(store=store, graph=graph, poi_nodes=nodes, poi_snap=snap, embedder=embedder, http=http, cache={})
     if llm_client() is not None:
         asyncio.create_task(_warmup())  # first call with a new strict schema is slow; pay it at startup
-    log.info("ready in %.1fs: %d POIs, graph=%s, dense=%s, llm=%s", time.perf_counter() - t0, store.size,
-             graph is not None, embedder is not None, llm_client() is not None)
+    log.info("ready in %.1fs: %d POIs, graph=%s, dense=%s, llm=%s, db=%s", time.perf_counter() - t0, store.size,
+             graph is not None, embedder is not None, llm_client() is not None, db_kind())
     yield
     await http.aclose()
 
@@ -80,11 +85,13 @@ app = FastAPI(
                 "opening-hours confidence, honest source labels and an optional mini-route.",
     lifespan=lifespan,
 )
+app.include_router(auth_router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[o.strip() for o in settings.cors_origins.split(",") if o.strip()],
     allow_origin_regex=settings.cors_origin_regex or None,
-    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_credentials=True,
     allow_headers=["*"],
 )
 

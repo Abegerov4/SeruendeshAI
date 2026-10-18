@@ -93,8 +93,8 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
   };
   return <div className="map-canvas leaflet-canvas">
     <div ref={box} className="leaflet-box" role="region" aria-label={tr('Карта прогулки')} />
-    <div className="map-top"><span className="map-label"><span />{tr('Астана, Казахстан')}</span><span className="demo-label">OpenStreetMap</span></div>
+    <div className="map-top"><span className="map-label"><span />{tr('Астана, Казахстан')}</span></div>
     <div className="map-controls"><button aria-label={tr('Приблизить карту')} onClick={() => map.current.zoomIn()}><Plus size={19} /></button><button aria-label={tr('Отдалить карту')} onClick={() => map.current.zoomOut()}><Minus size={19} /></button><i /><button aria-label={tr('Вернуться к маршруту')} onClick={fit}><LocateFixed size={19} /></button></div>
-    <div className="map-bottom"><span><Layers size={14} />{route?.legs?.some(l => l.geometry === 'network') ? tr('Маршрут по улицам (граф OSM)') : tr('Линии — прямые между точками')}</span>{route && <button onClick={() => setRoute(!showRoute)}><Route size={15} />{showRoute ? tr('Скрыть маршрут') : tr('Показать маршрут')}</button>}</div>
+    {route && <div className="map-bottom"><span><Layers size={14} />{tr('Маршрут прогулки')}</span><button onClick={() => setRoute(!showRoute)}><Route size={15} />{showRoute ? tr('Скрыть маршрут') : tr('Показать маршрут')}</button></div>}
   </div>;
 }

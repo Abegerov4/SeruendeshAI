@@ -1,4 +1,4 @@
-// Walk context shared by the chat, the context editor and the demo panel.
+// Walk context shared by the chat, the preferences and the refinement chips.
 // `touched` marks controls the user changed explicitly: only those override what the text says.
 export const initialContext = {
   location: 'Район Байтерека', coords: null, time: 60, transport: 'walk', kid: false, accessible: false,

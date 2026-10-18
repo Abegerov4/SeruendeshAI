@@ -18,6 +18,13 @@ export function TrustList({ p }) {
   </ul>;
 }
 
+function shortHours(p) {
+  const label = (p.status || '').replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s*·.*$/, '').trim();
+  if (p.openConfidence === 'none') return tr('Часы уточняй');
+  if (p.openStatus === 'open' && /Открытая территория|Ашық аумақ|Open public space/.test(label)) return tr('Открыто всегда');
+  return label.length > 26 ? label.slice(0, 26) + '…' : label;
+}
+
 export default function PlaceCard({ place: p, index = 0, selected, onSelect, saved, onSave, onHover, isNew = false }) {
   const [expanded, setExpanded] = useState(false);
   const tags = p.badges.filter(b => BADGE_LABELS[b] && b !== 'outdoor' && b !== 'indoor').slice(0, 2);
@@ -25,7 +32,7 @@ export default function PlaceCard({ place: p, index = 0, selected, onSelect, sav
   return <><article onMouseEnter={() => onHover?.(p.id)} onMouseLeave={() => onHover?.(null)} onFocus={() => onHover?.(p.id)} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) onHover?.(null) }} data-place-id={p.id} className={'place-card ' + (selected ? 'selected' : '')} style={{ '--order': index }}>
     <div className="place-image-wrap"><button className="place-image-button" onClick={() => setExpanded(true)} aria-haspopup="dialog" aria-label={tr('Подробнее: ') + p.name}><img src={p.image} alt={tr(p.imageNote)} loading="lazy" /><span className="image-shade" /><span className="place-category"><p.icon size={13} />{p.category}</span><span className="place-number">{p.generated ? '✦' : '0' + (index + 1)}</span></button>
       {onSave && <button className={'save-button ' + (saved ? 'saved' : '')} aria-label={saved ? tr('Убрать из избранного') : tr('Сохранить ') + p.name} aria-pressed={saved} onClick={onSave}><Heart size={17} fill={saved ? 'currentColor' : 'none'} /></button>}
-      <span className="image-caption">{tr('Иллюстрация')}</span></div>
+    </div>
     <div className="place-content">
       <div className="place-title-row"><button onClick={() => setExpanded(true)} aria-haspopup="dialog"><h3>{p.name}</h3></button></div>
       {isNew && <span className="new-place-badge">{tr("Новое")}</span>}
@@ -35,8 +42,7 @@ export default function PlaceCard({ place: p, index = 0, selected, onSelect, sav
       {!p.generated && <div className="place-action"><span><Check size={12} />{tr("Что делать")}</span><p>{p.action}</p></div>}
       {(p.leaveBy || p.event) && <div className="badge-row">{p.leaveBy && <span className="leave">{tr('Выйти до')} {p.leaveBy}</span>}{p.event && <span className="event">{tr('Событие в')} {p.event.starts_at}</span>}</div>}
       {p.event && <p className="event-line">🎟 {p.event.title}{p.event.url && <> · <a href={p.event.url} target="_blank" rel="noreferrer">{p.event.source === 'sxodim' ? 'Sxodim' : 'Ticketon'}</a></>}</p>}
-      <div className="place-trust"><strong>{tr("Что известно")}</strong><TrustList p={p} />{p.url && <a href={p.url} target="_blank" rel="noreferrer">{tr("Посмотреть источник ")}↗</a>}</div>
-      <div className="place-bottom"><span className={'source ' + (p.generated ? 'ai-source' : '')}>{p.generated ? <Sparkles size={12} /> : <MapPin size={12} />} {tr(p.source)}</span><button className="detail-toggle" onClick={() => setExpanded(true)} aria-haspopup="dialog">{tr("Подробнее")}<ChevronDown size={13} /></button></div>
+      <div className="place-bottom"><div className="card-chips">{!p.generated && <span className={'hours-chip ' + (p.openStatus === 'open' && p.openConfidence === 'high' ? 'open' : p.openConfidence === 'none' ? 'unknown' : 'maybe')}><Clock3 size={12} />{shortHours(p)}</span>}<span className={'source ' + (p.generated ? 'ai-source' : '')}>{p.generated ? <Sparkles size={12} /> : <MapPin size={12} />} {tr(p.generated ? 'Идея Серу' : 'Из базы мест')}</span></div><button className="detail-toggle" onClick={() => setExpanded(true)} aria-haspopup="dialog">{tr("Подробнее")}<ChevronDown size={13} /></button></div>
     </div></article>{expanded && <PlaceDetails place={p} saved={saved} onSave={onSave} onClose={() => setExpanded(false)} onMap={onSelect} />}</>;
 }
 

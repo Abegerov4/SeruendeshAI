@@ -111,3 +111,24 @@ def test_frontend_is_served_when_built(client):
     r = client.get("/")
     assert r.status_code in (200, 404)
     assert client.get("/api/unknown").status_code == 404
+
+
+def test_accounts_flow(client):
+    import uuid
+    email = f"t{uuid.uuid4().hex[:8]}@example.com"
+    r = client.post("/api/auth/register", json={"name": "Аят", "email": email, "password": "short"})
+    assert r.status_code == 422
+    r = client.post("/api/auth/register", json={"name": "Аят", "email": email, "password": "correct horse 1"})
+    assert r.status_code == 201 and r.json()["email"] == email
+    assert client.get("/api/auth/me").json()["name"] == "Аят"
+    assert client.post("/api/auth/register", json={"name": "X Y", "email": email, "password": "another pass"}).status_code == 409
+    assert client.put("/api/me/saved/osm:n1", json={"data": {"name": "Кафе", "lat": 51.1, "secret": "x"}}).status_code == 200
+    saved = client.get("/api/me/saved").json()
+    assert saved[0]["poi_id"] == "osm:n1" and "secret" not in saved[0]["data"]
+    client.post("/api/auth/logout")
+    assert client.get("/api/auth/me").status_code == 401
+    assert client.post("/api/auth/login", json={"email": email, "password": "wrong"}).status_code == 401
+    assert client.post("/api/auth/login", json={"email": email.upper(), "password": "correct horse 1"}).status_code == 200
+    assert client.delete("/api/me").status_code == 204
+    assert client.get("/api/auth/me").status_code == 401
+    assert client.post("/api/auth/login", json={"email": email, "password": "correct horse 1"}).status_code == 401

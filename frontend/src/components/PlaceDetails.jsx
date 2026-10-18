@@ -19,7 +19,7 @@ export default function PlaceDetails({ place: p, saved, onSave, onClose, onMap }
       {p.description && !p.generated && <section><h3>{tr('О месте')}</h3><p>{p.description}</p></section>}
       <section className="detail-before"><h3>{tr('Перед выходом')}</h3><TrustList p={p} />{p.openingRaw && <p><small>{tr('Часы в данных:')} <code>{p.openingRaw}</code></small></p>}{p.address && <p><MapPin size={13} /> {p.address}</p>}
         <p className="detail-links">{p.url && <a href={p.url} target="_blank" rel="noreferrer">{tr('Посмотреть источник ')}<ArrowUpRight size={15} /></a>}{externalMapLinks(p).map(l => <a key={l.label} href={l.href} target="_blank" rel="noreferrer"> · {tr('Открыть в')} {l.label} <ArrowUpRight size={13} /></a>)}</p></section>
-      <p className="detail-demo">{tr('Фото — иллюстрация категории, не снимок этого места. Время рассчитано по открытым данным; проверь часы перед визитом.')}</p></div>
+      <p className="detail-note">{tr('Фото — иллюстрация категории, не снимок этого места. Время рассчитано по открытым данным; проверь часы перед визитом.')}</p></div>
     <div className="detail-toolbar">{onSave && <button className={'detail-save ' + (saved ? 'is-saved' : '')} aria-pressed={saved} onClick={onSave}><Heart size={18} fill={saved ? 'currentColor' : 'none'} />{tr(saved ? 'В избранном' : 'Сохранить место')}</button>}{onMap && <button className="detail-map" onClick={() => { onClose(); onMap(); }}><MapPin size={18} />{tr('Показать на карте')}</button>}</div>
   </dialog>, document.body);
 }
