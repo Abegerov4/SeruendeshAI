@@ -1,0 +1,51 @@
+/* Small, finite gestures keep the companion expressive without constant noise. */
+.seru-mascot{transform-origin:50% 85%}
+.seru-mascot.mascot-wave{animation:seru-wave 1.6s ease-in-out both}
+.seru-mascot.mascot-thinking{animation:seru-think 1.3s ease-in-out infinite}
+.seru-mascot.mascot-happy{animation:seru-hop .65s ease-in-out 2}
+@keyframes seru-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-9deg)}40%,80%{transform:rotate(7deg)}}
+@keyframes seru-think{0%,100%{transform:rotate(-5deg) translateY(0)}50%{transform:rotate(5deg) translateY(-4px)}}
+@keyframes seru-hop{0%,100%{transform:translateY(0) scale(1)}35%{transform:translateY(-13px) rotate(5deg)}65%{transform:translateY(0) scale(1.04,.96)}}
+.hero-seru .seru-bubble{transition:transform .3s,box-shadow .3s}
+.hero-seru:active .seru-bubble{transform:rotate(0) scale(.97)}
+.explore-hero>img{animation:city-drift 14s ease-out both}
+@keyframes city-drift{from{transform:scale(1.055) translateX(-.5%)}to{transform:scale(1)}}
+.place-image-wrap{height:245px}
+.place-image-button img{transition:transform .8s cubic-bezier(.2,.7,.3,1)}
+@media(hover:hover){.place-card:hover .place-image-button img{transform:scale(1.055)}.place-card:hover{box-shadow:0 15px 35px #173d3014}}
+.story-tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0}
+.story-tags>span{border:1px solid #dfe6cf;background:#f3f6e9;color:#506540;border-radius:20px;padding:5px 9px;font-size:10px;line-height:1.4}
+.save-button.saved svg{animation:heart-pop .55s cubic-bezier(.2,.7,.3,1)}
+.save-button.saved:after{content:'';position:absolute;inset:-4px;border:2px solid #b8ce72;border-radius:50%;animation:heart-ring .6s ease-out both;pointer-events:none}
+@keyframes heart-pop{0%,100%{transform:scale(1)}40%{transform:scale(1.45) rotate(-12deg)}70%{transform:scale(.9)}}
+@keyframes heart-ring{from{transform:scale(.7);opacity:1}to{transform:scale(1.5);opacity:0}}
+.map-marker{transition:filter .25s,transform .25s}
+.map-marker.highlighted{z-index:8;filter:drop-shadow(0 0 8px #608d31)}
+.map-marker.highlighted>span{background:#d5ee79;color:#173d30;outline:5px solid #d5ee7945}
+.animated-route{stroke-dasharray:1;stroke-dashoffset:0;animation:route-arrive 1.5s ease-in-out both}
+@keyframes route-arrive{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.place-card{animation:card-arrive .55s ease-out both;animation-delay:calc(var(--order,0)*110ms + 100ms);transition:border-color .25s,box-shadow .25s,transform .25s}
+@keyframes card-arrive{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.chat-message{animation:message-arrive .35s ease-out both}
+@keyframes message-arrive{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.filter-reveal{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .35s ease,opacity .25s}
+.filter-reveal.open{grid-template-rows:1fr;opacity:1}
+.filter-reveal>div{overflow:hidden;min-height:0}
+.map-sheet-details{grid-column:1/-1;border-top:1px solid #e0e6d7;padding-top:10px;animation:message-arrive .25s ease-out}
+.map-sheet-details[hidden]{display:none}
+.selected-map-place{display:grid;grid-template-columns:auto minmax(0,1fr) auto}
+.selected-map-place>div{min-width:0}
+.selected-map-place .map-sheet-details p{white-space:normal;font-size:12px;line-height:1.6;margin:0 0 8px}
+.map-sheet-details>button{display:flex;align-items:center;gap:8px;color:#29553b;font-size:11px;font-weight:600;min-height:36px}
+.map-sheet-toggle svg{transition:transform .25s}
+.sheet-open .map-sheet-toggle svg{transform:rotate(180deg)}
+.sheet-open{max-height:65%;overflow-y:auto;overscroll-behavior:contain}
+button:active{translate:0 1px}
+.mood-stories,.workspace-intro,.preferences,.saved-heading{animation:section-arrive .65s ease-out both}
+@keyframes section-arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:899px){.mood-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:10px}.mood-card{flex:0 0 65%;scroll-snap-align:start}.selected-map-place{box-shadow:0 12px 40px #123c3025;border-radius:17px}.place-image-wrap{height:235px}.selected-map-place.sheet-open{bottom:85px}.mood-card:active{transform:scale(.985)}}
+@media(max-width:580px){.hero-seru .seru-quip{display:block;font-size:8px;line-height:1.4;margin-top:4px}.hero-seru .seru-bubble{top:-24px}.mood-card{flex-basis:80%}.place-image-wrap{height:230px}.selected-map-place .map-sheet-details p{font-size:11px}.map-sheet-toggle{min-height:36px}.sheet-open{max-height:70%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.animated-route{stroke-dashoffset:0}.place-card:hover .place-image-button img{transform:none}button:active{translate:none}}
+/* Keep the keyboard shortcut out of view until it receives focus. */
+.skip-link:not(:focus){clip-path:inset(50%);width:1px;height:1px;overflow:hidden;padding:0;white-space:nowrap}
+.login-link{white-space:nowrap}

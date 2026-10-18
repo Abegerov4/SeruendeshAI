@@ -193,6 +193,14 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
             notes.append(t("note_flight_assumption", lang, m=dl))
         if mode == "walk" and back and float(hav_m(origin[0], origin[1], back["lat"], back["lon"])) > 6000:
             notes.append(t("note_taxi_back", lang))
+    refine = set(req.refine or [])
+    if "no_coffee" in refine:
+        parsed.avoid = list(dict.fromkeys(parsed.avoid + ["cafe", "sweets"]))
+        parsed.categories = [c for c in parsed.categories if c not in ("cafe", "sweets")]
+        parsed.soft_categories = [c for c in parsed.soft_categories if c not in ("cafe", "sweets")]
+    if "indoor" in refine:
+        parsed.needs.add("indoor")
+        plan.filters.append("indoor_only")
     share = 0.5 if (parsed.walk_intent or parsed.wants_route) else 0.4
     if mode == "walk":
         plan.t_max = int(min(max(share * budget, 8), 35))
@@ -200,6 +208,8 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
             plan.t_max = max(6, min(plan.t_max, ctx.max_outdoor_min + 5))
     else:
         plan.t_max = int(min(max(0.35 * budget, 10), 45))
+    if "closer" in refine:
+        plan.t_max = max(5, int(plan.t_max * 0.5))
     plan.radius_m = int(plan.t_max * m_per_min / 1.28) if mode == "walk" else int(max(plan.t_max - 5, 3) * 41000 / 60 / 1.3 / 1.35)
 
     cands, considered = [], []
@@ -299,6 +309,10 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     if parsed.night:
         filters.append({"ru": "вечер/ночь", "kk": "кеш/түн", "en": "evening/night"}[lang])
     filters += [label(c, lang) for c in parsed.categories[:4]]
+    rl = {"closer": {"ru": "ближе", "kk": "жақынырақ", "en": "closer"},
+          "no_coffee": {"ru": "без кофе", "kk": "кофесіз", "en": "no coffee"},
+          "indoor": {"ru": "в помещении", "kk": "жабық орында", "en": "indoors"}}
+    filters += [rl[r][lang] for r in sorted(refine)]
 
     ds = ["OpenStreetMap (ODbL)", "Wikidata (CC0)", "Wikipedia (CC BY-SA)"]
     if "overture" in rt.store.manifest.get("sources", {}):

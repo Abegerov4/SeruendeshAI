@@ -56,6 +56,8 @@ class RecommendRequest(BaseModel):
     want_route: bool | None = Field(None, description="Ask for a 2–3 stop mini-route (default: auto)")
     now: str | None = Field(None, description="ISO datetime override for demos/tests, e.g. 2026-10-18T19:30:00+05:00")
     weather: WeatherOverride | None = Field(None, description="Weather override for demos/tests (null = live Open-Meteo)")
+    refine: list[Literal["closer", "no_coffee", "indoor"]] = Field(
+        default_factory=list, description="Follow-up refinements of the previous request: closer, no_coffee, indoor")
 
 
 class Opening(_Out):

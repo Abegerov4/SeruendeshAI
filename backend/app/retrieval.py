@@ -205,6 +205,8 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
             return False, t("rej_dark", lang), None
         if ctx.max_outdoor_min == 0 and _is_outdoor(p):
             return False, t("rej_cold", lang), None
+        if "indoor_only" in plan.filters and _is_outdoor(p):
+            return False, None, None
         if plan.mode == "walk" and ctx.max_outdoor_min < 60 and mins[i] > ctx.max_outdoor_min + 5 and not relaxed_needs:
             return False, t("rej_cold", lang), None
         v, vr = visit_minutes(p["category"], plan.budget, plan.mode)
@@ -358,7 +360,9 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         if plan.tourist:
             w["pop"], w["dist"] = 0.25, 0.15
         if plan.accessibility:
-            w["attr"] = 0.3  # first-time visitors: iconic places matter more than the nearest ones
+            w["attr"] = 0.3
+        if plan.t_max <= 12:
+            w["dist"] = max(w["dist"], 0.3)  # "closer" refinement / tiny budgets  # first-time visitors: iconic places matter more than the nearest ones
         c.score = sum(w[k] * parts[k] for k in parts) / sum(w.values())
         parts["cold"] = ctx.max_outdoor_min < 60
         c.parts, c.need_state = parts, ns

@@ -94,3 +94,20 @@ def test_events_attach_to_venues(client):
     evs = [r["event"] for r in d["recommendations"] if r["event"]]
     if evs:  # depends on the collected snapshot; when present it must be well-formed
         assert all(e["title"] and e["starts_at"] and e["source"] in ("ticketon", "sxodim") for e in evs)
+
+
+def test_refinements_change_results(client):
+    base = dict(query="Хочу погулять и выпить кофе", landmark="khan_shatyr")
+    plain = post(client, **base)
+    no_coffee = post(client, **base, refine=["no_coffee"])
+    indoor = post(client, **base, refine=["indoor"])
+    closer = post(client, **base, refine=["closer"])
+    assert not any(r["category_detail"] in ("cafe", "sweets") for r in no_coffee["recommendations"])
+    assert not any("outdoor" in r["badges"] for r in indoor["recommendations"] if r["source"] == "poi_data")
+    assert closer["used_context"]["radius_m"] < plain["used_context"]["radius_m"]
+
+
+def test_frontend_is_served_when_built(client):
+    r = client.get("/")
+    assert r.status_code in (200, 404)
+    assert client.get("/api/unknown").status_code == 404

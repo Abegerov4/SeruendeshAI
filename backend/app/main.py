@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import os
 import time
 from collections import defaultdict, deque
 from contextlib import asynccontextmanager
@@ -13,7 +14,10 @@ from contextlib import asynccontextmanager
 import httpx
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
+
+from app.paths import ROOT_DIR
 
 from app.categories import CATEGORIES
 from app.config import get_settings
@@ -155,3 +159,21 @@ async def api_feedback(fb: FeedbackRequest):
     FEEDBACK[fb.poi_id][fb.kind] += 1
     log.info("feedback poi=%s kind=%s", fb.poi_id, fb.kind)
     return FeedbackResponse(ok=True, message="Спасибо! Учтём при следующем обновлении данных.")
+
+
+# --- the built frontend (React/Vite) is served by the same service: one domain, no CORS -------------
+DIST = os.environ.get("FRONTEND_DIST") or str(ROOT_DIR / "frontend" / "dist")
+if os.path.isdir(os.path.join(DIST, "assets")):
+    from pathlib import Path
+
+    _dist = Path(DIST).resolve()
+    app.mount("/assets", StaticFiles(directory=_dist / "assets"), name="assets")
+
+    @app.get("/{path:path}", include_in_schema=False)
+    async def spa(path: str):
+        if path.startswith("api/"):
+            raise HTTPException(status_code=404, detail="Not found")
+        f = (_dist / path).resolve()
+        if path and f.is_file() and _dist in f.parents:
+            return FileResponse(f)
+        return FileResponse(_dist / "index.html", headers={"Cache-Control": "no-cache"})

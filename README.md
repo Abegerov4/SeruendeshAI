@@ -57,7 +57,9 @@ curl -s localhost:8000/api/recommend -H 'content-type: application/json' -d '{
 
 Фронтенд (React + Vite) лежит в `frontend/`, инструкции в [frontend/README.md](frontend/README.md). Укажите `VITE_API_URL=http://localhost:8000`.
 
-Docker: `docker compose up --build` (из корня, использует `.env`).
+Docker: `docker compose up --build` (из корня, использует `.env`): один контейнер отдаёт и API, и собранный фронт.
+
+Хостинг: Railway собирает корневой `Dockerfile` из ветки `ayat` (`railway.json`, healthcheck `/api/health`); каждый push в `ayat` = новый деплой.
 
 ### Команды
 
