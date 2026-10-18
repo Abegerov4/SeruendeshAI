@@ -77,8 +77,19 @@ def test_injection_is_blocked():
     assert data["recommendations"] == []
 
 
-def test_empty_query_is_422():
-    assert client.post("/api/recommend", json={"query": "   "}).status_code == 422
+def test_empty_query_asks_to_clarify():
+    data = post({"query": "   ", "location": {"lat": 51.128, "lon": 71.43}})
+    assert data["recommendations"] == [] and "Напишите" in data["notes"][0]
+
+
+def test_wrong_types_are_422():
+    for bad in [{"query": "x", "location": {"lat": "51.1", "lon": 71.4}}, {"query": "x", "profile": {"with_kids": "true"}}]:
+        assert client.post("/api/recommend", json=bad).status_code == 422
+
+
+def test_outside_astana_does_not_return_distanceless_places():
+    data = post({"query": "прогулка рядом", "location": {"lat": 51.507, "lon": -0.128}})
+    assert data["recommendations"] == [] and "вне Астаны" in data["notes"][0]
 
 
 def test_english_response():

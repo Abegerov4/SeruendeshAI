@@ -72,20 +72,21 @@ def llm_generate(query: str, intent: Intent, candidates: list[dict], location_la
             ans = LlmAnswer.model_validate(data)
         except ValidationError:
             continue
-        valid_ids = {c["id"] for c in candidates}
+        by_id = {c["id"]: c for c in candidates}
+        valid_ids = set(by_id)
         recs, seen = [], set()
         for r in ans.recommendations:
             if r.poi_id not in valid_ids or r.poi_id in seen:  # защита от галлюцинаций
                 continue
             seen.add(r.poi_id)
             lo, hi = sorted(max(5, min(v, 600)) for v in r.visit_min)
-            recs.append({
-                "poi_id": r.poi_id,
-                "why": clean_llm_text(r.why),
-                "visit_min": [lo, hi],
-                "what_to_do": clean_llm_text(r.what_to_do),
-                "source": "generated" if r.source == "generated" else "poi_data",
-            })
+            why, what = clean_llm_text(r.why), clean_llm_text(r.what_to_do)
+            source = "generated" if r.source == "generated" else "poi_data"
+            if not why or not what:  # после чистки ссылок текст пуст — подставляем факты, а не пустую карточку
+                t_why, t_what, grounded = template_texts(by_id[r.poi_id], _lang(intent))
+                why, what = why or t_why, what or t_what
+                source = source if grounded else "generated"
+            recs.append({"poi_id": r.poi_id, "why": why, "visit_min": [lo, hi], "what_to_do": what, "source": source})
         notes = [clean_llm_text(n, 200) for n in ans.notes if n.strip() and not DUP_NOTE.search(n)]
         if recs:
             return recs[:3], notes[:1]
@@ -102,27 +103,47 @@ CATEGORY_LABEL = {
            "gallery": "Галерея", "theatre": "Театр", "cinema": "Кинотеатр", "park": "Парк", "viewpoint": "Смотровая",
            "monument": "Памятник", "attraction": "Достопримечательность", "playground": "Детская площадка",
            "mall": "Торговый центр", "library": "Библиотека", "coworking": "Коворкинг", "sport": "Спорт", "other": "Место"},
+    "kk": {"cafe": "Кафе", "restaurant": "Мейрамхана", "bar": "Бар", "nightlife": "Түнгі орын", "museum": "Мұражай",
+           "gallery": "Галерея", "theatre": "Театр", "cinema": "Кинотеатр", "park": "Саябақ", "viewpoint": "Көру алаңы",
+           "monument": "Ескерткіш", "attraction": "Көрікті орын", "playground": "Балалар алаңы",
+           "mall": "Сауда орталығы", "library": "Кітапхана", "coworking": "Коворкинг", "sport": "Спорт", "other": "Орын"},
     "en": {"cafe": "Cafe", "restaurant": "Restaurant", "bar": "Bar", "nightlife": "Nightlife", "museum": "Museum",
            "gallery": "Gallery", "theatre": "Theatre", "cinema": "Cinema", "park": "Park", "viewpoint": "Viewpoint",
            "monument": "Monument", "attraction": "Attraction", "playground": "Playground", "mall": "Mall",
            "library": "Library", "coworking": "Coworking", "sport": "Sport", "other": "Place"},
 }
+# Нейтральные действия: без утверждений, которых нет в данных (тишина, розетки, «интерактив» и т.п.)
 WHAT_TO_DO = {
-    "ru": {"cafe": "Взять кофе и сесть в тихом углу", "restaurant": "Поужинать без спешки",
-           "park": "Пройти круг по главной аллее", "viewpoint": "Подняться наверх и сделать панорамные фото",
-           "museum": "Начать с главного зала и интерактивных экспозиций", "gallery": "Посмотреть текущую экспозицию",
-           "playground": "Дать ребёнку поиграть, рядом есть где присесть", "mall": "Зайти в фуд-корт и развлекательную зону",
-           "attraction": "Осмотреть снаружи и сделать фото", "monument": "Осмотреть и сделать фото",
-           "bar": "Послушать музыку и отдохнуть", "nightlife": "Провести вечер с компанией",
-           "coworking": "Поработать в тихой зоне", "library": "Посидеть в читальном зале"},
-    "en": {"cafe": "Grab a coffee and find a quiet corner", "restaurant": "Have an unhurried meal",
-           "park": "Walk a loop along the main alley", "viewpoint": "Go up and take panoramic photos",
-           "museum": "Start with the main hall and interactive exhibits", "gallery": "See the current exhibition",
-           "playground": "Let the kids play, there are benches nearby", "mall": "Visit the food court and entertainment area",
+    "ru": {"cafe": "Зайти на кофе или перекус", "restaurant": "Пообедать или поужинать",
+           "park": "Пройтись по парку", "viewpoint": "Посмотреть на город и сделать фото",
+           "museum": "Посмотреть экспозицию", "gallery": "Посмотреть экспозицию",
+           "playground": "Дать ребёнку поиграть", "mall": "Прогуляться по торговому центру",
+           "attraction": "Осмотреть место и сделать фото", "monument": "Осмотреть и сделать фото",
+           "bar": "Посидеть вечером", "nightlife": "Провести вечер", "theatre": "Уточнить афишу и сходить на спектакль",
+           "cinema": "Уточнить расписание сеансов", "coworking": "Поработать", "library": "Почитать",
+           "sport": "Позаниматься или посмотреть", "other": "Заглянуть по пути"},
+    "kk": {"cafe": "Кофе ішуге немесе тамақтануға бару", "restaurant": "Түскі не кешкі ас ішу",
+           "park": "Саябақта серуендеу", "viewpoint": "Қалаға қарап, суретке түсіру",
+           "museum": "Экспозицияны көру", "gallery": "Экспозицияны көру",
+           "playground": "Балаға ойнауға мүмкіндік беру", "mall": "Сауда орталығын аралау",
+           "attraction": "Орынды аралап, суретке түсіру", "monument": "Көріп, суретке түсіру",
+           "bar": "Кешті өткізу", "nightlife": "Кешті өткізу", "theatre": "Афишаны тексеріп, қойылымға бару",
+           "cinema": "Сеанс кестесін тексеру", "coworking": "Жұмыс істеу", "library": "Кітап оқу",
+           "sport": "Жаттығу немесе көру", "other": "Жол бойы кіру"},
+    "en": {"cafe": "Stop by for a coffee or a snack", "restaurant": "Have lunch or dinner",
+           "park": "Take a walk in the park", "viewpoint": "Look at the city and take photos",
+           "museum": "See the exhibition", "gallery": "See the exhibition",
+           "playground": "Let the kids play", "mall": "Walk around the mall",
            "attraction": "Look around and take photos", "monument": "Look around and take photos",
-           "bar": "Enjoy the music and relax", "nightlife": "Spend the evening with friends",
-           "coworking": "Work in the quiet zone", "library": "Sit in the reading room"},
+           "bar": "Spend the evening", "nightlife": "Spend the evening", "theatre": "Check the schedule and see a show",
+           "cinema": "Check the showtimes", "coworking": "Get some work done", "library": "Read for a while",
+           "sport": "Work out or watch", "other": "Drop by on the way"},
 }
+NEAR = {"ru": ("в {d} м от вас", "в городе"), "kk": ("сізден {d} м жерде", "қалада"), "en": ("{d} m away", "in the city")}
+
+
+def _lang(intent: Intent) -> str:
+    return intent.lang if intent.lang in CATEGORY_LABEL else "ru"
 
 
 def _first_sentence(text: str | None) -> str:
@@ -131,23 +152,33 @@ def _first_sentence(text: str | None) -> str:
     return re.split(r"(?<=[.!?])\s", text.strip(), maxsplit=1)[0]
 
 
+def template_texts(c: dict, lang: str) -> tuple[str, str, bool]:
+    """(why, what_to_do, grounded) по фактам POI — используется и как fallback, и для пустых ответов LLM."""
+    label = CATEGORY_LABEL[lang].get(c["category"], CATEGORY_LABEL[lang]["other"])
+    dist = c.get("distance_m")
+    near = NEAR[lang][0].format(d=dist) if dist is not None else NEAR[lang][1]
+    real_desc = c.get("description_source") not in (None, "llm_generated", "template")
+    desc = _first_sentence(c.get("description")) if real_desc else ""
+    why = clean_llm_text(f"{label} {near}. {desc}".strip()) or f"{label} {near}"
+    what = WHAT_TO_DO[lang].get(c["category"], WHAT_TO_DO[lang]["other"])
+    return why, what, bool(desc)
+
+
 def template_generate(intent: Intent, candidates: list[dict]) -> list[dict]:
-    lang = "en" if intent.lang == "en" else "ru"
+    lang = _lang(intent)
+    # сначала места нужных категорий (запрос «прогулка» → парки, а не кафе); остальные — только если подходящих нет
+    wanted = set(intent.categories)
+    matching = [c for c in candidates if c["category"] in wanted]
+    pool = matching or candidates
     recs = []
-    for c in candidates[:3]:
-        label = CATEGORY_LABEL[lang].get(c["category"], CATEGORY_LABEL[lang]["other"])
-        dist = c.get("distance_m")
-        if lang == "en":
-            near = f"{dist} m away" if dist is not None else "in the city"
-        else:
-            near = f"в {dist} м от вас" if dist is not None else "в городе"
-        desc = _first_sentence(c.get("description"))
-        why = f"{label} {near}. {desc}".strip()
+    for c in pool[:3]:
+        why, what, grounded = template_texts(c, lang)
         recs.append({
             "poi_id": c["id"],
-            "why": clean_llm_text(why),
+            "why": why,
             "visit_min": default_visit(c["category"], intent.time_budget_min),
-            "what_to_do": WHAT_TO_DO[lang].get(c["category"], WHAT_TO_DO[lang]["attraction"]),
-            "source": "poi_data" if desc and c.get("description_source") != "llm_generated" else "generated",
+            "what_to_do": what,
+            # «что делать» — общая идея по категории, а не факт о месте; poi_data только если «почему» опирается на описание
+            "source": "poi_data" if grounded else "generated",
         })
     return recs

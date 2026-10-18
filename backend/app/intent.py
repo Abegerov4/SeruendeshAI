@@ -114,7 +114,7 @@ def rule_intent(query: str) -> Intent:
     group = None
     if m := re.search(r"(\d+)\s*(человек|чел\b|people|persons|адам)", low):
         group = int(m.group(1))
-    landmark = "аэропорт" if re.search(r"вылет|аэропорт|airport|flight", low) else None
+    landmark = "аэропорт" if re.search(r"вылет|аэропорт|airport|flight|әуежай|ұшуға", low) else None
     return Intent(
         categories=cats[:6],
         search_query=query,

@@ -8,21 +8,23 @@ from datetime import datetime
 from . import cache, llm, tracing
 from . import rag_adapter as rag
 from .config import ASTANA_BBOX, ASTANA_TZ
-from .generate import llm_generate, template_generate
-from .guards import looks_like_injection, mask_pii
+from .generate import _lang as gen_lang, llm_generate, template_generate, template_texts
+from .guards import drop_unverified_open_claims, looks_like_injection, mask_pii
 from .intent import Intent, parse_intent
 from .routing import MAX_RADIUS, build_route, search_radius_m, travel_min
-from .schemas import RecommendRequest, RecommendResponse
+from .schemas import QUERY_MAX_CHARS, RecommendRequest, RecommendResponse
 
 log = logging.getLogger("backend.pipeline")
 
 MAX_CANDIDATES = 8
+MIN_VISIT_MIN = 10  # если на месте остаётся меньше 10 минут — место не советуем
 
 TEXTS = {
     "ru": {
         "disclaimer": "Рекомендации основаны на открытых данных о местах (POI). Приблизительная локация используется только для этого запроса и не сохраняется.",
         "no_location": "Не удалось определить, где вы. Включите геолокацию или напишите ориентир, например «я возле Байтерека».",
-        "outside": "Координаты вне Астаны: искали по всему городу.",
+        "outside": "Эти координаты вне Астаны, а помощник знает места только в Астане. Напишите ориентир в городе.",
+        "clarify": "Напишите, что хочется: например, «прогулка на час», «кофе рядом» или «куда сходить с ребёнком».",
         "injection": "Запрос похож на попытку изменить инструкции помощника, поэтому он не обработан. Опишите, куда хотите сходить.",
         "off_topic": "Я подсказываю, куда сходить в Астане. Опишите, где вы и что хотите: прогулка, кофе, музей, с ребёнком…",
         "nothing": "Рядом не нашлось подходящих мест. Попробуйте увеличить время или убрать часть ограничений.",
@@ -33,7 +35,8 @@ TEXTS = {
     "en": {
         "disclaimer": "Recommendations are based on open POI data. Your approximate location is used only for this request and is not stored.",
         "no_location": "Could not determine where you are. Enable geolocation or name a landmark, e.g. “near Bayterek”.",
-        "outside": "Coordinates are outside Astana, so the whole city was searched.",
+        "outside": "These coordinates are outside Astana, and the assistant only knows places in Astana. Name a landmark in the city.",
+        "clarify": "Tell me what you'd like: e.g. “a one-hour walk”, “coffee nearby” or “something for kids”.",
         "injection": "The request looks like an attempt to change the assistant's instructions and was not processed.",
         "off_topic": "I suggest places to go in Astana. Tell me where you are and what you'd like to do.",
         "nothing": "No suitable places nearby. Try a larger time budget or fewer constraints.",
@@ -41,11 +44,23 @@ TEXTS = {
         "closed": "Some matching places are closed right now and were hidden.",
         "widened": "Few options nearby, so the search radius was widened.",
     },
+    "kk": {
+        "disclaimer": "Ұсыныстар орындар туралы ашық деректерге (POI) негізделген. Шамамен алынған орналасқан жеріңіз тек осы сұрау үшін қолданылады және сақталмайды.",
+        "no_location": "Қай жерде екеніңізді анықтай алмадық. Геолокацияны қосыңыз немесе бағдар жазыңыз, мысалы «Бәйтерек маңындамын».",
+        "outside": "Бұл координаттар Астанадан тыс, ал көмекші тек Астанадағы орындарды біледі. Қаладағы бағдарды жазыңыз.",
+        "clarify": "Не қалайтыныңызды жазыңыз: мысалы, «бір сағаттық серуен», «жақын жерде кофе» немесе «баламен қайда бару».",
+        "injection": "Сұрау көмекшінің нұсқауларын өзгертуге тырысуға ұқсайды, сондықтан өңделмеді. Қайда барғыңыз келетінін жазыңыз.",
+        "off_topic": "Мен Астанада қайда баруға болатынын ұсынамын. Қай жерде екеніңізді және не қалайтыныңызды жазыңыз.",
+        "nothing": "Жақын жерде қолайлы орын табылмады. Уақытты көбейтіп немесе шектеулерді азайтып көріңіз.",
+        "unknown_hours": "{names} жұмыс уақыты белгісіз: бармас бұрын тексеріңіз.",
+        "closed": "Қолайлы орындардың бір бөлігі қазір жабық, сондықтан көрсетілмеді.",
+        "widened": "Жақын жерде нұсқалар аз, сондықтан іздеу радиусы үлкейтілді.",
+    },
 }
 
 
 def _t(lang: str, key: str, **kw) -> str:
-    return TEXTS["en" if lang == "en" else "ru"][key].format(**kw)
+    return TEXTS.get(lang, TEXTS["ru"])[key].format(**kw)
 
 
 def _in_astana(lat: float, lon: float) -> bool:
@@ -100,7 +115,11 @@ def _filter_candidates(hits: list[dict], intent: Intent, now: datetime) -> tuple
             continue
         if c.kids and h.get("kid_friendly") is False:
             continue
-        h = {**h, "open_status": status, "open_confidence": conf, "travel_min": travel_min(h.get("distance_m"), intent.mode)}
+        tmin = travel_min(h.get("distance_m"), intent.mode)
+        available = intent.time_budget_min - (tmin or 0)
+        if available < MIN_VISIT_MIN:  # дорога съедает почти весь бюджет — не предлагаем
+            continue
+        h = {**h, "open_status": status, "open_confidence": conf, "travel_min": tmin, "max_visit_min": available}
         bonus = 0.0
         if c.kids and h.get("kid_friendly"):
             bonus += 0.5
@@ -127,7 +146,7 @@ def recommend_with_stats(req: RecommendRequest, use_cache: bool = True,
     request_id = uuid.uuid4().hex[:12]
     now = (req.now or datetime.now(ASTANA_TZ))
     now = now.replace(tzinfo=ASTANA_TZ) if now.tzinfo is None else now.astimezone(ASTANA_TZ)
-    query = mask_pii(req.query)
+    query = mask_pii(req.query)[:QUERY_MAX_CHARS]
 
     loc = (req.location.lat, req.location.lon) if req.location else None
     key = cache.make_key(query, loc, now, {
@@ -164,8 +183,10 @@ def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str
                photo_landmark: dict | None = None) -> RecommendResponse:
     notes: list[str] = []
 
-    # 1. вход: injection (PII уже замаскирован)
+    # 1. вход: пустой запрос → просим уточнить; injection (PII уже замаскирован)
     lang_guess = req.lang or "ru"
+    if not query.strip():
+        return _empty(request_id, req, now, lang_guess, _t(lang_guess, "clarify"))
     if looks_like_injection(query):
         with tracing.span("injection-guard", as_type="guardrail", input={"query": query}) as g:
             g.update(output={"blocked": True})
@@ -194,8 +215,8 @@ def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str
         lm = lm or rag.resolve_landmark(query, allow_network=False)  # фразу пользователя наружу не шлём
         if lm:
             lat, lon, loc_source, loc_label = lm["lat"], lm["lon"], "landmark", f"~ {lm['label']}"
-    if lat is None and not notes:
-        return _empty(request_id, req, now, lang, _t(lang, "no_location"), intent)
+    if lat is None:  # вне Астаны или локации нет — не ищем «по всему городу» без расстояний
+        return _empty(request_id, req, now, lang, notes[0] if notes else _t(lang, "no_location"), intent)
 
     # 4–5. радиус + поиск
     radius = search_radius_m(intent.time_budget_min, intent.mode)
@@ -212,11 +233,24 @@ def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str
                           "score": h.get("score")} for h in hits])
 
     # 6. фильтры кодом; сам ориентир («я возле Mega Silk Way») не советуем
+    stem = (loc_label or "").removeprefix("~ ").split(" (")[0].casefold()[:6] if loc_source == "landmark" else ""
     if loc_source == "landmark":
-        stem = (loc_label or "").removeprefix("~ ").split(" (")[0].casefold()[:6]
         hits = [h for h in hits if (h.get("distance_m") or 0) > 60
                 and not (stem and (h.get("distance_m") or 0) < 400 and h["name"].casefold().startswith(stem))]
     candidates, had_closed = _filter_candidates(hits, intent, now)
+    # нужного типа мест рядом нет («прогулка», а вокруг только кафе) — один раз расширяем радиус,
+    # чем подменять запрос неподходящими местами; бюджет времени всё равно проверит _filter_candidates
+    wanted = set(intent.categories)
+    if wanted and not any(c["category"] in wanted for c in candidates) and radius < MAX_RADIUS:
+        radius = min(MAX_RADIUS, radius * 2)
+        wider = _search(search_q, lat, lon, radius, intent.categories, raw_query=query)
+        if loc_source == "landmark":
+            wider = [h for h in wider if (h.get("distance_m") or 0) > 60
+                     and not (stem and (h.get("distance_m") or 0) < 400 and h["name"].casefold().startswith(stem))]
+        wider_c, wider_closed = _filter_candidates(wider, intent, now)
+        if any(c["category"] in wanted for c in wider_c):
+            candidates, had_closed = wider_c, had_closed or wider_closed
+            notes.append(_t(lang, "widened"))
     if had_closed:
         notes.append(_t(lang, "closed"))
     if not candidates:
@@ -237,6 +271,17 @@ def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str
     recs = []
     for p in picks:
         c = by_id[p["poi_id"]]
+        p = dict(p)
+        avail = c["max_visit_min"]  # визит + дорога должны влезать в бюджет пользователя
+        lo, hi = p["visit_min"]
+        lo = max(5, min(lo, avail))
+        p["visit_min"] = [lo, max(lo, min(hi, avail))]
+        if c["open_status"] != "open":  # модель не может «подтвердить» часы, которых нет в данных
+            p["why"] = drop_unverified_open_claims(p["why"])
+            p["what_to_do"] = drop_unverified_open_claims(p["what_to_do"])
+            if not p["why"] or not p["what_to_do"]:
+                t_why, t_what, _ = template_texts(c, gen_lang(intent))
+                p["why"], p["what_to_do"] = p["why"] or t_why, p["what_to_do"] or t_what
         recs.append({
             **p,
             "name": c["name"], "category": c["category"], "lat": c["lat"], "lon": c["lon"],

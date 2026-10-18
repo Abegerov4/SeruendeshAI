@@ -2,10 +2,10 @@ name: backend
 
 on:
   pull_request:
-    paths: ["backend/**", "rag/**", "data/**", ".github/workflows/backend.yml"]
+    paths: ["backend/**", "rag/**", "data/**", "tests/**", "eval/**", ".github/workflows/backend.yml"]
   push:
     branches: [main, feature/backend]
-    paths: ["backend/**", "rag/**", "data/**", ".github/workflows/backend.yml"]
+    paths: ["backend/**", "rag/**", "data/**", "tests/**", "eval/**", ".github/workflows/backend.yml"]
 
 jobs:
   test:
@@ -19,12 +19,15 @@ jobs:
           cache-dependency-path: |
             backend/requirements.txt
             rag/requirements.txt
-      - run: pip install -r backend/requirements.txt -r rag/requirements.txt
+            requirements-qa.txt
+      - run: pip install -r backend/requirements.txt -r rag/requirements.txt -r requirements-qa.txt
       # Тесты детерминированные: без LLM-ключа; backend — на mock-фикстуре + интеграция с rag/ в BM25-режиме
       - run: pytest backend/tests -q
       - run: python -m unittest discover -s rag/tests
         env:
           RAG_SEARCH_MODE: bm25
+      # QA-набор (Aslan): контракт, безопасность, golden-сценарии через локальный API бэкенда
+      - run: python -m pytest tests -q
 
   docker:
     runs-on: ubuntu-latest

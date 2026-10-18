@@ -44,8 +44,8 @@ def build_route(start: tuple[float, float] | None, recs: list[dict], time_budget
     while left:
         nxt = min(left, key=lambda r: haversine_m(pos[0], pos[1], r["lat"], r["lon"]))
         leg = travel_min(haversine_m(pos[0], pos[1], nxt["lat"], nxt["lon"]), mode) or 0
-        visit = sum(nxt["visit_min"]) / 2
-        if order and total + leg + visit > time_budget_min * 1.1:
+        visit = nxt["visit_min"][0]  # минимальный визит: маршрут честно влезает в бюджет
+        if order and total + leg + visit > time_budget_min:
             break
         order.append(nxt["poi_id"])
         total += leg + visit

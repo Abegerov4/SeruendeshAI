@@ -45,8 +45,36 @@ def wrap_untrusted(payload) -> str:
 
 
 def clean_llm_text(text: str, max_len: int = 300) -> str:
-    """Срезаем ссылки/markdown-картинки из текста LLM (утечка через рендер) и ограничиваем длину."""
-    text = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", text)
-    text = re.sub(r"https?://\S+", "", text)
-    text = re.sub(r"\s+", " ", text).strip()
+    """Чистим текст LLM перед показом: никаких ссылок и картинок (утечка данных через рендер).
+
+    Markdown-ссылка [текст](цель) → остаётся только текст; удаляются http(s)://, //host, javascript:, data:, vbscript:.
+    """
+    if not isinstance(text, str):
+        return ""
+    text = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", text)            # картинки целиком
+    text = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", text)        # ссылки → только подпись
+    text = re.sub(r"(?i)\b(?:https?|ftp|javascript|data|vbscript|file):\S*", "", text)
+    text = re.sub(r"(?<![\w:])//[^\s)\]]+", "", text)            # scheme-relative //host/path
+    while text.count(")") > text.count("("):                    # хвосты от вырезанных ссылок
+        i = text.rfind(")")
+        text = text[:i] + text[i + 1:]
+    text = re.sub(r"\s+", " ", text)
+    text = re.sub(r"\s+([.,;:!?])", r"\1", text).strip()
+    if not re.search(r"\w", text):                               # от текста остались только знаки
+        return ""
     return text[:max_len].rstrip()
+
+
+# Утверждения о доступности, которые нельзя делать без подтверждённых часов работы
+OPEN_CLAIM = re.compile(
+    r"(сейчас\s+(?:открыт|работа)|открыт[оа]?\s+(?:сейчас|круглосуточно)|работает\s+(?:сейчас|круглосуточно)|"
+    r"часы\s+(?:работы\s+)?подтвержден|круглосуточно|open\s+(?:now|24)|currently\s+open|ашық|қазір\s+жұмыс)",
+    re.IGNORECASE,
+)
+
+
+def drop_unverified_open_claims(text: str) -> str:
+    """Убираем предложения, где модель утверждает «открыто сейчас», если статус часов не 'open'."""
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    kept = [s for s in sentences if not OPEN_CLAIM.search(s)]
+    return " ".join(kept).strip()
