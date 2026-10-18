@@ -1,0 +1,276 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "used_context": {
+      "type": "object",
+      "properties": {
+        "location_source": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "location_label": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "radius_m": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "time_budget_min": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "mode": {
+          "enum": [
+            "walk",
+            "car",
+            "transit"
+          ]
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "now": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "location_source",
+        "location_label",
+        "radius_m",
+        "time_budget_min",
+        "mode",
+        "filters",
+        "now"
+      ],
+      "additionalProperties": true
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "poi_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "category": {
+            "enum": [
+              "cafe",
+              "restaurant",
+              "bar",
+              "nightlife",
+              "museum",
+              "gallery",
+              "theatre",
+              "cinema",
+              "park",
+              "viewpoint",
+              "monument",
+              "attraction",
+              "playground",
+              "mall",
+              "library",
+              "coworking",
+              "sport",
+              "other"
+            ]
+          },
+          "lat": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "lon": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "distance_m": {
+            "type": "number",
+            "minimum": 0
+          },
+          "travel_min": {
+            "type": "number",
+            "minimum": 0
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "visit_min": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "what_to_do": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "open_status": {
+            "enum": [
+              "open",
+              "closed",
+              "unknown"
+            ]
+          },
+          "open_confidence": {
+            "enum": [
+              "high",
+              "low",
+              "none"
+            ]
+          },
+          "source": {
+            "enum": [
+              "poi_data",
+              "generated"
+            ]
+          },
+          "source_url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^https?://[^\\s/]+(?:[^\\s]*)$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "rating": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 5
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "poi_id",
+          "name",
+          "category",
+          "lat",
+          "lon",
+          "distance_m",
+          "travel_min",
+          "why",
+          "visit_min",
+          "what_to_do",
+          "open_status",
+          "open_confidence",
+          "source",
+          "source_url"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "route": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "order": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "total_min": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "order",
+            "total_min"
+          ],
+          "additionalProperties": true
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "disclaimer": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "lang": {
+      "enum": [
+        "ru",
+        "kk",
+        "en"
+      ]
+    }
+  },
+  "required": [
+    "request_id",
+    "used_context",
+    "recommendations",
+    "route",
+    "notes",
+    "disclaimer"
+  ],
+  "additionalProperties": true,
+  "$comment": "Empty recommendations require an explicit clarification/rejection/safe_response expectation and useful notes. Null radius/label permit unresolved location. Distance is haversine; semantic tolerances are documented in validators.py. Recommendation source_url must exactly preserve the supplied dataset URL, including null for unknown sources."
+}

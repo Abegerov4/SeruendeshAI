@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "string"
+    },
+    "location": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "lat": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "lon": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          },
+          "required": [
+            "lat",
+            "lon"
+          ],
+          "additionalProperties": true
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "time_budget_min": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "mode": {
+      "enum": [
+        "walk",
+        "car",
+        "transit"
+      ]
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "with_kids": {
+          "type": "boolean"
+        },
+        "tourist": {
+          "type": "boolean"
+        },
+        "accessibility": {
+          "type": "boolean"
+        },
+        "group_size": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    },
+    "lang": {
+      "enum": [
+        "ru",
+        "kk",
+        "en"
+      ]
+    },
+    "now": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "query"
+  ],
+  "additionalProperties": true,
+  "$comment": "Empty/whitespace query handling is unspecified by the team contract; scenarios expect a safe response. now must be timezone-aware ISO date-time; format checking requires FormatChecker."
+}
