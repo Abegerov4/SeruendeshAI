@@ -1,0 +1,77 @@
+Dataset gate mutation proof
+Working directory: /Users/muratovaslan/Desktop/hackaton/SeruendeshAI
+Scope: two diagnostic checks; no full-suite run. Both mutations are in memory only.
+
+Exact reproducible invocation:
+.venv/bin/python - <<'PY'
+from copy import deepcopy
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+from types import SimpleNamespace
+
+from shapely.geometry import Point, box, shape
+
+source = Path("data/processed/pois.json")
+before = hashlib.sha256(source.read_bytes()).hexdigest()
+rows = json.loads(source.read_text(encoding="utf-8"))
+spec = importlib.util.spec_from_file_location("dataset_gates", "tests/test_dataset.py")
+gates = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(gates)
+config = SimpleNamespace(getoption=lambda name: str(source) if name == "--pois" else None)
+
+# Confirm the original, unmodified data passes both gates first.
+gates.test_wikipedia_text_keeps_article_and_contributor_attribution(rows)
+gates.test_every_poi_is_inside_companion_administrative_polygon(rows, config)
+print("BASELINE: both dataset gates passed on the unmodified export")
+
+# Mutation 1: remove only contributor credit, preserving the article/license fields.
+wiki = next(row for row in rows if row.get("description_source") == "wikipedia" and row.get("description"))
+mutated_wiki = deepcopy(wiki)
+for field in ("wikipedia_attribution", "description_attribution"):
+    if isinstance(mutated_wiki.get(field), dict):
+        for key in ("attribution", "author", "authors"):
+            mutated_wiki[field].pop(key, None)
+try:
+    gates.test_wikipedia_text_keeps_article_and_contributor_attribution([mutated_wiki])
+except AssertionError as error:
+    assert "missing contributor credit" in str(error), str(error)
+    print(f"EXPECTED AssertionError (Wikipedia credit): {error}")
+else:
+    raise AssertionError("Wikipedia credit mutation unexpectedly passed")
+
+# Mutation 2: use a point inside the envelope but outside the actual polygon.
+boundary_json = json.loads(source.with_name("boundary.geojson").read_text(encoding="utf-8"))
+boundary = shape(boundary_json["geometry"] if boundary_json.get("type") == "Feature" else boundary_json)
+envelope = box(*boundary.bounds)
+outside = envelope.difference(boundary).representative_point()
+assert envelope.covers(outside) and not boundary.covers(outside)
+mutated_rows = deepcopy(rows)
+mutated_rows[0]["lon"], mutated_rows[0]["lat"] = outside.x, outside.y
+print(f"MUTATION point: lon={outside.x!r}, lat={outside.y!r}; inside envelope=True, inside administrative polygon=False")
+try:
+    gates.test_every_poi_is_inside_companion_administrative_polygon(mutated_rows, config)
+except AssertionError as error:
+    assert "POIs outside the administrative polygon" in str(error), str(error)
+    print(f"EXPECTED AssertionError (administrative polygon): {error}")
+else:
+    raise AssertionError("Outside-polygon mutation unexpectedly passed")
+
+after = hashlib.sha256(source.read_bytes()).hexdigest()
+assert before == after, "Actual dataset file changed during the in-memory checks"
+print(f"DATASET SHA-256 before: {before}")
+print(f"DATASET SHA-256 after:  {after}")
+print("PASS: both mutations were rejected; all mutations used deepcopy and no data/app/golden files were written")
+PY
+
+Observed stdout:
+BASELINE: both dataset gates passed on the unmodified export
+EXPECTED AssertionError (Wikipedia credit): osm:node/10799131704: missing contributor credit
+MUTATION point: lon=71.76315732500001, lat=51.10473675; inside envelope=True, inside administrative polygon=False
+EXPECTED AssertionError (administrative polygon): POIs outside the administrative polygon: ['citypass:119'] (1 total)
+DATASET SHA-256 before: 1f815df354ad990d902d76c8676a91013f2d8288a7330e8c3b75a2666db29b74
+DATASET SHA-256 after:  1f815df354ad990d902d76c8676a91013f2d8288a7330e8c3b75a2666db29b74
+PASS: both mutations were rejected; all mutations used deepcopy and no data/app/golden files were written
+
+Exit status: 0

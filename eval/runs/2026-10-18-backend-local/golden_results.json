@@ -1,0 +1,705 @@
+{
+  "evidence_kind": "actual_local_api_controlled_pois_keyword_template_fallback",
+  "real_model": false,
+  "real_rag": false,
+  "cases": [
+    {
+      "id": "organizer_walk_ru",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "ru",
+        "walk",
+        "landmark",
+        "dev"
+      ],
+      "failure": "AssertionError: organizer_walk_ru: fixture:nur_alem: travel plus minimum visit exceeds budget\n  fixture:nur_alem: category not in expected categories\n  fixture:cafe_expo: category not in expected categories\n  fixture:playground_expo: category not in expected categories\nassert not ['fixture:nur_alem: travel plus minimum visit exceeds budget', 'fixture:nur_alem: category not in expected categories'...ixture:cafe_expo: category not in expected categories', 'fixture:playground_expo: category not in expected categories']"
+    },
+    {
+      "id": "organizer_work_ru",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "ru",
+        "work",
+        "landmark",
+        "dev"
+      ],
+      "failure": "AssertionError: organizer_work_ru: fixture:coworking: travel plus minimum visit exceeds budget\n  fixture:lovers_park: category not in expected categories\nassert not ['fixture:coworking: travel plus minimum visit exceeds budget', 'fixture:lovers_park: category not in expected categories']"
+    },
+    {
+      "id": "organizer_kids_ru",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "ru",
+        "kids",
+        "landmark",
+        "dev"
+      ],
+      "failure": "AssertionError: organizer_kids_ru: fixture:mega_silk_way: travel plus minimum visit exceeds budget\n  fixture:mega_silk_way: category not in expected categories\n  fixture:cafe_expo: category not in expected categories\nassert not ['fixture:mega_silk_way: travel plus minimum visit exceeds budget', 'fixture:mega_silk_way: category not in expected categories', 'fixture:cafe_expo: category not in expected categories']"
+    },
+    {
+      "id": "organizer_airport_ru",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "ru",
+        "airport",
+        "landmark",
+        "return_reserve",
+        "manual_review",
+        "dev"
+      ],
+      "failure": "AssertionError: organizer_airport_ru: fixture:nur_alem: travel plus minimum visit exceeds budget\n  fixture:mega_silk_way: travel plus minimum visit exceeds budget\nassert not ['fixture:nur_alem: travel plus minimum visit exceeds budget', 'fixture:mega_silk_way: travel plus minimum visit exceeds budget']"
+    },
+    {
+      "id": "organizer_night_ru",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "ru",
+        "night",
+        "landmark",
+        "dev"
+      ],
+      "failure": "AssertionError: organizer_night_ru: fixture:bar_night: travel plus minimum visit exceeds budget\nassert not ['fixture:bar_night: travel plus minimum visit exceeds budget']"
+    },
+    {
+      "id": "organizer_walk_kk",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "kk",
+        "walk",
+        "landmark",
+        "dev"
+      ],
+      "failure": "AssertionError: organizer_walk_kk: fixture:nur_alem: travel plus minimum visit exceeds budget\n  fixture:nur_alem: category not in expected categories\n  fixture:cafe_expo: category not in expected categories\n  fixture:playground_expo: category not in expected categories\nassert not ['fixture:nur_alem: travel plus minimum visit exceeds budget', 'fixture:nur_alem: category not in expected categories'...ixture:cafe_expo: category not in expected categories', 'fixture:playground_expo: category not in expected categories']"
+    },
+    {
+      "id": "organizer_work_kk",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "kk",
+        "work",
+        "landmark",
+        "dev"
+      ],
+      "failure": "AssertionError: organizer_work_kk: recommendation count 0 outside [1, 3]\nassert not ['recommendation count 0 outside [1, 3]']"
+    },
+    {
+      "id": "organizer_kids_kk",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "kk",
+        "kids",
+        "landmark",
+        "dev"
+      ],
+      "failure": "AssertionError: organizer_kids_kk: fixture:mega_silk_way: travel plus minimum visit exceeds budget\n  fixture:mega_silk_way: category not in expected categories\n  fixture:cafe_expo: category not in expected categories\nassert not ['fixture:mega_silk_way: travel plus minimum visit exceeds budget', 'fixture:mega_silk_way: category not in expected categories', 'fixture:cafe_expo: category not in expected categories']"
+    },
+    {
+      "id": "organizer_airport_kk",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "kk",
+        "airport",
+        "landmark",
+        "return_reserve",
+        "manual_review",
+        "dev"
+      ],
+      "failure": "AssertionError: organizer_airport_kk: recommendation count 0 outside [1, 3]\nassert not ['recommendation count 0 outside [1, 3]']"
+    },
+    {
+      "id": "organizer_night_kk",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "kk",
+        "night",
+        "landmark",
+        "dev"
+      ],
+      "failure": "AssertionError: organizer_night_kk: recommendation count 0 outside [1, 3]\nassert not ['recommendation count 0 outside [1, 3]']"
+    },
+    {
+      "id": "organizer_walk_en",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "en",
+        "walk",
+        "landmark",
+        "frozen_holdout"
+      ],
+      "failure": "AssertionError: organizer_walk_en: fixture:cafe_expo: category not in expected categories\n  fixture:playground_expo: category not in expected categories\n  fixture:nur_alem: travel plus minimum visit exceeds budget\n  fixture:nur_alem: category not in expected categories\nassert not ['fixture:cafe_expo: category not in expected categories', 'fixture:playground_expo: category not in expected categori... 'fixture:nur_alem: travel plus minimum visit exceeds budget', 'fixture:nur_alem: category not in expected categories']"
+    },
+    {
+      "id": "organizer_work_en",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "en",
+        "work",
+        "landmark",
+        "frozen_holdout"
+      ],
+      "failure": "AssertionError: organizer_work_en: fixture:coworking: travel plus minimum visit exceeds budget\n  fixture:lovers_park: category not in expected categories\nassert not ['fixture:coworking: travel plus minimum visit exceeds budget', 'fixture:lovers_park: category not in expected categories']"
+    },
+    {
+      "id": "organizer_kids_en",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "en",
+        "kids",
+        "landmark",
+        "frozen_holdout"
+      ],
+      "failure": "AssertionError: organizer_kids_en: fixture:cafe_expo: category not in expected categories\n  fixture:mega_silk_way: travel plus minimum visit exceeds budget\n  fixture:mega_silk_way: category not in expected categories\nassert not ['fixture:cafe_expo: category not in expected categories', 'fixture:mega_silk_way: travel plus minimum visit exceeds budget', 'fixture:mega_silk_way: category not in expected categories']"
+    },
+    {
+      "id": "organizer_airport_en",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "en",
+        "airport",
+        "landmark",
+        "return_reserve",
+        "manual_review",
+        "frozen_holdout"
+      ],
+      "failure": "AssertionError: organizer_airport_en: fixture:nur_alem: travel plus minimum visit exceeds budget\n  fixture:mega_silk_way: travel plus minimum visit exceeds budget\nassert not ['fixture:nur_alem: travel plus minimum visit exceeds budget', 'fixture:mega_silk_way: travel plus minimum visit exceeds budget']"
+    },
+    {
+      "id": "organizer_night_en",
+      "result": "failed",
+      "tags": [
+        "organizer",
+        "en",
+        "night",
+        "landmark",
+        "frozen_holdout"
+      ],
+      "failure": "AssertionError: organizer_night_en: fixture:bar_night: travel plus minimum visit exceeds budget\nassert not ['fixture:bar_night: travel plus minimum visit exceeds budget']"
+    },
+    {
+      "id": "gps_denied_typed_landmark",
+      "result": "failed",
+      "tags": [
+        "location",
+        "gps_denied",
+        "landmark",
+        "manual_ui",
+        "dev"
+      ],
+      "failure": "AssertionError: gps_denied_typed_landmark: fixture:coworking: travel plus minimum visit exceeds budget\nassert not ['fixture:coworking: travel plus minimum visit exceeds budget']"
+    },
+    {
+      "id": "no_location_no_landmark",
+      "result": "passed",
+      "tags": [
+        "location",
+        "clarification",
+        "frozen_holdout"
+      ],
+      "failure": null
+    },
+    {
+      "id": "unresolved_landmark",
+      "result": "passed",
+      "tags": [
+        "location",
+        "synthetic_landmark",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "gibberish_no_location",
+      "result": "passed",
+      "tags": [
+        "location",
+        "ambiguous",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "empty_query",
+      "result": "failed",
+      "tags": [
+        "ambiguous",
+        "empty_query",
+        "dev"
+      ],
+      "failure": "AssertionError: empty_query: HTTP 422, expected [200]. Golden expectations are unchanged. Empty/long-query limits require policy review.\nassert 422 in [200]\n +  where 422 = <Response [422 Unprocessable Content]>.status_code"
+    },
+    {
+      "id": "whitespace_query",
+      "result": "failed",
+      "tags": [
+        "ambiguous",
+        "empty_query",
+        "dev"
+      ],
+      "failure": "AssertionError: whitespace_query: HTTP 422, expected [200]. Golden expectations are unchanged. Empty/long-query limits require policy review.\nassert 422 in [200]\n +  where 422 = <Response [422 Unprocessable Content]>.status_code"
+    },
+    {
+      "id": "kids_late_evening",
+      "result": "failed",
+      "tags": [
+        "kids",
+        "night",
+        "manual_review",
+        "frozen_holdout"
+      ],
+      "failure": "AssertionError: kids_late_evening: fixture:playground_expo: travel plus minimum visit exceeds budget\n  fixture:cafe_expo: travel plus minimum visit exceeds budget\nassert not ['fixture:playground_expo: travel plus minimum visit exceeds budget', 'fixture:cafe_expo: travel plus minimum visit exceeds budget']"
+    },
+    {
+      "id": "wheelchair_unknown",
+      "result": "passed",
+      "tags": [
+        "accessibility",
+        "unknown_facts",
+        "requires_dataset_review",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "wheelchair_verified_only",
+      "result": "passed",
+      "tags": [
+        "accessibility",
+        "unknown_facts",
+        "manual_review",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "group_five",
+      "result": "failed",
+      "tags": [
+        "group",
+        "unknown_facts",
+        "dev"
+      ],
+      "failure": "AssertionError: group_five: fixture:coworking: travel plus minimum visit exceeds budget\n  fixture:bayterek: category not in expected categories\nassert not ['fixture:coworking: travel plus minimum visit exceeds budget', 'fixture:bayterek: category not in expected categories']"
+    },
+    {
+      "id": "group_twelve",
+      "result": "passed",
+      "tags": [
+        "group",
+        "contract_boundary",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "walk_fifteen",
+      "result": "failed",
+      "tags": [
+        "budget",
+        "walk",
+        "radius_policy",
+        "dev"
+      ],
+      "failure": "AssertionError: walk_fifteen: fixture:lovers_park: travel plus minimum visit exceeds budget\n  fixture:cafe_center: travel plus minimum visit exceeds budget\nassert not ['fixture:lovers_park: travel plus minimum visit exceeds budget', 'fixture:cafe_center: travel plus minimum visit exceeds budget']"
+    },
+    {
+      "id": "car_sixty",
+      "result": "failed",
+      "tags": [
+        "budget",
+        "car",
+        "dev"
+      ],
+      "failure": "AssertionError: car_sixty: fixture:national_museum: travel plus minimum visit exceeds budget\nassert not ['fixture:national_museum: travel plus minimum visit exceeds budget']"
+    },
+    {
+      "id": "transit_sixty",
+      "result": "failed",
+      "tags": [
+        "budget",
+        "transit",
+        "unknown_facts",
+        "dev"
+      ],
+      "failure": "AssertionError: transit_sixty: fixture:coworking: travel plus minimum visit exceeds budget\nassert not ['fixture:coworking: travel plus minimum visit exceeds budget']"
+    },
+    {
+      "id": "explicit_fields_override_text",
+      "result": "failed",
+      "tags": [
+        "precedence",
+        "budget",
+        "car",
+        "frozen_holdout"
+      ],
+      "failure": "AssertionError: explicit_fields_override_text: fixture:lovers_park: travel plus minimum visit exceeds budget\n  fixture:presidential_park: travel plus minimum visit exceeds budget\nassert not ['fixture:lovers_park: travel plus minimum visit exceeds budget', 'fixture:presidential_park: travel plus minimum visit exceeds budget']"
+    },
+    {
+      "id": "cross_midnight",
+      "result": "failed",
+      "tags": [
+        "hours",
+        "midnight",
+        "arrival_time",
+        "manual_review",
+        "dev"
+      ],
+      "failure": "AssertionError: cross_midnight: fixture:lovers_park: travel plus minimum visit exceeds budget\nassert not ['fixture:lovers_park: travel plus minimum visit exceeds budget']"
+    },
+    {
+      "id": "unknown_opening_hours",
+      "result": "passed",
+      "tags": [
+        "hours",
+        "unknown_facts",
+        "requires_dataset_review",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "outside_astana_london",
+      "result": "failed",
+      "tags": [
+        "outside_astana",
+        "valid_coordinates",
+        "frozen_holdout"
+      ],
+      "failure": "AssertionError: outside_astana_london: response.recommendations.0.distance_m: None is not of type 'number'\n  response.recommendations.0.travel_min: None is not of type 'number'\n  response.recommendations.1.distance_m: None is not of type 'number'\n  response.recommendations.1.travel_min: None is not of type 'number'\n  response.recommendations.2.distance_m: None is not of type 'number'\n  response.recommendations.2.travel_min: None is not of type 'number'\nassert not [\"response.recommendations.0.distance_m: None is not of type 'number'\", \"response.recommendations.0.travel_min: None i...ons.2.distance_m: None is not of type 'number'\", \"response.recommendations.2.travel_min: None is not of type 'number'\"]"
+    },
+    {
+      "id": "valid_polar_coordinates",
+      "result": "failed",
+      "tags": [
+        "outside_astana",
+        "valid_coordinates",
+        "boundary",
+        "dev"
+      ],
+      "failure": "AssertionError: valid_polar_coordinates: response.recommendations.0.distance_m: None is not of type 'number'\n  response.recommendations.0.travel_min: None is not of type 'number'\n  response.recommendations.1.distance_m: None is not of type 'number'\n  response.recommendations.1.travel_min: None is not of type 'number'\n  response.recommendations.2.distance_m: None is not of type 'number'\n  response.recommendations.2.travel_min: None is not of type 'number'\nassert not [\"response.recommendations.0.distance_m: None is not of type 'number'\", \"response.recommendations.0.travel_min: None i...ons.2.distance_m: None is not of type 'number'\", \"response.recommendations.2.travel_min: None is not of type 'number'\"]"
+    },
+    {
+      "id": "missing_query",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "frozen_holdout"
+      ],
+      "failure": null
+    },
+    {
+      "id": "query_integer",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "query_null",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "query_array",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "location_string",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "location_missing_lon",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "latitude_string",
+      "result": "failed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": "AssertionError: latitude_string: HTTP 200, expected [422]. Golden expectations are unchanged.\nassert 200 in [422]\n +  where 200 = <Response [200 OK]>.status_code"
+    },
+    {
+      "id": "latitude_out_of_range",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "longitude_out_of_range",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "frozen_holdout"
+      ],
+      "failure": null
+    },
+    {
+      "id": "latitude_boolean",
+      "result": "failed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": "AssertionError: latitude_boolean: HTTP 200, expected [422]. Golden expectations are unchanged.\nassert 200 in [422]\n +  where 200 = <Response [200 OK]>.status_code"
+    },
+    {
+      "id": "unsupported_mode",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "unsupported_lang",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "budget_zero",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "budget_negative",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "budget_string",
+      "result": "failed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": "AssertionError: budget_string: HTTP 200, expected [422]. Golden expectations are unchanged.\nassert 200 in [422]\n +  where 200 = <Response [200 OK]>.status_code"
+    },
+    {
+      "id": "budget_boolean",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "frozen_holdout"
+      ],
+      "failure": null
+    },
+    {
+      "id": "profile_array",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "with_kids_string",
+      "result": "failed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": "AssertionError: with_kids_string: HTTP 200, expected [422]. Golden expectations are unchanged.\nassert 200 in [422]\n +  where 200 = <Response [200 OK]>.status_code"
+    },
+    {
+      "id": "accessibility_string",
+      "result": "failed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": "AssertionError: accessibility_string: HTTP 200, expected [422]. Golden expectations are unchanged.\nassert 200 in [422]\n +  where 200 = <Response [200 OK]>.status_code"
+    },
+    {
+      "id": "group_size_zero",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "group_size_negative",
+      "result": "passed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "group_size_string",
+      "result": "failed",
+      "tags": [
+        "invalid_input",
+        "strict_json",
+        "dev"
+      ],
+      "failure": "AssertionError: group_size_string: HTTP 200, expected [422]. Golden expectations are unchanged.\nassert 200 in [422]\n +  where 200 = <Response [200 OK]>.status_code"
+    },
+    {
+      "id": "injection_direct_ru",
+      "result": "passed",
+      "tags": [
+        "attack",
+        "direct_injection",
+        "limited_evidence",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "injection_role_en",
+      "result": "passed",
+      "tags": [
+        "attack",
+        "role_spoofing",
+        "limited_evidence",
+        "frozen_holdout"
+      ],
+      "failure": null
+    },
+    {
+      "id": "injection_exfiltration",
+      "result": "passed",
+      "tags": [
+        "attack",
+        "exfiltration",
+        "reserved_domain",
+        "requires_egress_review",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "unsafe_markup_user_query",
+      "result": "passed",
+      "tags": [
+        "attack",
+        "user_markup",
+        "manual_ui",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "injection_direct_kk",
+      "result": "passed",
+      "tags": [
+        "attack",
+        "direct_injection",
+        "kk",
+        "limited_evidence",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "synthetic_pii_masking",
+      "result": "failed",
+      "tags": [
+        "privacy",
+        "synthetic_pii",
+        "reserved_domain",
+        "limited_evidence",
+        "frozen_holdout"
+      ],
+      "failure": "AssertionError: synthetic_pii_masking: fixture:coworking: travel plus minimum visit exceeds budget\nassert not ['fixture:coworking: travel plus minimum visit exceeds budget']"
+    },
+    {
+      "id": "out_of_scope_poem",
+      "result": "passed",
+      "tags": [
+        "out_of_scope",
+        "false_refusal_review",
+        "dev"
+      ],
+      "failure": null
+    },
+    {
+      "id": "long_query_no_invented_limit",
+      "result": "failed",
+      "tags": [
+        "long_input",
+        "contract_boundary",
+        "manual_review",
+        "dev"
+      ],
+      "failure": "AssertionError: long_query_no_invented_limit: HTTP 422, expected [200]. Golden expectations are unchanged. Empty/long-query limits require policy review.\nassert 422 in [200]\n +  where 422 = <Response [422 Unprocessable Content]>.status_code"
+    }
+  ]
+}

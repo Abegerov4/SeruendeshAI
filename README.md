@@ -2,33 +2,38 @@
 
 ИИ-помощник по прогулкам в Астане для Build with AI: пользователь сообщает локацию, интересы и время, система должна предложить 1–3 места с объяснением, временем посещения, конкретным действием и источником.
 
-**Текущий статус: подготовлен QA-набор; backend, RAG, frontend и реальный датасет ещё не созданы.** Успешный offline-прогон проверяет инструменты QA и тестовые сценарии. Он не доказывает работоспособность будущего приложения. Результаты и незакрытые проверки: [eval/results.md](eval/results.md), [eval/readiness.md](eval/readiness.md).
+**QA проверен совместно с backend (`bdeefdc3`) и локальным экспортом 14 009 POI Астаны.** Ветка `qa` содержит только тесты и материалы QA; код backend и собранные данные в этот коммит не входят. Проверенный локальный API использует keyword/template fallback. Общий прогон в совмещённой рабочей копии: **549 passed, 42 failed, 40 skipped**. Это не готовность продукта: [результаты](eval/results.md), [найденные расхождения](docs/qa_findings.md).
 
-Во время подготовки началась параллельная работа над `data/`. Её файлы эта QA-работа не изменяет. Последние найденные несоответствия общего прогона сохранены в [docs/qa_findings.md](docs/qa_findings.md).
+QA использует существующие сценарии и валидаторы. Проверки работают с временными копиями POI; исходные файлы `data/` не изменяются.
 
 ## Быстрый запуск QA
 
-Требуется Python 3.11+; ключи моделей для offline-тестов не нужны.
+Прогон проверен на Python 3.12; ключи моделей для локальных тестов не нужны.
 
 ```bash
-python3.11 -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-qa.txt
-python -m pytest
+# Проверки QA без исходников backend: интеграции явно пропускаются
+python -m pytest tests -q
+
+# В рабочей копии, где уже подключены Backend и Data
+python -m pip install -r backend/requirements.txt -r data/requirements.txt
+python -m pytest tests backend/tests data/tests --pois data/processed/pois.json --live-backend -q
 python -m eval.check_readiness --root . --output eval/readiness.md
 ```
 
-Для изолированной проверки QA используйте `python -m pytest tests`. Общий `python -m pytest` также собирает тесты появляющихся частей команды; установите их зависимости отдельно. Например, текущие Parquet-тесты Data требуют `python -m pip install pyarrow`.
+`python -m pytest tests` запускает QA и, при наличии исходников backend, новый локальный API-набор. Без этих исходников локальные API-проверки явно пропускаются; `--live-backend` делает их отсутствие ошибкой. `python -m pytest` также собирает присутствующие тесты Backend и Data, но без флагов пропускает проверки реального экспорта и opt-in интеграции. При использовании QA-флагов явно указывайте путь `tests`, где объявлены эти параметры.
 
-Если установлен Python 3.12 или новее, используйте его вместо `python3.11`. Проверка готовности сейчас **должна завершиться кодом 1 / NOT READY**: реализации и подтверждённых результатов ещё нет. Не объединяйте эти два результата в заявление «проект прошёл все тесты».
+Общий прогон сейчас возвращает код 1 из-за обнаруженных расхождений. Readiness также должен оставаться **NOT READY**: настоящая цепочка RAG/модель/UI и материалы сдачи ещё не подтверждены.
 
 ## Что проверяется
 
 | Уровень | Содержание | Что требуется |
 |---|---|---|
 | Offline QA | Контракты, намеренно испорченные ответы, ID, координаты, время, статусы, метрики, ошибки запуска | Только QA-зависимости |
-| Golden set | 64 синтетических сценария, пять примеров ТЗ на RU/KK/EN, границы и атаки | Набор готов, реальные ответы пока NOT RUN |
-| Dataset | Схема, дубли, источники, координаты, покрытие описаниями и реальные метки релевантности | Собранный `pois.json` |
+| Локальный backend | 64 существующих golden-сценария, privacy, poisoned POI, выход модели, языковой fallback | Настоящий FastAPI; временные POI; внешние провайдеры отключены |
+| Dataset | Схема, границы города, источники, атрибуция, часы, quarantine, загрузка и карта через API | Собранные 14 009 POI; релевантность пока не размечена |
 | API | Настоящие HTTP-ответы, валидация ввода, рекомендации, карта, публичные проверки безопасности | Запущенный backend и реальные данные |
 | RAG | Расстояние, часы, полночь, часовой пояс, радиус, категории, ориентир | Реальные модули `rag.*` и данные |
 | UI | Настоящий интерфейс, ошибки, пустая выдача, текст ИИ, GPS и мобильный экран | Frontend, Playwright и [hooks](docs/frontend_test_contract.md) |
@@ -37,22 +42,22 @@ python -m eval.check_readiness --root . --output eval/readiness.md
 
 В `tests/fixtures/` лежат явно вымышленные POI с `test:*` ID. Использовать их как реальную базу города, доказательство качества RAG или рекомендации жюри нельзя.
 
-## Когда появится приложение
+## Дополнительные интеграции
 
 Команды ниже запускаются из корня репозитория после настройки соответствующих частей по их будущим инструкциям. QA не запускает сервисы и не создаёт платные вызовы незаметно.
 
 ```bash
 # Реальный датасет
-python -m pytest --pois data/processed/pois.json -m dataset
+python -m pytest tests --pois data/processed/pois.json -m dataset
 
 # Запущенный backend
-python -m pytest --live-api --base-url http://127.0.0.1:8000 --pois data/processed/pois.json -m live_api
+python -m pytest tests --live-api --base-url http://127.0.0.1:8000 --pois data/processed/pois.json -m live_api
 
 # Настоящий RAG
-python -m pytest --live-rag --pois data/processed/pois.json -m live_rag
+python -m pytest tests --live-rag --pois data/processed/pois.json -m live_rag
 
 # Реальная функция маскирования PII; без HTTP и запросов к модели
-python -m pytest --live-backend -m live_backend
+python -m pytest tests --live-backend -m live_backend
 
 # Все 64 сценария через настоящий API; модель может расходовать ваш API-бюджет
 python -m eval.run_eval --base-url http://127.0.0.1:8000 --pois data/processed/pois.json --repeat 3 --output-dir eval/runs/local
@@ -63,7 +68,7 @@ python -m eval.check_readiness --root . --evidence eval/runs/local/report.json -
 
 При явном включении отсутствующего backend/RAG/датасета проверка завершается ошибкой. Обычный offline-запуск пропускает эти проверки с причиной `NOT TESTED`.
 
-Для UI отдельно установите браузер: `python -m pip install playwright`, затем `python -m playwright install chromium`. Команда `python -m pytest --live-ui --ui-url http://127.0.0.1:5173 -m live_ui` проверяет UI с контролируемыми ответами API; настоящая цепочка дополнительно требует `--live-api --pois data/processed/pois.json`.
+Для UI отдельно установите браузер: `python -m pip install playwright`, затем `python -m playwright install chromium`. Команда `python -m pytest tests --live-ui --ui-url http://127.0.0.1:5173 -m live_ui` проверяет UI с контролируемыми ответами API; настоящая цепочка дополнительно требует `--live-api --pois data/processed/pois.json`.
 
 ## Измерения и LLM-судья
 

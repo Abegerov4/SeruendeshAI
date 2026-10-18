@@ -1,0 +1,304 @@
+{
+  "evidence_kind": "local_pytest_not_live_eval_report",
+  "recorded_at": "2026-10-18T23:28:42.871421+05:00",
+  "command": ".venv/bin/python -m pytest tests backend/tests data/tests --pois data/processed/pois.json --live-backend -q -o junit_family=legacy --junitxml=eval/runs/2026-10-18-backend-local/junit.xml",
+  "exit_code": 1,
+  "counts": {
+    "skipped": 40,
+    "passed": 549,
+    "failed": 42
+  },
+  "total": 631,
+  "pytest_suite_seconds": 11.867,
+  "default_command": ".venv/bin/python -m pytest -q",
+  "default_counts": {
+    "passed": 522,
+    "failed": 42,
+    "skipped": 67
+  },
+  "added_cases": 95,
+  "added_cases_breakdown": {
+    "existing_goldens_against_local_api": 64,
+    "golden_harness_mutation_controls": 2,
+    "safety": 15,
+    "language_fallback": 4,
+    "dataset_and_real_data_api": 10
+  },
+  "git_branch": "Aslan",
+  "git_head": "bdeefdc3112215441b9c82d37b66f12d2685f502",
+  "tracked_worktree_diff_empty": true,
+  "staged_diff_empty": true,
+  "dataset": {
+    "path": "data/processed/pois.json",
+    "count": 14009,
+    "sha256": "1f815df354ad990d902d76c8676a91013f2d8288a7330e8c3b75a2666db29b74",
+    "backup_data_files_verified": 367,
+    "changed_backup_data_files": []
+  },
+  "golden_set": {
+    "sha256": "ed8d6e7a742fe9070dc56a6a7d6f09a4248c79bed4ddbb2b61bafa2c783bad30",
+    "unchanged_from_backup": true,
+    "passed": 29,
+    "failed": 35,
+    "request_or_expectation_edits": 0
+  },
+  "original_dataset_tests_retained_unchanged": [
+    "test_real_dataset_follows_contract",
+    "test_cp1_has_at_least_300_pois",
+    "test_cp1_description_coverage",
+    "test_generated_descriptions_are_labeled",
+    "test_pois_have_plausible_astana_coordinates",
+    "test_relevance_labels_exist_in_actual_dataset"
+  ],
+  "scope": {
+    "application": "actual FastAPI through in-process TestClient",
+    "golden_pois": "existing 17 backend controlled fixtures",
+    "dataset_pois": 14009,
+    "rag": "mock keyword adapter",
+    "model": "disabled; deterministic provider doubles for safety cases",
+    "tracing": "disabled or deterministic SDK-boundary double",
+    "frontend": "not present/tested",
+    "latency_ms": null,
+    "retrieval_recall": null,
+    "real_model_language_or_faithfulness": "not evaluated"
+  },
+  "python": "3.12.15",
+  "packages": {
+    "pytest": "9.1.1",
+    "fastapi": "0.146.0",
+    "pydantic": "2.14.1",
+    "httpx": "0.28.1",
+    "shapely": "2.2.0",
+    "jsonschema": "4.26.0"
+  },
+  "by_module": {
+    "tests.test_api_contract": {
+      "skipped": 10
+    },
+    "tests.test_backend_dataset_local": {
+      "passed": 4
+    },
+    "tests.test_backend_golden_local": {
+      "failed": 35,
+      "passed": 31
+    },
+    "tests.test_backend_guards": {
+      "passed": 11
+    },
+    "tests.test_backend_languages_local": {
+      "passed": 2,
+      "failed": 2
+    },
+    "tests.test_backend_safety_local": {
+      "passed": 10,
+      "failed": 5
+    },
+    "tests.test_dataset": {
+      "passed": 12
+    },
+    "tests.test_golden_set": {
+      "passed": 131
+    },
+    "tests.test_judge": {
+      "passed": 11
+    },
+    "tests.test_metrics": {
+      "passed": 17
+    },
+    "tests.test_rag": {
+      "skipped": 17
+    },
+    "tests.test_readiness": {
+      "passed": 18
+    },
+    "tests.test_run_eval": {
+      "passed": 38
+    },
+    "tests.test_safety": {
+      "skipped": 6
+    },
+    "tests.test_ui": {
+      "skipped": 7
+    },
+    "tests.test_validators": {
+      "passed": 105
+    },
+    "backend.tests.test_api": {
+      "passed": 25
+    },
+    "backend.tests.test_mcp": {
+      "passed": 6
+    },
+    "backend.tests.test_photo": {
+      "passed": 5
+    },
+    "backend.tests.test_telegram": {
+      "passed": 4
+    },
+    "data.tests.test_geonames": {
+      "passed": 4
+    },
+    "data.tests.test_identity": {
+      "passed": 26
+    },
+    "data.tests.test_normalize": {
+      "passed": 12
+    },
+    "data.tests.test_osm.OSMTests": {
+      "passed": 16
+    },
+    "data.tests.test_overture.OvertureTests": {
+      "passed": 13
+    },
+    "data.tests.test_pipeline": {
+      "passed": 4
+    },
+    "data.tests.test_quality": {
+      "passed": 5
+    },
+    "data.tests.test_web_sources": {
+      "passed": 19
+    },
+    "data.tests.test_wiki": {
+      "passed": 20
+    }
+  },
+  "skips": {
+    "Product backend NOT TESTED: enable --live-api to run": 17,
+    "Actual RAG NOT TESTED: enable --live-rag to run": 17,
+    "Frontend NOT TESTED: enable --live-ui and install Playwright": 6
+  },
+  "failed_node_ids": [
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_walk_ru]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_work_ru]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_kids_ru]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_airport_ru]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_night_ru]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_walk_kk]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_work_kk]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_kids_kk]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_airport_kk]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_night_kk]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_walk_en]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_work_en]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_kids_en]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_airport_en]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[organizer_night_en]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[gps_denied_typed_landmark]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[empty_query]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[whitespace_query]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[kids_late_evening]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[group_five]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[walk_fifteen]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[car_sixty]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[transit_sixty]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[explicit_fields_override_text]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[cross_midnight]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[outside_astana_london]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[valid_polar_coordinates]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[latitude_string]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[latitude_boolean]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[budget_string]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[with_kids_string]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[accessibility_string]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[group_size_string]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[synthetic_pii_masking]",
+    "tests/test_backend_golden_local.py::test_existing_golden_through_local_api[long_query_no_invented_limit]",
+    "tests/test_backend_languages_local.py::test_requested_language_has_distinct_generated_fallback[clarification-kk]",
+    "tests/test_backend_languages_local.py::test_requested_language_has_distinct_generated_fallback[recommendation-kk]",
+    "tests/test_backend_safety_local.py::test_unknown_hours_cannot_be_contradicted_by_model_explanation",
+    "tests/test_backend_safety_local.py::test_url_cleaning_cannot_leave_an_empty_successful_recommendation",
+    "tests/test_backend_safety_local.py::test_model_output_cannot_expose_non_http_exfiltration_links[scheme-relative]",
+    "tests/test_backend_safety_local.py::test_model_output_cannot_expose_non_http_exfiltration_links[javascript]",
+    "tests/test_backend_safety_local.py::test_template_cannot_label_unsupported_quietness_as_a_poi_fact"
+  ],
+  "source_sha256": {
+    "backend/.env.example": "b79875404b91f6667727f1ee33611a61daccdb0c09369519cf450867314abc67",
+    "backend/Dockerfile": "686cffdb73f5be28f2e6e30d3689a38c2f84ac664095d0ac2c0bfb89671f0dc2",
+    "backend/README.md": "06ddabdf39aa26e3de24d88b3cb869d78e80bae671df727d3a126607fda67b17",
+    "backend/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/cache.py": "9085162fef970d1b327693c7c590e329aaedb951c6cdadfcabf6587d7752e59c",
+    "backend/app/config.py": "60a77e17b29bf635a8f709b24a8b982999dd2802d1ab8dd5cf29c9c21d66965d",
+    "backend/app/generate.py": "cf9713826b17525b0f69a8d15b88a569d741826e6507e2ba4c776c3ae0c0d787",
+    "backend/app/guards.py": "bead8932b05b1a5c72a1ef0a9e4b1c184ef007c123c1f486c00c5d0f83534570",
+    "backend/app/intent.py": "89cad369913b6f696486c9edffd3931ddeb2b4345e4550613d3d40f6da7a029b",
+    "backend/app/llm.py": "c9fd22c6908a2580a642bfdf32f8663863eb96c98dd5c86793151080d8af5b50",
+    "backend/app/main.py": "7cda89fa9a384d0dff03be08d9057d93869393f686377a79db675aab0a9a43f6",
+    "backend/app/mock_rag.py": "f7082ac6e817fe53bf602bbc5d15bfd6d4230a662cfba9d54271e1e484fa2e31",
+    "backend/app/pipeline.py": "7a78688676415fc17b0e747b2d4d8330ec46a4c14efdcc2f469074252c18a9b5",
+    "backend/app/prompts/generate.md": "47f2089c44142225738604232746b1b670b16291405396f2a5292504b1ed7729",
+    "backend/app/prompts/intent.md": "5894eefa8e862a308eff0c1548a6cbce200ae20b8790b1e61f970a2b0d3d9499",
+    "backend/app/prompts/photo_landmark.md": "ca9cfe83a5d7da97962ad39b8269f93bed444b289a66042e2fe47c10755ee63b",
+    "backend/app/rag_adapter.py": "3121758a4e2dd7e0c32eba2c7e17192d8039377ffe798f3591e9b975ef930524",
+    "backend/app/routing.py": "4e39b6cbb6235977514d26cf2fc9f01567c442b359545d895bdd6fa1f2ea7847",
+    "backend/app/schemas.py": "c0c90954d22b7389c9776bf63d4a0a76050e1774e52096d11b9d2d3fafa5857d",
+    "backend/app/tracing.py": "c56298e108240e8fde3a0c1ceb8a8a340ae0a4c44c78d77bcddc066ab97da854",
+    "backend/app/vision.py": "e396d74815459e77d4c8c7c1b34bd981258bca29c0560248e131b60657ba50e6",
+    "backend/experiments/README.md": "02014405520ce0e1a54d7287dec457bbdf3a42d11b272a76c8c8e4179025340a",
+    "backend/experiments/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/experiments/ab_decision.py": "5841d0602b9c0a5e72a9123cd9080ad901ffbc04902654518aa7cf4b2c3cb63a",
+    "backend/experiments/results/ab_decision_20261018_2148_prompt_v1.json": "9433b8ea9e0250aed7e239069d8c07c09252c53a7cd1903eb7dd7c5d237315a1",
+    "backend/experiments/results/ab_decision_20261018_2148_prompt_v1.md": "bcf7e25a066b711647eb1f5c9ae2df9d7bfabec878f115c3fd355f111c82a2ca",
+    "backend/experiments/results/ab_decision_20261018_2152_prompt_v2.json": "d171aae0ded29bca1dcc592cfb4b6c5b259f33f8d634e997205b92bc9fee4ef8",
+    "backend/experiments/results/ab_decision_20261018_2152_prompt_v2.md": "d9f368d8325e157bf521fbf71369962f4a7563726ef008ef50aa31f524b6aaea",
+    "backend/experiments/scenarios.json": "c10ba4c0685ee3fe1bdf7c4cff6de3c54985e1c41cae0efda3a057b615bff602",
+    "backend/mcp_server/README.md": "d4432ac5deb371bd20f937fa0e584982192df9a460d109a14373fe33fdea699b",
+    "backend/mcp_server/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/mcp_server/mcp.example.json": "87d9449563d43b8484fa3f9587a4313db5e029d4331f7634a39676244222ea2c",
+    "backend/mcp_server/server.py": "5e5befb1043913f46468672c23a2d8022cf1d289db54366287636a78bad749a8",
+    "backend/mcp_server/skill/SKILL.md": "c828e0a501a7ce6493db3e2281b2867c9d45375ae69ab665f5c118fa5a219c58",
+    "backend/requirements.txt": "dfb6e270545d65c116eb4f25b8ed351c35467369142a9e939a28dc5fd89c26fb",
+    "backend/telegram_bot/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/telegram_bot/bot.py": "f04113755ab0ba13e9279295c057b81ae7d1b795aab9cd82e06eeff4439245a1",
+    "backend/telegram_bot/format.py": "f943e10b3c22bff518fc1982efedaf96a54cd0d4fef604ace6c00caaca71c882",
+    "backend/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/tests/conftest.py": "9f4fba45bde6f1cd69f80dc7e7db59562de40a6c7dc829bf39a636f9abdab5c6",
+    "backend/tests/fixtures/pois_sample.json": "3e4a9fbad98c33d0de1b3d5c7fc62f65d21911a3abac8b2eb3b196c4795bd963",
+    "backend/tests/test_api.py": "ca72908da46e53f90e05eae4ff6ea7a3b0640a53637f6e9562892cce65278ce5",
+    "backend/tests/test_mcp.py": "38a1544f6501da196e80e2920b1855f1f939db8f63db2ec00d7fbec07ea6f5b7",
+    "backend/tests/test_photo.py": "1885b3be5e04ec686d0510be3c7ee238d2eb0023d43d6a0047a1b4666260f78e",
+    "backend/tests/test_telegram.py": "bcae153fe647630b8f41834c4590fd1f3efb896372c76fda496942f35077aed6",
+    "eval/golden_set.json": "ed8d6e7a742fe9070dc56a6a7d6f09a4248c79bed4ddbb2b61bafa2c783bad30",
+    "eval/validators.py": "9ed35f91d6a775bd595288b7215ace3fd761505850147cda02e2d642fa8dc5cb",
+    "pytest.ini": "bfac5ad4c7fb4d7fe5530f2be9a97796b9f586a2665d754af9ad3f5857cfb5a2",
+    "requirements-qa.txt": "038ea785ca05cb2ceef1b7ef1d11fe48cace955ca8f64ed76b9583293f399eec",
+    "tests/__init__.py": "8e0bd9eb54be4d021fd76a38cad4de290183b0479410bdca033a0c6e6351f729",
+    "tests/conftest.py": "8608c2aad4abd75d144ec83be8157266eb5645c6544aed86753be9e55b4fe5bd",
+    "tests/fixtures/poi_injection.json": "439bf937cdef48e471ac0164c17b2caece623709eed702c467003230bde1edff",
+    "tests/fixtures/pois_sample.json": "85228c015af2380b69378e36d1a39f26e0f4878372af01a719ed7bea11c56e28",
+    "tests/fixtures/request_walk.json": "58cc392550a8a701af6283b06e1773c8362c03b90cbc680806f2af5a15cb7304",
+    "tests/fixtures/response_walk.json": "e616d058c8a64bd5c27cb43a2ae5eaa75f8225fe870df749d63fc9593cf84388",
+    "tests/test_api_contract.py": "e75ee1a08224f3dc844be927928c8df8c5da3780108c5abb4bcc8f62e9825a1f",
+    "tests/test_backend_dataset_local.py": "8e9aa47d0b3891ec581ad7673042b2d9eaf7dab78fa02cbb8b492a504ccef6e5",
+    "tests/test_backend_golden_local.py": "50c7ba3daf1a78a783aaecba2a08f07e7fbebc1443cac7ce76d8c20efa3cf83c",
+    "tests/test_backend_guards.py": "1eecd52ee5b0de7de7b1c677d4d558f612f396e09451080472abf92a9d14c4e7",
+    "tests/test_backend_languages_local.py": "502dd8f3ee3105255ede05c7ae2de9571d8aea31c2d6489c7196158dfc133160",
+    "tests/test_backend_safety_local.py": "3d0a964b9d2286e9dc73e65b15b6be90d96f43ada231ffade64eaa968a95ce95",
+    "tests/test_dataset.py": "fc6694a56a8048457ef5f56fa3581468ab2f42415446f378cdedf20a161be95e",
+    "tests/test_golden_set.py": "0738b6a34349a328357de2c483e13900e3f710415a4aa8c46154ea8bae965f3a",
+    "tests/test_judge.py": "e3907e952b751f40125e082c8c0f8b2129f1cc3d75d4b4ebc7629440941ec8d3",
+    "tests/test_metrics.py": "6b421313cffa0d1ab602fbf3e7b0aa3eab4c07d2576f6bbe2e503a892bbca347",
+    "tests/test_rag.py": "530c13297f318c55db15e3346061476fc5be50358c45cb9e370cfbddf0d4cb27",
+    "tests/test_readiness.py": "db6d5a06587a9bf79dbecaac2ba90a3ed8ec33402aab3a3155da55920cf38e45",
+    "tests/test_run_eval.py": "071648cad209afb0f8bfdf8c29d28b44f0addc0f090415e1eba7e36ecadc8eb2",
+    "tests/test_safety.py": "540696cc9bfae673e5a208052aa6cce66273a39977d1774987bdc19161dfa92e",
+    "tests/test_ui.py": "167d4e0d4636aceaaa399ecc69fe0334666c60f810c0e46c49f042dca03c81f2",
+    "tests/test_validators.py": "7ce509022c1f0596f9206deb851c3744373ee207a62c30281b8d8d0df010fe44"
+  },
+  "review": {
+    "kind": "independent_read_only",
+    "critical": 0,
+    "important": 0,
+    "minor_resolved": "Map result-limit oracle excludes the radius tolerance annulus when requiring a full page.",
+    "qa_only_publication_adaptation": "Independent read-only review: no important issues; missing backend skips only by default and fails on explicit opt-in; golden fixture loading is lazy."
+  },
+  "qa_only_checkout": {
+    "command": "python -m pytest tests -q",
+    "passed": 320,
+    "skipped": 152,
+    "failed": 0,
+    "exit_code": 0,
+    "explicit_missing_backend": "--live-backend: 1 expected fixture error, exit 1"
+  }
+}

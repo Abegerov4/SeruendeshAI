@@ -1,96 +1,62 @@
-# Проверка текущего кода Data
+# Результаты локальной проверки Backend
 
-Дата подготовки: 18 октября 2026. Data создавалась параллельно другой работой; QA не изменяла эти исходники или тесты.
+Срез: **18 октября 2026**, после синхронизации `Aslan` с Backend. Подтверждённый общий прогон: **549 passed / 42 failed / 40 skipped**. Это 42 упавших кейса; несколько кейсов выявляют одну причину, поэтому число независимых дефектов отдельно не подсчитано.
 
-Последний общий прогон: **377 passed / 4 failed / 57 skipped**. Исходники Data менялись во время этого прогона: **нет**.
+JUnit, журнал, результаты 64 golden-кейсов и параметры проверки сохраняются в [каталоге evidence](../eval/runs/2026-10-18-backend-local/). Backend, исходные данные и golden set при добавлении этих проверок не изменялись.
 
-Это результат конкретного среза, а не утверждение о ещё не завершённой версии. Полный JUnit и журнал — в `eval/evidence/`.
+## Область доказательства
 
-## Невыполненные ожидания в этом срезе
+Запросы проходят через настоящий FastAPI `TestClient`, парсер намерений, правила, keyword-поиск, проверку выбора POI, маршрутизацию и очистку вывода. Golden-кейсы используют существующие 17 контролируемых POI Backend; safety-проверки — временные тестовые записи. Ключи моделей отключены, провайдерная граница и SDK трассировки заменяются контролируемыми ответами; внешних вызовов модели нет.
 
-### `data.tests.test_web_sources::test_dodo_uses_restaurant_week_seconds_and_excludes_temporary_closure`
+Это проверка локального fallback. Полезность настоящего RAG, качество модели, Recall и качество RU/KK/EN-текстов этими результатами не установлены. Флаг `--pois` в общем прогоне включает отдельные проверки реального датасета, но не заменяет фикстуры golden/safety-тестов. Пропущенные проверки API, RAG и UI остаются непроверенными.
 
-```text
-AssertionError: assert ['dodo:active', 'dodo:temp'] == ['dodo:active']
+## Текущие невыполненные ожидания
 
-  Left contains one more item: 'dodo:temp'
-  Use -v to get more diff
-def test_dodo_uses_restaurant_week_seconds_and_excludes_temporary_closure():
-        from data.collect import web_sources as web
-        week = [{"DayIndex": n, "DayAlias": name, "WorkingTimeStart": 32400, "WorkingTimeEnd": 0}
-                for n, name in enumerate(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])]
-        active = {"Id": "active", "Name": "Астана-1", "State": 1, "Type": 1,
-                  "Location": {"Latitude": 51.13, "Longitude": 71.43}, "RestaurantWeekWorkingTime": week,
-                  "IsTemporarilyClosed": False, "AddressDetails": {"LocalityName": "Астана"}}
-        closed = {**active, "Id": "temp", "IsTemporarilyClosed": True}
-        records = web.parse_dodo([active, closed])
->       assert [p["id"] for p in records] == ["dodo:active"]
-E       AssertionError: assert ['dodo:active', 'dodo:temp'] == ['dodo:active']
-E
-E         Left contains one more item: 'dodo:temp'
-E         Use -v to get more diff
+| Группа | Кейсов | Наблюдение и трактовка |
+|---|---:|---|
+| Бюджет времени | 21 | Возвращённые `travel_min + visit_min[0]` превышают бюджет сверх допуска независимого валидатора. В 9 этих кейсах также возвращаются категории вне `expect.categories_any`. Примеры: `organizer_night_ru`, `walk_fifteen`, `car_sixty`. |
+| Ориентиры в казахских запросах | 3 | `organizer_work_kk`, `organizer_airport_kk`, `organizer_night_kk` возвращают пустые рекомендации. Это пробел локального распознавания/поиска ориентиров, а не оценка качества языковой модели. |
+| Строгие JSON-типы | 6 | `latitude_string`, `latitude_boolean`, `budget_string`, `with_kids_string`, `accessibility_string`, `group_size_string`: API принимает вход с HTTP 200, golden и JSON-схема требуют 422. Требуется согласовать строгую типизацию с приведением типов Pydantic. |
+| Политика текста запроса | 3 | `empty_query`, `whitespace_query`, `long_query_no_invented_limit`: Backend возвращает 422 вместо ожидаемого 200. Пределы длины не заданы общим контрактом; пустой ввод в QA-схеме явно отмечен как неопределённый. Существующий unit-тест Backend уже требует 422 для пробелов. Это конфликт политик, который нужно согласовать. |
+| Геометрия вне покрытия | 2 | `outside_astana_london`, `valid_polar_coordinates`: при поиске по всему городу возвращаются `distance_m=null` и `travel_min=null`. Модель Backend допускает `None`, независимая JSON-схема требует числа. Сначала нужно согласовать nullable-контракт. |
+| Казахская локализация fallback | 2 | Дисклеймер `lang=kk` совпадает с русским в ветках уточнения и рекомендаций. Это необходимая проверка отсутствия простого повторения RU; качество перевода она не оценивает. |
+| Честность и безопасный вывод | 5 | Контролируемое объяснение противоречит неизвестным часам; очистка URL оставляет пустые обязательные тексты; сохраняются scheme-relative и `javascript:`-ссылки; шаблон советует «тихий угол» без подтверждения и маркирует его `poi_data`. Проверяются реальные обработчики вывода, устойчивость самой модели не измеряется. |
 
-data/tests/test_web_sources.py:52: AssertionError
+Golden gate: **29 из 64 passed, 35 failed**; запросы и ожидания сохранены без изменений. Два дополнительных контроля проходят: проверка действительно отклоняет чужой `poi_id` и неверный HTTP-статус после успешного ответа API.
+
+**Ограничение фикстуры для трёх `organizer_walk_*`:** Mega расположен в исходной точке и исключается Backend как сам ориентир. Ближайший другой объект разрешённой категории — Botanical Garden, примерно в 1 986 м; Backend оценивает дорогу в 32 минуты и минимальный визит в 30 при бюджете 60. Поэтому категории/число рекомендаций в этих трёх сценариях требуют отдельной проверки достаточности фикстуры. Превышение бюджета уже выбранными карточками остаётся самостоятельным наблюдением.
+
+Проверки искусственных PII и точного GPS на границе провайдера/телеметрии, исключения чужих ID и дублей, защиты фактических полей и fallback при malformed-ответе проходят на контролируемых данных. Они не доказывают защиту от всех атак.
+
+## Воспроизведение
+
+Полный подтверждённый запуск из корня репозитория; зависимости: `requirements-qa.txt`, `backend/requirements.txt`, `data/requirements.txt`:
+
+```bash
+.venv/bin/python -m pytest tests backend/tests data/tests \
+  --pois data/processed/pois.json --live-backend -q \
+  -o junit_family=legacy \
+  --junitxml=eval/runs/2026-10-18-backend-local/junit.xml
 ```
 
-### `data.tests.test_web_sources::test_citypass_reads_every_hydrated_attraction_with_source_coordinates`
+Путь `tests` указан явно: аргументы `--pois` и `--live-backend` регистрирует вложенный `tests/conftest.py`. Локальные диагностические наборы можно запустить отдельно:
 
-```text
-AttributeError: module 'data.collect.web_sources' has no attribute 'parse_citypass'
-def test_citypass_reads_every_hydrated_attraction_with_source_coordinates():
-        from data.collect import web_sources as web
-        rows = [{"id": n, "slug": "museum-" + str(n), "title": "Museum " + str(n), "address": "Street " + str(n),
-                 "latitude": "51.13", "longitude": "71.43", "work_period": "Daily", "work_time": "09:00-21:00",
-                 "tags": [{"slug": "museum", "name": "Museum"}], "description": "not copied"} for n in range(1,15)]
-        payload = '5:' + json.dumps(["$", "Component", None, {"initialItems": rows, "totalCount": 14}])
-        html = '<script>self.__next_f.push(' + json.dumps([1, payload]) + ')</script>'
->       result = web.parse_citypass(html, "https://astana.citypass.kz/en/attractions")
-                 ^^^^^^^^^^^^^^^^^^
-E       AttributeError: module 'data.collect.web_sources' has no attribute 'parse_citypass'
-
-data/tests/test_web_sources.py:65: AttributeError
+```bash
+.venv/bin/python -m pytest tests/test_backend_golden_local.py \
+  tests/test_backend_safety_local.py tests/test_backend_languages_local.py -q
 ```
 
-### `data.tests.test_web_sources::test_sxodim_listing_keeps_card_address_and_excludes_event_links`
+Основания: [задачи QA](../team/04_qa_docs.md), [golden set](../eval/golden_set.json), [независимые валидаторы](../eval/validators.py), [golden-тесты](../tests/test_backend_golden_local.py), [safety-тесты](../tests/test_backend_safety_local.py), [языковые проверки](../tests/test_backend_languages_local.py). Ожидания не следует ослаблять ради зелёной сводки: сначала согласовать противоречивые политики и отделить ограничения фикстур от ошибок приложения.
 
-```text
-AttributeError: module 'data.collect.web_sources' has no attribute 'parse_sxodim'. Did you mean: 'parse_dodo'?
-def test_sxodim_listing_keeps_card_address_and_excludes_event_links():
-        from data.collect import web_sources as web
-        html = '''<div class="impression-card" data-id="7" data-title="Real Coffee">
-          <a class="impression-card-title" href="https://sxodim.com/astana/place/real-coffee">Real Coffee</a>
-          <div class="impression-card-info">Астана, улица Мира, 7</div></div>
-          <a href="https://sxodim.com/astana/event/party">Party</a>'''
->       records = web.parse_sxodim(html, "https://sxodim.com/astana/places/kofejni", "cafe")
-                  ^^^^^^^^^^^^^^^^
-E       AttributeError: module 'data.collect.web_sources' has no attribute 'parse_sxodim'. Did you mean: 'parse_dodo'?
+## Исторический снимок Data — 18 октября 2026, до синхронизации Backend
 
-data/tests/test_web_sources.py:80: AttributeError
-```
+Сохранён ранний результат параллельной разработки Data: **377 passed / 4 failed / 57 skipped**. Исходники Data во время того прогона не менялись. Это архивный срез, а не текущий список открытых дефектов; его журналы и JUnit находятся в [eval/evidence](../eval/evidence/).
 
-### `data.tests.test_web_sources::test_pagination_follows_all_advertised_same_directory_pages_without_total_cap`
+| Исторический тест в `data/tests/test_web_sources.py` | Наблюдение того среза |
+|---|---|
+| `test_dodo_uses_restaurant_week_seconds_and_excludes_temporary_closure` | Временно закрытая запись `dodo:temp` оставалась среди активных. |
+| `test_citypass_reads_every_hydrated_attraction_with_source_coordinates` | Отсутствовала функция `parse_citypass`. |
+| `test_sxodim_listing_keeps_card_address_and_excludes_event_links` | Отсутствовала функция `parse_sxodim`. |
+| `test_pagination_follows_all_advertised_same_directory_pages_without_total_cap` | Отсутствовала функция `iter_directory_pages`. |
 
-```text
-AttributeError: module 'data.collect.web_sources' has no attribute 'iter_directory_pages'
-def test_pagination_follows_all_advertised_same_directory_pages_without_total_cap():
-        from data.collect import web_sources as web
-        pages = {
-          "https://sxodim.com/astana/places/kofejni": '<a href="?page=2" rel="next">Next</a>',
-          "https://sxodim.com/astana/places/kofejni?page=2": '<a href="?page=3">3</a>',
-          "https://sxodim.com/astana/places/kofejni?page=3": '<a href="?page=2">2</a><a href="https://other.test/?page=4">4</a>',
-        }
-        class LocalFetcher:
-            def get(self, url):
-                return pages[url]
->       result = list(web.iter_directory_pages(LocalFetcher(), next(iter(pages))))
-                      ^^^^^^^^^^^^^^^^^^^^^^^^
-E       AttributeError: module 'data.collect.web_sources' has no attribute 'iter_directory_pages'
-
-data/tests/test_web_sources.py:96: AttributeError
-```
-
-## Перед повторным прогоном
-
-Запустить `python -m pytest` после завершения текущих правок Data. Зависимости коллектора нужны дополнительно к QA: `pyarrow`, `beautifulsoup4`, `shapely`, `osmium`, `overturemaps` (версии проверенного окружения сохранены в evidence). Не менять ожидания тестов ради зелёной сводки; сначала сверить фактическое требование.
-
-Найденные ранее проверки повреждённого PBF, паузы после 429, сохранения metadata при DNS-сбое и исключения vacant-объектов проходили повторную оценку по мере параллельных правок. Актуальный статус каждого теста определяет сохранённый JUnit, а не ранний промежуточный лог.
+Проверки повреждённого PBF, паузы после 429, сохранения metadata при DNS-сбое и исключения vacant-объектов также переоценивались по мере правок. Их текущий статус определяется свежим JUnit, а не этим историческим описанием.
