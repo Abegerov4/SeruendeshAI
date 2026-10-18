@@ -100,3 +100,8 @@
 .why-details p{margin:2px 0}
 .why-details .muted{color:#8a948c}
 .detail-note{font-size:11px;color:#8a948c}
+
+/* hero: no scaled "drift" (the zoomed photo peeked out behind the rounded banner) and no drop shadow */
+.explore-hero{box-shadow:none}
+.explore-hero>img{animation:hero-fade .8s ease-out both;transform:none}
+@keyframes hero-fade{from{opacity:.4}to{opacity:1}}
