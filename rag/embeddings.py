@@ -7,7 +7,6 @@ def embed(texts, provider, model):
         response = client.embeddings.create(model=model, input=texts)
         return [row.embedding for row in sorted(response.data, key=lambda r: r.index)]
     if provider == 'bge':
-        from functools import lru_cache
         return _local(model).encode(texts, normalize_embeddings=True).tolist()
     raise ValueError('Embedding provider must be openai or bge')
 

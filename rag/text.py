@@ -13,7 +13,9 @@ ALIASES = {
 }
 
 def tokens(text):
-    return re.findall(r'[^\W_]+', text.casefold().replace('ё', 'е'), re.UNICODE)
+    aliases = {'байтерек': 'bayterek', 'бәйтерек': 'bayterek', 'baiterek': 'bayterek',
+               'хан': 'khan', 'шатыр': 'shatyr', 'мега': 'mega', 'силк': 'silk', 'уэй': 'way'}
+    return [aliases.get(t, t) for t in re.findall(r'[^\W_]+', text.casefold().replace('ё', 'е'), re.UNICODE)]
 
 def document(poi):
     return (f'{poi["name"]} ({poi.get("name_en") or ""}) {poi.get("name_kk") or ""}. '

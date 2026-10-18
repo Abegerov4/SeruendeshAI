@@ -2,7 +2,6 @@ import hashlib
 import json
 import math
 import os
-import warnings
 from collections import Counter
 from functools import lru_cache
 from pathlib import Path
