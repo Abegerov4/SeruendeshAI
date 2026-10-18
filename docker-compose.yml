@@ -10,6 +10,15 @@ services:
       - "8000:8000"
     restart: unless-stopped
 
+  telegram-bot:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    command: ["python", "-m", "backend.telegram_bot.bot"]
+    env_file: .env
+    restart: unless-stopped
+    profiles: ["bot"]   # запускается явно: docker compose --profile bot up
+
   # Frontend добавит свой сервис после merge feature/frontend, например:
   # frontend:
   #   build: ./frontend

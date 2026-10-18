@@ -63,6 +63,19 @@ curl -s localhost:8000/api/recommend/photo -F image=@khan_shatyr.jpg -F query="�
 
 Те же возможности доступны как MCP-tools для Claude Desktop, Claude Code и Cursor: `recommend_places`, `search_pois`, `check_open_status`, `plan_route`, `get_poi`. К серверу прилагается Skill с инструкцией для ассистента. Подробности в [mcp_server/README.md](mcp_server/README.md).
 
+## Telegram-бот
+
+`python -m backend.telegram_bot.bot` (нужен `TELEGRAM_BOT_TOKEN` в `.env`), или `docker compose --profile bot up`.
+
+Что умеет бот:
+- **📍 Геолокация** → кнопки сценариев (прогулка, кофе, с ребёнком, ночью, что посмотреть) → 1–3 места.
+- **Текст** («я возле Байтерека, хочу кофе») → рекомендации.
+- **Фото** → бот узнаёт место и советует, куда пойти дальше.
+
+Каждый ответ содержит «почему», «что делать», статус часов, метку источника, ссылку на карту и строку «Учёл: …» (какие данные использованы).
+
+Приватность: локация округляется до ~100 м и хранится только в памяти 30 минут, `/forget` стирает её сразу. В логах нет chat_id, координат и текста сообщений.
+
 ## Наблюдаемость, стоимость, кэш
 - **Langfuse** (если в `.env` есть `LANGFUSE_*`): трейс `recommend` → `parse-intent` (generation) → `poi-search` (retriever) → `decide-recommendations` (generation). В трейсах видны токены, стоимость и latency. Координат там нет.
 - **Стоимость** около **$0.005 за запрос** (sol ≈ $0.0044, mini ≈ $0.0007). Каждый запрос пишет в лог токены и `cost_usd`.

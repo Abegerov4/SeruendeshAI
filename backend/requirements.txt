@@ -9,3 +9,4 @@ langfuse>=3.0
 python-multipart>=0.0.9
 pillow>=10.0
 mcp>=2.3
+python-telegram-bot>=22.0
