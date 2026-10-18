@@ -60,7 +60,7 @@ def llm_generate(query: str, intent: Intent, candidates: list[dict], location_la
         f"Кандидаты:\n{wrap_untrusted([_candidate_view(c) for c in candidates])}"
     )
     for _ in range(2):  # один ретрай при невалидном ответе
-        data = llm.chat_json(system, user, role="decision")
+        data = llm.chat_json(system, user, role="decision", name="decide-recommendations")
         if not data:
             return None
         try:

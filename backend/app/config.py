@@ -24,6 +24,22 @@ def _bool(name: str, default: bool) -> bool:
     return os.getenv(name, str(default)).strip().lower() in {"1", "true", "yes", "on"}
 
 
+DEFAULT_PRICES = {"gpt-6.1-sol": (2.0, 10.0), "gpt-5.4-mini": (0.75, 4.5)}
+
+
+def _prices(raw: str) -> dict[str, tuple[float, float]]:
+    """LLM_PRICES='gpt-6.1-sol=2.5/10,gpt-5.4-mini=0.25/2' — цены за 1M токенов (input/output)."""
+    out = {}
+    for item in filter(None, (p.strip() for p in raw.split(","))):
+        try:
+            model, pair = item.split("=")
+            inp, outp = pair.split("/")
+            out[model.strip()] = (float(inp), float(outp))
+        except ValueError:
+            continue
+    return out
+
+
 @dataclass(frozen=True)
 class Settings:
     llm_api_key: str | None
@@ -32,6 +48,10 @@ class Settings:
     llm_decision_model: str    # выбор мест и объяснение «почему»: свежая reasoning-модель
     llm_reasoning_effort: str
     llm_timeout_s: float
+    llm_decision_timeout_s: float
+    llm_prices: dict[str, tuple[float, float]]  # model -> ($ за 1M input, $ за 1M output)
+    cache_ttl_s: int
+    cache_max_items: int
     mock_rag: bool
     fixture_path: Path
     cors_origins: list[str]
@@ -47,6 +67,11 @@ def get_settings() -> Settings:
         llm_decision_model=os.getenv("LLM_DECISION_MODEL", "gpt-6.1-sol"),
         llm_reasoning_effort=os.getenv("LLM_REASONING_EFFORT", "low"),
         llm_timeout_s=float(os.getenv("LLM_TIMEOUT_S", "25")),
+        llm_decision_timeout_s=float(os.getenv("LLM_DECISION_TIMEOUT_S", "8")),
+        # $ за 1M токенов input/output; значения по умолчанию сверены с расчётом стоимости в Langfuse
+        llm_prices={**DEFAULT_PRICES, **_prices(os.getenv("LLM_PRICES", ""))},
+        cache_ttl_s=int(os.getenv("CACHE_TTL_S", "900")),
+        cache_max_items=int(os.getenv("CACHE_MAX_ITEMS", "500")),
         mock_rag=_bool("MOCK_RAG", False),
         fixture_path=Path(os.getenv("POI_FIXTURE", BACKEND_DIR / "tests" / "fixtures" / "pois_sample.json")),
         cors_origins=[o.strip() for o in os.getenv("CORS_ORIGINS", "*").split(",") if o.strip()],

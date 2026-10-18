@@ -4,6 +4,7 @@ import time
 import uuid
 from datetime import datetime
 
+from . import cache, llm, tracing
 from . import rag_adapter as rag
 from .config import ASTANA_BBOX, ASTANA_TZ
 from .generate import llm_generate, template_generate
@@ -97,19 +98,56 @@ def _filter_candidates(hits: list[dict], intent: Intent, now: datetime) -> tuple
 
 
 def recommend(req: RecommendRequest) -> RecommendResponse:
+    """Вход API: кэш → пайплайн → учёт токенов/стоимости → трейс."""
+    resp, _ = recommend_with_stats(req)
+    return resp
+
+
+def recommend_with_stats(req: RecommendRequest, use_cache: bool = True) -> tuple[RecommendResponse, dict]:
     t0 = time.perf_counter()
     request_id = uuid.uuid4().hex[:12]
     now = (req.now or datetime.now(ASTANA_TZ))
-    if now.tzinfo is None:
-        now = now.replace(tzinfo=ASTANA_TZ)
-    else:
-        now = now.astimezone(ASTANA_TZ)
+    now = now.replace(tzinfo=ASTANA_TZ) if now.tzinfo is None else now.astimezone(ASTANA_TZ)
+    query = mask_pii(req.query)
+
+    loc = (req.location.lat, req.location.lon) if req.location else None
+    key = cache.make_key(query, loc, now, {
+        "t": req.time_budget_min, "m": req.mode, "l": req.lang,
+        "p": req.profile.model_dump() if req.profile else None,
+        "models": llm.models(), "override": llm.current_override(),
+    })
+    if use_cache and (hit := cache.responses.get(key)):
+        resp = RecommendResponse.model_validate({**hit, "request_id": request_id})
+        stats = {"cache": "hit", "latency_ms": int((time.perf_counter() - t0) * 1000), **llm.summarize([])}
+        log.info("request_id=%s cache=hit recs=%d", request_id, len(resp.recommendations))
+        return resp, stats
+
+    with llm.usage_scope() as calls, tracing.span(
+        "recommend", input={"query": query, "time_budget_min": req.time_budget_min, "mode": req.mode,
+                            "has_location": loc is not None},
+    ) as root:
+        resp = _recommend(req, request_id, now, query)
+        usage = llm.summarize(calls)
+        root.update(output={"recommendations": [r.name for r in resp.recommendations], "notes": resp.notes},
+                    metadata={"request_id": request_id, **usage})
+    stats = {"cache": "miss", "latency_ms": int((time.perf_counter() - t0) * 1000), **usage,
+             "calls": llm.usage_dicts(calls)}
+    if use_cache and resp.recommendations:
+        cache.responses.set(key, resp.model_dump(mode="json"))
+    log.info("request_id=%s recs=%d llm_calls=%d tokens=%d/%d cost_usd=%s latency_ms=%d", request_id,
+             len(resp.recommendations), usage["llm_calls"], usage["input_tokens"], usage["output_tokens"],
+             usage["cost_usd"], stats["latency_ms"])
+    return resp, stats
+
+
+def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str) -> RecommendResponse:
     notes: list[str] = []
 
-    # 1. вход: PII + injection
-    query = mask_pii(req.query)
+    # 1. вход: injection (PII уже замаскирован)
     lang_guess = req.lang or "ru"
     if looks_like_injection(query):
+        with tracing.span("injection-guard", as_type="guardrail", input={"query": query}) as g:
+            g.update(output={"blocked": True})
         return _empty(request_id, req, now, lang_guess, _t(lang_guess, "injection"))
 
     # 2. разбор запроса
@@ -138,12 +176,16 @@ def recommend(req: RecommendRequest) -> RecommendResponse:
     # 4–5. радиус + поиск
     radius = search_radius_m(intent.time_budget_min, intent.mode)
     search_q = intent.search_query or query
-    hits = _search(search_q, lat, lon, radius, intent.categories)
-    if len(hits) < 2 and lat is not None and radius < MAX_RADIUS:  # одно расширение радиуса
-        radius = min(MAX_RADIUS, radius * 2)
+    with tracing.span("poi-search", as_type="retriever",
+                      input={"query": search_q, "radius_m": radius, "categories": intent.categories}) as r:
         hits = _search(search_q, lat, lon, radius, intent.categories)
-        if hits:
-            notes.append(_t(lang, "widened"))
+        if len(hits) < 2 and lat is not None and radius < MAX_RADIUS:  # одно расширение радиуса
+            radius = min(MAX_RADIUS, radius * 2)
+            hits = _search(search_q, lat, lon, radius, intent.categories)
+            if hits:
+                notes.append(_t(lang, "widened"))
+        r.update(output=[{"id": h["id"], "name": h["name"], "distance_m": h.get("distance_m"),
+                          "score": h.get("score")} for h in hits])
 
     # 6. фильтры кодом; сам ориентир («я возле Mega Silk Way») не советуем
     if loc_source == "landmark":
@@ -180,8 +222,7 @@ def recommend(req: RecommendRequest) -> RecommendResponse:
 
     route = build_route((lat, lon) if lat is not None else None, recs, intent.time_budget_min, intent.mode)
 
-    log.info("request_id=%s recs=%d candidates=%d llm=%s latency_ms=%d",
-             request_id, len(recs), len(candidates), used_llm, (time.perf_counter() - t0) * 1000)
+    log.debug("request_id=%s candidates=%d intent_llm=%s", request_id, len(candidates), used_llm)
     return RecommendResponse(
         request_id=request_id,
         used_context=_ctx(intent, now, radius, loc_source, loc_label),

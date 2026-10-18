@@ -128,7 +128,7 @@ def rule_intent(query: str) -> Intent:
 
 
 def llm_intent(query: str) -> Intent | None:
-    data = llm.chat_json(PROMPT, f"<user_query>\n{query}\n</user_query>")
+    data = llm.chat_json(PROMPT, f"<user_query>\n{query}\n</user_query>", name="parse-intent")
     if not data:
         return None
     try:

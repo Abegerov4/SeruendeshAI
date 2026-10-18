@@ -1,10 +1,11 @@
 """FastAPI-приложение. Запуск из корня репозитория:  uvicorn backend.app.main:app --reload"""
 import logging
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 
-from . import llm
+from . import cache, llm, tracing
 from . import rag_adapter as rag
 from .config import get_settings
 from .pipeline import recommend
@@ -14,7 +15,13 @@ from .schemas import PoiBrief, RecommendRequest, RecommendResponse
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
-app = FastAPI(title="Seruendesh AI — Astana walk assistant", version="0.1.0")
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    yield
+    tracing.flush()  # дослать трейсы при остановке
+
+
+app = FastAPI(title="Seruendesh AI — Astana walk assistant", version="0.2.0", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=get_settings().cors_origins,
@@ -31,6 +38,8 @@ def health() -> dict:
         "rag": rag.backend_name(),
         "llm": "ok" if llm.is_enabled() else "disabled",
         "models": llm.models() if llm.is_enabled() else None,
+        "tracing": "langfuse" if tracing.is_enabled() else "disabled",
+        "cache": cache.responses.stats(),
     }
 
 
