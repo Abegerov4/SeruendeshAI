@@ -32,7 +32,7 @@ function urlPreset() {
 
 function position(options) {
   return new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(
-    pos => resolve({ lat: roundCoord(pos.coords.latitude), lon: roundCoord(pos.coords.longitude), at: Date.now() }),
+    pos => resolve({ lat: roundCoord(pos.coords.latitude), lon: roundCoord(pos.coords.longitude), at: Date.now(), acc: Math.round(pos.coords.accuracy || 0) }),
     err => reject(Object.assign(Error('denied'), { code: err.code === 1 ? 'denied' : 'unavailable' })), options));
 }
 // Safari on a Mac often misses the high-accuracy fix within the timeout (Wi-Fi positioning only):
@@ -42,7 +42,7 @@ async function locate() {
   try { return await position({ enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }); }
   catch (e) {
     if (e.code === 'denied') throw e;
-    return position({ enableHighAccuracy: false, timeout: 20000, maximumAge: 300000 });
+    return position({ enableHighAccuracy: false, timeout: 20000, maximumAge: 120000 });
   }
 }
 
@@ -52,11 +52,14 @@ const GEO_TEXT = {
   unavailable: 'Не получилось определить местоположение. В Safari: Системные настройки → Конфиденциальность → Службы геолокации → Safari. Или напиши, возле чего ты.',
   unsupported: 'Браузер не умеет определять местоположение. Напиши, возле чего ты, или выбери точку старта.',
   outside: 'Похоже, ты не в Астане. Напиши, возле чего ты в городе, или выбери точку старта.',
+  coarse: 'Телефон дал неточную геопозицию (по сети, а не по GPS) — старт может быть не там. Включи точное местоположение или напиши, возле чего ты.',
 };
+// a network fix (no GPS) can be kilometres off: used, but the user is told and can correct it
+const COARSE_M = 1500;
 
 function GeoNotice({ state, label, onRetry }) {
   if (state === 'ok') return null;
-  return <details className={'geo-notice geo-compact geo-' + state}><summary><MapPin size={14}/>{tr(state === 'asking' ? 'Определяю точку старта…' : 'Геолокация не включена')}<ChevronDown size={12}/></summary><div role="status"><LocateFixed size={16} /><span>{tr(GEO_TEXT[state])}{state !== 'asking' && label ? ' ' + tr('Сейчас') + ': ' + tr(label) + '.' : ''}</span>
+  return <details className={'geo-notice geo-compact geo-' + state}><summary><MapPin size={14}/>{tr(state === 'asking' ? 'Определяю точку старта…' : state === 'coarse' ? 'Неточная геопозиция' : 'Геолокация не включена')}<ChevronDown size={12}/></summary><div role="status"><LocateFixed size={16} /><span>{tr(GEO_TEXT[state])}{state !== 'asking' && label ? ' ' + tr('Сейчас') + ': ' + tr(label) + '.' : ''}</span>
     {state !== 'asking' && state !== 'unsupported' && <button onClick={onRetry}>{tr('Включить геолокацию')}</button>}</div></details>;
 }
 
@@ -141,7 +144,7 @@ export default function Explore({ saved, toggleSaved }) {
     try {
       const coords = await locate();
       if (!inAstana(coords)) { setGeo('outside'); return { ...c, coords: null }; }
-      setGeo('ok'); setGeoError(''); return { ...c, coords };
+      setGeo(coords.acc > COARSE_M ? 'coarse' : 'ok'); setGeoError(''); return { ...c, coords };
     } catch (e) { setGeo(e.code || 'unavailable'); return { ...c, coords: null }; }  // no silent landmark: the next request asks again
   }
   async function retryGeo() {
@@ -152,7 +155,11 @@ export default function Explore({ saved, toggleSaved }) {
   }
   // tap on a place (chat card, details): the route from the user to it, drawn on the map
   // themed walks: computed for the current start; showing one puts its stops and route on the map
-  async function fetchIdeas() { const c = await withCoords(ctx); setCtx(c); return routeIdeas(c, getLanguage()); }
+  async function fetchIdeas() {
+    const c = await withCoords(ctx); setCtx(c);
+    if (c.location === MY_LOCATION && !c.coords) throw Error('no-start');  // no GPS and no chosen start: ask, never guess
+    return routeIdeas(c, getLanguage());
+  }
   function showIdea(idea) {
     const next = toPlan(idea.response, ctx, idea.query);
     setPrevious(plan); setPlan(next); setResultVersion(n => n + 1); setHovered(null); setSheetOpen(false); setFocusRoute(null);

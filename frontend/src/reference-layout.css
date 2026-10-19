@@ -38,7 +38,12 @@
  .reference-layout .companion-intro p{font-size:12px;line-height:1.55}
  .reference-layout .companion-mascot{width:95px;height:115px;right:-4px;top:26px}
  .reference-layout .chat-panel{margin:10px 0 0}
- .reference-layout .chat-heading,.reference-layout .chat-panel:not(.has-messages) .chat-log,.reference-layout .quick-scenarios{display:none}
+ .reference-layout .chat-heading,.reference-layout .chat-panel:not(.has-messages) .chat-log{display:none}
+ /* themed walks («Маршруты») and three quick starts stay reachable on a laptop until the first message, as on a phone */
+ .reference-layout .quick-scenarios{padding:2px 0 10px}
+ .reference-layout .quick-scenarios>span{display:none}
+ .reference-layout .quick-scenarios>div{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+ .reference-layout .quick-scenarios button{font-size:12px;padding:7px 10px;border-radius:10px}
  .reference-layout .chat-body{background:transparent;padding:0}
  .reference-layout .chat-panel.has-messages .chat-log{min-height:0;max-height:155px;margin-bottom:10px;padding:8px 0}
  .reference-layout .chat-log .chat-places,.reference-layout .chat-log .chat-answer-details,.reference-layout .chat-log .message-results{display:none}

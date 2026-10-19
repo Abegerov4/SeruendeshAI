@@ -160,6 +160,9 @@ function useStage(loading) {
   return STAGES[stage];
 }
 
+// themed walks start from the user: without GPS and a chosen start Seru asks instead of guessing a landmark
+const NO_START = 'Не знаю, откуда начать: геолокация выключена. Разреши доступ к геопозиции или выбери точку старта под полем ввода — соберу маршруты от неё.';
+
 export default function Chat({ requestPlan, onMood, location, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false, onRoute, onDetails, routed, notice, onIdeas, onShowIdea }) {
   const [messages, setMessages] = useState([welcome]),
     [query, setQuery] = useState(''),
@@ -227,7 +230,11 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
       append([ideas.length ? { role: 'assistant', text: 'Вот готовые маршруты от тебя — выбери настроение, покажу путь на карте:', ideas }
         : { role: 'assistant', text: 'Рядом не получилось собрать маршрут из 2–3 мест. Попробуй другую точку старта.' }]);
       onMood?.(ideas.length ? 'happy' : 'idle');
-    } catch (e) { setError(e?.message === 'rate' ? 'Слишком много запросов. Подожди минуту и попробуй снова.' : 'Не удалось собрать маршруты. Попробуй ещё раз.'); onMood?.('idle'); }
+    } catch (e) {
+      if (e?.message === 'no-start') append([{ role: 'assistant', text: NO_START }]);
+      else setError(e?.message === 'rate' ? 'Слишком много запросов. Подожди минуту и попробуй снова.' : 'Не удалось собрать маршруты. Попробуй ещё раз.');
+      onMood?.('idle');
+    }
     finally { setLoading(false); }
   }
   function reset() { controller.current?.abort(); setError(''); setLoading(false); onMood?.('idle'); setMessages([welcome]); setQuery(''); }
@@ -265,7 +272,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
         {loading && <div className="chat-typing" role="status"><span className="thinking-seru"><Mascot decorative mood="thinking" /></span><span className="typing-dots" aria-hidden="true"><i /><i /><i /></span>{tr(stage)}</div>}
       </div>
       {(loading || error) && <div className="request-status" role="status">{loading ? <button onClick={cancel}>{tr('Отменить поиск')}</button> : <><p>{tr(error)}</p><button onClick={() => { const r = lastRequest.current; if (r) send(r.text, r.index, r.override, true, undefined, r.photo); }}>{tr('Повторить запрос')}</button></>}</div>}
-      <div className="quick-scenarios" hidden={messages.length > 1}><div>{onIdeas && <button className="ideas-chip" onClick={askIdeas}><MapIcon size={14} />{tr('Маршруты')}</button>}{scenarios.slice(0, 3).map((s, i) => <button disabled={loading} key={s.label} onClick={() => send(tr(s.query), i)}><s.icon size={14} />{tr(s.label)}</button>)}</div></div>
+      <div className="quick-scenarios" hidden={messages.some(m => m.result || m.ideas)}><div>{onIdeas && <button className="ideas-chip" onClick={askIdeas}><MapIcon size={14} />{tr('Маршруты')}</button>}{scenarios.slice(0, 3).map((s, i) => <button disabled={loading} key={s.label} onClick={() => send(tr(s.query), i)}><s.icon size={14} />{tr(s.label)}</button>)}</div></div>
       <form className="chat-composer" onSubmit={e => { e.preventDefault(); if (!loading) send(query); }}>
         <div className="composer-input"><Sparkles size={19} /><textarea ref={input} id="chat-input" value={query} onChange={e => setQuery(e.target.value)} onKeyDown={e => {
           if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); e.currentTarget.form.requestSubmit(); }
