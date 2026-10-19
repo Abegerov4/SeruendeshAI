@@ -307,6 +307,12 @@ class MetaFeatures(_Out):
     mcp: bool = Field(True, description="MCP connector is served at /connector/mcp")
 
 
+class MapTiles(_Out):
+    url: str = Field(description="Leaflet raster tile template ({z}/{x}/{y}, {r} for retina)")
+    attribution: str
+    data_url: str | None = Field(None, description="A calmer style for data maps (City Insights)")
+
+
 class MetaResponse(_Out):
     api_version: str = API_VERSION
     landmarks: list[LandmarkOut]
@@ -315,6 +321,7 @@ class MetaResponse(_Out):
     poi_count: int
     sources: dict[str, str]
     features: MetaFeatures = Field(default_factory=MetaFeatures)
+    map: MapTiles | None = Field(None, description="Styled basemap when a MapTiler key is configured; null = OpenStreetMap")
 
 
 class PoiBrief(_Out):

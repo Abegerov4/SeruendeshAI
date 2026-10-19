@@ -37,7 +37,7 @@ from app.categories import CONTRACT_CATEGORY
 from app.geo import car_minutes, fallback_walk_m, hav_m, in_astana, round_coord
 from app.query import detect_lang, resolve_landmark
 from app.schemas import (RouteRequest, RouteToPlace, CategoryOut, FeedbackRequest, FeedbackResponse, HealthResponse, LandmarkOut, MetaFeatures,
-                         MetaResponse, PhotoRecommendResponse, PoiBrief, RecommendRequest, RecommendResponse)
+                         MapTiles, MetaResponse, PhotoRecommendResponse, PoiBrief, RecommendRequest, RecommendResponse)
 from app.context import parse_now
 from app.service import Runtime, recommend, snap_pois
 from app.store import load_store
@@ -152,8 +152,14 @@ async def api_meta():
             for c in CATEGORIES.values()]
     feats = MetaFeatures(password_reset_email=bool(settings.smtp_host and settings.smtp_from),
                          photo=llm_client() is not None, mcp=True)
+    tiles = None
+    if settings.maptiler_key:
+        base = "https://api.maptiler.com/maps/{style}/256/{{z}}/{{x}}/{{y}}{{r}}.png?key=" + settings.maptiler_key
+        tiles = MapTiles(url=base.format(style=settings.map_style), data_url=base.format(style=settings.map_style_data),
+                         attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> '
+                                     '<a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>')
     return MetaResponse(landmarks=lms, categories=cats, data_built_at=st.manifest.get("built_at"),
-                        poi_count=st.size, sources=st.manifest.get("sources", {}), features=feats)
+                        poi_count=st.size, sources=st.manifest.get("sources", {}), features=feats, map=tiles)
 
 
 def _photo_err(status: int, code: str) -> JSONResponse:

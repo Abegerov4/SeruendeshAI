@@ -12,8 +12,14 @@ function DemandMap({ cells }) {
   const box = useRef(null), map = useRef(null), layer = useRef(null);
   useEffect(() => {
     const m = L.map(box.current, { zoomControl: true, scrollWheelZoom: false, attributionControl: true }).setView([51.128, 71.43], 12);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(m);
+    fetch('/api/meta').then(r => r.json()).then(meta => {  // the calmer data style when the server has a map key
+      if (!meta.map?.data_url) return;
+      const styled = L.tileLayer(meta.map.data_url, { maxZoom: 18, attribution: meta.map.attribution });
+      styled.once('tileload', () => m.removeLayer(osm));
+      styled.addTo(m);
+    }).catch(() => {});
     layer.current = L.layerGroup().addTo(m); map.current = m;
     return () => m.remove();
   }, []);

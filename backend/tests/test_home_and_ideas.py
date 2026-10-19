@@ -51,3 +51,10 @@ def test_route_ideas_are_real_routes(client):
     ideas = d["ideas"]
     assert len(ideas) >= 3 and all(2 <= len(i["stops"]) <= 3 and i["response"]["route"] for i in ideas)
     assert len({tuple(sorted(i["stops"])) for i in ideas}) == len(ideas)  # no two ideas with the same stops
+
+
+def test_meta_offers_a_styled_basemap_only_with_a_key(client, monkeypatch):
+    assert client.get("/api/meta").json()["map"] is None
+    monkeypatch.setattr(get_settings(), "maptiler_key", "abc")
+    m = client.get("/api/meta").json()["map"]
+    assert "maps/streets-v2/256/{z}/{x}/{y}{r}.png?key=abc" in m["url"] and "dataviz" in m["data_url"] and "MapTiler" in m["attribution"]

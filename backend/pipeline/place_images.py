@@ -79,9 +79,7 @@ def _title_match(names: set[str], title: str) -> float:
 
 def commons_near(p: dict) -> str | None:
     """A Commons file taken near the place whose title names it."""
-    names = _names(p)
-    if not names:
-        return None
+    names = _names(p) or {"-"}
     d = get_json(COMMONS_API, params={"action": "query", "list": "geosearch", "gscoord": f"{p['lat']}|{p['lon']}",
                                       "gsradius": SIGHT_RADIUS[p["category"]], "gsnamespace": 6, "gslimit": 50,
                                       "format": "json", "formatversion": 2},
@@ -94,6 +92,8 @@ def commons_near(p: dict) -> str | None:
         score = _title_match(names, title)
         if score >= 0.82 and (best is None or (score, -f["dist"]) > best[0]):
             best = ((score, -f["dist"]), title)
+        elif score < 0.82 and f["dist"] <= min(80, SIGHT_RADIUS[p["category"]]) and best is None:
+            best = ((0.0, -f["dist"]), title)  # the nearest photo, kept only if the vision check sees this kind of place
     return best[1] if best else None
 
 
@@ -174,14 +174,79 @@ def collect(pois: list[dict]) -> dict[str, dict]:
         for p, ph in zip(venues, pool.map(site_image, venues)):
             if ph:
                 out[p["id"]] = ph
+    # one picture for differently named places is a group/aggregator banner, not a photo of either place
+    names: dict[str, set] = {}
+    for p in venues:
+        if (ph := out.get(p["id"])) and ph["source"] == "website":
+            names.setdefault(ph["url"], set()).add(p["name"].strip().lower())
+    for p in venues:
+        if (ph := out.get(p["id"])) and ph["source"] == "website" and len(names[ph["url"]]) > 1:
+            out.pop(p["id"])
     log.info("site preview images: %d of %d venues with a website", sum(1 for v in out.values() if v["source"] == "website"), len(venues))
     return out
+
+
+VISION_PROMPT = """You check photos for place cards of a city guide. Given the place name and type, decide what the image shows.
+kind: exterior (the building/monument/park itself), interior (inside a venue: hall, tables, shop floor), food (dishes or drinks
+as served), logo (logo, text, flat graphic), ad (advertisement, app screenshot, promo banner), people (a person or group is
+the subject), blank (empty, black, unreadable), unrelated (another place, a street, an animal, stock objects).
+fits: true only if a visitor would accept it as a picture of THIS kind of place (exterior/interior; food only for cafés,
+restaurants, bars, sweets). Be strict."""
+
+
+def verify(out: dict[str, dict], pois_by_id: dict[str, dict]) -> dict[str, dict]:
+    """Keep only pictures a vision model accepts as the place itself (not a logo, an ad, a person, a banner)."""
+    import os
+    from typing import Literal
+
+    from openai import OpenAI
+    from pydantic import BaseModel
+
+    from app.config import get_settings
+
+    class Verdict(BaseModel):
+        kind: Literal["exterior", "interior", "food", "logo", "ad", "people", "blank", "unrelated"]
+        fits: bool
+
+    s = get_settings()
+    key = s.openai_api_key or os.getenv("OPENAI_API_KEY", "")
+    if not key:
+        log.warning("no OpenAI key: photos are not verified")
+        return out
+    client = OpenAI(api_key=key, timeout=40)
+
+    def check(item):
+        pid, ph = item
+        p = pois_by_id[pid]
+        cache = cache_path("photo_verdict", ph["url"])
+        if cache.exists():
+            return pid, json.loads(cache.read_text())
+        try:
+            r = client.responses.parse(model=s.llm_parse_model, store=False, reasoning={"effort": "none"}, text_format=Verdict, input=[
+                {"role": "system", "content": VISION_PROMPT},
+                {"role": "user", "content": [{"type": "input_text", "text": f"Place: {p['name']} ({p['category']})"},
+                                             {"type": "input_image", "image_url": ph["url"], "detail": "low"}]}])
+            v = r.output_parsed.model_dump()
+        except Exception as exc:  # the model could not fetch or read it: not shown
+            v = {"kind": "blank", "fits": False, "error": type(exc).__name__}
+        cache.write_text(json.dumps(v))
+        return pid, v
+
+    food = {"cafe", "restaurant", "bar", "fast_food", "sweets", "hookah"}
+    kept = {}
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        for pid, v in pool.map(check, list(out.items())):
+            cat = pois_by_id[pid]["category"]
+            if v.get("fits") and (v["kind"] in ("exterior", "interior") or (v["kind"] == "food" and cat in food)):
+                kept[pid] = out[pid]
+    log.info("vision check kept %d of %d photos", len(kept), len(out))
+    return kept
 
 
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s %(message)s")
     pois = [json.loads(line) for line in POIS_FILE.open(encoding="utf-8") if line.strip()]
-    out = collect(pois)
+    out = verify(collect(pois), {p["id"]: p for p in pois})
     OUT_FILE.write_text(json.dumps(out, ensure_ascii=False, indent=0))
     log.info("wrote %s: %d photos (before: %d places had one)", OUT_FILE.name, len(out), sum(1 for p in pois if p.get("photo")))
 

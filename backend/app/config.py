@@ -57,6 +57,9 @@ class Settings(BaseSettings):
     rate_limit_per_min: int = 30
     mcp_rate_limit_per_min: int = 30  # MCP tool calls per client per minute
     photo_rate_limit_per_min: int = 10  # vision calls cost more
+    maptiler_key: str = ""  # public browser key (restrict it to the site's origin in MapTiler Cloud)
+    map_style: str = "streets-v2"
+    map_style_data: str = "dataviz"
     telegram_bot_token: str = ""  # enables the Telegram bot by webhook inside this service (app/telegram.py)
     bot_api_key: str = ""  # shared secret of the Telegram bot: its users get per-user budgets instead of one shared IP
     log_level: str = "INFO"

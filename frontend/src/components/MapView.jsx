@@ -9,11 +9,12 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '
 
 // Real map (OpenStreetMap data, CARTO tiles): numbered stops, "you are here" (rounded) and the
 // walking route geometry returned by the API (network legs follow streets; straight legs are dashed).
-export default function CityMap({ places, origin, route, showRoute, setRoute, selected, setSelected, hovered, resultVersion, focusRoute }) {
+export default function CityMap({ places, origin, route, showRoute, setRoute, selected, setSelected, hovered, resultVersion, focusRoute, tiles }) {
   const box = useRef(null), map = useRef(null), layers = useRef(null), bounds = useRef(null), focusLayer = useRef(null);
   const fitOpts = () => (box.current?.clientWidth || 0) < 560
     ? { paddingTopLeft: [24, 56], paddingBottomRight: [60, 120], maxZoom: 16 }
     : { paddingTopLeft: [40, 70], paddingBottomRight: [70, 150], maxZoom: 16 };
+  const baseLayer = useRef(null);
   useEffect(() => {
     const m = L.map(box.current, { zoomControl: false, attributionControl: true, scrollWheelZoom: true, zoomAnimation: false, markerZoomAnimation: false }).setView(ASTANA, 14);
     // No CSS filter on the tile pane: iOS Safari may not paint filtered layers inside a rounded, clipped box
@@ -28,6 +29,7 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
     const useTiles = i => {
       const [url, opts] = providers[i];
       const layer = L.tileLayer(url, { maxZoom: 19, ...opts }).addTo(m);
+      baseLayer.current = layer;
       let failed = 0;
       layer.on('tileload', () => { failed = 0; });
       layer.on('tileerror', () => { if (++failed === 4 && i + 1 < providers.length) { m.removeLayer(layer); useTiles(i + 1); } });
@@ -50,6 +52,16 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
     ro.observe(box.current);
     return () => { clearTimeout(timer); ro.disconnect(); m.remove(); };
   }, []);
+  useEffect(() => {  // a styled basemap (MapTiler) when the server has a key; OpenStreetMap stays if it fails
+    const m = map.current;
+    if (!m || !tiles?.url) return;
+    const styled = L.tileLayer(tiles.url, { maxZoom: 19, tileSize: 256, attribution: tiles.attribution });
+    let failed = 0, ok = false;
+    styled.on('tileload', () => { if (!ok) { ok = true; if (baseLayer.current && baseLayer.current !== styled) m.removeLayer(baseLayer.current); baseLayer.current = styled; } });
+    styled.on('tileerror', () => { if (!ok && ++failed >= 3) m.removeLayer(styled); });
+    styled.addTo(m);
+    return () => { if (baseLayer.current !== styled) m.removeLayer(styled); };
+  }, [tiles?.url, map.current]);
 
   useEffect(() => {
     const m = map.current, g = layers.current;
