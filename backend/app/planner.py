@@ -111,6 +111,10 @@ def plan_route(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | N
                 timeline.append((i, int(t_acc), v))
                 t_acc += v
                 cat = c.poi["category"]
+                if plan.max_food_stops is not None and CATEGORIES[cat].group == "food" and \
+                        sum(CATEGORIES[x].group == "food" for x in cats) >= plan.max_food_stops:
+                    ok = False
+                    break
                 val += c.score * (0.55 if cat in cats else 1.0)
                 cats.append(cat)
                 prev = i
