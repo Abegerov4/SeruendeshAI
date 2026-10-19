@@ -26,6 +26,19 @@ def _parse(raw: str):
         return None
 
 
+@lru_cache(maxsize=4096)
+def _state_at(raw: str, arrive: dt.datetime) -> tuple[str, dt.datetime | None]:
+    """Share expensive transition lookup at the exact local arrival time.
+
+    Only immutable parser results are cached. Visit duration, evidence freshness,
+    holiday confidence and translated labels remain per-call decisions below.
+    Exceptions propagate so a transient parser failure can be retried.
+    """
+    o = _parse(raw)
+    state = o.state(arrive)[0]
+    return getattr(state, "name", str(state)).upper(), o.next_change(arrive)
+
+
 _DAYS = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
 
 
@@ -101,12 +114,10 @@ def opening_status(poi: dict, arrive: dt.datetime, visit_min: int, lang: str, ho
         conf = _DOWN[conf]
         suffix += t("oh_holiday", lang)
     try:
-        state = o.state(arrive)[0]
-        nxt = o.next_change(arrive)
+        name, nxt = _state_at(raw, arrive)
     except Exception:
         return {"status": "unknown", "confidence": "low", "label": t("oh_unparsed", lang, raw=raw[:60]), "raw": raw,
                 "next_change": None, "ok": True}
-    name = getattr(state, "name", str(state)).upper()
     if name == "CLOSED" and arrive.hour < 6 and _calendar_open(raw, arrive):
         name, conf = "OPEN", _DOWN[conf]
         # The parser's next transition was a future OPENING. Recover the actual
