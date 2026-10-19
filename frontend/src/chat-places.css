@@ -1,0 +1,43 @@
+/* Places inside Seru's answer, the geolocation notice and the route bar on the map. */
+.chat-places{display:flex;flex-direction:column;gap:8px;margin:10px 0 4px}
+.chat-place{background:#fff;border:1px solid #e3e9da;border-radius:16px;padding:8px;box-shadow:0 4px 14px #1b432910;transition:border-color .15s,box-shadow .15s}
+.chat-place.routed{border-color:#9fbf63;box-shadow:0 0 0 3px #c6e73033}
+.chat-place-main{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:0;background:none;border:0;cursor:pointer;color:inherit}
+.chat-place-thumb{position:relative;flex:0 0 64px;height:64px;border-radius:12px;overflow:hidden;background:#eef3e4}
+.chat-place-thumb .place-visual{position:absolute;inset:0}
+.chat-place-thumb .concept-photo-label,.chat-place-thumb .photo-credit{display:none}
+.chat-place-thumb .cover-icon{width:34px;height:34px;border-radius:10px;right:50%;top:50%;translate:50% -50%;rotate:0deg}
+.chat-place-thumb .cover-icon svg{width:18px;height:18px}
+.chat-place-thumb>i{position:absolute;left:5px;top:5px;font-style:normal;font-size:11px;font-weight:700;color:#fff;background:#174b3ecc;border-radius:7px;padding:1px 6px}
+.chat-place-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.chat-place-text b{font-size:14.5px;line-height:1.3;color:#143e30;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.chat-place-text small{font-size:12px;color:#748470}
+.chat-place-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.chat-hours{margin-left:4px;padding:1px 7px;border-radius:10px;background:#f2f4ee;color:#68735f;font-size:11px}
+.chat-hours.open{background:#e6f3d8;color:#2f6a2a}.chat-hours.maybe{background:#f4f1e2;color:#73622a}.chat-hours.closed{background:#fbe8e4;color:#9a3b25}
+.chat-place-why{margin:7px 2px 8px;font-size:13px;line-height:1.5;color:#55684f;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.chat-place-actions{display:flex;gap:6px}
+.chat-place-actions button{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:38px;border-radius:11px;font-size:13px;font-weight:600;border:1px solid #dde6d0;background:#f6f8f0;color:#2b553c;cursor:pointer}
+.chat-place-actions button.primary{background:#174b3e;border-color:#174b3e;color:#f1f7df}
+.chat-place-actions button:hover{filter:brightness(1.04)}
+.chat-message.assistant:has(.chat-places){max-width:100%}
+
+.geo-notice{display:flex;align-items:center;gap:9px;margin:8px 0 6px;padding:10px 12px;border-radius:14px;background:#f4f1e2;color:#5f5626;font-size:12.5px;line-height:1.45;flex-shrink:0}
+.geo-notice svg{flex-shrink:0}
+.geo-notice span{flex:1;min-width:0}
+.geo-notice.geo-asking{background:#edf3e2;color:#3e5b38}
+.geo-notice button{flex-shrink:0;border:0;border-radius:10px;background:#174b3e;color:#f1f7df;font-size:12px;font-weight:600;padding:8px 10px;cursor:pointer}
+
+.focus-route-bar{position:absolute;left:50%;transform:translateX(-50%);top:76px;z-index:650;display:flex;align-items:center;gap:10px;max-width:min(520px,calc(100% - 24px));padding:9px 10px 9px 14px;border-radius:16px;background:#fffefa;border:1px solid #dfe7d4;box-shadow:0 10px 30px #143c3022;color:#143e30}
+.focus-route-bar>div{display:flex;flex-direction:column;min-width:0}
+.focus-route-bar b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.focus-route-bar span{font-size:12px;color:#62745a}
+.focus-route-bar a{flex-shrink:0;padding:8px 11px;border-radius:11px;background:#174b3e;color:#f1f7df;font-size:12.5px;font-weight:600;text-decoration:none}
+.focus-route-bar button{flex-shrink:0;width:32px;height:32px;border-radius:10px;border:0;background:#f1f5e8;display:grid;place-items:center;cursor:pointer}
+.focus-route-bar.error{top:132px;background:#fbe8e4;color:#8a2f1d;font-size:13px}
+.focus-route{animation:none}
+@media (max-width:899px){
+  .focus-route-bar{top:12px;left:12px;right:12px;transform:none;max-width:none}
+  .focus-route-bar.error{top:76px}
+  .map-first .chat-message{max-width:100%}
+}

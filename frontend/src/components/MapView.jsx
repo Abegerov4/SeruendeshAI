@@ -9,8 +9,8 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '
 
 // Real map (OpenStreetMap data, CARTO tiles): numbered stops, "you are here" (rounded) and the
 // walking route geometry returned by the API (network legs follow streets; straight legs are dashed).
-export default function CityMap({ places, origin, route, showRoute, setRoute, selected, setSelected, hovered, resultVersion }) {
-  const box = useRef(null), map = useRef(null), layers = useRef(null), bounds = useRef(null);
+export default function CityMap({ places, origin, route, showRoute, setRoute, selected, setSelected, hovered, resultVersion, focusRoute }) {
+  const box = useRef(null), map = useRef(null), layers = useRef(null), bounds = useRef(null), focusLayer = useRef(null);
   const fitOpts = () => (box.current?.clientWidth || 0) < 560
     ? { paddingTopLeft: [24, 56], paddingBottomRight: [60, 120], maxZoom: 16 }
     : { paddingTopLeft: [40, 70], paddingBottomRight: [70, 150], maxZoom: 16 };
@@ -79,6 +79,24 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
       if (box.current.clientWidth > 200 && box.current.clientHeight > 200) m.fitBounds(bounds.current, fitOpts());
     }
   }, [places, origin, route, showRoute, resultVersion]);
+
+  useEffect(() => {  // the route from the user to one chosen place (chat card -> "Маршрут")
+    const m = map.current;
+    if (!m) return;
+    focusLayer.current?.remove();
+    focusLayer.current = null;
+    if (!focusRoute?.polyline?.length) return;
+    const g = L.layerGroup().addTo(m);
+    const dashed = focusRoute.geometry !== 'network';
+    L.polyline(focusRoute.polyline, { color: '#fff', weight: 10, opacity: .95 }).addTo(g);
+    L.polyline(focusRoute.polyline, { color: '#1d5c45', weight: 6, opacity: .95, dashArray: dashed ? '9 10' : null, className: 'focus-route' }).addTo(g);
+    const start = focusRoute.polyline[0];
+    L.marker(start, { icon: L.divIcon({ className: 'leaflet-you', html: `<span class="you-dot"></span><label>${esc(tr('Вы здесь'))}</label>`, iconSize: [18, 18], iconAnchor: [9, 9] }), keyboard: false }).addTo(g);
+    focusLayer.current = g;
+    bounds.current = L.latLngBounds(focusRoute.polyline);  // a hidden map tab re-fits to the route when shown
+    const fitNow = () => { m.invalidateSize(); m.fitBounds(L.latLngBounds(focusRoute.polyline), { ...fitOpts(), maxZoom: 17 }); };
+    if (box.current.clientWidth > 200 && box.current.clientHeight > 200) fitNow(); else setTimeout(fitNow, 350);  // tab just became visible
+  }, [focusRoute]);
 
   useEffect(() => {  // re-render markers on selection/hover without re-fitting the view
     const g = layers.current;

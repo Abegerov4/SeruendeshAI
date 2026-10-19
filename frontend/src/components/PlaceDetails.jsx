@@ -34,7 +34,7 @@ export default function PlaceDetails({ place: p, saved, onSave, onClose, onMap, 
       {!p.generated && <div className="detail-facts">
         <div><Mode size={18} /><span><b>{p.travel} {tr(p.mode === 'walk' ? 'мин пешком' : 'мин в пути')}</b><small>{p.distance}</small></span></div>
         <div><Clock3 size={18} /><span><b>{p.visitRange ? `${p.visitRange[0]}–${p.visitRange[1]}` : p.visit} {tr('мин на месте')}</b><small>{tr('рекомендуем')} ~{p.visit} {tr('мин')}</small></span></div>
-        <div className={'hours-fact ' + hoursTone(p)}><i /><span><b>{shortHours(p)}</b><small>{p.status}</small></span></div>
+        <div className={'hours-fact ' + hoursTone(p)}><i /><span><b>{shortHours(p)}</b>{p.status && p.status !== shortHours(p) && <small>{p.status}</small>}</span></div>
         {p.address && <div><MapPin size={18} /><span><b>{tr('Адрес')}</b><small>{p.address}</small></span></div>}
         {p.cuisine?.length > 0 && <div><Utensils size={18} /><span><b>{tr('Кухня')}</b><small>{p.cuisine.join(', ')}</small></span></div>}
       </div>}

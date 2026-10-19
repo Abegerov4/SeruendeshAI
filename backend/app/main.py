@@ -33,10 +33,11 @@ from app.i18n import t
 from app.llm import client as llm_client, provider_status
 from app.llm import usage_begin, usage_summary
 from app.categories import CONTRACT_CATEGORY
-from app.geo import hav_m
-from app.query import detect_lang
-from app.schemas import (CategoryOut, FeedbackRequest, FeedbackResponse, HealthResponse, LandmarkOut, MetaFeatures,
+from app.geo import car_minutes, fallback_walk_m, hav_m, in_astana, round_coord
+from app.query import detect_lang, resolve_landmark
+from app.schemas import (RouteRequest, RouteToPlace, CategoryOut, FeedbackRequest, FeedbackResponse, HealthResponse, LandmarkOut, MetaFeatures,
                          MetaResponse, PhotoRecommendResponse, PoiBrief, RecommendRequest, RecommendResponse)
+from app.context import parse_now
 from app.service import Runtime, recommend, snap_pois
 from app.store import load_store
 
@@ -245,6 +246,51 @@ async def api_health():
                           snapshot_version=rt.store.manifest.get("snapshot_version") or rt.store.manifest.get("canonical_sha256")
                           or (("pipeline-" + rt.store.manifest["pois_sha"]) if rt.store.manifest.get("pois_sha") else None),
                           provider_verified_at=provider["verified_at"])
+
+
+@app.post("/api/route", response_model=RouteToPlace, tags=["recommend"],
+          summary="Route from the user (rounded GPS or a landmark) to one recommended place",
+          responses={404: {"description": "unknown poi_id"}, 422: {"description": "no usable start (GPS outside Astana and no landmark)"}})
+async def route_to_place(req: RouteRequest, request: Request):
+    if not await asyncio.to_thread(limiter.allow, "route", client_key(request), settings.rate_limit_per_min * 2, 60):
+        return JSONResponse({"detail": "Too many requests"}, status_code=429)
+    rt = RT["rt"]
+    st = rt.store
+    i = st.by_id.get(req.poi_id)
+    if i is None:
+        return JSONResponse({"error": "unknown_poi"}, status_code=404)
+    p = st.pois[i]
+    if req.location and in_astana(req.location.lat, req.location.lon):
+        origin, source = (round_coord(req.location.lat), round_coord(req.location.lon)), "gps_rounded"
+    else:
+        g = resolve_landmark(req.landmark or "", st.gazetteer) if req.landmark else None
+        if not g:
+            return JSONResponse({"error": "location_required"}, status_code=422)
+        origin, source = (g["lat"], g["lon"]), "landmark"
+    dest = (p["lat"], p["lon"])
+    straight = float(hav_m(origin[0], origin[1], dest[0], dest[1]))
+    poly, geometry, dist = [origin, dest], "straight", None
+    graph = rt.graph
+    if graph is not None and graph.covers(*origin) and graph.covers(*dest) and straight < 15000:
+        D, P, src = await asyncio.to_thread(graph.from_source, origin[0], origin[1], 20000)
+        d_dst, i_dst = graph.snap(dest[0], dest[1])
+        reach = float(D[int(i_dst[0])])
+        if reach < float("inf") and float(d_dst[0]) < 400:
+            dist = reach + float(d_dst[0])
+            poly, geometry = [origin, *graph.path_polyline(P, src, int(i_dst[0])), dest], "network"
+    if dist is None:
+        dist = fallback_walk_m(st.river, origin[0], origin[1], dest[0], dest[1])
+    if req.mode == "car":
+        dist, minutes = car_minutes(straight, parse_now(None).hour)
+    else:
+        minutes = int(round(dist / 75.0))  # 4.5 km/h, the same pace as recommendations
+    o_lat, o_lon = origin
+    return {"poi_id": p["id"], "name": p["name"], "mode": req.mode, "distance_m": int(round(dist / 10) * 10),
+            "travel_min": max(1, minutes), "geometry": geometry,
+            "polyline": [(round(a, 6), round(b, 6)) for a, b in poly],
+            "origin": {"lat": round_coord(o_lat), "lon": round_coord(o_lon)}, "origin_source": source,
+            "links": {"2gis": f"https://2gis.kz/astana/directions/points/{o_lon}%2C{o_lat}%7C{dest[1]}%2C{dest[0]}",
+                      "osm": f"https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&route={o_lat}%2C{o_lon}%3B{dest[0]}%2C{dest[1]}"}}
 
 
 @app.get("/api/pois", response_model=list[PoiBrief], tags=["meta"], summary="POIs around a point for the map (brief)")

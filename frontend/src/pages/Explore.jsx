@@ -1,6 +1,7 @@
 import { t as tr, getLanguage } from "../i18n";
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, ArrowRight, MapPin, Clock3, Footprints, Car, SlidersHorizontal, Check, MessageCircle, Map, Compass, ShieldCheck, Sparkles, ChevronDown, Baby, Accessibility, Route } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, MapPin, Clock3, Footprints, Car, SlidersHorizontal, Check, MessageCircle, Map, Compass, ShieldCheck, Sparkles, ChevronDown, Baby, Accessibility, Route, LocateFixed, Navigation, X } from 'lucide-react';
+import PlaceDetails from '../components/PlaceDetails';
 import Chat from '../components/Chat';
 import Mascot from '../components/Mascot';
 import MoodStories from '../components/MoodStories';
@@ -10,17 +11,34 @@ import PlaceVisual from '../components/PlaceVisual';
 import {PocketButton} from '../components/PwaExperience';
 import { RouteTimeline } from '../components/PlanPanel';
 import { initialContext } from '../planner';
-import { recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY_LOCATION } from '../api';
+import { recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY_LOCATION, routeTo, inAstana, formatDistance } from '../api';
 import { scenarios } from '../data';
 
+const FALLBACK_LANDMARK = 'Район Байтерека';
+
+// Geolocation is the start of every answer and route; the position is rounded to ~100 m before use
 function locate() {
   return new Promise((resolve, reject) => {
-    if (!navigator.geolocation) return reject(Error('Геолокация недоступна в этом браузере.'));
+    if (!navigator.geolocation) return reject(Object.assign(Error('unsupported'), { code: 'unsupported' }));
     navigator.geolocation.getCurrentPosition(
-      pos => resolve({ lat: roundCoord(pos.coords.latitude), lon: roundCoord(pos.coords.longitude) }),  // rounded before use (~100 m)
-      () => reject(Error('Нет доступа к геолокации — выбери ориентир из списка.')),
-      { enableHighAccuracy: false, timeout: 9000, maximumAge: 300000 });
+      pos => resolve({ lat: roundCoord(pos.coords.latitude), lon: roundCoord(pos.coords.longitude), at: Date.now() }),
+      err => reject(Object.assign(Error('denied'), { code: err.code === 1 ? 'denied' : 'unavailable' })),
+      { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 });
   });
+}
+
+const GEO_TEXT = {
+  asking: 'Определяю, где ты… Разреши доступ к геопозиции — маршруты строятся от тебя.',
+  denied: 'Без геолокации маршрут строится от ориентира. Разреши доступ к геопозиции для этого сайта.',
+  unavailable: 'Не получилось определить местоположение. Пока считаю от ориентира.',
+  unsupported: 'Браузер не умеет определять местоположение. Пока считаю от ориентира.',
+  outside: 'Похоже, ты не в Астане — пока считаю от ориентира.',
+};
+
+function GeoNotice({ state, label, onRetry }) {
+  if (state === 'ok') return null;
+  return <div className={'geo-notice geo-' + state} role="status"><LocateFixed size={16} /><span>{tr(GEO_TEXT[state])}{state !== 'asking' && label ? ' ' + tr('Сейчас') + ': ' + tr(label) + '.' : ''}</span>
+    {state !== 'asking' && state !== 'unsupported' && <button onClick={onRetry}>{tr('Включить геолокацию')}</button>}</div>;
 }
 
 function useMedia(query) {
@@ -38,6 +56,7 @@ export default function Explore({ saved, toggleSaved }) {
   const [filters, setFilters] = useState(false), [tab, setTab] = useState(['chat','map','places','plan'].includes(new URLSearchParams(location.search).get('view')) ? new URLSearchParams(location.search).get('view') : phone ? 'chat' : 'map'), [sheetOpen, setSheetOpen] = useState(false), [resultVersion, setResultVersion] = useState(0);
   const [mascotMood, setMascotMood] = useState('wave'), [quip, setQuip] = useState(0), [starter, setStarter] = useState(null);
   const [chatKey, setChatKey] = useState(0), [geoError, setGeoError] = useState(''), [why, setWhy] = useState(false);
+  const [geo, setGeo] = useState('asking'), [focusRoute, setFocusRoute] = useState(null), [detailPlace, setDetailPlace] = useState(null), [routeError, setRouteError] = useState('');
   useEffect(()=>{if(!phone)return;const viewport=window.visualViewport;const fit=()=>{document.documentElement.style.setProperty('--mobile-vh',(viewport?.height||innerHeight)+'px');};fit();viewport?.addEventListener('resize',fit);return()=>{viewport?.removeEventListener('resize',fit);document.documentElement.style.removeProperty('--mobile-vh');};},[phone]);
   const moodTimer = useRef(null);
   useEffect(() => () => clearTimeout(moodTimer.current), []);
@@ -46,9 +65,28 @@ export default function Explore({ saved, toggleSaved }) {
   const quips = ['Покажу город с другой стороны.', 'Пойдём туда, где ещё не были?', 'Кофе в руки — и навстречу городу!', 'Маленькая прогулка — большая перезагрузка.'];
 
   async function withCoords(c) {
-    if (c.location !== MY_LOCATION || c.coords) return c;
-    try { const coords = await locate(); setGeoError(''); return { ...c, coords }; }
-    catch (e) { setGeoError(e.message); return { ...c, location: initialContext.location, coords: null }; }
+    if (c.location !== MY_LOCATION) return c;
+    if (c.coords && Date.now() - (c.coords.at || 0) < 120000) return c;  // fresh enough
+    try {
+      const coords = await locate();
+      if (!inAstana(coords)) { setGeo('outside'); return { ...c, location: FALLBACK_LANDMARK, coords: null }; }
+      setGeo('ok'); setGeoError(''); return { ...c, coords };
+    } catch (e) { setGeo(e.code || 'unavailable'); return { ...c, location: FALLBACK_LANDMARK, coords: null }; }
+  }
+  async function retryGeo() {
+    setGeo('asking');
+    const c = await withCoords({ ...ctx, location: MY_LOCATION, coords: null });
+    setCtx(c);
+    if (c.location === MY_LOCATION && plan) applyContext(c);  // redo the current answer from the real position
+  }
+  // tap on a place (chat card, details): the route from the user to it, drawn on the map
+  async function showRouteTo(p) {
+    setSelected(p.id); setRouteError('');
+    const gps = ctx.location === MY_LOCATION && ctx.coords && inAstana(ctx.coords) ? ctx.coords : null;
+    const from = gps || (plan?.used?.location ? { lat: plan.used.location.lat, lon: plan.used.location.lon } : null);
+    try { const r = await routeTo(p, ctx, from); setFocusRoute({ ...r, place: p, origin_source: gps ? r.origin_source : 'landmark' }); }
+    catch { setRouteError('Не получилось построить маршрут. Попробуй ещё раз.'); }
+    showTab('map', false);
   }
   async function requestPlan(text, override, signal, photo) {
     setLoading(true); setLoadError('');
@@ -58,7 +96,7 @@ export default function Explore({ saved, toggleSaved }) {
       const next = photo ? await recommendPhoto(photo, text, c, getLanguage(), { signal }) : await recommend(text, c, getLanguage(), { signal });
       if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
       if (next.offTopic || (photo && !next.places.length)) return next;  // keep the current picks; the chat explains
-      setPrevious(plan); setPlan(next); setResultVersion(n => n + 1); setHovered(null); setSheetOpen(false);
+      setPrevious(plan); setPlan(next); setResultVersion(n => n + 1); setHovered(null); setSheetOpen(false); setFocusRoute(null);
       setSelected(next.places.find(p => !p.generated)?.id ?? null);
       return next;
     } finally { setLoading(false); }
@@ -100,7 +138,7 @@ export default function Explore({ saved, toggleSaved }) {
   return <div className={"explore-page map-first mobile-view-" + tab}>
     <main className={'explore-workspace tab-' + tab}>
       <div className="conversation-column"><div className="companion-intro"><div><span className="companion-eyebrow">{tr('ТВОЙ МЕСТНЫЙ ДРУГ ')}</span><h1>{tr('Куда пойдём сегодня?')}</h1><p>{tr('Твой AI-спутник для прогулок по Астане')}</p></div><button className="companion-mascot" onClick={greet} aria-label={tr('Поговорить с Серу')}><Mascot decorative priority mood={mascotMood} key={quip}/></button><span className="companion-quip" aria-live="polite">{tr(quips[quip % quips.length])}</span></div>
-        <Chat key={chatKey} requestPlan={requestPlan} onMood={reactToSearch} starter={starter} location={ctx.location} setLocation={l => changeContext({ ...ctx, location: l, coords: l === ctx.location ? ctx.coords : null })} onResult={() => { setChatOpen(false); showTab('places'); }} photoEnabled={photoOn} sheet={false} open={true} onOpen={() => showTab('chat')} onClose={() => setChatOpen(false)} />
+        <Chat key={chatKey} notice={<GeoNotice state={geo} label={ctx.location === MY_LOCATION ? null : ctx.location} onRetry={retryGeo} />} onRoute={showRouteTo} onDetails={setDetailPlace} routed={focusRoute?.poi_id} requestPlan={requestPlan} onMood={reactToSearch} starter={starter} location={ctx.location} setLocation={l => changeContext({ ...ctx, location: l, coords: l === ctx.location ? ctx.coords : null })} onResult={() => { setChatOpen(false); showTab('places'); }} photoEnabled={photoOn} sheet={false} open={true} onOpen={() => showTab('chat')} onClose={() => setChatOpen(false)} />
         <div className="seru-tip"><span className="tip-doodle" aria-hidden="true">✳</span><div><span>{tr("СОВЕТ ОТ СЕРУ")}</span><p>{tr("Лучшие планы иногда начинаются")}<br />{tr("с «а давай просто выйдем».")}</p></div><button onClick={() => startMood(Math.floor(Math.random() * scenarios.length))}>{tr("Удиви меня")}<ArrowUpRight size={14} /></button></div>
         <section className="preferences" aria-label={tr("Предпочтения")}><div className="preferences-heading"><span>{tr("Подстроимся под тебя")}</span><button onClick={() => setFilters(!filters)} aria-expanded={filters} aria-label={tr("Дополнительные фильтры")}><SlidersHorizontal size={15} />{(ctx.kid || ctx.accessible) && <i />}</button></div><div className="preference-controls"><div className="time-selector" aria-label={tr("Время на прогулку")}>{[30, 60, 120].map(t => <button key={t} aria-pressed={ctx.time === t} className={ctx.time === t ? 'active' : ''} onClick={() => setTime(t)}>{t === 120 ? tr('2 часа') : t + tr(' мин')}</button>)}</div><button className="transport-toggle" onClick={toggleTransport}>{ctx.transport === 'walk' ? <Footprints size={16} /> : <Car size={16} />} {ctx.transport === 'walk' ? tr('Пешком') : tr('На авто')}<ChevronDown size={12} /></button></div><div className={"filter-reveal " + (filters ? "open" : "")} inert={!filters}><div><div className="extra-preferences"><button aria-pressed={ctx.kid} className={ctx.kid ? 'active' : ''} onClick={() => update({ kid: !ctx.kid })}><Baby size={15} />{tr("С ребёнком")}{ctx.kid && <Check size={13} />}</button><button aria-pressed={ctx.accessible} className={ctx.accessible ? 'active' : ''} onClick={() => update({ accessible: !ctx.accessible })}><Accessibility size={15} />{tr("Без ступенек")}{ctx.accessible && <Check size={13} />}</button><p>{tr("Подборка обновится сразу.")}</p></div></div></div></section>
         <details className="sidebar-route" open={!phone || tab === 'plan'}><summary>{tr("ТВОЙ ПЛАН")}</summary><RouteTimeline plan={plan} previous={previous} onRestore={restore} onSelect={choosePlace} /><PocketButton plan={plan}/><button className="pocket-open" onClick={()=>window.dispatchEvent(new Event("seru-open-app"))}>{tr("Моя прогулка")} ↗</button></details><details className="context-disclosure"><summary>{tr("Что я учёл")}</summary><div className="used-context used-live"><span><ShieldCheck size={16} />{tr("Что я учёл")}</span>
@@ -118,7 +156,9 @@ export default function Explore({ saved, toggleSaved }) {
         
         {!loading && plan && !real.length && <div className="empty-plan" role="status"><h3>{tr("Подходящих мест пока нет")}</h3><p>{plan.notes?.[0] || tr("Попробуй снять ограничения или увеличить время.")}</p><button onClick={() => { const next = { ...ctx, time: Math.max(120, ctx.time), indoor: false, noCoffee: false, accessible: false, closer: false, touched: { ...ctx.touched, time: true } }; setCtx(next); applyContext(next); }}>{tr("Расширить условия")}</button></div>}
         {loadError && !loading && !plan && <div className="empty-plan" role="alert"><h3>{tr('Не получилось загрузить подборку')}</h3><p>{tr(loadError)}</p><button onClick={() => requestPlan(lastQuery).catch(() => setLoadError('Сервер не ответил. Попробуй ещё раз.'))}>{tr('Повторить')}</button></div>}
-        <section className="map-section" id="map-section" aria-label={tr("Карта прогулки")}><CityMap places={places} origin={origin} route={plan?.route} showRoute={route} setRoute={setRoute} selected={selected} setSelected={id => { setSelected(id); setSheetOpen(false); }} hovered={hovered} resultVersion={resultVersion} />
+        <section className="map-section" id="map-section" aria-label={tr("Карта прогулки")}><CityMap places={places} origin={origin} route={plan?.route} showRoute={route} setRoute={setRoute} selected={selected} setSelected={id => { setSelected(id); setSheetOpen(false); }} hovered={hovered} resultVersion={resultVersion} focusRoute={focusRoute} />
+          {focusRoute && <div className="focus-route-bar" role="status"><Navigation size={16} /><div><b>{focusRoute.name}</b><span>{formatDistance(focusRoute.distance_m)} · {focusRoute.travel_min} {tr(focusRoute.mode === 'car' ? 'мин в пути' : 'мин пешком')}{focusRoute.origin_source === 'landmark' ? ' · ' + tr('от ориентира') : ' · ' + tr('от тебя')}{focusRoute.geometry === 'straight' ? ' · ' + tr('оценка') : ''}</span></div><a href={focusRoute.links['2gis']} target="_blank" rel="noreferrer">2GIS ↗</a><button aria-label={tr('Скрыть маршрут')} onClick={() => setFocusRoute(null)}><X size={16} /></button></div>}
+          {routeError && <div className="focus-route-bar error" role="alert">{tr(routeError)}</div>}
           {sel && <div className={"selected-map-place " + (sheetOpen ? "sheet-open" : "")}><PlaceVisual place={sel} illustrative /><div><span>{tr("ТВОЯ СЛЕДУЮЩАЯ ОСТАНОВКА")}</span><h3>{sel.name}</h3><p>{sel.mode === 'walk' ? <Footprints size={12} /> : <Car size={12} />}{sel.distance} · {sel.travel}{tr(sel.mode === 'walk' ? " мин пешком" : " мин в пути")}{sel.leaveBy ? ' · ' + tr('выйти до') + ' ' + sel.leaveBy : ''}</p></div><button className="map-sheet-toggle" aria-label={tr("Подробнее")} aria-expanded={sheetOpen} aria-controls="map-place-details" onClick={() => setSheetOpen(!sheetOpen)}><ChevronDown size={19} /></button><div className="map-sheet-details" id="map-place-details" hidden={!sheetOpen}><p>{sel.why}</p><p>{sel.action}</p><p>{externalMapLinks(sel).map(l => <a key={l.label} href={l.href} target="_blank" rel="noreferrer">{tr('Открыть в')} {l.label} ↗ </a>)}</p><button onClick={() => showTab('places')}>{tr("Посмотреть карточки мест")}<ArrowUpRight size={15} /></button></div></div>}
           <div className="route-strip"><span className="route-symbol"><Route size={18} /></span><div><strong>{plan?.route ? tr('Мини-маршрут') : tr('Небольшое приключение')}</strong><span>{plan?.route ? plan.route.summary : real.length + tr(' мест · ') + (total > budget ? tr('Дольше твоего плана — выбери часть мест') : tr('Можно идти без спешки'))}</span></div><span className="route-total"><Clock3 size={13} />≈ {total}{tr(" мин")}</span></div></section>
         <section className="places-section" id="places-section"><div className="section-heading"><div><span className="section-eyebrow">{tr("ПОД ТВОЁ НАСТРОЕНИЕ")}</span><h2>{tr("Твои маленькие открытия")}<span>{real.length}</span></h2></div></div>
@@ -128,5 +168,6 @@ export default function Explore({ saved, toggleSaved }) {
             <article className="seru-discovery-card"><span className="discovery-sticker">{tr("ПЛАНЫ? ЕСТЬ ИДЕЯ!")}</span><Mascot decorative /><div><h3>{tr("А может,")} {tr("что-нибудь неожиданное?")}</h3><p>{tr("Оставь немного места")} {tr("для спонтанных открытий.")}</p></div><button onClick={() => startMood(Math.floor(Math.random() * scenarios.length))}>{tr("Серу, удиви меня")}<ArrowUpRight size={16} /></button><span className="discovery-doodle" aria-hidden="true">✳</span></article></div>
           <p className="results-disclaimer">{tr("Подборку собрал Серу по открытым данным о городе. Часы работы лучше уточнить перед выходом.")}</p></section>
       </div></main>
+    {detailPlace && <PlaceDetails place={detailPlace} saved={savedIds.includes(detailPlace.id)} onSave={() => toggleSaved(detailPlace)} onClose={() => setDetailPlace(null)} onMap={() => showRouteTo(detailPlace)} origin={ctx.coords && inAstana(ctx.coords) ? ctx.coords : origin} />}
     {phone && <nav className="mobile-app-nav" aria-label={tr('Основная навигация')}>{[['chat',MessageCircle,'Чат'],['map',Map,'Карта'],['places',Compass,'Места'],['plan',Route,'План']].map(([id,Icon,label])=><button key={id} aria-current={tab===id?'page':undefined} onClick={()=>showTab(id,false)}><Icon size={21}/><span>{tr(label)}</span>{id==='places'&&real.length>0&&<i>{real.length}</i>}</button>)}</nav>}</div>;
 }

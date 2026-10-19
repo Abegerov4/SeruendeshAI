@@ -338,3 +338,25 @@ class FeedbackRequest(BaseModel):
 class FeedbackResponse(_Out):
     ok: bool
     message: str
+
+
+class RouteRequest(BaseModel):
+    """A walking/driving route from the user (rounded GPS, or a landmark when GPS is off) to one place."""
+    model_config = ConfigDict(strict=True)
+    poi_id: str = Field(min_length=1, max_length=120)
+    location: LatLon | None = Field(None, description="Rounded GPS of the user (3 decimals); preferred origin")
+    landmark: str | None = Field(None, max_length=80, description="Landmark key/name when GPS is unavailable")
+    mode: Literal["walk", "car"] = "walk"
+
+
+class RouteToPlace(_Out):
+    poi_id: str
+    name: str
+    mode: Literal["walk", "car"]
+    distance_m: int
+    travel_min: int
+    geometry: Literal["network", "straight"] = Field(description="network = along the walking graph; straight = estimate")
+    polyline: list[tuple[float, float]] = Field(description="[[lat, lon], ...] from the user to the place")
+    origin: LatLon = Field(description="The start actually used, rounded to ~100 m")
+    origin_source: Literal["gps_rounded", "landmark"]
+    links: dict[str, str] = Field(description="Turn-by-turn in external apps (2GIS, OpenStreetMap)")

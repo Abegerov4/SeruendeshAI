@@ -189,3 +189,17 @@ def test_requested_destination_closed_is_explained(client):
     d = post(client, query="я у Байтерека, хочу дойти до Хан Шатыра", time_budget_min=90, now="2026-10-19T01:00:00+05:00")
     if not any("Шатыр" in r["name"] for r in d["recommendations"]):
         assert "Хан Шатыр" in d["summary"] and any("Хан Шатыр" in n for n in d["notes"])
+
+
+def test_route_to_a_place_from_rounded_gps_and_from_a_landmark(client):
+    d = post(client, query="кофе рядом", landmark="baiterek")
+    pid = d["recommendations"][0]["poi_id"]
+    r = client.post("/api/route", json={"poi_id": pid, "location": {"lat": 51.12834, "lon": 71.43051}})
+    assert r.status_code == 200, r.text
+    j = r.json()
+    assert j["origin"] == {"lat": 51.128, "lon": 71.431} and j["origin_source"] == "gps_rounded"
+    assert j["distance_m"] > 0 and j["travel_min"] >= 1 and len(j["polyline"]) >= 2 and "2gis" in j["links"]
+    assert client.post("/api/route", json={"poi_id": pid, "landmark": "baiterek"}).json()["origin_source"] == "landmark"
+    # GPS outside Astana and no landmark: no silent guess
+    assert client.post("/api/route", json={"poi_id": pid, "location": {"lat": 43.24, "lon": 76.95}}).status_code == 422
+    assert client.post("/api/route", json={"poi_id": "nope:1", "landmark": "baiterek"}).status_code == 404

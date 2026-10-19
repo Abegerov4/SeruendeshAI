@@ -1,7 +1,9 @@
 import { t as tr } from "../i18n";
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera, MessageCircle } from 'lucide-react';
+import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera, MessageCircle, Navigation, Footprints, Car, Info } from 'lucide-react';
+import PlaceVisual from './PlaceVisual';
+import { hoursTone, shortHours } from './PlaceCard';
 import { landmarks, scenarios } from '../data';
 import { MY_LOCATION } from '../api';
 import Mascot from './Mascot';
@@ -29,7 +31,26 @@ function useSheetViewport(active, onClose) {
   }, [active]);
 }
 
-export default function Chat({ requestPlan, onMood, location, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false }) {
+// Places right inside Seru's answer: tap a card -> the route from where you are, or the details.
+function ChatPlaces({ places, onRoute, onDetails, routed }) {
+  return <div className="chat-places">{places.map((p, i) => {
+    const Mode = p.mode === 'car' ? Car : Footprints;
+    return <article key={p.id} className={'chat-place' + (routed === p.id ? ' routed' : '')}>
+      <button className="chat-place-main" onClick={() => onRoute?.(p)} aria-label={tr('Маршрут до места') + ': ' + p.name}>
+        <span className="chat-place-thumb"><PlaceVisual place={p} illustrative /><i>{i + 1}</i></span>
+        <span className="chat-place-text"><b>{p.name}</b><small>{p.category}</small>
+          <small className="chat-place-meta"><Mode size={12} />{p.distance} · {p.travel} {tr('мин')}<span className={'chat-hours ' + hoursTone(p)}>{shortHours(p)}</span></small></span>
+      </button>
+      {p.why && <p className="chat-place-why">{p.why}</p>}
+      <div className="chat-place-actions">
+        <button className="primary" onClick={() => onRoute?.(p)}><Navigation size={14} />{tr(routed === p.id ? 'Маршрут на карте' : 'Маршрут')}</button>
+        <button onClick={() => onDetails?.(p)}><Info size={14} />{tr('Подробнее')}</button>
+      </div>
+    </article>;
+  })}</div>;
+}
+
+export default function Chat({ requestPlan, onMood, location, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false, onRoute, onDetails, routed, notice }) {
   const [messages, setMessages] = useState([welcome]),
     [query, setQuery] = useState(''),
     [loading, setLoading] = useState(false),
@@ -73,7 +94,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
       if (active.signal.aborted) return;
       const real = plan.places.filter(p => !p.generated), g = plan.photoGuess;
       const seen = g?.recognized && g.name ? tr('Похоже, это «{name}».', { name: g.name }) + ' ' : '';
-      append([{ role: 'assistant', result: true, count: real.length, summary: seen + (plan.summary || ''), names: real.map(p => p.name), note: real.length ? null : plan.notes[0] }]);
+      append([{ role: 'assistant', result: true, count: real.length, summary: seen + (plan.summary || ''), names: real.map(p => p.name), places: real.slice(0, 3), note: real.length ? null : plan.notes[0] }]);
       setQuery(current => current === text ? '' : current); setLoading(false); onMood?.(real.length ? 'happy' : 'idle');
     } catch (e) {
       if (active.signal.aborted) return;
@@ -105,12 +126,14 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
       <button className="chat-reset" aria-label={tr("Начать новый диалог")} title={tr("Новый диалог")} onClick={reset}><RotateCcw size={17} /></button>
     </div>
     <div className="chat-body">
+      {notice}
       <div className="chat-log" ref={log} role="log" aria-label={tr("История диалога")} aria-live="polite" aria-relevant="additions">
         <span className="chat-date">{tr("МАЛЕНЬКОЕ ПРИКЛЮЧЕНИЕ НАЧИНАЕТСЯ ЗДЕСЬ")}</span>
         {messages.map(m => <div key={m.id} className={'chat-message ' + m.role}><span className="message-author">{m.role === 'assistant' ? tr('Серу · твой спутник') : tr('Ты')}</span>
           {m.image && <img className="message-photo" src={m.image} alt={tr('Твоё фото')} />}
-          <p>{m.role === 'user' ? m.text : m.result ? !m.count ? (m.note || tr('Подходящих мест пока нет')) : <>{m.summary} {tr('Посмотри карточки — там объясню, почему и что делать на месте.')}</> : tr(m.text)}</p>
-          {m.result && m.count > 0 && <button className="message-results" onClick={() => { if (asSheet) close(); onResult?.(); }}>{tr('Показать места')} · {m.count}<ArrowUpRight size={14} /></button>}
+          <p>{m.role === 'user' ? m.text : m.result ? !m.count ? (m.note || tr('Подходящих мест пока нет')) : <>{m.summary} {tr('Нажми на место — построю маршрут от тебя.')}</> : tr(m.text)}</p>
+          {m.result && m.places?.length > 0 && <ChatPlaces places={m.places} onRoute={p => { if (asSheet) close(); onRoute?.(p); }} onDetails={onDetails} routed={routed} />}
+          {m.result && m.count > 0 && <button className="message-results" onClick={() => { if (asSheet) close(); onResult?.(); }}>{tr('Все места и карта')} · {m.count}<ArrowUpRight size={14} /></button>}
         </div>)}
         {loading && <div className="chat-typing" role="status"><span className="thinking-seru"><Mascot decorative mood="thinking" /></span><span className="typing-dots" aria-hidden="true"><i /><i /><i /></span>{tr("Собираю прогулку…")}</div>}
       </div>

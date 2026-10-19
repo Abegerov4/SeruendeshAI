@@ -102,6 +102,19 @@ export async function recommend(text, ctx, lang, {signal} = {}) {
   return toPlan(await res.json(), ctx, text);
 }
 
+// Route from the user to one place: rounded GPS when allowed, otherwise the chosen landmark.
+export async function routeTo(place, ctx, from) {
+  const body = {poi_id: place.id, mode: ctx.transport === 'car' ? 'car' : 'walk'};
+  if (from) body.location = {lat: roundCoord(from.lat), lon: roundCoord(from.lon)};
+  else body.landmark = LANDMARK_KEYS[ctx.location] || 'baiterek';
+  const res = await fetch(`${API_BASE}/api/route`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+  if (!res.ok) throw Error('route-' + res.status);
+  return res.json();
+}
+
+// Astana bounding box: GPS outside it is not used as a start (the API would refuse it as well)
+export const inAstana = c => !!c && c.lat > 50.95 && c.lat < 51.32 && c.lon > 71.15 && c.lon < 71.8;
+
 // Totals for the timeline: a route is a sequence (legs + visits); otherwise places are alternatives.
 export function planTotals(plan) {
   if (!plan?.places?.length) return {total: 0, sequence: false};
