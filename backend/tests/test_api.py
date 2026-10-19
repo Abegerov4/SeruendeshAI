@@ -234,3 +234,10 @@ def test_climbing_a_named_landmark_makes_it_the_destination(client):
     d = post(client, query="Хочу подняться на Байтерек, что ещё рядом?", location={"lat": 51.1325, "lon": 71.4037},
              now="2026-10-20T15:00:00+05:00")
     assert any("терек" in r["name"].lower() for r in d["recommendations"])
+
+
+def test_polluted_air_shortens_outdoor_time_and_says_why(client):
+    d = post(client, query="Хочу погулять час", landmark="baiterek",
+             weather={"temperature_c": 5.0, "feels_like_c": 3.0, "wind_ms": 2.0, "precipitation": False, "us_aqi": 172.0})
+    assert d["used_context"]["weather"]["us_aqi"] == 172 and d["used_context"]["weather"]["max_outdoor_min"] <= 20
+    assert any("AQI 172" in n for n in d["notes"])

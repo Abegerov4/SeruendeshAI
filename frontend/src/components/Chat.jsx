@@ -59,7 +59,8 @@ function ChatReasoning({ used, considered = [], notes = [] }) {
     used.location_label && '📍 ' + used.location_label,
     used.time_budget_min && '⏱ ' + used.time_budget_min + ' ' + tr('мин') + ' ' + tr(used.mode === 'walk' ? 'пешком' : used.mode === 'transit' ? 'на транспорте' : 'на машине'),
     used.local_time && (used.is_dark ? '🌙 ' : '☀️ ') + used.local_time,
-    used.weather && '🌡 ' + Math.round(used.weather.temperature_c) + '°C' + (used.weather.max_outdoor_min < 60 ? ' · ' + tr('холодно') : ''),
+    used.weather && '🌡 ' + Math.round(used.weather.temperature_c) + '°C' + (used.weather.max_outdoor_min < 60 && !(used.weather.us_aqi >= 101) ? ' · ' + tr('холодно') : ''),
+    used.weather?.us_aqi >= 101 && '💨 ' + tr('воздух') + ' AQI ' + Math.round(used.weather.us_aqi),
     ...(used.filters || []).filter(x => !/^[А-ЯA-ZӘҒҚҢӨҰҮҺІ]/.test(x)).map(x => '✓ ' + x),
     ...(q.avoid_labels || []).map(x => '✕ ' + x),
   ].filter(Boolean);

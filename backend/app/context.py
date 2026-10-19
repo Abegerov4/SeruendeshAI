@@ -1,6 +1,7 @@
 """Real-time context: local time, KZ public holidays, daylight and weather (Open-Meteo, no key)."""
 from __future__ import annotations
 
+import asyncio
 import datetime as dt
 import logging
 import time
@@ -55,15 +56,27 @@ async def fetch_weather(client: httpx.AsyncClient) -> dict | None:
     hit = _wx_cache.get(key)
     if hit and time.time() - hit[0] < 900:
         return hit[1]
-    try:
-        r = await client.get("https://api.open-meteo.com/v1/forecast", timeout=2.5, params={
+    wx, air = await asyncio.gather(
+        client.get("https://api.open-meteo.com/v1/forecast", timeout=2.5, params={
             "latitude": CITY.latitude, "longitude": CITY.longitude, "timezone": "Asia/Almaty", "wind_speed_unit": "ms",
-            "current": "temperature_2m,apparent_temperature,precipitation,snowfall,weather_code,wind_speed_10m,wind_gusts_10m,is_day"})
-        r.raise_for_status()
-        cur = r.json()["current"]
+            "current": "temperature_2m,apparent_temperature,precipitation,snowfall,weather_code,wind_speed_10m,wind_gusts_10m,is_day"}),
+        # winter smog from coal heating is a real Astana factor: CAMS air quality from the same provider
+        client.get("https://air-quality-api.open-meteo.com/v1/air-quality", timeout=2.5, params={
+            "latitude": CITY.latitude, "longitude": CITY.longitude, "timezone": "Asia/Almaty", "current": "us_aqi,pm2_5"}),
+        return_exceptions=True)
+    try:
+        wx.raise_for_status()
+        cur = wx.json()["current"]
     except Exception as e:  # never invent weather: return None and say "unknown"
         log.warning("weather unavailable: %s", type(e).__name__)
         cur = None
+    try:
+        air.raise_for_status()
+        aq = air.json()["current"]
+        if cur is not None and aq.get("us_aqi") is not None:
+            cur = {**cur, "us_aqi": aq["us_aqi"], "pm2_5": aq.get("pm2_5")}
+    except Exception as e:  # air quality is optional context
+        log.info("air quality unavailable: %s", type(e).__name__)
     _wx_cache[key] = (time.time(), cur)
     return cur
 
@@ -78,6 +91,9 @@ def max_outdoor_minutes(w: dict | None, with_child: bool) -> int:
         return 60
     if with_child:
         feels -= 5  # one step stricter with children
+    aqi = w.get("us_aqi") or 0
+    if aqi >= 151 or (with_child and aqi >= 101):
+        return 20 if feels > -20 else 10  # polluted air: short outdoor legs, indoor places first
     if feels <= -30 or gust >= 20:
         return 0
     if feels <= -20:
@@ -107,4 +123,5 @@ def weather_out(ctx: Context, lang: str) -> dict | None:
     return {"temperature_c": w.get("temperature_2m"), "feels_like_c": w.get("apparent_temperature"),
             "wind_ms": w.get("wind_speed_10m"), "precipitation": precip, "description": desc,
             "max_outdoor_min": ctx.max_outdoor_min,
+            "us_aqi": w.get("us_aqi"), "pm2_5": w.get("pm2_5"),
             "source": "demo override" if w.get("override") else "Open-Meteo.com (CC BY 4.0)"}

@@ -191,7 +191,8 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
         w = req.weather
         weather = {"temperature_2m": w.temperature_c, "apparent_temperature": w.feels_like_c, "wind_speed_10m": w.wind_ms,
                    "wind_gusts_10m": w.wind_ms * 1.4, "precipitation": 1.0 if w.precipitation else 0.0,
-                   "snowfall": 1.0 if (w.precipitation and w.temperature_c < 0) else 0.0, "override": True}
+                   "snowfall": 1.0 if (w.precipitation and w.temperature_c < 0) else 0.0, "override": True,
+                   "us_aqi": w.us_aqi, "pm2_5": None}
     qvec = await emb_task if emb_task else None
 
     has_text = sum(ch.isalpha() for ch in (req.query or "")) >= 3
@@ -387,7 +388,10 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
                      "returns_to_start": route["returns_to_start"], "back_min": route["back_min"], "summary": summ}
 
     # --- notes (transparency)
-    if ctx.weather and ctx.max_outdoor_min < 60:
+    aqi = (ctx.weather or {}).get("us_aqi") or 0
+    if aqi >= 101:
+        notes.append(t("note_air", lang, a=round(aqi), p=round(ctx.weather.get("pm2_5") or 0)))
+    if ctx.weather and ctx.max_outdoor_min < 60 and not (aqi >= 101 and (ctx.weather.get("apparent_temperature") or 0) > -10):
         notes.append(t("note_cold" if ctx.max_outdoor_min else "note_cold_0", lang, t=round(ctx.weather["apparent_temperature"]),
                        w=round(ctx.weather["wind_speed_10m"]), m=ctx.max_outdoor_min))
     if ctx.is_dark and (parsed.walk_intent or "park" in parsed.categories or with_child):

@@ -34,6 +34,7 @@ class WeatherOverride(BaseModel):
     feels_like_c: float = Field(ge=-70, le=60)
     wind_ms: float = Field(0, ge=0, le=60)
     precipitation: bool = False
+    us_aqi: float | None = Field(None, ge=0, le=500, description="US AQI (CAMS); optional")
 
 
 class Profile(BaseModel):
@@ -189,7 +190,9 @@ class WeatherInfo(_Out):
     wind_ms: float | None
     precipitation: bool
     description: str
-    max_outdoor_min: int = Field(description="Comfortable continuous minutes outdoors derived from feels-like/wind")
+    max_outdoor_min: int = Field(description="Comfortable continuous minutes outdoors derived from feels-like/wind/air")
+    us_aqi: float | None = Field(None, description="US air quality index (CAMS via Open-Meteo); ≥101 shortens outdoor time")
+    pm2_5: float | None = Field(None, description="PM2.5, µg/m³")
     source: str
 
 
