@@ -69,3 +69,7 @@ brand/*.zip
 
 # submission media (video/PDF) are uploaded separately
 /submission/
+
+# local tooling / personal notes
+.playwright-mcp/
+docs/PROMPT_OPENING_HOURS.md

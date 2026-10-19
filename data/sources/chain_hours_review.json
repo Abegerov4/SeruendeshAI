@@ -1,0 +1,306 @@
+{
+ "parser_version": 2,
+ "branches": 87,
+ "accepted": [
+  {
+   "poi": "osm:n10170946742",
+   "chain": "coffeeboom",
+   "branch": "98",
+   "distance_m": 44,
+   "branch_address": "Астана, Сыганак көшесі, 16/5, «Абу-Даби Плаза» СОО, 2 қабат",
+   "work_time": "Mon-Sun 10:00-22:00",
+   "opening_hours": "Mo-Su 10:00-22:00",
+   "match_method": "coordinates",
+   "filled": true
+  },
+  {
+   "poi": "osm:n12093500118",
+   "chain": "coffeeboom",
+   "branch": "107",
+   "distance_m": 11,
+   "branch_address": "Астана қаласы,  Бейбiтшiлiк көшесі, 35 үй",
+   "work_time": "Mon-Sun 08:00-24:00",
+   "opening_hours": "Mo-Su 08:00-24:00",
+   "match_method": "coordinates",
+   "filled": false
+  },
+  {
+   "poi": "osm:n12770098801",
+   "chain": "coffeeboom",
+   "branch": "27",
+   "distance_m": 25,
+   "branch_address": "Астана, Күмісбеков көшесі, 9а",
+   "work_time": "Mon-Sun 08:00-24:00",
+   "opening_hours": "Mo-Su 08:00-24:00",
+   "match_method": "coordinates",
+   "filled": true
+  },
+  {
+   "poi": "osm:n12917112809",
+   "chain": "coffeeboom",
+   "branch": "103",
+   "distance_m": 41,
+   "branch_address": "Астана қаласы, Тұран даңғылы 22 үй, ТҮ 6",
+   "work_time": "Mon-Sun 08:00-23:00",
+   "opening_hours": "Mo-Su 08:00-23:00",
+   "match_method": "phone",
+   "filled": true
+  },
+  {
+   "poi": "osm:n12917115051",
+   "chain": "coffeeboom",
+   "branch": "76",
+   "distance_m": 33,
+   "branch_address": "Астана, Қайым Мұхамедханов көшесі, 11/3",
+   "work_time": "Mon-Sun 08:00-23:00",
+   "opening_hours": "Mo-Su 08:00-23:00",
+   "match_method": "coordinates",
+   "filled": true
+  },
+  {
+   "poi": "osm:n13333371893",
+   "chain": "coffeeboom",
+   "branch": "18",
+   "distance_m": 16,
+   "branch_address": "Астана, ул.Толе би, 50. ЖК Headliner",
+   "work_time": "Mon-Sun 08:00-24:00",
+   "opening_hours": "Mo-Su 08:00-24:00",
+   "match_method": "coordinates",
+   "filled": true
+  },
+  {
+   "poi": "osm:n4286102095",
+   "chain": "coffeeboom",
+   "branch": "112",
+   "distance_m": 10,
+   "branch_address": "Астана қаласы, Кенесары көшесі, 22 үй",
+   "work_time": "Mon-Sun 08:00-24:00",
+   "opening_hours": "Mo-Su 08:00-24:00",
+   "match_method": "house_number",
+   "filled": false
+  },
+  {
+   "poi": "osm:n4543944911",
+   "chain": "coffeeboom",
+   "branch": "36",
+   "distance_m": 36,
+   "branch_address": "Астана, Самал шағынауданы, 11",
+   "work_time": "Mon-Sun 08:00-24:00",
+   "opening_hours": "Mo-Su 08:00-24:00",
+   "match_method": "house_number",
+   "filled": false
+  },
+  {
+   "poi": "osm:n4965763181",
+   "chain": "coffeeboom",
+   "branch": "113",
+   "distance_m": 7,
+   "branch_address": "Астана қаласы, Ш.Құдайбердіұлы даңғылы, 19в",
+   "work_time": "Mon-Sun 08:00-24:00",
+   "opening_hours": "Mo-Su 08:00-24:00",
+   "match_method": "coordinates",
+   "filled": true
+  },
+  {
+   "poi": "osm:n5866018450",
+   "chain": "coffeeboom",
+   "branch": "125",
+   "distance_m": 3,
+   "branch_address": "Астана қаласы, Қабанбай батыр даңғылы, 5Б",
+   "work_time": "Mon-Sun 09:00-23:00",
+   "opening_hours": "Mo-Su 09:00-23:00",
+   "match_method": "coordinates",
+   "filled": true
+  },
+  {
+   "poi": "ov:6fb348c5-c760-40",
+   "chain": "coffeeboom",
+   "branch": "74",
+   "distance_m": 56,
+   "branch_address": "Астана, Әзербайжан Мәмбетов көшесі, 16",
+   "work_time": "Mon-Sun 08:00-24:00",
+   "opening_hours": "Mo-Su 08:00-24:00",
+   "match_method": "house_number",
+   "filled": true
+  },
+  {
+   "poi": "ov:aa93675a-1cbe-46",
+   "chain": "coffeeboom",
+   "branch": "109",
+   "distance_m": 63,
+   "branch_address": "Астана қаласы, Достық көшесі, 9 үй",
+   "work_time": "Mon-Sun 10:00-22:00",
+   "opening_hours": "Mo-Su 10:00-22:00",
+   "match_method": "house_number",
+   "filled": true
+  },
+  {
+   "poi": "osm:n10295722127",
+   "chain": "dodo",
+   "branch": "000D3A219740A94811E833F483557932",
+   "distance_m": 12,
+   "branch_address": "улица Кажымукана, 20А",
+   "work_time": "Mo-Su 09:00-24:00",
+   "opening_hours": "Mo-Su 09:00-24:00",
+   "match_method": "coordinates",
+   "filled": false
+  },
+  {
+   "poi": "osm:n11900510369",
+   "chain": "dodo",
+   "branch": "000D3A229AB480CA11E69C1BCBBAAD64",
+   "distance_m": 25,
+   "branch_address": "улица Алматы, 11",
+   "work_time": "Mo-Su 09:00-24:00",
+   "opening_hours": "Mo-Su 09:00-24:00",
+   "match_method": "coordinates",
+   "filled": true
+  },
+  {
+   "poi": "osm:n12095556432",
+   "chain": "dodo",
+   "branch": "CE99F24DFD8AA62511EED78BA4B6361F",
+   "distance_m": 40,
+   "branch_address": "проспект Богенбай Батыра, 34",
+   "work_time": "Mo-Su 09:00-24:00",
+   "opening_hours": "Mo-Su 09:00-24:00",
+   "match_method": "coordinates",
+   "filled": false
+  },
+  {
+   "poi": "osm:n12917083082",
+   "chain": "dodo",
+   "branch": "11F02EE6A3E85772D807F4CBAEB57A10",
+   "distance_m": 45,
+   "branch_address": "улица Кайыма Мухамедханова, 6Б",
+   "work_time": "Mo-Su 09:00-24:00",
+   "opening_hours": "Mo-Su 09:00-24:00",
+   "match_method": "coordinates",
+   "filled": true
+  },
+  {
+   "poi": "osm:w1333795505",
+   "chain": "dodo",
+   "branch": "000D3A262427A94811E8371081A574C4",
+   "distance_m": 35,
+   "branch_address": "проспект Республики, 27",
+   "work_time": "Mo-Su 09:00-24:00",
+   "opening_hours": "Mo-Su 09:00-24:00",
+   "match_method": "coordinates",
+   "filled": true
+  }
+ ],
+ "conflicts": [
+  {
+   "poi": "osm:n10295608316",
+   "chain": "coffeeboom",
+   "branch": "104",
+   "distance_m": 7,
+   "branch_address": "Астана қаласы, Жеңіс даңғылы, 28",
+   "work_time": "Mon-Sun 08:00-23:00",
+   "current": "08:00-24:00",
+   "candidate": "Mo-Su 08:00-23:00",
+   "match_method": "coordinates"
+  }
+ ],
+ "pending": [
+  {
+   "poi": "osm:n12809042306",
+   "chain": "coffeeboom",
+   "branch": "24",
+   "distance_m": 113,
+   "branch_address": "Астана, Республика даңғылы, 7",
+   "work_time": "Mon-Sun 08:00-24:00",
+   "reason": "unconfirmed_branch",
+   "our_address": null
+  },
+  {
+   "poi": "osm:n13125556689",
+   "chain": "coffeeboom",
+   "reason": "no_branch_nearby"
+  },
+  {
+   "poi": "osm:n13159275054",
+   "chain": "coffeeboom",
+   "branch": "101",
+   "distance_m": 17,
+   "branch_address": "Астана қаласы, Р.Қошқарбаев даңғылы, 10/1 үй блок G",
+   "work_time": "Mon-Sun 08:00-24:00",
+   "reason": "several_branches",
+   "rivals": [
+    "105"
+   ]
+  },
+  {
+   "poi": "osm:n5195741477",
+   "chain": "coffeeboom",
+   "branch": "82",
+   "distance_m": 12,
+   "branch_address": "Астана, Тәуелсіздік даң., 4А",
+   "work_time": "Mon-Sun 11:00-24:00",
+   "reason": "several_branches",
+   "rivals": [
+    "110"
+   ]
+  },
+  {
+   "poi": "osm:n9999465717",
+   "chain": "coffeeboom",
+   "branch": "6",
+   "distance_m": 124,
+   "branch_address": "Астана, Тұран даңғылы, 2г",
+   "work_time": "Mon-Sun 08:00-24:00",
+   "reason": "several_branches",
+   "rivals": [
+    "92"
+   ]
+  },
+  {
+   "poi": "osm:n14100100181",
+   "chain": "dodo",
+   "branch": "000D3AA93D2FBB2C11ECC070DDA600BA",
+   "distance_m": 115,
+   "branch_address": "улица Динмухамеда Кунаева, 12/1",
+   "work_time": "Mo-Su 09:00-24:00",
+   "reason": "unconfirmed_branch",
+   "our_address": null
+  },
+  {
+   "poi": "ov:630dd7d3-41eb-4e",
+   "chain": "papajohns",
+   "branch": "10621",
+   "distance_m": 0,
+   "branch_address": "проспект Республики, 10, Астана",
+   "work_time": "Mo-Su 00:00-02:45,10:00-24:00",
+   "reason": "hours_scope_unknown"
+  },
+  {
+   "poi": "ov:c287ff49-d1f6-46",
+   "chain": "papajohns",
+   "branch": "10420",
+   "distance_m": 1,
+   "branch_address": "Проспект Кабанбай Батыра 21 Астана, 050000, Казахстан",
+   "work_time": "Mo-Su 10:00-24:00",
+   "reason": "hours_scope_unknown"
+  },
+  {
+   "poi": "ov:c5d6367a-797c-46",
+   "chain": "papajohns",
+   "branch": "10421",
+   "distance_m": 13,
+   "branch_address": "улица Сагадат Нурмагамбетова 19, Астана, Казахстан, 3300",
+   "work_time": "Mo-Su 10:00-24:00",
+   "reason": "hours_scope_unknown"
+  },
+  {
+   "poi": "ov:f2c59c84-dc79-4b",
+   "chain": "papajohns",
+   "branch": "11029",
+   "distance_m": 0,
+   "branch_address": "Проспект Мангилик Ел, 40, Есиль район, Астана",
+   "work_time": null,
+   "reason": "hours_unclear"
+  }
+ ],
+ "unmatched_branches": 63
+}
