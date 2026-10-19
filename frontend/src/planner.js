@@ -1,7 +1,8 @@
 // Walk context shared by the chat, the preferences and the refinement chips.
 // `touched` marks controls the user changed explicitly: only those override what the text says.
 export const initialContext = {
-  location: 'Моё местоположение', coords: null,  // geolocation first; a landmark is the fallback time: 60, transport: 'walk', kid: false, accessible: false,
+  // geolocation first; a landmark is the fallback
+  location: 'Моё местоположение', coords: null, time: 60, transport: 'walk', kid: false, accessible: false,
   closer: false, noCoffee: false, indoor: false, touched: {time: false, transport: false},
 };
 

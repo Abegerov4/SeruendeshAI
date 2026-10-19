@@ -73,7 +73,14 @@ def _strip_terms(text: str, keys: list[str]) -> str:
 
 
 def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: list[str], lang: str, hit=None):
-    """Rounded GPS (inside Astana) > where the text says the user is > LLM landmark > UI landmark."""
+    """Where the text says the user is > LLM landmark > rounded GPS (inside Astana) > UI landmark.
+    «Я возле Хан Шатыра» wins over GPS: the user said it explicitly (and may be planning ahead)."""
+    if not hit and parsed.landmark_text:
+        hit = resolve_landmark(parsed.landmark_text, store.gazetteer)
+    if hit:
+        if req.location:
+            notes.append(t("note_text_origin", lang, name=hit["name"]))
+        return (hit["lat"], hit["lon"]), {"source": "text_landmark", "label": hit["name"], "precision_m": 50}, hit
     if req.location:
         lat, lon = round_coord(req.location.lat), round_coord(req.location.lon)
         if in_astana(lat, lon):
@@ -84,15 +91,14 @@ def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: 
                    "kk": "~ сіздің орналасуыңыз (100 м-ге дейін)", "en": "~ your location (rounded to 100 m)"}[lang]
             return (lat, lon), {"source": "gps_rounded", "label": lbl, "precision_m": 100}, None
         notes.append(t("note_outside_city", lang))
-    if not hit and parsed.landmark_text:
-        hit = resolve_landmark(parsed.landmark_text, store.gazetteer)
-    if hit:
-        return (hit["lat"], hit["lon"]), {"source": "text_landmark", "label": hit["name"], "precision_m": 50}, hit
     if req.landmark:
         g = resolve_landmark(req.landmark, store.gazetteer)
         if g:
             return (g["lat"], g["lon"]), {"source": "landmark", "label": g["name"], "precision_m": 50}, g
     return None, {"source": "none", "label": None, "precision_m": 0}, None
+
+
+VIEW_DECKS = ("baiterek", "nur_alem", "pyramid")
 
 
 def _target_ids(store: Store, dests: list[dict]) -> set[str]:
@@ -114,7 +120,8 @@ def _cache_key(req: RecommendRequest, now: dt.datetime) -> str:
     if d.get("location"):
         d["location"] = {k: round(v, 3) for k, v in d["location"].items()}
     d["query"] = " ".join((d.get("query") or "").lower().split())
-    d["now"] = now.isoformat()
+    # live requests share an answer within a 5-minute slot (an explicit `now` stays exact)
+    d["now"] = now.isoformat() if req.now else now.replace(minute=now.minute - now.minute % 5, second=0, microsecond=0).isoformat()
     return hashlib.sha1(json.dumps(d, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
@@ -207,6 +214,10 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     origin, origin_info, hit = _resolve_origin(req, parsed, rt.store, notes, lang, text_hit)
     exclude_keys: set[str] = set()
     target_ids = _target_ids(rt.store, dest_entries)
+    view_decks = "view" in parsed.needs and not dest_entries
+    if view_decks:
+        # Astana's observation decks: Bayterek (97 m), the EXPO sphere and the top of the Pyramid
+        target_ids |= _target_ids(rt.store, [g for k in VIEW_DECKS if (g := _landmark_by_key(rt.store, k))])
     navigate = bool(target_ids) and bool(NAV_INTENT.search(fold(req.query or "")))  # directions to a named place
     if hit and origin_info["source"] in ("text_landmark", "landmark"):
         exclude_keys = set(hit["keys"]) | {fold(hit["name"])}
@@ -295,7 +306,7 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
             cands = [c for c in cands if c.poi["id"] in target_ids][:1] or cands
 
     route = None
-    if not navigate and route_wanted(parsed, req.want_route, plan, len(cands)):
+    if not navigate and not (view_decks and req.want_route is None) and route_wanted(parsed, req.want_route, plan, len(cands)):
         returns = parsed.walk_intent and mode == "walk" and dl is None
         route = plan_route(cands, plan, ctx, rt.graph, rt.store.river, lang, returns=returns)
 
@@ -377,7 +388,8 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
 
     # --- notes (transparency)
     if ctx.weather and ctx.max_outdoor_min < 60:
-        notes.append(t("note_cold", lang, t=round(ctx.weather["apparent_temperature"]), w=round(ctx.weather["wind_speed_10m"]), m=ctx.max_outdoor_min))
+        notes.append(t("note_cold" if ctx.max_outdoor_min else "note_cold_0", lang, t=round(ctx.weather["apparent_temperature"]),
+                       w=round(ctx.weather["wind_speed_10m"]), m=ctx.max_outdoor_min))
     if ctx.is_dark and (parsed.walk_intent or "park" in parsed.categories or with_child):
         notes.append(t("note_dark", lang))
     if ctx.holiday:
@@ -390,7 +402,10 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
         notes.append(t("note_quiet", lang))
     if any(it["event"] for it in items):
         notes.append(t("note_event_source", lang))
-    if plan.outside_graph and mode == "walk":
+    # only when a place we actually show (or a leg we draw) used the straight-line estimate
+    estimated = any(it["poi_id"] in plan.estimated_ids for it in items) or \
+        any(leg["geometry"] == "straight" for leg in (route["legs"] if route else []))
+    if plan.outside_graph and estimated and mode == "walk":
         notes.append(t("note_outside_graph", lang))
     if out_mode == "transit":
         notes.append(t("note_transit", lang))

@@ -211,3 +211,26 @@ def test_route_to_botanical_garden_is_a_navigation_answer(client):
     assert len(names) == 1 and ("бақ" in names[0].lower() or "ботан" in names[0].lower()), names
     assert d["navigate_to"] == d["recommendations"][0]["poi_id"]
     assert d["used_context"]["location_source"] == "gps_rounded"  # the garden is the destination, not the start
+
+
+def test_negated_place_types_are_avoided_not_required(client):
+    d = post(client, query="Хочу чего-то необычного, не торговый центр", location={"lat": 51.1325, "lon": 71.4037},
+             now="2026-10-20T15:00:00+05:00")
+    assert d["recommendations"] and all(r["category"] != "mall" for r in d["recommendations"])
+    d = post(client, query="Только не кофейня! Хочу активно провести 2 часа рядом", location={"lat": 51.1325, "lon": 71.4037},
+             now="2026-10-20T15:00:00+05:00")
+    assert d["recommendations"] and all(r["category"] != "cafe" for r in d["recommendations"])
+
+
+def test_view_wish_leads_with_an_observation_deck(client):
+    d = post(client, query="Хочу посмотреть город с высоты, где лучшая смотровая площадка?",
+             location={"lat": 51.1325, "lon": 71.4037}, now="2026-10-20T15:00:00+05:00")
+    first = d["recommendations"][0]["name"].lower()
+    assert "байтерек" in first or "бәйтерек" in first or "nur alem" in first, first
+    assert all(r["category"] != "playground" for r in d["recommendations"])  # «площадка» is not a playground here
+
+
+def test_climbing_a_named_landmark_makes_it_the_destination(client):
+    d = post(client, query="Хочу подняться на Байтерек, что ещё рядом?", location={"lat": 51.1325, "lon": 71.4037},
+             now="2026-10-20T15:00:00+05:00")
+    assert any("терек" in r["name"].lower() for r in d["recommendations"])

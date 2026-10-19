@@ -52,8 +52,9 @@ Your job:
 1. Choose 1–3 cards that best fit the query and context. If a ROUTE is given, you MUST return exactly the
    route stops, in the given order, and write texts for each of them. Otherwise prefer variety (not three
    cafés) unless the user asked for one type of place. Prefer higher-ranked cards when in doubt.
-   Rule: «лучше одно точное место, чем три случайных» — one precise match beats three random ones. Without a
-   ROUTE, return only the cards that really fit the query: 1 or 2 picks are fine when the other cards are weak.
+   Without a ROUTE, return 3 picks whenever three cards are a reasonable match: people like a choice. Drop a
+   card only when it clearly contradicts the query (a different kind of place than asked, something the user
+   said they do not want); then 1 or 2 picks are fine — one precise match beats three random ones.
 2. For each pick write:
    - "why": 1–2 short sentences (max ~30 words) explaining why it fits THIS user NOW. Ground every claim in
      the card (category, features, description, event) or the context (weather, time of day, kids, tourist).
@@ -118,6 +119,18 @@ def clean_text(s: str, limit: int = 280) -> str:
     if len(s) > limit:
         s = s[:limit].rsplit(" ", 1)[0].rstrip(",;:") + "…"
     return s
+
+
+# sentences about the data or the selection itself, not the place: they read as weak excuses to a user
+_META = re.compile(r"карточк|в данных|данных нет|нет данных|не указан|нет информаци|нет сведени|информаци\w* нет|"
+                   r"не сказано|не упомина|единственн\w* (?:кандидат|вариант)|кандидат|\bthe card\b|\bno data\b|"
+                   r"not (?:listed|specified|mentioned)|only (?:candidate|option)|\bcandidate|деректер\w* жоқ|көрсетілмеген",
+                   re.IGNORECASE)
+
+
+def drop_meta_sentences(s: str) -> str:
+    parts = re.split(r"(?<=[.!?…])\s+", s or "")
+    return " ".join(x for x in parts if x and not _META.search(x)).strip()
 
 
 # amenity claims that must be backed by the place's own data
@@ -192,6 +205,9 @@ def context_block(ctx: Context, plan: Plan, parsed, lang: str) -> str:
         f"needs: {', '.join(sorted(parsed.needs)) or 'none'}; wants: {', '.join(parsed.categories) or 'not specific'}"
         + ("; wants something unusual" if parsed.surprise else "") + ("; night out" if parsed.night else ""),
     ]
+    if plan.food_soft:
+        lines.append("food wish (dish/cuisine/price) is NOT confirmed for these cards: do not promise the dish, cuisine "
+                     "or prices; recommend them as nearby places of the right kind and suggest checking the menu")
     if plan.deadline_min is not None:
         lines.append(f"deadline: must head back for a {parsed.deadline_kind or 'deadline'}; code computed leave-by times")
     return "\n".join(lines)
@@ -220,8 +236,8 @@ def validate(out: GenOut, cmap: dict[str, Cand], route_stops: list[Cand] | None,
         seen.add(pk.cand)
         # The model writes the explanation; facts it could invent are removed: numbers, clocks, "open now",
         # and amenities the record does not confirm (Wi-Fi, sockets, kids room, terrace, parking) — audit M01.
-        pk.why = drop_unconfirmed_amenities(clean_text(pk.why), c.poi, getattr(c, "event", None))
-        pk.what_to_do = drop_unconfirmed_amenities(clean_text(pk.what_to_do), c.poi, getattr(c, "event", None))
+        pk.why = drop_meta_sentences(drop_unconfirmed_amenities(clean_text(pk.why), c.poi, getattr(c, "event", None)))
+        pk.what_to_do = drop_meta_sentences(drop_unconfirmed_amenities(clean_text(pk.what_to_do), c.poi, getattr(c, "event", None)))
         lo, hi = c.visit_range
         pk.visit_min = int(min(max(pk.visit_min, lo), hi))
         if not pk.why:
@@ -240,7 +256,7 @@ def validate(out: GenOut, cmap: dict[str, Cand], route_stops: list[Cand] | None,
         return None
     out.picks = picks[:3]
     # a route replaces it with the code-built timeline summary; claims must hold for every picked place
-    out.summary = clean_text(out.summary, 200)
+    out.summary = drop_meta_sentences(clean_text(out.summary, 200))
     for pk in out.picks:
         c = cmap[pk.cand]
         out.summary = drop_unconfirmed_amenities(out.summary, c.poi, getattr(c, "event", None))
@@ -288,9 +304,15 @@ def template_why(c: Cand, lang: str) -> str:
         reasons.append(_W["has"][lang].format(f=", ".join(feats)))
     if p.get("kid_friendly") is True or p.get("features", {}).get("kids_area") is True:
         reasons.append(_W["kids"][lang])
+    kitchen = next((x for x in cuisine_ru(p.get("cuisine")) if x.endswith("кухня") and "местная" not in x), None)
+    if lang == "ru" and kitchen:
+        reasons.insert(0, kitchen)
     if not reasons:
         reasons.append(_W["fits"][lang])
     s = bits[0] + ": " + ", ".join(reasons[:3]) + "."
+    lead = re.split(r"(?<=[.!?])\s+", (p.get("description") or "").strip())[0]
+    if lead and 20 <= len(lead) <= 140 and (lang == "ru") == bool(re.search(r"[а-яё]", lead, re.IGNORECASE)) and lang != "kk":
+        s += " " + lead.rstrip(".") + "."
     return s[0].upper() + s[1:]
 
 

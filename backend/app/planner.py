@@ -85,7 +85,8 @@ def plan_route(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | N
         return cache[key]
 
     best = None
-    for k in range(min(max_stops, len(pool)), 1, -1):
+    # more stops beat longer stays: with suggested durations first, then with the short end of each range
+    for k, short in ((k, short) for k in range(min(max_stops, len(pool)), 1, -1) for short in (False, True)):
         for perm in permutations(range(1, len(pool) + 1), k):
             t_acc, prev, val, cats, timeline, ok = 0.0, 0, 0.0, [], [], True
             for i in perm:
@@ -94,7 +95,7 @@ def plan_route(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | N
                 if plan.mode == "walk" and ctx.max_outdoor_min < 60 and T[prev, i] > ctx.max_outdoor_min + 5:
                     ok = False
                     break
-                v = c.visit_range[0] if budget < 90 else c.visit_min
+                v = c.visit_range[0] if budget < 90 or short else c.visit_min
                 if not open_ok(i, t_acc, v):
                     ok = False
                     break

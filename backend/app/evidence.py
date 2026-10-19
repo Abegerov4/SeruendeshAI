@@ -9,6 +9,7 @@ import re
 import numpy as np
 import snowballstemmer
 
+from app.features import cuisine_ru
 from app.food import FoodRequirement
 from app.geo import hav_m
 from app.textnorm import fold
@@ -17,6 +18,13 @@ from data.meal_cost import complete_meal_price, cost_evidence_current
 _RU = snowballstemmer.stemmer("russian")
 _EN = snowballstemmer.stemmer("english")
 _STOP = {"еда", "food", "кухня", "cuisine", "meal", "нужный", "хочу", "с", "и", "a", "and", "with"}
+
+
+def osm_cuisine_text(poi: dict) -> str:
+    """OSM cuisine tags in the words people use, so «грузинская кухня» matches cuisine=georgian."""
+    raw = poi.get("cuisine") or ""
+    raw = ";".join(raw) if isinstance(raw, list) else str(raw)
+    return " ".join(cuisine_ru(raw.replace(",", ";")))
 
 
 def _terms(text: str) -> set[str]:
@@ -124,6 +132,7 @@ def match_food(poi: dict, requirements: list[FoodRequirement], today: dt.date, b
     if menu_wishes and not matching:
         result.gaps.append("menu")
     facts_text = " ".join(str(f["value"]) for f in data["facts"] if f["field"] in {"format","cuisine","cuisines"})
+    facts_text += " " + osm_cuisine_text(poi)  # the OpenStreetMap cuisine tag is published data too
     # Narrow one pool through all dish constraints before testing its prices.
     # The order of requirements in natural language must not affect the result.
     for wish in [r for r in requirements if r.kind != "price"]:

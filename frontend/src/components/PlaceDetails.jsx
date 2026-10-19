@@ -4,7 +4,7 @@ import { X, Heart, MapPin, Clock3, Footprints, Car, ArrowUpRight, Navigation, Gl
 import { t as tr } from '../i18n';
 import { TrustList, hoursTone, shortHours } from './PlaceCard';
 import PlaceVisual from './PlaceVisual';
-import { externalMapLinks, routeUrl, telUrl, instagramUrl } from '../api';
+import { externalMapLinks, routeUrl, telUrl, instagramUrl, visitText } from '../api';
 
 export default function PlaceDetails({ place: p, saved, onSave, onClose, onMap, origin }) {
   const dialog = useRef(null), title = useId();
@@ -33,7 +33,7 @@ export default function PlaceDetails({ place: p, saved, onSave, onClose, onMap, 
       <p className="detail-lead">{p.why}</p>
       {!p.generated && <div className="detail-facts">
         <div><Mode size={18} /><span><b>{p.travel} {tr(p.mode === 'walk' ? 'мин пешком' : 'мин в пути')}</b><small>{p.distance}</small></span></div>
-        <div><Clock3 size={18} /><span><b>{p.visitRange ? `${p.visitRange[0]}–${p.visitRange[1]}` : p.visit} {tr('мин на месте')}</b><small>{tr('рекомендуем')} ~{p.visit} {tr('мин')}</small></span></div>
+        <div><Clock3 size={18} /><span><b>{visitText(p)} {tr('мин на месте')}</b><small>{tr('рекомендуем')} ~{p.visit} {tr('мин')}</small></span></div>
         <div className={'hours-fact ' + hoursTone(p)}><i /><span><b>{shortHours(p)}</b>{p.status && p.status !== shortHours(p) && <small>{p.status}</small>}</span></div>
         {p.address && <div><MapPin size={18} /><span><b>{tr('Адрес')}</b><small>{p.address}</small></span></div>}
         {p.cuisine?.length > 0 && <div><Utensils size={18} /><span><b>{tr('Кухня')}</b><small>{p.cuisine.join(', ')}</small></span></div>}

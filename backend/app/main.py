@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import asyncio
+import math
 import logging
 import os
 import time
@@ -283,7 +284,7 @@ async def route_to_place(req: RouteRequest, request: Request):
     if req.mode == "car":
         dist, minutes = car_minutes(straight, parse_now(None).hour)
     else:
-        minutes = int(round(dist / 75.0))  # 4.5 km/h, the same pace as recommendations
+        minutes = int(math.ceil(dist / 75.0))  # 4.5 km/h, rounded up like the recommendation cards
     o_lat, o_lon = origin
     return {"poi_id": p["id"], "name": p["name"], "mode": req.mode, "distance_m": int(round(dist / 10) * 10),
             "travel_min": max(1, minutes), "geometry": geometry,

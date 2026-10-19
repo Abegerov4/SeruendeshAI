@@ -106,6 +106,7 @@ class Parsed:
     wants_route: bool | None = None
     night: bool = False
     surprise: bool = False
+    stroller: bool = False  # a baby stroller: kids and a flat walk, not a wheelchair profile
     walk_intent: bool = False
     wants_event: bool = False
     soft_categories: list[str] = field(default_factory=list)  # LLM-inferred preferences (boost, not filter)
@@ -135,7 +136,7 @@ _RULES: list[tuple[str, dict]] = [
     (r"wi-?fi|вайфай|интернет", {"need": ["wifi"]}),
     (r"тих|спокойн|quiet|calm|тыныш", {"need": ["quiet"]}),
     (r"\bребен|\bребён|\bдет[еиcкя]|\bдетьми|\bмалыш|\bсын(\b|ом|ишк)|\bдоч|\bбала(\b|м|мен|лар|ға)|\bkids?\b|\bchild|toddler|\bfamily|\bсемь[еяйю]", {"need": ["kids"], "party": "family_kids"}),
-    (r"площадк|playground|ойын алаң|качел", {"cat": ["playground"]}),
+    (r"(?<!смотров\w\w )площадк|playground|ойын алаң|качел", {"cat": ["playground"]}),
     (r"интерактив|interactive|науч|science", {"cat": ["museum", "kids_indoor"]}),
     (r"музе|museum|мұражай", {"cat": ["museum"]}),
     (r"галере|gallery|выставк|exhibition|көрме", {"cat": ["gallery", "museum", "arts_centre"]}),
@@ -154,8 +155,14 @@ _RULES: list[tuple[str, dict]] = [
     (r"караоке|karaoke", {"cat": ["karaoke"]}),
     (r"кальян|hookah", {"cat": ["hookah"]}),
     (r"тепл|трц|торгов|mall|warm|жылы|сауда орталы", {"cat": ["mall"], "need": ["warm"]}),
-    (r"вид на|панорам|смотров|view|панорама|көрініс", {"cat": ["viewpoint", "landmark"], "need": ["view"]}),
-    (r"коляск|инвалид|wheelchair|пандус|арба|без ступен|step-free", {"need": ["wheelchair"]}),
+    (r"вид на|панорам|смотров|view|панорама|көрініс|с высоты|высот\w* птичьего|на высоте|from above|skyline|биіктен", {"cat": ["viewpoint", "landmark"], "need": ["view"]}),
+    (r"с коляской|детск\w* коляск|коляск\w* с (?:ребен|малыш)|stroller|pram|pushchair|бала арба", {"need": ["kids"], "party": "family_kids", "walk": True, "stroller": True}),
+    (r"инвалид|wheelchair|пандус|без ступен|step-free|(?<!с )коляск|(?<!бала )арба", {"need": ["wheelchair"]}),
+    (r"бесплатн|без денег|денег нет|нет денег|for free|free (?:entry|admission|of charge)|no money|тегін|ақшасыз", {"need": ["free"]}),
+    (r"собак|\bпс[аео]м?\b|\bdogs?\b|итпен|итім", {"cat": ["park", "garden"], "walk": True}),
+    (r"истори|стар\w* город|old town|history|historic|тарих|ескі қала", {"cat": ["museum", "monument", "landmark", "worship", "gallery"]}),
+    (r"родител|пожил|пенсионер|бабушк|дедушк|за [6-8]0\b|elderly|seniors?\b|my parents|ата-ана|қарт", {"cat": ["museum", "landmark", "theatre", "park", "garden", "worship", "gallery", "cafe", "viewpoint"]}),
+    (r"романти|свидани|\bdate\b|romantic|ғашық", {"cat": ["landmark", "viewpoint", "park", "garden", "restaurant", "cafe", "theatre"]}),
     (r"на машин|на авто|by car|көлікпен|такси|taxi|driving", {"mode": "car"}),
     (r"пешком|on foot|жаяу", {"mode": "walk"}),
     (r"мечет|храм|собор|mosque|cathedral|мешіт", {"cat": ["worship"]}),
@@ -166,6 +173,8 @@ _RULES: list[tuple[str, dict]] = [
     (r"сувенир|souvenir|кәдесый|подар", {"cat": ["souvenir", "market"]}),
     (r"рынок|базар|bazaar|market", {"cat": ["market"]}),
     (r"бан[яи]|сауна|spa|спа|монша", {"cat": ["spa"]}),
+    (r"активн|подвижн|спортив|\bactive\b|sporty", {"cat": ["active", "park"]}),
+    (r"коньк|каток|катани\w* на льду|ice[ -]?skat|ice rink|мұз айдын|конькимен", {"cat": ["active"], "kw": ["каток"]}),
     (r"боулинг|bowling|каток|ice rink|квест|escape|батут|trampoline|скалодр|climb", {"cat": ["active", "kids_indoor"]}),
     (r"океанариум|aquarium|зоопарк|zoo", {"cat": ["zoo_aquarium"]}),
     (r"аквапарк|water park", {"cat": ["water_park"]}),
@@ -252,13 +261,29 @@ def parse_clock(text: str) -> str | None:
     return f"{int(m.group(1)):02d}:{m.group(2)}" if m else None
 
 
+_NEG_BEFORE = re.compile(r"(?:\bне|\bбез|\bкроме|\bno|\bnot|\bwithout|\bexcept|\bavoid)\s+(?:[\w-]+\s+){0,3}$")
+_NEG_AFTER = re.compile(r"^\w*\s+(?:емес|керек емес)\b")
+
+
+def _negated(s: str, m: re.Match) -> bool:
+    before = s[max(0, m.start() - 40):m.start()]
+    if re.search(r"не\s+только\s+(?:[\w-]+\s+){0,2}$|not\s+only\s+(?:[\w-]+\s+){0,2}$", before):
+        return False
+    return bool(_NEG_BEFORE.search(before) or _NEG_AFTER.search(s[m.start():m.start() + 40]))
+
+
 def parse_rules(text: str) -> Parsed:
     s = fold(text)
     p = Parsed(lang=detect_lang(text), search_text=text.strip(), food_requirements=parse_food_requirements(text))
     p.meal_intent = needs_meal_kitchen(text, p.food_requirements)
     cats: list[str] = []
+    avoid: list[str] = []
     for pat, act in _RULES:
-        if not re.search(pat, s):
+        hits = list(re.finditer(pat, s))
+        if not hits:
+            continue
+        if all(_negated(s, m) for m in hits):
+            avoid += act.get("cat", [])  # «только не кофейня», «не торговый центр», «без кафе»
             continue
         if p.lang == "kk" and act.get("cat") == ["bar"] and not re.search(r"\bpub\b|\bbar\b|пиво|сыра|коктейл", s):
             continue  # Kazakh "бар" = "there is", not a bar
@@ -282,7 +307,11 @@ def parse_rules(text: str) -> Parsed:
             p.wants_route = True
         if act.get("event"):
             p.wants_event = True
+        if act.get("stroller"):
+            p.stroller = True
+        p.keywords += [k for k in act.get("kw", []) if k not in p.keywords]
     p.categories = list(dict.fromkeys(cats))
+    p.avoid = [c for c in dict.fromkeys(avoid) if c not in p.categories]
     if (p.food_requirements or p.meal_intent) and not p.categories:
         p.categories = ["restaurant","cafe"]
     if p.deadline_kind == "flight":
@@ -319,7 +348,7 @@ def merge_llm(rules: Parsed, llm: LLMParsed | None) -> Parsed:
     # explicit place types named in the text (rules) filter; LLM-inferred types only boost ranking
     p.categories = list(rules.categories)
     p.soft_categories = list(dict.fromkeys([c for c in llm.categories if c in CATEGORIES] + rules.categories))
-    p.avoid = [c for c in llm.avoid_categories if c in CATEGORIES]
+    p.avoid = [c for c in dict.fromkeys([*llm.avoid_categories, *rules.avoid]) if c in CATEGORIES and c not in p.categories]
     p.needs = set(llm.needs) | rules.needs
     p.time_budget_min = rules.time_budget_min if rules.time_budget_min is not None else llm.time_budget_min
     p.travel_mode = llm.travel_mode or rules.travel_mode
@@ -336,6 +365,9 @@ def merge_llm(rules: Parsed, llm: LLMParsed | None) -> Parsed:
     p.wants_route = llm.wants_route if llm.wants_route is not None else rules.wants_route
     p.night = llm.night or rules.night
     p.surprise = llm.surprise or rules.surprise
+    p.stroller = rules.stroller
+    if rules.stroller and "wheelchair" not in rules.needs:
+        p.needs.discard("wheelchair")  # a model often reads «коляска» as a wheelchair
     p.walk_intent = rules.walk_intent or any(c in ("park", "garden") for c in llm.categories)
     p.wants_event = rules.wants_event
     p.search_text = llm.search_text_ru or rules.search_text
@@ -375,7 +407,8 @@ _DEST_BEFORE = re.compile(r"(?:маршрут|путь|дорог\w*|проло�
                           r"(?:route|directions|way|navigate|take\s+me)\s+to\s*(?:the\s*)?$|how\s+(?:do\s+i\s+|to\s+)?get\s+to\s*(?:the\s*)?$|"
                           r"(?:хочу|хотим|хотел\w*|надо|нужно)\s+(?:в|на|до|к|попасть\s+(?:в|на|к))\s*$|(?:попасть|пойти|сходить|дойти|добраться|"
                           r"доехать|пройти|проехать|едем|иду|идти)\s+(?:в|на|до|к)\s*$|как\s+(?:пройти|дойти|доехать|попасть|добраться)\s+(?:в|на|до|к)?\s*$|"
-                          r"(?:go|get|walk|drive|head)\s+to\s*(?:the\s*)?$|\bvisit\s*$")
+                          r"(?:подня\w*|залезть|взобраться|забраться|побывать|посетить|посмотреть)\s+(?:в|на|до|к)?\s*$|"
+                          r"(?:go|get|walk|drive|head)\s+to\s*(?:the\s*)?$|\b(?:visit|climb|go\s+up)\s*(?:the\s*)?$")
 _DEST_AFTER = re.compile(r"^(?:га|ге|ка|ке)\b|^\w*\s*(?:баргым|баруга|барамын|бару)")
 
 

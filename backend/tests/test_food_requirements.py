@@ -61,7 +61,8 @@ def test_generic_food_and_time_budget_keep_working(query):
 
 def test_explicit_numeric_meal_budget_is_not_a_free_time_duration():
     out = request(runtime(), "Поесть у экспо до 2000 тенге")
-    assert out["recommendations"] == []
+    # no published prices: nearby cafés are shown as unconfirmed, never a restaurant for a cheap meal
+    assert [r["poi_id"] for r in out["recommendations"]] == ["food:0"] and "не подтверждены" in " ".join(out["notes"])
     assert out["used_context"]["time_budget_min"] == 60
 
 
@@ -177,7 +178,9 @@ def test_unrelated_cheap_drink_does_not_establish_a_meal_budget():
     data = details()
     data["menu_items"][0].update(name="Чай", components=["чай"], role="drink")
     data["menu_items"][0]["price"]["amount"] = 300
-    assert request(runtime(data), "Где поесть рядом с экспо до 2000 тенге?")["recommendations"] == []
+    out = request(runtime(data), "Где поесть рядом с экспо до 2000 тенге?")
+    # the drink price proves nothing about a meal, and that place is not laundered into a budget match
+    assert "food:2" not in [r["poi_id"] for r in out["recommendations"]] and "не подтверждены" in " ".join(out["notes"])
 
 
 def test_homestyle_inflection_matches_explicit_cuisine_fact():
@@ -233,7 +236,9 @@ def test_cheap_comparison_uses_the_reviewed_format_group(monkeypatch):
     data=details()
     data["prices"]=[{**data["facts"][0],"kind":"average_check","amount":7000,"currency":"KZT",
                      "unit":"person","channel":"dine_in","comparison_group":"cafe"}]
-    assert request(runtime(data),"Я рядом с экспо, хочу дешево поесть")["recommendations"] == []
+    out = request(runtime(data),"Я рядом с экспо, хочу дешево поесть")
+    # a published 7000 ₸ average check contradicts «дешево»; unknown-price cafés are shown as unconfirmed
+    assert [r["poi_id"] for r in out["recommendations"]] == ["food:0"] and "не подтверждены" in " ".join(out["notes"])
 
 
 @pytest.mark.parametrize("query,expected", [
@@ -247,3 +252,14 @@ def test_budget_origin_and_diet_followups_preserve_the_meal(query,expected):
     assert out["recommendations"] == []
     assert {w["text"] for w in wishes if w["kind"]=="menu"} == {"пюре","котлетой"}
     assert expected in {w["text"] for w in wishes if w["kind"]=="price"}
+
+
+def test_osm_cuisine_tag_confirms_a_cuisine_wish():
+    from app.evidence import match_food
+    from app.food import parse_food_requirements
+    import datetime as dt
+    wish = parse_food_requirements("Где поесть грузинскую кухню рядом?")
+    assert [r.kind for r in wish] == ["style"]
+    day = dt.date(2026, 10, 19)
+    assert match_food({"cuisine": "georgian"}, wish, day, check_kitchen=False).matched
+    assert not match_food({"cuisine": "korean"}, wish, day, check_kitchen=False).matched

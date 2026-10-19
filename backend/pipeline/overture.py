@@ -12,6 +12,7 @@ import re
 
 from rapidfuzz import fuzz
 
+from app.store import JUNK_PLACE
 from app.paths import BOUNDARY_FILE, RAW_DIR
 from app.textnorm import contains_name, match_key, same_name
 
@@ -90,7 +91,7 @@ def merge_overture(pois: list[dict], places: list[dict]) -> list[dict]:
         if not cat or not o.get("name"):
             skipped["category"] += 1
             continue
-        if JUNK_NAME.search(o["name"]):
+        if JUNK_NAME.search(o["name"]) or JUNK_PLACE.search(o["name"]):
             skipped["junk_name"] += 1
             continue
         if (o.get("confidence") or 0) < 0.6:

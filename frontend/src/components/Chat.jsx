@@ -142,7 +142,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
       <form className="chat-composer" onSubmit={e => { e.preventDefault(); if (!loading) send(query); }}>
         <div className="composer-input"><Sparkles size={19} /><textarea ref={input} id="chat-input" value={query} onChange={e => setQuery(e.target.value)} onKeyDown={e => {
           if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); e.currentTarget.form.requestSubmit(); }
-        }} placeholder={tr("Я рядом с Байтереком. Куда заглянуть?")} aria-label={tr("Как хочешь провести время?")} rows={asSheet ? 1 : 2} enterKeyHint="send" /></div>
+        }} placeholder={tr("Чего хочется? Например: кофе и прогулка на час")} aria-label={tr("Как хочешь провести время?")} rows={asSheet ? 1 : 2} enterKeyHint="send" /></div>
         <div className="composer-bottom">
           <div className="location-picker" ref={locationBox}><button type="button" className="location-toggle" aria-expanded={locationOpen} onClick={() => setLocationOpen(!locationOpen)}><MapPin size={13} /><span>{location === MY_LOCATION ? '📍 ' : ''}{tr(location)}</span><ChevronDown size={12} /></button>
             {locationOpen && <div className="location-options">{landmarks.map(l => <button type="button" key={l} onClick={() => { setLocation(l); setLocationOpen(false); }}>{tr(l)}{l === location && <Check size={14} />}</button>)}</div>}</div>

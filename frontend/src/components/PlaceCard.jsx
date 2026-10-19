@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PlaceDetails from './PlaceDetails';
 import PlaceVisual from './PlaceVisual';
 import { Heart, Footprints, Car, Clock3, MapPin, Sparkles, ChevronRight, Check, Navigation, Globe, Phone } from 'lucide-react';
-import { BADGE_LABELS, routeUrl, telUrl } from '../api';
+import { BADGE_LABELS, routeUrl, telUrl, visitText } from '../api';
 
 const SOURCE_NAMES = {osm: 'OpenStreetMap', wikidata: 'Wikidata', wikipedia: 'Wikipedia', overture: 'Overture Maps', ticketon: 'Ticketon', sxodim: 'Sxodim', citypass: 'CityPass Astana', khanshatyr: 'Хан Шатыр', mega_silkway: 'Mega Silk Way', llm: 'ИИ'};
 const DESC_SOURCE = {wikipedia: 'описание из Википедии', osm: 'описание из OSM', template: 'описание собрано из фактов о месте', generated: 'текст ИИ'};
@@ -46,7 +46,7 @@ export default function PlaceCard({ place: p, index = 0, selected, onSelect, sav
     </div>
     <div className="place-content">
       <div className="place-title-row"><button onClick={open} aria-haspopup="dialog"><h3>{p.name}</h3></button>{isNew && <span className="new-place-badge">{tr("Новое")}</span>}</div>
-      {!p.generated && <div className="place-meta"><span><Mode size={14} />{p.distance} · {p.travel}{tr(" мин")}</span><span><Clock3 size={14} />{p.visitRange ? `${p.visitRange[0]}–${p.visitRange[1]}` : p.visit}{tr(" мин на месте")}</span></div>}
+      {!p.generated && <div className="place-meta"><span><Mode size={14} />{p.distance} · {p.travel}{tr(" мин")}</span><span><Clock3 size={14} />{visitText(p)}{tr(" мин на месте")}</span></div>}
       {!p.generated && <div className="card-status"><span className={'hours-chip ' + hoursTone(p)}><i />{shortHours(p)}</span>{tags.map(b => <span key={b} className="story-tag">{tr(BADGE_LABELS[b])}</span>)}</div>}
       <p className="place-why"><span>{tr(p.generated ? "Идея" : "Почему тебе подойдёт")}</span>{p.why}</p>
       {!p.generated && p.action && <div className="place-action"><span><Check size={12} />{tr("Что делать")}</span><p>{p.action}</p></div>}

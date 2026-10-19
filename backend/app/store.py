@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 from dataclasses import dataclass, field
 
 import numpy as np
@@ -53,6 +54,55 @@ CATEGORY_WORDS = {
     "library": "книги читать тихо",
     "coworking": "ноутбук розетки работа",
 }
+
+
+# Overture rows named after a region or an address ("Северный Казахстан, Казахстан", "Fashion Park Almaty, Достык, 40")
+JUNK_PLACE = re.compile(r"^(?:северн|южн|западн|восточн|центральн)\w*\s+казахстан|,\s*[^,]+,\s*\d+\w*\s*$|"
+                        r"^(?:астана|алматы|almaty)\s+(?:ул|пр)\b", re.IGNORECASE)
+_COUNTRY_SUFFIX = re.compile(r",\s*(?:казахстан|kazakhstan|қазақстан)\s*$", re.IGNORECASE)
+
+
+def junk_place(p: dict) -> bool:
+    """True for rows that are not places; also trims a trailing ", Казахстан" from real names."""
+    if JUNK_PLACE.search(p["name"]):
+        return True
+    p["name"] = _COUNTRY_SUFFIX.sub("", p["name"]).strip() or p["name"]
+    return False
+
+
+# big indoor venues that open data leaves unflagged (a theme park category would read as outdoors at −25°C)
+INDOOR_NAMES = re.compile(r"ailand|айленд|думан|happylon|хэппилон|fame city|хан шатыр|khan shatyr", re.IGNORECASE)
+
+
+def _richness(p: dict) -> tuple:
+    return (bool(p.get("description")), bool(p.get("opening_hours")), bool(p.get("wikidata")), p.get("popularity") or 0)
+
+
+def _dedupe(idx: list[int], pois: list[dict], aliases: dict[str, str]) -> list[int]:
+    """One record per venue: the same name within ~200 m is the same place (Ailand was mapped four times)."""
+    groups: dict[str, list[int]] = {}
+    out: list[int] = []
+    for i in idx:
+        p = pois[i]
+        if INDOOR_NAMES.search(p["name"]) and p.get("indoor") is None:
+            p["indoor"] = True
+        if p.get("name_auto"):
+            out.append(i)
+            continue
+        kept = groups.setdefault(fold(p["name"]), [])
+        near = next((k for k, j in enumerate(kept) if abs(pois[j]["lat"] - p["lat"]) < 0.0018
+                     and abs(pois[j]["lon"] - p["lon"]) < 0.0029), None)
+        if near is None:
+            kept.append(i)
+            continue
+        if _richness(p) > _richness(pois[kept[near]]):
+            kept[near], i = i, kept[near]
+        aliases[pois[i]["id"]] = pois[kept[near]]["id"]  # links to the dropped copy follow the kept one
+    for a, b in list(aliases.items()):
+        while b in aliases:
+            b = aliases[b]
+        aliases[a] = b
+    return sorted(out + [i for kept in groups.values() for i in kept])
 
 
 def stem_tokens(text: str) -> list[str]:
@@ -151,6 +201,12 @@ def load_store(embed_model: str | None = None) -> Store:
         else:
             log.warning("embeddings file does not match POIs/model (%s vs %s), dense retrieval off",
                         meta.get("embedding_model"), embed_model)
+    aliases: dict[str, str] = {}
+    keep = _dedupe([i for i, p in enumerate(pois) if not junk_place(p)], pois, aliases)
+    if len(keep) < len(pois):  # region names, addresses and the same venue mapped several times
+        log.info("dropped %d junk/duplicate places", len(pois) - len(keep))
+        pois, docs = [pois[i] for i in keep], [docs[i] for i in keep]
+        emb = emb[keep] if emb is not None else None
     for g in gaz:
         g["keys"] = [fold(k) for k in g["keys"]]
     events = []
@@ -193,6 +249,12 @@ def load_store(embed_model: str | None = None) -> Store:
         emb=emb,
         by_id={p["id"]: i for i, p in enumerate(pois)},
     )
+    for dropped, kept in aliases.items():
+        if kept in st.by_id:
+            st.by_id.setdefault(dropped, st.by_id[kept])
+    for e in st.events:
+        if e.get("poi_id") in aliases:
+            e["poi_id"] = aliases[e["poi_id"]]
     service_path = selected.path / "city_services.json"
     if service_path.exists():
         from data.city_services import load_city_services

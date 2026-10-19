@@ -23,7 +23,7 @@ from app.geo import (SLOW_WALK_M_PER_MIN, WALK_M_PER_MIN, WalkGraph, car_minutes
 from app.hours import opening_status
 from app.i18n import t
 from app.query import Parsed
-from app.evidence import match_food, price_benchmarks, price_comparison_group
+from app.evidence import accepted_details, match_food, price_benchmarks, price_comparison_group
 from app.food import needs_meal_kitchen
 from app.store import Store, stem_tokens
 from app.textnorm import fold
@@ -56,11 +56,13 @@ class Plan:
     funnel: dict[str, int] = field(default_factory=dict)
     graph_used: bool = False
     outside_graph: bool = False
+    estimated_ids: set = field(default_factory=set)  # POIs whose walk time is a straight-line estimate
     transit: bool = False
     evidence_date: dt.date | None = None
     food_requirements: list = field(default_factory=list)
     check_kitchen: bool = False
     food_benchmarks: dict = field(default_factory=dict)
+    food_soft: bool = False  # the dish/price is not confirmed: places shown by type only
 
 
 @dataclass
@@ -86,6 +88,9 @@ def visit_minutes(cat: str, budget: int, mode: str) -> tuple[int, tuple[int, int
     if mode == "car":
         v += 0
     return v, (lo, max(typ, lo))
+
+
+PAID_ENTRY = {"cinema", "karaoke", "theme_park", "water_park", "spa", "zoo_aquarium", "kids_indoor", "active", "theatre", "hookah"}
 
 
 def _need_state(p: dict, need: str, ctx: Context) -> float:
@@ -148,6 +153,7 @@ def compute_reach(store: Store, graph: WalkGraph | None, poi_nodes: np.ndarray |
     else:
         miss = cand
         plan.outside_graph = True
+    plan.estimated_ids = {store.pois[i]["id"] for i in np.nonzero(miss)[0]}
     for i in np.nonzero(miss)[0]:
         dist[i] = fallback_walk_m(store.river, lat0, lon0, store.lat[i], store.lon[i])
     mins = np.ceil(dist / plan.m_per_min)
@@ -193,18 +199,29 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
     benchmarks = price_benchmarks(store.pois, plan.origin, ctx.now.date()) if any(r.kind == "price" for r in parsed.food_requirements) else {}
     plan.food_benchmarks = benchmarks
 
+    food_soft = {"on": False}
+    cheap_wish = any(r.kind == "price" for r in parsed.food_requirements)
+
     def eligible(i: int, t_max: float, relaxed_needs: bool) -> tuple[bool, str | None, dict | None]:
         p = store.pois[i]
         c = CATEGORIES[p["category"]]
         is_target = i in target_idx
         if not np.isfinite(mins[i]) or mins[i] > (plan.budget if is_target else t_max):
             return False, None, None
-        if (parsed.food_requirements or c.group == "food" and plan.check_kitchen) and not match_food(
+        if food_soft["on"]:
+            if c.group != "food" or p["category"] == "sweets" or (cheap_wish and p["category"] == "restaurant"):
+                return False, None, None
+            evidence = accepted_details(p, ctx.now.date())
+            if evidence["menu_items"] or evidence["prices"]:
+                return False, t("rej_food_evidence", lang), None  # published menu/prices already said no
+        elif (parsed.food_requirements or c.group == "food" and plan.check_kitchen) and not match_food(
                 p, parsed.food_requirements, ctx.now.date(), benchmarks.get(price_comparison_group(p,ctx.now.date())),
                 arrive_at=now + dt.timedelta(minutes=float(mins[i])), check_kitchen=plan.check_kitchen).matched:
             return False, t("rej_food_evidence", lang), None
         if plan.with_child and c.adult_only:
             return False, t("rej_kids", lang), None
+        if "free" in needs and (c.group in ("food", "night") or p["category"] in PAID_ENTRY) and p.get("features", {}).get("free") is not True:
+            return False, None, None  # «денег нет»: no cafés, cinemas or ticketed attractions
         if plan.accessibility and p.get("features", {}).get("wheelchair") == "no":
             return False, t("rej_access", lang), None
         if ctx.is_dark and p["category"] in ("park", "garden", "playground") and p.get("features", {}).get("lit") is not True:
@@ -278,8 +295,15 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         req_cats, req_groups = [], set()
         pool, rejected2 = collect(t_max, False)
         rejected += rejected2
+    if not pool and parsed.food_requirements and {r.kind for r in parsed.food_requirements} <= {"price", "style"}:
+        # nothing confirms the dish or the price: show the closest places of the right kind and say so
+        food_soft["on"] = plan.food_soft = True
+        plan.food_requirements = []
+        pool, rejected2 = collect(t_max, False)
+        rejected += rejected2
+        plan.relaxations.append(t("note_food_soft", lang))
     plan.funnel["within_reach"] = int(np.sum(np.isfinite(mins) & (mins <= t_max)))
-    if len(pool) < 3 and not parsed.food_requirements:
+    if len(pool) < 3 and (not parsed.food_requirements or plan.food_soft):
         for factor in (1.5, 2.0):
             t2 = min(plan.t_max * factor, plan.budget * 0.6 if not plan.deadline_min else plan.t_max * factor)
             if t2 <= t_max:
@@ -418,6 +442,8 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         if plan.t_max <= 12:
             w["dist"] = max(w["dist"], 0.3)  # "closer" refinement / tiny budgets  # first-time visitors: iconic places matter more than the nearest ones
         c.score = sum(w[k] * parts[k] for k in parts) / sum(w.values())
+        if c.idx in target_idx:
+            c.score += 0.15  # the place the user named (or an observation deck for a view wish) leads the answer
         parts["cold"] = ctx.max_outdoor_min < 60
         c.parts, c.need_state = parts, ns
 

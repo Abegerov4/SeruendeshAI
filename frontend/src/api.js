@@ -31,8 +31,14 @@ export function roundCoord(x) { return Math.round(x * 1000) / 1000; }
 
 export function formatDistance(m) {
   if (m == null) return '';
-  return m < 1000 ? `${Math.max(10, Math.round(m / 10) * 10)} м` : `${(m / 1000).toFixed(1).replace('.', ',')} км`;
+  const en = typeof document !== 'undefined' && document.documentElement.lang === 'en';  // i18n keeps <html lang> in sync
+  return m < 1000 ? `${Math.max(10, Math.round(m / 10) * 10)} ${en ? 'm' : 'м'}` : `${(m / 1000).toFixed(1).replace('.', en ? '.' : ',')} ${en ? 'km' : 'км'}`;
 }
+
+export const visitText = p => p.visitRange && p.visitRange[0] !== p.visitRange[1] ? `${p.visitRange[0]}–${p.visitRange[1]}` : String(p.visit ?? p.visitRange?.[0] ?? '');
+
+// Commons credits sometimes arrive doubled ("Unknown authorUnknown author")
+const cleanAuthor = a => { const s = (a || '').trim(); const half = s.slice(0, s.length / 2); const one = s.length % 2 === 0 && half && s === half + half ? half : s; return /^unknown author$/i.test(one) ? 'автор не указан' : one; };
 
 const CONFIDENCE_TEXT = {high: 'Часы взяты из данных OSM', low: 'Часы выведены приблизительно — уточни перед выходом', none: 'Часы работы неизвестны'};
 
@@ -52,7 +58,7 @@ export function toPlace(r) {
     description: r.description, descriptionSource: r.description_source, dataSources: r.data_sources || [],
     accessibility: r.accessibility, address: r.address, descriptionUrl: r.description_url || null,
     phone: r.phone || null, instagram: r.instagram || null, cuisine: r.cuisine || [],
-    photo: r.photo || null, image: r.photo?.url || null, cover: coverGroup(r.category_detail),
+    photo: r.photo ? { ...r.photo, author: cleanAuthor(r.photo.author) } : null, image: r.photo?.url || null, cover: coverGroup(r.category_detail),
     imageNote: r.photo ? `Фото: ${r.photo.author}, ${r.photo.license}` : 'Обложка категории, не фото этого места',
   };
 }

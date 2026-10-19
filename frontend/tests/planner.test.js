@@ -50,3 +50,10 @@ test('plan diff and totals use route when present, alternatives otherwise', () =
   assert.deepEqual([d.added, d.removed, d.before, d.after], [['Place c'], ['Place a'], 34, 52]);
   assert.deepEqual(describeContextChange(initialContext, {...initialContext, indoor: true}), ['+ В помещении']);
 });
+
+test('default context: walking, 60 minutes, geolocation first', () => {
+  assert.equal(initialContext.time, 60);
+  assert.equal(initialContext.transport, 'walk');
+  assert.equal(initialContext.kid, false);
+  assert.equal(initialContext.location, 'Моё местоположение');
+});
