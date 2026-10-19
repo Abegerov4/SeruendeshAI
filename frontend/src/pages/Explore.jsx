@@ -15,7 +15,6 @@ import { initialContext } from '../planner';
 import { recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY_LOCATION, routeTo, inAstana, formatDistance, LANDMARK_KEYS, routeIdeas, toPlan } from '../api';
 import { scenarios } from '../data';
 
-const FALLBACK_LANDMARK = 'Район Байтерека';
 const NO_PLACES = [];
 
 // Geolocation is the start of every answer and route; the position is rounded to ~100 m before use
@@ -31,27 +30,33 @@ function urlPreset() {
   } catch { return null; }
 }
 
-function locate() {
-  return new Promise((resolve, reject) => {
-    if (!navigator.geolocation) return reject(Object.assign(Error('unsupported'), { code: 'unsupported' }));
-    navigator.geolocation.getCurrentPosition(
-      pos => resolve({ lat: roundCoord(pos.coords.latitude), lon: roundCoord(pos.coords.longitude), at: Date.now() }),
-      err => reject(Object.assign(Error('denied'), { code: err.code === 1 ? 'denied' : 'unavailable' })),
-      { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 });
-  });
+function position(options) {
+  return new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(
+    pos => resolve({ lat: roundCoord(pos.coords.latitude), lon: roundCoord(pos.coords.longitude), at: Date.now() }),
+    err => reject(Object.assign(Error('denied'), { code: err.code === 1 ? 'denied' : 'unavailable' })), options));
+}
+// Safari on a Mac often misses the high-accuracy fix within the timeout (Wi-Fi positioning only):
+// one more try with a normal fix and a recent cached position before giving up.
+async function locate() {
+  if (!navigator.geolocation) throw Object.assign(Error('unsupported'), { code: 'unsupported' });
+  try { return await position({ enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }); }
+  catch (e) {
+    if (e.code === 'denied') throw e;
+    return position({ enableHighAccuracy: false, timeout: 20000, maximumAge: 300000 });
+  }
 }
 
 const GEO_TEXT = {
   asking: 'Определяю, где ты… Разреши доступ к геопозиции — маршруты строятся от тебя.',
-  denied: 'Без геолокации маршрут строится от ориентира. Разреши доступ к геопозиции для этого сайта.',
-  unavailable: 'Не получилось определить местоположение. Пока считаю от ориентира.',
-  unsupported: 'Браузер не умеет определять местоположение. Пока считаю от ориентира.',
-  outside: 'Похоже, ты не в Астане — пока считаю от ориентира.',
+  denied: 'Нет доступа к геопозиции — маршрут от тебя не построить. Разреши доступ для этого сайта или напиши, возле чего ты.',
+  unavailable: 'Не получилось определить местоположение. В Safari: Системные настройки → Конфиденциальность → Службы геолокации → Safari. Или напиши, возле чего ты.',
+  unsupported: 'Браузер не умеет определять местоположение. Напиши, возле чего ты, или выбери точку старта.',
+  outside: 'Похоже, ты не в Астане. Напиши, возле чего ты в городе, или выбери точку старта.',
 };
 
 function GeoNotice({ state, label, onRetry }) {
   if (state === 'ok') return null;
-  return <details className={'geo-notice geo-compact geo-' + state}><summary><MapPin size={14}/>{tr(state === 'asking' ? 'Определяю точку старта…' : 'Старт от ориентира')}<ChevronDown size={12}/></summary><div role="status"><LocateFixed size={16} /><span>{tr(GEO_TEXT[state])}{state !== 'asking' && label ? ' ' + tr('Сейчас') + ': ' + tr(label) + '.' : ''}</span>
+  return <details className={'geo-notice geo-compact geo-' + state}><summary><MapPin size={14}/>{tr(state === 'asking' ? 'Определяю точку старта…' : 'Геолокация не включена')}<ChevronDown size={12}/></summary><div role="status"><LocateFixed size={16} /><span>{tr(GEO_TEXT[state])}{state !== 'asking' && label ? ' ' + tr('Сейчас') + ': ' + tr(label) + '.' : ''}</span>
     {state !== 'asking' && state !== 'unsupported' && <button onClick={onRetry}>{tr('Включить геолокацию')}</button>}</div></details>;
 }
 
@@ -112,9 +117,9 @@ export default function Explore({ saved, toggleSaved }) {
     if (c.coords && Date.now() - (c.coords.at || 0) < 120000) return c;  // fresh enough
     try {
       const coords = await locate();
-      if (!inAstana(coords)) { setGeo('outside'); return { ...c, location: FALLBACK_LANDMARK, coords: null }; }
+      if (!inAstana(coords)) { setGeo('outside'); return { ...c, coords: null }; }
       setGeo('ok'); setGeoError(''); return { ...c, coords };
-    } catch (e) { setGeo(e.code || 'unavailable'); return { ...c, location: FALLBACK_LANDMARK, coords: null }; }
+    } catch (e) { setGeo(e.code || 'unavailable'); return { ...c, coords: null }; }  // no silent landmark: the next request asks again
   }
   async function retryGeo() {
     setGeo('asking');

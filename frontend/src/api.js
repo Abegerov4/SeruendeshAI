@@ -93,7 +93,7 @@ export function toPlace(r) {
 export function buildRequest(text, ctx, lang) {
   const body = {query: text, lang, refine: [], profile: {with_kids: !!ctx.kid, tourist: false, accessibility: !!ctx.accessible, group_size: 1}};
   if (ctx.location === MY_LOCATION && ctx.coords) body.location = {lat: roundCoord(ctx.coords.lat), lon: roundCoord(ctx.coords.lon)};
-  else body.landmark = LANDMARK_KEYS[ctx.location] || 'baiterek';
+  else if (LANDMARK_KEYS[ctx.location]) body.landmark = LANDMARK_KEYS[ctx.location];  // no GPS and no chosen start: the API asks where the user is
   const home = loadHome();
   if (home && (ctx.location === HOME || HOME_WORDS.test(text || ''))) {
     body.home = {lat: roundCoord(home.lat), lon: roundCoord(home.lon), label: (home.label || '').slice(0, 120)};
@@ -145,7 +145,7 @@ export async function recommend(text, ctx, lang, {signal} = {}) {
 export async function routeTo(place, ctx, from) {
   const body = {poi_id: place.id, mode: ctx.transport === 'car' ? 'car' : 'walk'};
   if (from) body.location = {lat: roundCoord(from.lat), lon: roundCoord(from.lon)};
-  else body.landmark = LANDMARK_KEYS[ctx.location] || 'baiterek';
+  else if (LANDMARK_KEYS[ctx.location]) body.landmark = LANDMARK_KEYS[ctx.location];  // no GPS and no chosen start: the API asks where the user is
   const res = await fetch(`${API_BASE}/api/route`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
   if (!res.ok) throw Error('route-' + res.status);
   return res.json();

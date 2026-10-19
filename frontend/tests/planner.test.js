@@ -20,7 +20,8 @@ test('untouched UI defaults do not override the text; refinements are sent', () 
   assert.equal(body.time_budget_min, undefined);
   assert.equal(body.mode, undefined);
   assert.deepEqual(body.refine, ['closer', 'indoor']);
-  assert.equal(body.landmark, 'baiterek');
+  assert.equal(body.landmark, undefined);  // no GPS yet: no silent Baiterek, the API asks where the user is
+  assert.equal(body.location, undefined);
   const touched = buildRequest('x', {...initialContext, time: 30, touched: {time: true, transport: false}}, 'kk');
   assert.equal(touched.time_budget_min, 30);
   assert.equal(touched.lang, 'kk');
