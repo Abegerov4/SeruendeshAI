@@ -8,7 +8,7 @@
 
 ```bash
 uv venv --python 3.12 .venv
-uv pip install --python .venv/bin/python -r requirements-integration.txt
+uv pip install --python .venv/bin/python -r backend/pyproject.toml -r requirements-integration.txt
 cd frontend
 npm ci --no-audit --no-fund
 npm run build
