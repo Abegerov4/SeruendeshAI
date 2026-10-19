@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "dataset_id": "astana-2gis-2026-10-19",
+  "validation": "passed",
+  "checked_at": "2026-10-19T14:19:43.748560+00:00",
+  "record_count": 470,
+  "unique_object_ids": 470,
+  "column_count": 98,
+  "source_provider_counts": {
+    "2gis": 470
+  },
+  "category_counts": {
+    "parks": 53,
+    "culture": 83,
+    "sports": 83,
+    "tourism": 83,
+    "leisure": 84,
+    "food": 84
+  },
+  "object_ids_sha256": "5bb9fd9e245b11cf082000dd097a7b2970c4d4607b3a3e9a8a3812f4e8195d5a",
+  "object_ids_fingerprint_encoding": "SHA-256 of UTF-8 compact JSON sorted object ID strings",
+  "checks": {
+    "json_schema": true,
+    "exact_approved_2gis_id_set": true,
+    "numeric_unique_ids": true,
+    "exact_public_source_object_paths": true,
+    "only_public_2gis_source_provenance": true,
+    "photo_url_object_ids_match": true,
+    "photo_reuse_permissions_unknown": true,
+    "removed_mixed_origin_columns": true,
+    "no_private_paths_or_credentials": true,
+    "no_image_bytes_or_code": true
+  },
+  "menu_link_places": 121,
+  "menu_inventory_items": 0,
+  "photo_candidate_places": 465,
+  "photo_candidate_urls": 471,
+  "image_bytes_included": 0,
+  "data_sha256": "8f8f7a82ea5047dd7e7166932d413e6e9cf9697941fc782aecc4e3c2a223bfc5",
+  "schema_sha256": "af33f1ae6342e38eb98b67ef91452d370a2f9adf96e31490a635984b718fed07",
+  "coverage_sha256": "5bc71ac5afb69fe2739029e9dc88b9bae3c596b14455c6a4bc850b99656772a5"
+}

@@ -1,0 +1,805 @@
+{
+  "schema_version": 1,
+  "dataset_id": "astana-2gis-2026-10-19",
+  "record_count": 470,
+  "column_count": 98,
+  "category_counts": {
+    "parks": 53,
+    "culture": 83,
+    "sports": 83,
+    "tourism": 83,
+    "leisure": 84,
+    "food": 84
+  },
+  "menu_link_places": 121,
+  "menu_inventory_items": 0,
+  "photo_candidate_places": 465,
+  "photo_candidate_urls": 471,
+  "image_bytes_included": 0,
+  "columns": {
+    "object_id": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "object_kind": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "name": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "address": {
+      "schema_exists": true,
+      "populated": 340,
+      "published": 340,
+      "unknown": 130,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "address_comment": {
+      "schema_exists": true,
+      "populated": 117,
+      "published": 117,
+      "unknown": 353,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "source_url": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "source_path": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "source_captured_at": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "average_check_currency": {
+      "schema_exists": true,
+      "populated": 110,
+      "published": 110,
+      "unknown": 360,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "average_check_text": {
+      "schema_exists": true,
+      "populated": 110,
+      "published": 110,
+      "unknown": 360,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "average_check_price_kind": {
+      "schema_exists": true,
+      "populated": 110,
+      "published": 110,
+      "unknown": 360,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "business_lunch_currency": {
+      "schema_exists": true,
+      "populated": 23,
+      "published": 23,
+      "unknown": 447,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "business_lunch_price_text": {
+      "schema_exists": true,
+      "populated": 23,
+      "published": 23,
+      "unknown": 447,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "business_lunch_price_kind": {
+      "schema_exists": true,
+      "populated": 23,
+      "published": 23,
+      "unknown": 447,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "business_lunch_hours_text": {
+      "schema_exists": true,
+      "populated": 6,
+      "published": 6,
+      "unknown": 464,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "complete_meal_total_currency": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "booking_policy_text": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "age_policy_text": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "access_policy_text": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "ticket_conditions_text": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "admission_price_currency": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "admission_price_text": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "source_provider": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "primary_category": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "rating_status_2gis": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "popularity_status": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "popularity_count_kind": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "lat": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "lon": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "rating_2gis": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "average_check_amount": {
+      "schema_exists": true,
+      "populated": 110,
+      "published": 110,
+      "unknown": 360,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "average_check_min_amount": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "average_check_max_amount": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "business_lunch_price_amount": {
+      "schema_exists": true,
+      "populated": 23,
+      "published": 23,
+      "unknown": 447,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "business_lunch_max_amount": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "complete_meal_total_amount": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "admission_price_amount": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "age_min_years": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "age_max_years": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "organization_rating_2gis": {
+      "schema_exists": true,
+      "populated": 352,
+      "published": 352,
+      "unknown": 118,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "popularity_score": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "rating_count_2gis": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "review_count_2gis": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "organization_rating_count_2gis": {
+      "schema_exists": true,
+      "populated": 352,
+      "published": 352,
+      "unknown": 118,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "organization_review_count_2gis": {
+      "schema_exists": true,
+      "populated": 352,
+      "published": 352,
+      "unknown": 118,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "popularity_rank_per_category": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "selection_order_in_category": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "category_names": {
+      "schema_exists": true,
+      "populated": 447,
+      "published": 447,
+      "unknown": 23,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "district_names": {
+      "schema_exists": true,
+      "populated": 429,
+      "published": 429,
+      "unknown": 41,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "phones": {
+      "schema_exists": true,
+      "populated": 326,
+      "published": 326,
+      "unknown": 144,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "websites": {
+      "schema_exists": true,
+      "populated": 182,
+      "published": 182,
+      "unknown": 288,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "emails": {
+      "schema_exists": true,
+      "populated": 54,
+      "published": 54,
+      "unknown": 416,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "social_links": {
+      "schema_exists": true,
+      "populated": 329,
+      "published": 329,
+      "unknown": 141,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "whatsapp_links": {
+      "schema_exists": true,
+      "populated": 255,
+      "published": 255,
+      "unknown": 215,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "menu_urls": {
+      "schema_exists": true,
+      "populated": 121,
+      "published": 121,
+      "unknown": 349,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "cuisine_names": {
+      "schema_exists": true,
+      "populated": 84,
+      "published": 84,
+      "unknown": 386,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "food_assortment": {
+      "schema_exists": true,
+      "populated": 114,
+      "published": 114,
+      "unknown": 356,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "source_attribute_tags": {
+      "schema_exists": true,
+      "populated": 335,
+      "published": 335,
+      "unknown": 135,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "menu_link_details": {
+      "schema_exists": true,
+      "populated": 121,
+      "published": 121,
+      "unknown": 349,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "photo_candidates": {
+      "schema_exists": true,
+      "populated": 465,
+      "published": 465,
+      "unknown": 5,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "popularity_signals": {
+      "schema_exists": true,
+      "populated": 470,
+      "published": 470,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "opening_hours": {
+      "schema_exists": true,
+      "populated": 343,
+      "published": 343,
+      "unknown": 127,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "wifi": {
+      "schema_exists": true,
+      "populated": 115,
+      "published": 115,
+      "unknown": 355,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "free_wifi": {
+      "schema_exists": true,
+      "populated": 29,
+      "published": 29,
+      "unknown": 441,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "sockets": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "quiet": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "laptop_allowed": {
+      "schema_exists": true,
+      "populated": 26,
+      "published": 26,
+      "unknown": 444,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "kids_area": {
+      "schema_exists": true,
+      "populated": 55,
+      "published": 55,
+      "unknown": 415,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "kids_menu": {
+      "schema_exists": true,
+      "populated": 60,
+      "published": 60,
+      "unknown": 410,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "kid_friendly": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "wheelchair_accessible": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "accessible_entrance": {
+      "schema_exists": true,
+      "populated": 154,
+      "published": 154,
+      "unknown": 316,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "ramp": {
+      "schema_exists": true,
+      "populated": 152,
+      "published": 152,
+      "unknown": 318,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "wide_elevator": {
+      "schema_exists": true,
+      "populated": 44,
+      "published": 44,
+      "unknown": 426,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "accessible_toilet": {
+      "schema_exists": true,
+      "populated": 34,
+      "published": 34,
+      "unknown": 436,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "automatic_door": {
+      "schema_exists": true,
+      "populated": 30,
+      "published": 30,
+      "unknown": 440,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "platform_lift": {
+      "schema_exists": true,
+      "populated": 18,
+      "published": 18,
+      "unknown": 452,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "staff_call_button": {
+      "schema_exists": true,
+      "populated": 21,
+      "published": 21,
+      "unknown": 449,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "toilets": {
+      "schema_exists": true,
+      "populated": 5,
+      "published": 5,
+      "unknown": 465,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "terrace": {
+      "schema_exists": true,
+      "populated": 49,
+      "published": 49,
+      "unknown": 421,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "takeaway": {
+      "schema_exists": true,
+      "populated": 103,
+      "published": 103,
+      "unknown": 367,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "delivery": {
+      "schema_exists": true,
+      "populated": 103,
+      "published": 103,
+      "unknown": 367,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "reservations": {
+      "schema_exists": true,
+      "populated": 79,
+      "published": 79,
+      "unknown": 391,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "business_lunch_available": {
+      "schema_exists": true,
+      "populated": 30,
+      "published": 30,
+      "unknown": 440,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "delivery_business_lunch_available": {
+      "schema_exists": true,
+      "populated": 8,
+      "published": 8,
+      "unknown": 462,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "halal": {
+      "schema_exists": true,
+      "populated": 16,
+      "published": 16,
+      "unknown": 454,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "vegetarian_options": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "vegan_options": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "live_music": {
+      "schema_exists": true,
+      "populated": 27,
+      "published": 27,
+      "unknown": 443,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "parking": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "pet_friendly": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "card_payment": {
+      "schema_exists": true,
+      "populated": 268,
+      "published": 268,
+      "unknown": 202,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "cash_payment": {
+      "schema_exists": true,
+      "populated": 291,
+      "published": 291,
+      "unknown": 179,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "qr_payment": {
+      "schema_exists": true,
+      "populated": 245,
+      "published": 245,
+      "unknown": 225,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "paid_entry": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "entry_free": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "is_closed_source": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    },
+    "is_active_source": {
+      "schema_exists": true,
+      "populated": 0,
+      "published": 0,
+      "unknown": 470,
+      "conflicting": 0,
+      "not_applicable": 0
+    }
+  }
+}

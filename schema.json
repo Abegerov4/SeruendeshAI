@@ -1,0 +1,2701 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Astana public 2GIS observations: 470 records, 98 columns",
+  "$defs": {
+    "provenance": {
+      "type": "object",
+      "required": [
+        "source_url",
+        "captured_at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_tag": {
+          "type": "string"
+        },
+        "evidence_level": {
+          "type": "string"
+        },
+        "source_object_id": {
+          "type": "string"
+        },
+        "observation_status": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string",
+          "pattern": "^https://2gis\\.kz/astana/"
+        },
+        "review_status": {
+          "type": "string"
+        },
+        "verification_status": {
+          "type": "string"
+        },
+        "captured_at": {
+          "type": "string"
+        },
+        "public_capture_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "raw_field": {
+          "type": "string"
+        },
+        "source_text": {
+          "type": "string"
+        },
+        "source_provider": {
+          "const": "2gis"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "schema_version",
+    "dataset_id",
+    "source_provider",
+    "source_url",
+    "observation_date",
+    "generated_at",
+    "record_count",
+    "columns",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "dataset_id": {
+      "const": "astana-2gis-2026-10-19"
+    },
+    "source_provider": {
+      "const": "2gis"
+    },
+    "source_url": {
+      "const": "https://2gis.kz/astana"
+    },
+    "observation_date": {
+      "const": "2026-10-19"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "record_count": {
+      "const": 470
+    },
+    "columns": {
+      "type": "array",
+      "minItems": 98,
+      "maxItems": 98,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "type",
+          "description"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "object_id",
+              "object_kind",
+              "name",
+              "address",
+              "address_comment",
+              "source_url",
+              "source_path",
+              "source_captured_at",
+              "average_check_currency",
+              "average_check_text",
+              "average_check_price_kind",
+              "business_lunch_currency",
+              "business_lunch_price_text",
+              "business_lunch_price_kind",
+              "business_lunch_hours_text",
+              "complete_meal_total_currency",
+              "booking_policy_text",
+              "age_policy_text",
+              "access_policy_text",
+              "ticket_conditions_text",
+              "admission_price_currency",
+              "admission_price_text",
+              "source_provider",
+              "primary_category",
+              "rating_status_2gis",
+              "popularity_status",
+              "popularity_count_kind",
+              "lat",
+              "lon",
+              "rating_2gis",
+              "average_check_amount",
+              "average_check_min_amount",
+              "average_check_max_amount",
+              "business_lunch_price_amount",
+              "business_lunch_max_amount",
+              "complete_meal_total_amount",
+              "admission_price_amount",
+              "age_min_years",
+              "age_max_years",
+              "organization_rating_2gis",
+              "popularity_score",
+              "rating_count_2gis",
+              "review_count_2gis",
+              "organization_rating_count_2gis",
+              "organization_review_count_2gis",
+              "popularity_rank_per_category",
+              "selection_order_in_category",
+              "category_names",
+              "district_names",
+              "phones",
+              "websites",
+              "emails",
+              "social_links",
+              "whatsapp_links",
+              "menu_urls",
+              "cuisine_names",
+              "food_assortment",
+              "source_attribute_tags",
+              "menu_link_details",
+              "photo_candidates",
+              "popularity_signals",
+              "opening_hours",
+              "wifi",
+              "free_wifi",
+              "sockets",
+              "quiet",
+              "laptop_allowed",
+              "kids_area",
+              "kids_menu",
+              "kid_friendly",
+              "wheelchair_accessible",
+              "accessible_entrance",
+              "ramp",
+              "wide_elevator",
+              "accessible_toilet",
+              "automatic_door",
+              "platform_lift",
+              "staff_call_button",
+              "toilets",
+              "terrace",
+              "takeaway",
+              "delivery",
+              "reservations",
+              "business_lunch_available",
+              "delivery_business_lunch_available",
+              "halal",
+              "vegetarian_options",
+              "vegan_options",
+              "live_music",
+              "parking",
+              "pet_friendly",
+              "card_payment",
+              "cash_payment",
+              "qr_payment",
+              "paid_entry",
+              "entry_free",
+              "is_closed_source",
+              "is_active_source"
+            ]
+          },
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 470,
+      "maxItems": 470,
+      "items": {
+        "type": "object",
+        "required": [
+          "object_id",
+          "object_kind",
+          "name",
+          "address",
+          "address_comment",
+          "source_url",
+          "source_path",
+          "source_captured_at",
+          "average_check_currency",
+          "average_check_text",
+          "average_check_price_kind",
+          "business_lunch_currency",
+          "business_lunch_price_text",
+          "business_lunch_price_kind",
+          "business_lunch_hours_text",
+          "complete_meal_total_currency",
+          "booking_policy_text",
+          "age_policy_text",
+          "access_policy_text",
+          "ticket_conditions_text",
+          "admission_price_currency",
+          "admission_price_text",
+          "source_provider",
+          "primary_category",
+          "rating_status_2gis",
+          "popularity_status",
+          "popularity_count_kind",
+          "lat",
+          "lon",
+          "rating_2gis",
+          "average_check_amount",
+          "average_check_min_amount",
+          "average_check_max_amount",
+          "business_lunch_price_amount",
+          "business_lunch_max_amount",
+          "complete_meal_total_amount",
+          "admission_price_amount",
+          "age_min_years",
+          "age_max_years",
+          "organization_rating_2gis",
+          "popularity_score",
+          "rating_count_2gis",
+          "review_count_2gis",
+          "organization_rating_count_2gis",
+          "organization_review_count_2gis",
+          "popularity_rank_per_category",
+          "selection_order_in_category",
+          "category_names",
+          "district_names",
+          "phones",
+          "websites",
+          "emails",
+          "social_links",
+          "whatsapp_links",
+          "menu_urls",
+          "cuisine_names",
+          "food_assortment",
+          "source_attribute_tags",
+          "menu_link_details",
+          "photo_candidates",
+          "popularity_signals",
+          "opening_hours",
+          "wifi",
+          "free_wifi",
+          "sockets",
+          "quiet",
+          "laptop_allowed",
+          "kids_area",
+          "kids_menu",
+          "kid_friendly",
+          "wheelchair_accessible",
+          "accessible_entrance",
+          "ramp",
+          "wide_elevator",
+          "accessible_toilet",
+          "automatic_door",
+          "platform_lift",
+          "staff_call_button",
+          "toilets",
+          "terrace",
+          "takeaway",
+          "delivery",
+          "reservations",
+          "business_lunch_available",
+          "delivery_business_lunch_available",
+          "halal",
+          "vegetarian_options",
+          "vegan_options",
+          "live_music",
+          "parking",
+          "pet_friendly",
+          "card_payment",
+          "cash_payment",
+          "qr_payment",
+          "paid_entry",
+          "entry_free",
+          "is_closed_source",
+          "is_active_source",
+          "field_status",
+          "field_provenance"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "object_id": {
+            "type": "string",
+            "pattern": "^\\d+$",
+            "description": "Числовой ID объекта 2ГИС"
+          },
+          "object_kind": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Вид публичного объекта 2ГИС: firm/geo"
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Название конкретного объекта"
+          },
+          "address": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Опубликованный адрес"
+          },
+          "address_comment": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Этаж/корпус/уточнение источника"
+          },
+          "source_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Страница получения сведений"
+          },
+          "source_path": {
+            "type": "string",
+            "pattern": "^/astana/(firm|geo)/\\d+$"
+          },
+          "source_captured_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Время получения, не проверка работы"
+          },
+          "average_check_currency": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Валюта опубликованного среднего чека"
+          },
+          "average_check_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Исходный текст среднего чека"
+          },
+          "average_check_price_kind": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "average_check/from/range"
+          },
+          "business_lunch_currency": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Валюта опубликованной цены ланча"
+          },
+          "business_lunch_price_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Исходный текст цены ланча"
+          },
+          "business_lunch_price_kind": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "exact/from/range"
+          },
+          "business_lunch_hours_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Опубликованное окно ланча без выдуманных дней недели"
+          },
+          "complete_meal_total_currency": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Валюта подтверждённого полного предложения"
+          },
+          "booking_policy_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Опубликованные условия записи без вывода об обязательности"
+          },
+          "age_policy_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Опубликованные возрастные условия"
+          },
+          "access_policy_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Опубликованные условия доступа"
+          },
+          "ticket_conditions_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Опубликованные условия билета"
+          },
+          "admission_price_currency": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Валюта входного тарифа"
+          },
+          "admission_price_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Исходный текст входного тарифа"
+          },
+          "source_provider": {
+            "const": "2gis",
+            "description": "Поставщик данных: 2ГИС"
+          },
+          "primary_category": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Категория замороженного отбора"
+          },
+          "rating_status_2gis": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "rated/unrated/zero_without_count_confirmation; ноль не показывается как ноль звёзд"
+          },
+          "popularity_status": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Состояние опубликованного сигнала популярности"
+          },
+          "popularity_count_kind": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Какая опубликованная величина использована"
+          },
+          "lat": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Широта источника"
+          },
+          "lon": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Долгота источника"
+          },
+          "rating_2gis": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Рейтинг именно 2ГИС"
+          },
+          "average_check_amount": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Средний чек, не стоимость блюда/обеда"
+          },
+          "average_check_min_amount": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Нижняя граница опубликованного диапазона среднего чека"
+          },
+          "average_check_max_amount": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Верхняя граница опубликованного диапазона среднего чека"
+          },
+          "business_lunch_price_amount": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Цена или нижняя граница ланча, см. price_kind"
+          },
+          "business_lunch_max_amount": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Верхняя граница диапазона ланча"
+          },
+          "complete_meal_total_amount": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Только явно подтверждённый полный итог; из среднего чека не выводится"
+          },
+          "admission_price_amount": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Явно опубликованный входной тариф"
+          },
+          "age_min_years": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Явно опубликованный минимальный возраст"
+          },
+          "age_max_years": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Явно опубликованный максимальный возраст"
+          },
+          "organization_rating_2gis": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Рейтинг организации/сети отдельно от филиала"
+          },
+          "popularity_score": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Зафиксированный показатель отбора"
+          },
+          "rating_count_2gis": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Число оценок, отдельно от отзывов"
+          },
+          "review_count_2gis": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Число отзывов, отдельно от оценок"
+          },
+          "organization_rating_count_2gis": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Число оценок организации/сети"
+          },
+          "organization_review_count_2gis": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Число отзывов организации/сети"
+          },
+          "popularity_rank_per_category": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Ранг по опубликованному показателю; неизвестный остаётся null"
+          },
+          "selection_order_in_category": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Порядок в плане отбора, не равен рейтингу"
+          },
+          "category_names": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Рубрики источника"
+          },
+          "district_names": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Административные районы источника"
+          },
+          "phones": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Опубликованные телефоны"
+          },
+          "websites": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Прямые сайты организаций"
+          },
+          "emails": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Email"
+          },
+          "social_links": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Публичные социальные ссылки"
+          },
+          "whatsapp_links": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Прямые WhatsApp-ссылки"
+          },
+          "menu_urls": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Опубликованные ссылки меню; наличие ссылки не означает наличие позиций"
+          },
+          "cuisine_names": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Опубликованные кухни"
+          },
+          "food_assortment": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Заявленный ассортимент, не полное меню"
+          },
+          "source_attribute_tags": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Теги исходных признаков для дальнейшего разбора"
+          },
+          "menu_link_details": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Ссылки меню с владельцем домена, видом ссылки и исходным подтверждением",
+            "items": {
+              "type": "object",
+              "required": [
+                "url",
+                "provenance"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "link_kind": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "source_host": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "provenance": {
+                  "$ref": "#/$defs/provenance"
+                }
+              }
+            }
+          },
+          "photo_candidates": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Кандидаты источника, не доказательство права повторного использования",
+            "items": {
+              "type": "object",
+              "required": [
+                "object_id",
+                "object_kind",
+                "url",
+                "source_url",
+                "license_status",
+                "reuse_rights_confirmed",
+                "private_review_only"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "object_id": {
+                  "type": "string"
+                },
+                "object_kind": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^https://i\\d+\\.photo\\.2gis\\.com/main/(branch|geo)/\\d+/\\d+/[A-Za-z0-9_-]+$"
+                },
+                "media_kind": {
+                  "type": "string"
+                },
+                "album_subtype": {
+                  "type": "string"
+                },
+                "source_url": {
+                  "type": "string"
+                },
+                "captured_at": {
+                  "type": "string"
+                },
+                "review_status": {
+                  "type": "string"
+                },
+                "source_album_photo_count": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "license_status": {
+                  "const": "unknown"
+                },
+                "reuse_rights_confirmed": {
+                  "const": false
+                },
+                "private_review_only": {
+                  "const": true
+                },
+                "provenance": {
+                  "$ref": "#/$defs/provenance"
+                }
+              }
+            }
+          },
+          "popularity_signals": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Исходные показатели популярности с происхождением",
+            "items": {
+              "type": "object",
+              "required": [
+                "field",
+                "value",
+                "provenance"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "number"
+                },
+                "provenance": {
+                  "$ref": "#/$defs/provenance"
+                }
+              }
+            }
+          },
+          "opening_hours": {
+            "type": [
+              "object",
+              "string",
+              "null"
+            ],
+            "description": "Исходное расписание; кухня и доступность сейчас не выводятся"
+          },
+          "wifi": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "free_wifi": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "sockets": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "quiet": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "laptop_allowed": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "kids_area": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "kids_menu": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "kid_friendly": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "wheelchair_accessible": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "accessible_entrance": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "ramp": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "wide_elevator": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "accessible_toilet": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "automatic_door": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "platform_lift": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "staff_call_button": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "toilets": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "terrace": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "takeaway": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "delivery": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "reservations": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "business_lunch_available": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "delivery_business_lunch_available": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "halal": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "vegetarian_options": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "vegan_options": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "live_music": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "parking": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "pet_friendly": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "card_payment": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "cash_payment": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "qr_payment": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "paid_entry": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "entry_free": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "is_closed_source": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "is_active_source": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Только явный опубликованный признак; отсутствие остаётся unknown"
+          },
+          "field_status": {
+            "type": "object",
+            "required": [
+              "object_id",
+              "object_kind",
+              "name",
+              "address",
+              "address_comment",
+              "source_url",
+              "source_path",
+              "source_captured_at",
+              "average_check_currency",
+              "average_check_text",
+              "average_check_price_kind",
+              "business_lunch_currency",
+              "business_lunch_price_text",
+              "business_lunch_price_kind",
+              "business_lunch_hours_text",
+              "complete_meal_total_currency",
+              "booking_policy_text",
+              "age_policy_text",
+              "access_policy_text",
+              "ticket_conditions_text",
+              "admission_price_currency",
+              "admission_price_text",
+              "source_provider",
+              "primary_category",
+              "rating_status_2gis",
+              "popularity_status",
+              "popularity_count_kind",
+              "lat",
+              "lon",
+              "rating_2gis",
+              "average_check_amount",
+              "average_check_min_amount",
+              "average_check_max_amount",
+              "business_lunch_price_amount",
+              "business_lunch_max_amount",
+              "complete_meal_total_amount",
+              "admission_price_amount",
+              "age_min_years",
+              "age_max_years",
+              "organization_rating_2gis",
+              "popularity_score",
+              "rating_count_2gis",
+              "review_count_2gis",
+              "organization_rating_count_2gis",
+              "organization_review_count_2gis",
+              "popularity_rank_per_category",
+              "selection_order_in_category",
+              "category_names",
+              "district_names",
+              "phones",
+              "websites",
+              "emails",
+              "social_links",
+              "whatsapp_links",
+              "menu_urls",
+              "cuisine_names",
+              "food_assortment",
+              "source_attribute_tags",
+              "menu_link_details",
+              "photo_candidates",
+              "popularity_signals",
+              "opening_hours",
+              "wifi",
+              "free_wifi",
+              "sockets",
+              "quiet",
+              "laptop_allowed",
+              "kids_area",
+              "kids_menu",
+              "kid_friendly",
+              "wheelchair_accessible",
+              "accessible_entrance",
+              "ramp",
+              "wide_elevator",
+              "accessible_toilet",
+              "automatic_door",
+              "platform_lift",
+              "staff_call_button",
+              "toilets",
+              "terrace",
+              "takeaway",
+              "delivery",
+              "reservations",
+              "business_lunch_available",
+              "delivery_business_lunch_available",
+              "halal",
+              "vegetarian_options",
+              "vegan_options",
+              "live_music",
+              "parking",
+              "pet_friendly",
+              "card_payment",
+              "cash_payment",
+              "qr_payment",
+              "paid_entry",
+              "entry_free",
+              "is_closed_source",
+              "is_active_source"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "object_id": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "object_kind": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "name": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "address": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "address_comment": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "source_url": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "source_path": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "source_captured_at": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "average_check_currency": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "average_check_text": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "average_check_price_kind": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "business_lunch_currency": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "business_lunch_price_text": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "business_lunch_price_kind": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "business_lunch_hours_text": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "complete_meal_total_currency": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "booking_policy_text": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "age_policy_text": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "access_policy_text": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "ticket_conditions_text": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "admission_price_currency": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "admission_price_text": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "source_provider": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "primary_category": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "rating_status_2gis": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "popularity_status": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "popularity_count_kind": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "lat": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "lon": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "rating_2gis": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "average_check_amount": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "average_check_min_amount": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "average_check_max_amount": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "business_lunch_price_amount": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "business_lunch_max_amount": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "complete_meal_total_amount": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "admission_price_amount": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "age_min_years": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "age_max_years": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "organization_rating_2gis": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "popularity_score": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "rating_count_2gis": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "review_count_2gis": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "organization_rating_count_2gis": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "organization_review_count_2gis": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "popularity_rank_per_category": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "selection_order_in_category": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "category_names": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "district_names": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "phones": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "websites": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "emails": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "social_links": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "whatsapp_links": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "menu_urls": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "cuisine_names": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "food_assortment": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "source_attribute_tags": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "menu_link_details": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "photo_candidates": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "popularity_signals": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "opening_hours": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "wifi": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "free_wifi": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "sockets": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "quiet": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "laptop_allowed": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "kids_area": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "kids_menu": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "kid_friendly": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "wheelchair_accessible": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "accessible_entrance": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "ramp": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "wide_elevator": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "accessible_toilet": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "automatic_door": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "platform_lift": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "staff_call_button": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "toilets": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "terrace": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "takeaway": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "delivery": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "reservations": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "business_lunch_available": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "delivery_business_lunch_available": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "halal": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "vegetarian_options": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "vegan_options": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "live_music": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "parking": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "pet_friendly": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "card_payment": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "cash_payment": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "qr_payment": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "paid_entry": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "entry_free": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "is_closed_source": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              },
+              "is_active_source": {
+                "enum": [
+                  "published",
+                  "unknown",
+                  "conflicting",
+                  "not_applicable"
+                ]
+              }
+            }
+          },
+          "field_provenance": {
+            "type": "object",
+            "required": [
+              "object_id",
+              "object_kind",
+              "name",
+              "address",
+              "address_comment",
+              "source_url",
+              "source_path",
+              "source_captured_at",
+              "average_check_currency",
+              "average_check_text",
+              "average_check_price_kind",
+              "business_lunch_currency",
+              "business_lunch_price_text",
+              "business_lunch_price_kind",
+              "business_lunch_hours_text",
+              "complete_meal_total_currency",
+              "booking_policy_text",
+              "age_policy_text",
+              "access_policy_text",
+              "ticket_conditions_text",
+              "admission_price_currency",
+              "admission_price_text",
+              "source_provider",
+              "primary_category",
+              "rating_status_2gis",
+              "popularity_status",
+              "popularity_count_kind",
+              "lat",
+              "lon",
+              "rating_2gis",
+              "average_check_amount",
+              "average_check_min_amount",
+              "average_check_max_amount",
+              "business_lunch_price_amount",
+              "business_lunch_max_amount",
+              "complete_meal_total_amount",
+              "admission_price_amount",
+              "age_min_years",
+              "age_max_years",
+              "organization_rating_2gis",
+              "popularity_score",
+              "rating_count_2gis",
+              "review_count_2gis",
+              "organization_rating_count_2gis",
+              "organization_review_count_2gis",
+              "popularity_rank_per_category",
+              "selection_order_in_category",
+              "category_names",
+              "district_names",
+              "phones",
+              "websites",
+              "emails",
+              "social_links",
+              "whatsapp_links",
+              "menu_urls",
+              "cuisine_names",
+              "food_assortment",
+              "source_attribute_tags",
+              "menu_link_details",
+              "photo_candidates",
+              "popularity_signals",
+              "opening_hours",
+              "wifi",
+              "free_wifi",
+              "sockets",
+              "quiet",
+              "laptop_allowed",
+              "kids_area",
+              "kids_menu",
+              "kid_friendly",
+              "wheelchair_accessible",
+              "accessible_entrance",
+              "ramp",
+              "wide_elevator",
+              "accessible_toilet",
+              "automatic_door",
+              "platform_lift",
+              "staff_call_button",
+              "toilets",
+              "terrace",
+              "takeaway",
+              "delivery",
+              "reservations",
+              "business_lunch_available",
+              "delivery_business_lunch_available",
+              "halal",
+              "vegetarian_options",
+              "vegan_options",
+              "live_music",
+              "parking",
+              "pet_friendly",
+              "card_payment",
+              "cash_payment",
+              "qr_payment",
+              "paid_entry",
+              "entry_free",
+              "is_closed_source",
+              "is_active_source"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "object_id": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "object_kind": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "name": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "address": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "address_comment": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "source_url": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "source_path": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "source_captured_at": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "average_check_currency": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "average_check_text": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "average_check_price_kind": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "business_lunch_currency": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "business_lunch_price_text": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "business_lunch_price_kind": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "business_lunch_hours_text": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "complete_meal_total_currency": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "booking_policy_text": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "age_policy_text": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "access_policy_text": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "ticket_conditions_text": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "admission_price_currency": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "admission_price_text": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "source_provider": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "primary_category": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "rating_status_2gis": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "popularity_status": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "popularity_count_kind": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "lat": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "lon": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "rating_2gis": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "average_check_amount": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "average_check_min_amount": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "average_check_max_amount": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "business_lunch_price_amount": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "business_lunch_max_amount": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "complete_meal_total_amount": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "admission_price_amount": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "age_min_years": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "age_max_years": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "organization_rating_2gis": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "popularity_score": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "rating_count_2gis": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "review_count_2gis": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "organization_rating_count_2gis": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "organization_review_count_2gis": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "popularity_rank_per_category": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "selection_order_in_category": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "category_names": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "district_names": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "phones": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "websites": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "emails": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "social_links": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "whatsapp_links": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "menu_urls": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "cuisine_names": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "food_assortment": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "source_attribute_tags": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "menu_link_details": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "photo_candidates": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "popularity_signals": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "opening_hours": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "wifi": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "free_wifi": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "sockets": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "quiet": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "laptop_allowed": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "kids_area": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "kids_menu": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "kid_friendly": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "wheelchair_accessible": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "accessible_entrance": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "ramp": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "wide_elevator": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "accessible_toilet": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "automatic_door": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "platform_lift": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "staff_call_button": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "toilets": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "terrace": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "takeaway": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "delivery": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "reservations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "business_lunch_available": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "delivery_business_lunch_available": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "halal": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "vegetarian_options": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "vegan_options": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "live_music": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "parking": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "pet_friendly": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "card_payment": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "cash_payment": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "qr_payment": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "paid_entry": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "entry_free": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "is_closed_source": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              },
+              "is_active_source": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/provenance"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

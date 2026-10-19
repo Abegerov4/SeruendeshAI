@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "dataset_id": "astana-2gis-2026-10-19",
+  "source_provider": "2gis",
+  "observation_date": "2026-10-19",
+  "generated_at": "2026-10-19T14:19:43.748560+00:00",
+  "record_count": 470,
+  "column_count": 98,
+  "object_ids_sha256": "5bb9fd9e245b11cf082000dd097a7b2970c4d4607b3a3e9a8a3812f4e8195d5a",
+  "category_counts": {
+    "parks": 53,
+    "culture": 83,
+    "sports": 83,
+    "tourism": 83,
+    "leisure": 84,
+    "food": 84
+  },
+  "menu_link_places": 121,
+  "menu_inventory_items": 0,
+  "image_bytes_included": 0,
+  "files": {
+    "README.md": {
+      "sha256": "d39a7837e2a64b5407997a57e12f5defd7108840fc5ea12c6b486a26946900e5",
+      "bytes": 4806
+    },
+    "coverage.json": {
+      "sha256": "5bc71ac5afb69fe2739029e9dc88b9bae3c596b14455c6a4bc850b99656772a5",
+      "bytes": 17997
+    },
+    "places.json": {
+      "sha256": "8f8f7a82ea5047dd7e7166932d413e6e9cf9697941fc782aecc4e3c2a223bfc5",
+      "bytes": 13738518
+    },
+    "report.json": {
+      "sha256": "51d392481c12cc4170646e78afa9000d27de38bb5243e2c92e933c44ad4fc9ae",
+      "bytes": 1418
+    },
+    "schema.json": {
+      "sha256": "af33f1ae6342e38eb98b67ef91452d370a2f9adf96e31490a635984b718fed07",
+      "bytes": 81872
+    }
+  },
+  "manifest_self_hash_included": false
+}
