@@ -1,0 +1,663 @@
+[
+ {
+  "poi_id": "osm:w230401645",
+  "name": "Бәйтерек",
+  "status": "open",
+  "status_source": "https://ru.wikipedia.org/wiki/Байтерек_(монумент)",
+  "description_ru": "Монумент-башня высотой 105 м (1996–2002), символ переноса столицы в Акмолу в 1997 году. В шаре диаметром 22 м — панорамный зал с позолоченным отпечатком ладони первого президента, в подземном уровне — кафе, аквариумы и фотогалерея.",
+  "description_en": "A 105 m monument tower (built 1996–2002) marking the 1997 move of the capital to Akmola. Its 22 m sphere holds a panoramic hall with a gilded handprint of the first president; the underground level has a café, aquariums and a photo gallery.",
+  "description_sources": [
+   "https://ru.wikipedia.org/wiki/Байтерек_(монумент)"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "high",
+  "notes": "Hours/prices not verified: official site astana-bayterek.kz and visitastana.kz could not be fetched; only non-allowed guides (sputnik8, tonkosti, aviasales) give 10:00–21:00 (summer 10:00–22:00) and ~2500 ₸ adult — not used."
+ },
+ {
+  "poi_id": "osm:w1460763574",
+  "name": "Тәуелсіздіктің 25 жылдығы",
+  "status": "open",
+  "status_source": "https://informburo.kz/novosti/nazarbaev-otkryl-monument-ly-dala-el-na-territorii-ekspo.html",
+  "description_ru": "Мраморная стела высотой около 70 м на территории ЭКСПО, открытая 16 декабря 2016 года к 25-летию независимости. Её 25 граней символизируют годы независимости, облицовка выполнена из итальянского мрамора.",
+  "description_en": "A marble stela about 70 m tall on the EXPO grounds, unveiled on 16 December 2016 for the 25th anniversary of independence. Its 25 faces stand for the years of independence; it is clad in Italian marble.",
+  "description_sources": [
+   "https://informburo.kz/novosti/nazarbaev-otkryl-monument-ly-dala-el-na-territorii-ekspo.html",
+   "https://www.inbusiness.kz/ru/news/%C2%ABrazvitie-astany-ostanovit-uzhe-nevozmozhno%C2%BB"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "Informburo calls the monument «Ұлы Дала елі»; height 70 m comes from inbusiness.kz only. Matching to this OSM object is by EXPO location."
+ },
+ {
+  "poi_id": "osm:n13948916190",
+  "name": "Қазақстан Теміржол тарихы Мұражайы",
+  "status": "open",
+  "status_source": "https://informburo.kz/novosti/muzei-istorii-zeleznyx-dorog-kazaxstana-otkryli-na-vokzale-v-astane",
+  "description_ru": "Музей истории железных дорог Казахстана, открытый в июне 2026 года при вокзале «Нұрлы жол»: четыре зала на 3200 м², более 250 экспонатов, настоящие локомотивы с доступом в кабину и тренажёр машиниста.",
+  "description_en": "Museum of Kazakhstan's railway history, opened in June 2026 at Nurly Zhol station: four halls over 3,200 m², 250+ exhibits, real locomotives you can climb into and a train-driver simulator.",
+  "description_sources": [
+   "https://informburo.kz/novosti/muzei-istorii-zeleznyx-dorog-kazaxstana-otkryli-na-vokzale-v-astane",
+   "https://www.inbusiness.kz/ru/last/v-astane-otkrylsya-masshtabnyj-muzej-istorii-zheleznyh-dorog-kazahstana"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "high",
+  "notes": "Opening reported 13 June 2026 (KTZ press release via news). Hours and ticket prices not found in allowed sources."
+ },
+ {
+  "poi_id": "osm:n13408473356",
+  "name": "Жаңа Адамдар",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "No information found on an event venue «Жаңа Адамдар / Новые люди» at Mangilik El (EXPO area)."
+ },
+ {
+  "poi_id": "osm:n13900933375",
+  "name": "Астана Арена",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Artwork node next to the railway history museum at Nurly Zhol; no source describing an artwork named «Астана Арена» found."
+ },
+ {
+  "poi_id": "osm:n14275682079",
+  "name": "Drinkit",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": "Кофейня сети Drinkit (Dodo Brands) в формате «цифровой кофейни»: напитки и еду заказывают заранее через приложение или киоск и забирают из ячейки умной выдачи.",
+  "description_en": "A Drinkit coffee shop (Dodo Brands chain) in the 'digital coffee shop' format: drinks and food are ordered in advance via the app or a kiosk and collected from a smart pickup cell.",
+  "description_sources": [
+   "https://drinkit.ru/"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Description is of the chain concept from drinkit.ru; the official site lists no Kazakhstan branches, so the Astana branch at Kabanbay Batyr 62 (MEGA Silk Way) could not be verified."
+ },
+ {
+  "poi_id": "osm:w762780007",
+  "name": "Abu Dhabi Plaza",
+  "status": "open",
+  "status_source": "https://abudhabiplaza.info/",
+  "description_ru": "Многофункциональный комплекс от Aldar Properties по проекту Foster + Partners с главной башней 311 м (75 этажей). Внутри — двухуровневый торговый центр с магазинами и ресторанами (открыт в 2019), офисы, жильё и отель Sheraton.",
+  "description_en": "A mixed-use complex by Aldar Properties, designed by Foster + Partners, whose main tower is 311 m (75 floors). It contains a two-level mall with shops and restaurants (opened 2019), offices, apartments and a Sheraton hotel.",
+  "description_sources": [
+   "https://ru.wikipedia.org/wiki/Абу-Даби_Плаза",
+   "https://abudhabiplaza.info/"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": true,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [
+   "https://abudhabiplaza.info/"
+  ],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "high",
+  "notes": "Official site mentions a children's zone but lists no mall opening hours."
+ },
+ {
+  "poi_id": "ov:f156787e-136d-40",
+  "name": "Nur Alem Museum of Future Energy",
+  "status": "open",
+  "status_source": "https://tengrinews.kz/culture/nur-alem-simvol-molodoy-stolitsyi-414051/",
+  "description_ru": "Сфера диаметром 80 м — бывший павильон Казахстана на ЭКСПО-2017, ныне Музей энергии будущего. На этажах 2–8 — экспозиции об энергии космоса, солнца, ветра, биомассы, кинетической энергии и воды, наверху — смотровая площадка.",
+  "description_en": "The 80 m sphere that was Kazakhstan's EXPO-2017 pavilion, now the Museum of Future Energy. Floors 2–8 cover space, solar, wind, biomass, kinetic and water energy, with an observation deck at the top.",
+  "description_sources": [
+   "https://www.weproject.media/articles/detail/samaya-bolshaya-sfera-v-mire-i-krupneyshiy-muzey-vozobnovlyaemoy-energii-chto-nakhoditsya-vnutri-pav/",
+   "https://tengrinews.kz/culture/nur-alem-simvol-molodoy-stolitsyi-414051/"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "Latest status source found is the September 2020 reopening (tengrinews); floor layout is from a 2017 article. Hours/prices not found on allowed sources (expo2017astana.com has none; kazakhstan.travel page 404)."
+ },
+ {
+  "poi_id": "osm:n5880883097",
+  "name": "Chaplin Cinema",
+  "status": "open",
+  "status_source": "https://ticketon.kz/astana/cinema",
+  "description_ru": "Кинотеатр сети Chaplin в ТРЦ MEGA Silk Way (пр. Кабанбай батыра, 62); при анонсе в 2016 году сеть заявляла здесь высокотехнологичный кинотеатр на 11 залов.",
+  "description_en": "Chaplin chain cinema in the MEGA Silk Way mall (62 Kabanbay Batyr Ave); when announced in 2016 the chain described it as a high-tech 11-screen cinema.",
+  "description_sources": [
+   "https://forbes.kz/articles/chaplin_zakryil_vse_kinoteatryi_v_regionah_rk",
+   "https://ticketon.kz/astana/cinema"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "chaplin.kz is a JS app (no readable content). Status is inferred from ticketon listing current cinema sessions at Kabanbai Batyr Ave 62; the 11-hall figure is from a 2016 announcement (Forbes.kz), current hall count/formats not verified."
+ },
+ {
+  "poi_id": "osm:n12520559589",
+  "name": "Лепим и варим",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": "Пельменная российской сети «Лепим и варим»: пельмени разных видов (с мясом, сыром, креветками, крабом) лепят каждый день на открытой кухне.",
+  "description_en": "A dumpling restaurant of the Russian chain Lepim i Varim: many kinds of pelmeni (meat, cheese, shrimp, crab) are hand-made daily in an open kitchen.",
+  "description_sources": [
+   "https://lepimivarim.ru"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Chain site lists Astana in its city menu but gives no Astana addresses or hours; this branch (likely in Keruen mall, Dostyk 9) could not be verified on an allowed source."
+ },
+ {
+  "poi_id": "osm:n5878503586",
+  "name": "Қазақ еліне мың алғыс",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "No Wikipedia article or other allowed source found for this monument."
+ },
+ {
+  "poi_id": "osm:n6408271985",
+  "name": "CrepeCafe",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "crepecafe.kz (ТОО «CrepeCafe») shows only delivery/pickup and one address (E-899, 1/1); the Kunaev 12/1 branch, its hours and concept could not be verified."
+ },
+ {
+  "poi_id": "osm:w549307755",
+  "name": "Мәңгілік Ел салтанат қақпасы",
+  "status": "open",
+  "status_source": "https://informburo.kz/novosti/v-astane-na-triumfalnoy-arke-otkrylas-smotrovaya-ploshchadka.html",
+  "description_ru": "Триумфальная арка «Мәңгілік Ел» (2011) высотой около 20 м — по метру на каждый год независимости. На крыше (21,5 м) — смотровая площадка с панорамными биноклями, внутри — выставочная галерея на 120 м².",
+  "description_en": "The Mäñgilik El triumphal arch (2011), about 20 m tall, one metre per year of independence. Its roof (21.5 m) has an observation deck with panoramic binoculars, and inside is a 120 m² exhibition gallery.",
+  "description_sources": [
+   "https://www.wikidata.org/wiki/Q42422896",
+   "https://tengrinews.kz/story/smotrovaia-ploshhadka-otkroetsia-triumfalnoi-arke-astane-311778/",
+   "https://informburo.kz/novosti/v-astane-na-triumfalnoy-arke-otkrylas-smotrovaya-ploshchadka.html"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "Observation deck opened 10 May 2017 (climb by stairs with a guide; a 2017 article mentions an elevator for visitors with special needs). Current deck hours/prices and whether it still operates were not verified."
+ },
+ {
+  "poi_id": "osm:n10093885578",
+  "name": "Дракон",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Generic name; no allowed source found."
+ },
+ {
+  "poi_id": "osm:n14087643081",
+  "name": "Жылқылар үйірі",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Sculpture group «Табун лошадей»; no allowed source found."
+ },
+ {
+  "poi_id": "osm:w230358847",
+  "name": "Көрме",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Exhibition building at Dostyk 3; no allowed source found. Possibly related to the nearby «Астана-Экспо КС» node, not verified."
+ },
+ {
+  "poi_id": "osm:w1390487360",
+  "name": "Jibek Joly",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "No official site or other allowed source found for this mall near Nurly Zhol station (jibekjoly.kz timed out)."
+ },
+ {
+  "poi_id": "osm:r16827715",
+  "name": "Әбу Насыр әл-Фараби мешіті",
+  "status": "open",
+  "status_source": "https://ummet.kz",
+  "description_ru": "Мечеть, открытая в 2005 году при поддержке Катара; до ноября 2021 года называлась «Нур-Астана», затем получила имя аль-Фараби. Купол высотой 43 м, четыре минарета по 62 м, вмещает до 5000 молящихся.",
+  "description_en": "A mosque opened in 2005 with support from Qatar; called Nur-Astana until November 2021, when it was renamed after al-Farabi. It has a 43 m dome and four 62 m minarets and holds up to 5,000 worshippers.",
+  "description_sources": [
+   "https://ru.wikipedia.org/wiki/Нур-Астана_(мечеть)",
+   "https://tengrinews.kz/kazakhstan_news/mechet-nur-astana-pereimenovali-454537/"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "high",
+  "notes": "Official site ummet.kz confirms name and address (Kabanbay Batyr 36) and publishes daily prayer times, but gives no visiting hours or rules for tourists."
+ },
+ {
+  "poi_id": "osm:w1456208624",
+  "name": "Бейбітшілік пен Келісім аллеясы",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Alley in the EXPO area next to the 25th-anniversary stela; no allowed source found."
+ },
+ {
+  "poi_id": "osm:w548267296",
+  "name": "Паровоз",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Locomotive monument near the old Astana-1 station area; no allowed source found."
+ },
+ {
+  "poi_id": "osm:n11500907369",
+  "name": "Городские часы",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Generic name; no allowed source found."
+ },
+ {
+  "poi_id": "osm:n13340040665",
+  "name": "Жетігенші",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Sculpture of a zhetigen player; no allowed source found."
+ },
+ {
+  "poi_id": "osm:n2388707906",
+  "name": "Астана-Экспо КС",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": "Выставочная компания «Астана-Экспо КС» — организатор отраслевых выставок и конференций (около 10 в год), среди них Kazakhstan Machinery Fair, KAZINTER POWER и Flora Expo Astana.",
+  "description_en": "Astana-Expo KS is an exhibition company that organises around ten industry trade shows and conferences a year, including Kazakhstan Machinery Fair, KAZINTER POWER and Flora Expo Astana.",
+  "description_sources": [
+   "http://www.astana-expo.com"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Official site gives the office address as Zh. Nazhimedenov St 16G (Saraishyk district), which may not match this node near Dostyk St; whether exhibitions are held at this point is unverified. Not a walk-in gallery per the official site."
+ },
+ {
+  "poi_id": "osm:n13395423568",
+  "name": "Роза Бағланова атындағы Қазақконцерт мемлекеттік академиялық концерттік ұйымы",
+  "status": "open",
+  "status_source": "https://qazaqconcert.kz/",
+  "description_ru": "Государственная концертная организация, основанная в 1960 году в Алматы и с 2016 года работающая в Астане; в 2021 году получила имя Розы Баглановой. В её составе — ансамбли «Астана Сазы» и TURAN, симфонический оркестр, театр ASTANA MUSICAL.",
+  "description_en": "State concert organisation founded in 1960 in Almaty and based in Astana since 2016; named after Roza Baglanova in 2021. Its groups include the Astana Sazy and TURAN ensembles, the State Symphony Orchestra and the ASTANA MUSICAL theatre.",
+  "description_sources": [
+   "https://qazaqconcert.kz/"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "Official site names the Central Concert Hall «QAZAQSTAN» as its venue and sells tickets via ticketon.kz; no street address or box-office hours given, so whether this node is the hall or offices is unverified."
+ },
+ {
+  "poi_id": "osm:w1449317691",
+  "name": "Лепим и варим",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": "Пельменная российской сети «Лепим и варим»: пельмени разных видов (с мясом, сыром, креветками, крабом) лепят каждый день на открытой кухне.",
+  "description_en": "A dumpling restaurant of the Russian chain Lepim i Varim: many kinds of pelmeni (meat, cheese, shrimp, crab) are hand-made daily in an open kitchen.",
+  "description_sources": [
+   "https://lepimivarim.ru"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Chain site lists Astana but gives no Astana addresses or hours; this branch (coordinates in the Khan Shatyr mall) could not be verified on an allowed source."
+ }
+]
