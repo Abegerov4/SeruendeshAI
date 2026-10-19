@@ -21,7 +21,10 @@ def test_cleaning_rejects_unsourced_banned_and_box_office_facts():
     base = {"status": "open", "description_ru": "Достаточно длинное описание места для проверки.", "confidence": "high",
             "description_sources": ["https://2gis.kz/astana/firm/1"], "opening_hours": "Mo-Su 10:00-19:00",
             "hours_source": "https://opera.kz", "hours_note": "часы кассы", "features": {"wifi": True}, "features_sources": []}
-    assert clean(base, poi()) is None  # 2GIS source, box-office hours, unsourced feature
+    assert clean(base, poi(category="theatre")) is None  # 2GIS source, a stage's box-office hours, unsourced feature
+    museum = clean({**base, "description_sources": [], "hours_note": "касса 10:00–17:00", "opening_hours": "Tu-Su 10:00-18:00; Mo off"},
+                   poi(category="museum"))
+    assert museum["opening_hours"] == "Tu-Su 10:00-18:00; Mo off"  # visitor hours with a separate cash-desk note are kept
     ok = clean({**base, "description_sources": ["https://ru.wikipedia.org/wiki/X"], "hours_note": None}, poi())
     assert ok["description_url"].startswith("https://ru.wikipedia.org") and ok["opening_hours"] == "Mo-Su 10:00-19:00"
     assert clean({**base, "description_sources": ["https://site.kz"], "confidence": "low", "opening_hours": None}, poi()) is None

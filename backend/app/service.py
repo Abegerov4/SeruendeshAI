@@ -117,8 +117,10 @@ def _target_ids(store: Store, dests: list[dict]) -> set[str]:
             continue
         d = hav_m(g["lat"], g["lon"], store.lat, store.lon)
         for i in np.argsort(d)[:5]:
-            if d[i] <= 250 and any(k in fold(store.pois[i]["name"]) or fold(store.pois[i]["name"]) in k for k in g["keys"] if len(k) >= 4):
-                out.add(store.pois[i]["id"])
+            p = store.pois[i]
+            names = [fold(n) for n in (p["name"], *p.get("names", {}).values()) if n]  # «Ұлттық Мұражайы» is also «Национальный музей»
+            if d[i] <= 250 and any(k in n or n in k for n in names for k in g["keys"] if len(k) >= 4):
+                out.add(p["id"])
     return out
 
 

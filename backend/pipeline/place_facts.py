@@ -23,6 +23,7 @@ OUT_FILE = PROCESSED_DIR / "place_facts.json"
 CHECKED = "2026-10-19"
 BANNED = re.compile(r"2gis\.|yandex\.|google\.|goo\.gl|tripadvisor\.|restoclub\.|instagram\.|facebook\.|vk\.com|zoon\.|kudago\.", re.I)
 EXCLUDE = {"cp:121"}  # «Музей Искусств»: the researcher could not tie the description to this address
+STAGES = {"theatre", "event_venue", "arts_centre"}
 FEATURES = {"wifi", "power_outlets", "kids_area", "outdoor_seating", "wheelchair", "free_entry"}
 
 
@@ -49,7 +50,10 @@ def clean(rec: dict, poi: dict) -> dict | None:
         out["description_url"] = srcs[0]
     hours = (rec.get("opening_hours") or "").strip()
     src = [u for u in _urls(rec.get("hours_source")) if ".wikipedia.org" not in u]  # unsourced, often stale
-    box_office = re.search(r"касс|box office|ticket office", rec.get("hours_note") or "", re.I)  # not the show times
+    note = rec.get("hours_note") or ""
+    # box-office hours are not visit times: a stage venue's hours, or a note whose times are the hours themselves
+    box_office = re.search(r"касс|box office|ticket office", note, re.I) and (
+        poi["category"] in STAGES or set(re.findall(r"\d{1,2}:\d{2}", note)) >= set(re.findall(r"\d{1,2}:\d{2}", hours)))
     snippet = re.search(r"snippet|excerpt|сниппет|выдержк", rec.get("notes") or "", re.I)  # page not actually opened / in doubt
     if hours and src and not box_office and not snippet and _parse(hours) is not None:
         out.update(opening_hours=hours, hours_url=src[0])
