@@ -26,7 +26,7 @@ from app.i18n import t
 from app.query import Parsed
 from app.evidence import accepted_details, match_food, price_benchmarks, price_comparison_group
 from app.food import needs_meal_kitchen
-from app.store import Store, courtyard_playground, stem_tokens
+from app.store import Store, courtyard_playground, display_name, stem_tokens
 from app.textnorm import fold
 
 # default pool when the user did not ask for specific place types
@@ -381,7 +381,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
             plan.relaxations.append(t("note_requested_closed", lang, what=label(req_cats[0], lang), n=len(closed_req)))
     if not cands:
         for i, why in sorted(rejected, key=lambda x: x[0] not in target_idx)[:4]:
-            considered.append({"name": store.pois[i]["name"], "reason": why})
+            considered.append({"name": display_name(store.pois[i], lang), "reason": why})
         return [], considered
 
     # --- scoring
@@ -465,7 +465,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
     cands.sort(key=lambda c: -c.score)
     chosen = _mmr(cands, k, single_cat=len(set(req_cats)) == 1)
     for i, why in sorted(rejected, key=lambda x: (x[0] not in target_idx, -rrf[x[0]]))[:4]:  # requested places first
-        considered.append({"name": store.pois[i]["name"], "reason": why})
+        considered.append({"name": display_name(store.pois[i], lang), "reason": why})
     plan.funnel["shown"] = 0
     return chosen, considered
 

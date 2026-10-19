@@ -18,6 +18,7 @@ from app.i18n import WHAT_TO_DO
 from app.guards import drop_unverified_open_claims, strip_links, wrap_untrusted
 from app.llm import parse
 from app.retrieval import Cand, Plan
+from app.store import display_name
 from app.textnorm import fold, has_kazakh
 
 CandId = Literal["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10"]
@@ -184,7 +185,7 @@ def card(c: Cand, cid: str, lang: str) -> dict:
     p = c.poi
     cat = CATEGORIES[p["category"]]
     d = {
-        "id": cid, "name": p["name"], "category": label(p["category"], "ru"),
+        "id": cid, "name": display_name(p, lang), "category": label(p["category"], "ru"),
         "walk_or_drive_min": c.travel_min, "visit_range": f"{c.visit_range[0]}-{c.visit_range[1]}",
         "hours_status": {"always": "public space, no listed hours"}.get(c.opening["status"], c.opening["status"]),
         "hours_confidence": c.opening["confidence"],

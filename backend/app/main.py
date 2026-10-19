@@ -39,8 +39,8 @@ from app.query import detect_lang, resolve_landmark
 from app.schemas import (RouteRequest, RouteToPlace, CategoryOut, FeedbackRequest, FeedbackResponse, HealthResponse, LandmarkOut, MetaFeatures,
                          MapTiles, MetaResponse, PhotoRecommendResponse, PoiBrief, RecommendRequest, RecommendResponse)
 from app.context import parse_now
-from app.service import Runtime, recommend, snap_pois
-from app.store import load_store
+from app.service import Runtime, entry_name, recommend, snap_pois
+from app.store import display_name, load_store
 
 settings = get_settings()
 logging.basicConfig(level=settings.log_level, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -238,8 +238,13 @@ async def api_recommend_photo(request: Request):
     resp = await recommend(rt, RecommendRequest(query=query[:1000] if start else "", landmark=start, lang=lang or ui_lang,
                                                 channel=channel))
     lang_out = resp["lang"]
+    shown = None
+    if hit:  # the guess in the user's language: a curated landmark's names, else the place's own
+        g = next((x for x in rt.store.gazetteer if x.get("landmark_key") == hit["id"]), None)
+        shown = entry_name(rt.store, g, lang_out) if g else display_name(rt.store.pois[rt.store.by_id[hit["id"]]], lang_out) \
+            if hit["id"] in rt.store.by_id else hit["name"]
     if recognized:
-        resp["notes"] = [t("photo_recognized", lang_out, name=hit["name"])] + resp["notes"]
+        resp["notes"] = [t("photo_recognized", lang_out, name=shown)] + resp["notes"]
     elif start:
         resp["notes"] = [t("photo_fallback", lang_out)] + resp["notes"]
     else:  # not recognised and no fallback: ask for a landmark (no recommendations)
@@ -247,7 +252,7 @@ async def api_recommend_photo(request: Request):
         resp["notes"] = [t("photo_unrecognized", lang_out)]
     resp["notes"].append(t("photo_privacy", lang_out))
     resp["photo_guess"] = {"recognized": recognized, "place_id": hit["id"] if hit else None,
-                           "kind": hit["kind"] if hit else None, "name": hit["name"] if hit else None,
+                           "kind": hit["kind"] if hit else None, "name": shown,
                            "confidence": guess.confidence if guess else "low", "description": guess.description if guess else ""}
     resp["llm"]["usage"] = u = usage_summary(meter[mark:])  # vision + recommendation calls
     log.info("photo id=%s recognized=%s kind=%s items=%d tokens_in=%d tokens_out=%d cost_usd=%s", resp["request_id"],

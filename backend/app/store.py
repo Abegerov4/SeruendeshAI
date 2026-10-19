@@ -112,6 +112,11 @@ def apply_facts(pois: list[dict], facts: dict[str, dict]) -> None:
 INDOOR_NAMES = re.compile(r"ailand|айленд|думан|happylon|хэппилон|fame city|хан шатыр|khan shatyr", re.IGNORECASE)
 
 
+def display_name(p: dict, lang: str) -> str:
+    """The place's name in the user's language (the map's own name:xx, else pipeline.place_names), else as mapped."""
+    return (p.get("names") or {}).get(lang) or p["name"]
+
+
 def courtyard_playground(p: dict) -> bool:
     """An unnamed playground labelled after the residential complex it stands in (pipeline.build.label_unnamed,
     «Детская площадка в ЖК …»): a courtyard playground, often behind the complex's gate — on the map, never a pick."""
@@ -255,6 +260,21 @@ def load_store(embed_model: str | None = None) -> Store:
     facts_file = POIS_FILE.parent / "place_facts.json"  # pipeline.place_facts: researched, every fact with its source
     if not canonical and facts_file.exists():
         apply_facts(pois, json.loads(facts_file.read_text()))
+    names_file = POIS_FILE.parent / "place_names.json"  # pipeline.place_names: ru/kk/en; the map's own names win
+    if not canonical and names_file.exists():
+        extra_names = json.loads(names_file.read_text())
+        for p in pois:
+            if (more := extra_names.get(p["id"])) and not p.get("name_auto"):
+                p["names"] = {**more, **{k: v for k, v in (p.get("names") or {}).items() if v}}
+        for g in gaz:  # «Старт: Бәйтерек / Baiterek»: curated landmarks are named in the user's language too
+            if g.get("landmark_key") and (more := extra_names.get(f"landmark:{g['landmark_key']}")):
+                g["names"] = more
+    kk_file = POIS_FILE.parent / "place_descriptions_kk.json"  # pipeline.place_names: researched texts in Kazakh
+    if not canonical and kk_file.exists():
+        kk_text = json.loads(kk_file.read_text())
+        for p in pois:
+            if p.get("description_kind") == "research" and kk_text.get(p["id"]):
+                p["description_kk"] = kk_text[p["id"]]
     from app.card_photos import apply_card_photos  # optional operator photos in S3 (docs/CARD_PHOTOS.md)
     apply_card_photos(pois)
     keep = _dedupe([i for i, p in enumerate(pois) if not junk_place(p) and not p.get("closed_permanently")], pois, aliases)

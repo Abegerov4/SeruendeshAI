@@ -36,7 +36,7 @@ from app.query import (HOME_CUE, NAV_INTENT, PARSE_SYSTEM, LLMParsed, Parsed, de
 from app.retrieval import Cand, Plan, rank
 from app.schemas import RecommendRequest
 from app.service_answers import select_services, answer_services
-from app.store import Store
+from app.store import Store, display_name
 from app.textnorm import fold
 
 log = logging.getLogger("app.service")
@@ -75,6 +75,14 @@ def _strip_terms(text: str, keys: list[str]) -> str:
     return " ".join(s.split())
 
 
+def entry_name(store: Store, g: dict, lang: str) -> str:
+    """A gazetteer entry's name in the user's language: a curated landmark's own names, else its map place."""
+    if g.get("names"):
+        return display_name(g, lang)
+    i = store.by_id.get(g.get("poi_id")) if g.get("poi_id") else None
+    return display_name(store.pois[i], lang) if i is not None else g["name"]
+
+
 def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: list[str], lang: str, hit=None, dests=()):
     """Where the text says the user is > LLM landmark > rounded GPS (inside Astana) > UI landmark.
     «Я возле Хан Шатыра» wins over GPS: the user said it explicitly (and may be planning ahead)."""
@@ -90,9 +98,10 @@ def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: 
         if hit is not None and any(hit["name"] == g["name"] for g in dests):
             hit = None  # the LLM read the place the user wants to go to as where they are
     if hit:
+        name = entry_name(store, hit, lang)
         if req.location:
-            notes.append(t("note_text_origin", lang, name=hit["name"]))
-        return (hit["lat"], hit["lon"]), {"source": "text_landmark", "label": hit["name"], "precision_m": 50}, hit
+            notes.append(t("note_text_origin", lang, name=name))
+        return (hit["lat"], hit["lon"]), {"source": "text_landmark", "label": name, "precision_m": 50}, hit
     if req.location:
         lat, lon = round_coord(req.location.lat), round_coord(req.location.lon)
         if in_astana(lat, lon):
@@ -106,7 +115,7 @@ def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: 
     if req.landmark:
         g = resolve_landmark(req.landmark, store.gazetteer)
         if g:
-            return (g["lat"], g["lon"]), {"source": "landmark", "label": g["name"], "precision_m": 50}, g
+            return (g["lat"], g["lon"]), {"source": "landmark", "label": entry_name(store, g, lang), "precision_m": 50}, g
     return None, {"source": "none", "label": None, "precision_m": 0}, None
 
 
@@ -431,7 +440,7 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
         id_of = {0: "start"} | {i + 1: c.poi["id"] for i, c in enumerate(route["pool"])}
         legs = [{"from_id": id_of[leg["from"]], "to_id": id_of[leg["to"]], "distance_m": leg["distance_m"],
                  "travel_min": leg["travel_min"], "polyline": leg["polyline"], "geometry": leg["geometry"]} for leg in route["legs"]]
-        names = " → ".join(c.poi["name"] for c in route["stops"])
+        names = " → ".join(display_name(c.poi, lang) for c in route["stops"])
         back_txt = t("route_back", lang, m=route["back_min"]) if route.get("back_min") else ""
         summ = t("route_summary", lang, stops=names, total=route["total_min"], travel=route["travel_min"],
                  visit=route["visit_min"], back=back_txt)
@@ -473,9 +482,9 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
     for g in dest_entries:
         ids = _target_ids(rt.store, [g])
         if ids and not ids & shown_ids:
-            names = {fold(rt.store.pois[rt.store.by_id[i]]["name"]) for i in ids if i in rt.store.by_id}
+            names = {fold(display_name(rt.store.pois[rt.store.by_id[i]], lang)) for i in ids if i in rt.store.by_id}
             reason = next((c["reason"] for c in considered if fold(c["name"]) in names), t("rej_unreachable", lang))
-            missed.append(t("note_target_missing", lang, name=g["name"], reason=reason))
+            missed.append(t("note_target_missing", lang, name=entry_name(rt.store, g, lang), reason=reason))
     notes[:0] = missed
 
     poi_items = [it for it in items if it["source"] == "poi_data"]
@@ -600,7 +609,7 @@ def _description_publication(p: dict, lang: str) -> tuple[str | None, list[dict]
     if not text:
         return None, []
     if p.get("description_kind") == "research":  # our own words from a cited source (pipeline.place_facts)
-        return (p.get("description_en") if lang == "en" and p.get("description_en") else text), []
+        return (p.get(f"description_{lang}") if lang in ("en", "kk") and p.get(f"description_{lang}") else text), []
     # records from our own pipeline (data/processed/pois.jsonl): facts rebuilt per language, Wikipedia with its article
     if not p.get("description_kind") and p.get("description_source") in ("template", "osm"):
         return (describe(p, lang) or "")[:400] or None, []
@@ -673,7 +682,7 @@ def _item(c: Cand, why: str, todo: str, visit: int, rank_i: int, plan: Plan, lan
     details = accepted_details(p, plan.evidence_date or parse_now(None).date())
     return {
         # team contract §3.3
-        "poi_id": p["id"], "name": p.get("names", {}).get(lang) or p["name"],
+        "poi_id": p["id"], "name": display_name(p, lang),
         "category": CONTRACT_CATEGORY.get(p["category"], "other"), "lat": p["lat"], "lon": p["lon"],
         "distance_m": straight, "travel_min": max(1, c.travel_min), "why": why, "visit_min": vmin, "what_to_do": todo,
         "open_status": ost, "open_confidence": oconf, "source": "poi_data",

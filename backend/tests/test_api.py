@@ -1,4 +1,5 @@
 """Contract tests against the real data snapshot, in template mode (no API key needed)."""
+import re
 from app.schemas import RecommendResponse
 
 W = {"temperature_c": 9, "feels_like_c": 6, "wind_ms": 4}
@@ -282,3 +283,13 @@ def test_route_from_a_named_start_to_a_named_destination(client):
     assert d["used_context"]["location"]["label"].startswith("Astana IT University")  # the start from the text, not the UI landmark
     assert d["navigate_to"] == d["recommendations"][0]["poi_id"]
     assert "AITU" in d["summary"] and "Ботанический сад" in d["summary"]
+
+
+def test_start_and_place_names_follow_the_users_language(client):
+    for lang, start in (("en", "Baiterek"), ("kk", "Бәйтерек"), ("ru", "Байтерек")):
+        d = post(client, query="погулять час", landmark="baiterek", lang=lang, now="2026-10-20T15:00:00+05:00")
+        assert d["used_context"]["location_label"] == start
+    d = post(client, query="walk for an hour", landmark="baiterek", lang="en", now="2026-10-20T15:00:00+05:00")
+    names = [i["name"] for i in d["recommendations"] if i["source"] == "poi_data"]
+    # translated places come in English; auto-labelled squares keep their labels (a Kazakh street in brackets)
+    assert any(not re.search(r"[а-яёәғқңөұүһі]", n, re.I) for n in names), names

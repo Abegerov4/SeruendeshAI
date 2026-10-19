@@ -65,3 +65,27 @@ def test_meta_offers_a_styled_basemap_only_with_a_key(client, monkeypatch):
     monkeypatch.setattr(get_settings(), "maptiler_key", "abc")
     m = client.get("/api/meta").json()["map"]
     assert "maps/streets-v2/256/{z}/{x}/{y}{r}.png?key=abc" in m["url"] and "dataviz" in m["data_url"] and "MapTiler" in m["attribution"]
+
+
+def test_bot_voice_becomes_text_only_for_the_bot(client, monkeypatch):
+    from types import SimpleNamespace
+    from app import bot_api
+
+    seen = {}
+
+    class FakeTranscriptions:
+        async def create(self, model, file, prompt):
+            seen.update(model=model, name=file[0], size=len(file[1]))
+            return SimpleNamespace(text=" Я возле Байтерека, хочу кофе ")
+
+    class FakeClient:
+        def with_options(self, **kw):
+            return SimpleNamespace(audio=SimpleNamespace(transcriptions=FakeTranscriptions()))
+
+    monkeypatch.setattr(get_settings(), "bot_api_key", "k")
+    monkeypatch.setattr(bot_api, "llm_client", lambda: FakeClient())
+    voice = {"audio": ("voice.ogg", b"OggS" + b"\0" * 64, "audio/ogg")}
+    assert client.post("/api/bot/transcribe", files=voice, headers={"X-Seru-User": "u1"}).status_code == 403
+    r = client.post("/api/bot/transcribe", files=voice, headers={"X-Seru-Bot-Key": "k", "X-Seru-User": "u1"})
+    assert r.status_code == 200 and r.json()["text"] == "Я возле Байтерека, хочу кофе"
+    assert seen == {"model": "gpt-4o-mini-transcribe", "name": "voice.ogg", "size": 68}

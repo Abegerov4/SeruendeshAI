@@ -1,4 +1,4 @@
-.PHONY: setup api web test eval eval-llm data data-build embed graph events contract docker deploy bot
+.PHONY: setup api web test eval eval-llm data data-build embed graph events names contract docker deploy bot
 
 UV := cd backend && uv run
 CAP := systemd-run --user --scope -p MemoryMax=2500M -p MemorySwapMax=0 --quiet
@@ -36,6 +36,9 @@ graph:
 
 events:
 	$(UV) python -m pipeline.cli events
+
+names:            ## place names in ru/kk/en and Kazakh descriptions (LLM, only the missing ones)
+	$(UV) python -m pipeline.place_names
 
 contract:         ## export OpenAPI + example responses for the frontend
 	$(UV) python ../scripts/export_contract.py

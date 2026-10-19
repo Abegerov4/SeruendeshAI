@@ -129,7 +129,17 @@ function RouteIdeas({ ideas, onShow }) {
 const Speech = typeof window !== 'undefined' ? (window.SpeechRecognition || window.webkitSpeechRecognition) : null;
 
 // Speak instead of typing: the words appear in the box as you talk and are sent when you stop.
-function VoiceButton({ disabled, onText, onFinal }) {
+// what went wrong with the microphone, in words the user can act on (SpeechRecognitionErrorEvent.error)
+const VOICE_ERRORS = {
+  'not-allowed': 'Нет доступа к микрофону. Разреши его для этого сайта в настройках браузера.',
+  'service-not-allowed': 'Нет доступа к микрофону. Разреши его для этого сайта в настройках браузера.',
+  'audio-capture': 'Не нашёл микрофон. Проверь, что он подключён.',
+  'language-not-supported': 'Браузер не распознаёт голосом этот язык. Скажи по-русски или напиши.',
+  'no-speech': 'Не расслышал. Нажми микрофон и скажи ещё раз.',
+  'network': 'Распознавание речи не отвечает. Проверь интернет или напиши текстом.',
+};
+
+function VoiceButton({ disabled, onText, onFinal, onError }) {
   const [on, setOn] = useState(false), rec = useRef(null);
   useEffect(() => () => rec.current?.abort(), []);
   if (!Speech) return null;
@@ -141,7 +151,7 @@ function VoiceButton({ disabled, onText, onFinal }) {
     let text = '';
     r.onresult = e => { text = Array.from(e.results).map(x => x[0].transcript).join(' ').trim(); onText(text); };
     r.onend = () => { setOn(false); if (text) onFinal(text); };
-    r.onerror = () => setOn(false);
+    r.onerror = e => { setOn(false); if (e.error !== 'aborted') onError?.(VOICE_ERRORS[e.error] || 'Не получилось распознать голос. Напиши текстом.'); };
     setOn(true); r.start();
   }
   return <button type="button" className={'photo-button voice-button' + (on ? ' listening' : '')} disabled={disabled} onClick={toggle}
@@ -280,7 +290,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
         <div className="composer-bottom">
           <div className="location-picker" ref={locationBox}><button type="button" className="location-toggle" aria-expanded={locationOpen} onClick={() => setLocationOpen(!locationOpen)}><MapPin size={13} /><span>{location === MY_LOCATION ? '📍 ' : location === HOME ? '🏠 ' : ''}{tr(location)}</span><ChevronDown size={12} /></button>
             {locationOpen && <div className="location-options"><HomePicker onPick={() => { setLocation(HOME); setLocationOpen(false); }} />{landmarks.map(l => <button type="button" key={l} onClick={() => { setLocation(l); setLocationOpen(false); }}>{tr(l)}{l === location && <Check size={14} />}</button>)}</div>}</div>
-          {(Speech || photoEnabled) && <details className="chat-tools"><summary aria-label={tr("Голос и фото")} title={tr("Голос и фото")}><Plus size={18}/></summary><div className="chat-tools-popover"><VoiceButton disabled={loading} onText={setQuery} onFinal={text => send(text)} />
+          {(Speech || photoEnabled) && <details className="chat-tools"><summary aria-label={tr("Голос и фото")} title={tr("Голос и фото")}><Plus size={18}/></summary><div className="chat-tools-popover"><VoiceButton disabled={loading} onText={setQuery} onFinal={text => send(text)} onError={text => append([{ role: 'assistant', text }])} />
           {photoEnabled && <label className="photo-button" role="button" tabIndex={loading ? -1 : 0} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.currentTarget.querySelector('input')?.click();}}} title={tr('Где я? Отправь фото места')} aria-label={tr('Где я? Отправь фото места')}>
             <Camera size={18} /><input type="file" accept="image/jpeg,image/png,image/webp" capture="environment" hidden disabled={loading}
               onChange={e => { const f = e.target.files?.[0]; e.target.value = ''; if (f) send(query.trim(), undefined, undefined, false, undefined, f); }} /></label>}

@@ -50,7 +50,7 @@ UI = {
            "got_location": "Локацию получил (округлил до ~100 м). Что хочется? Нажмите кнопку или напишите своими словами.",
            "stale": "Локация устарела. Отправьте её ещё раз 👇", "forgot": "Готово, локацию забыл.",
            "photo_off": "Распознавание по фото сейчас недоступно. Напишите, где вы.",
-           "voice": "Голосовые пока не разбираю 🙏 Напишите текстом или отправьте геолокацию.",
+           "voice": "Не разобрал голосовое 🙏 Напишите текстом или отправьте геолокацию.",
            "error": "Что-то пошло не так, попробуйте ещё раз через минуту.", "pin_gone": "Это старый ответ — спросите ещё раз."},
     "kk": {"home_btn": "🏠 Үйден", "routes_btn": "🗺 Бағыттар",
            "home_ask": "Үйіңіз қайда? Геолокацияны жіберіңіз (📎 → Геопозиция) немесе мекенжайды жазыңыз, мысалы «Кенесары 40».",
@@ -70,7 +70,7 @@ UI = {
            "got_location": "Орынды алдым (~100 м-ге дөңгелектедім). Не қалайсыз? Батырманы басыңыз немесе өз сөзіңізбен жазыңыз.",
            "stale": "Орын ескірді. Қайта жіберіңіз 👇", "forgot": "Дайын, орынды ұмыттым.",
            "photo_off": "Фото бойынша тану қазір қолжетімсіз. Қайда екеніңізді жазыңыз.",
-           "voice": "Дауыстық хабарламаларды әзірге түсінбеймін 🙏 Мәтінмен жазыңыз немесе геолокация жіберіңіз.",
+           "voice": "Дауыстық хабарламаны түсінбедім 🙏 Мәтінмен жазыңыз немесе геолокация жіберіңіз.",
            "error": "Бірдеңе дұрыс болмады, бір минуттан кейін қайталаңыз.", "pin_gone": "Бұл ескі жауап — қайта сұраңыз."},
     "en": {"home_btn": "🏠 From home", "routes_btn": "🗺 Routes",
            "home_ask": "Where is your home? Send its location (📎 → Location) or write the address, e.g. “Kenesary 40”.",
@@ -91,7 +91,7 @@ UI = {
            "got_location": "Got your location (rounded to ~100 m). What do you feel like? Tap a button or write in your own words.",
            "stale": "Your location is out of date. Please send it again 👇", "forgot": "Done, I forgot your location.",
            "photo_off": "Photo recognition is unavailable right now. Please write where you are.",
-           "voice": "I can't read voice messages yet 🙏 Please write or send your location.",
+           "voice": "I couldn't make out that voice message 🙏 Please write or send your location.",
            "error": "Something went wrong, please try again in a minute.", "pin_gone": "That answer is old — please ask again."},
 }
 LOCATION_BUTTON = UI["ru"]["location_button"]
@@ -357,7 +357,26 @@ async def on_pin(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 async def on_voice(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text(_ui(_ui_lang(update))["voice"])
+    """A voice message, audio or round video: the API turns it into text, then it is answered like a typed message."""
+    msg, lang = update.message, _ui_lang(update)
+    media = msg.voice or msg.audio or msg.video_note
+    if media is None or (media.file_size or 0) > 4_000_000:
+        await msg.reply_text(_ui(lang)["voice"])
+        return
+    await update.effective_chat.send_action(ChatAction.TYPING)
+    data = bytes(await (await media.get_file()).download_as_bytearray())
+    name, kind = (("voice.ogg", "audio/ogg") if msg.voice else ("note.mp4", "video/mp4") if msg.video_note
+                  else (getattr(media, "file_name", None) or "audio.mp3", media.mime_type or "audio/mpeg"))
+    r = await _http.post(f"{API}/api/bot/transcribe", files={"audio": (name, data, kind)}, headers=_headers(update))
+    text = (r.json().get("text") or "").strip() if r.status_code == 200 else ""
+    if r.status_code == 429:
+        await msg.reply_text(_ui(lang)["busy"])
+        return
+    if not text:
+        await msg.reply_text(_ui(lang)["voice"])
+        return
+    await msg.reply_text(f"🎙 «{text}»")
+    await _run(update, context, text)
 
 
 async def on_text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:

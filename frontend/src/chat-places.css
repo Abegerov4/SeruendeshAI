@@ -42,6 +42,7 @@
 .focus-route-bar b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .focus-route-bar span{font-size:12px;color:#62745a}
 .focus-route-bar a{flex-shrink:0;padding:8px 11px;border-radius:11px;background:#174b3e;color:#f1f7df;font-size:12.5px;font-weight:600;text-decoration:none}
+.focus-route-bar a.secondary{background:#f1f5e8;color:#174b3e}
 .focus-route-bar button{flex-shrink:0;width:32px;height:32px;border-radius:10px;border:0;background:#f1f5e8;display:grid;place-items:center;cursor:pointer}
 .focus-route-bar.error{top:132px;background:#fbe8e4;color:#8a2f1d;font-size:13px}
 .focus-route{animation:none}

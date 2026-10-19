@@ -17,7 +17,7 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '
 
 // Real map (OpenStreetMap data, CARTO tiles): numbered stops, "you are here" (rounded) and the
 // walking route geometry returned by the API (network legs follow streets; straight legs are dashed).
-export default function CityMap({ places, origin, route, showRoute, setRoute, selected, setSelected, hovered, resultVersion, focusRoute, tiles }) {
+export default function CityMap({ places, origin, route, showRoute, setRoute, selected, setSelected, hovered, resultVersion, focusRoute, tiles, routeVisible, onToggleRoute }) {
   const box = useRef(null), map = useRef(null), layers = useRef(null), bounds = useRef(null), focusLayer = useRef(null);
   const fitOpts = () => (box.current?.clientWidth || 0) < 560
     ? { paddingTopLeft: [24, 56], paddingBottomRight: [60, 120], maxZoom: 16 }
@@ -160,6 +160,6 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
     <div ref={box} className="leaflet-box" role="region" aria-label={tr('Карта прогулки')} />
     <div className="map-top"><span className="map-label"><span />{tr('Астана, Казахстан')}</span></div>
     <div className="map-controls"><button aria-label={tr('Приблизить карту')} onClick={() => zoomer.current.zoomBy(1)}><Plus size={19} /></button><button aria-label={tr('Отдалить карту')} onClick={() => zoomer.current.zoomBy(-1)}><Minus size={19} /></button><i /><button aria-label={tr('Вернуться к маршруту')} onClick={fit}><LocateFixed size={19} /></button></div>
-    {route && <div className="map-bottom"><span><Layers size={14} />{tr('Маршрут прогулки')}</span><button onClick={() => setRoute(!showRoute)}><Route size={15} />{showRoute ? tr('Скрыть маршрут') : tr('Показать маршрут')}</button></div>}
+    {route && <div className="map-bottom"><span><Layers size={14} />{tr('Маршрут прогулки')}</span><button onClick={() => onToggleRoute ? onToggleRoute() : setRoute(!showRoute)}><Route size={15} />{(routeVisible ?? showRoute) ? tr('Скрыть маршрут') : tr('Показать маршрут')}</button></div>}
   </div>;
 }

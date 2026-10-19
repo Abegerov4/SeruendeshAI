@@ -1,4 +1,4 @@
-import { t as tr, getLanguage } from "../i18n";
+import { t as tr, getLanguage, useLocale } from "../i18n";
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowUpRight, ArrowRight, MapPin, Clock3, Footprints, Car, SlidersHorizontal, Check, MessageCircle, Map, Compass, ShieldCheck, Sparkles, ChevronDown, Baby, Accessibility, Route, LocateFixed, Navigation, X } from 'lucide-react';
 import RouteOverview from '../components/RouteOverview';
@@ -96,6 +96,8 @@ export default function Explore({ saved, toggleSaved }) {
   const [chatOpen, setChatOpen] = useState(false);
   const [ctx, setCtx] = useState(initialContext);
   const [appliedKey, setAppliedKey] = useState(prefKey(initialContext));  // the settings behind the result on screen
+  const [walking, setWalking] = useState(false);
+  const lang = useLocale(), shownLang = useRef(lang);
   const [plan, setPlan] = useState(null), [previous, setPrevious] = useState(null), [loading, setLoading] = useState(true), [loadError, setLoadError] = useState('');
   const [selected, setSelected] = useState(null), [hovered, setHovered] = useState(null), [route, setRoute] = useState(true);
   const [filters, setFilters] = useState(false), [tab, setTab] = useState(['chat','map','places','plan'].includes(new URLSearchParams(location.search).get('view')) ? new URLSearchParams(location.search).get('view') : phone ? 'chat' : 'map'), [sheetOpen, setSheetOpen] = useState(false), [resultVersion, setResultVersion] = useState(0);
@@ -212,6 +214,12 @@ export default function Explore({ saved, toggleSaved }) {
   function changeContext(c) { setCtx(c); if (c.location === MY_LOCATION && !c.coords) withCoords(c).then(setCtx); }
   function applyContext(c = ctx) { setStarter({ text: lastQuery, display: tr('Обнови прогулку с моими условиями'), context: c, id: Date.now() }); }
   function refine(key) { const next = { ...ctx, [key]: !ctx[key] }; setCtx(next); applyContext(next); }
+  useEffect(() => setWalking(false), [plan]);
+  useEffect(() => {  // the cards speak the language they were asked in: switching it asks again
+    if (lang === shownLang.current) return;
+    shownLang.current = lang;
+    if (plan && !loading) applyContext(ctx);
+  }, [lang]);
   function restore() { if (!previous) return; setPlan(previous); setCtx(previous.context); setSelected(previous.places.find(p => !p.generated)?.id ?? null); setPrevious(null); setResultVersion(n => n + 1); reactToSearch('idle'); }
   function showTab(next, scroll = true) {
     if (phone) { setTab(next); return; }  // phones: the chat is a full-screen sheet
@@ -223,12 +231,37 @@ export default function Explore({ saved, toggleSaved }) {
   const places = plan?.places || NO_PLACES;  // a stable empty list: a new [] each render re-fits the map
   const real = places.filter(p => !p.generated);
   const sel = places.find(p => p.id === selected);
+  // «Уточнить» offers what this answer can change (Aslan's idea): «Без кофе» when a café is in it, «В помещении»
+  // when a stop is outdoors, «Ближе» when a stop is more than 10 min away; a chosen one stays so it can be undone
+  const refineOptions = [['closer', 'Ближе', real.some(p => (p.travel ?? 0) > 10)],
+    ['noCoffee', 'Без кофе', real.some(p => p.categoryKey === 'cafe')],
+    ['indoor', 'В помещении', real.some(p => p.badges?.includes('outdoor'))]].filter(([key, , fits]) => fits || ctx[key]);
   const { total } = planTotals(plan);
   const budget = plan?.used?.time_budget_min || ctx.time;
   const used = plan?.used;
   // memoised: a new object on every render (hover, typing) made the map snap back to the route
   const loc = used?.location;
   const origin = useMemo(() => loc ? { lat: loc.lat, lon: loc.lon, label: loc.source === 'gps_rounded' ? null : loc.label } : null, [loc]);
+  // «Начать прогулку»: the whole walk in a navigator, the stops in the planned order (back to the start if it returns)
+  const walkLinks = useMemo(() => {
+    const r = plan?.route;
+    if (!r?.order?.length || !origin) return null;
+    const byId = Object.fromEntries(places.map(p => [p.id, p]));
+    const stops = r.order.map(id => byId[id]).filter(p => p?.lat != null);
+    if (!stops.length) return null;
+    const pts = [origin, ...stops, ...(r.legs?.at(-1)?.to_id === 'start' ? [origin] : [])];
+    const ll = p => `${p.lat},${p.lon}`;
+    const travel = plan?.context?.transport === 'car' ? 'driving' : 'walking';
+    return {
+      gis: 'https://2gis.kz/astana/directions/points/' + pts.map(p => `${p.lon}%2C${p.lat}`).join('%7C'),
+      google: `https://www.google.com/maps/dir/?api=1&travelmode=${travel}&origin=${ll(pts[0])}&destination=${ll(pts.at(-1))}`
+        + (pts.length > 2 ? '&waypoints=' + pts.slice(1, -1).map(ll).join('%7C') : ''),
+      metres: (r.legs || []).reduce((sum, l) => sum + (l.distance_m || 0), 0), total: r.total_min, n: stops.length,
+    };
+  }, [plan, places, origin]);
+  function toggleRoute() {  // one switch for everything drawn: the walk and a route to a single place
+    if ((route && plan?.route) || focusRoute) { setRoute(false); setFocusRoute(null); setWalking(false); } else setRoute(true);
+  }
   const savedIds = saved.map(p => p.id);
   // preferences re-run the last request right away (no separate "apply" step)
   const update = patch => setCtx({ ...ctx, ...patch });  // only picks the setting; the search runs on «Найти» or the next message
@@ -242,7 +275,7 @@ export default function Explore({ saved, toggleSaved }) {
         <Chat key={chatKey} notice={<GeoNotice state={geo} label={ctx.location === MY_LOCATION ? null : ctx.location} onRetry={retryGeo} />} onRoute={showRouteTo} onDetails={setDetailPlace} routed={focusRoute?.poi_id} onIdeas={fetchIdeas} onShowIdea={showIdea} requestPlan={requestPlan} onMood={reactToSearch} starter={starter} location={ctx.location} setLocation={l => changeContext({ ...ctx, location: l, coords: l === ctx.location ? ctx.coords : null })} onResult={() => { setChatOpen(false); showTab('places'); }} photoEnabled={photoOn} sheet={false} open={true} onOpen={() => showTab('chat')} onClose={() => setChatOpen(false)} />
         <div className="seru-tip"><span className="tip-doodle" aria-hidden="true">✳</span><div><span>{tr("СОВЕТ ОТ СЕРУ")}</span><p>{tr("Лучшие планы иногда начинаются")}<br />{tr("с «а давай просто выйдем».")}</p></div><button onClick={() => startMood(Math.floor(Math.random() * scenarios.length))}>{tr("Удиви меня")}<ArrowUpRight size={14} /></button></div>
         <section className="preferences" aria-label={tr("Предпочтения")}><div className="preferences-heading"><span>{tr("Выбери длительность")}</span><button onClick={() => setFilters(!filters)} aria-expanded={filters} aria-label={tr("Дополнительные фильтры")}><SlidersHorizontal size={15} />{(ctx.kid || ctx.accessible) && <i />}</button></div><div className="preference-controls"><div className="time-selector" aria-label={tr("Время на прогулку")}>{[30, 60, 120].map(t => <button key={t} aria-pressed={ctx.time === t} className={ctx.time === t ? 'active' : ''} onClick={() => setTime(t)}><b>{t + tr(' мин')}</b><small>{tr(t===30?'Лёгкая':t===60?'Оптимально':'Подольше')}</small></button>)}</div><TransportSelect value={ctx.transport} onChange={setTransport} /></div><div className={"filter-reveal " + (filters ? "open" : "")} inert={!filters}><div><div className="extra-preferences"><button aria-pressed={ctx.kid} className={ctx.kid ? 'active' : ''} onClick={() => update({ kid: !ctx.kid })}><Baby size={15} />{tr("С ребёнком")}{ctx.kid && <Check size={13} />}</button><button aria-pressed={ctx.accessible} className={ctx.accessible ? 'active' : ''} onClick={() => update({ accessible: !ctx.accessible })}><Accessibility size={15} />{tr("Без ступенек")}{ctx.accessible && <Check size={13} />}</button><p>{tr("Выбери условия и нажми «Найти с этими условиями».")}</p></div></div></div>{pending && <button className="context-apply" onClick={() => applyContext(ctx)}><Sparkles size={15} />{tr("Найти с этими условиями")}</button>}</section>
-        <RouteOverview plan={plan} selected={selected} onSelect={choosePlace} loading={loading} previous={previous} onRestore={restore} onStart={()=>{if(plan?.route){setRoute(true);setFocusRoute(null);showTab('map');}else if(sel||real[0])showRouteTo(sel||real[0]);}}/>
+        <RouteOverview plan={plan} selected={selected} onSelect={choosePlace} loading={loading} previous={previous} onRestore={restore} onStart={()=>{if(plan?.route){setRoute(true);setFocusRoute(null);setWalking(true);setResultVersion(n=>n+1);showTab('map');}else if(sel||real[0])showRouteTo(sel||real[0]);}}/>
         <details className="sidebar-route" open={!phone || tab === 'plan'}><summary>{tr("ТВОЙ ПЛАН")}</summary><RouteTimeline plan={plan} previous={previous} onRestore={restore} onSelect={choosePlace} /><PocketButton plan={plan}/><button className="pocket-open" onClick={()=>window.dispatchEvent(new Event("seru-open-app"))}>{tr("Моя прогулка")} ↗</button></details><details className="context-disclosure"><summary>{tr("Что я учёл")}</summary><div className="used-context used-live"><span><ShieldCheck size={16} />{tr("Что я учёл")}</span>
           {used ? <>
             <div className="chips"><span>📍 {used.location_label}</span><span>⏱ {used.time_budget_min} {tr('мин')}</span><span>{used.mode === 'walk' ? '🚶 ' + tr('пешком') : used.mode === 'transit' ? '🚌 ' + tr('на транспорте') : '🚕 ' + tr('на машине')}</span><span>{used.is_dark ? '🌙 ' + tr('вечер') : '☀️ ' + tr('день')}</span>{used.weather && <span>🌡 {Math.round(used.weather.temperature_c)}°C{used.weather.max_outdoor_min < 60 && !(used.weather.us_aqi >= 101) ? ' · ' + tr('холодно') : ''}</span>}{used.weather?.us_aqi >= 101 && <span>💨 {tr('воздух')} AQI {Math.round(used.weather.us_aqi)}</span>}{(used.filters || []).filter(f => !/^[А-ЯA-ZӘҒҚҢӨҰҮҺІ]/.test(f)).map(f => <span key={f}>✓ {f}</span>)}</div>
@@ -258,7 +291,8 @@ export default function Explore({ saved, toggleSaved }) {
         
         {!loading && plan && !real.length && <div className="empty-plan" role="status"><h3>{tr("Подходящих мест пока нет")}</h3><p>{plan.notes?.[0] || tr("Попробуй снять ограничения или увеличить время.")}</p><button onClick={() => { const next = { ...ctx, time: Math.max(120, ctx.time), indoor: false, noCoffee: false, accessible: false, closer: false, touched: { ...ctx.touched, time: true } }; setCtx(next); applyContext(next); }}>{tr("Расширить условия")}</button></div>}
         {loadError && !loading && !plan && <div className="empty-plan" role="alert"><h3>{tr('Не получилось загрузить подборку')}</h3><p>{tr(loadError)}</p><button onClick={() => requestPlan(lastQuery).catch(() => setLoadError('Сервер не ответил. Попробуй ещё раз.'))}>{tr('Повторить')}</button></div>}
-        <section className="map-section" id="map-section" aria-label={tr("Карта прогулки")}>{(!phone || tab === 'map') && <CityMap tiles={tiles} places={places} origin={origin} route={plan?.route} showRoute={route} setRoute={setRoute} selected={selected} setSelected={id => { setSelected(id); setSheetOpen(false); }} hovered={hovered} resultVersion={resultVersion} focusRoute={focusRoute} />}
+        <section className="map-section" id="map-section" aria-label={tr("Карта прогулки")}>{(!phone || tab === 'map') && <CityMap tiles={tiles} places={places} origin={origin} route={plan?.route} showRoute={route} setRoute={setRoute} selected={selected} setSelected={id => { setSelected(id); setSheetOpen(false); }} hovered={hovered} resultVersion={resultVersion} focusRoute={focusRoute} routeVisible={(route && !!plan?.route) || !!focusRoute} onToggleRoute={toggleRoute} />}
+          {walking && walkLinks && !focusRoute && <div className="focus-route-bar walk-bar" role="status"><Footprints size={16} /><div><b>{tr('Прогулка')} · {walkLinks.n} {tr(walkLinks.n === 1 ? 'место' : 'места')}</b><span>{formatDistance(walkLinks.metres)} · ≈ {walkLinks.total} {tr('мин')} · {tr('открой навигацию и иди по точкам')}</span></div><a href={walkLinks.gis} target="_blank" rel="noreferrer">2GIS ↗</a><a className="secondary" href={walkLinks.google} target="_blank" rel="noreferrer">Google ↗</a><button aria-label={tr('Закрыть')} onClick={() => setWalking(false)}><X size={16} /></button></div>}
           {focusRoute && <div className="focus-route-bar" role="status"><Navigation size={16} /><div><b>{focusRoute.place?.name || focusRoute.name}</b><span>{formatDistance(focusRoute.distance_m)} · {focusRoute.travel_min} {tr(focusRoute.mode === 'car' ? 'мин в пути' : 'мин пешком')}{focusRoute.origin_source === 'landmark' ? ' · ' + (focusRoute.origin_label ? tr('от') + ' ' + focusRoute.origin_label : tr('от ориентира')) : ' · ' + tr('от тебя')}{focusRoute.geometry === 'straight' ? ' · ' + tr('оценка') : ''}</span></div><a href={focusRoute.links['2gis']} target="_blank" rel="noreferrer">2GIS ↗</a><button aria-label={tr('Скрыть маршрут')} onClick={() => setFocusRoute(null)}><X size={16} /></button></div>}
           {routeError && <div className="focus-route-bar error" role="alert">{tr(routeError)}</div>}
           {sel && <article className="reference-place"><div className="reference-place-photo"><PlaceVisual place={sel} illustrative/><button className="reference-close" onClick={()=>setSelected(null)} aria-label={tr('Закрыть карточку')}><X size={18}/></button></div><div className="reference-place-copy"><h2>{sel.name}</h2>{sel.rating!=null&&<p className="reference-rating">★ {sel.rating}</p>}<div className="reference-place-meta"><span><MapPin size={15}/>{sel.address||sel.category}</span><span><Clock3 size={15}/>{sel.visit} {tr('мин')}</span></div><p className="reference-place-description">{sel.why||sel.description}</p><button className="reference-more" onClick={()=>setDetailPlace(sel)}>{tr('Подробнее')}<ArrowRight size={16}/></button></div></article>}
@@ -266,7 +300,7 @@ export default function Explore({ saved, toggleSaved }) {
           <div className="route-strip"><span className="route-symbol"><Route size={18} /></span><div><strong>{plan?.route ? tr('Мини-маршрут') : tr('Небольшое приключение')}</strong><span>{plan?.route ? plan.route.summary : real.length + tr(' мест · ') + (total > budget ? tr('Дольше твоего плана — выбери часть мест') : tr('Можно идти без спешки'))}</span></div><span className="route-total"><Clock3 size={13} />≈ {total}{tr(" мин")}</span></div></section>
         <section className="places-section" id="places-section"><div className="section-heading"><div><span className="section-eyebrow">{tr("ПОД ТВОЁ НАСТРОЕНИЕ")}</span><h2>{tr("Твои маленькие открытия")}<span>{real.length}</span></h2></div></div>
           {plan?.summary && !loading && <p className="summary-line">{plan.summary}</p>}
-          {plan && !loading && <div className="refine-chips" role="group" aria-label={tr('Уточнить подборку')}><span>{tr('Уточнить')}:</span>{[['closer', 'Ближе'], ['noCoffee', 'Без кофе'], ['indoor', 'В помещении']].map(([key, label]) => <button key={key} aria-pressed={!!ctx[key]} className={ctx[key] ? 'on' : ''} onClick={() => refine(key)}>{ctx[key] && <Check size={13} />}{tr(label)}</button>)}</div>}
+          {plan && !loading && refineOptions.length > 0 && <div className="refine-chips" role="group" aria-label={tr('Уточнить подборку')}><span>{tr('Уточнить')}:</span>{refineOptions.map(([key, label]) => <button key={key} aria-pressed={!!ctx[key]} className={ctx[key] ? 'on' : ''} onClick={() => refine(key)}>{ctx[key] && <Check size={13} />}{tr(label)}</button>)}</div>}
           <div className="place-grid">{loading ? [0, 1, 2].map(i => <SkeletonCard key={i} />) : places.map((p, i) => <PlaceCard key={resultVersion + '-' + p.id} place={p} index={i} illustrative onHover={setHovered} isNew={!!previous && !previous.places.some(x => x.id === p.id) && !p.generated} selected={selected === p.id} onSelect={() => choosePlace(p.id)} saved={savedIds.includes(p.id)} onSave={() => toggleSaved(p)} origin={origin} />)}
             <article className="seru-discovery-card"><span className="discovery-sticker">{tr("ПЛАНЫ? ЕСТЬ ИДЕЯ!")}</span><Mascot decorative /><div><h3>{tr("А может,")} {tr("что-нибудь неожиданное?")}</h3><p>{tr("Оставь немного места")} {tr("для спонтанных открытий.")}</p></div><button onClick={() => startMood(Math.floor(Math.random() * scenarios.length))}>{tr("Серу, удиви меня")}<ArrowUpRight size={16} /></button><span className="discovery-doodle" aria-hidden="true">✳</span></article></div>
           <p className="results-disclaimer">{tr("Подборку собрал Серу по открытым данным о городе. Часы работы лучше уточнить перед выходом.")}</p></section>
