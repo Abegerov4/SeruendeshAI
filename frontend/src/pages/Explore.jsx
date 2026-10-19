@@ -1,5 +1,5 @@
 import { t as tr, getLanguage } from "../i18n";
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowUpRight, ArrowRight, MapPin, Clock3, Footprints, Car, SlidersHorizontal, Check, MessageCircle, Map, Compass, ShieldCheck, Sparkles, ChevronDown, Baby, Accessibility, Route, LocateFixed, Navigation, X } from 'lucide-react';
 import RouteOverview from '../components/RouteOverview';
 import PlaceDetails from '../components/PlaceDetails';
@@ -16,6 +16,7 @@ import { recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY
 import { scenarios } from '../data';
 
 const FALLBACK_LANDMARK = 'Район Байтерека';
+const NO_PLACES = [];
 
 // Geolocation is the start of every answer and route; the position is rounded to ~100 m before use
 // A link like /?q=кофе%20и%20прогулка&from=expo&now=2026-10-20T15:00 opens that request right away:
@@ -178,13 +179,15 @@ export default function Explore({ saved, toggleSaved }) {
   }
   function choosePlace(id) { setSelected(id); showTab('map'); }
 
-  const places = plan?.places || [];
+  const places = plan?.places || NO_PLACES;  // a stable empty list: a new [] each render re-fits the map
   const real = places.filter(p => !p.generated);
   const sel = places.find(p => p.id === selected);
   const { total } = planTotals(plan);
   const budget = plan?.used?.time_budget_min || ctx.time;
   const used = plan?.used;
-  const origin = used?.location ? { lat: used.location.lat, lon: used.location.lon, label: used.location.source === 'gps_rounded' ? null : used.location.label } : null;
+  // memoised: a new object on every render (hover, typing) made the map snap back to the route
+  const loc = used?.location;
+  const origin = useMemo(() => loc ? { lat: loc.lat, lon: loc.lon, label: loc.source === 'gps_rounded' ? null : loc.label } : null, [loc]);
   const savedIds = saved.map(p => p.id);
   // preferences re-run the last request right away (no separate "apply" step)
   const update = patch => { const next = { ...ctx, ...patch }; setCtx(next); if (plan) applyContext(next); };

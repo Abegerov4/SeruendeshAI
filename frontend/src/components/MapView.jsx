@@ -2,11 +2,15 @@ import { t as tr } from "../i18n";
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { smoothZoom } from '../mapWheel';
 import { Plus, Minus, LocateFixed, Layers, Route } from 'lucide-react';
 
 const ASTANA = [51.128, 71.43];
 // Astana only: the map cannot be panned or zoomed out to other cities (same box as the API's in_astana)
 export const ASTANA_BOUNDS = [[50.857, 71.217], [51.352, 71.786]];
+// updateWhenZooming off: while zooming the loaded tiles only scale, the next level loads when the motion stops
+// (otherwise every whole-level crossing mid-zoom swapped the map in piece by piece); keepBuffer keeps more around.
+const TILE_OPTS = { maxZoom: 19, minZoom: 11, bounds: ASTANA_BOUNDS, updateWhenZooming: false, keepBuffer: 4 };
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 
 // Real map (OpenStreetMap data, CARTO tiles): numbered stops, "you are here" (rounded) and the
@@ -16,9 +20,13 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
   const fitOpts = () => (box.current?.clientWidth || 0) < 560
     ? { paddingTopLeft: [24, 56], paddingBottomRight: [60, 120], maxZoom: 16 }
     : { paddingTopLeft: [40, 70], paddingBottomRight: [70, 150], maxZoom: 16 };
-  const baseLayer = useRef(null);
+  const baseLayer = useRef(null), zoomer = useRef(null);
   useEffect(() => {
-    const m = L.map(box.current, { maxBounds: ASTANA_BOUNDS, maxBoundsViscosity: 1, minZoom: 11, zoomControl: false, attributionControl: true, scrollWheelZoom: true, zoomAnimation: false, markerZoomAnimation: false }).setView(ASTANA, 14);
+    // Leaflet's own wheel zoom rounds every tiny trackpad event up to a whole zoom level (zoomSnap 1),
+    // so a two-finger swipe threw the map several levels at once. Wheel and +/- go through smoothZoom (mapWheel.js).
+    const smooth = !L.Browser.mobile;  // zoom animation stays off on phones (as before), on for desktop
+    const m = L.map(box.current, { maxBounds: ASTANA_BOUNDS, maxBoundsViscosity: 0.7, minZoom: 11, zoomControl: false, attributionControl: true, scrollWheelZoom: false, zoomSnap: 0.25, zoomAnimation: smooth, markerZoomAnimation: smooth }).setView(ASTANA, 14);
+    zoomer.current = smoothZoom(m, box.current);
     // No CSS filter on the tile pane: iOS Safari may not paint filtered layers inside a rounded, clipped box
     // (the map stayed blank on iPhones). The warm look comes from slightly transparent tiles over a cream background.
     // OpenStreetMap tiles; if they fail (privacy browsers strip the Referer and OSM refuses), the OSM France mirror.
@@ -30,7 +38,7 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
     ];
     const useTiles = i => {
       const [url, opts] = providers[i];
-      const layer = L.tileLayer(url, { maxZoom: 19, minZoom: 11, bounds: ASTANA_BOUNDS, ...opts }).addTo(m);
+      const layer = L.tileLayer(url, { ...TILE_OPTS, ...opts }).addTo(m);
       baseLayer.current = layer;
       let failed = 0;
       layer.on('tileload', () => { failed = 0; });
@@ -52,12 +60,12 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
       hidden = !visible;
     });
     ro.observe(box.current);
-    return () => { clearTimeout(timer); ro.disconnect(); m.remove(); };
+    return () => { clearTimeout(timer); ro.disconnect(); zoomer.current.stop(); m.remove(); };
   }, []);
   useEffect(() => {  // a styled basemap (MapTiler) when the server has a key; OpenStreetMap stays if it fails
     const m = map.current;
     if (!m || !tiles?.url) return;
-    const styled = L.tileLayer(tiles.url, { maxZoom: 19, minZoom: 11, tileSize: 256, bounds: ASTANA_BOUNDS, attribution: tiles.attribution });
+    const styled = L.tileLayer(tiles.url, { ...TILE_OPTS, tileSize: 256, attribution: tiles.attribution });
     let failed = 0, ok = false;
     styled.on('tileload', () => { if (!ok) { ok = true; if (baseLayer.current && baseLayer.current !== styled) m.removeLayer(baseLayer.current); baseLayer.current = styled; } });
     styled.on('tileerror', () => { if (!ok && ++failed >= 3) m.removeLayer(styled); });
@@ -139,7 +147,7 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
   return <div className="map-canvas leaflet-canvas">
     <div ref={box} className="leaflet-box" role="region" aria-label={tr('Карта прогулки')} />
     <div className="map-top"><span className="map-label"><span />{tr('Астана, Казахстан')}</span></div>
-    <div className="map-controls"><button aria-label={tr('Приблизить карту')} onClick={() => map.current.zoomIn()}><Plus size={19} /></button><button aria-label={tr('Отдалить карту')} onClick={() => map.current.zoomOut()}><Minus size={19} /></button><i /><button aria-label={tr('Вернуться к маршруту')} onClick={fit}><LocateFixed size={19} /></button></div>
+    <div className="map-controls"><button aria-label={tr('Приблизить карту')} onClick={() => zoomer.current.zoomBy(1)}><Plus size={19} /></button><button aria-label={tr('Отдалить карту')} onClick={() => zoomer.current.zoomBy(-1)}><Minus size={19} /></button><i /><button aria-label={tr('Вернуться к маршруту')} onClick={fit}><LocateFixed size={19} /></button></div>
     {route && <div className="map-bottom"><span><Layers size={14} />{tr('Маршрут прогулки')}</span><button onClick={() => setRoute(!showRoute)}><Route size={15} />{showRoute ? tr('Скрыть маршрут') : tr('Показать маршрут')}</button></div>}
   </div>;
 }
