@@ -1,7 +1,7 @@
 import { t as tr } from "../i18n";
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, X } from 'lucide-react';
+import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera } from 'lucide-react';
 import { landmarks, scenarios } from '../data';
 import { MY_LOCATION } from '../api';
 import Mascot from './Mascot';
@@ -29,7 +29,7 @@ function useSheetViewport(active, onClose) {
   }, [active]);
 }
 
-export default function Chat({ requestPlan, onMood, location, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose }) {
+export default function Chat({ requestPlan, onMood, location, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false }) {
   const [messages, setMessages] = useState([welcome]),
     [query, setQuery] = useState(''),
     [loading, setLoading] = useState(false),
@@ -59,22 +59,26 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
     setMessages(prev => [...prev, ...items.map(m => ({ ...m, id: ++sequence.current }))].slice(-20));
   }
   function cancel() { controller.current?.abort(); setLoading(false); setError('Запрос отменён. Текст сохранён.'); onMood?.('idle'); }
-  async function send(text, index, override, retry = false, display) {
-    if (!text.trim()) return;
+  async function send(text, index, override, retry = false, display, photo) {
+    if (!text.trim() && !photo) return;
+    if (photo && photo.size > 8 * 1024 * 1024) { setError('Фото больше 8 МБ — выбери поменьше.'); return; }
     controller.current?.abort(); const active = new AbortController(); controller.current = active;
     setError(''); setLoading(true); setQuery(text); onMood?.('thinking');
-    if (!retry) append([{ role: 'user', text: display || text }]);
-    lastRequest.current = { text, index, override };
+    if (!retry) append([{ role: 'user', text: display || text || tr('Где я? Вот фото'), image: photo ? URL.createObjectURL(photo) : null }]);
+    lastRequest.current = { text, index, override, photo };
     const timeout = setTimeout(() => { if (controller.current === active) { active.abort(); setLoading(false); setError('Ответ задерживается. Попробуй ещё раз.'); onMood?.('idle'); } }, 25000);
     try {
-      const plan = await requestPlan(text, override, active.signal);
+      const plan = await requestPlan(text, override, active.signal, photo);
       if (active.signal.aborted) return;
-      const real = plan.places.filter(p => !p.generated);
-      append([{ role: 'assistant', result: true, count: real.length, summary: plan.summary, names: real.map(p => p.name), note: real.length ? null : plan.notes[0] }]);
+      const real = plan.places.filter(p => !p.generated), g = plan.photoGuess;
+      const seen = g?.recognized && g.name ? tr('Похоже, это «{name}».', { name: g.name }) + ' ' : '';
+      append([{ role: 'assistant', result: true, count: real.length, summary: seen + (plan.summary || ''), names: real.map(p => p.name), note: real.length ? null : plan.notes[0] }]);
       setQuery(current => current === text ? '' : current); setLoading(false); onMood?.(real.length ? 'happy' : 'idle');
     } catch (e) {
       if (active.signal.aborted) return;
-      setLoading(false); setError(e?.message === 'rate' ? 'Слишком много запросов. Подожди минуту и попробуй снова.' : 'Не удалось загрузить подборку. Текст сохранён — попробуй ещё раз.'); onMood?.('idle');
+      const m = e?.message || '';
+      setLoading(false); setError(m === 'rate' ? 'Слишком много запросов. Подожди минуту и попробуй снова.' : m === 'photo_too_large' ? 'Фото больше 8 МБ — выбери поменьше.'
+        : m.startsWith('photo-') ? 'Не получилось разобрать фото. Попробуй другое или напиши ориентир.' : 'Не удалось загрузить подборку. Текст сохранён — попробуй ещё раз.'); onMood?.('idle');
     } finally { clearTimeout(timeout); }
   }
   useEffect(() => { if (starter) send(starter.text, starter.index, starter.context, false, starter.display); }, [starter]);
@@ -103,12 +107,13 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
       <div className="chat-log" ref={log} role="log" aria-label={tr("История диалога")} aria-live="polite" aria-relevant="additions">
         <span className="chat-date">{tr("МАЛЕНЬКОЕ ПРИКЛЮЧЕНИЕ НАЧИНАЕТСЯ ЗДЕСЬ")}</span>
         {messages.map(m => <div key={m.id} className={'chat-message ' + m.role}><span className="message-author">{m.role === 'assistant' ? tr('Серу · твой спутник') : tr('Ты')}</span>
+          {m.image && <img className="message-photo" src={m.image} alt={tr('Твоё фото')} />}
           <p>{m.role === 'user' ? m.text : m.result ? !m.count ? (m.note || tr('Подходящих мест пока нет')) : <>{m.summary} {tr('Посмотри карточки — там объясню, почему и что делать на месте.')}</> : tr(m.text)}</p>
           {m.result && m.count > 0 && <button className="message-results" onClick={() => { if (asSheet) close(); onResult?.(); }}>{tr('Показать места')} · {m.count}<ArrowUpRight size={14} /></button>}
         </div>)}
         {loading && <div className="chat-typing" role="status"><span className="thinking-seru"><Mascot decorative mood="thinking" /></span><span className="typing-dots" aria-hidden="true"><i /><i /><i /></span>{tr("Собираю прогулку…")}</div>}
       </div>
-      {(loading || error) && <div className="request-status" role="status">{loading ? <button onClick={cancel}>{tr('Отменить поиск')}</button> : <><p>{tr(error)}</p><button onClick={() => { const r = lastRequest.current; if (r) send(r.text, r.index, r.override, true); }}>{tr('Повторить запрос')}</button></>}</div>}
+      {(loading || error) && <div className="request-status" role="status">{loading ? <button onClick={cancel}>{tr('Отменить поиск')}</button> : <><p>{tr(error)}</p><button onClick={() => { const r = lastRequest.current; if (r) send(r.text, r.index, r.override, true, undefined, r.photo); }}>{tr('Повторить запрос')}</button></>}</div>}
       <div className="quick-scenarios"><span>{tr("ИЛИ НАЧНИ С НАСТРОЕНИЯ")}</span><div>{scenarios.map((s, i) => <button key={s.label} onClick={() => send(tr(s.query), i)}><s.icon size={14} />{tr(s.label)}</button>)}</div></div>
       <form className="chat-composer" onSubmit={e => { e.preventDefault(); if (!loading) send(query); }}>
         <div className="composer-input"><Sparkles size={19} /><textarea ref={input} id="chat-input" value={query} onChange={e => setQuery(e.target.value)} onKeyDown={e => {
@@ -117,6 +122,9 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
         <div className="composer-bottom">
           <div className="location-picker" ref={locationBox}><button type="button" className="location-toggle" aria-expanded={locationOpen} onClick={() => setLocationOpen(!locationOpen)}><MapPin size={13} /><span>{location === MY_LOCATION ? '📍 ' : ''}{tr(location)}</span><ChevronDown size={12} /></button>
             {locationOpen && <div className="location-options">{landmarks.map(l => <button type="button" key={l} onClick={() => { setLocation(l); setLocationOpen(false); }}>{tr(l)}{l === location && <Check size={14} />}</button>)}</div>}</div>
+          {photoEnabled && <label className="photo-button" title={tr('Где я? Отправь фото места')} aria-label={tr('Где я? Отправь фото места')}>
+            <Camera size={18} /><input type="file" accept="image/jpeg,image/png,image/webp" capture="environment" hidden disabled={loading}
+              onChange={e => { const f = e.target.files?.[0]; e.target.value = ''; if (f) send(query.trim(), undefined, undefined, false, undefined, f); }} /></label>}
           <button className="send-button" type="submit" disabled={loading || !query.trim()} aria-label={tr("Подобрать места")}><span>{loading ? tr('Подбираю…') : tr('Найти места')}</span><ArrowUpRight size={17} /></button>
         </div>
       </form>

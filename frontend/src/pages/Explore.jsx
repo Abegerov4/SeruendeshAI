@@ -9,7 +9,7 @@ import PlaceCard, { SkeletonCard } from '../components/PlaceCard';
 import PlaceVisual from '../components/PlaceVisual';
 import { RouteTimeline } from '../components/PlanPanel';
 import { initialContext } from '../planner';
-import { recommend, planTotals, roundCoord, externalMapLinks, MY_LOCATION } from '../api';
+import { recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY_LOCATION } from '../api';
 import { scenarios } from '../data';
 
 function locate() {
@@ -48,18 +48,21 @@ export default function Explore({ saved, toggleSaved }) {
     try { const coords = await locate(); setGeoError(''); return { ...c, coords }; }
     catch (e) { setGeoError(e.message); return { ...c, location: initialContext.location, coords: null }; }
   }
-  async function requestPlan(text, override, signal) {
+  async function requestPlan(text, override, signal, photo) {
     setLoading(true); setLoadError('');
     try {
-      const c = await withCoords(override || ctx);
+      const c = photo ? (override || ctx) : await withCoords(override || ctx);
       setCtx(c);
-      const next = await recommend(text, c, getLanguage(), { signal });
+      const next = photo ? await recommendPhoto(photo, text, c, getLanguage(), { signal }) : await recommend(text, c, getLanguage(), { signal });
       if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
+      if (next.offTopic || (photo && !next.places.length)) return next;  // keep the current picks; the chat explains
       setPrevious(plan); setPlan(next); setResultVersion(n => n + 1); setHovered(null); setSheetOpen(false);
       setSelected(next.places.find(p => !p.generated)?.id ?? null);
       return next;
     } finally { setLoading(false); }
   }
+  const [photoOn, setPhotoOn] = useState(false);
+  useEffect(() => { fetch('/api/meta').then(r => r.json()).then(m => setPhotoOn(!!m.features?.photo)).catch(() => {}); }, []);
   useEffect(() => {  // phones: a floating "ask Seru" button once the chat entry scrolls away
     if (!phone) return;
     const el = document.getElementById('chat-panel');
@@ -105,7 +108,7 @@ export default function Explore({ saved, toggleSaved }) {
     <div className="workspace-intro"><div><span className="section-eyebrow">{tr("НЕ НУЖНО ДОЛГО ПЛАНИРОВАТЬ")}</span><h2>{tr("Хороший день начинается с «куда?»")}</h2></div><span className="workspace-tip"><Sparkles size={15} />{tr("2300+ мест Астаны")}</span></div>
     <main className={'explore-workspace tab-' + tab}>
       <div className="conversation-column">
-        <Chat key={chatKey} requestPlan={requestPlan} onMood={reactToSearch} starter={starter} location={ctx.location} setLocation={l => changeContext({ ...ctx, location: l, coords: l === ctx.location ? ctx.coords : null })} onResult={() => { setChatOpen(false); showTab('places'); }} sheet={phone} open={chatOpen} onOpen={() => setChatOpen(true)} onClose={() => setChatOpen(false)} />
+        <Chat key={chatKey} requestPlan={requestPlan} onMood={reactToSearch} starter={starter} location={ctx.location} setLocation={l => changeContext({ ...ctx, location: l, coords: l === ctx.location ? ctx.coords : null })} onResult={() => { setChatOpen(false); showTab('places'); }} photoEnabled={photoOn} sheet={phone} open={chatOpen} onOpen={() => setChatOpen(true)} onClose={() => setChatOpen(false)} />
         <div className="seru-tip"><span className="tip-doodle" aria-hidden="true">✳</span><div><span>{tr("СОВЕТ ОТ СЕРУ")}</span><p>{tr("Лучшие планы иногда начинаются")}<br />{tr("с «а давай просто выйдем».")}</p></div><button onClick={() => startMood(Math.floor(Math.random() * scenarios.length))}>{tr("Удиви меня")}<ArrowUpRight size={14} /></button></div>
         <section className="preferences" aria-label={tr("Предпочтения")}><div className="preferences-heading"><span>{tr("Подстроимся под тебя")}</span><button onClick={() => setFilters(!filters)} aria-expanded={filters} aria-label={tr("Дополнительные фильтры")}><SlidersHorizontal size={15} />{(ctx.kid || ctx.accessible) && <i />}</button></div><div className="preference-controls"><div className="time-selector" aria-label={tr("Время на прогулку")}>{[30, 60, 120].map(t => <button key={t} aria-pressed={ctx.time === t} className={ctx.time === t ? 'active' : ''} onClick={() => setTime(t)}>{t === 120 ? tr('2 часа') : t + tr(' мин')}</button>)}</div><button className="transport-toggle" onClick={toggleTransport}>{ctx.transport === 'walk' ? <Footprints size={16} /> : <Car size={16} />} {ctx.transport === 'walk' ? tr('Пешком') : tr('На авто')}<ChevronDown size={12} /></button></div><div className={"filter-reveal " + (filters ? "open" : "")} inert={!filters}><div><div className="extra-preferences"><button aria-pressed={ctx.kid} className={ctx.kid ? 'active' : ''} onClick={() => update({ kid: !ctx.kid })}><Baby size={15} />{tr("С ребёнком")}{ctx.kid && <Check size={13} />}</button><button aria-pressed={ctx.accessible} className={ctx.accessible ? 'active' : ''} onClick={() => update({ accessible: !ctx.accessible })}><Accessibility size={15} />{tr("Без ступенек")}{ctx.accessible && <Check size={13} />}</button><p>{tr("Подборка обновится сразу.")}</p></div></div></div></section>
         <div className="used-context used-live"><span><ShieldCheck size={16} />{tr("Что я учёл")}</span>

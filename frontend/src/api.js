@@ -74,8 +74,23 @@ export function toPlan(resp, ctx, text) {
   return {
     places: [...(resp.recommendations || []), ...(resp.ideas || [])].map(toPlace), route: resp.route, used: resp.used_context, notes: resp.notes || [],
     considered: resp.considered || [], summary: resp.summary, disclaimer: resp.disclaimer, llm: resp.llm, lang: resp.lang,
+    offTopic: !!resp.off_topic, photoGuess: resp.photo_guess || null,
     context: {...ctx}, query: text,
   };
+}
+
+// "Where am I?" from a photo: the server strips EXIF (GPS is never read), downscales and forgets the image.
+export async function recommendPhoto(file, text, ctx, lang, {signal} = {}) {
+  const form = new FormData();
+  form.append('image', file);
+  if (text) form.append('query', text);
+  form.append('lang', lang);
+  if (ctx.location !== MY_LOCATION) form.append('landmark', LANDMARK_KEYS[ctx.location] || 'baiterek');
+  const res = await fetch(`${API_BASE}/api/recommend/photo`, {method: 'POST', body: form, signal});
+  if (res.status === 429) throw Error('rate');
+  if (res.status === 413) throw Error('photo_too_large');
+  if (!res.ok) throw Error('photo-' + res.status);
+  return toPlan(await res.json(), ctx, text || '');
 }
 
 export async function recommend(text, ctx, lang, {signal} = {}) {

@@ -23,7 +23,7 @@
 | Требование задачи | Документ |
 |---|---|
 | 1. Концепция продукта, аудитория, сценарии, бизнес, риски, план | [docs/CONCEPT.md](docs/CONCEPT.md) |
-| 2. Демо / прототип | API (этот репозиторий) + фронтенд в [`frontend/`](frontend/) |
+| 2. Демо / прототип | https://seruendesh.site — API + фронтенд в [`frontend/`](frontend/), удобно и с телефона (чат на весь экран, режим «где я?» по фото) |
 | 3. Описание RAG-подхода | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | 4. Тестовые сценарии и ограничения | [docs/TEST_SCENARIOS.md](docs/TEST_SCENARIOS.md), [docs/EVAL_RESULTS.md](docs/EVAL_RESULTS.md) |
 | 5. Презентация | [docs/PRESENTATION.md](docs/PRESENTATION.md) (план слайдов и сценарий демо) |
@@ -31,6 +31,7 @@
 | Сбор данных (автоматизирован) | [docs/DATA.md](docs/DATA.md) |
 | Как выбирали стек (исследование) | [docs/RESEARCH.md](docs/RESEARCH.md) |
 | API-контракт для фронтенда | [docs/API.md](docs/API.md), [docs/api/openapi.json](docs/api/openapi.json), [примеры](docs/api/examples/) |
+| MCP-коннектор (Claude Desktop и другие ИИ-клиенты) | [docs/MCP.md](docs/MCP.md), эндпоинт `https://seruendesh.site/connector/mcp` |
 
 ## Быстрый старт
 
@@ -116,7 +117,7 @@ frontend/         интерфейс (React + Vite)
 
 ## Команда
 - **Ayat** — бэкенд RAG, конвейер данных, оценка, деплой.
-- **Abegerov4** — интеграция бэкенда, защита от инъекций и маскирование ПД, бот и MCP-коннектор.
+- **Abegerov4** — интеграция бэкенда, защита от инъекций и маскирование ПД, идеи бота, MCP и режима по фото: в этой ветке они перенесены в общий сервис.
 - **Denis** — RAG и обогащение данных из Википедии.
 - **Aslan** — QA-набор тестов по контракту, большой сбор данных с происхождением записей (ветка `big-data`): из него взяты часы CityPass и 861 точка отсчёта.
 - **Codex** — интерфейс и маскот Серу.
