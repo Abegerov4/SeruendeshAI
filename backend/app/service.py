@@ -434,7 +434,7 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
                    t("summary", lang, n=len(poi_items), places=t("place_1" if len(poi_items) == 1 else "place_2", lang), names=nm))
         if navigate and poi_items[0]["poi_id"] in target_ids and origin_info.get("label"):
             it = poi_items[0]  # «маршрут с AITU до ботсада»: say where from, where to and how far
-            dm = it.get("distance_m") or 0
+            dm = it.get("walk_distance_m") or it.get("distance_m") or 0  # along the streets, like the card
             d = f"{dm / 1000:.1f} км".replace(".", ",") if lang != "en" and dm >= 1000 else f"{dm / 1000:.1f} km" if dm >= 1000 else f"{dm} м" if lang != "en" else f"{dm} m"
             summary = t("summary_nav", lang, a=origin_info["label"], b=it["name"], d=d, m=it.get("travel_min"),
                         how=t("how_car" if mode == "car" else "how_walk", lang))

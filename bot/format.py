@@ -77,7 +77,8 @@ def format_response(resp: dict) -> str:
         lines += [escape(summary), ""]
     mode = t.get(ctx.get("mode") or "walk", ctx.get("mode") or "")
     for i, r in enumerate(recs, 1):
-        dist = f"{_distance(r['distance_m'], t)}, {r['travel_min']} {t['min']} {mode}" if r.get("distance_m") is not None else ""
+        meters = r.get("walk_distance_m") or r.get("distance_m")  # along the streets when the walk graph knows it
+        dist = f"{_distance(meters, t)}, {r['travel_min']} {t['min']} {mode}" if meters is not None else ""
         visit = r.get("visit_min") or [r.get("visit_suggested_min"), r.get("visit_suggested_min")]
         opening = (r.get("opening") or {}).get("label") or t.get(r.get("open_status") or "unknown", "")
         source = t["idea"] if r.get("source") == "generated" else t["poi"]
