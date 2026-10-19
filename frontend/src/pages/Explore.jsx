@@ -60,6 +60,28 @@ function GeoNotice({ state, label, onRetry }) {
     {state !== 'asking' && state !== 'unsupported' && <button onClick={onRetry}>{tr('Включить геолокацию')}</button>}</div></details>;
 }
 
+// the settings a result depends on: when they differ from the shown result, «Найти с этими условиями» appears
+const prefKey = c => [c.time, c.transport, !!c.kid, !!c.accessible].join('|');
+
+// «Пешком ▾»: a real choice — picking an option only changes the setting, the search runs when the user asks
+function TransportSelect({ value, onChange }) {
+  const [open, setOpen] = useState(false), box = useRef(null);
+  useEffect(() => {
+    if (!open) return;
+    const close = e => { if (!box.current?.contains(e.target)) setOpen(false); };
+    const esc = e => { if (e.key === 'Escape') setOpen(false); };
+    document.addEventListener('pointerdown', close); document.addEventListener('keydown', esc);
+    return () => { document.removeEventListener('pointerdown', close); document.removeEventListener('keydown', esc); };
+  }, [open]);
+  const options = [['walk', Footprints, 'Пешком'], ['car', Car, 'На авто']];
+  const [, Icon, label] = options.find(o => o[0] === value) || options[0];
+  return <div className="transport-select" ref={box}>
+    <button className="transport-toggle" aria-haspopup="listbox" aria-expanded={open} onClick={() => setOpen(!open)}><Icon size={16} /> {tr(label)}<ChevronDown size={12} /></button>
+    {open && <ul role="listbox" aria-label={tr('Как добираться')}>{options.map(([key, I, text]) =>
+      <li key={key} role="option" aria-selected={value === key}><button onClick={() => { onChange(key); setOpen(false); }}><I size={16} />{tr(text)}{value === key && <Check size={14} />}</button></li>)}</ul>}
+  </div>;
+}
+
 function useMedia(query) {
   const [match, setMatch] = useState(() => typeof matchMedia !== 'undefined' && matchMedia(query).matches);
   useEffect(() => { const m = matchMedia(query); const on = () => setMatch(m.matches); m.addEventListener('change', on); return () => m.removeEventListener('change', on); }, [query]);
@@ -70,6 +92,7 @@ export default function Explore({ saved, toggleSaved }) {
   const phone = useMedia('(max-width: 899px)');
   const [chatOpen, setChatOpen] = useState(false);
   const [ctx, setCtx] = useState(initialContext);
+  const [appliedKey, setAppliedKey] = useState(prefKey(initialContext));  // the settings behind the result on screen
   const [plan, setPlan] = useState(null), [previous, setPrevious] = useState(null), [loading, setLoading] = useState(true), [loadError, setLoadError] = useState('');
   const [selected, setSelected] = useState(null), [hovered, setHovered] = useState(null), [route, setRoute] = useState(true);
   const [filters, setFilters] = useState(false), [tab, setTab] = useState(['chat','map','places','plan'].includes(new URLSearchParams(location.search).get('view')) ? new URLSearchParams(location.search).get('view') : phone ? 'chat' : 'map'), [sheetOpen, setSheetOpen] = useState(false), [resultVersion, setResultVersion] = useState(0);
@@ -155,6 +178,7 @@ export default function Explore({ saved, toggleSaved }) {
       if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
       if (next.offTopic || (photo && !next.places.length)) return next;  // keep the current picks; the chat explains
       setPrevious(plan); setPlan(next); setResultVersion(n => n + 1); setHovered(null); setSheetOpen(false); setFocusRoute(null);
+      setAppliedKey(prefKey(c));
       if (next.navigateTo) { const p = next.places.find(x => x.id === next.navigateTo); if (p) showRouteTo(p, c, next); }  // «маршрут до …»
       setSelected(next.places.find(p => !p.generated)?.id ?? null);
       return next;
@@ -195,16 +219,17 @@ export default function Explore({ saved, toggleSaved }) {
   const origin = useMemo(() => loc ? { lat: loc.lat, lon: loc.lon, label: loc.source === 'gps_rounded' ? null : loc.label } : null, [loc]);
   const savedIds = saved.map(p => p.id);
   // preferences re-run the last request right away (no separate "apply" step)
-  const update = patch => { const next = { ...ctx, ...patch }; setCtx(next); if (plan) applyContext(next); };
+  const update = patch => setCtx({ ...ctx, ...patch });  // only picks the setting; the search runs on «Найти» or the next message
+  const pending = !!plan && !loading && prefKey(ctx) !== appliedKey;
   const setTime = t => update({ time: t, touched: { ...ctx.touched, time: true } });
-  const toggleTransport = () => update({ transport: ctx.transport === 'walk' ? 'car' : 'walk', touched: { ...ctx.touched, transport: true } });
+  const setTransport = t => update({ transport: t, touched: { ...ctx.touched, transport: true } });
 
   return <div className={"explore-page map-first reference-layout mobile-view-" + tab}>
     <main className={'explore-workspace tab-' + tab}>
       <div className="conversation-column"><div className="companion-intro"><div><span className="companion-eyebrow">{tr('ТВОЙ МЕСТНЫЙ ДРУГ ')}</span><h1>{tr('Твой AI-помощник для прогулок по Астане')}</h1><p>{tr('Найдём интересные места и построим маршрут. Куда пойдём сегодня?')}</p></div><button className="companion-mascot" onClick={greet} aria-label={tr('Поговорить с Серу')}><Mascot decorative priority mood={mascotMood} key={quip}/></button><span className="companion-quip" aria-live="polite">{tr(quips[quip % quips.length])}</span></div>
         <Chat key={chatKey} notice={<GeoNotice state={geo} label={ctx.location === MY_LOCATION ? null : ctx.location} onRetry={retryGeo} />} onRoute={showRouteTo} onDetails={setDetailPlace} routed={focusRoute?.poi_id} onIdeas={fetchIdeas} onShowIdea={showIdea} requestPlan={requestPlan} onMood={reactToSearch} starter={starter} location={ctx.location} setLocation={l => changeContext({ ...ctx, location: l, coords: l === ctx.location ? ctx.coords : null })} onResult={() => { setChatOpen(false); showTab('places'); }} photoEnabled={photoOn} sheet={false} open={true} onOpen={() => showTab('chat')} onClose={() => setChatOpen(false)} />
         <div className="seru-tip"><span className="tip-doodle" aria-hidden="true">✳</span><div><span>{tr("СОВЕТ ОТ СЕРУ")}</span><p>{tr("Лучшие планы иногда начинаются")}<br />{tr("с «а давай просто выйдем».")}</p></div><button onClick={() => startMood(Math.floor(Math.random() * scenarios.length))}>{tr("Удиви меня")}<ArrowUpRight size={14} /></button></div>
-        <section className="preferences" aria-label={tr("Предпочтения")}><div className="preferences-heading"><span>{tr("Выбери длительность")}</span><button onClick={() => setFilters(!filters)} aria-expanded={filters} aria-label={tr("Дополнительные фильтры")}><SlidersHorizontal size={15} />{(ctx.kid || ctx.accessible) && <i />}</button></div><div className="preference-controls"><div className="time-selector" aria-label={tr("Время на прогулку")}>{[30, 60, 120].map(t => <button key={t} aria-pressed={ctx.time === t} className={ctx.time === t ? 'active' : ''} onClick={() => setTime(t)}><b>{t + tr(' мин')}</b><small>{tr(t===30?'Лёгкая':t===60?'Оптимально':'Подольше')}</small></button>)}</div><button className="transport-toggle" onClick={toggleTransport}>{ctx.transport === 'walk' ? <Footprints size={16} /> : <Car size={16} />} {ctx.transport === 'walk' ? tr('Пешком') : tr('На авто')}<ChevronDown size={12} /></button></div><div className={"filter-reveal " + (filters ? "open" : "")} inert={!filters}><div><div className="extra-preferences"><button aria-pressed={ctx.kid} className={ctx.kid ? 'active' : ''} onClick={() => update({ kid: !ctx.kid })}><Baby size={15} />{tr("С ребёнком")}{ctx.kid && <Check size={13} />}</button><button aria-pressed={ctx.accessible} className={ctx.accessible ? 'active' : ''} onClick={() => update({ accessible: !ctx.accessible })}><Accessibility size={15} />{tr("Без ступенек")}{ctx.accessible && <Check size={13} />}</button><p>{tr("Подборка обновится сразу.")}</p></div></div></div></section>
+        <section className="preferences" aria-label={tr("Предпочтения")}><div className="preferences-heading"><span>{tr("Выбери длительность")}</span><button onClick={() => setFilters(!filters)} aria-expanded={filters} aria-label={tr("Дополнительные фильтры")}><SlidersHorizontal size={15} />{(ctx.kid || ctx.accessible) && <i />}</button></div><div className="preference-controls"><div className="time-selector" aria-label={tr("Время на прогулку")}>{[30, 60, 120].map(t => <button key={t} aria-pressed={ctx.time === t} className={ctx.time === t ? 'active' : ''} onClick={() => setTime(t)}><b>{t + tr(' мин')}</b><small>{tr(t===30?'Лёгкая':t===60?'Оптимально':'Подольше')}</small></button>)}</div><TransportSelect value={ctx.transport} onChange={setTransport} /></div><div className={"filter-reveal " + (filters ? "open" : "")} inert={!filters}><div><div className="extra-preferences"><button aria-pressed={ctx.kid} className={ctx.kid ? 'active' : ''} onClick={() => update({ kid: !ctx.kid })}><Baby size={15} />{tr("С ребёнком")}{ctx.kid && <Check size={13} />}</button><button aria-pressed={ctx.accessible} className={ctx.accessible ? 'active' : ''} onClick={() => update({ accessible: !ctx.accessible })}><Accessibility size={15} />{tr("Без ступенек")}{ctx.accessible && <Check size={13} />}</button><p>{tr("Выбери условия и нажми «Найти с этими условиями».")}</p></div></div></div>{pending && <button className="context-apply" onClick={() => applyContext(ctx)}><Sparkles size={15} />{tr("Найти с этими условиями")}</button>}</section>
         <RouteOverview plan={plan} selected={selected} onSelect={choosePlace} loading={loading} previous={previous} onRestore={restore} onStart={()=>{if(plan?.route){setRoute(true);setFocusRoute(null);showTab('map');}else if(sel||real[0])showRouteTo(sel||real[0]);}}/>
         <details className="sidebar-route" open={!phone || tab === 'plan'}><summary>{tr("ТВОЙ ПЛАН")}</summary><RouteTimeline plan={plan} previous={previous} onRestore={restore} onSelect={choosePlace} /><PocketButton plan={plan}/><button className="pocket-open" onClick={()=>window.dispatchEvent(new Event("seru-open-app"))}>{tr("Моя прогулка")} ↗</button></details><details className="context-disclosure"><summary>{tr("Что я учёл")}</summary><div className="used-context used-live"><span><ShieldCheck size={16} />{tr("Что я учёл")}</span>
           {used ? <>

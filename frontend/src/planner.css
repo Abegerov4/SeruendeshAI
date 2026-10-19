@@ -4,3 +4,11 @@
 @media(max-width:580px){.demo-controls{padding:16px}.demo-controls h2{font-size:19px}.demo-buttons{gap:7px}.demo-buttons button{font-size:10px;padding:10px}.demo-tools label{margin-left:0;width:100%}.context-fields{flex-wrap:wrap}.context-fields label{flex-basis:45%}.route-timeline{padding:16px}.timeline-title{flex-wrap:wrap}.timeline-title h2{font-size:22px}.route-timeline li>button{font-size:12px}.timeline-title>span{font-size:11px}.demo-tools button{min-height:34px}}
 @media(prefers-reduced-motion:reduce){.time-budget span{transition:none}}
 .context-refinements+.context-refinements{margin-top:8px}
+/* «Пешком ▾» is a real choice: a small menu, nothing is searched until «Найти с этими условиями» */
+.transport-select{position:relative;display:inline-block}
+.preferences:has(.transport-select ul){position:relative;z-index:30}  /* the open menu sits above «Твой маршрут» below it */
+.transport-select ul{position:absolute;left:0;top:calc(100% + 6px);z-index:700;list-style:none;margin:0;padding:6px;min-width:170px;background:#fff;border:1px solid #e2e7d9;border-radius:14px;box-shadow:0 10px 28px #173b2922}
+.transport-select li button{display:flex;align-items:center;gap:9px;width:100%;padding:9px 10px;border-radius:10px;font-size:13px;color:#203b31;text-align:left}
+.transport-select li button:hover,.transport-select li[aria-selected=true] button{background:#f1f5e8}
+.transport-select li button svg:last-child:not(:first-child){margin-left:auto;color:#1f6f50}
+.preferences .context-apply{margin-top:12px}
