@@ -1,0 +1,1029 @@
+{
+  "schema_version": 1,
+  "purpose": "Evidence checkpoint, not a claim of all mandatory costs being known",
+  "accepted_branches": [
+    {
+      "canonical_id": "overture:b6f93c10-c613-4dea-bf99-4a468890fbcf",
+      "identity": {
+        "canonical_name": "Italio Homemade Pizza",
+        "canonical_address": "Jumeken Najimedenov St 4/1",
+        "source_name": "italio",
+        "source_address": "улица Жумекен Нажимеденов, 4/1, Астана",
+        "source_url": "https://italio.kamiqr.com/menu/basic",
+        "branch_confirmed": true,
+        "match_basis": "name_address"
+      },
+      "matched_phone": "+77777050888",
+      "independent_directory": {
+        "url": "https://go.2gis.com/eV9UM",
+        "checked_at": "2026-10-19T06:16:36.070082+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/italio-identity.html",
+        "response_sha256": "c0f576bf50092c784fcccedbe08a786f4d619069395c822c229c23aeb7664ef9",
+        "http_status": 200
+      },
+      "menu_response": {
+        "url": "https://italio.kamiqr.com/menu/basic/list",
+        "checked_at": "2026-10-19T06:12:58.946053+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/italio-list.html",
+        "response_sha256": "da12fafc12be457b0d290e53f759f9659ccba5d776081b871ae0e64ba18f3cea",
+        "http_status": 200
+      },
+      "root_response": {
+        "url": "https://italio.kamiqr.com/menu/basic",
+        "checked_at": "2026-10-19T06:12:58.904347+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/italio-root.html",
+        "response_sha256": "f59cb04019d4e9c5fea77785d90d0bd9d42a1c5576eb7ae55b5f3308ee0df147",
+        "http_status": 200
+      },
+      "source_updated_at": "2026-10-18T14:57:46.260591357+05:00",
+      "menu_version": 797,
+      "currency": "KZT",
+      "channel_basis": "Merchant restaurant landing page has table reservation and service fee; onsite public QR menu basic, not a delivery marketplace.",
+      "service_fee_quote": "Обслуживание - 10%",
+      "cost_status": "partial; fixed mandatory fees and minimum payable amount unknown; no complete total",
+      "price_unit_proof": {
+        "url": "https://italio.kamiqr.com/assets/index-zmK8bJ7M.js",
+        "checked_at": "2026-10-19T06:16:34.137612+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/italio-price-render.html",
+        "response_sha256": "723438aaacbded6fa0a338a34e9fe2dd1d6c0844ab72f56eef2597017e5bc81d",
+        "http_status": 200,
+        "rule": "primary)==null?void 0:E.price)/100",
+        "interpretation": "Publisher divides primary.price by 100 for KZT display."
+      },
+      "accepted_items": [
+        {
+          "source_item_id": "f3454e47-d42d-3e0c-aee1-dd07774f55fc",
+          "category": "Закуски",
+          "name": "Хумус",
+          "description": "",
+          "raw_primary_price": 240000,
+          "price_KZT": 2400.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "19432c76-0e96-3c37-92fc-fe070c5aa3c2",
+          "category": "Закуски",
+          "name": "Ассорти брускетт",
+          "description": "(паштет тунец, черри Конфи и базилик, печеный перец и анчоус)",
+          "raw_primary_price": 360000,
+          "price_KZT": 3600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "39e895be-0fcb-3392-9657-37778df57d81",
+          "category": "Закуски",
+          "name": "Сырное плато с гриссини, копченной грушей и клюквой",
+          "description": "",
+          "raw_primary_price": 550000,
+          "price_KZT": 5500.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "48253d71-708b-3b3c-860c-b6779d401033",
+          "category": "Закуски",
+          "name": "Буррата сыр с томатами и базиликом",
+          "description": "",
+          "raw_primary_price": 690000,
+          "price_KZT": 6900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "4c332821-787c-456e-b142-9f359e31afaf",
+          "category": "Закуски",
+          "name": "Брускетта с лососем",
+          "description": "",
+          "raw_primary_price": 300000,
+          "price_KZT": 3000.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "acbee571-a1e0-443a-b33c-c3581660561d",
+          "category": "Закуски",
+          "name": "Брускетта с креветками и яйцом пашот",
+          "description": "",
+          "raw_primary_price": 260000,
+          "price_KZT": 2600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "ef921d3b-5896-44a0-86c0-c7dba05f6a22",
+          "category": "Закуски",
+          "name": "Креветки с чесноком и перцем Чили",
+          "description": "",
+          "raw_primary_price": 530000,
+          "price_KZT": 5300.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "33f33a19-4d7b-49a2-a278-7c7183bf05e6",
+          "category": "Закуски",
+          "name": "Спринг роллы с сыром и тартаром из помидоров",
+          "description": "",
+          "raw_primary_price": 460000,
+          "price_KZT": 4600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "a42b4068-5a9e-3711-a25a-73ce9ec5942f",
+          "category": "Горячие закуски",
+          "name": "Фокачча с песто",
+          "description": "",
+          "raw_primary_price": 140000,
+          "price_KZT": 1400.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "13fabf03-a012-3983-be8b-8b15da459691",
+          "category": "Горячие закуски",
+          "name": "Фокачча с солью и розмарином",
+          "description": "",
+          "raw_primary_price": 140000,
+          "price_KZT": 1400.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "2414f48d-cc12-3e89-9a8f-da916b2e8062",
+          "category": "Горячие закуски",
+          "name": "Баклажан а-ля  пармезан",
+          "description": "",
+          "raw_primary_price": 250000,
+          "price_KZT": 2500.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "aaf56f8b-47a8-3c08-91c8-180e87b3f8d9",
+          "category": "Горячие закуски",
+          "name": "Панини с курицей",
+          "description": "",
+          "raw_primary_price": 260000,
+          "price_KZT": 2600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "c17fec75-ae47-3ed9-9330-34c99af64cb8",
+          "category": "Горячие закуски",
+          "name": "Панини с томлённой говядиной",
+          "description": "",
+          "raw_primary_price": 360000,
+          "price_KZT": 3600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "3b70cf74-49c6-32e8-8591-319b440ed14b",
+          "category": "Горячие закуски",
+          "name": "Панини бургер",
+          "description": "",
+          "raw_primary_price": 399000,
+          "price_KZT": 3990.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "b6a93358-d534-4607-90b6-b5979de6dc2b",
+          "category": "Горячие закуски",
+          "name": "Домашние наггетсы",
+          "description": "",
+          "raw_primary_price": 270000,
+          "price_KZT": 2700.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "fc51c3fd-ebdf-39c3-97f2-929a051d35d5",
+          "category": "Горячие закуски",
+          "name": "Наггетсы с соусом BBQ",
+          "description": "",
+          "raw_primary_price": 240000,
+          "price_KZT": 2400.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "a0cb5b29-30b5-3450-a67d-1ccb4bcf08cb",
+          "category": "Салаты",
+          "name": "Салат с курицей и апельсином",
+          "description": "",
+          "raw_primary_price": 290000,
+          "price_KZT": 2900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "bcacf9c1-3554-3c66-8d32-db9d72c1b066",
+          "category": "Салаты",
+          "name": "Зелёный салат",
+          "description": "",
+          "raw_primary_price": 280000,
+          "price_KZT": 2800.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "2c0cddd5-6eb3-30b1-8b6e-f893a251677d",
+          "category": "Салаты",
+          "name": "Страчателла с фруктами",
+          "description": "",
+          "raw_primary_price": 320000,
+          "price_KZT": 3200.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "10d1d97b-f1f0-31f2-86fd-ad2dec4e4bef",
+          "category": "Салаты",
+          "name": "Салат с баклажаном  по-итальянски",
+          "description": "Салат с баклажанами и мини моцареллой",
+          "raw_primary_price": 370000,
+          "price_KZT": 3700.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "f0abaf77-136b-415e-bc47-33d213a97d22",
+          "category": "Салаты",
+          "name": "Салат Греческий с брынзой",
+          "description": "",
+          "raw_primary_price": 320000,
+          "price_KZT": 3200.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "17e48c4a-8a3c-4ad7-a5c5-be8651ca8c99",
+          "category": "Салаты",
+          "name": "Салат с хрустящими баклажанами",
+          "description": "",
+          "raw_primary_price": 390000,
+          "price_KZT": 3900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "5d4e9fc9-b87b-4afc-b135-4fbba7635e57",
+          "category": "Салаты",
+          "name": "Салат с креветками и овощами",
+          "description": "",
+          "raw_primary_price": 330000,
+          "price_KZT": 3300.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "d4bde98d-e8ff-4c7c-a241-57da6c66fed7",
+          "category": "Салаты",
+          "name": "Салат витаминный",
+          "description": "",
+          "raw_primary_price": 230000,
+          "price_KZT": 2300.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "838f253f-9866-413d-8e1f-9f4913526046",
+          "category": "Салаты",
+          "name": "Салат овощной с мясом",
+          "description": "",
+          "raw_primary_price": 370000,
+          "price_KZT": 3700.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "5e2b1722-f130-428d-985a-f7e9169cfa31",
+          "category": "Салаты",
+          "name": "Салат Шопский",
+          "description": "",
+          "raw_primary_price": 230000,
+          "price_KZT": 2300.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "e0ad46f5-0eee-48f1-b844-0bb12673bf22",
+          "category": "Салаты",
+          "name": "Капрезе",
+          "description": "",
+          "raw_primary_price": 360000,
+          "price_KZT": 3600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "313ad2c1-e882-4cdc-932e-006eb8852606",
+          "category": "Салаты",
+          "name": "Салат с мясом ( миньон)",
+          "description": "",
+          "raw_primary_price": 330000,
+          "price_KZT": 3300.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "5856bdb3-38e2-37b2-8036-3a7381b78320",
+          "category": "Супы",
+          "name": "Куриный суп с домашней лапшой",
+          "description": "",
+          "raw_primary_price": 250000,
+          "price_KZT": 2500.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "4d6c35b6-13f7-3b7f-8c26-3de451b68002",
+          "category": "Супы",
+          "name": "Грибной крем-суп",
+          "description": "Нежный крем-суп из шампиньонов на сливках, подается с хрустящими сухариками.",
+          "raw_primary_price": 290000,
+          "price_KZT": 2900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "ececf44e-cb5c-40f5-81be-9795bb413285",
+          "category": "Супы",
+          "name": "Домашний суп с мясом теленка",
+          "description": "",
+          "raw_primary_price": 340000,
+          "price_KZT": 3400.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "3fca2f10-31ce-44f4-ad86-b0e47cede211",
+          "category": "Супы",
+          "name": "Суп чечевичный",
+          "description": "",
+          "raw_primary_price": 190000,
+          "price_KZT": 1900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "8dfc6e45-77ed-488f-a585-be9e7cf7f07b",
+          "category": "Супы",
+          "name": "Тыквенный крем-суп",
+          "description": "Нежный тыквенный крем-суп с хрустящими гренками,тыквенными семечками и пряными нотками.",
+          "raw_primary_price": 160000,
+          "price_KZT": 1600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "eea65bba-5ff2-37b2-9433-8cd8cce74fa1",
+          "category": "Горячие блюда",
+          "name": "Фрикадельки с пюре",
+          "description": "",
+          "raw_primary_price": 390000,
+          "price_KZT": 3900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "23578472-9a9b-3971-b1a2-1f8a36630426",
+          "category": "Горячие блюда",
+          "name": "Гречка с томленой говядиной",
+          "description": "",
+          "raw_primary_price": 390000,
+          "price_KZT": 3900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "6c09577d-9865-330d-8b77-51abedda1a76",
+          "category": "Горячие блюда",
+          "name": "Охотничьи колбаски домашнего приготовления",
+          "description": "",
+          "raw_primary_price": 720000,
+          "price_KZT": 7200.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "e6eb8244-4d64-3017-be8b-b015ebd32733",
+          "category": "Горячие блюда",
+          "name": "Котлета Пожарского с винегретом и пюре",
+          "description": "",
+          "raw_primary_price": 460000,
+          "price_KZT": 4600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "9390ca14-fd53-34c9-898f-5ba5436be3e7",
+          "category": "Горячие блюда",
+          "name": "Стейк Норвегия",
+          "description": "",
+          "raw_primary_price": 630000,
+          "price_KZT": 6300.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "eb493c9e-2aa8-3c17-b37c-cabcf2d376ce",
+          "category": "Горячие блюда",
+          "name": "Ризотто с креветками",
+          "description": "",
+          "raw_primary_price": 410000,
+          "price_KZT": 4100.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "61afee17-464b-3d20-a9c1-b1103f02a1dc",
+          "category": "Горячие блюда",
+          "name": "Цыпленок с пюре и халапеньо",
+          "description": "Сочный цыпленок с корочкой, нежным пюре и острым халапеньо.",
+          "raw_primary_price": 570000,
+          "price_KZT": 5700.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "20d72800-8698-3fec-953c-942696a54ca9",
+          "category": "Горячие блюда",
+          "name": "Бефстроганов с картофельным пюре и соусом демигласс",
+          "description": "",
+          "raw_primary_price": 560000,
+          "price_KZT": 5600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "e6884012-9cdd-31e3-b3cb-056fdb0590d6",
+          "category": "Горячие блюда",
+          "name": "Медальоны с грибами и шпинатом",
+          "description": "",
+          "raw_primary_price": 750000,
+          "price_KZT": 7500.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "3d84431b-fb41-4a89-a61a-7f40d1cbc5f4",
+          "category": "Горячие блюда",
+          "name": "Ризотто с курицей и грибами",
+          "description": "",
+          "raw_primary_price": 430000,
+          "price_KZT": 4300.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "46262e38-3dd0-439d-ad85-567054895873",
+          "category": "Горячие блюда",
+          "name": "Стейк рибай 400 гр",
+          "description": "",
+          "raw_primary_price": 1350000,
+          "price_KZT": 13500.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "5fc75340-bff8-4d8d-b8b7-734f67a8475c",
+          "category": "Горячие блюда",
+          "name": "Дорадо",
+          "description": "Нежная рыба дорадо.\nПодается на выбор: целая/филе, на пару/на гриле.",
+          "raw_primary_price": 1000000,
+          "price_KZT": 10000.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "114d2a62-5388-42ed-8085-84f573c16ccc",
+          "category": "Горячие блюда",
+          "name": "Сибас",
+          "description": "",
+          "raw_primary_price": 1000000,
+          "price_KZT": 10000.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "7bc70c87-ea99-422b-b500-a233c69735f8",
+          "category": "Горячие блюда",
+          "name": "Брискет с квашеной капустой и с картошкой по домашнему",
+          "description": "",
+          "raw_primary_price": 740000,
+          "price_KZT": 7400.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "fa406f33-25a2-45a1-91d6-9c607e6dd96e",
+          "category": "Горячие блюда",
+          "name": "Судак запеченный",
+          "description": "",
+          "raw_primary_price": 450000,
+          "price_KZT": 4500.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "6505e479-042f-4df6-a3e1-293041b9c0a2",
+          "category": "Горячие блюда",
+          "name": "Дорадо с овощами",
+          "description": "",
+          "raw_primary_price": 680000,
+          "price_KZT": 6800.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "d2649370-59c5-4568-8461-4e5b88881ffd",
+          "category": "Горячие блюда",
+          "name": "Куриное филе с овощами в кисло-сладком соусе",
+          "description": "",
+          "raw_primary_price": 340000,
+          "price_KZT": 3400.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "70788e90-2d88-4670-a117-375b2a2d299a",
+          "category": "Горячие блюда",
+          "name": "Запечённая тыква с курицей и моцареллой",
+          "description": "Нежная запечённая тыква с сочным куриным филе под расплавленной моцареллой, украшенная свежим базиликом и тыквенными семечками.",
+          "raw_primary_price": 360000,
+          "price_KZT": 3600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "1f974eb3-3698-46dc-918b-b85c1f88b550",
+          "category": "Пицца",
+          "name": "Пицца с баклажаном и домашней моцареллой",
+          "description": "",
+          "raw_primary_price": 430000,
+          "price_KZT": 4300.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "15b88508-8d5d-3a0d-9c55-af6cfa64f3e9",
+          "category": "Пицца",
+          "name": "Пицца Маргарита",
+          "description": "",
+          "raw_primary_price": 350000,
+          "price_KZT": 3500.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "13b5f9b6-88de-36cb-8fab-187a396634eb",
+          "category": "Пицца",
+          "name": "Пицца Капрезе с рукколой и Песто",
+          "description": "",
+          "raw_primary_price": 290000,
+          "price_KZT": 2900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "d3c28b9d-def5-3e10-b54a-bd322e68c1ab",
+          "category": "Пицца",
+          "name": "Пицца Пепперони",
+          "description": "",
+          "raw_primary_price": 460000,
+          "price_KZT": 4600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "805b9bfa-9e2d-3ec5-aa75-ca14e6a516b6",
+          "category": "Пицца",
+          "name": "Пицца Тоскана",
+          "description": "",
+          "raw_primary_price": 390000,
+          "price_KZT": 3900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "0c361f41-6a88-368f-a505-b73eddb5fb5f",
+          "category": "Пицца",
+          "name": "Пицца «Пять сыров»",
+          "description": "Камамбер, фета, моцарелла, дорблю, крем чиз",
+          "raw_primary_price": 395000,
+          "price_KZT": 3950.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "49374252-9cfd-33c0-aa8c-1b40a930dc4c",
+          "category": "Пицца",
+          "name": "Пицца Болоньезе",
+          "description": "",
+          "raw_primary_price": 460000,
+          "price_KZT": 4600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "59d2ed55-7308-3b31-a19d-cfe62eee8996",
+          "category": "Пицца",
+          "name": "Пицца со страчателлой",
+          "description": "",
+          "raw_primary_price": 420000,
+          "price_KZT": 4200.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "d0636d17-bb47-3948-8ea3-e79a1d76fc9a",
+          "category": "Пицца",
+          "name": "Мясная пицца",
+          "description": "",
+          "raw_primary_price": 530000,
+          "price_KZT": 5300.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "5e808b12-9a34-3ffc-b7fd-922fe9caa97d",
+          "category": "Пицца",
+          "name": "Пицца с Буррата",
+          "description": "",
+          "raw_primary_price": 780000,
+          "price_KZT": 7800.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "7e84f14d-9883-3179-9e7a-869c0ab0f489",
+          "category": "Пицца",
+          "name": "Пицца с курицей и грибами",
+          "description": "",
+          "raw_primary_price": 410000,
+          "price_KZT": 4100.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "d6ff7c11-7c82-3a7e-9438-ae8fc5543446",
+          "category": "Пицца",
+          "name": "Пицца с грушей и сыром гарганзолла",
+          "description": "",
+          "raw_primary_price": 490000,
+          "price_KZT": 4900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "b7de8bcf-5c16-3499-98ef-872978463d5a",
+          "category": "Пицца",
+          "name": "Пицца с форелью",
+          "description": "",
+          "raw_primary_price": 590000,
+          "price_KZT": 5900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "a0d0ca89-90a1-4dba-89af-dc790c87f1ed",
+          "category": "Пицца",
+          "name": "Пицца Карбонара",
+          "description": "",
+          "raw_primary_price": 490000,
+          "price_KZT": 4900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "26f883ac-cfea-48f0-a342-ffe9173ec843",
+          "category": "Пицца",
+          "name": "Пицца Капрезе",
+          "description": "",
+          "raw_primary_price": 290000,
+          "price_KZT": 2900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "38464d60-630d-41bc-a23c-73218a9aa653",
+          "category": "Пицца",
+          "name": "Лодочка",
+          "description": "",
+          "raw_primary_price": 240000,
+          "price_KZT": 2400.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "9b168e1d-f0a2-4298-ab44-89602189d135",
+          "category": "Пицца",
+          "name": "Пицца с тунцом и рукколой",
+          "description": "",
+          "raw_primary_price": 460000,
+          "price_KZT": 4600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "c44b4ab8-a31d-301a-92f7-9e562b867e76",
+          "category": "Домашняя паста",
+          "name": "Болоньезе с фетучини",
+          "description": "Фетучини с насыщенным мясным соусом болоньезе на томатной основе, подаются с тертым пармезаном.",
+          "raw_primary_price": 395000,
+          "price_KZT": 3950.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "49cfb156-ff0d-32a7-b944-6142f20f239f",
+          "category": "Домашняя паста",
+          "name": "Альфредо",
+          "description": "Домашняя, нежная паста в сливочном соусе с куриным филе и шампиньонами.",
+          "raw_primary_price": 430000,
+          "price_KZT": 4300.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "385601d4-c90b-43ab-be12-12721db0d977",
+          "category": "Домашняя паста",
+          "name": "Паста с страчателлой в томатном соусе",
+          "description": "Спагетти в насыщенном томатном соусе с нежной страчателлой.",
+          "raw_primary_price": 410000,
+          "price_KZT": 4100.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "e8bcafc7-ae74-45b1-b062-b9f73daad193",
+          "category": "Домашняя паста",
+          "name": "Паста Дорадо на кокосовом молоке",
+          "description": "",
+          "raw_primary_price": 550000,
+          "price_KZT": 5500.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "9d1f03c7-9078-3848-a283-0b9920cb5cb5",
+          "category": "Паста в сырной голове",
+          "name": "Папарделле в сырной голове с говяжьим беконом",
+          "description": "Широкая паста в сливочном соусе, перемешанная в сырной голове, с ароматным говяжьим беконом.",
+          "raw_primary_price": 590000,
+          "price_KZT": 5900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "ed9024f9-a2fb-3c22-bb58-b4015066181f",
+          "category": "Паста в сырной голове",
+          "name": "Фарфалле с семгой в сырной голове",
+          "description": "Фарфалле в нежном сливочном соусе с семгой, перемешанные в сырной голове для насыщенного вкуса.",
+          "raw_primary_price": 620000,
+          "price_KZT": 6200.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "fd0be7b2-85b6-4d44-95fd-0285af4d06fd",
+          "category": "Паста в сырной голове",
+          "name": "Альфредо в сырной голове",
+          "description": "",
+          "raw_primary_price": 420000,
+          "price_KZT": 4200.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "08c86e84-e49b-3a58-bd05-6dfb1d322b74",
+          "category": "Паста",
+          "name": "Паста с курицей в томатно-сливочном соусе",
+          "description": "Спагетти с курицей в томатно-сливочном соусе, что делает это блюдо ещё более нежным..",
+          "raw_primary_price": 420000,
+          "price_KZT": 4200.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "9dc0b9c1-eb99-3aff-8cd4-bb170966b52a",
+          "category": "Паста",
+          "name": "Паста с карри",
+          "description": "Спагетти в сливочном соусе карри с куриным филе, с легкой пряной остротой ,завершенные тертым пармезаном.",
+          "raw_primary_price": 390000,
+          "price_KZT": 3900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "c7a0438e-2f1a-3320-b10b-dfc21f9e7519",
+          "category": "Паста",
+          "name": "Карбонара на яичных желтках с пармезаном",
+          "description": "Спагетти в насыщенном соусе на яичных желтках и сливках с говяжьим беконом ,завершенные тертым пармезаном.",
+          "raw_primary_price": 490000,
+          "price_KZT": 4900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "e2538f21-90bc-3c03-b872-fc223addb4a0",
+          "category": "Паста",
+          "name": "Паста Арабьята",
+          "description": "Пенне в насыщенном томатном соусе с яркой остротой чили, подаются с тертым пармезаном.",
+          "raw_primary_price": 400000,
+          "price_KZT": 4000.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "17155d82-d101-3dfd-bc70-59d780f25c41",
+          "category": "Паста",
+          "name": "Лазанья",
+          "description": "Слои теста с насыщенным соусом болоньезе и томатной основой, с сыром пармезан.",
+          "raw_primary_price": 580000,
+          "price_KZT": 5800.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "bec5251e-4a8e-31a4-bd7e-29b35c2d725d",
+          "category": "Паста",
+          "name": "Али-Олио с креветками",
+          "description": "Спагетти с сочными креветками, черри и легкой остротой чили, дополненная тертым пармезаном.",
+          "raw_primary_price": 400000,
+          "price_KZT": 4000.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "1859621c-577f-463a-ac3b-4e39f64e1eb7",
+          "category": "Паста",
+          "name": "Спагетти с песто и страчателлой",
+          "description": "Спагетти с ароматным соусом песто, дополненные нежной страчателлой.",
+          "raw_primary_price": 450000,
+          "price_KZT": 4500.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "74ba4475-5981-41ba-98be-60c2b6613b8d",
+          "category": "Паста",
+          "name": "Паста Дорадо на кокосовом молоке",
+          "description": "",
+          "raw_primary_price": 550000,
+          "price_KZT": 5500.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "03a8f508-3ea3-3267-a492-47636086e573",
+          "category": "Гарниры",
+          "name": "Картофельное пюре",
+          "description": "",
+          "raw_primary_price": 120000,
+          "price_KZT": 1200.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "6b9bb32b-678f-3ae3-945b-85a5449ff8d4",
+          "category": "Гарниры",
+          "name": "Картофель фри",
+          "description": "",
+          "raw_primary_price": 180000,
+          "price_KZT": 1800.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "00b61b21-a31f-39ae-8abc-2dea88396658",
+          "category": "Гарниры",
+          "name": "Запеченные овощи",
+          "description": "Запеченные цукини/кабачки, помидоры, перец болгарский, лук красный, шампиньоны ,баклажаны.",
+          "raw_primary_price": 190000,
+          "price_KZT": 1900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "2c9f23b7-9b5f-4a25-bb54-9469711a9109",
+          "category": "Гарниры",
+          "name": "Рис отварной",
+          "description": "",
+          "raw_primary_price": 120000,
+          "price_KZT": 1200.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "fe9ddd9c-2cad-367c-8fdc-85bf7da39877",
+          "category": "Десерты",
+          "name": "Тирамису",
+          "description": "",
+          "raw_primary_price": 290000,
+          "price_KZT": 2900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "bfecfdf4-d8ce-3265-a2f1-3c171c2477a7",
+          "category": "Десерты",
+          "name": "Шоколадный фондан",
+          "description": "",
+          "raw_primary_price": 330000,
+          "price_KZT": 3300.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "ae0a395a-5a8f-32b6-8508-8bab7e26b1ed",
+          "category": "Десерты",
+          "name": "Наполеон",
+          "description": "",
+          "raw_primary_price": 290000,
+          "price_KZT": 2900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "9c133025-bf59-4b10-a766-c5ccd1ab630b",
+          "category": "Десерты",
+          "name": "Сырники с вишневым вареньем",
+          "description": "",
+          "raw_primary_price": 330000,
+          "price_KZT": 3300.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "edf4d17a-89cc-4879-adda-20e14de29d27",
+          "category": "Десерты",
+          "name": "Лимонный брауни",
+          "description": "",
+          "raw_primary_price": 240000,
+          "price_KZT": 2400.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "8066433f-dd97-407e-bc22-90f5d243e6c8",
+          "category": "Десерты",
+          "name": "Шокомалина",
+          "description": "",
+          "raw_primary_price": 420000,
+          "price_KZT": 4200.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "99779479-72ba-403d-b2a9-0ad30bc9e3d6",
+          "category": "Десерты",
+          "name": "Чизкейк Сан-Себастьян",
+          "description": "",
+          "raw_primary_price": 350000,
+          "price_KZT": 3500.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "3cb5587b-2fa7-4161-8d08-00b2d2396328",
+          "category": "Десерты",
+          "name": "Яблочный терин",
+          "description": "",
+          "raw_primary_price": 420000,
+          "price_KZT": 4200.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "f14737a7-18b8-4624-8e2a-40db876871a7",
+          "category": "Десерты",
+          "name": "Воспитанные сырники",
+          "description": "Классические сырники с золотистой корочкой. Подаются со сметаной.\n\nВоспитанные сырники - аккуратные,мягкие и без лишних слов, как положено настоящей классике.",
+          "raw_primary_price": 210000,
+          "price_KZT": 2100.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "746f54f2-7662-48ba-8fee-a60d101e7f1a",
+          "category": "Десерты",
+          "name": "Творожное наслаждение",
+          "description": "Блины с нежной творожной начинкой, политые домашней карамелью и посыпанные грецким орехом. \n\nОбъединяет легкую сладость, творожную мягкость и ореховую текстуру в идеальном балансе.",
+          "raw_primary_price": 260000,
+          "price_KZT": 2600.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "84f4269d-934b-3345-a8f9-1f3c1c5530d5",
+          "category": "Хлеб и масло",
+          "name": "Масло сливочное",
+          "description": "",
+          "raw_primary_price": 100000,
+          "price_KZT": 1000.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "fb4ca04e-d8f9-364f-b813-f2f49630949c",
+          "category": "Хлеб и масло",
+          "name": "Хлебная корзина",
+          "description": "",
+          "raw_primary_price": 90000,
+          "price_KZT": 900.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "1bb54e2b-b0f2-4df4-b914-ca37f7b0892d",
+          "category": "Соус",
+          "name": "Грибной соус",
+          "description": "",
+          "raw_primary_price": 80000,
+          "price_KZT": 800.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "af06f5b0-497b-4ca6-8a92-2d5b08d398c2",
+          "category": "Соус",
+          "name": "Соус перечный",
+          "description": "",
+          "raw_primary_price": 50000,
+          "price_KZT": 500.0,
+          "unit": "позиция"
+        },
+        {
+          "source_item_id": "c60250b4-bfee-4c60-899a-8a076ba2d1d8",
+          "category": "Соус",
+          "name": "Соус сальса",
+          "description": "",
+          "raw_primary_price": 80000,
+          "price_KZT": 800.0,
+          "unit": "позиция"
+        }
+      ],
+      "held_items": [
+        {
+          "item_id": "a872980f-eab1-32f3-b1b4-ec4d04f041e4",
+          "name": "Каша овсяная",
+          "reason": "Published breakfast window09-12 conflicts with merchant venue opening10; serving hours not asserted without resolution.",
+          "source_quote": "Завтраки ( с 9 утра до 12 дня )"
+        },
+        {
+          "item_id": "903a39b5-0be3-3194-b058-973f38a5aa0a",
+          "name": "Яичница с домашними колбасками",
+          "reason": "Published breakfast window09-12 conflicts with merchant venue opening10; serving hours not asserted without resolution.",
+          "source_quote": "Завтраки ( с 9 утра до 12 дня )"
+        },
+        {
+          "item_id": "f3df9c03-ce4f-3070-8de5-f4004f4772cf",
+          "name": "Завтрак по-Итальянски",
+          "reason": "Published breakfast window09-12 conflicts with merchant venue opening10; serving hours not asserted without resolution.",
+          "source_quote": "Завтраки ( с 9 утра до 12 дня )"
+        },
+        {
+          "item_id": "29bd7863-eadc-4860-b2cb-85a79f43e996",
+          "name": "Шакшука с чиабаттой",
+          "reason": "Published breakfast window09-12 conflicts with merchant venue opening10; serving hours not asserted without resolution.",
+          "source_quote": "Завтраки ( с 9 утра до 12 дня )"
+        },
+        {
+          "item_id": "a49ded20-4029-451a-8e65-6cdb09123f5a",
+          "name": "Сырники с вишневым вареньем",
+          "reason": "Published breakfast window09-12 conflicts with merchant venue opening10; serving hours not asserted without resolution.",
+          "source_quote": "Завтраки ( с 9 утра до 12 дня )"
+        },
+        {
+          "item_id": "4c0b8ce5-5187-4610-b2e8-d099ad786333",
+          "name": "Яйцо пашот с семгой и драником",
+          "reason": "Published breakfast window09-12 conflicts with merchant venue opening10; serving hours not asserted without resolution.",
+          "source_quote": "Завтраки ( с 9 утра до 12 дня )"
+        },
+        {
+          "item_id": "3062a51d-3394-4a6f-a927-859cf9bdc40b",
+          "name": "Завтрак от шефа",
+          "reason": "Published breakfast window09-12 conflicts with merchant venue opening10; serving hours not asserted without resolution.",
+          "source_quote": "Завтраки ( с 9 утра до 12 дня )"
+        },
+        {
+          "item_id": "acff4145-b709-40eb-9668-8f974e9604f2",
+          "name": "Омлет с домашним сервелатом",
+          "reason": "Published breakfast window09-12 conflicts with merchant venue opening10; serving hours not asserted without resolution.",
+          "source_quote": "Завтраки ( с 9 утра до 12 дня )"
+        }
+      ],
+      "possible_duplicate_canonical_id": "osm:node/13159240457",
+      "duplicate_policy": "Only exact-address Overture branch receives overlay; OSM row not edited or silently duplicated.",
+      "kitchen_hours": "unknown",
+      "venue_hours_conflict": "Merchant landing10:00 vs breakfast9:00 and 2GIS today9:00. Venue/kitchen hours not accepted."
+    }
+  ]
+}

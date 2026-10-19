@@ -14,7 +14,7 @@ import json
 import math
 from pathlib import Path
 import re
-from typing import Any, Literal, TypedDict
+from typing import Any, Literal, TypedDict, NotRequired
 from urllib.parse import urlsplit
 
 
@@ -52,6 +52,14 @@ class PlaceFact(Evidence):
     value: str | bool | int | float | list[str]
 
 
+class CostStatement(Evidence):
+    scope: Literal["one_offering"]
+    complete: bool
+    service_percent: int | float | None
+    mandatory_fixed_amount: int | float | None
+    minimum_payable_amount: int | float | None
+
+
 class MenuItem(Evidence):
     id: str
     name: str
@@ -59,6 +67,8 @@ class MenuItem(Evidence):
     aliases: list[str]
     price: Price | None
     role: Literal["meal", "drink", "side", "dessert", "unknown"]
+    cost: NotRequired[CostStatement]
+    serving_hours: NotRequired[str]
 
 
 BOOLEAN_FIELDS = frozenset({"wifi", "sockets", "halal", "vegetarian_options", "vegan_options",
@@ -70,7 +80,7 @@ TEXT_FIELDS = frozenset({"format", "cuisine", "cuisines", "opening_hours", "addr
                          "payment_methods", "service_languages", "floor", "menu_url", "description_fact",
                          "dress_code", "age_policy", "booking_policy", "services", "visit_duration",
                          "seasonality", "activities", "access_policy", "entrance", "group_policy",
-                         "delivery_hours"})
+                         "delivery_hours", "kitchen_hours", "kitchen_closes_at"})
 NUMERIC_FIELDS = frozenset({"seating_capacity", "seating_capacity_max"})
 
 
@@ -159,11 +169,15 @@ def _fact_valid(item: dict) -> bool:
     field, value = item.get("field"), item.get("value")
     if not isinstance(field, str):
         return False
-    if field == "opening_hours":
+    if field in {"opening_hours", "kitchen_hours", "kitchen_closes_at"}:
         source = item.get("source", {})
         host = urlsplit(source.get("url", "")).hostname or ""
         if source.get("channel") == "delivery" or host == "wolt.com" or host.endswith(".wolt.com"):
             return False
+    if field == "kitchen_hours":
+        return _service_hours_valid(value)
+    if field == "kitchen_closes_at":
+        return isinstance(value, str) and bool(re.fullmatch(r"(?:[01]\d|2[0-3]):[0-5]\d", value))
     if field in BOOLEAN_FIELDS:
         return isinstance(value, bool)
     if field in TEXT_FIELDS:
@@ -175,6 +189,17 @@ def _fact_valid(item: dict) -> bool:
     return False
 
 
+def _service_hours_valid(value: Any) -> bool:
+    if not _text(value):
+        return False
+    try:
+        from opening_hours import OpeningHours
+        OpeningHours(value, country="KZ")
+    except Exception:
+        return False
+    return True
+
+
 def _menu_valid(item: dict) -> bool:
     literal = (str(item.get("name", "")) + " " + str(item.get("source", {}).get("excerpt", ""))).casefold()
     return (all(_text(item.get(k)) for k in ("id", "name"))
@@ -183,7 +208,8 @@ def _menu_valid(item: dict) -> bool:
             and all(isinstance(item.get(k), list) and all(_text(v) for v in item[k])
                     for k in ("components", "aliases"))
             and all(v.casefold() in literal for k in ("components", "aliases") for v in item[k])
-            and "price" in item and (item["price"] is None or _price_valid(item["price"], menu=True)))
+            and "price" in item and (item["price"] is None or _price_valid(item["price"], menu=True))
+            and ("serving_hours" not in item or _service_hours_valid(item["serving_hours"])))
 
 
 def load_place_details(path: str | Path, *, canonical_sha256: str,
@@ -230,6 +256,10 @@ def load_place_details(path: str | Path, *, canonical_sha256: str,
                            if _evidence_valid(item, identity, today, age) and validator(item)]
         for item in output["menu_items"]:
             item.setdefault("role", "unknown")
+            if "cost" in item:
+                from data.meal_cost import cost_evidence_current
+                if not cost_evidence_current(item, today):
+                    item.pop("cost")
         # Competing literal values require a single resolved review; do not pick.
         values: dict[str, set[str]] = {}
         for fact in output["facts"]:
@@ -243,7 +273,10 @@ def load_place_details(path: str | Path, *, canonical_sha256: str,
                             if len(prices[tuple(p[k] for k in ("kind", "currency", "unit", "channel"))]) == 1]
         menu_values: dict[str, set[str]] = {}
         for item in output["menu_items"]:
-            value = {k: item[k] for k in ("name", "components", "aliases", "price", "role")}
+            value = {k: item.get(k) for k in ("name", "components", "aliases", "price", "role", "serving_hours", "cost")}
+            if value["cost"] is not None:
+                value["cost"] = {k: item["cost"].get(k) for k in (
+                    "scope", "complete", "service_percent", "mandatory_fixed_amount", "minimum_payable_amount")}
             menu_values.setdefault(item["id"], set()).add(json.dumps(value, sort_keys=True))
         output["menu_items"] = [item for item in output["menu_items"] if len(menu_values[item["id"]]) == 1]
         if any(output[k] for k in ("facts", "menu_items", "prices")):

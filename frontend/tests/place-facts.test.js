@@ -68,3 +68,34 @@ test('unaccepted, conflicting and source-less food facts cannot appear as publis
   const html = renderToStaticMarkup(React.createElement(PlaceCard, {place}));
   assert.doesNotMatch(html, /Спорное блюдо|Непроверенное блюдо|Блюдо без источника|Средний чек|href="javascript:/);
 });
+
+test('dine-in card distinguishes menu price, complete payable cost and its fee source', () => {
+  const cost = {...accepted, scope: 'one_offering', complete: true, service_percent: 10,
+    mandatory_fixed_amount: 0, minimum_payable_amount: 0,
+    source: {...source, url: 'https://merchant.example/service', channel: 'dine_in'}};
+  const meal = item('Котлета с пюре', {price: {amount: 1800, currency: 'KZT', unit: 'portion', channel: 'dine_in'},
+    total_price: {amount: 1980, currency: 'KZT', unit: 'portion', channel: 'dine_in'}, cost_status: 'complete', cost,
+    serving_hours: 'Mo-Fr 12:00-15:00'});
+  const place = toPlace(rec({menu_items: [meal], structured_facts: [
+    {...accepted, field: 'kitchen_hours', value: 'Mo-Su 10:00-21:00'}]}));
+  const html = renderToStaticMarkup(React.createElement(PlaceCard, {place}));
+  assert.match(html, /Цена по меню/);
+  assert.match(html, /Итого с обязательными доплатами/);
+  assert.match(html, /1[^0-9]*980/);
+  assert.match(html, /Обслуживание/);
+  assert.match(html, /10%/);
+  assert.match(html, /https:\/\/merchant.example\/service/);
+  assert.match(html, /Часы кухни/);
+  assert.match(html, /Часы подачи блюда/);
+});
+
+test('unknown or conflicting fees never display a supplied total as confirmed', () => {
+  const meal = item('Обед', {price: {amount: 1800, currency: 'KZT', unit: 'portion', channel: 'dine_in'},
+    role: 'meal',
+    total_price: {amount: 1800, currency: 'KZT', unit: 'portion', channel: 'dine_in'}, cost_status: 'unknown',
+    cost: {...accepted, scope: 'one_offering', complete: false, service_percent: 10}});
+  const html = renderToStaticMarkup(React.createElement(PlaceCard, {place: toPlace(rec({menu_items: [meal]}))}));
+  assert.match(html, /Итоговая стоимость с доплатами не подтверждена/);
+  assert.match(html, /Часы работы кухни не подтверждены/);
+  assert.doesNotMatch(html, /Итого с обязательными доплатами/);
+});

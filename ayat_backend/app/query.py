@@ -14,7 +14,7 @@ from pydantic import BaseModel, Field
 from rapidfuzz import fuzz
 
 from ayat_backend.app.categories import CATEGORIES
-from ayat_backend.app.food import FoodRequirement, food_requirement_is_asserted, parse_food_requirements
+from ayat_backend.app.food import FoodRequirement, food_requirement_is_asserted, parse_food_requirements, needs_meal_kitchen
 from ayat_backend.app.textnorm import KK_LETTERS, fold
 
 CatKey = Literal[tuple(CATEGORIES)]  # type: ignore[valid-type]
@@ -91,6 +91,7 @@ class Parsed:
     keywords: list[str] = field(default_factory=list)
     source: str = "rules"
     food_requirements: list[FoodRequirement] = field(default_factory=list)
+    meal_intent: bool = False
 
 
 def detect_lang(text: str) -> str:
@@ -232,6 +233,7 @@ def parse_clock(text: str) -> str | None:
 def parse_rules(text: str) -> Parsed:
     s = fold(text)
     p = Parsed(lang=detect_lang(text), search_text=text.strip(), food_requirements=parse_food_requirements(text))
+    p.meal_intent = needs_meal_kitchen(text, p.food_requirements)
     cats: list[str] = []
     for pat, act in _RULES:
         if not re.search(pat, s):
@@ -259,7 +261,7 @@ def parse_rules(text: str) -> Parsed:
         if act.get("event"):
             p.wants_event = True
     p.categories = list(dict.fromkeys(cats))
-    if p.food_requirements and not p.categories:
+    if (p.food_requirements or p.meal_intent) and not p.categories:
         p.categories = ["restaurant","cafe"]
     if p.deadline_kind == "flight":
         # Naming an airport is ambiguous; default to departure unless arrival is explicit.
@@ -291,6 +293,7 @@ def merge_llm(rules: Parsed, llm: LLMParsed | None) -> Parsed:
         if key not in seen and food_requirement_is_asserted(rules.search_text, requirement.text):
             p.food_requirements.append(requirement)
             seen.add(key)
+    p.meal_intent = rules.meal_intent or needs_meal_kitchen("", p.food_requirements)
     # explicit place types named in the text (rules) filter; LLM-inferred types only boost ranking
     p.categories = list(rules.categories)
     p.soft_categories = list(dict.fromkeys([c for c in llm.categories if c in CATEGORIES] + rules.categories))

@@ -1,0 +1,60 @@
+{
+  "verified_at": "2026-10-19T07:01:45.770441+00:00",
+  "failed_github_run": 39212144624,
+  "base_commit": "3a318e64b763cd0503a29459377597eb7943a003",
+  "cause": "Dual-app import/OpenAPI smoke test registers primary backend photo/Form endpoint; Ayat minimal dev dependency set omitted python-multipart. Broad workspace env had hidden this missing test dependency.",
+  "changed_files": [
+    "ayat_backend/pyproject.toml",
+    "ayat_backend/uv.lock"
+  ],
+  "file_sha256": {
+    "ayat_backend/pyproject.toml": "2480762cb2bdf3a6db7db71d0a4051024895870bd437c57ed021312aa0330d44",
+    "ayat_backend/uv.lock": "8da1c535c7c40c764790b00ad475163f4f6abfb6e2b6a35f9cd559502aab9e14"
+  },
+  "change": "Add python-multipart>=0.0.20 to dev group only; lock0.0.32. No runtime/pipeline dependency versions changed; assertions unchanged.",
+  "isolated_environment": {
+    "python": "3.13.16",
+    "host": "macOS ARM64",
+    "workflow_dependency_selection": "uv sync --project ayat_backend --group dev --no-group pipeline",
+    "environment_path": "/var/folders/db/pwcl0tld01z34szcxfghjgzw0000gn/T/seru-ayat-ci-39212144624-zs3y8rj8/minimal-env",
+    "source_checkout": "/var/folders/db/pwcl0tld01z34szcxfghjgzw0000gn/T/seru-ayat-ci-39212144624-zs3y8rj8/repo",
+    "root_venv_untouched": true,
+    "pipeline_extras_duckdb_osmnx_shapely_absent": true
+  },
+  "red": {
+    "test": "test_ayat_and_primary_apps_import_without_generic_app_package",
+    "failed": 1,
+    "error": "RuntimeError: Form data requires python-multipart to be installed",
+    "seconds": 14.88,
+    "log": ".local/ayat-ci-fix-39212144624/red-test.log"
+  },
+  "green": {
+    "ayat_tests_passed": 389,
+    "ayat_tests_seconds": 44.74,
+    "log": ".local/ayat-ci-fix-39212144624/green-tests.log",
+    "scenario_cases": 15,
+    "scenario_cases_failed": 0,
+    "scenario_checks_passed": 170,
+    "scenario_checks_total": 170,
+    "scenario_report": ".local/ayat-ci-fix-39212144624/scenario-eval.md",
+    "providers_disabled": true,
+    "paid_calls": 0
+  },
+  "limitations": [
+    "Local reproduction used matching Python3.13 dependency selection on macOS, not Ubuntu runner. Actual GitHub rerun remains pending the parent commit/push."
+  ],
+  "git_actions_by_this_agent": {
+    "staged": false,
+    "committed": false,
+    "pushed": false
+  },
+  "fix_commit": "453db800345082ad668077c8ca0382b1bc30f471",
+  "github_rerun": {
+    "run_id": 39213529405,
+    "url": "https://github.com/Abegerov4/SeruendeshAI/actions/runs/39213529405",
+    "unit_test_step": "passed",
+    "scenario_step": "failed",
+    "reason": "S8_cold_winter latency9156ms exceeded unchanged8000ms limit; functional scenario checks passed",
+    "followup": "profiling and caching repeated schedule state/next_change, preserving source freshness per call"
+  }
+}

@@ -120,6 +120,58 @@ def test_record_without_confirmed_branch_or_with_duplicate_id_is_rejected(tmp_pa
         load(tmp_path, body)
 
 
+def test_kitchen_facts_do_not_replace_venue_opening_hours(tmp_path):
+    body = payload()
+    body["records"][0]["facts"] += [
+        {**evidence(), "field": "kitchen_hours", "value": "Mo-Su 10:00-21:00"},
+        {**evidence(), "field": "kitchen_closes_at", "value": "21:00"}]
+    facts = load(tmp_path, body)["osm:node/1"]["facts"]
+    assert {f["field"] for f in facts} >= {"kitchen_hours", "kitchen_closes_at"}
+    assert not any(f["field"] == "opening_hours" for f in facts)
+
+
+@pytest.mark.parametrize("cost_change", [
+    {"service_percent": True}, {"mandatory_fixed_amount": -1},
+    {"branch_confirmation": {"source_name": "Cafe", "source_address": "Other 2"}},
+    {"source": {"url": "https://merchant.example/fees", "checked_at": "2026-08-01", "excerpt": "Old service"}},
+])
+def test_invalid_cost_is_withheld_without_losing_base_menu_price(tmp_path, cost_change):
+    body = payload()
+    menu = body["records"][0]["menu_items"][0]
+    menu["cost"] = {**evidence(), "scope": "one_offering", "complete": True, "service_percent": 10,
+                    "mandatory_fixed_amount": 0, "minimum_payable_amount": 0, **cost_change}
+    kept = load(tmp_path, body)["osm:node/1"]["menu_items"][0]
+    assert kept["price"]["amount"] == 1900
+    assert "cost" not in kept
+
+
+def test_unparseable_serving_constraint_withholds_the_affected_offering(tmp_path):
+    body = payload()
+    body["records"][0]["menu_items"][0]["serving_hours"] = "lunchtime whenever"
+    assert load(tmp_path, body)["osm:node/1"]["menu_items"] == []
+
+
+def test_conflicting_serving_windows_withhold_a_duplicate_offering(tmp_path):
+    body = payload()
+    first = body["records"][0]["menu_items"][0]
+    first["serving_hours"] = "Mo-Fr 12:00-15:00"
+    second = deepcopy(first)
+    second["serving_hours"] = "Mo-Fr 10:00-12:00"
+    body["records"][0]["menu_items"].append(second)
+    assert load(tmp_path, body)["osm:node/1"]["menu_items"] == []
+
+
+def test_equal_cost_terms_from_two_sources_are_not_a_price_conflict(tmp_path):
+    body = payload()
+    first = body["records"][0]["menu_items"][0]
+    first["cost"] = {**evidence(), "scope":"one_offering", "complete":False, "service_percent":10,
+                     "mandatory_fixed_amount":None, "minimum_payable_amount":None}
+    second = deepcopy(first)
+    second["cost"]["source"]["url"] = "https://merchant.example/another-fee-statement"
+    body["records"][0]["menu_items"].append(second)
+    assert load(tmp_path, body)["osm:node/1"]["menu_items"]
+
+
 def test_details_cannot_be_reused_for_a_renamed_or_relocated_branch(tmp_path):
     details = load(tmp_path)
     changed = [{"id": "osm:node/1", "name": "Cafe", "address": "Main 99"}]

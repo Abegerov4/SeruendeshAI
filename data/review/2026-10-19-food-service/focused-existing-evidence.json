@@ -1,0 +1,633 @@
+{
+  "summary": {
+    "as_of": "2026-10-19",
+    "bounded_scope": "12 existing exact branches chosen from current reviewed lowest map averagechecks, prioritizing canteens. This is not an exhaustive internet/merchant review.",
+    "selected_existing_branches": 12,
+    "cached_exact_firms_inspected": 12,
+    "fresh_firm_http_successes": 11,
+    "fresh_firm_errors": 1,
+    "merchant_roots_checked": 3,
+    "merchant_root_http_successes": 2,
+    "followup_public_menu_and_branch_pages": 7,
+    "new_accepted_menu_items": 0,
+    "new_accepted_kitchen_windows": 1,
+    "complete_cost_statements": 0,
+    "new_canonical_ids": 0,
+    "paid_calls": 0,
+    "sidecar": ".local/food-pack-research/additional-existing.json",
+    "accepted_branch": "osm:node/12135856708",
+    "accepted_kitchen_hours": "Mo-Su 08:00-21:30",
+    "original_food_sidecar_modified": false,
+    "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+    "runtime_validation_status": "Current data.place_details loader still withholds kitchen_hours field; expected until root implementation adds schema support. Source evidence and same-identity equality validated independently."
+  },
+  "accepted_facts": [
+    {
+      "field": "kitchen_hours",
+      "value": "Mo-Su 08:00-21:30",
+      "status": "accepted",
+      "conflict_status": "none",
+      "branch_scope": "exact",
+      "branch_confirmation": {
+        "source_name": "Coffee Hub",
+        "source_address": "улица Кенесары, 24"
+      },
+      "source": {
+        "url": "https://2gis.kz/astana/firm/70000001084483194",
+        "excerpt": "Coffee Hub; улица Кенесары, 24; кухня: пн-вс 8:00-21:30",
+        "checked_at": "2026-10-19",
+        "checked_at_datetime": "2026-10-19T06:27:24.330799+00:00",
+        "channel": "onsite",
+        "source_updated_at": "2026-03-31T14:25:37Z",
+        "firm_id": "70000001084483194",
+        "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001084483194.html",
+        "response_sha256": "e072376eb2abbe068805d7f1dca9a3565383cf90783b3d5caf8b0cd5ba8a42e4",
+        "extraction": "Exact accepted firm ID from public 2GIS initial state; schedule.comment explicitly states kitchen weekdays and full interval."
+      },
+      "valid_from": null,
+      "valid_to": null
+    }
+  ],
+  "branches": [
+    {
+      "canonical_id": "overture:ea64f286-3833-4ddb-8b08-dc5d4808c6d1",
+      "source_name": "Marhabat",
+      "source_address": "проспект Мангилик Ел, 17",
+      "verified_directory_average_check": 1600,
+      "average_check_is_not_meal_price": true,
+      "identity_url": "https://2gis.kz/astana/firm/70000001041529454",
+      "cached_source": {
+        "url": "https://2gis.kz/astana/search/Marhabat%20Askhana%20Stolovaya",
+        "identity_url": "https://2gis.kz/astana/firm/70000001041529454",
+        "excerpt": "Marhabat: проспект Мангилик Ел, 17",
+        "checked_at": "2026-10-19",
+        "fetched_at": "2026-10-18T23:47:59.585081+00:00",
+        "source_updated_at": "2026-09-23T17:02:31Z",
+        "channel": "onsite",
+        "firm_id": "70000001041529454",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/84b319ff925afb4434fbc4df13eef275130ab31f6c7e23bc3e9a1758a66d7d83.html",
+        "response_sha256": "84b319ff925afb4434fbc4df13eef275130ab31f6c7e23bc3e9a1758a66d7d83",
+        "extraction": "Reviewed exact firm in public 2GIS HTML initial state; no neighboring cards"
+      },
+      "fresh_request": {
+        "name": "focused-70000001041529454",
+        "source_url": "https://2gis.kz/astana/firm/70000001041529454",
+        "checked_at": "2026-10-19T06:26:24.670111+00:00",
+        "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+      },
+      "menu_decision": "held",
+      "reason": "Exact branch known. Search discovers delivery menus and old2021/2024 articles pointing to Instagram daily highlights; no current public branch-bound onsite menu price captured. Direct firm request DNSfailed; cached exactfirm remained readable."
+    },
+    {
+      "canonical_id": "osm:node/5244250150",
+      "source_name": "Рахат",
+      "source_address": "улица Достык, 13",
+      "verified_directory_average_check": 2000,
+      "average_check_is_not_meal_price": true,
+      "identity_url": "https://2gis.kz/astana/firm/70000001019497669",
+      "cached_source": {
+        "url": "https://2gis.kz/astana/search/%D0%A0%D0%B0%D1%85%D0%B0%D1%82",
+        "identity_url": "https://2gis.kz/astana/firm/70000001019497669",
+        "excerpt": "Рахат: улица Достык, 13",
+        "checked_at": "2026-10-19",
+        "fetched_at": "2026-10-18T23:52:52.735498+00:00",
+        "source_updated_at": "2026-09-03T13:51:09Z",
+        "channel": "onsite",
+        "firm_id": "70000001019497669",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/c5f8975e28f10cab08dca58582e9a416b000ac4b286563a17740916c04a8fa58.html",
+        "response_sha256": "c5f8975e28f10cab08dca58582e9a416b000ac4b286563a17740916c04a8fa58",
+        "extraction": "Reviewed exact firm in public 2GIS HTML initial state; no neighboring cards"
+      },
+      "fresh_request": {
+        "name": "focused-70000001019497669",
+        "source_url": "https://2gis.kz/astana/firm/70000001019497669",
+        "checked_at": "2026-10-19T06:26:55.939997+00:00",
+        "http_status": 200,
+        "final_url": "https://2gis.kz/astana/firm/70000001019497669",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001019497669.html",
+        "sha256": "3e8b98b12ea1aea0212fb1748e996860d2a1d0df5c46b4948e5ce2e95575fa98",
+        "bytes": 699330,
+        "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001019497669.txt"
+      },
+      "menu_decision": "held",
+      "reason": "Fresh exactfirm page has WhatsApp contact only; neighbouring Qaganat and other ads not copied. No public merchant menu link or priced meal found."
+    },
+    {
+      "canonical_id": "osm:node/12917095624",
+      "source_name": "Махаббатпен",
+      "source_address": "улица Кайым Мухамедханов, 6",
+      "verified_directory_average_check": 1800,
+      "average_check_is_not_meal_price": true,
+      "identity_url": "https://2gis.kz/astana/firm/70000001080521322",
+      "cached_source": {
+        "url": "https://2gis.kz/astana/search/%D0%9C%D0%B0%D1%85%D0%B0%D0%B1%D0%B1%D0%B0%D1%82%D0%BF%D0%B5%D0%BD",
+        "identity_url": "https://2gis.kz/astana/firm/70000001080521322",
+        "excerpt": "Махаббатпен: улица Кайым Мухамедханов, 6",
+        "checked_at": "2026-10-19",
+        "fetched_at": "2026-10-19T00:09:10.792708+00:00",
+        "source_updated_at": "2026-07-15T09:31:14Z",
+        "channel": "onsite",
+        "firm_id": "70000001080521322",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/26bc97a769b6a5486e4520df5b53f963c11407417b1ca3b4aca4c4e0d1341dc1.html",
+        "response_sha256": "26bc97a769b6a5486e4520df5b53f963c11407417b1ca3b4aca4c4e0d1341dc1",
+        "extraction": "Reviewed exact firm in public 2GIS HTML initial state; no neighboring cards"
+      },
+      "fresh_request": {
+        "name": "focused-70000001080521322",
+        "source_url": "https://2gis.kz/astana/firm/70000001080521322",
+        "checked_at": "2026-10-19T06:27:11.415735+00:00",
+        "http_status": 200,
+        "final_url": "https://2gis.kz/astana/firm/70000001080521322",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001080521322.html",
+        "sha256": "a6fb06cef9f7e882a7a62489678ab152bdc3ddab7bd849c50925790d35b3c467",
+        "bytes": 722966,
+        "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001080521322.txt"
+      },
+      "menu_decision": "held",
+      "reason": "Fresh exactfirm advertises complete lunches2300KZT; older search advertising1800 differs. Public prices tab updated2026-01-14 has a genericМеню card with priceunspecified. No composition or current definedportion; no menu/completecost accepted."
+    },
+    {
+      "canonical_id": "osm:node/13619962901",
+      "source_name": "Sultani",
+      "source_address": "проспект Республики, 16/2",
+      "verified_directory_average_check": 2000,
+      "average_check_is_not_meal_price": true,
+      "identity_url": "https://2gis.kz/astana/firm/70000001086700355",
+      "cached_source": {
+        "url": "https://2gis.kz/astana/search/Sultani",
+        "identity_url": "https://2gis.kz/astana/firm/70000001086700355",
+        "excerpt": "Sultani: проспект Республики, 16/2",
+        "checked_at": "2026-10-19",
+        "fetched_at": "2026-10-19T00:23:30.653441+00:00",
+        "source_updated_at": "2026-09-09T11:40:05Z",
+        "channel": "onsite",
+        "firm_id": "70000001086700355",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/a720fdfdb6d3a56cd8c398cc9aa29ee1a697b00b4b387c6245dfbe84f212a857.html",
+        "response_sha256": "a720fdfdb6d3a56cd8c398cc9aa29ee1a697b00b4b387c6245dfbe84f212a857",
+        "extraction": "Reviewed exact firm in public 2GIS HTML initial state; no neighboring cards"
+      },
+      "fresh_request": {
+        "name": "focused-70000001086700355",
+        "source_url": "https://2gis.kz/astana/firm/70000001086700355",
+        "checked_at": "2026-10-19T06:27:13.804121+00:00",
+        "http_status": 200,
+        "final_url": "https://2gis.kz/astana/firm/70000001086700355",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001086700355.html",
+        "sha256": "25f65cc97fda696f02cbb28e516dce63314ff2e579b074ff78164f402a06f49f",
+        "bytes": 720242,
+        "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001086700355.txt"
+      },
+      "menu_decision": "held",
+      "reason": "Fresh exactfirm has only Instagram contact; searchreturns meal/category/review data or otherbranches, not current onsite priced portions. No invented menu."
+    },
+    {
+      "canonical_id": "osm:node/5890156991",
+      "source_name": "Избушка",
+      "source_address": "улица Желтоксан, 2т",
+      "verified_directory_average_check": 2500,
+      "average_check_is_not_meal_price": true,
+      "identity_url": "https://2gis.kz/astana/firm/70000001023768163",
+      "cached_source": {
+        "url": "https://2gis.kz/astana/search/%D0%98%D0%B7%D0%B1%D1%83%D1%88%D0%BA%D0%B0",
+        "identity_url": "https://2gis.kz/astana/firm/70000001023768163",
+        "excerpt": "Избушка: улица Желтоксан, 2т",
+        "checked_at": "2026-10-19",
+        "fetched_at": "2026-10-19T00:24:02.669263+00:00",
+        "source_updated_at": "2026-04-24T15:35:54Z",
+        "channel": "onsite",
+        "firm_id": "70000001023768163",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/a833cd6a43efd63ec9c7250a96db857cc4658d355f7bf8fea7c398fceae5ade6.html",
+        "response_sha256": "a833cd6a43efd63ec9c7250a96db857cc4658d355f7bf8fea7c398fceae5ade6",
+        "extraction": "Reviewed exact firm in public 2GIS HTML initial state; no neighboring cards"
+      },
+      "fresh_request": {
+        "name": "focused-70000001023768163",
+        "source_url": "https://2gis.kz/astana/firm/70000001023768163",
+        "checked_at": "2026-10-19T06:27:16.702848+00:00",
+        "http_status": 200,
+        "final_url": "https://2gis.kz/astana/firm/70000001023768163",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001023768163.html",
+        "sha256": "35fd1595ec059636676fa7f0028ed5058941b73b61a6df2491b8638625215603",
+        "bytes": 739652,
+        "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001023768163.txt"
+      },
+      "menu_decision": "held",
+      "reason": "Fresh exactfirm links Instagram and WhatsApp, not public onsite price menu. No copying other branch/menu marketplace prices."
+    },
+    {
+      "canonical_id": "osm:node/12993953677",
+      "source_name": "Тағам",
+      "source_address": "улица Кенесары, 8",
+      "verified_directory_average_check": 2000,
+      "average_check_is_not_meal_price": true,
+      "identity_url": "https://2gis.kz/astana/firm/70000001061686261",
+      "cached_source": {
+        "url": "https://2gis.kz/astana/search/Tagam",
+        "identity_url": "https://2gis.kz/astana/firm/70000001061686261",
+        "excerpt": "Тағам: улица Кенесары, 8",
+        "checked_at": "2026-10-19",
+        "fetched_at": "2026-10-19T00:26:19.021395+00:00",
+        "source_updated_at": "2026-10-05T09:46:56Z",
+        "channel": "onsite",
+        "firm_id": "70000001061686261",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/323f942cbf7d352737869818664876ebc4b3e8fc775f362cdd7e5b9d0bdf5670.html",
+        "response_sha256": "323f942cbf7d352737869818664876ebc4b3e8fc775f362cdd7e5b9d0bdf5670",
+        "extraction": "Reviewed exact firm in public 2GIS HTML initial state; no neighboring cards"
+      },
+      "fresh_request": {
+        "name": "focused-70000001061686261",
+        "source_url": "https://2gis.kz/astana/firm/70000001061686261",
+        "checked_at": "2026-10-19T06:27:19.137562+00:00",
+        "http_status": 200,
+        "final_url": "https://2gis.kz/astana/firm/70000001061686261",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001061686261.html",
+        "sha256": "c46cf0a3158788326befc54e3b8867d77976a765f467b8bdb3cb84fbb918d892",
+        "bytes": 749674,
+        "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001061686261.txt"
+      },
+      "menu_decision": "held",
+      "reason": "Exactfirm links officialtagam-halal.kz. Merchant root/taplink are networkoverview/deliverycontact, no branch-bound onsite priced portions.2GISmenu5 pictures are not machinereadable priced records; no date/currentprice guarantee. Public HTML initialState inspected: entity.photos and photo stores empty; no menu picture URL/date delivered. No hidden API queried or image freshness inferred."
+    },
+    {
+      "canonical_id": "osm:node/12973420129",
+      "source_name": "Degirmen",
+      "source_address": "проспект Республики, 19",
+      "verified_directory_average_check": 1500,
+      "average_check_is_not_meal_price": true,
+      "identity_url": "https://2gis.kz/astana/firm/70000001080626375",
+      "cached_source": {
+        "url": "https://2gis.kz/astana/search/Degirmen",
+        "identity_url": "https://2gis.kz/astana/firm/70000001080626375",
+        "excerpt": "Degirmen: проспект Республики, 19",
+        "checked_at": "2026-10-19",
+        "fetched_at": "2026-10-19T00:26:34.066953+00:00",
+        "source_updated_at": "2026-06-05T13:49:07Z",
+        "channel": "onsite",
+        "firm_id": "70000001080626375",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/78289cde14c9d75ffa4eef50ddf9d845c5d1ea94e54b77e3472f797959cc48d0.html",
+        "response_sha256": "78289cde14c9d75ffa4eef50ddf9d845c5d1ea94e54b77e3472f797959cc48d0",
+        "extraction": "Reviewed exact firm in public 2GIS HTML initial state; no neighboring cards"
+      },
+      "fresh_request": {
+        "name": "focused-70000001080626375",
+        "source_url": "https://2gis.kz/astana/firm/70000001080626375",
+        "checked_at": "2026-10-19T06:27:21.948547+00:00",
+        "http_status": 200,
+        "final_url": "https://2gis.kz/astana/firm/70000001080626375",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001080626375.html",
+        "sha256": "58399e3340e87f3c50d1445cf907daa43b314d5aca14cf802e7f6b59e72096dd",
+        "bytes": 732677,
+        "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001080626375.txt"
+      },
+      "menu_decision": "held",
+      "reason": "Exactfirm links officialdegirmen.kz. Merchantbranches page confirmsRepublic19 and phone; shop is factoryproducts/bakery and no onsitebranch prices.2GISmenu2 photoentries do not establishcurrent dated onsite fullmeal prices. Deliveryaggregator withheld. Public HTML initialState inspected: entity.photos and photo stores empty; no menu picture URL/date delivered. No hidden API queried or image freshness inferred."
+    },
+    {
+      "canonical_id": "osm:node/12135856708",
+      "source_name": "Coffee Hub",
+      "source_address": "улица Кенесары, 24",
+      "verified_directory_average_check": 1000,
+      "average_check_is_not_meal_price": true,
+      "identity_url": "https://2gis.kz/astana/firm/70000001084483194",
+      "cached_source": {
+        "url": "https://2gis.kz/astana/search/Coffee%20Hub",
+        "identity_url": "https://2gis.kz/astana/firm/70000001084483194",
+        "excerpt": "Coffee Hub: улица Кенесары, 24",
+        "checked_at": "2026-10-19",
+        "fetched_at": "2026-10-19T00:28:43.495181+00:00",
+        "source_updated_at": "2026-03-31T14:25:37Z",
+        "channel": "onsite",
+        "firm_id": "70000001084483194",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/09e0f8922130d0b580a2ef9cffbb045fa6b6b716f6f58153528ea9f0d88453f2.html",
+        "response_sha256": "09e0f8922130d0b580a2ef9cffbb045fa6b6b716f6f58153528ea9f0d88453f2",
+        "extraction": "Reviewed exact firm in public 2GIS HTML initial state; no neighboring cards"
+      },
+      "fresh_request": {
+        "name": "focused-70000001084483194",
+        "source_url": "https://2gis.kz/astana/firm/70000001084483194",
+        "checked_at": "2026-10-19T06:27:24.330799+00:00",
+        "http_status": 200,
+        "final_url": "https://2gis.kz/astana/firm/70000001084483194",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001084483194.html",
+        "sha256": "e072376eb2abbe068805d7f1dca9a3565383cf90783b3d5caf8b0cd5ba8a42e4",
+        "bytes": 732509,
+        "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001084483194.txt"
+      },
+      "menu_decision": "held",
+      "reason": "Explicit kitchen hours accepted from exactfirm comment. Old fixed1000 news, two-tier secondary claims and expiredone-daypromotions are not a current primarymenu. ClaimedmerchantTildaDNSfailed. Newlydiscoveredverceldemo hasdifferentaddress and no trusted inbound merchantlink; withheld.",
+      "accepted_fact": {
+        "field": "kitchen_hours",
+        "value": "Mo-Su 08:00-21:30",
+        "status": "accepted",
+        "conflict_status": "none",
+        "branch_scope": "exact",
+        "branch_confirmation": {
+          "source_name": "Coffee Hub",
+          "source_address": "улица Кенесары, 24"
+        },
+        "source": {
+          "url": "https://2gis.kz/astana/firm/70000001084483194",
+          "excerpt": "Coffee Hub; улица Кенесары, 24; кухня: пн-вс 8:00-21:30",
+          "checked_at": "2026-10-19",
+          "checked_at_datetime": "2026-10-19T06:27:24.330799+00:00",
+          "channel": "onsite",
+          "source_updated_at": "2026-03-31T14:25:37Z",
+          "firm_id": "70000001084483194",
+          "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001084483194.html",
+          "response_sha256": "e072376eb2abbe068805d7f1dca9a3565383cf90783b3d5caf8b0cd5ba8a42e4",
+          "extraction": "Exact accepted firm ID from public 2GIS initial state; schedule.comment explicitly states kitchen weekdays and full interval."
+        },
+        "valid_from": null,
+        "valid_to": null
+      }
+    },
+    {
+      "canonical_id": "osm:node/5890018687",
+      "source_name": "Столичная",
+      "source_address": "проспект Женис, 10",
+      "verified_directory_average_check": 2500,
+      "average_check_is_not_meal_price": true,
+      "identity_url": "https://2gis.kz/astana/firm/70000001023680852",
+      "cached_source": {
+        "url": "https://2gis.kz/astana/search/%D0%A1%D1%82%D0%BE%D0%BB%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F",
+        "identity_url": "https://2gis.kz/astana/firm/70000001023680852",
+        "excerpt": "Столичная: проспект Женис, 10",
+        "checked_at": "2026-10-19",
+        "fetched_at": "2026-10-19T00:30:31.437805+00:00",
+        "source_updated_at": "2026-06-17T11:52:30Z",
+        "channel": "onsite",
+        "firm_id": "70000001023680852",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/2f5f7bc9510f793aeace24d20f0b1a2334a39cc3069063ed58dc91b84d2e0695.html",
+        "response_sha256": "2f5f7bc9510f793aeace24d20f0b1a2334a39cc3069063ed58dc91b84d2e0695",
+        "extraction": "Reviewed exact firm in public 2GIS HTML initial state; no neighboring cards"
+      },
+      "fresh_request": {
+        "name": "focused-70000001023680852",
+        "source_url": "https://2gis.kz/astana/firm/70000001023680852",
+        "checked_at": "2026-10-19T06:27:26.602771+00:00",
+        "http_status": 200,
+        "final_url": "https://2gis.kz/astana/firm/70000001023680852",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001023680852.html",
+        "sha256": "3638b56e616569b1ec5fb31e0820fb84d0b274dd25ce2fa44b125efb38e8e78d",
+        "bytes": 710861,
+        "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001023680852.txt"
+      },
+      "menu_decision": "held",
+      "reason": "Fresh exactfirm links Instagram/WhatsApp and advertises lunch1850. Composition/portion/current menu terms absent; pricefrom attribute not converted into menuitem or fullmeal cost."
+    },
+    {
+      "canonical_id": "osm:node/10886657349",
+      "source_name": "Адиль",
+      "source_address": "проспект Абылай хана, 5",
+      "verified_directory_average_check": 800,
+      "average_check_is_not_meal_price": true,
+      "identity_url": "https://2gis.kz/astana/firm/70000001018104147",
+      "cached_source": {
+        "url": "https://2gis.kz/astana/search/%D0%90%D0%B4%D0%B8%D0%BB%D1%8C",
+        "identity_url": "https://2gis.kz/astana/firm/70000001018104147",
+        "excerpt": "Адиль: проспект Абылай хана, 5",
+        "checked_at": "2026-10-19",
+        "fetched_at": "2026-10-19T00:33:04.747532+00:00",
+        "source_updated_at": "2026-06-30T10:46:37Z",
+        "channel": "onsite",
+        "firm_id": "70000001018104147",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/1a3d3e536e7c4954d2bd67f486a7acd056714eb389ab318f99b6f206538dbfcf.html",
+        "response_sha256": "1a3d3e536e7c4954d2bd67f486a7acd056714eb389ab318f99b6f206538dbfcf",
+        "extraction": "Reviewed exact firm in public 2GIS HTML initial state; no neighboring cards"
+      },
+      "fresh_request": {
+        "name": "focused-70000001018104147",
+        "source_url": "https://2gis.kz/astana/firm/70000001018104147",
+        "checked_at": "2026-10-19T06:27:28.624424+00:00",
+        "http_status": 200,
+        "final_url": "https://2gis.kz/astana/firm/70000001018104147",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001018104147.html",
+        "sha256": "6be10980bb2ee935b96c7f401f6ccc47315fda14ee3140ea0541b192ddbaed49",
+        "bytes": 713304,
+        "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001018104147.txt"
+      },
+      "menu_decision": "held",
+      "reason": "Fresh exactfirm has WhatsApp only, no public menu/price link; avgcheck800 is not dishprice."
+    },
+    {
+      "canonical_id": "osm:node/12123366034",
+      "source_name": "Lenger",
+      "source_address": "улица Бейбитшилик, 30",
+      "verified_directory_average_check": 1600,
+      "average_check_is_not_meal_price": true,
+      "identity_url": "https://2gis.kz/astana/firm/70000001092741738",
+      "cached_source": {
+        "url": "https://2gis.kz/astana/search/Lenger%20Coffee",
+        "identity_url": "https://2gis.kz/astana/firm/70000001092741738",
+        "excerpt": "Lenger: улица Бейбитшилик, 30",
+        "checked_at": "2026-10-19",
+        "fetched_at": "2026-10-19T00:42:36.562671+00:00",
+        "source_updated_at": "2026-06-16T12:34:43Z",
+        "channel": "onsite",
+        "firm_id": "70000001092741738",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/7cca1b9fe355af9b12f0b6c18b1da79c36c3bb75d5e646178f8b75c46c4de528.html",
+        "response_sha256": "7cca1b9fe355af9b12f0b6c18b1da79c36c3bb75d5e646178f8b75c46c4de528",
+        "extraction": "Reviewed exact firm in public 2GIS HTML initial state; no neighboring cards"
+      },
+      "fresh_request": {
+        "name": "focused-70000001092741738",
+        "source_url": "https://2gis.kz/astana/firm/70000001092741738",
+        "checked_at": "2026-10-19T06:27:31.093849+00:00",
+        "http_status": 200,
+        "final_url": "https://2gis.kz/astana/firm/70000001092741738",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001092741738.html",
+        "sha256": "06b4e53c9ce63e0b0429e5ed5c439231fc094a3716d8fff97b7a027ce0fc03ec",
+        "bytes": 719408,
+        "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001092741738.txt"
+      },
+      "menu_decision": "held",
+      "reason": "Fresh exactfirm has Instagram/WhatsApp only. Secondarydirectory says breakfast1600 but no contents/portion/currentprimarymenu; no itemprice accepted."
+    },
+    {
+      "canonical_id": "osm:node/4717894989",
+      "source_name": "Центр лагмана и плова",
+      "source_address": "улица Бейбитшилик, 77",
+      "verified_directory_average_check": 2200,
+      "average_check_is_not_meal_price": true,
+      "identity_url": "https://2gis.kz/astana/firm/70000001019430376",
+      "cached_source": {
+        "url": "https://2gis.kz/astana/search/%D0%A6%D0%B5%D0%BD%D1%82%D1%80%20%D0%9B%D0%B0%D0%B3%D0%BC%D0%B0%D0%BD%D0%B0%20%D0%B8%20%D0%9F%D0%BB%D0%BE%D0%B2%D0%B0",
+        "identity_url": "https://2gis.kz/astana/firm/70000001019430376",
+        "excerpt": "Центр лагмана и плова: улица Бейбитшилик, 77",
+        "checked_at": "2026-10-19",
+        "fetched_at": "2026-10-19T00:47:41.798409+00:00",
+        "source_updated_at": "2026-06-03T10:45:57Z",
+        "channel": "onsite",
+        "firm_id": "70000001019430376",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/71d538c89725505328d157b32e69d8ea44b9f9ac9860d5fac6bb502f8258d4c3.html",
+        "response_sha256": "71d538c89725505328d157b32e69d8ea44b9f9ac9860d5fac6bb502f8258d4c3",
+        "extraction": "Reviewed exact firm in public 2GIS HTML initial state; no neighboring cards"
+      },
+      "fresh_request": {
+        "name": "focused-70000001019430376",
+        "source_url": "https://2gis.kz/astana/firm/70000001019430376",
+        "checked_at": "2026-10-19T06:27:33.296892+00:00",
+        "http_status": 200,
+        "final_url": "https://2gis.kz/astana/firm/70000001019430376",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001019430376.html",
+        "sha256": "72c0d01d4c3bceafbbacae9cbedd9b0a7afb3d2ebced2343d229b5fde48147af",
+        "bytes": 694683,
+        "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001019430376.txt"
+      },
+      "menu_decision": "held",
+      "reason": "Fresh exactfirm WhatsApp only; no branch-bound onsite menu/price link. Ads forothercompanies not followed as menu."
+    }
+  ],
+  "merchant_fetches": [
+    {
+      "name": "focused-coffeehub-merchant",
+      "source_url": "https://coffeehubkz.tilda.ws/",
+      "checked_at": "2026-10-19T06:27:29.722208+00:00",
+      "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+    },
+    {
+      "name": "focused-degirmen-merchant",
+      "source_url": "https://degirmen.kz/",
+      "checked_at": "2026-10-19T06:27:29.723752+00:00",
+      "http_status": 200,
+      "final_url": "https://degirmen.kz/",
+      "headers": {
+        "Date": "Mon, 19 Oct 2026 06:27:30 GMT",
+        "Content-Type": "text/html; charset=UTF-8"
+      },
+      "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-degirmen-merchant.html",
+      "sha256": "6c8311c48bc083847a15b3b54769c6c3c37a88d6bf7456214665c6f189469f5f",
+      "bytes": 136657,
+      "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-degirmen-merchant.txt"
+    },
+    {
+      "name": "focused-tagam-merchant",
+      "source_url": "https://tagam-halal.kz/",
+      "checked_at": "2026-10-19T06:27:31.524472+00:00",
+      "http_status": 200,
+      "final_url": "https://tagam-halal.kz/",
+      "headers": {
+        "date": "Mon, 19 Oct 2026 06:27:32 GMT",
+        "content-type": "text/html; charset=UTF-8",
+        "last-modified": "Tue, 06 Oct 2026 08:25:18 GMT",
+        "etag": "W/\"335de-65d27bd23a2dc-gzip\""
+      },
+      "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-tagam-merchant.html",
+      "sha256": "ee2bbc745773790f4911a9e6855c02b6892b05e21ca5e46033a23e2422e3d496",
+      "bytes": 210398,
+      "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-tagam-merchant.txt"
+    }
+  ],
+  "followup_fetches": [
+    {
+      "name": "focused-degirmen-branches",
+      "source_url": "https://degirmen.kz/filialy/",
+      "checked_at": "2026-10-19T06:47:32.475860+00:00",
+      "http_status": 200,
+      "final_url": "https://degirmen.kz/filialy/",
+      "headers": {
+        "Date": "Mon, 19 Oct 2026 06:47:32 GMT",
+        "Content-Type": "text/html; charset=UTF-8"
+      },
+      "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-degirmen-branches.html",
+      "sha256": "3d43e74deff7deebb355d3e8d7549aeff92c9d4f112c0443d59a9d83295e06e2",
+      "bytes": 137963,
+      "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-degirmen-branches.txt"
+    },
+    {
+      "name": "focused-degirmen-products",
+      "source_url": "https://degirmen.kz/shop/",
+      "checked_at": "2026-10-19T06:47:33.877673+00:00",
+      "http_status": 200,
+      "final_url": "https://degirmen.kz/shop/",
+      "headers": {
+        "Date": "Mon, 19 Oct 2026 06:47:34 GMT",
+        "Content-Type": "text/html; charset=UTF-8"
+      },
+      "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-degirmen-products.html",
+      "sha256": "fa10b00f1195d57ac0ffd68ba286230c46195a92b3c81cd5d87d2a47e7ecd8d9",
+      "bytes": 202474,
+      "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-degirmen-products.txt"
+    },
+    {
+      "name": "focused-tagam-taplink",
+      "source_url": "https://taplink.cc/tagam",
+      "checked_at": "2026-10-19T06:47:35.284814+00:00",
+      "http_status": 200,
+      "final_url": "https://taplink.cc/tagam",
+      "headers": {
+        "Date": "Mon, 19 Oct 2026 06:47:35 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Last-Modified": "Mon, 19 Oct 2026 06:47:36 GMT"
+      },
+      "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-tagam-taplink.html",
+      "sha256": "31b2aaac4d5b2605bcd715223696555fdb772c8a185f13f7cecec625ac1edc01",
+      "bytes": 12206,
+      "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-tagam-taplink.txt"
+    },
+    {
+      "name": "focused-tagam-menus",
+      "source_url": "https://2gis.kz/astana/firm/70000001061686261/tab/menu",
+      "checked_at": "2026-10-19T06:47:37.258250+00:00",
+      "http_status": 200,
+      "final_url": "https://2gis.kz/astana/firm/70000001061686261/tab/menu",
+      "headers": {
+        "Date": "Mon, 19 Oct 2026 06:47:38 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "ETag": "W/\"ae0e6-IJfeNmaZ9eGmrS1Yeyu4rudahfQ\""
+      },
+      "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-tagam-menus.html",
+      "sha256": "a36f16a65671f32b3e705f0bb8b9bcb573f3e39c49606db47311ea1554c98cfa",
+      "bytes": 712934,
+      "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-tagam-menus.txt"
+    },
+    {
+      "name": "focused-degirmen-menus",
+      "source_url": "https://2gis.kz/astana/firm/70000001080626375/tab/menu",
+      "checked_at": "2026-10-19T06:47:39.419578+00:00",
+      "http_status": 200,
+      "final_url": "https://2gis.kz/astana/firm/70000001080626375/tab/menu",
+      "headers": {
+        "Date": "Mon, 19 Oct 2026 06:47:40 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "ETag": "W/\"aab24-OAx4M7JO2EhsYC1RuOB59wWBCSU\""
+      },
+      "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-degirmen-menus.html",
+      "sha256": "c505a1923cd47dcbd803ffee96b0c9f936564924920f47520722544a0a3b83b1",
+      "bytes": 699172,
+      "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-degirmen-menus.txt"
+    },
+    {
+      "name": "focused-mahabbatpen-prices",
+      "source_url": "https://2gis.kz/astana/firm/70000001080521322/tab/prices",
+      "checked_at": "2026-10-19T06:47:41.738014+00:00",
+      "http_status": 200,
+      "final_url": "https://2gis.kz/astana/firm/70000001080521322/tab/prices",
+      "headers": {
+        "Date": "Mon, 19 Oct 2026 06:47:42 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "ETag": "W/\"b00a1-HFFGW2WbUrcqPQ6iR7NvOOKCuA4\""
+      },
+      "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-mahabbatpen-prices.html",
+      "sha256": "f1d5705454b165ff0e004850a3dc8db899bdfea5fda5cbe0def0fc962e550baa",
+      "bytes": 721057,
+      "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-mahabbatpen-prices.txt"
+    },
+    {
+      "name": "focused-coffeehub-prices",
+      "source_url": "https://2gis.kz/astana/firm/70000001084483194/tab/prices",
+      "checked_at": "2026-10-19T06:47:44.116774+00:00",
+      "http_status": 200,
+      "final_url": "https://2gis.kz/astana/firm/70000001084483194/tab/prices",
+      "headers": {
+        "Date": "Mon, 19 Oct 2026 06:47:44 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "ETag": "W/\"ac7a2-gKmoxErJG/5U45EVnuXkbBPr5Z8\""
+      },
+      "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-coffeehub-prices.html",
+      "sha256": "340c40fd8ae71cb86b3d48f23867479958985cfb1baf4037391cb712ee182294",
+      "bytes": 706466,
+      "text_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-coffeehub-prices.txt"
+    }
+  ]
+}

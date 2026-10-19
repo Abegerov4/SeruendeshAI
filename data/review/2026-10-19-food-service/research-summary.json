@@ -1,0 +1,15 @@
+{
+  "accepted_existing_branches": 1,
+  "accepted_menu_items": 102,
+  "known_partial_service_fee_percent": 10,
+  "menu_items_with_partial_cost": 102,
+  "complete_cost_statements": 0,
+  "confirmed_kitchen_windows": 0,
+  "held_sources": 10,
+  "new_branch_candidates": 4,
+  "new_branch_ids_created": 0,
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "external_paid_calls": 0,
+  "raw_bodies": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research",
+  "compact_evidence": "data/review/2026-10-19-food-service/merchant-menu-evidence.json"
+}

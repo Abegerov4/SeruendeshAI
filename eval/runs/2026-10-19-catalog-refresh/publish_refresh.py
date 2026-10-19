@@ -14,6 +14,7 @@ from zoneinfo import ZoneInfo
 
 from data.snapshot import publish_snapshot, resolve_snapshot
 from data.place_details import load_place_details, apply_place_details
+from data.place_detail_merge import merge_detail_sources
 from data.city_services import load_city_services
 from data.eligibility import apply_fact_reviews
 from ayat_backend.app.team_data import load_team_snapshot
@@ -69,6 +70,11 @@ def main():
             if not current or current["identity"] != record["identity"]:
                 raise ValueError("Full-menu branch identity differs from accepted source identity")
             current["menu_items"] = record["menu_items"]
+    food_source = ROOT/"data/sources/place_food_service_2026-10-19.json"
+    food_overlap_held = []
+    if food_source.exists():
+        payload, food_overlap_held = merge_detail_sources(payload, json.loads(food_source.read_bytes()))
+        source_hashes[str(food_source.relative_to(ROOT))] = hashlib.sha256(food_source.read_bytes()).hexdigest()
     files["place_details.json"] = encode(payload)
     service_source = ROOT/"data/sources/city_services_2026-10-19.json"
     files["city_services.json"] = service_source.read_bytes()
@@ -85,6 +91,23 @@ def main():
             if (r["canonical_id"],r["field"]) not in replaced] + coordinates["reviews"]
         files["fact_reviews.json"] = encode(review_payload)
         source_hashes[str(coordinate_source.relative_to(ROOT))] = hashlib.sha256(coordinate_source.read_bytes()).hexdigest()
+    classification_source = ROOT/"data/review/2026-10-19-food-service/classification-review.json"
+    if classification_source.exists():
+        classifications = json.loads(classification_source.read_bytes())
+        if classifications["canonical_sha256"] != digest:
+            raise ValueError("Classification review belongs to another master")
+        review_payload = json.loads(files["fact_reviews.json"])
+        by_key = {(r["canonical_id"],r["field"]):r for r in review_payload["reviews"] if r.get("status") == "accepted"}
+        for review in classifications["reviews"]:
+            key = review["canonical_id"],review["field"]
+            if key in by_key:
+                if by_key[key] != review:
+                    raise ValueError("Classification conflicts with an existing accepted review")
+                continue
+            review_payload["reviews"].append(review)
+            by_key[key] = review
+        files["fact_reviews.json"] = encode(review_payload)
+        source_hashes[str(classification_source.relative_to(ROOT))] = hashlib.sha256(classification_source.read_bytes()).hexdigest()
     with tempfile.TemporaryDirectory(prefix="seru-refresh-") as temp:
         stage = Path(temp)
         for name,value in files.items():
@@ -111,7 +134,8 @@ def main():
             "accepted_detail_branches":len(details),"detail_counts":{
                 k:sum(len(r[k]) for r in details.values()) for k in ("facts","menu_items","prices")},
             "services":len(services.services),"source_hashes":source_hashes,
-            "discovery_overlap_held":overlap,"archived_canonical_ids":view["archived_canonical_ids"],
+            "discovery_overlap_held":overlap,"food_overlap_held":food_overlap_held,
+            "archived_canonical_ids":view["archived_canonical_ids"],
             "dense_index_rows":index["rows"],"dense_index_model":index["model"],
             "source_audit":"eval/runs/2026-10-19-catalog-refresh/source-audit/summary.json",
         }

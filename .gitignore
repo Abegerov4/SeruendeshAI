@@ -35,6 +35,7 @@ models/
 .cache/
 ayat_backend/.local/
 .planning/
+.local/
 data/processed/.publish.lock
 eval/runs/**/*.db
 

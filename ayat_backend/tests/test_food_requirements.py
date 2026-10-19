@@ -82,12 +82,14 @@ def test_model_cannot_invent_or_reintroduce_dismissed_requirements(query, phrase
 
 def details(channel="dine_in", amount=1700):
     proof = {"status":"accepted", "conflict_status":"none", "branch_scope":"exact",
-             "source":{"url":"https://example.org/branch-menu", "checked_at":"2026-10-19", "excerpt":"Котлета с картофельным пюре"},
+             "source":{"url":"https://example.org/branch-menu", "checked_at":"2026-10-19", "excerpt":"Котлета с картофельным пюре; указанная цена включает все обязательные платежи"},
              "branch_confirmation":{"source_name":"Домашние котлеты и пюре", "source_address":"EXPO"},
              "valid_from":None,"valid_to":None}
     return {"facts":[{**proof,"field":"cuisine","value":"домашняя кухня"}],
             "menu_items":[{**proof,"id":"meal-1","name":"Котлета с картофельным пюре", "components":["котлета","пюре"],
-                           "aliases":[], "role":"meal", "price":{"amount":amount,"currency":"KZT","unit":"порция","channel":channel,"kind":"item"}}],
+                           "aliases":[], "role":"meal", "price":{"amount":amount,"currency":"KZT","unit":"порция","channel":channel,"kind":"item"},
+                           "cost":{**proof,"scope":"one_offering","complete":True,"service_percent":0,
+                                   "mandatory_fixed_amount":0,"minimum_payable_amount":0}}],
             "prices":[]}
 
 
@@ -96,6 +98,62 @@ def test_confirmed_dine_in_meal_and_numeric_budget_select_only_evidenced_branch(
     assert [p["poi_id"] for p in out["recommendations"]] == ["food:2"]
     assert out["recommendations"][0]["menu_items"][0]["price"]["amount"] == 1700
     assert out["recommendations"][0]["menu_items"][0]["source"]["url"] == "https://example.org/branch-menu"
+
+
+def test_arrival_after_kitchen_closes_rejects_even_named_food_target():
+    data = details()
+    data["facts"].append({**data["facts"][0], "field":"kitchen_hours", "value":"Mo-Su 10:00-21:00"})
+    out = request(runtime(data), "Я рядом с экспо, пюре с котлетой до 2000 тенге",
+                  now="2026-10-19T20:59:59+05:00")
+    assert out["recommendations"] == []
+
+
+def test_generic_food_also_respects_known_closed_kitchen():
+    rt = runtime()
+    for poi in rt.store.pois:
+        data = details()
+        data["facts"].append({**data["facts"][0], "field":"kitchen_hours", "value":"Mo-Su 10:00-21:00"})
+        poi["place_details"] = data
+    assert request(rt, "Где поесть рядом с экспо?", now="2026-10-19T21:00:00+05:00")["recommendations"] == []
+
+
+def test_coffee_only_request_does_not_require_the_meal_kitchen():
+    rt = runtime()
+    for poi in rt.store.pois:
+        data = details()
+        data["facts"].append({**data["facts"][0], "field":"kitchen_hours", "value":"Mo-Su 10:00-21:00"})
+        poi["place_details"] = data
+    assert request(rt, "Кофе рядом с экспо", now="2026-10-19T21:00:00+05:00")["recommendations"]
+
+
+@pytest.mark.parametrize("query", ["Где позавтракать в кафе рядом с экспо?", "Где перекусить в кафе рядом с экспо?",
+                                  "Breakfast in a cafe near expo", "Таңғы ас ішетін кафе экспо жанында"])
+def test_explicit_other_meal_words_respect_kitchen_closure(query):
+    rt = runtime()
+    for poi in rt.store.pois:
+        data = details()
+        data["facts"].append({**data["facts"][0], "field":"kitchen_hours", "value":"Mo-Su 10:00-21:00"})
+        poi["place_details"] = data
+    assert request(rt, query, now="2026-10-19T21:00:00+05:00")["recommendations"] == []
+
+
+def test_model_rewrite_cannot_remove_explicit_kitchen_intent(monkeypatch):
+    monkeypatch.setattr(service, "merge_llm", lambda rules, _: merge_llm(rules, llm(search_text_ru="кафе")))
+    rt = runtime()
+    for poi in rt.store.pois:
+        data = details()
+        data["facts"].append({**data["facts"][0], "field":"kitchen_hours", "value":"Mo-Su 10:00-21:00"})
+        poi["place_details"] = data
+    assert request(rt, "Где поесть рядом с экспо?", now="2026-10-19T21:00:00+05:00")["recommendations"] == []
+
+
+def test_negated_meal_does_not_block_a_coffee_only_visit():
+    rt = runtime()
+    for poi in rt.store.pois:
+        data = details()
+        data["facts"].append({**data["facts"][0], "field":"kitchen_hours", "value":"Mo-Su 10:00-21:00"})
+        poi["place_details"] = data
+    assert request(rt, "Не хочу поесть, хочу только кофе рядом с экспо", now="2026-10-19T21:00:00+05:00")["recommendations"]
 
 
 @pytest.mark.parametrize("channel,amount", [("delivery",1700),("dine_in",2200)])

@@ -17,6 +17,7 @@ from ayat_backend.app.config import get_settings
 from ayat_backend.app.geo import WalkGraph, car_minutes, fallback_walk_m, hav_m
 from ayat_backend.app.hours import opening_status
 from ayat_backend.app.retrieval import Cand, Plan
+from ayat_backend.app.evidence import match_food, price_comparison_group
 
 
 def _matrix(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | None, river: list):
@@ -75,7 +76,12 @@ def plan_route(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | N
         key = (i, float(arrive_min), visit)
         if key not in cache:
             c = pool[i - 1]
-            cache[key] = opening_status(c.poi, now + dt.timedelta(minutes=arrive_min), visit, lang, ctx.holiday)["ok"]
+            arrival = now + dt.timedelta(minutes=arrive_min)
+            cache[key] = opening_status(c.poi, arrival, visit, lang, ctx.holiday)["ok"]
+            if cache[key] and (plan.food_requirements or plan.check_kitchen and CATEGORIES[c.poi["category"]].group == "food"):
+                cache[key] = match_food(c.poi, plan.food_requirements, arrival.date(),
+                                       plan.food_benchmarks.get(price_comparison_group(c.poi, arrival.date())), arrive_at=arrival,
+                                       check_kitchen=plan.check_kitchen).matched
         return cache[key]
 
     best = None

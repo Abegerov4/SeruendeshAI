@@ -5,6 +5,7 @@ import '../food-facts.css';
 const FIELDS = {format: 'Формат', cuisine: 'Кухня', cuisines: 'Кухня', wifi: 'Wi-Fi', kids_area: 'Детская зона',
   terrace: 'Веранда', laptop_allowed: 'Можно с ноутбуком', seating_capacity_max: 'Мест до',
   phone: 'Телефон', opening_hours: 'Часы по источнику', address: 'Адрес',
+  kitchen_hours: 'Часы кухни', kitchen_closes_at: 'Кухня закрывается',
   halal: 'Халал', vegetarian_options: 'Вегетарианские варианты', vegan_options: 'Веганские варианты',
   wheelchair_accessible: 'Доступный вход', sockets: 'Розетки', toilets: 'Туалет',
   changing_table: 'Пеленальный столик', reservations: 'Бронирование', takeaway: 'С собой'};
@@ -44,6 +45,19 @@ function Source({entry, channel}) {
     {entry.source.source_updated_at && <span>{tr('Версия источника')}: {entry.source.source_updated_at.slice(0, 10)}</span>}</div>;
 }
 
+function MealCost({item}) {
+  const cost = accepted(item.cost) && item.cost.scope === 'one_offering' ? item.cost : null;
+  const complete = cost?.complete === true && item.cost_status === 'complete' && item.total_price;
+  return <>
+    {complete ? <div><small>{tr('Итого с обязательными доплатами')}</small><Price price={item.total_price} /></div>
+      : <p className="food-menu-note">{tr('Итоговая стоимость с доплатами не подтверждена')}</p>}
+    {cost && <div className="food-cost-terms">
+      {typeof cost.service_percent === 'number' && Number.isFinite(cost.service_percent) && <small>{tr('Обслуживание')}: {cost.service_percent}%</small>}
+      <Source entry={cost} channel={item.price?.channel} />
+    </div>}
+  </>;
+}
+
 export default function PlaceFacts({place}) {
   const menu = (place.menuItems || []).filter(accepted).slice(0, 3);
   const prices = (place.prices || []).filter(accepted);
@@ -57,8 +71,14 @@ export default function PlaceFacts({place}) {
       <Source entry={price} channel={price.channel} />
     </div>)}
     {menu.length > 0 && <><h4>{tr('Из меню')}</h4><ul className="food-menu">{menu.map((item, index) => <li key={item.id || index}>
-      <div><span>{item.name}</span><Price price={item.price} /></div><Source entry={item} channel={item.price?.channel} />
+      <div><span>{item.name}</span><span><small>{tr('Цена по меню')}</small> <Price price={item.price} /></span></div>
+      <Source entry={item} channel={item.price?.channel} />
+      {item.serving_hours && <p className="food-menu-note">{tr('Часы подачи блюда')}: {item.serving_hours}</p>}
+      <MealCost item={item} />
     </li>)}</ul><p className="food-menu-note">{tr('Часть опубликованного меню. Цены доставки могут отличаться от цен в заведении.')}</p></>}
+    {menu.some(item => item.role === 'meal' && item.price?.channel === 'dine_in')
+      && !facts.some(fact => fact.field === 'kitchen_hours')
+      && <p className="food-menu-note">{tr('Часы работы кухни не подтверждены')}</p>}
     {menuLink && <p><a href={menuLink.value} target="_blank" rel="noreferrer">{tr('Полное меню у источника')}</a></p>}
     {facts.length > 0 && <details className="food-venue-facts"><summary>{tr('Сведения о месте')}</summary><dl>{facts.map((fact, index) =>
       <div key={fact.field + index}><dt>{tr(FIELDS[fact.field])}</dt><dd>{displayValue(fact.value)}<Source entry={fact} /></dd></div>)}</dl></details>}

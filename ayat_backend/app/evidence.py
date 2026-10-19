@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from copy import deepcopy
 import datetime as dt
 import re
 
@@ -11,6 +12,7 @@ import snowballstemmer
 from ayat_backend.app.food import FoodRequirement
 from ayat_backend.app.geo import hav_m
 from ayat_backend.app.textnorm import fold
+from data.meal_cost import complete_meal_price, cost_evidence_current
 
 _RU = snowballstemmer.stemmer("russian")
 _EN = snowballstemmer.stemmer("english")
@@ -20,6 +22,7 @@ _STOP = {"еда", "food", "кухня", "cuisine", "meal", "нужный", "х�
 def _terms(text: str) -> set[str]:
     text = fold(text)
     for pattern, replacement in [(r"mashed potatoes", "пюре"), (r"cutlets?", "котлета"),
+                                  (r"\bpizzas?\b", "пицца"),
                                   (r"home[ -](?:style|cooked|made)", "домашняя"), (r"canteens?|cafeterias?", "столовая")]:
         text = re.sub(pattern, replacement, text)
     words = {(_EN if re.fullmatch(r"[a-z]+", word) else _RU).stemWord(word)
@@ -41,8 +44,14 @@ def _accepted(item: dict, today: dt.date, age: int = 30) -> bool:
 
 def accepted_details(poi: dict, today: dt.date) -> dict:
     data = poi.get("place_details") or {}
-    return {key:[item for item in data.get(key, []) if _accepted(item, today, 90 if key == "facts" else 30)]
-            for key in ("facts", "menu_items", "prices")}
+    result = {key:[deepcopy(item) for item in data.get(key, []) if _accepted(item, today, 90 if key == "facts" else 30)]
+              for key in ("facts", "menu_items", "prices")}
+    for item in result["menu_items"]:
+        if "cost" in item and not cost_evidence_current(item, today):
+            item.pop("cost")
+        item["total_price"] = complete_meal_price(item, today)
+        item["cost_status"] = "complete" if item["total_price"] is not None else "unknown"
+    return result
 
 
 def price_comparison_group(poi: dict, today: dt.date) -> str | None:
@@ -83,15 +92,33 @@ class FoodMatch:
         return not self.gaps
 
 
-def match_food(poi: dict, requirements: list[FoodRequirement], today: dt.date, benchmark: dict | None = None) -> FoodMatch:
-    data = accepted_details(poi, today)
+def match_food(poi: dict, requirements: list[FoodRequirement], today: dt.date, benchmark: dict | None = None,
+               *, arrive_at: dt.datetime | None = None, check_kitchen: bool = True) -> FoodMatch:
+    data = accepted_details(poi, arrive_at.date() if arrive_at else today)
     result = FoodMatch(**data)
+    def available(hours):
+        if not arrive_at or not isinstance(hours, str) or not hours.strip():
+            return True
+        from ayat_backend.app.hours import opening_status
+        return opening_status({"opening_hours": hours}, arrive_at, 0, "ru", None)["status"] != "closed"
+
+    kitchens = {f["value"] for f in data["facts"] if f["field"] == "kitchen_hours" and isinstance(f["value"], str)} if check_kitchen else set()
+    if len(kitchens) == 1 and not available(next(iter(kitchens))):
+        result.gaps.append("kitchen_hours")
+    cutoffs = {f["value"] for f in data["facts"] if f["field"] == "kitchen_closes_at" and isinstance(f["value"], str)} if check_kitchen else set()
+    if arrive_at and len(cutoffs) == 1:
+        cutoff = next(iter(cutoffs))
+        # A daily evening cutoff proves only that evening's unavailability.
+        # A closing-only 02:00 cannot establish when the next service starts.
+        if re.fullmatch(r"(?:1[2-9]|2[0-3]):[0-5]\d", cutoff) and arrive_at.strftime("%H:%M") >= cutoff:
+            result.gaps.append("kitchen_hours")
     if not requirements:
         return result
     menu_wishes = [r for r in requirements if r.kind == "menu"]
     # Combined meal requests are proved by one published offering, never by
     # adding an unrelated burger's patty to a separately advertised side dish.
     matching = [m for m in data["menu_items"] if (m.get("channel") or (m.get("price") or {}).get("channel")) == "dine_in"
+                and available(m.get("serving_hours"))
                 and all(_terms(r.text) <= _terms(" ".join(
         [m["name"], *m.get("components",[]), *m.get("aliases",[])])) for r in menu_wishes)]
     if menu_wishes and not matching:
@@ -123,7 +150,7 @@ def match_food(poi: dict, requirements: list[FoodRequirement], today: dt.date, b
                 limit = float(number.group().replace(" ","").replace("\u00a0","").replace(",","."))
                 currency = "KZT" if re.search(r"тенге|тенге|тг|₸|kzt",fold(wish.text)) else "USD" if "$" in wish.text or "usd" in fold(wish.text) else "EUR" if "€" in wish.text else None
                 candidates = matching if menu_wishes else [m for m in matching if m.get("role") == "meal"]
-                affordable = [m for m in candidates if (price := m.get("price")) and price.get("currency") == currency
+                affordable = [m for m in candidates if (price := m.get("total_price")) and price.get("currency") == currency
                               and price.get("channel") == "dine_in" and price["amount"] <= limit]
                 if not affordable:
                     result.gaps.append("price")

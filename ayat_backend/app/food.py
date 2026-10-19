@@ -53,6 +53,15 @@ _FOOD_CONTEXT = re.compile(
 _FORMAT_ORIGIN = re.compile(r"(?:возле|около|рядом\s+с[о]?|near|by|at)\s+(?:(?:a|an|the)\s+)?$", re.I)
 
 
+def needs_meal_kitchen(text: str, requirements: list[FoodRequirement]) -> bool:
+    """A coffee-only visit does not require an operating meal kitchen."""
+    pattern = (r"\b(?:поесть|покушать|(?:по)?(?:завтрак|обед|ужин)\w*|перекус\w*|"
+               r"eat\w*|lunch|dinner|breakfast|supper|snack|meal|food|тамақ\w*|тағам\w*|"
+               r"(?:таңғы|түскі|кешкі)\s+ас)\b")
+    return any(r.kind in {"menu", "style", "diet"} for r in requirements) or any(
+        _span_asserted(text, match.start(), match.end()) for match in re.finditer(pattern, text, re.I))
+
+
 def _dismissed(text: str, start: int, end: int) -> bool:
     boundaries = list(_CLAUSE_BREAK.finditer(text))
     clause_start = max((match.end() for match in boundaries if match.end() <= start), default=0)

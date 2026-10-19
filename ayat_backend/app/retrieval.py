@@ -24,6 +24,7 @@ from ayat_backend.app.hours import opening_status
 from ayat_backend.app.i18n import t
 from ayat_backend.app.query import Parsed
 from ayat_backend.app.evidence import match_food, price_benchmarks, price_comparison_group
+from ayat_backend.app.food import needs_meal_kitchen
 from ayat_backend.app.store import Store, stem_tokens
 from ayat_backend.app.textnorm import fold
 
@@ -57,6 +58,9 @@ class Plan:
     outside_graph: bool = False
     transit: bool = False
     evidence_date: dt.date | None = None
+    food_requirements: list = field(default_factory=list)
+    check_kitchen: bool = False
+    food_benchmarks: dict = field(default_factory=dict)
 
 
 @dataclass
@@ -168,6 +172,9 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
     """Return (top-k candidate cards, considered/rejected list)."""
     req_cats = [c for c in parsed.categories if c in CATEGORIES]
     req_groups = {CATEGORIES[c].group for c in req_cats}
+    food_requested = bool(parsed.food_requirements or parsed.meal_intent or "food" in req_groups)
+    plan.food_requirements = list(parsed.food_requirements)
+    plan.check_kitchen = parsed.meal_intent or needs_meal_kitchen("", parsed.food_requirements)
     needs = set(parsed.needs)
     now = ctx.local_naive
     considered: list[dict] = []
@@ -184,15 +191,18 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
     exact_cnt = {"n": 0}
     ev_by_poi = _events_by_poi(store, ctx, plan)
     benchmarks = price_benchmarks(store.pois, plan.origin, ctx.now.date()) if any(r.kind == "price" for r in parsed.food_requirements) else {}
+    plan.food_benchmarks = benchmarks
 
     def eligible(i: int, t_max: float, relaxed_needs: bool) -> tuple[bool, str | None, dict | None]:
         p = store.pois[i]
         c = CATEGORIES[p["category"]]
-        if parsed.food_requirements and not match_food(p, parsed.food_requirements, ctx.now.date(), benchmarks.get(price_comparison_group(p,ctx.now.date()))).matched:
-            return False, t("rej_food_evidence", lang), None
         is_target = i in target_idx
         if not np.isfinite(mins[i]) or mins[i] > (plan.budget if is_target else t_max):
             return False, None, None
+        if (parsed.food_requirements or c.group == "food" and plan.check_kitchen) and not match_food(
+                p, parsed.food_requirements, ctx.now.date(), benchmarks.get(price_comparison_group(p,ctx.now.date())),
+                arrive_at=now + dt.timedelta(minutes=float(mins[i])), check_kitchen=plan.check_kitchen).matched:
+            return False, t("rej_food_evidence", lang), None
         if plan.with_child and c.adult_only:
             return False, t("rej_kids", lang), None
         if plan.accessibility and p.get("features", {}).get("wheelchair") == "no":
@@ -260,7 +270,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
 
     t_max = plan.t_max
     pool, rejected = collect(t_max, False)
-    if not pool and req_cats and not parsed.food_requirements:
+    if not pool and req_cats and not food_requested:
         # nothing of the requested type is available now: say so and show what is open instead
         closed_n = sum(1 for i, why in rejected if store.pois[i]["category"] in req_cats)
         plan.relaxations.append(t("note_requested_closed", lang, what=label(req_cats[0], lang), n=closed_n))

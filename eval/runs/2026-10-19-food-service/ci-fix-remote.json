@@ -1,0 +1,91 @@
+{
+  "conclusion": "success",
+  "headSha": "8c5ba5c03e141cb168fcc2710f70a3cc18a26b17",
+  "jobs": [
+    {
+      "completedAt": "2026-10-19T07:17:41Z",
+      "conclusion": "success",
+      "databaseId": 117936218234,
+      "name": "backend",
+      "startedAt": "2026-10-19T07:15:47Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-19T07:15:49Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-19T07:15:48Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-19T07:15:55Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-19T07:15:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-19T07:15:57Z",
+          "conclusion": "success",
+          "name": "Run astral-sh/setup-uv@v6",
+          "number": 3,
+          "startedAt": "2026-10-19T07:15:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-19T07:15:59Z",
+          "conclusion": "success",
+          "name": "Run uv sync --project ayat_backend --group dev --no-group pipeline",
+          "number": 4,
+          "startedAt": "2026-10-19T07:15:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-19T07:17:05Z",
+          "conclusion": "success",
+          "name": "Run uv run --project ayat_backend python -m pytest -c pytest.ini ayat_backend/tests -q",
+          "number": 5,
+          "startedAt": "2026-10-19T07:15:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-19T07:17:39Z",
+          "conclusion": "success",
+          "name": "Scenario evaluation (a semantic failure fails the job)",
+          "number": 6,
+          "startedAt": "2026-10-19T07:17:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-19T07:17:39Z",
+          "conclusion": "success",
+          "name": "Post Run astral-sh/setup-uv@v6",
+          "number": 11,
+          "startedAt": "2026-10-19T07:17:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-19T07:17:39Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 12,
+          "startedAt": "2026-10-19T07:17:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-19T07:17:39Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 13,
+          "startedAt": "2026-10-19T07:17:39Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/Abegerov4/SeruendeshAI/actions/runs/39214855843/job/117936218234"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/Abegerov4/SeruendeshAI/actions/runs/39214855843"
+}

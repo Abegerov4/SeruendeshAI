@@ -11,12 +11,14 @@ from data.snapshot import resolve_snapshot
 from data.place_details import load_place_details, apply_place_details
 from data.eligibility import apply_fact_reviews
 from data.catalog_audit import applicable_fields
+from data.meal_cost import complete_meal_price
 from ayat_backend.app.team_data import load_team_snapshot
 from ayat_backend.app.evidence import price_benchmarks
 
 ROOT=Path.cwd()
 OUT=ROOT/"data/review/2026-10-19-refresh"
 RUN=ROOT/"eval/runs/2026-10-19-catalog-refresh"
+FOOD_RUN=ROOT/"eval/runs/2026-10-19-food-service"
 
 
 def read(path, default=None):
@@ -25,6 +27,33 @@ def read(path, default=None):
 
 def encode(value):
     return json.dumps(value,ensure_ascii=False,indent=2)+"\n"
+
+
+def verification_reports(snapshot_version):
+    """Keep final and partial verification attached to the snapshot it tested."""
+    final_reports=[]
+    for path in (FOOD_RUN/"verification.json",RUN/"verification.json"):
+        payload=read(path)
+        if payload is not None:
+            final_reports.append({"path":str(path.relative_to(ROOT)),
+                "snapshot_version":payload.get("snapshot_version"),"report":payload})
+    current=next((r for r in final_reports if r["snapshot_version"]==snapshot_version),None)
+    evidence={}
+    for key,filename in (("source_index","source-index-verification.json"),
+                         ("provider_off_runtime","offline-runtime.json")):
+        path=FOOD_RUN/filename
+        payload=read(path,{})
+        if payload.get("snapshot_version")==snapshot_version:
+            evidence[key]={"path":str(path.relative_to(ROOT)),"snapshot_version":snapshot_version,
+                "passed":payload.get("passed")}
+            if key=="provider_off_runtime":
+                evidence[key].update(cases=len(payload.get("results",[])),
+                    external_paid_calls=payload.get("external_paid_calls"),execution_kind=payload.get("execution_kind"))
+    return {"validation":current["report"] if current else {
+                "status":"final verification pending","snapshot_version":snapshot_version},
+        "validation_report":current["path"] if current else None,
+        "prior_validations":[r for r in final_reports if r["snapshot_version"]!=snapshot_version],
+        "current_verification_evidence":evidence}
 
 
 def main():
@@ -46,6 +75,9 @@ def main():
     moved={r["id"] for r in quarantine if r.get("reason_code")=="service_catalog_only"}
     classification_held={r["id"] for r in quarantine if r.get("reason_code")=="source_classification_conflict"}
     gaps, counts, denominators, food_counts = [],Counter(),Counter(),Counter()
+    for key in ("branches","branches_with_menu_items","branches_with_average_check",
+                "branches_with_kitchen_hours","branches_with_complete_meal_cost"):
+        food_counts[key]=0
     reviewed_prior={r["canonical_id"] for r in reviews.get("reviews",[]) if r.get("status")=="accepted"}
     for row in rows:
         derived=by_id.get(row["id"],row)
@@ -61,6 +93,7 @@ def main():
         menus=(derived.get("place_details") or {}).get("menu_items",[])
         if prices or any(m.get("price") for m in menus):
             values["price_range"]="source-bound price; channels separate"
+        food_service_missing=[]
         missing=[]
         for field in applicable_fields(row):
             denominators[field]+=1
@@ -71,9 +104,19 @@ def main():
             food_counts["branches"]+=1
             if menus:food_counts["branches_with_menu_items"]+=1
             if any(p["kind"]=="average_check" for p in prices):food_counts["branches_with_average_check"]+=1
+            if any(f["field"]=="kitchen_hours" for f in facts):
+                food_counts["branches_with_kitchen_hours"]+=1
+            else:
+                food_service_missing.append("kitchen_hours")
+            if any(complete_meal_price(m,today) is not None for m in menus):
+                food_counts["branches_with_complete_meal_cost"]+=1
+            else:
+                food_service_missing.append("complete_meal_cost")
         gaps.append({"canonical_id":row["id"],"name":row["name"],"category":row["category"],
+            "canonical_category":row.get("canonical_category",row["category"]),
             "active_recommendation":row["id"] in active_ids,"archived_closed":row["id"] in closed,
             "missing_applicable_fields":sorted(missing),"has_reviewed_rich_facts":row["id"] in details,
+            "missing_food_service_fields":food_service_missing,
             "missing_basic_visit_data":all(not values.get(k) for k in ("address","phone","website","opening_hours")),
             "has_prior_accepted_review":row["id"] in reviewed_prior})
     audit=read(RUN/"source-audit/summary.json",{})
@@ -90,6 +133,15 @@ def main():
     discovery=read(OUT/"discovery-checkpoint-summary.json",{})
     branch_reviews=read(OUT/"discovery-followup-branch-reviews.json",{})
     followup=read(OUT/"discovery-followup-extraction.json",{})
+    menus=[m for r in details.values() for m in r["menu_items"]]
+    classification=read(ROOT/"data/review/2026-10-19-food-service/classification-review.json",{})
+    rows_by_id={r["id"]:r for r in rows}
+    food_category_ids={r["canonical_id"] for r in classification.get("reviews",[])
+        if classification.get("canonical_sha256")==digest and r.get("status")=="accepted"
+        and r.get("field")=="category" and r.get("canonical_id") in rows_by_id
+        and rows_by_id[r["canonical_id"]]["category"]==r.get("value")
+        and rows_by_id[r["canonical_id"]].get("canonical_category")!=r.get("value")}
+    verification=verification_reports(handle.version)
     summary={"generated_at":datetime.now(ZoneInfo("Asia/Almaty")).isoformat(),"snapshot_version":handle.version,
         "canonical_sha256":digest,"canonical_records":len(rows),"preserved_source_ids":view["preserved_source_ids_count"],
         "active_recommendation_records":len(pois),"active_origin_records":len(gaz),
@@ -105,6 +157,13 @@ def main():
         "rich_counts":{k:sum(len(r[k]) for r in details.values()) for k in ("facts","menu_items","prices")},
         "menu_price_channels":dict(Counter((m.get("price") or {}).get("channel","unknown_full_price") for r in details.values() for m in r["menu_items"])),
         "menu_branches":sum(bool(r["menu_items"]) for r in details.values()),"food_coverage":dict(food_counts),
+        "food_service":{"classification_corrections":len(food_category_ids),
+            "dine_in_menu_items":sum((m.get("price") or {}).get("channel")=="dine_in" for m in menus),
+            "partial_cost_menu_items":sum(m.get("cost",{}).get("complete") is False for m in menus),
+            "complete_cost_menu_items":sum(complete_meal_price(m,today) is not None for m in menus),
+            "kitchen_hour_branches":sum(any(f["field"]=="kitchen_hours" for f in r["facts"]) for r in details.values()),
+            "branches_missing_kitchen_hours":sum("kitchen_hours" in r["missing_food_service_fields"] for r in gaps),
+            "branches_without_complete_meal_cost":sum("complete_meal_cost" in r["missing_food_service_fields"] for r in gaps)},
         "services":len(services.get("services",[])),"operators":len(services.get("operators",[])),
         "dated_departures":sum(len(s["dated_departures"]) for s in services.get("services",[])),
         "price_benchmarks_expo":price_benchmarks(pois,(51.092788,71.421482),today),
@@ -119,7 +178,7 @@ def main():
             "branch_fact_verification_complete":False,
             "reviewed_nearby_candidates":len(branch_reviews.get("decisions",[])),
             "accepted_followup_branches":followup.get("accepted_additive_records",0)},
-        "validation":read(RUN/"verification.json",{"status":"final verification pending"})}
+        **verification}
     (OUT/"refresh-summary.json").write_text(encode(summary))
     with (OUT/"record-gaps.jsonl").open("w") as f:
         for row in gaps:f.write(json.dumps(row,ensure_ascii=False)+"\n")
@@ -129,6 +188,16 @@ def main():
         for r in quarantine if r.get("reason_code")=="confirmed_permanent_closure")
     queue_state=("завершён ограниченный проход поиска" if discovery.get("pass_status")=="bounded_discovery_pass_finished"
                  else "запущена отдельная очередь поиска")
+    current_validation_text=(f"Итоговая проверка текущего снимка `{handle.version}`: "
+        f"[verification.json](../{summary['validation_report']})." if summary["validation_report"] else
+        f"Полная итоговая верификация текущего снимка `{handle.version}` ещё не записана; старые результаты не считаются его проверкой.")
+    evidence_labels={"source_index":"источники и индекс","provider_off_runtime":"HTTP без внешних провайдеров"}
+    current_evidence_text=" ".join(f"[{evidence_labels[key]}](../{value['path']}) — "
+        f"{'пройдено' if value['passed'] is True else 'не пройдено' if value['passed'] is False else 'результат не указан'}"
+        f"{'; сценариев: '+str(value['cases']) if 'cases' in value else ''}."
+        for key,value in summary["current_verification_evidence"].items())
+    prior_validation_text=" ".join(f"[Итоговая проверка `{r['snapshot_version'] or 'без указанного снимка'}`](../{r['path']}) "
+        "сохранена как историческое свидетельство и не относится к текущему снимку." for r in summary["prior_validations"])
     body=f"""# Обновление базы Smart City: результат и оставшиеся проблемы
 
 Дата отчёта: {summary['generated_at']}. Локальная версия: `{handle.version}`.
@@ -136,6 +205,8 @@ def main():
 ## Что выполнено
 
 Аудит охватил **{len(rows):,} исходных записей**. В приложение опубликованы дополнительные проверенные сведения для **{len(details)} записей конкретных мест и услуг**: {summary['rich_counts']['facts']} фактов, {summary['rich_counts']['menu_items']} позиций меню и {summary['rich_counts']['prices']} средних чеков. Отдельно подключены {summary['services']} экскурсионных услуг, включая маршруты RedBus, операторы, посадка и тарифы. Сохранены все {view['preserved_source_ids_count']:,} исходных идентификаторов.
+
+Текущий пакет питания добавил основное меню Italio, отдельные часы кухни Coffee Hub и {summary['food_service']['classification_corrections']} подтверждённых исправлений категорий филиалов. Категории в отчёте и списке пробелов учитывают принятые наложения; исходные категории сохранены отдельно. Подробности, удержанные сведения и ограничения: [food_service_2026-10-19.md](food_service_2026-10-19.md).
 
 Это **частичное обогащение всего проверенного каталога**, а не заявление, что все заведения независимо проверены или что весь интернет просмотрен. Полнота автоматического аудита и полнота подтверждённых фактов считаются отдельно.
 
@@ -145,6 +216,7 @@ def main():
 |---|---:|
 | Исходный каталог, включая архив исключений | {len(rows):,} |
 | Места в активных рекомендациях и карте | {len(pois):,} |
+| Записи, доступные как ориентиры текущего местоположения | {len(gaz):,} |
 | Записи с хотя бы одним пробелом по расширенной применимой схеме | {summary['records_missing_any_applicable_field']:,} |
 | Без новых проверенных подробных сведений | {summary['without_new_reviewed_rich_facts']:,} |
 | Нет адреса, телефона, сайта и часов одновременно | {summary['without_address_phone_website_hours']:,} |
@@ -157,7 +229,7 @@ def main():
 
 «Неполная» запись может содержать правильные название, адрес и телефон, но не иметь подтверждения доступности или меню. Это не означает, что о ней ничего не известно. Число «нет информации» нельзя подменять количеством непроверенных записей. В текущей выдаче {len(pois):,} мест; остальные записи полного каталога преимущественно относятся к типам, не используемым для досуга.
 
-Для каждой из {len(rows):,} записей сохранены ID, название, категория и точные пробелы: [record-gaps.jsonl](../data/review/2026-10-19-refresh/record-gaps.jsonl). Сводка для программ: [refresh-summary.json](../data/review/2026-10-19-refresh/refresh-summary.json).
+Для каждой из {len(rows):,} записей сохранены ID, название, исходная и принятая категории, точные пробелы основной схемы и отдельные неизвестные условия питания: [record-gaps.jsonl](../data/review/2026-10-19-refresh/record-gaps.jsonl). Сводка для программ: [refresh-summary.json](../data/review/2026-10-19-refresh/refresh-summary.json).
 
 ## Фактический обход источников
 
@@ -192,6 +264,8 @@ Loft Park удержан из рекомендаций из-за отдельн�
 ## Цены и меню
 
 Цена сохраняет валюту, единицу, канал и источник. Меню доставки отдельно от меню в зале; средний чек отдельно от цены конкретного блюда. Неполные базовые цены конструкторов не выдаются как полная стоимость обеда. Меню может меняться после проверки.
+
+В текущем снимке меню есть у {summary['menu_branches']} филиалов; {summary['food_service']['dine_in_menu_items']} позиций относятся к залу. У {summary['food_service']['partial_cost_menu_items']} позиций подтверждена часть условий оплаты; подтверждённых полных итогов с учётом всех обязательных платежей — {summary['food_service']['complete_cost_menu_items']}. Отдельные часы кухни есть у {summary['food_service']['kitchen_hour_branches']} филиала. Из {food_counts['branches']:,} записей питания у {summary['food_service']['branches_missing_kitchen_hours']:,} не подтверждены часы кухни и у {summary['food_service']['branches_without_complete_meal_cost']:,} нет предложения с подтверждённым полным итогом. Эти пробелы рассчитаны отдельно от основной схемы выше; они не означают, что заведение закрыто или о нём нет информации.
 
 Статистика по опубликованным в 2ГИС средним чекам в радиусе 5 км от EXPO:
 
@@ -229,7 +303,13 @@ Loft Park удержан из рекомендаций из-за отдельн�
 
 ## Проверки и запуск
 
-Итоговые результаты тестов и проверок: [verification.json](../eval/runs/2026-10-19-catalog-refresh/verification.json). Четыре реальные проверки внешней модели относятся к предыдущей версии `b479f2445492454782a09e8d95495ae7`; они не переименованы в проверку нового снимка. Последующее обновление проверяется локально с отключёнными провайдерами. Бюджет LLM/embeddings общий $0,10; локальный e5 не вызывает платный API. Учёт реальных вызовов: [provider-cost.json](../eval/runs/2026-10-19-remediation/provider-cost.json). Внешняя почта отключена.
+{current_validation_text}
+
+Отдельные проверки, привязанные к текущему снимку: {current_evidence_text or 'ещё не записаны.'}
+
+{prior_validation_text}
+
+Четыре реальные проверки внешней модели относятся к предыдущей версии `b479f2445492454782a09e8d95495ae7`; они не переименованы в проверку нового снимка. Текущий пакет проверяется локально с отключёнными провайдерами. Бюджет LLM/embeddings общий $0,10; локальный e5 не вызывает платный API. Учёт реальных вызовов: [provider-cost.json](../eval/runs/2026-10-19-remediation/provider-cost.json). Внешняя почта отключена.
 
 Локальный запуск: `scripts/run_local_integration.sh`, адрес `http://127.0.0.1:8001`. Этот профиль использует реальные данные и серверные шаблоны; оплачиваемая модель проверяется отдельным ограниченным прогоном.
 
