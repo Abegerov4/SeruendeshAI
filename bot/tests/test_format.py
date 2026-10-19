@@ -34,3 +34,16 @@ def test_every_real_place_gets_a_route_and_a_pin_button():
     assert len(rows) == len(real) == len(saved)
     assert rows[0][0]["url"].startswith("https://2gis.kz/") and rows[0][1]["callback"] == "pin:0"
     assert saved[0]["name"] == real[0]["name"] and {"lat", "lon"} <= saved[0].keys()
+
+
+def test_answer_parts_make_one_card_per_place_with_its_buttons():
+    from bot.format import answer_parts
+    resp = json.loads((EXAMPLES / "walk.json").read_text())
+    resp["recommendations"][0]["photo"] = {"url": "https://upload.wikimedia.org/x.jpg", "author": "A", "license": "CC BY 4.0",
+                                           "source": "Wikimedia Commons"}
+    parts = answer_parts(resp)
+    assert len(parts["cards"]) == len(resp["recommendations"])
+    first = parts["cards"][0]
+    assert first["photo"].endswith("x.jpg") and "📷 A, CC BY 4.0" in first["caption"] and len(first["caption"]) <= 1024
+    assert first["buttons"][0]["url"].startswith("https://2gis.kz/") and first["buttons"][1]["callback"] == "pin:0"
+    assert "Учёл:" in parts["footer"]

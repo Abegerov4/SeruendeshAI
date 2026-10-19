@@ -50,7 +50,7 @@ def record(resp: dict) -> None:
     try:
         used = resp.get("used_context") or {}
         loc = used.get("location") or {}
-        if resp.get("off_topic") or loc.get("lat") is None or not used.get("now"):
+        if resp.get("off_topic") or loc.get("lat") is None or not used.get("now") or loc.get("source") == "home":
             return
         now = dt.datetime.fromisoformat(used["now"])
         cell = (round(round(loc["lat"] / CELL) * CELL, 4), round(round(loc["lon"] / CELL) * CELL, 4))

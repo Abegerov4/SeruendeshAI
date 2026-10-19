@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import datetime as dt
 import math
+import re
 from dataclasses import dataclass, field
 
 import numpy as np
@@ -90,6 +91,8 @@ def visit_minutes(cat: str, budget: int, mode: str) -> tuple[int, tuple[int, int
     return v, (lo, max(typ, lo))
 
 
+TOUR_NAMES = re.compile(r"экскурси|excursion|red\s*bus|city\s*tour|сити[\s-]*тур", re.I)
+ADULT_NAMES = re.compile(r"fitness|\bgym\b|фитнес|тренажер|тренажёр|кальян|hookah|\bbar\b|\bбар\b|паб\b|\bpub\b", re.I)
 PAID_ENTRY = {"cinema", "karaoke", "theme_park", "water_park", "spa", "zoo_aquarium", "kids_indoor", "active", "theatre", "hookah"}
 
 
@@ -199,6 +202,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
     benchmarks = price_benchmarks(store.pois, plan.origin, ctx.now.date()) if any(r.kind == "price" for r in parsed.food_requirements) else {}
     plan.food_benchmarks = benchmarks
 
+    tour_wish = bool(re.search(r"экскурс|\bтур\b|автобус|excursion|\btour\b|\bbus\b|экскурсия", fold(parsed.search_text or "")))
     food_soft = {"on": False}
     cheap_wish = any(r.kind == "price" for r in parsed.food_requirements)
     style_wishes = [r for r in parsed.food_requirements if r.kind == "style"]
@@ -221,8 +225,10 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
                 p, parsed.food_requirements, ctx.now.date(), benchmarks.get(price_comparison_group(p,ctx.now.date())),
                 arrive_at=now + dt.timedelta(minutes=float(mins[i])), check_kitchen=plan.check_kitchen).matched:
             return False, t("rej_food_evidence", lang), None
-        if plan.with_child and c.adult_only:
+        if plan.with_child and (c.adult_only or ADULT_NAMES.search(p["name"])):
             return False, t("rej_kids", lang), None
+        if TOUR_NAMES.search(p["name"]) and not tour_wish:
+            return False, None, None  # a bus tour is a service, not a stop on a walk
         if "free" in needs and (c.group in ("food", "night") or p["category"] in PAID_ENTRY) and p.get("features", {}).get("free") is not True:
             return False, None, None  # «денег нет»: no cafés, cinemas or ticketed attractions
         if plan.accessibility and p.get("features", {}).get("wheelchair") == "no":

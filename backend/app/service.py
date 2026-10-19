@@ -29,7 +29,7 @@ from app.llm import parse as llm_parse
 from app.llm import usage_begin, usage_summary
 from app.planner import plan_route, route_wanted
 from app.guards import mask_pii, strip_injection
-from app.query import (NAV_INTENT, PARSE_SYSTEM, LLMParsed, Parsed, deadline_minutes, is_off_topic, merge_llm, parse_rules,
+from app.query import (HOME_CUE, NAV_INTENT, PARSE_SYSTEM, LLMParsed, Parsed, deadline_minutes, is_off_topic, merge_llm, parse_rules,
                        resolve_landmark, split_mentions)
 from app.retrieval import Cand, Plan, rank
 from app.schemas import RecommendRequest
@@ -75,7 +75,14 @@ def _strip_terms(text: str, keys: list[str]) -> str:
 def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: list[str], lang: str, hit=None):
     """Where the text says the user is > LLM landmark > rounded GPS (inside Astana) > UI landmark.
     «Я возле Хан Шатыра» wins over GPS: the user said it explicitly (and may be planning ahead)."""
-    if not hit and parsed.landmark_text:
+    home_ref = bool(HOME_CUE.search(fold(req.query or "")))
+    if not hit and req.home and (req.use_home or home_ref):  # «от дома» with a saved home; a named place still wins
+        lat, lon = round_coord(req.home.lat), round_coord(req.home.lon)
+        if in_astana(lat, lon):
+            return (lat, lon), {"source": "home", "label": t("home_label", lang), "precision_m": 100}, None
+    if home_ref and not req.home and not hit:
+        notes.append(t("note_home_missing", lang))
+    if not hit and parsed.landmark_text and not (home_ref and fold(parsed.landmark_text).startswith("дом")):
         hit = resolve_landmark(parsed.landmark_text, store.gazetteer)
     if hit:
         if req.location:
@@ -125,7 +132,10 @@ def _cache_key(req: RecommendRequest, now: dt.datetime) -> str:
     return hashlib.sha1(json.dumps(d, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
-async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
+async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bool = True,
+                    extra_targets: tuple[str, ...] = ()) -> dict:
+    """llm_parse_enabled=False: our own fixed queries (route ideas) are fully understood by the rules.
+    extra_targets: landmark keys a themed walk should lead to (they still pass hours, darkness and the budget)."""
     s = get_settings()
     t0 = time.perf_counter()
     meter, mark = usage_begin()  # tokens of every LLM call made below (parse + generation)
@@ -174,7 +184,7 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
             rules.categories = ["restaurant", "cafe"]
     # parse (LLM), weather and query embedding run concurrently
     llm_task = None
-    if req.query.strip() and llm_client() is not None:
+    if req.query.strip() and llm_client() is not None and llm_parse_enabled:
         llm_task = asyncio.create_task(llm_parse(LLMParsed, PARSE_SYSTEM, req.query.strip()[:500],
                                                  models=[s.llm_parse_model], timeout_s=s.parse_timeout_s,
                                                  max_output_tokens=500))
@@ -220,6 +230,8 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
         # Astana's observation decks: Bayterek (97 m), the EXPO sphere and the top of the Pyramid
         target_ids |= _target_ids(rt.store, [g for k in VIEW_DECKS if (g := _landmark_by_key(rt.store, k))])
     navigate = bool(target_ids) and bool(NAV_INTENT.search(fold(req.query or "")))  # directions to a named place
+    if extra_targets:
+        target_ids |= _target_ids(rt.store, [g for k in extra_targets if (g := _landmark_by_key(rt.store, k))])
     if hit and origin_info["source"] in ("text_landmark", "landmark"):
         exclude_keys = set(hit["keys"]) | {fold(hit["name"])}
         parsed.search_text = _strip_terms(parsed.search_text, list(exclude_keys))

@@ -33,6 +33,8 @@
 | Как выбирали стек (исследование) | [docs/RESEARCH.md](docs/RESEARCH.md) |
 | API-контракт для фронтенда | [docs/API.md](docs/API.md), [docs/api/openapi.json](docs/api/openapi.json), [примеры](docs/api/examples/) |
 | Для города: City Insights (спрос и пробелы, k-анонимно) | https://seruendesh.site/insights, открытые агрегаты `GET /api/insights` — что ищут, где и когда, где город не отвечает; только счётчики (ячейка ≈1 км × 3 часа × тип запроса), значения от 5 запросов |
+| Telegram-бот | [@SeruendeshAl_bot](https://t.me/SeruendeshAl_bot): карточки мест с фото и кнопками «Маршрут» / «На карте», `/routes` — готовые маршруты, `/home` — дом для «от дома»; работает внутри сайта по webhook ([bot/README.md](bot/README.md)) |
+| Готовые маршруты и «от дома» | кнопка «🗺 Маршруты» в чате и `POST /api/routes/ideas` (символы столицы, зелёная прогулка, музеи, кофе, вечер, с ребёнком); «🏠 Дом» в списке точек и фразы «от дома / рядом с домом» |
 | MCP-коннектор (Claude Desktop и другие ИИ-клиенты) | [docs/MCP.md](docs/MCP.md), эндпоинт `https://seruendesh.site/connector/mcp` |
 
 ## Быстрый старт

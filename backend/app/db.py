@@ -68,6 +68,17 @@ class RateLimit(Base):
     expires_at: Mapped[float] = mapped_column(Float, index=True)
 
 
+class BotHome(Base):
+    """A Telegram user's home for «от дома»: keyed by the bot's salted user hash (never the Telegram id),
+    rounded to ~100 m, deleted by /forget."""
+    __tablename__ = "bot_homes"
+    user_hash: Mapped[str] = mapped_column(String(64), primary_key=True)
+    lat: Mapped[float] = mapped_column(Float)
+    lon: Mapped[float] = mapped_column(Float)
+    label: Mapped[str] = mapped_column(String(120))
+    updated_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+
 class DemandCount(Base):
     """City Insights counter: no text, no person, no exact place — a ~1 km cell, a 3-hour slot and an intent."""
     __tablename__ = "demand_counts"

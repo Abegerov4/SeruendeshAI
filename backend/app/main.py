@@ -22,7 +22,7 @@ from starlette.datastructures import UploadFile
 
 from app.paths import ROOT_DIR, GRAPH_FILE
 
-from app import insights, mcp_connector, photo, telegram
+from app import bot_api, geocode, insights, mcp_connector, photo, route_ideas, telegram
 from app.auth import router as auth_router
 from app.categories import CATEGORIES
 from app.config import get_settings
@@ -65,6 +65,7 @@ async def lifespan(app: FastAPI):
         if embedder is None:
             store.emb = None
     http = httpx.AsyncClient(headers={"User-Agent": "SeruendeshAI/0.1"})
+    geocode.RT = route_ideas.RT = RT  # address search and route ideas reuse the runtime
     RT["rt"] = Runtime(store=store, graph=graph, poi_nodes=nodes, poi_snap=snap, embedder=embedder, http=http, cache={})
     if settings.llm_warmup_enabled and llm_client() is not None:
         asyncio.create_task(_warmup())  # first call with a new strict schema is slow; pay it at startup
@@ -113,6 +114,9 @@ app.add_middleware(
 # MCP connector (streamable HTTP, stateless): registered before the SPA catch-all below
 app.add_route("/connector/mcp", mcp_connector.asgi, include_in_schema=False)
 app.include_router(telegram.router)
+app.include_router(geocode.router)
+app.include_router(bot_api.router)
+app.include_router(route_ideas.router)
 
 def _rate_limited(request: Request) -> bool:
     return not limiter.allow("recommend", api_client_key(request), settings.rate_limit_per_min, 60)

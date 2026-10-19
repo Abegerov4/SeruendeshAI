@@ -64,32 +64,33 @@ def _distance(m: int, t: dict) -> str:
     return f"{m / 1000:.1f} {t['km']}".replace(".", ",") if m >= 1000 else f"{m} {t['m']}"
 
 
-def format_response(resp: dict) -> str:
-    ctx = resp.get("used_context") or {}
-    t = _t(resp.get("lang") or "ru")
-    start = ctx.get("location") or {}
+def _header(resp: dict, t: dict) -> list[str]:
     lines: list[str] = []
     if g := resp.get("photo_guess"):
         if g.get("recognized") and g.get("name"):
             lines += [t["photo"].format(name=escape(g["name"])), ""]
-    recs = resp.get("recommendations") or []
-    if recs and (summary := (resp.get("summary") or "").strip()):
+    if resp.get("recommendations") and (summary := (resp.get("summary") or "").strip()):
         lines += [escape(summary), ""]
-    mode = t.get(ctx.get("mode") or "walk", ctx.get("mode") or "")
-    for i, r in enumerate(recs, 1):
-        meters = r.get("walk_distance_m") or r.get("distance_m")  # along the streets when the walk graph knows it
-        dist = f"{_distance(meters, t)}, {r['travel_min']} {t['min']} {mode}" if meters is not None else ""
-        visit = r.get("visit_min") or [r.get("visit_suggested_min"), r.get("visit_suggested_min")]
-        opening = (r.get("opening") or {}).get("label") or t.get(r.get("open_status") or "unknown", "")
-        source = t["idea"] if r.get("source") == "generated" else t["poi"]
-        visit_txt = f" (~{visit[0]}–{visit[1]} {t['min']})" if visit and visit[0] else ""
-        lines += [
-            f"<b>{i}. {escape(r['name'])}</b>" + (f" ({dist})" if dist else ""),
-            f"<i>{t['why']}:</i> {escape(r.get('why') or '')}",
-            f"<i>{t['todo']}:</i> {escape(r.get('what_to_do') or '')}{visit_txt}",
-            f"{escape(opening)} · {source} · <a href=\"{route_link(r['lat'], r['lon'], start)}\">{t['route']}</a>",
-            "",
-        ]
+    return lines
+
+
+def _card(i: int, r: dict, t: dict, mode: str, start: dict) -> list[str]:
+    meters = r.get("walk_distance_m") or r.get("distance_m")  # along the streets when the walk graph knows it
+    dist = f"{_distance(meters, t)}, {r['travel_min']} {t['min']} {mode}" if meters is not None else ""
+    visit = r.get("visit_min") or [r.get("visit_suggested_min"), r.get("visit_suggested_min")]
+    opening = (r.get("opening") or {}).get("label") or t.get(r.get("open_status") or "unknown", "")
+    source = t["idea"] if r.get("source") == "generated" else t["poi"]
+    visit_txt = f" (~{visit[0]}–{visit[1]} {t['min']})" if visit and visit[0] else ""
+    return [
+        f"<b>{i}. {escape(r['name'])}</b>" + (f" ({dist})" if dist else ""),
+        f"<i>{t['why']}:</i> {escape(r.get('why') or '')}",
+        f"<i>{t['todo']}:</i> {escape(r.get('what_to_do') or '')}{visit_txt}",
+        f"{escape(opening)} · {source} · <a href=\"{route_link(r['lat'], r['lon'], start)}\">{t['route']}</a>",
+    ]
+
+
+def _footer(resp: dict, t: dict) -> list[str]:
+    ctx, recs, lines = resp.get("used_context") or {}, resp.get("recommendations") or [], []
     if (route := resp.get("route")) and recs:
         names = {r["poi_id"]: r["name"] for r in recs}
         order = " → ".join(escape(names[p]) for p in route.get("order", []) if p in names)
@@ -107,7 +108,36 @@ def format_response(resp: dict) -> str:
     lines += ["", f"<i>{t['used']}: " + " · ".join(used) + "</i>"]
     if resp.get("disclaimer"):
         lines.append(f"<i>{escape(resp['disclaimer'])}</i>")
-    return "\n".join(lines).strip()
+    return lines
+
+
+def format_response(resp: dict) -> str:
+    """The whole answer as one message (fallback and tests)."""
+    ctx = resp.get("used_context") or {}
+    t = _t(resp.get("lang") or "ru")
+    start, mode = ctx.get("location") or {}, t.get(ctx.get("mode") or "walk", ctx.get("mode") or "")
+    lines = _header(resp, t)
+    for i, r in enumerate(resp.get("recommendations") or [], 1):
+        lines += _card(i, r, t, mode, start) + [""]
+    return "\n".join(lines + _footer(resp, t)).strip()
+
+
+def answer_parts(resp: dict) -> dict:
+    """The answer as Telegram cards: a header, one card per place (photo + caption + buttons), a footer."""
+    ctx = resp.get("used_context") or {}
+    t = _t(resp.get("lang") or "ru")
+    start, mode = ctx.get("location") or {}, t.get(ctx.get("mode") or "walk", ctx.get("mode") or "")
+    buttons = {row[0]["url"]: row for row in place_buttons(resp)}
+    cards = []
+    for i, r in enumerate(resp.get("recommendations") or [], 1):
+        photo = (r.get("photo") or {}).get("url")
+        caption = "\n".join(_card(i, r, t, mode, start))
+        if photo and (r.get("photo") or {}).get("author"):
+            credit = r["photo"]["author"] if r["photo"].get("source") == "website" else f"{r['photo']['author']}, {r['photo'].get('license', '')}"
+            caption += f"\n<i>📷 {escape(credit[:80])}</i>"
+        cards.append({"photo": photo, "caption": caption[:1024],
+                      "buttons": buttons.get(route_link(r["lat"], r["lon"], start), []) if r.get("lat") is not None else []})
+    return {"header": "\n".join(_header(resp, t)).strip(), "cards": cards, "footer": "\n".join(_footer(resp, t)).strip()}
 
 
 def place_buttons(resp: dict) -> list[list[dict]]:

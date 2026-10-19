@@ -24,6 +24,8 @@ T: dict[str, dict[str, str]] = {
     "walk": {"ru": "пешком", "kk": "жаяу", "en": "on foot"},
     "car": {"ru": "на машине", "kk": "көлікпен", "en": "by car"},
     # summary / notes
+    "home_label": {"ru": "Дом", "kk": "Үй", "en": "Home"},
+    "note_home_missing": {"ru": "Адрес дома ещё не сохранён — выберите «🏠 Дом» в списке мест или напишите, где вы.", "kk": "Үй мекенжайы әлі сақталмаған — тізімнен «🏠 Үй» таңдаңыз немесе қайда екеніңізді жазыңыз.", "en": "Your home is not saved yet — pick «🏠 Home» in the place list or say where you are."},
     "summary_nav": {"ru": "Маршрут от «{a}» до «{b}»: {d}, около {m} мин {how}.", "kk": "«{a}» — «{b}» бағыты: {d}, шамамен {m} мин {how}.", "en": "Route from “{a}” to “{b}”: {d}, about {m} min {how}."},
     "how_walk": {"ru": "пешком", "kk": "жаяу", "en": "on foot"},
     "how_car": {"ru": "на машине", "kk": "көлікпен", "en": "by car"},

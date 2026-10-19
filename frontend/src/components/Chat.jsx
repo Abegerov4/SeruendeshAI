@@ -1,11 +1,11 @@
 import { t as tr, getLanguage } from "../i18n";
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera, MessageCircle, Navigation, Footprints, Car, Info, Mic } from 'lucide-react';
+import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera, MessageCircle, Navigation, Footprints, Car, Info, Mic, House, Map as MapIcon, Pencil } from 'lucide-react';
 import PlaceVisual from './PlaceVisual';
 import { hoursTone, shortHours } from './PlaceCard';
 import { landmarks, scenarios } from '../data';
-import { MY_LOCATION } from '../api';
+import { MY_LOCATION, HOME, loadHome, saveHome, geocode, roundCoord } from '../api';
 import Mascot from './Mascot';
 
 const welcome = {
@@ -77,6 +77,49 @@ function ChatReasoning({ used, considered = [], notes = [] }) {
   </div>;
 }
 
+// «🏠 Дом»: find the address (OpenStreetMap) or use the current position; kept only on this device.
+function HomePicker({ onPick }) {
+  const [home, setHome] = useState(loadHome), [editing, setEditing] = useState(!loadHome());
+  const [q, setQ] = useState(''), [results, setResults] = useState(null), [busy, setBusy] = useState(false), [err, setErr] = useState('');
+  function keep(h) { const v = { lat: roundCoord(h.lat), lon: roundCoord(h.lon), label: h.label }; saveHome(v); setHome(v); setEditing(false); onPick(); }
+  async function find() {
+    if (q.trim().length < 3) return;
+    setBusy(true); setErr('');
+    try { const r = await geocode(q.trim()); setResults(r); if (!r.length) setErr('Не нашёл такой адрес в Астане. Попробуй «улица, дом».'); }
+    catch { setErr('Поиск адреса сейчас недоступен.'); } finally { setBusy(false); }
+  }
+  function here() {
+    if (!navigator.geolocation) { setErr('Геолокация недоступна.'); return; }
+    navigator.geolocation.getCurrentPosition(p => keep({ lat: p.coords.latitude, lon: p.coords.longitude, label: tr('Мой дом') }),
+      () => setErr('Нет доступа к геолокации.'), { enableHighAccuracy: true, timeout: 8000 });
+  }
+  if (home && !editing) return <div className="home-row">
+    <button type="button" className="home-choice" onClick={onPick}><House size={14} />{tr('Дом')}<small>{home.label}</small></button>
+    <button type="button" className="home-edit" aria-label={tr('Изменить адрес дома')} onClick={() => setEditing(true)}><Pencil size={13} /></button>
+  </div>;
+  return <div className="home-setup" role="group" aria-label={tr('Адрес дома')}>
+    <span><House size={14} />{tr('Адрес дома')}</span>
+    <div><input value={q} onChange={e => setQ(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); find(); } }}
+      placeholder={tr('Например: Кенесары 40')} aria-label={tr('Адрес дома')} enterKeyHint="search" />
+      <button type="button" onClick={find} disabled={busy}>{tr(busy ? '…' : 'Найти')}</button></div>
+    {results?.map(r => <button type="button" key={r.lat + ',' + r.lon} className="home-result" onClick={() => keep({ ...r, label: q.trim() || r.label })}>{r.label}</button>)}
+    <button type="button" className="home-here" onClick={here}><MapPin size={13} />{tr('Мой дом — здесь (геолокация)')}</button>
+    {err && <small className="home-err">{tr(err)}</small>}
+    <small className="home-privacy">{tr('Хранится только на этом устройстве, округлено до ~100 м.')}</small>
+    {home && <button type="button" className="home-remove" onClick={() => { saveHome(null); setHome(null); setResults(null); }}>{tr('Удалить адрес дома')}</button>}
+  </div>;
+}
+
+// Ready-made themed walks: tap one to see it on the map with its stops.
+function RouteIdeas({ ideas, onShow }) {
+  return <div className="route-ideas">{ideas.map(i => <button key={i.key} className="route-idea" onClick={() => onShow(i)}>
+    <span className="route-idea-emoji" aria-hidden="true">{i.emoji}</span>
+    <span className="route-idea-text"><b>{i.title}</b><small>≈ {i.total_min} {tr('мин')} · {i.stops.length} {tr(i.stops.length === 1 ? 'место' : 'места')}</small>
+      <span>{i.stops.join(' → ')}</span></span>
+    <MapIcon size={16} className="route-idea-go" />
+  </button>)}</div>;
+}
+
 const Speech = typeof window !== 'undefined' ? (window.SpeechRecognition || window.webkitSpeechRecognition) : null;
 
 // Speak instead of typing: the words appear in the box as you talk and are sent when you stop.
@@ -111,7 +154,7 @@ function useStage(loading) {
   return STAGES[stage];
 }
 
-export default function Chat({ requestPlan, onMood, location, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false, onRoute, onDetails, routed, notice }) {
+export default function Chat({ requestPlan, onMood, location, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false, onRoute, onDetails, routed, notice, onIdeas, onShowIdea }) {
   const [messages, setMessages] = useState([welcome]),
     [query, setQuery] = useState(''),
     [loading, setLoading] = useState(false),
@@ -167,6 +210,19 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
     } finally { clearTimeout(timeout); }
   }
   useEffect(() => { if (starter) send(starter.text, starter.index, starter.context, false, starter.display); }, [starter]);
+  async function askIdeas() {
+    if (loading || !onIdeas) return;
+    controller.current?.abort();
+    setError(''); setLoading(true); onMood?.('thinking');
+    append([{ role: 'user', text: tr('🗺 Покажи интересные маршруты рядом') }]);
+    try {
+      const ideas = await onIdeas();
+      append([ideas.length ? { role: 'assistant', text: 'Вот готовые маршруты от тебя — выбери настроение, покажу путь на карте:', ideas }
+        : { role: 'assistant', text: 'Рядом не получилось собрать маршрут из 2–3 мест. Попробуй другую точку старта.' }]);
+      onMood?.(ideas.length ? 'happy' : 'idle');
+    } catch (e) { setError(e?.message === 'rate' ? 'Слишком много запросов. Подожди минуту и попробуй снова.' : 'Не удалось собрать маршруты. Попробуй ещё раз.'); onMood?.('idle'); }
+    finally { setLoading(false); }
+  }
   function reset() { controller.current?.abort(); setError(''); setLoading(false); onMood?.('idle'); setMessages([welcome]); setQuery(''); }
 
   const last = messages.at(-1);
@@ -177,7 +233,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
         <span className="launcher-text"><strong>{tr('Открыть чат с Серу')}</strong><span>{loading ? tr('Собираю прогулку…') : last?.result ? (last.summary || tr('Подборка готова')) : tr('Опиши, где ты и чего хочется — подберу места рядом')}</span></span>
         <span className="launcher-go"><MessageCircle size={22} /></span>
       </button>
-      <div className="launcher-moods">{scenarios.map((s, i) => <button key={s.label} onClick={() => { onOpen?.(); send(tr(s.query), i); }}><s.icon size={14} />{tr(s.label)}</button>)}</div>
+      <div className="launcher-moods">{onIdeas && <button onClick={() => { onOpen?.(); askIdeas(); }}><MapIcon size={14} />{tr('Маршруты')}</button>}{scenarios.map((s, i) => <button key={s.label} onClick={() => { onOpen?.(); send(tr(s.query), i); }}><s.icon size={14} />{tr(s.label)}</button>)}</div>
     </section>;
   }
 
@@ -195,6 +251,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
         {messages.map(m => <div key={m.id} className={'chat-message ' + m.role}><span className="message-author">{m.role === 'assistant' ? tr('Серу · твой спутник') : tr('Ты')}</span>
           {m.image && <img className="message-photo" src={m.image} alt={tr('Твоё фото')} />}
           <p>{m.role === 'user' ? m.text : m.result ? !m.count ? (m.note || tr('Подходящих мест пока нет')) : <>{m.summary} {tr('Нажми на место — построю маршрут от тебя.')}</> : tr(m.text)}</p>
+          {m.ideas?.length > 0 && <RouteIdeas ideas={m.ideas} onShow={i => { if (asSheet) close(); onShowIdea?.(i); }} />}
           {m.result && m.places?.length > 0 && <ChatPlaces places={m.places} onRoute={p => { if (asSheet) close(); onRoute?.(p); }} onDetails={onDetails} routed={routed} />}
           {m.result && m.count > 0 && <ChatReasoning used={m.used} considered={m.considered} notes={m.notes} />}
           {m.result && m.count > 0 && <button className="message-results" onClick={() => { if (asSheet) close(); onResult?.(); }}>{tr('Все места и карта')} · {m.count}<ArrowUpRight size={14} /></button>}
@@ -202,14 +259,14 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
         {loading && <div className="chat-typing" role="status"><span className="thinking-seru"><Mascot decorative mood="thinking" /></span><span className="typing-dots" aria-hidden="true"><i /><i /><i /></span>{tr(stage)}</div>}
       </div>
       {(loading || error) && <div className="request-status" role="status">{loading ? <button onClick={cancel}>{tr('Отменить поиск')}</button> : <><p>{tr(error)}</p><button onClick={() => { const r = lastRequest.current; if (r) send(r.text, r.index, r.override, true, undefined, r.photo); }}>{tr('Повторить запрос')}</button></>}</div>}
-      <div className="quick-scenarios"><span>{tr("ИЛИ НАЧНИ С НАСТРОЕНИЯ")}</span><div>{scenarios.map((s, i) => <button key={s.label} onClick={() => send(tr(s.query), i)}><s.icon size={14} />{tr(s.label)}</button>)}</div></div>
+      <div className="quick-scenarios"><span>{tr("ИЛИ НАЧНИ С НАСТРОЕНИЯ")}</span><div>{onIdeas && <button className="ideas-chip" onClick={askIdeas}><MapIcon size={14} />{tr('Маршруты')}</button>}{scenarios.map((s, i) => <button key={s.label} onClick={() => send(tr(s.query), i)}><s.icon size={14} />{tr(s.label)}</button>)}</div></div>
       <form className="chat-composer" onSubmit={e => { e.preventDefault(); if (!loading) send(query); }}>
         <div className="composer-input"><Sparkles size={19} /><textarea ref={input} id="chat-input" value={query} onChange={e => setQuery(e.target.value)} onKeyDown={e => {
           if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); e.currentTarget.form.requestSubmit(); }
         }} placeholder={tr("Чего хочется? Например: кофе и прогулка на час")} aria-label={tr("Как хочешь провести время?")} rows={asSheet ? 1 : 2} enterKeyHint="send" /></div>
         <div className="composer-bottom">
-          <div className="location-picker" ref={locationBox}><button type="button" className="location-toggle" aria-expanded={locationOpen} onClick={() => setLocationOpen(!locationOpen)}><MapPin size={13} /><span>{location === MY_LOCATION ? '📍 ' : ''}{tr(location)}</span><ChevronDown size={12} /></button>
-            {locationOpen && <div className="location-options">{landmarks.map(l => <button type="button" key={l} onClick={() => { setLocation(l); setLocationOpen(false); }}>{tr(l)}{l === location && <Check size={14} />}</button>)}</div>}</div>
+          <div className="location-picker" ref={locationBox}><button type="button" className="location-toggle" aria-expanded={locationOpen} onClick={() => setLocationOpen(!locationOpen)}><MapPin size={13} /><span>{location === MY_LOCATION ? '📍 ' : location === HOME ? '🏠 ' : ''}{tr(location)}</span><ChevronDown size={12} /></button>
+            {locationOpen && <div className="location-options"><HomePicker onPick={() => { setLocation(HOME); setLocationOpen(false); }} />{landmarks.map(l => <button type="button" key={l} onClick={() => { setLocation(l); setLocationOpen(false); }}>{tr(l)}{l === location && <Check size={14} />}</button>)}</div>}</div>
           <VoiceButton disabled={loading} onText={setQuery} onFinal={text => send(text)} />
           {photoEnabled && <label className="photo-button" title={tr('Где я? Отправь фото места')} aria-label={tr('Где я? Отправь фото места')}>
             <Camera size={18} /><input type="file" accept="image/jpeg,image/png,image/webp" capture="environment" hidden disabled={loading}

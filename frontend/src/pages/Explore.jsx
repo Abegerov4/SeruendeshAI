@@ -11,7 +11,7 @@ import PlaceVisual from '../components/PlaceVisual';
 import {PocketButton} from '../components/PwaExperience';
 import { RouteTimeline } from '../components/PlanPanel';
 import { initialContext } from '../planner';
-import { recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY_LOCATION, routeTo, inAstana, formatDistance, LANDMARK_KEYS } from '../api';
+import { recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY_LOCATION, routeTo, inAstana, formatDistance, LANDMARK_KEYS, routeIdeas, toPlan } from '../api';
 import { scenarios } from '../data';
 
 const FALLBACK_LANDMARK = 'Район Байтерека';
@@ -121,6 +121,14 @@ export default function Explore({ saved, toggleSaved }) {
     if (c.location === MY_LOCATION && plan) applyContext(c);  // redo the current answer from the real position
   }
   // tap on a place (chat card, details): the route from the user to it, drawn on the map
+  // themed walks: computed for the current start; showing one puts its stops and route on the map
+  async function fetchIdeas() { const c = await withCoords(ctx); setCtx(c); return routeIdeas(c, getLanguage()); }
+  function showIdea(idea) {
+    const next = toPlan(idea.response, ctx, idea.query);
+    setPrevious(plan); setPlan(next); setResultVersion(n => n + 1); setHovered(null); setSheetOpen(false); setFocusRoute(null);
+    setRoute(true); setSelected(next.places.find(p => !p.generated)?.id ?? null);
+    showTab('map', false);
+  }
   async function showRouteTo(p, c = ctx, current = plan) {
     setSelected(p.id); setRouteError('');
     // a start named in the text («с AITU до ботсада») wins over GPS; otherwise the user's position, then the answer's origin
@@ -184,7 +192,7 @@ export default function Explore({ saved, toggleSaved }) {
   return <div className={"explore-page map-first mobile-view-" + tab}>
     <main className={'explore-workspace tab-' + tab}>
       <div className="conversation-column"><div className="companion-intro"><div><span className="companion-eyebrow">{tr('ТВОЙ МЕСТНЫЙ ДРУГ ')}</span><h1>{tr('Куда пойдём сегодня?')}</h1><p>{tr('Твой AI-спутник для прогулок по Астане')}</p></div><button className="companion-mascot" onClick={greet} aria-label={tr('Поговорить с Серу')}><Mascot decorative priority mood={mascotMood} key={quip}/></button><span className="companion-quip" aria-live="polite">{tr(quips[quip % quips.length])}</span></div>
-        <Chat key={chatKey} notice={<GeoNotice state={geo} label={ctx.location === MY_LOCATION ? null : ctx.location} onRetry={retryGeo} />} onRoute={showRouteTo} onDetails={setDetailPlace} routed={focusRoute?.poi_id} requestPlan={requestPlan} onMood={reactToSearch} starter={starter} location={ctx.location} setLocation={l => changeContext({ ...ctx, location: l, coords: l === ctx.location ? ctx.coords : null })} onResult={() => { setChatOpen(false); showTab('places'); }} photoEnabled={photoOn} sheet={false} open={true} onOpen={() => showTab('chat')} onClose={() => setChatOpen(false)} />
+        <Chat key={chatKey} notice={<GeoNotice state={geo} label={ctx.location === MY_LOCATION ? null : ctx.location} onRetry={retryGeo} />} onRoute={showRouteTo} onDetails={setDetailPlace} routed={focusRoute?.poi_id} onIdeas={fetchIdeas} onShowIdea={showIdea} requestPlan={requestPlan} onMood={reactToSearch} starter={starter} location={ctx.location} setLocation={l => changeContext({ ...ctx, location: l, coords: l === ctx.location ? ctx.coords : null })} onResult={() => { setChatOpen(false); showTab('places'); }} photoEnabled={photoOn} sheet={false} open={true} onOpen={() => showTab('chat')} onClose={() => setChatOpen(false)} />
         <div className="seru-tip"><span className="tip-doodle" aria-hidden="true">✳</span><div><span>{tr("СОВЕТ ОТ СЕРУ")}</span><p>{tr("Лучшие планы иногда начинаются")}<br />{tr("с «а давай просто выйдем».")}</p></div><button onClick={() => startMood(Math.floor(Math.random() * scenarios.length))}>{tr("Удиви меня")}<ArrowUpRight size={14} /></button></div>
         <section className="preferences" aria-label={tr("Предпочтения")}><div className="preferences-heading"><span>{tr("Подстроимся под тебя")}</span><button onClick={() => setFilters(!filters)} aria-expanded={filters} aria-label={tr("Дополнительные фильтры")}><SlidersHorizontal size={15} />{(ctx.kid || ctx.accessible) && <i />}</button></div><div className="preference-controls"><div className="time-selector" aria-label={tr("Время на прогулку")}>{[30, 60, 120].map(t => <button key={t} aria-pressed={ctx.time === t} className={ctx.time === t ? 'active' : ''} onClick={() => setTime(t)}>{t === 120 ? tr('2 часа') : t + tr(' мин')}</button>)}</div><button className="transport-toggle" onClick={toggleTransport}>{ctx.transport === 'walk' ? <Footprints size={16} /> : <Car size={16} />} {ctx.transport === 'walk' ? tr('Пешком') : tr('На авто')}<ChevronDown size={12} /></button></div><div className={"filter-reveal " + (filters ? "open" : "")} inert={!filters}><div><div className="extra-preferences"><button aria-pressed={ctx.kid} className={ctx.kid ? 'active' : ''} onClick={() => update({ kid: !ctx.kid })}><Baby size={15} />{tr("С ребёнком")}{ctx.kid && <Check size={13} />}</button><button aria-pressed={ctx.accessible} className={ctx.accessible ? 'active' : ''} onClick={() => update({ accessible: !ctx.accessible })}><Accessibility size={15} />{tr("Без ступенек")}{ctx.accessible && <Check size={13} />}</button><p>{tr("Подборка обновится сразу.")}</p></div></div></div></section>
         <details className="sidebar-route" open={!phone || tab === 'plan'}><summary>{tr("ТВОЙ ПЛАН")}</summary><RouteTimeline plan={plan} previous={previous} onRestore={restore} onSelect={choosePlace} /><PocketButton plan={plan}/><button className="pocket-open" onClick={()=>window.dispatchEvent(new Event("seru-open-app"))}>{tr("Моя прогулка")} ↗</button></details><details className="context-disclosure"><summary>{tr("Что я учёл")}</summary><div className="used-context used-live"><span><ShieldCheck size={16} />{tr("Что я учёл")}</span>

@@ -11,7 +11,7 @@ export default function PlaceVisual({ place: p, credit = false, eager = false, i
   if (p.photo && !broken) return <span className="place-visual has-photo">
     <img src={p.photo.url} alt={p.name} loading={eager ? 'eager' : 'lazy'} decoding="async" onError={() => setBroken(true)} />
     {credit && <a className="photo-credit" href={p.photo.page || p.photo.url} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}>
-      {tr('Фото')}: {p.photo.author} · {p.photo.license}</a>}
+      {p.photo.source === 'website' ? tr('Фото с сайта') + ' ' + p.photo.author : tr('Фото') + ': ' + p.photo.author + ' · ' + p.photo.license}</a>}
   </span>;
   const group = p.cover || coverGroup(p.categoryKey);
   const art = {green:'/images/stories/walk.webp',coffee:'/images/stories/coffee.webp',food:'/images/stories/coffee.webp',culture:'/images/astana-hero.webp',landmark:'/images/astana-hero.webp'}[group];

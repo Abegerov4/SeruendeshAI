@@ -417,6 +417,10 @@ _DEST_AFTER = re.compile(r"^(?:га|ге|ка|ке)\b|^\w*\s*(?:баргым|б�
 
 
 # "маршрут до ботсада", "как дойти до Байтерека", "route to Khan Shatyr": the user wants directions to one place
+# the user's own home as the start: «от дома», «рядом с домом», «у меня дома», «near my home», «үйдің жанында»
+HOME_CUE = re.compile(r"(?:\bот|\bиз|\bу|\bоколо|\bвозле|\bрядом\s+с|\bнедалеко\s+от|\bнедалеко\s+от)\s+(?:моего\s+|своего\s+|нашего\s+)?"
+                      r"дом(?:а|ом)\b|\bу\s+меня\s+дома\b|\b(?:near|from|around|close\s+to)\s+(?:my\s+|our\s+)?home\b|"
+                      r"\bуйден\b|\bуйимнен\b|\bуйдин\s+жанында|\bуйимнин\s+жанында")
 NAV_INTENT = re.compile(r"маршрут|\bпуть\b|\bдорог[уаи]\b|проложи|построй|\bвед[иь]\b|проведи|как\s+(?:мне\s+)?(?:пройти|дойти|доехать|попасть|добраться)|"
                         r"\broute\b|directions|how\s+(?:do\s+i\s+|to\s+)?get\s+to|navigate|take\s+me\s+to|багыт|калай\s+бар")
 

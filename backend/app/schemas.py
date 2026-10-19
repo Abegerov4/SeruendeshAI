@@ -28,6 +28,11 @@ class LatLon(BaseModel):
     lon: float = Field(ge=-180, le=180, description="Longitude; the client should round to 3 decimals")
 
 
+class HomePlace(LatLon):
+    """The user's home as the client keeps it (device / bot memory), rounded to ~100 m. Never stored by the API."""
+    label: str | None = Field(None, max_length=120, description="What the user typed, e.g. «Кенесары 40»")
+
+
 class WeatherOverride(BaseModel):
     """Test override of live weather (reproducible evaluations)."""
     model_config = ConfigDict(strict=True)
@@ -58,6 +63,8 @@ class RecommendRequest(BaseModel):
     channel: Channel | None = Field(None, description="Client surface; `telegram` gets short chat-style texts. Facts and safety rules are the same")
     location: LatLon | None = Field(None, description="Approximate user position (rounded). Server rounds again.")
     landmark: str | None = Field(None, max_length=80, description="Landmark key or name from GET /api/meta instead of GPS")
+    home: HomePlace | None = Field(None, description="Saved home; used when the text says «от дома / рядом с домом» or use_home=true")
+    use_home: bool | None = Field(None, description="Start from the saved home (the «🏠 Дом» choice)")
     service_id: str | None = Field(None, max_length=120, description="Previous service context for a relevant follow-up; a new topic takes precedence")
     food_context: list[FoodRequirement] = Field(default_factory=list, max_length=16,
         description="Previous user food requirements, reused only for an unambiguous refinement; never venue facts")
@@ -199,7 +206,7 @@ class WeatherInfo(_Out):
 
 
 class UsedLocation(_Out):
-    source: Literal["gps_rounded", "landmark", "text_landmark", "none"]
+    source: Literal["gps_rounded", "landmark", "text_landmark", "home", "none"]
     label: str
     lat: float
     lon: float

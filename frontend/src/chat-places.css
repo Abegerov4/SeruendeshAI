@@ -63,3 +63,38 @@
 
 /* desktop: loading placeholders keep the size of real cards in the horizontal strip */
 @media (min-width:900px){.map-first .skeleton-card{flex:0 0 300px;height:330px}}
+
+/* «🏠 Дом» in the place list: the saved home or a small address search */
+.home-row{display:flex;align-items:stretch;gap:4px;padding:2px 2px 6px;border-bottom:1px solid #e8ede0;margin-bottom:4px}
+.home-row .home-choice{flex:1;display:flex;align-items:center;gap:7px;text-align:left;min-width:0}
+.home-row .home-choice small{margin-left:auto;color:#748470;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:55%}
+.home-row .home-edit{flex:0 0 36px;display:grid;place-items:center}
+.home-setup{display:flex;flex-direction:column;gap:6px;padding:6px 6px 8px;border-bottom:1px solid #e8ede0;margin-bottom:4px}
+.home-setup>span{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:#2b553c}
+.home-setup>div{display:flex;gap:6px}
+.home-setup input{flex:1;min-width:0;height:38px;border:1px solid #dbe4cf;border-radius:10px;padding:0 10px;font-size:15px;background:#fff;color:#143e30}
+.home-setup>div>button{height:38px;padding:0 12px;border-radius:10px;border:0;background:#174b3e;color:#f1f7df;font-weight:600;font-size:13px;cursor:pointer}
+.home-setup .home-result,.home-setup .home-here,.home-setup .home-remove{text-align:left;font-size:13px;padding:8px 10px;border-radius:10px;border:1px solid #e3e9da;background:#f6f8f0;color:#2b553c;cursor:pointer;display:flex;align-items:center;gap:6px}
+.home-setup .home-remove{background:none;border-color:transparent;color:#9a3b25;padding:4px 10px}
+.home-setup small{font-size:11.5px;color:#748470;line-height:1.4}
+.home-setup .home-err{color:#9a3b25}
+
+/* themed walks in the chat */
+.route-ideas{display:flex;flex-direction:column;gap:8px;margin:10px 0 4px}
+.route-idea{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:10px 12px;border-radius:16px;border:1px solid #e3e9da;background:#fff;box-shadow:0 4px 14px #1b432910;cursor:pointer;color:inherit}
+.route-idea:hover{border-color:#b9d48a}
+.route-idea-emoji{flex:0 0 40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:21px;background:#eef3e4}
+.route-idea-text{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.route-idea-text b{font-size:14.5px;color:#143e30}
+.route-idea-text small{font-size:12px;color:#748470}
+.route-idea-text span{font-size:12.5px;color:#55684f;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.route-idea-go{flex-shrink:0;color:#174b3e}
+.chat-message.assistant:has(.route-ideas){max-width:100%}
+.quick-scenarios .ideas-chip{background:#174b3e!important;color:#f1f7df!important;border-color:#174b3e!important}
+/* the place list styles every button as a full-width row: the address form keeps its own layout */
+.location-options:has(.home-setup){min-width:min(320px,calc(100vw - 40px))}
+.location-options .home-setup>div>button{width:auto;flex:0 0 auto;justify-content:center;font-size:13px;padding:0 14px}
+.location-options .home-setup input{flex:1 1 auto;width:auto}
+.location-options .home-setup .home-result,.location-options .home-setup .home-here,.location-options .home-setup .home-remove{justify-content:flex-start;font-size:13px}
+.location-options .home-row .home-choice{justify-content:flex-start;font-size:13px}
+.location-options .home-row .home-edit{width:36px;justify-content:center;padding:0}

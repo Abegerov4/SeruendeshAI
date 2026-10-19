@@ -202,6 +202,12 @@ def load_store(embed_model: str | None = None) -> Store:
             log.warning("embeddings file does not match POIs/model (%s vs %s), dense retrieval off",
                         meta.get("embedding_model"), embed_model)
     aliases: dict[str, str] = {}
+    extra_file = POIS_FILE.parent / "photos_extra.json"  # pipeline.place_images: Commons near the place, venue sites
+    if not canonical and extra_file.exists():
+        extra = json.loads(extra_file.read_text())
+        for p in pois:
+            if not p.get("photo") and extra.get(p["id"]):
+                p["photo"] = extra[p["id"]]
     keep = _dedupe([i for i, p in enumerate(pois) if not junk_place(p)], pois, aliases)
     if len(keep) < len(pois):  # region names, addresses and the same venue mapped several times
         log.info("dropped %d junk/duplicate places", len(pois) - len(keep))

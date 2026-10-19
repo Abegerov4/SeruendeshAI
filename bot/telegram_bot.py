@@ -18,9 +18,10 @@ import time
 import httpx
 from telegram import BotCommand, InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup, Update
 from telegram.constants import ChatAction, ParseMode
+from telegram.error import TelegramError
 from telegram.ext import Application, CallbackQueryHandler, CommandHandler, ContextTypes, MessageHandler, filters
 
-from bot.format import SCENARIOS_I18N, format_response, pins, place_buttons
+from bot.format import SCENARIOS_I18N, answer_parts, format_response, pins, place_buttons
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
 logging.getLogger("httpx").setLevel(logging.WARNING)
@@ -30,7 +31,14 @@ API = os.getenv("SERU_API", "https://seruendesh.site").rstrip("/")
 BOT_KEY = os.getenv("SERU_BOT_KEY", "").strip()  # = BOT_API_KEY of the backend: per-user rate limits
 LOCATION_TTL_S = 30 * 60
 UI = {
-    "ru": {"location_button": "📍 Отправить геолокацию",
+    "ru": {"home_btn": "🏠 От дома", "routes_btn": "🗺 Маршруты",
+           "home_ask": "Где ваш дом? Отправьте геолокацию (📎 → Геопозиция) или напишите адрес, например «Кенесары 40».",
+           "home_saved": "🏠 Дом сохранён: {label} (округлил до ~100 м). Теперь можно писать «что интересного рядом с домом» или нажать «🏠 От дома».",
+           "home_not_found": "Не нашёл такой адрес в Астане. Напишите «улица, дом» или отправьте геолокацию.",
+           "home_none": "Дом ещё не сохранён — отправьте /home.", "home_off": "Сохранение дома сейчас недоступно.",
+           "from_home": "Строю от дома 🏠. Что хочется?", "need_place": "Сначала отправьте геолокацию или сохраните дом (/home) — маршруты строю от вас.",
+           "routes_title": "🗺 Готовые маршруты от вас — выберите:", "routes_none": "Рядом не получилось собрать маршрут из 2–3 мест. Попробуйте другую точку.",
+           "location_button": "📍 Отправить геолокацию",
            "welcome": "Привет! Я Серу и подскажу, куда сходить в Астане рядом с вами.\n\n"
                       "• Отправьте <b>геолокацию</b> и выберите, что хочется;\n"
                       "• или напишите, например: <i>«я возле Байтерека, хочу кофе и посидеть с ноутбуком»</i> или "
@@ -44,7 +52,14 @@ UI = {
            "photo_off": "Распознавание по фото сейчас недоступно. Напишите, где вы.",
            "voice": "Голосовые пока не разбираю 🙏 Напишите текстом или отправьте геолокацию.",
            "error": "Что-то пошло не так, попробуйте ещё раз через минуту.", "pin_gone": "Это старый ответ — спросите ещё раз."},
-    "kk": {"location_button": "📍 Геолокацияны жіберу",
+    "kk": {"home_btn": "🏠 Үйден", "routes_btn": "🗺 Бағыттар",
+           "home_ask": "Үйіңіз қайда? Геолокацияны жіберіңіз (📎 → Геопозиция) немесе мекенжайды жазыңыз, мысалы «Кенесары 40».",
+           "home_saved": "🏠 Үй сақталды: {label} (~100 м-ге дөңгелектедім). Енді «үйдің жанында не бар» деп жазуға немесе «🏠 Үйден» басуға болады.",
+           "home_not_found": "Астанада мұндай мекенжай табылмады. «көше, үй» деп жазыңыз немесе геолокация жіберіңіз.",
+           "home_none": "Үй әлі сақталмаған — /home жіберіңіз.", "home_off": "Үйді сақтау қазір қолжетімсіз.",
+           "from_home": "Үйден бастаймын 🏠. Не қалайсыз?", "need_place": "Алдымен геолокация жіберіңіз немесе үйді сақтаңыз (/home).",
+           "routes_title": "🗺 Сізден басталатын дайын бағыттар — таңдаңыз:", "routes_none": "Жақын жерде 2–3 орыннан бағыт құрастыру мүмкін болмады.",
+           "location_button": "📍 Геолокацияны жіберу",
            "welcome": "Сәлем! Мен Серумін — Астанада жақын жерде қайда баруға болатынын айтамын.\n\n"
                       "• <b>Геолокацияны</b> жіберіп, не қалайтыныңызды таңдаңыз;\n"
                       "• немесе жазыңыз: <i>«Бәйтеректің жанындамын, кофе ішкім келеді»</i>;\n"
@@ -57,7 +72,14 @@ UI = {
            "photo_off": "Фото бойынша тану қазір қолжетімсіз. Қайда екеніңізді жазыңыз.",
            "voice": "Дауыстық хабарламаларды әзірге түсінбеймін 🙏 Мәтінмен жазыңыз немесе геолокация жіберіңіз.",
            "error": "Бірдеңе дұрыс болмады, бір минуттан кейін қайталаңыз.", "pin_gone": "Бұл ескі жауап — қайта сұраңыз."},
-    "en": {"location_button": "📍 Send my location",
+    "en": {"home_btn": "🏠 From home", "routes_btn": "🗺 Routes",
+           "home_ask": "Where is your home? Send its location (📎 → Location) or write the address, e.g. “Kenesary 40”.",
+           "home_saved": "🏠 Home saved: {label} (rounded to ~100 m). Now ask “what's interesting near home” or tap “🏠 From home”.",
+           "home_not_found": "Couldn't find that address in Astana. Write “street, number” or send the location.",
+           "home_none": "No home saved yet — send /home.", "home_off": "Saving a home is unavailable right now.",
+           "from_home": "Starting from home 🏠. What do you feel like?", "need_place": "First send your location or save your home (/home) — routes start from you.",
+           "routes_title": "🗺 Ready-made walks from you — pick one:", "routes_none": "Couldn't build a 2–3 stop route nearby. Try another place.",
+           "location_button": "📍 Send my location",
            "welcome": "Hi! I'm Seru and I'll suggest where to go in Astana near you.\n\n"
                       "• Send your <b>location</b> and pick what you feel like;\n"
                       "• or write, e.g. <i>“I'm near Baiterek, I want coffee and a quiet table”</i> or "
@@ -75,8 +97,11 @@ UI = {
 LOCATION_BUTTON = UI["ru"]["location_button"]
 WELCOME = UI["ru"]["welcome"]
 BUSY = UI["ru"]["busy"]
-COMMANDS = [BotCommand("start", "Начать и отправить геолокацию"), BotCommand("help", "Что я умею"),
-            BotCommand("forget", "Забыть мою локацию")]
+COMMANDS = [BotCommand("start", "Начать и отправить геолокацию"), BotCommand("routes", "Интересные маршруты рядом"),
+            BotCommand("home", "Сохранить адрес дома"), BotCommand("help", "Что я умею"),
+            BotCommand("forget", "Забыть мою локацию и дом")]
+HOME_WORDS = re.compile(r"(?:\bот|\bиз|\bу|\bоколо|\bвозле|рядом с|недалеко от)\s+(?:моего\s+|своего\s+)?дом(?:а|ом)(?![а-я])|у меня дома|"
+                        r"(?:near|from|around)\s+(?:my\s+)?home|үйден|үйдің жанында", re.I)
 _http = httpx.AsyncClient(timeout=40)
 
 
@@ -85,7 +110,34 @@ def _ui(lang: str) -> dict:
 
 
 def _keyboard(lang: str = "ru") -> ReplyKeyboardMarkup:
-    return ReplyKeyboardMarkup([[KeyboardButton(_ui(lang)["location_button"], request_location=True)]], resize_keyboard=True)
+    ui = _ui(lang)
+    return ReplyKeyboardMarkup([[KeyboardButton(ui["location_button"], request_location=True)],
+                                [KeyboardButton(ui["home_btn"]), KeyboardButton(ui["routes_btn"])]], resize_keyboard=True)
+
+
+async def _home(update: Update, context: ContextTypes.DEFAULT_TYPE) -> dict | None:
+    """The saved home: chat memory first, then the API (it survives restarts)."""
+    if "home" in context.chat_data:
+        return context.chat_data["home"]
+    r = await _http.get(f"{API}/api/bot/home", headers=_headers(update))
+    home = r.json().get("home") if r.status_code == 200 else None
+    context.chat_data["home"] = home
+    return home
+
+
+async def _save_home(update: Update, context: ContextTypes.DEFAULT_TYPE, lat: float, lon: float, label: str) -> None:
+    lang = _ui_lang(update)
+    r = await _http.put(f"{API}/api/bot/home", json={"lat": lat, "lon": lon, "label": label[:120]}, headers=_headers(update))
+    context.chat_data.pop("await_home", None)
+    if r.status_code != 200:
+        await update.effective_message.reply_text(_ui(lang)["home_off" if r.status_code == 403 else "home_not_found"])
+        return
+    context.chat_data["home"] = r.json()["home"]
+    await update.effective_message.reply_text(_ui(lang)["home_saved"].format(label=label), reply_markup=_keyboard(lang))
+
+
+def _start_point(context: ContextTypes.DEFAULT_TYPE) -> dict | None:
+    return _saved_location(context) or (context.chat_data.get("home") and {k: context.chat_data["home"][k] for k in ("lat", "lon")})
 
 
 def _scenario_buttons(lang: str = "ru") -> InlineKeyboardMarkup:
@@ -146,9 +198,34 @@ async def _reply(update: Update, text: str, markup: InlineKeyboardMarkup | None 
                                                   reply_markup=markup if n == len(chunks) - 1 else None)
 
 
+def _markup(row: list[dict]) -> InlineKeyboardMarkup | None:
+    if not row:
+        return None
+    return InlineKeyboardMarkup([[InlineKeyboardButton(b["text"], url=b["url"]) if "url" in b
+                                  else InlineKeyboardButton(b["text"], callback_data=b["callback"]) for b in row]])
+
+
 async def _answer(update: Update, context: ContextTypes.DEFAULT_TYPE, resp: dict) -> None:
+    """Every place as its own card: the place's photo (when we have one) with a caption and its own buttons."""
     context.chat_data["pins"] = pins(resp)  # what the «📍 On the map» buttons send back
-    await _reply(update, format_response(resp), _answer_buttons(resp))
+    parts = answer_parts(resp)
+    if not parts["cards"]:
+        await _reply(update, format_response(resp))
+        return
+    msg = update.effective_message
+    if parts["header"]:
+        await msg.reply_text(parts["header"], parse_mode=ParseMode.HTML, disable_web_page_preview=True)
+    for card in parts["cards"]:
+        markup = _markup(card["buttons"])
+        if card["photo"]:
+            try:
+                await msg.reply_photo(photo=card["photo"], caption=card["caption"], parse_mode=ParseMode.HTML, reply_markup=markup)
+                continue
+            except TelegramError as exc:  # the image host refused Telegram: the same card as text
+                log.info("photo card fell back to text: %s", type(exc).__name__)
+        await msg.reply_text(card["caption"], parse_mode=ParseMode.HTML, disable_web_page_preview=True, reply_markup=markup)
+    if parts["footer"]:
+        await _reply(update, parts["footer"])
 
 
 async def _run(update: Update, context: ContextTypes.DEFAULT_TYPE, query: str) -> None:
@@ -157,6 +234,8 @@ async def _run(update: Update, context: ContextTypes.DEFAULT_TYPE, query: str) -
     body = {"query": query[:1000], "lang": lang, "channel": "telegram"}
     if loc := _saved_location(context):
         body["location"] = loc
+    if HOME_WORDS.search(query) and (home := await _home(update, context)):
+        body["home"] = home  # «от дома»: the API starts from it
     r = await _http.post(f"{API}/api/recommend", json=body, headers=_headers(update))
     if r.status_code == 429:
         await update.effective_message.reply_text(_ui(lang)["busy"])
@@ -174,11 +253,69 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def forget(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     context.chat_data.clear()
+    await _http.delete(f"{API}/api/bot/home", headers=_headers(update))
     await update.message.reply_text(_ui(_ui_lang(update))["forgot"])
+
+
+async def home_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    context.chat_data["await_home"] = True
+    await update.message.reply_text(_ui(_ui_lang(update))["home_ask"])
+
+
+async def from_home(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    lang = _ui_lang(update)
+    home = await _home(update, context)
+    if not home:
+        context.chat_data["await_home"] = True
+        await update.message.reply_text(_ui(lang)["home_ask"])
+        return
+    ts = time.monotonic()  # the home becomes the start for the next 30 minutes, like a shared location
+    context.chat_data["loc"] = {"lat": home["lat"], "lon": home["lon"], "ts": ts}
+    await update.message.reply_text(_ui(lang)["from_home"], reply_markup=_scenario_buttons(lang))
+
+
+async def routes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Themed walks from the user's place, each a real route; the chosen one comes back as cards."""
+    lang = _ui_lang(update)
+    start = _start_point(context) or ((h := await _home(update, context)) and {"lat": h["lat"], "lon": h["lon"]})
+    if not start:
+        await update.effective_message.reply_text(_ui(lang)["need_place"], reply_markup=_keyboard(lang))
+        return
+    await update.effective_chat.send_action(ChatAction.TYPING)
+    r = await _http.post(f"{API}/api/routes/ideas", json={"lang": lang, "location": start}, headers=_headers(update))
+    if r.status_code == 429:
+        await update.effective_message.reply_text(_ui(lang)["busy"])
+        return
+    r.raise_for_status()
+    ideas = r.json().get("ideas") or []
+    context.chat_data["ideas"] = ideas
+    if not ideas:
+        await update.effective_message.reply_text(_ui(lang)["routes_none"])
+        return
+    lines = [_ui(lang)["routes_title"], ""]
+    for n, i in enumerate(ideas, 1):
+        lines.append(f"{n}. {i['emoji']} <b>{i['title']}</b> · ≈{i['total_min']} мин\n   {' → '.join(i['stops'])}")
+    buttons = [[InlineKeyboardButton(f"{n}. {i['emoji']} {i['title']}", callback_data=f"route:{n - 1}")] for n, i in enumerate(ideas, 1)]
+    await update.effective_message.reply_text("\n".join(lines), parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons))
+
+
+async def on_route(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    q = update.callback_query
+    await q.answer()
+    try:
+        idea = (context.chat_data.get("ideas") or [])[int((q.data or "").removeprefix("route:"))]
+    except (ValueError, IndexError):
+        await q.message.reply_text(_ui(_ui_lang(update))["pin_gone"])
+        return
+    await _answer(update, context, idea["response"])
 
 
 async def on_location(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     loc = update.message.location
+    if context.chat_data.get("await_home"):
+        label = {"kk": "геолокация бойынша", "en": "from location"}.get(_ui_lang(update), "по геолокации")
+        await _save_home(update, context, round(loc.latitude, 3), round(loc.longitude, 3), label)
+        return
     ts = time.monotonic()
     context.chat_data["loc"] = {"lat": round(loc.latitude, 3), "lon": round(loc.longitude, 3), "ts": ts}
 
@@ -224,7 +361,22 @@ async def on_voice(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 async def on_text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await _run(update, context, update.message.text)
+    text = (update.message.text or "").strip()
+    if text in {ui["home_btn"] for ui in UI.values()}:
+        await from_home(update, context)
+        return
+    if text in {ui["routes_btn"] for ui in UI.values()}:
+        await routes(update, context)
+        return
+    if context.chat_data.get("await_home"):  # the address of the home, e.g. «Кенесары 40»
+        r = await _http.get(f"{API}/api/geocode", params={"q": text[:120]}, headers=_headers(update))
+        found = (r.json().get("results") or []) if r.status_code == 200 else []
+        if not found:
+            await update.message.reply_text(_ui(_ui_lang(update))["home_not_found"])
+            return
+        await _save_home(update, context, found[0]["lat"], found[0]["lon"], text[:120])
+        return
+    await _run(update, context, text)
 
 
 async def on_photo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -264,6 +416,9 @@ def build_app(token: str, webhook: bool = False) -> Application:
     app = builder.build()
     app.add_handler(CommandHandler(["start", "help"], start))
     app.add_handler(CommandHandler("forget", forget))
+    app.add_handler(CommandHandler("home", home_cmd))
+    app.add_handler(CommandHandler("routes", routes))
+    app.add_handler(CallbackQueryHandler(on_route, pattern=r"^route:"))
     app.add_handler(MessageHandler(filters.LOCATION, on_location))
     app.add_handler(MessageHandler(filters.PHOTO, on_photo))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, on_text))

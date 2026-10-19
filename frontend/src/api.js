@@ -9,6 +9,25 @@ export const LANDMARK_KEYS = {
   'Нурлы Жол': 'nurly_zhol', 'Аэропорт': 'airport'
 };
 export const MY_LOCATION = 'Моё местоположение';
+export const HOME = 'Дом';
+
+// The user's home lives only on this device (rounded to ~100 m); it is sent only when the walk starts from home.
+export function loadHome() { try { return JSON.parse(localStorage.getItem('seru.home') || 'null'); } catch { return null; } }
+export function saveHome(h) { try { h ? localStorage.setItem('seru.home', JSON.stringify(h)) : localStorage.removeItem('seru.home'); } catch { /* private mode */ } }
+const HOME_WORDS = /(?:\bот|\bиз|\bу|\bоколо|\bвозле|рядом с|недалеко от)\s+(?:моего\s+|своего\s+|нашего\s+)?дом(?:а|ом)(?![а-я])|у меня дома|(?:near|from|around|close to)\s+(?:my\s+|our\s+)?home|үйден|үйдің жанында/i;
+export async function geocode(q) {
+  const res = await fetch(`${API_BASE}/api/geocode?q=${encodeURIComponent(q)}`);
+  if (!res.ok) throw Error('geocode-' + res.status);
+  return (await res.json()).results || [];
+}
+// Themed walks from the current place (icons, green, museums, coffee, evening, kids): real routes, not lists.
+export async function routeIdeas(ctx, lang) {
+  const { query, refine, profile, time_budget_min, mode, ...where } = buildRequest('', ctx, lang);
+  const res = await fetch(`${API_BASE}/api/routes/ideas`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(where) });
+  if (res.status === 429) throw Error('rate');
+  if (!res.ok) throw Error('ideas-' + res.status);
+  return (await res.json()).ideas || [];
+}
 
 const ICONS = {trees: Trees, coffee: Coffee, baby: Baby, landmark: Landmark, monument: Landmark, utensils: Utensils, burger: Utensils,
   shopping: ShoppingBag, beer: Moon, music: Music, mic: Music, cloud: Moon, palette: Palette, gallery: Palette, museum: Landmark,
@@ -59,7 +78,7 @@ export function toPlace(r) {
     accessibility: r.accessibility, address: r.address, descriptionUrl: r.description_url || null,
     phone: r.phone || null, instagram: r.instagram || null, cuisine: r.cuisine || [],
     photo: r.photo ? { ...r.photo, author: cleanAuthor(r.photo.author) } : null, image: r.photo?.url || null, cover: coverGroup(r.category_detail),
-    imageNote: r.photo ? `Фото: ${r.photo.author}, ${r.photo.license}` : 'Обложка категории, не фото этого места',
+    imageNote: r.photo ? (r.photo.source === 'website' ? `Фото с сайта ${r.photo.author}` : `Фото: ${r.photo.author}, ${r.photo.license}`) : 'Обложка категории, не фото этого места',
   };
 }
 
@@ -67,6 +86,11 @@ export function buildRequest(text, ctx, lang) {
   const body = {query: text, lang, refine: [], profile: {with_kids: !!ctx.kid, tourist: false, accessibility: !!ctx.accessible, group_size: 1}};
   if (ctx.location === MY_LOCATION && ctx.coords) body.location = {lat: roundCoord(ctx.coords.lat), lon: roundCoord(ctx.coords.lon)};
   else body.landmark = LANDMARK_KEYS[ctx.location] || 'baiterek';
+  const home = loadHome();
+  if (home && (ctx.location === HOME || HOME_WORDS.test(text || ''))) {
+    body.home = {lat: roundCoord(home.lat), lon: roundCoord(home.lon), label: (home.label || '').slice(0, 120)};
+    if (ctx.location === HOME) body.use_home = true;
+  }
   // explicit UI choices win over the text; untouched defaults are left to the parser
   if (ctx.touched?.time) body.time_budget_min = ctx.time;
   if (ctx.touched?.transport) body.mode = ctx.transport;

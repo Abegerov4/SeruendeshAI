@@ -18,18 +18,21 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
     const m = L.map(box.current, { zoomControl: false, attributionControl: true, scrollWheelZoom: true, zoomAnimation: false, markerZoomAnimation: false }).setView(ASTANA, 14);
     // No CSS filter on the tile pane: iOS Safari may not paint filtered layers inside a rounded, clipped box
     // (the map stayed blank on iPhones). The warm look comes from slightly transparent tiles over a cream background.
-    const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(m);
-    let failed = 0, switched = false;  // some privacy browsers strip the Referer and OSM refuses: switch to the OSM France mirror
-    osm.on('tileerror', () => {
-      if (switched || ++failed < 4) return;
-      switched = true; m.removeLayer(osm);
-      L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-        maxZoom: 19, subdomains: 'abc', attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, OSM France'
-      }).addTo(m);
-    });
-    osm.on('tileload', () => { failed = 0; });
+    // OpenStreetMap tiles; if they fail (privacy browsers strip the Referer and OSM refuses), the OSM France mirror.
+    // Keyless styled basemaps (CARTO) now answer «API key required» as an image, so they are not used.
+    const OSM = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+    const providers = [
+      ['https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: OSM }],
+      ['https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', { subdomains: 'abc', attribution: OSM + ', OSM France' }],
+    ];
+    const useTiles = i => {
+      const [url, opts] = providers[i];
+      const layer = L.tileLayer(url, { maxZoom: 19, ...opts }).addTo(m);
+      let failed = 0;
+      layer.on('tileload', () => { failed = 0; });
+      layer.on('tileerror', () => { if (++failed === 4 && i + 1 < providers.length) { m.removeLayer(layer); useTiles(i + 1); } });
+    };
+    useTiles(0);
     layers.current = L.layerGroup().addTo(m);
     map.current = m;
     if (location.search.includes('debug')) window.__seruMap = m;
