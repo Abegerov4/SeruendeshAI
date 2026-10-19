@@ -1,0 +1,21 @@
+/* The composer follows the visual viewport, not the page hidden behind the iOS keyboard. */
+@media(max-width:899px){
+ .map-app{top:var(--mobile-vt,0px);bottom:auto;height:var(--mobile-vh,100dvh)}
+ .mobile-app-nav{transition:transform .2s ease,opacity .16s ease;will-change:transform}
+ html.kb-open .mobile-app-nav{display:flex;transform:translateY(calc(100% + 24px + env(safe-area-inset-bottom)));opacity:0;pointer-events:none}
+ html.kb-open .map-app .site-header{display:none}
+ html.kb-open .map-app #content{height:100%;margin-top:0}
+ html.kb-open .map-first .explore-workspace{height:100%}
+ html.kb-open .map-first.mobile-view-chat .conversation-column{padding:0 10px 8px;min-height:0}
+ html.kb-open .map-first .chat-heading{min-height:48px;padding:6px 4px;flex-shrink:0}
+ html.kb-open .map-first .chat-heading p{display:none}
+ html.kb-open .map-first .chat-log{min-height:0;flex:1;overflow-y:auto;overscroll-behavior:contain}
+ html.kb-open .map-first .quick-scenarios,html.kb-open .map-first .chat-note,html.kb-open .geo-notice{display:none}
+ html.kb-open .map-first .chat-composer{flex:0 0 auto;margin:0;padding:10px 12px;border-radius:16px!important;background:#fff;box-shadow:0 -4px 16px #173f3006}
+ html.kb-open .map-first .composer-input textarea{font-size:16px;min-height:38px;max-height:88px;line-height:1.45;resize:none}
+ html.kb-open .map-first .composer-bottom{padding-top:6px;min-height:44px}
+ html.kb-open .map-first .send-button{min-height:42px}
+ html.kb-open .connection-banner{top:var(--mobile-vt,0px)}
+ html.kb-open body[data-offline=true] .map-app #content{height:calc(100% - 44px);margin-top:44px}
+}
+@media(prefers-reduced-motion:reduce){.mobile-app-nav{transition:none}}

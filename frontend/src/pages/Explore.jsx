@@ -69,18 +69,35 @@ export default function Explore({ saved, toggleSaved }) {
   const [mascotMood, setMascotMood] = useState('wave'), [quip, setQuip] = useState(0), [starter, setStarter] = useState(null);
   const [chatKey, setChatKey] = useState(0), [geoError, setGeoError] = useState(''), [why, setWhy] = useState(false);
   const [geo, setGeo] = useState('asking'), [focusRoute, setFocusRoute] = useState(null), [detailPlace, setDetailPlace] = useState(null), [routeError, setRouteError] = useState('');
-  useEffect(() => {  // phones: the app follows the visual viewport (iOS keyboard), chrome hides while typing
+  useEffect(() => {
     if (!phone) return;
     const vv = window.visualViewport, root = document.documentElement;
+    let baseline = vv?.height || innerHeight, frame = 0, sawShrink = false;
     const fit = () => {
-      const h = vv?.height || innerHeight;
-      root.style.setProperty('--mobile-vh', h + 'px');
+      const height = vv?.height || innerHeight;
+      const focused = document.activeElement?.id === 'chat-input';
+      const shrunk = baseline - height > 120 && (!vv || vv.scale < 1.15);
+      if (focused && shrunk) sawShrink = true;
+      const keyboard = shrunk || (focused && !sawShrink);
+      if (!focused && !shrunk) { baseline = height; sawShrink = false; }
+      root.style.setProperty('--mobile-vh', height + 'px');
       root.style.setProperty('--mobile-vt', (vv?.offsetTop || 0) + 'px');
-      root.classList.toggle('kb-open', h < innerHeight * 0.78);
+      root.classList.toggle('kb-open', keyboard);
+      const nav = document.querySelector('.mobile-app-nav');
+      if (nav) { nav.inert = keyboard; nav.setAttribute('aria-hidden', String(keyboard)); }
     };
-    fit(); vv?.addEventListener('resize', fit); vv?.addEventListener('scroll', fit); addEventListener('orientationchange', fit);
-    return () => { vv?.removeEventListener('resize', fit); vv?.removeEventListener('scroll', fit); removeEventListener('orientationchange', fit);
-      root.style.removeProperty('--mobile-vh'); root.style.removeProperty('--mobile-vt'); root.classList.remove('kb-open'); };
+    const schedule = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(fit); };
+    const focus = e => { if(e.target?.id === 'chat-input') sawShrink = false; schedule(); };
+    const rotate = () => { baseline = vv?.height || innerHeight; sawShrink = false; schedule(); };
+    fit(); vv?.addEventListener('resize', schedule); vv?.addEventListener('scroll', schedule);
+    document.addEventListener('focusin', focus); document.addEventListener('focusout', schedule);
+    addEventListener('resize', schedule); addEventListener('orientationchange', rotate);
+    return () => { cancelAnimationFrame(frame); vv?.removeEventListener('resize', schedule); vv?.removeEventListener('scroll', schedule);
+      document.removeEventListener('focusin', focus); document.removeEventListener('focusout', schedule);
+      removeEventListener('resize', schedule); removeEventListener('orientationchange', rotate);
+      root.style.removeProperty('--mobile-vh'); root.style.removeProperty('--mobile-vt'); root.classList.remove('kb-open');
+      const nav = document.querySelector('.mobile-app-nav'); if(nav){nav.inert=false;nav.removeAttribute('aria-hidden');}
+    };
   }, [phone]);
   const moodTimer = useRef(null);
   useEffect(() => () => clearTimeout(moodTimer.current), []);
