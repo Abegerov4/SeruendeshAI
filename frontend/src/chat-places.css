@@ -98,3 +98,9 @@
 .location-options .home-setup .home-result,.location-options .home-setup .home-here,.location-options .home-setup .home-remove{justify-content:flex-start;font-size:13px}
 .location-options .home-row .home-choice{justify-content:flex-start;font-size:13px}
 .location-options .home-row .home-edit{width:36px;justify-content:center;padding:0}
+
+/* the visit plan in Seru's answer: time on site, what to do, the next stop of a mini-route */
+.chat-place-plan{display:flex;flex-direction:column;gap:4px;margin:8px 2px;padding:8px 10px;border-radius:12px;background:#f3f7ea;font-size:12.5px;line-height:1.45;color:#3d5a3f}
+.chat-place-plan b{color:#2b553c}
+.chat-place-time,.chat-place-next{display:inline-flex;align-items:center;gap:5px;font-weight:600;color:#2f6a2a}
+.chat-place-next{color:#174b3e}

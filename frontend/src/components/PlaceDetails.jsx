@@ -41,7 +41,9 @@ export default function PlaceDetails({ place: p, saved, onSave, onClose, onMap, 
       {!p.generated && p.action && <section><h3>{tr('Что делать')}</h3><p>{p.action}</p>{p.leaveBy && <p><b>{tr('Выйти до')} {p.leaveBy}</b> — {tr('чтобы успеть обратно с запасом.')}</p>}</section>}
       {p.event && <section><h3>{tr('Событие поблизости')}</h3><p>🎟 {p.event.title} · {p.event.starts_at}{p.event.price_from ? ` · ${tr('от')} ${p.event.price_from} ₸` : ''}</p>{p.event.url && <a href={p.event.url} target="_blank" rel="noreferrer">{tr('Билеты и детали')} <ArrowUpRight size={15} /></a>}</section>}
       {p.description && !p.generated && <section className="detail-about"><h3>{tr('О месте')}</h3><p>{p.description}</p>
-        {p.descriptionUrl && <a href={p.descriptionUrl} target="_blank" rel="noreferrer"><BookOpen size={15} />{tr('Читать в Википедии')}<small> · CC BY-SA 4.0</small></a>}</section>}
+        {p.descriptionUrl && (p.descriptionSource === 'research'
+          ? <a href={p.descriptionUrl} target="_blank" rel="noreferrer"><BookOpen size={15} />{tr('Источник')}: {new URL(p.descriptionUrl).hostname.replace(/^www\./, '')}<small> · {tr('проверено 19.10')}</small></a>
+          : <a href={p.descriptionUrl} target="_blank" rel="noreferrer"><BookOpen size={15} />{tr('Читать в Википедии')}<small> · CC BY-SA 4.0</small></a>)}</section>}
       <section className="detail-before"><h3>{tr('Перед выходом')}</h3><TrustList p={p} />{p.openingRaw && <p><small>{tr('Часы в данных:')} <code>{p.openingRaw}</code></small></p>}
         <p className="detail-links">{p.url && <a href={p.url} target="_blank" rel="noreferrer">{tr('Источник данных')} <ArrowUpRight size={14} /></a>}{externalMapLinks(p).map(l => <a key={l.label} href={l.href} target="_blank" rel="noreferrer">{l.label} <ArrowUpRight size={14} /></a>)}</p></section>
       <p className="detail-note">{tr(p.photo ? 'Время рассчитано по открытым данным; проверь часы перед визитом.' : 'Обложка — иллюстрация категории, не снимок места. Время рассчитано по открытым данным; проверь часы перед визитом.')}</p></div>

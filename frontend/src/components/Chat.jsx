@@ -1,17 +1,17 @@
 import { t as tr, getLanguage } from "../i18n";
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera, MessageCircle, Navigation, Footprints, Car, Info, Mic, House, Map as MapIcon, Pencil } from 'lucide-react';
+import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera, MessageCircle, Navigation, Footprints, Car, Info, Mic, House, Map as MapIcon, Pencil, Plus, Clock3, ArrowRight } from 'lucide-react';
 import PlaceVisual from './PlaceVisual';
 import { hoursTone, shortHours } from './PlaceCard';
 import { landmarks, scenarios } from '../data';
-import { MY_LOCATION, HOME, loadHome, saveHome, geocode, roundCoord } from '../api';
+import { MY_LOCATION, HOME, loadHome, saveHome, geocode, roundCoord, visitText } from '../api';
 import Mascot from './Mascot';
 
 const welcome = {
   id: 0,
   role: 'assistant',
-  text: 'Сәлем! Я Серу 👋 Собираю маленькие радости большого города. Чего сегодня хочется: кофе у окна, прогулки без спешки или чего-то совсем нового?'
+  text: 'Привет! Куда хочешь сходить? Напиши пожелания — подберу места рядом.'
 };
 
 // On phones the chat is a full-screen sheet (like a messenger): the composer sits above the keyboard,
@@ -32,16 +32,22 @@ function useSheetViewport(active, onClose) {
 }
 
 // Places right inside Seru's answer: tap a card -> the route from where you are, or the details.
-function ChatPlaces({ places, onRoute, onDetails, routed }) {
+function ChatPlaces({ places, route, onRoute, onDetails, routed }) {
+  const byId = Object.fromEntries(places.map(p => [p.id, p]));
   return <div className="chat-places">{places.map((p, i) => {
     const Mode = p.mode === 'car' ? Car : Footprints;
+    const leg = route?.legs?.find(l => l.from_id === p.id && byId[l.to_id]);  // the next stop of a mini-route
     return <article key={p.id} className={'chat-place' + (routed === p.id ? ' routed' : '')}>
       <button className="chat-place-main" onClick={() => onRoute?.(p)} aria-label={tr('Маршрут до места') + ': ' + p.name}>
         <span className="chat-place-thumb"><PlaceVisual place={p} /><i>{i + 1}</i></span>
         <span className="chat-place-text"><b>{p.name}</b><small>{p.category}</small>
           <small className="chat-place-meta"><Mode size={12} />{p.distance} · {p.travel} {tr('мин')}<span className={'chat-hours ' + hoursTone(p)}>{shortHours(p)}</span></small></span>
       </button>
-      {p.why && <p className="chat-place-why">{p.why}</p>}
+      {(p.action || visitText(p)) && <p className="chat-place-plan">
+        {visitText(p) && <span className="chat-place-time"><Clock3 size={12} />{visitText(p)} {tr('мин на месте')}</span>}
+        {p.action && <span><b>{tr('Что делать')}:</b> {p.action}</span>}
+        {leg && <span className="chat-place-next"><ArrowRight size={12} />{tr('Дальше')}: {byId[leg.to_id].name} · {leg.travel_min} {tr(p.mode === 'car' ? 'мин в пути' : 'мин пешком')}</span>}
+      </p>}
       <div className="chat-place-actions">
         <button className="primary" onClick={() => onRoute?.(p)}><Navigation size={14} />{tr(routed === p.id ? 'Маршрут на карте' : 'Маршрут')}</button>
         <button onClick={() => onDetails?.(p)}><Info size={14} />{tr('Подробнее')}</button>
@@ -195,11 +201,12 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
     lastRequest.current = { text, index, override, photo };
     const timeout = setTimeout(() => { if (controller.current === active) { active.abort(); setLoading(false); setError('Ответ задерживается. Попробуй ещё раз.'); onMood?.('idle'); } }, 25000);
     try {
+      input.current?.blur();
       const plan = await requestPlan(text, override, active.signal, photo);
       if (active.signal.aborted) return;
       const real = plan.places.filter(p => !p.generated), g = plan.photoGuess;
       const seen = g?.recognized && g.name ? tr('Похоже, это «{name}».', { name: g.name }) + ' ' : '';
-      append([{ role: 'assistant', result: true, count: real.length, summary: seen + (plan.summary || ''), names: real.map(p => p.name), places: real.slice(0, 3), note: real.length ? null : plan.notes[0],
+      append([{ role: 'assistant', result: true, count: real.length, summary: seen + (plan.summary || ''), names: real.map(p => p.name), places: real.slice(0, 3), route: plan.route, note: real.length ? null : plan.notes[0],
         used: plan.used, considered: plan.considered, notes: plan.notes }]);
       setQuery(current => current === text ? '' : current); setLoading(false); onMood?.(real.length ? 'happy' : 'idle');
     } catch (e) {
@@ -237,7 +244,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
     </section>;
   }
 
-  const panel = <section className={'chat-panel' + (asSheet ? ' chat-sheet' : '')} id="chat-panel" aria-labelledby="chat-heading" role={asSheet ? 'dialog' : undefined} aria-modal={asSheet || undefined}>
+  const panel = <section className={'chat-panel' + (messages.length>1?' has-messages':'') + (asSheet ? ' chat-sheet' : '')} id="chat-panel" aria-labelledby="chat-heading" role={asSheet ? 'dialog' : undefined} aria-modal={asSheet || undefined}>
     <div className="chat-heading">
       {asSheet && <button className="sheet-close" onClick={close} aria-label={tr('Свернуть чат')}><ChevronDown size={22} /></button>}
       <span className="chat-avatar seru-avatar"><Mascot decorative mood={loading ? 'thinking' : last?.result ? 'happy' : 'wave'} /></span>
@@ -247,34 +254,34 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
     <div className="chat-body">
       {notice}
       <div className="chat-log" ref={log} role="log" aria-label={tr("История диалога")} aria-live="polite" aria-relevant="additions">
-        <span className="chat-date">{tr("МАЛЕНЬКОЕ ПРИКЛЮЧЕНИЕ НАЧИНАЕТСЯ ЗДЕСЬ")}</span>
         {messages.map(m => <div key={m.id} className={'chat-message ' + m.role}><span className="message-author">{m.role === 'assistant' ? tr('Серу · твой спутник') : tr('Ты')}</span>
           {m.image && <img className="message-photo" src={m.image} alt={tr('Твоё фото')} />}
-          <p>{m.role === 'user' ? m.text : m.result ? !m.count ? (m.note || tr('Подходящих мест пока нет')) : <>{m.summary} {tr('Нажми на место — построю маршрут от тебя.')}</> : tr(m.text)}</p>
+          <p>{m.role === 'user' ? m.text : m.result ? !m.count ? (m.note || tr('Подходящих мест пока нет')) : <>{m.summary}</> : tr(m.text)}</p>
           {m.ideas?.length > 0 && <RouteIdeas ideas={m.ideas} onShow={i => { if (asSheet) close(); onShowIdea?.(i); }} />}
-          {m.result && m.places?.length > 0 && <ChatPlaces places={m.places} onRoute={p => { if (asSheet) close(); onRoute?.(p); }} onDetails={onDetails} routed={routed} />}
-          {m.result && m.count > 0 && <ChatReasoning used={m.used} considered={m.considered} notes={m.notes} />}
+          {m.result && m.places?.length > 0 && <ChatPlaces places={m.places} route={m.route} onRoute={p => { if (asSheet) close(); onRoute?.(p); }} onDetails={onDetails} routed={routed} />}
+          {m.result && m.count > 0 && <details className="chat-answer-details"><summary>{tr("Что я учёл")}<ChevronDown size={13}/></summary><ChatReasoning used={m.used} considered={m.considered} notes={m.notes} /></details>}
           {m.result && m.count > 0 && <button className="message-results" onClick={() => { if (asSheet) close(); onResult?.(); }}>{tr('Все места и карта')} · {m.count}<ArrowUpRight size={14} /></button>}
         </div>)}
         {loading && <div className="chat-typing" role="status"><span className="thinking-seru"><Mascot decorative mood="thinking" /></span><span className="typing-dots" aria-hidden="true"><i /><i /><i /></span>{tr(stage)}</div>}
       </div>
       {(loading || error) && <div className="request-status" role="status">{loading ? <button onClick={cancel}>{tr('Отменить поиск')}</button> : <><p>{tr(error)}</p><button onClick={() => { const r = lastRequest.current; if (r) send(r.text, r.index, r.override, true, undefined, r.photo); }}>{tr('Повторить запрос')}</button></>}</div>}
-      <div className="quick-scenarios"><span>{tr("ИЛИ НАЧНИ С НАСТРОЕНИЯ")}</span><div>{onIdeas && <button className="ideas-chip" onClick={askIdeas}><MapIcon size={14} />{tr('Маршруты')}</button>}{scenarios.map((s, i) => <button key={s.label} onClick={() => send(tr(s.query), i)}><s.icon size={14} />{tr(s.label)}</button>)}</div></div>
+      <div className="quick-scenarios" hidden={messages.length > 1}><div>{onIdeas && <button className="ideas-chip" onClick={askIdeas}><MapIcon size={14} />{tr('Маршруты')}</button>}{scenarios.slice(0, 3).map((s, i) => <button disabled={loading} key={s.label} onClick={() => send(tr(s.query), i)}><s.icon size={14} />{tr(s.label)}</button>)}</div></div>
       <form className="chat-composer" onSubmit={e => { e.preventDefault(); if (!loading) send(query); }}>
         <div className="composer-input"><Sparkles size={19} /><textarea ref={input} id="chat-input" value={query} onChange={e => setQuery(e.target.value)} onKeyDown={e => {
           if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); e.currentTarget.form.requestSubmit(); }
-        }} placeholder={tr("Чего хочется? Например: кофе и прогулка на час")} aria-label={tr("Как хочешь провести время?")} rows={asSheet ? 1 : 2} enterKeyHint="send" /></div>
+        }} placeholder={tr(messages.length > 1 ? "Что изменить или найти?" : "Например: кофе и прогулка на час")} aria-label={tr("Как хочешь провести время?")} rows={1} enterKeyHint="send" /></div>
         <div className="composer-bottom">
           <div className="location-picker" ref={locationBox}><button type="button" className="location-toggle" aria-expanded={locationOpen} onClick={() => setLocationOpen(!locationOpen)}><MapPin size={13} /><span>{location === MY_LOCATION ? '📍 ' : location === HOME ? '🏠 ' : ''}{tr(location)}</span><ChevronDown size={12} /></button>
             {locationOpen && <div className="location-options"><HomePicker onPick={() => { setLocation(HOME); setLocationOpen(false); }} />{landmarks.map(l => <button type="button" key={l} onClick={() => { setLocation(l); setLocationOpen(false); }}>{tr(l)}{l === location && <Check size={14} />}</button>)}</div>}</div>
-          <VoiceButton disabled={loading} onText={setQuery} onFinal={text => send(text)} />
-          {photoEnabled && <label className="photo-button" title={tr('Где я? Отправь фото места')} aria-label={tr('Где я? Отправь фото места')}>
+          {(Speech || photoEnabled) && <details className="chat-tools"><summary aria-label={tr("Голос и фото")} title={tr("Голос и фото")}><Plus size={18}/></summary><div className="chat-tools-popover"><VoiceButton disabled={loading} onText={setQuery} onFinal={text => send(text)} />
+          {photoEnabled && <label className="photo-button" role="button" tabIndex={loading ? -1 : 0} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.currentTarget.querySelector('input')?.click();}}} title={tr('Где я? Отправь фото места')} aria-label={tr('Где я? Отправь фото места')}>
             <Camera size={18} /><input type="file" accept="image/jpeg,image/png,image/webp" capture="environment" hidden disabled={loading}
               onChange={e => { const f = e.target.files?.[0]; e.target.value = ''; if (f) send(query.trim(), undefined, undefined, false, undefined, f); }} /></label>}
+          </div></details>}
           <button className="send-button" type="submit" disabled={loading || !query.trim()} aria-label={tr("Подобрать места")}><span>{loading ? tr('Подбираю…') : tr('Найти места')}</span><ArrowUpRight size={17} /></button>
         </div>
       </form>
-      <div className="chat-note"><ShieldCheck size={12} /><span>{tr("Локация примерная, ничего не храним.")}</span></div>
+
     </div>
   </section>;
   return asSheet ? <>{createPortal(panel, document.body)}<div className="chat-launcher placeholder" id="chat-panel-anchor" /></> : panel;

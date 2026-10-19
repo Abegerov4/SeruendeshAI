@@ -1,0 +1,42 @@
+/* Keep the map workspace; reduce duplicate information in the assistant. */
+.map-first .quick-scenarios[hidden]{display:none}
+.map-first .companion-eyebrow,.map-first .companion-quip,.map-first .seru-tip,.map-first .seru-discovery-card{display:none}
+.map-first .chat-heading p{display:none}
+.map-first .chat-heading{min-height:56px}
+.map-first .chat-message{padding:12px 14px}
+.map-first .chat-message .message-author{display:none}
+.map-first .chat-message p{line-height:1.6}
+.map-first .chat-place{padding:10px;border-radius:15px}
+.map-first .chat-place-text>small:not(.chat-place-meta){display:none}
+.map-first .chat-place-actions{margin-top:8px}
+.map-first .chat-place-actions button{min-height:38px}
+.chat-answer-details{margin-top:10px;font-size:11px;border-top:1px solid #dde5d6}
+.chat-answer-details>summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;min-height:38px;color:#637858}
+.chat-answer-details .chat-reasoning-title{display:none}
+.map-first .chat-composer{margin-bottom:10px}
+.map-first .composer-input textarea{min-height:36px}
+.chat-tools{position:relative;flex:0 0 auto}
+.chat-tools>summary{list-style:none;display:flex;align-items:center;justify-content:center;width:38px;height:40px;border:1px solid #dde5d3;border-radius:12px;cursor:pointer;background:#f3f6ec;color:#244d3c}
+.chat-tools>summary::-webkit-details-marker{display:none}
+.chat-tools[open]>summary{background:#e3ecd4}
+.chat-tools-popover{position:absolute;bottom:calc(100% + 8px);right:0;display:flex;align-items:center;gap:8px;padding:10px;border:1px solid #dce5d1;border-radius:14px;background:#fffef9;box-shadow:0 8px 25px #193e321c;z-index:1300}
+.chat-tools-popover .photo-button{margin:0!important;flex-shrink:0}
+.map-first .geo-compact{display:block;padding:0 10px;margin:6px 0;flex-shrink:0;font-size:11px}
+.geo-compact>summary{display:flex;gap:7px;align-items:center;min-height:36px;cursor:pointer}
+.geo-compact>div{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:4px 0 10px;line-height:1.6}
+.geo-compact>div>span{flex:1;min-width:180px}
+.geo-compact>div>svg{display:none}
+.chat-tools>summary:focus-visible,.chat-answer-details>summary:focus-visible,.geo-compact>summary:focus-visible{outline:2px solid #658f35;outline-offset:2px}
+@media(max-width:899px){
+ .map-first .chat-heading{padding:8px 4px;min-height:52px}
+ .map-first .quick-scenarios{padding:6px 0}
+ .map-first .chat-composer{margin-bottom:8px}
+ .map-first .chat-places{gap:8px}
+ .map-first .chat-place-thumb{height:58px;width:66px}
+ .map-first .chat-place-text b{font-size:14px}
+ .map-first .chat-log{padding-top:10px}
+}
+@media(min-width:900px){
+ .map-first .companion-intro{min-height:160px;padding-bottom:10px}
+ .map-first .chat-panel{margin-top:12px}
+}
