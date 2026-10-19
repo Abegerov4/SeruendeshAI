@@ -74,7 +74,7 @@ export function toPlan(resp, ctx, text) {
   return {
     places: [...(resp.recommendations || []), ...(resp.ideas || [])].map(toPlace), route: resp.route, used: resp.used_context, notes: resp.notes || [],
     considered: resp.considered || [], summary: resp.summary, disclaimer: resp.disclaimer, llm: resp.llm, lang: resp.lang,
-    offTopic: !!resp.off_topic, photoGuess: resp.photo_guess || null,
+    offTopic: !!resp.off_topic, photoGuess: resp.photo_guess || null, navigateTo: resp.navigate_to || null,
     context: {...ctx}, query: text,
   };
 }

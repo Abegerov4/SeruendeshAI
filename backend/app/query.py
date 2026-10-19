@@ -371,10 +371,17 @@ _ORIGIN_BEFORE = re.compile(r"(?:\bя\s+)?(?:\bу|возле|около|рядо
                             r"\bживу\s+в|\bостановил\w*\s+в|\bя\s+в|\bв\s+(?:отеле|гостинице|хостеле)|staying\s+(?:at|in)|"
                             r"\bnear|\bat|\bby|i'?m\s+(?:at|near|by|in)|i\s+am\s+(?:at|near|by|in))\s*$")
 _ORIGIN_AFTER = re.compile(r"^\w*\s*(?:жанында|манында|касында|алдында)|^(?:да|де|та|те)\b")
-_DEST_BEFORE = re.compile(r"(?:хочу|хотим|хотел\w*|надо|нужно)\s+(?:в|на|до|к|попасть\s+(?:в|на|к))\s*$|(?:попасть|пойти|сходить|дойти|добраться|"
+_DEST_BEFORE = re.compile(r"(?:маршрут|путь|дорог\w*|проложи|построй|веди|проведи\w*)\s+(?:\w+\s+)?(?:до|к|в|на)\s*$|"
+                          r"(?:route|directions|way|navigate|take\s+me)\s+to\s*(?:the\s*)?$|how\s+(?:do\s+i\s+|to\s+)?get\s+to\s*(?:the\s*)?$|"
+                          r"(?:хочу|хотим|хотел\w*|надо|нужно)\s+(?:в|на|до|к|попасть\s+(?:в|на|к))\s*$|(?:попасть|пойти|сходить|дойти|добраться|"
                           r"доехать|пройти|проехать|едем|иду|идти)\s+(?:в|на|до|к)\s*$|как\s+(?:пройти|дойти|доехать|попасть|добраться)\s+(?:в|на|до|к)?\s*$|"
                           r"(?:go|get|walk|drive|head)\s+to\s*(?:the\s*)?$|\bvisit\s*$")
 _DEST_AFTER = re.compile(r"^(?:га|ге|ка|ке)\b|^\w*\s*(?:баргым|баруга|барамын|бару)")
+
+
+# "маршрут до ботсада", "как дойти до Байтерека", "route to Khan Shatyr": the user wants directions to one place
+NAV_INTENT = re.compile(r"маршрут|\bпуть\b|\bдорог[уаи]\b|проложи|построй|\bвед[иь]\b|проведи|как\s+(?:мне\s+)?(?:пройти|дойти|доехать|попасть|добраться)|"
+                        r"\broute\b|directions|how\s+(?:do\s+i\s+|to\s+)?get\s+to|navigate|take\s+me\s+to|багыт|калай\s+бар")
 
 
 KIND_BONUS = {"landmark": 50, "airport": 40, "station": 30, "hotel": 12, "university": 10, "hospital": 8,

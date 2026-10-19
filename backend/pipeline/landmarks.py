@@ -19,7 +19,7 @@ LANDMARKS: list[dict] = [
     {"key": "ak_orda", "label": "Акорда", "aliases": ["акорда", "ак орда", "ақорда", "akorda"], "prefer": "government", "prefer_cats": ("landmark",)},
     {"key": "central_park", "label": "Центральный парк", "aliases": ["центральный парк", "орталық саябақ", "central park"]},
     {"key": "presidential_park", "label": "Президентский парк", "aliases": ["президентский парк", "президенттік саябақ", "presidential park"]},
-    {"key": "botanical_garden", "label": "Ботанический сад", "aliases": ["ботанический сад", "ботаникалық бақ", "botanical garden"]},
+    {"key": "botanical_garden", "label": "Ботанический сад", "aliases": ["ботанический сад", "ботаникалық бақ", "botanical garden", "ботсад", "бот сад", "ботанический", "ботаникалық"]},
     {"key": "national_museum", "label": "Национальный музей РК", "aliases": ["национальный музей", "ұлттық музей", "national museum"]},
     {"key": "keruen", "label": "ТРЦ Керуен", "aliases": ["керуен", "keruen"]},
     {"key": "abu_dhabi_plaza", "label": "Abu Dhabi Plaza", "aliases": ["абу даби плаза", "abu dhabi plaza", "абу-даби"]},

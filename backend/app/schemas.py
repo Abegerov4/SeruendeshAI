@@ -259,6 +259,7 @@ class RecommendResponse(_Out):
     ai_generated: bool = True
     llm: LLMInfo
     off_topic: bool = Field(False, description="The query is not about places/walks in Astana: no recommendations, see notes")
+    navigate_to: str | None = Field(None, description="Directions request ('маршрут до …'): poi_id the client should route to right away")
 
 
 class PhotoGuess(_Out):

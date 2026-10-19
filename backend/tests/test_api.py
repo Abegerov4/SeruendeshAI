@@ -203,3 +203,11 @@ def test_route_to_a_place_from_rounded_gps_and_from_a_landmark(client):
     # GPS outside Astana and no landmark: no silent guess
     assert client.post("/api/route", json={"poi_id": pid, "location": {"lat": 43.24, "lon": 76.95}}).status_code == 422
     assert client.post("/api/route", json={"poi_id": "nope:1", "landmark": "baiterek"}).status_code == 404
+
+
+def test_route_to_botanical_garden_is_a_navigation_answer(client):
+    d = post(client, query="маршрут до ботсада", location={"lat": 51.128, "lon": 71.43})
+    names = [r["name"] for r in d["recommendations"]]
+    assert len(names) == 1 and ("бақ" in names[0].lower() or "ботан" in names[0].lower()), names
+    assert d["navigate_to"] == d["recommendations"][0]["poi_id"]
+    assert d["used_context"]["location_source"] == "gps_rounded"  # the garden is the destination, not the start

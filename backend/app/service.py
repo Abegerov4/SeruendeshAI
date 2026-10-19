@@ -29,7 +29,7 @@ from app.llm import parse as llm_parse
 from app.llm import usage_begin, usage_summary
 from app.planner import plan_route, route_wanted
 from app.guards import mask_pii, strip_injection
-from app.query import (PARSE_SYSTEM, LLMParsed, Parsed, deadline_minutes, is_off_topic, merge_llm, parse_rules,
+from app.query import (NAV_INTENT, PARSE_SYSTEM, LLMParsed, Parsed, deadline_minutes, is_off_topic, merge_llm, parse_rules,
                        resolve_landmark, split_mentions)
 from app.retrieval import Cand, Plan, rank
 from app.schemas import RecommendRequest
@@ -207,6 +207,7 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     origin, origin_info, hit = _resolve_origin(req, parsed, rt.store, notes, lang, text_hit)
     exclude_keys: set[str] = set()
     target_ids = _target_ids(rt.store, dest_entries)
+    navigate = bool(target_ids) and bool(NAV_INTENT.search(fold(req.query or "")))  # directions to a named place
     if hit and origin_info["source"] in ("text_landmark", "landmark"):
         exclude_keys = set(hit["keys"]) | {fold(hit["name"])}
         parsed.search_text = _strip_terms(parsed.search_text, list(exclude_keys))
@@ -286,11 +287,15 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     if dl is not None and dl - plan.deadline_buffer < 30:
         notes.append(t("note_deadline_tight", lang))
     else:
+        if navigate:
+            plan.budget = max(plan.budget, 240)  # the trip itself is the goal; distance is shown, not used to filter
         cands, considered = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, parsed, plan, ctx, lang, qvec,
                                  exclude_keys=exclude_keys, target_ids=target_ids)
+        if navigate:
+            cands = [c for c in cands if c.poi["id"] in target_ids][:1] or cands
 
     route = None
-    if route_wanted(parsed, req.want_route, plan, len(cands)):
+    if not navigate and route_wanted(parsed, req.want_route, plan, len(cands)):
         returns = parsed.walk_intent and mode == "walk" and dl is None
         route = plan_route(cands, plan, ctx, rt.graph, rt.store.river, lang, returns=returns)
 
@@ -462,7 +467,7 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     }
     resp = {
         "api_version": "1.0", "request_id": uuid.uuid4().hex[:12], "lang": lang, "summary": summary,
-        "recommendations": items, "ideas": ideas, "route": route_out, "used_context": used, "considered": considered[:4],
+        "recommendations": items, "ideas": ideas, "navigate_to": (items[0]["poi_id"] if navigate and items and items[0]["poi_id"] in target_ids else None), "route": route_out, "used_context": used, "considered": considered[:4],
         "notes": list(dict.fromkeys(notes)), "disclaimer": t("disclaimer", lang), "ai_generated": True,
         "llm": {"mode": "llm" if model else "template", "model": model, "latency_ms": int((time.perf_counter() - t0) * 1000),
                 "usage": usage_summary(meter[mark:])},

@@ -57,7 +57,19 @@ export default function Explore({ saved, toggleSaved }) {
   const [mascotMood, setMascotMood] = useState('wave'), [quip, setQuip] = useState(0), [starter, setStarter] = useState(null);
   const [chatKey, setChatKey] = useState(0), [geoError, setGeoError] = useState(''), [why, setWhy] = useState(false);
   const [geo, setGeo] = useState('asking'), [focusRoute, setFocusRoute] = useState(null), [detailPlace, setDetailPlace] = useState(null), [routeError, setRouteError] = useState('');
-  useEffect(()=>{if(!phone)return;const viewport=window.visualViewport;const fit=()=>{document.documentElement.style.setProperty('--mobile-vh',(viewport?.height||innerHeight)+'px');};fit();viewport?.addEventListener('resize',fit);return()=>{viewport?.removeEventListener('resize',fit);document.documentElement.style.removeProperty('--mobile-vh');};},[phone]);
+  useEffect(() => {  // phones: the app follows the visual viewport (iOS keyboard), chrome hides while typing
+    if (!phone) return;
+    const vv = window.visualViewport, root = document.documentElement;
+    const fit = () => {
+      const h = vv?.height || innerHeight;
+      root.style.setProperty('--mobile-vh', h + 'px');
+      root.style.setProperty('--mobile-vt', (vv?.offsetTop || 0) + 'px');
+      root.classList.toggle('kb-open', h < innerHeight * 0.78);
+    };
+    fit(); vv?.addEventListener('resize', fit); vv?.addEventListener('scroll', fit); addEventListener('orientationchange', fit);
+    return () => { vv?.removeEventListener('resize', fit); vv?.removeEventListener('scroll', fit); removeEventListener('orientationchange', fit);
+      root.style.removeProperty('--mobile-vh'); root.style.removeProperty('--mobile-vt'); root.classList.remove('kb-open'); };
+  }, [phone]);
   const moodTimer = useRef(null);
   useEffect(() => () => clearTimeout(moodTimer.current), []);
   function reactToSearch(state) { clearTimeout(moodTimer.current); setMascotMood(state); if (state === 'happy') moodTimer.current = setTimeout(() => setMascotMood('idle'), 2200); }
@@ -80,11 +92,11 @@ export default function Explore({ saved, toggleSaved }) {
     if (c.location === MY_LOCATION && plan) applyContext(c);  // redo the current answer from the real position
   }
   // tap on a place (chat card, details): the route from the user to it, drawn on the map
-  async function showRouteTo(p) {
+  async function showRouteTo(p, c = ctx, current = plan) {
     setSelected(p.id); setRouteError('');
-    const gps = ctx.location === MY_LOCATION && ctx.coords && inAstana(ctx.coords) ? ctx.coords : null;
-    const from = gps || (plan?.used?.location ? { lat: plan.used.location.lat, lon: plan.used.location.lon } : null);
-    try { const r = await routeTo(p, ctx, from); setFocusRoute({ ...r, place: p, origin_source: gps ? r.origin_source : 'landmark' }); }
+    const gps = c.location === MY_LOCATION && c.coords && inAstana(c.coords) ? c.coords : null;
+    const from = gps || (current?.used?.location ? { lat: current.used.location.lat, lon: current.used.location.lon } : null);
+    try { const r = await routeTo(p, c, from); setFocusRoute({ ...r, place: p, origin_source: gps ? r.origin_source : 'landmark' }); }
     catch { setRouteError('Не получилось построить маршрут. Попробуй ещё раз.'); }
     showTab('map', false);
   }
@@ -97,6 +109,7 @@ export default function Explore({ saved, toggleSaved }) {
       if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
       if (next.offTopic || (photo && !next.places.length)) return next;  // keep the current picks; the chat explains
       setPrevious(plan); setPlan(next); setResultVersion(n => n + 1); setHovered(null); setSheetOpen(false); setFocusRoute(null);
+      if (next.navigateTo) { const p = next.places.find(x => x.id === next.navigateTo); if (p) showRouteTo(p, c, next); }  // «маршрут до …»
       setSelected(next.places.find(p => !p.generated)?.id ?? null);
       return next;
     } finally { setLoading(false); }
@@ -156,7 +169,7 @@ export default function Explore({ saved, toggleSaved }) {
         
         {!loading && plan && !real.length && <div className="empty-plan" role="status"><h3>{tr("Подходящих мест пока нет")}</h3><p>{plan.notes?.[0] || tr("Попробуй снять ограничения или увеличить время.")}</p><button onClick={() => { const next = { ...ctx, time: Math.max(120, ctx.time), indoor: false, noCoffee: false, accessible: false, closer: false, touched: { ...ctx.touched, time: true } }; setCtx(next); applyContext(next); }}>{tr("Расширить условия")}</button></div>}
         {loadError && !loading && !plan && <div className="empty-plan" role="alert"><h3>{tr('Не получилось загрузить подборку')}</h3><p>{tr(loadError)}</p><button onClick={() => requestPlan(lastQuery).catch(() => setLoadError('Сервер не ответил. Попробуй ещё раз.'))}>{tr('Повторить')}</button></div>}
-        <section className="map-section" id="map-section" aria-label={tr("Карта прогулки")}><CityMap places={places} origin={origin} route={plan?.route} showRoute={route} setRoute={setRoute} selected={selected} setSelected={id => { setSelected(id); setSheetOpen(false); }} hovered={hovered} resultVersion={resultVersion} focusRoute={focusRoute} />
+        <section className="map-section" id="map-section" aria-label={tr("Карта прогулки")}>{(!phone || tab === 'map') && <CityMap places={places} origin={origin} route={plan?.route} showRoute={route} setRoute={setRoute} selected={selected} setSelected={id => { setSelected(id); setSheetOpen(false); }} hovered={hovered} resultVersion={resultVersion} focusRoute={focusRoute} />}
           {focusRoute && <div className="focus-route-bar" role="status"><Navigation size={16} /><div><b>{focusRoute.name}</b><span>{formatDistance(focusRoute.distance_m)} · {focusRoute.travel_min} {tr(focusRoute.mode === 'car' ? 'мин в пути' : 'мин пешком')}{focusRoute.origin_source === 'landmark' ? ' · ' + tr('от ориентира') : ' · ' + tr('от тебя')}{focusRoute.geometry === 'straight' ? ' · ' + tr('оценка') : ''}</span></div><a href={focusRoute.links['2gis']} target="_blank" rel="noreferrer">2GIS ↗</a><button aria-label={tr('Скрыть маршрут')} onClick={() => setFocusRoute(null)}><X size={16} /></button></div>}
           {routeError && <div className="focus-route-bar error" role="alert">{tr(routeError)}</div>}
           {sel && <div className={"selected-map-place " + (sheetOpen ? "sheet-open" : "")}><PlaceVisual place={sel} illustrative /><div><span>{tr("ТВОЯ СЛЕДУЮЩАЯ ОСТАНОВКА")}</span><h3>{sel.name}</h3><p>{sel.mode === 'walk' ? <Footprints size={12} /> : <Car size={12} />}{sel.distance} · {sel.travel}{tr(sel.mode === 'walk' ? " мин пешком" : " мин в пути")}{sel.leaveBy ? ' · ' + tr('выйти до') + ' ' + sel.leaveBy : ''}</p></div><button className="map-sheet-toggle" aria-label={tr("Подробнее")} aria-expanded={sheetOpen} aria-controls="map-place-details" onClick={() => setSheetOpen(!sheetOpen)}><ChevronDown size={19} /></button><div className="map-sheet-details" id="map-place-details" hidden={!sheetOpen}><p>{sel.why}</p><p>{sel.action}</p><p>{externalMapLinks(sel).map(l => <a key={l.label} href={l.href} target="_blank" rel="noreferrer">{tr('Открыть в')} {l.label} ↗ </a>)}</p><button onClick={() => showTab('places')}>{tr("Посмотреть карточки мест")}<ArrowUpRight size={15} /></button></div></div>}

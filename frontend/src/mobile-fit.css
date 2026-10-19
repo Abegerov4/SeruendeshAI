@@ -39,3 +39,13 @@
   .map-first .chat-heading .chat-avatar { width: 30px; height: 30px; }
   .map-first .chat-log { padding-top: 8px; }
 }
+
+/* iOS keyboard: the app is pinned to the visible part of the screen; header and tab bar step aside while typing */
+@media (max-width: 899px) {
+  .map-app { top: var(--mobile-vt, 0px); bottom: auto; }
+  html, body { overscroll-behavior: none; }
+  html.kb-open .map-app .site-header, html.kb-open .mobile-app-nav { display: none; }
+  html.kb-open .map-app #content { height: 100%; }
+  html.kb-open .map-first .explore-workspace { height: 100%; }
+  html.kb-open .map-first .quick-scenarios, html.kb-open .map-first .chat-note, html.kb-open .geo-notice { display: none; }
+}
