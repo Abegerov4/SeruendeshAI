@@ -94,3 +94,28 @@ Compose: там нужны отдельное S3-хранилище и дост�
 Тесты проверяют контракт фото, обработку изображений, политику бакета и сохранение
 старой привязки при сбое S3. Для проверки реального хранилища после запуска Compose
 загрузите фото командой выше и откройте полученный URL из ответа API в браузере.
+
+### Интеграционный тест в Docker
+
+Используйте отдельный проект `seru-photos-check` и тестовые значения
+`S3_ACCESS_KEY_ID` / `S3_SECRET_ACCESS_KEY` в окружении. Порт 9000 должен быть свободен.
+Команды ниже создают только тестовые объекты и отдельные тома:
+
+```sh
+docker compose -p seru-photos-check -f compose.yaml -f compose.photos.yaml up --build -d photos-init
+docker compose -p seru-photos-check -f compose.yaml -f compose.photos.yaml -f compose.photos-test.yaml run --build --rm photos seed
+docker compose -p seru-photos-check -f compose.yaml -f compose.photos.yaml restart seaweedfs
+docker compose -p seru-photos-check -f compose.yaml -f compose.photos.yaml -f compose.photos-test.yaml run --rm --no-deps photos verify
+```
+
+Проверяются реальная загрузка, чтение фото по ссылке карточки, размер и EXIF,
+повторная инициализация/загрузка, запрет анонимных PUT/DELETE/List и чтения
+`private/*`, сохранение объектов и реестра после перезапуска.
+`--no-deps` исключает повторную инициализацию политики при проверке сохранности.
+Проверка выполнена 19 октября 2026: seed, verify после перезапуска и verify
+через опубликованный порт хоста прошли на Docker Desktop (Linux containers).
+После проверки удалите **только тестовый проект** и его тома:
+
+```sh
+docker compose -p seru-photos-check -f compose.yaml -f compose.photos.yaml down -v
+```
