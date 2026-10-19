@@ -1,0 +1,44 @@
+/* A compact mobile app: one task per screen, persistent navigation, no launcher. */
+.mobile-app-nav{display:none}
+@media(max-width:899px){
+ .map-app{position:fixed;inset:0;height:var(--mobile-vh,100dvh);overflow:hidden}
+ .map-app .site-header{height:62px;padding:0 14px;gap:8px}
+ .map-app .site-header .brand{font-size:19px}.map-app .site-header nav{display:none}.map-app .header-actions{margin-left:auto}
+ .map-app #content{height:calc(100% - 62px)}
+ .map-first{height:100%;padding:0!important}
+ .map-first .explore-workspace{height:calc(100% - 68px - env(safe-area-inset-bottom));display:block;overflow:hidden}
+ .map-first .conversation-column,.map-first .discovery-column{height:100%;width:100%;padding:0 16px;overflow:auto;overscroll-behavior:contain}
+ .map-first .companion-intro,.map-first .mobile-tabs,.map-first .ask-seru-fab{display:none!important}
+ .map-first .conversation-column>*{display:none}
+ .map-first.mobile-view-chat .conversation-column>.chat-panel{display:flex}
+ .map-first.mobile-view-chat .discovery-column,.map-first.mobile-view-plan .discovery-column{display:none!important}
+ .map-first.mobile-view-map .conversation-column,.map-first.mobile-view-places .conversation-column{display:none!important}
+ .map-first.mobile-view-chat .conversation-column{overflow:hidden;padding:0 12px}
+ .map-first .chat-panel{height:100%;margin:0;flex-direction:column;padding:0;border:0;background:transparent}
+ .map-first .chat-heading{flex-shrink:0;padding:12px 4px;gap:10px;min-height:64px}.map-first .chat-heading h2{font-size:17px}.map-first .chat-heading p{font-size:10px}
+ .map-first .chat-body{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+ .map-first .chat-log{flex:1;min-height:0;max-height:none;padding:14px 2px;overflow-y:auto}
+ .map-first .chat-message{padding:14px;max-width:94%}.map-first .chat-message p{font-size:15px;line-height:1.65}
+ .map-first .quick-scenarios{flex-shrink:0;padding:8px 0}.map-first .quick-scenarios>div{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.map-first .quick-scenarios button{flex-shrink:0;font-size:12px;min-height:38px;white-space:nowrap}
+ .map-first .chat-composer{flex-shrink:0;padding:10px 12px;box-shadow:none;border:1px solid #cddac3;background:#fff;border-radius:18px}
+ .map-first .composer-input textarea{font-size:16px;min-height:44px;max-height:90px;padding:4px 0}.map-first .composer-input>svg{display:none}
+ .map-first .composer-bottom{padding-top:4px;gap:6px}.map-first .send-button{min-height:42px;font-size:11px;padding:9px 12px}.map-first .location-toggle{font-size:10px;max-width:160px}
+ .map-first .chat-note{padding:7px 0;font-size:8px;justify-content:center;flex-shrink:0}.map-first .request-status{flex-shrink:0;margin:4px 0;padding:8px 12px;font-size:12px}
+ .map-first.mobile-view-map .discovery-column{padding:0;overflow:hidden;position:relative}
+ .map-first.mobile-view-map .map-section{display:block;height:100%;min-height:0;border-radius:0;position:absolute;inset:0;width:100%}
+ .map-first.mobile-view-map .places-section{display:none}.map-first .map-controls{top:80px}.map-first .selected-map-place{bottom:48px}
+ .map-first.mobile-view-places .map-section{display:none}
+ .map-first.mobile-view-places .places-section{display:block;margin:0;padding:14px 0}
+ .map-first.mobile-view-places .section-heading{display:block;margin:0 0 14px}.map-first.mobile-view-places .section-heading h2{font-size:23px}
+ .map-first.mobile-view-places .place-grid{display:grid;grid-template-columns:1fr;overflow:visible;padding:0;gap:16px}
+ .map-first.mobile-view-places .place-image-wrap{height:190px}.map-first.mobile-view-places .place-why{display:block;font-size:13px}
+ .map-first.mobile-view-plan .conversation-column{padding:20px}
+ .map-first.mobile-view-plan .preferences,.map-first.mobile-view-plan .sidebar-route,.map-first.mobile-view-plan .context-disclosure,.map-first.mobile-view-plan .mood-disclosure{display:block}
+ .map-first.mobile-view-plan .sidebar-route>summary{display:none}
+ .map-first.mobile-view-plan .sidebar-route>.route-timeline{display:block}
+ .mobile-app-nav{display:flex;position:absolute;bottom:0;left:0;right:0;height:calc(68px + env(safe-area-inset-bottom));padding:6px 8px calc(6px + env(safe-area-inset-bottom));background:#fffefa;border-top:1px solid #e2e7db;z-index:1200;gap:4px}
+ .mobile-app-nav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;position:relative;border-radius:13px;color:#74816a;font-size:10px;min-width:0}
+ .mobile-app-nav button[aria-current=page]{background:#edf4dd;color:#174b3e;font-weight:700}
+ .mobile-app-nav button span{white-space:nowrap}.mobile-app-nav i{position:absolute;top:2px;left:57%;font-size:9px;font-style:normal;background:#174b3e;color:white;border-radius:10px;min-width:16px;padding:2px}
+}
+@media(max-width:899px) and (max-height:550px){.map-first .chat-heading{min-height:44px;padding:5px}.map-first .chat-heading p,.map-first .chat-note{display:none}.map-first .quick-scenarios{padding:3px 0}.map-first .quick-scenarios button{min-height:30px}.map-first .composer-input textarea{min-height:32px}}

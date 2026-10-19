@@ -1,7 +1,7 @@
 import { t as tr } from "../i18n";
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera } from 'lucide-react';
+import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera, MessageCircle } from 'lucide-react';
 import { landmarks, scenarios } from '../data';
 import { MY_LOCATION } from '../api';
 import Mascot from './Mascot';
@@ -61,6 +61,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
   function cancel() { controller.current?.abort(); setLoading(false); setError('Запрос отменён. Текст сохранён.'); onMood?.('idle'); }
   async function send(text, index, override, retry = false, display, photo) {
     if (!text.trim() && !photo) return;
+    if(!navigator.onLine){setQuery(text);lastRequest.current={text,index,override,photo};setError('Нет сети. Текст сохранён. Подключись к интернету и повтори запрос.');return;}
     if (photo && photo.size > 8 * 1024 * 1024) { setError('Фото больше 8 МБ — выбери поменьше.'); return; }
     controller.current?.abort(); const active = new AbortController(); controller.current = active;
     setError(''); setLoading(true); setQuery(text); onMood?.('thinking');
@@ -89,8 +90,8 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
     return <section className="chat-launcher" id="chat-panel" aria-label={tr('Чат с Серу')}>
       <button className="launcher-main" onClick={() => onOpen?.()}>
         <span className="chat-avatar seru-avatar"><Mascot decorative mood={loading ? 'thinking' : last?.result ? 'happy' : 'wave'} /></span>
-        <span className="launcher-text"><strong>{tr('Спроси Серу')}</strong><span>{loading ? tr('Собираю прогулку…') : last?.result ? (last.summary || tr('Подборка готова')) : tr('Опиши, где ты и чего хочется — подберу места рядом')}</span></span>
-        <span className="launcher-go"><ArrowUp size={18} /></span>
+        <span className="launcher-text"><strong>{tr('Открыть чат с Серу')}</strong><span>{loading ? tr('Собираю прогулку…') : last?.result ? (last.summary || tr('Подборка готова')) : tr('Опиши, где ты и чего хочется — подберу места рядом')}</span></span>
+        <span className="launcher-go"><MessageCircle size={22} /></span>
       </button>
       <div className="launcher-moods">{scenarios.map((s, i) => <button key={s.label} onClick={() => { onOpen?.(); send(tr(s.query), i); }}><s.icon size={14} />{tr(s.label)}</button>)}</div>
     </section>;

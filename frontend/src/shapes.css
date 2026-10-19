@@ -1,0 +1,33 @@
+/* One shape system: softly rounded rectangles, with nested radii. */
+:root{--radius-panel:20px;--radius-control:12px;--radius-small:8px}
+/* Keep geographic markers and status dots distinct from interface controls. */
+:is(.place-card,.chat-launcher,.chat-composer,.route-timeline,.empty-plan,.auth-layout,.saved-empty,.mood-card,.context-editor,.demo-controls,.seru-discovery-card,.selected-map-place){border-radius:var(--radius-panel)!important}
+:is(.chat-message,.chat-message.user,.chat-message.assistant,.form-feedback,.auth-demo-note,.detail-before,.place-action,.plan-diff,.request-status,.location-options,.lang-menu,.account-dropdown){border-radius:16px!important}
+:is(.send-button,.quick-scenarios button,.launcher-moods button,.time-selector button,.transport-toggle,.extra-preferences button,.refine-chips button,.context-refinements button,.context-apply,.login-link,.lang-trigger,.language-switcher,.guest-button,.auth-submit,.primary-button,.detail-save,.detail-map,.detail-toolbar button,.detail-actions a,.detail-links a,.field-input,.map-label,.route-total,.map-bottom button,.map-bottom>span,.route-strip,.map-controls,.photo-button,.message-results,.saved-count){border-radius:var(--radius-control)!important}
+:is(.save-button,.detail-close,.map-sheet-toggle,.chat-reset,.password-toggle,.launcher-go,.timeline-number,.chat-avatar,.cover-icon){border-radius:var(--radius-control)!important}
+:is(.story-tags>span,.place-category,.hours-chip,.card-status,.source,.new-place-badge,.detail-category,.chips>span,.refine-chips,.place-facts>span,.nav-count,.photo-badge,.demo-pill){border-radius:var(--radius-small)!important}
+:is(.place-image-wrap,.place-image-button,.selected-map-place>.place-visual,.message-photo){border-radius:var(--radius-control)!important}
+.place-dialog{border-radius:24px!important}.place-dialog .detail-hero{border-radius:0}
+.map-app .site-header{box-shadow:0 1px 0 #183c3005}
+.site-header .lang-trigger,.site-header .login-link{min-height:38px;display:flex;align-items:center;justify-content:center;padding:8px 12px;box-sizing:border-box}
+.site-header .lang-trigger{background:#f4f6ef;border:1px solid #e2e7d9}
+.site-header .login-link{background:#f4f6ef;border:1px solid #e2e7d9}
+.site-header nav>a{border-radius:var(--radius-control);padding:10px 13px}
+.site-header nav>a.active{background:#eef3e5}.site-header nav>a.active:after{display:none}
+.map-first .refine-chips{border-radius:14px!important;padding:7px;gap:5px}
+.map-first .refine-chips button{min-height:32px;padding:6px 11px}
+@media(max-width:899px){
+ .mobile-app-nav{left:10px;right:10px;bottom:calc(6px + env(safe-area-inset-bottom));height:56px;padding:4px;gap:4px;border:1px solid #e1e7d8;border-radius:18px;background:#fffefaf5;box-shadow:0 3px 18px #2445320c;backdrop-filter:blur(16px)}
+ .mobile-app-nav button{min-height:46px;border-radius:13px;color:#788271;gap:4px;padding:4px 2px;transition:background .18s,color .18s}
+ .mobile-app-nav button[aria-current=page]{background:#174b3e;color:#fff;font-weight:600;box-shadow:0 2px 4px #183d3010}
+ .mobile-app-nav button svg{width:20px;height:20px;stroke-width:1.8}
+ .mobile-app-nav button span{font-size:10px;letter-spacing:0;text-transform:none;line-height:1.2}
+ .mobile-app-nav i{border-radius:6px;min-width:15px;line-height:12px;padding:1px 3px;background:#e3edcf;color:#31513b;top:2px;left:calc(50% + 8px);font-size:8px}
+ .mobile-app-nav button[aria-current=page] i{background:#d6ea9c;color:#174b3e}
+ .map-first .chat-composer{border-radius:18px!important}.map-first .send-button{min-height:42px;border-radius:12px!important}
+ .map-first .photo-button{width:42px;min-height:42px;display:grid;place-items:center}
+ .map-first .chat-heading .chat-avatar{border-radius:12px!important;overflow:hidden;background:#f0f5e4}
+ .map-first .chat-heading .chat-avatar img{object-fit:contain}
+ .place-dialog{border-radius:24px 24px 0 0!important}
+}
+@media(prefers-reduced-motion:reduce){.mobile-app-nav button{transition:none}}

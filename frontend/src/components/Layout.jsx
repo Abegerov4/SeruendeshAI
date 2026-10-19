@@ -1,7 +1,7 @@
 import { t as tr } from "../i18n";
 import React, { useEffect, useRef, useState } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
-import { MapPin, ArrowUpRight, Compass, Heart, ArrowLeft, LogOut, UserRound, Trash2 } from 'lucide-react';
+import { MapPin, ArrowUpRight, Compass, Heart, ArrowLeft, LogOut, UserRound, Trash2, Smartphone } from 'lucide-react';
 import { Link, navigate } from '../navigation';
 import { useAuth, logout, deleteAccount } from '../auth';
 
@@ -35,7 +35,7 @@ function AccountMenu({ user }) {
 
 export function Header({ path, savedCount }) {
   const { user } = useAuth();
-  return <header className="site-header"><Logo /><nav aria-label={tr("Основная навигация")}><Link to="/" className={path === '/' ? 'active' : ''}><Compass size={16} />{tr("Открыть город")}</Link><Link to="/saved" className={path === '/saved' ? 'active' : ''}><Heart size={16} />{tr("Избранное")}{savedCount > 0 && <span className="nav-count">{savedCount}</span>}</Link></nav><div className="header-actions"><LanguageSwitcher /><span className="header-city"><MapPin size={15} />{tr("Астана")}</span>{user ? <AccountMenu user={user} /> : <Link to="/login" className="login-link">{tr("Войти")}<ArrowUpRight size={15} /></Link>}</div></header>;
+  return <header className="site-header"><Logo /><nav aria-label={tr("Основная навигация")}><Link to="/" className={path === '/' ? 'active' : ''}><Compass size={16} />{tr("Открыть город")}</Link><Link to="/saved" className={path === '/saved' ? 'active' : ''}><Heart size={16} />{tr("Избранное")}{savedCount > 0 && <span className="nav-count">{savedCount}</span>}</Link></nav><div className="header-actions"><button className="app-install-trigger" aria-label={tr("Приложение и офлайн-прогулка")} title={tr("Приложение и офлайн-прогулка")} onClick={()=>window.dispatchEvent(new Event("seru-open-app"))}><Smartphone size={18}/></button><LanguageSwitcher /><span className="header-city"><MapPin size={15} />{tr("Астана")}</span>{user ? <AccountMenu user={user} /> : <Link to="/login" className="login-link">{tr("Войти")}<ArrowUpRight size={15} /></Link>}</div></header>;
 }
 export function Footer() {
   return <footer className="site-footer"><Logo /><span>{tr("Меньше планирования. Больше открытий.")}</span><span className="footer-stamp">{tr("С любовью к Астане ")}<span>✳</span></span></footer>;

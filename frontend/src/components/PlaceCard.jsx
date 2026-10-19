@@ -33,14 +33,14 @@ export function shortHours(p) {
   return label.length > 28 ? label.slice(0, 28) + '…' : label;
 }
 
-export default function PlaceCard({ place: p, index = 0, selected, onSelect, saved, onSave, onHover, isNew = false, origin }) {
+export default function PlaceCard({ place: p, index = 0, selected, onSelect, saved, onSave, onHover, isNew = false, origin, illustrative=false }) {
   const [expanded, setExpanded] = useState(false);
   const tags = (p.badges || []).filter(b => BADGE_LABELS[b] && b !== 'outdoor' && b !== 'indoor').slice(0, 2);
   const Mode = p.mode === 'walk' ? Footprints : Car;
   const open = () => setExpanded(true);
   const route = routeUrl(p, origin), tel = telUrl(p.phone);
   return <><article onMouseEnter={() => onHover?.(p.id)} onMouseLeave={() => onHover?.(null)} onFocus={() => onHover?.(p.id)} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) onHover?.(null) }} data-place-id={p.id} className={'place-card ' + (selected ? 'selected ' : '') + (p.generated ? 'idea-card' : '')} style={{ '--order': index }}>
-    <div className="place-image-wrap"><button className="place-image-button" onClick={open} aria-haspopup="dialog" aria-label={tr('Подробнее: ') + p.name}><PlaceVisual place={p} /><span className="image-shade" /><span className="place-category"><p.icon size={13} />{p.category}</span><span className="place-number">{p.generated ? '✦' : String(index + 1).padStart(2, '0')}</span></button>
+    <div className="place-image-wrap"><button className="place-image-button" onClick={open} aria-haspopup="dialog" aria-label={tr('Подробнее: ') + p.name}><PlaceVisual place={p} illustrative={illustrative} /><span className="image-shade" /><span className="place-category"><p.icon size={13} />{p.category}</span><span className="place-number">{p.generated ? '✦' : String(index + 1).padStart(2, '0')}</span></button>
       {onSave && <button className={'save-button ' + (saved ? 'saved' : '')} aria-label={saved ? tr('Убрать из избранного') : tr('Сохранить ') + p.name} aria-pressed={saved} onClick={onSave}><Heart size={17} fill={saved ? 'currentColor' : 'none'} /></button>}
       {p.photo && <span className="photo-badge">{tr('Фото')} · {p.photo.license}</span>}
     </div>
