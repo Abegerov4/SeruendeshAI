@@ -25,7 +25,7 @@ COPY bot/__init__.py bot/telegram_bot.py bot/format.py /srv/bot/
 # only the snapshot the API reads (the team's research catalogue in data/ stays out of the image)
 COPY data/processed/pois.jsonl data/processed/gazetteer.json data/processed/manifest.json data/processed/embeddings.npy \
      data/processed/walk_graph.npz data/processed/events.jsonl data/processed/river.json \
-     data/processed/astana_boundary.geojson data/processed/photos_extra.json /srv/data/processed/
+     data/processed/astana_boundary.geojson data/processed/photos_extra.json data/processed/place_facts.json /srv/data/processed/
 COPY --from=web /web/dist /srv/frontend/dist
 
 # embedding model baked into the image (no download at start-up); EMBED_MODEL=off skips it

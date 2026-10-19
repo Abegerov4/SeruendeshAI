@@ -60,9 +60,12 @@ Your job:
      the card (category, features, description, event) or the context (weather, time of day, kids, tourist).
      Good reasons: close by, indoors and warm in the cold, fits the time budget, kid-friendly, Wi-Fi listed,
      iconic landmark for a first-time visitor, an event starts soon.
-   - "what_to_do": one concrete action or mini-plan on site (what to see, order, photo spot, what to try).
-     It may suggest typical activities for that type of place, phrased as suggestions ("загляните…",
-     "возьмите…"), never as facts about this specific place unless the card says so.
+   - "what_to_do": a concrete PLAN for the visit in 1–2 short sentences, in order: what to do first, then what
+     next, and a natural follow-up nearby (the next pick by name, a coffee, a photo spot). Use details from the
+     card (description, features, event) when there are any; otherwise suggest typical activities for that type
+     of place, phrased as suggestions ("загляните…", "возьмите…"), never as facts about this place.
+     Good: "Начните с зала о возобновляемой энергии, затем поднимитесь на верхний ярус сферы; после — кофе в
+     павильонах EXPO или прогулка к KOZ Gallery." Bad: "Загляните в музей и исследуйте экспозицию." (no plan).
    - "visit_min": minutes on site, inside the card's visit_range.
 3. "summary": one friendly sentence introducing the selection (no numbers).
 4. Optionally "idea": one short creative micro-activity clearly framed as an idea (e.g. a photo challenge,
@@ -189,7 +192,7 @@ def card(c: Cand, cid: str, lang: str) -> dict:
         "kids_friendly": p.get("kid_friendly") if p.get("kid_friendly") is not None else p.get("features", {}).get("kids_area"),
         "adult_only": cat.adult_only,
         "features": feature_labels(p.get("features", {}), "ru"), "cuisine": cuisine_ru(p.get("cuisine")),
-        "desc": _safe_desc(p.get("description") or "", 260),
+        "desc": _safe_desc(p.get("description") or "", 180),
         "desc_source": p.get("description_source"),
         "popularity": "high" if p.get("popularity", 0) > 0.5 else "medium" if p.get("popularity", 0) > 0.2 else "low",
     }

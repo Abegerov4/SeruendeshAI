@@ -82,6 +82,30 @@ def outside_astana(event: dict) -> bool:
     return bool(OUTSIDE_ASTANA.search(f"{event.get('title') or ''} {event.get('venue') or ''}"))
 
 
+def apply_facts(pois: list[dict], facts: dict[str, dict]) -> None:
+    """Researched facts (descriptions in our own words, published hours, features) for the most recommended places.
+    Official hours checked on a date win over older map data; a Wikipedia description keeps its attribution."""
+    from urllib.parse import urlparse
+    for p in pois:
+        f = facts.get(p["id"])
+        if not f:
+            continue
+        if f.get("status") == "closed_permanently":
+            p["closed_permanently"] = True  # a source says it closed: never recommended
+            continue
+        if f.get("description_ru") and p.get("description_source") != "wikipedia":
+            p.update(description=f["description_ru"], description_en=f.get("description_en"), description_source="research",
+                     description_kind="research", description_url=f["description_url"])
+        if f.get("opening_hours"):
+            p.update(opening_hours=f["opening_hours"], hours_source=urlparse(f["hours_url"]).netloc.removeprefix("www."),
+                     hours_source_url=f["hours_url"], check_date=f["checked"], hours_note=f.get("hours_note"))
+        feats = p.setdefault("features", {})
+        for k, v in (f.get("features") or {}).items():
+            key = "free" if k == "free_entry" else k
+            if feats.get(key) is None:
+                feats[key] = v
+
+
 # big indoor venues that open data leaves unflagged (a theme park category would read as outdoors at −25°C)
 INDOOR_NAMES = re.compile(r"ailand|айленд|думан|happylon|хэппилон|fame city|хан шатыр|khan shatyr", re.IGNORECASE)
 
@@ -220,7 +244,10 @@ def load_store(embed_model: str | None = None) -> Store:
         for p in pois:
             if not p.get("photo") and extra.get(p["id"]):
                 p["photo"] = extra[p["id"]]
-    keep = _dedupe([i for i, p in enumerate(pois) if not junk_place(p)], pois, aliases)
+    facts_file = POIS_FILE.parent / "place_facts.json"  # pipeline.place_facts: researched, every fact with its source
+    if not canonical and facts_file.exists():
+        apply_facts(pois, json.loads(facts_file.read_text()))
+    keep = _dedupe([i for i, p in enumerate(pois) if not junk_place(p) and not p.get("closed_permanently")], pois, aliases)
     if len(keep) < len(pois):  # region names, addresses and the same venue mapped several times
         log.info("dropped %d junk/duplicate places", len(pois) - len(keep))
         pois, docs = [pois[i] for i in keep], [docs[i] for i in keep]

@@ -1,0 +1,442 @@
+{
+ "osm:w230401645": {
+  "description_ru": "Монумент-башня высотой 105 м (1996–2002), символ переноса столицы в Акмолу в 1997 году. В шаре диаметром 22 м — панорамный зал с позолоченным отпечатком ладони первого президента, в подземном уровне — кафе, аквариумы и фотогалерея.",
+  "description_en": "A 105 m monument tower (built 1996–2002) marking the 1997 move of the capital to Akmola. Its 22 m sphere holds a panoramic hall with a gilded handprint of the first president; the underground level has a café, aquariums and a photo gallery.",
+  "description_url": "https://ru.wikipedia.org/wiki/Байтерек_(монумент)",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:w1460763574": {
+  "description_ru": "Мраморная стела высотой около 70 м на территории ЭКСПО, открытая 16 декабря 2016 года к 25-летию независимости. Её 25 граней символизируют годы независимости, облицовка выполнена из итальянского мрамора.",
+  "description_en": "A marble stela about 70 m tall on the EXPO grounds, unveiled on 16 December 2016 for the 25th anniversary of independence. Its 25 faces stand for the years of independence; it is clad in Italian marble.",
+  "description_url": "https://informburo.kz/novosti/nazarbaev-otkryl-monument-ly-dala-el-na-territorii-ekspo.html",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n13948916190": {
+  "description_ru": "Музей истории железных дорог Казахстана, открытый в июне 2026 года при вокзале «Нұрлы жол»: четыре зала на 3200 м², более 250 экспонатов, настоящие локомотивы с доступом в кабину и тренажёр машиниста.",
+  "description_en": "Museum of Kazakhstan's railway history, opened in June 2026 at Nurly Zhol station: four halls over 3,200 m², 250+ exhibits, real locomotives you can climb into and a train-driver simulator.",
+  "description_url": "https://informburo.kz/novosti/muzei-istorii-zeleznyx-dorog-kazaxstana-otkryli-na-vokzale-v-astane",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:w762780007": {
+  "description_ru": "Многофункциональный комплекс от Aldar Properties по проекту Foster + Partners с главной башней 311 м (75 этажей). Внутри — двухуровневый торговый центр с магазинами и ресторанами (открыт в 2019), офисы, жильё и отель Sheraton.",
+  "description_en": "A mixed-use complex by Aldar Properties, designed by Foster + Partners, whose main tower is 311 m (75 floors). It contains a two-level mall with shops and restaurants (opened 2019), offices, apartments and a Sheraton hotel.",
+  "description_url": "https://ru.wikipedia.org/wiki/Абу-Даби_Плаза",
+  "features": {
+   "kids_area": true
+  },
+  "features_url": "https://abudhabiplaza.info/",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "ov:f156787e-136d-40": {
+  "description_ru": "Сфера диаметром 80 м — бывший павильон Казахстана на ЭКСПО-2017, ныне Музей энергии будущего. На этажах 2–8 — экспозиции об энергии космоса, солнца, ветра, биомассы, кинетической энергии и воды, наверху — смотровая площадка.",
+  "description_en": "The 80 m sphere that was Kazakhstan's EXPO-2017 pavilion, now the Museum of Future Energy. Floors 2–8 cover space, solar, wind, biomass, kinetic and water energy, with an observation deck at the top.",
+  "description_url": "https://www.weproject.media/articles/detail/samaya-bolshaya-sfera-v-mire-i-krupneyshiy-muzey-vozobnovlyaemoy-energii-chto-nakhoditsya-vnutri-pav/",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n5880883097": {
+  "description_ru": "Кинотеатр сети Chaplin в ТРЦ MEGA Silk Way (пр. Кабанбай батыра, 62); при анонсе в 2016 году сеть заявляла здесь высокотехнологичный кинотеатр на 11 залов.",
+  "description_en": "Chaplin chain cinema in the MEGA Silk Way mall (62 Kabanbay Batyr Ave); when announced in 2016 the chain described it as a high-tech 11-screen cinema.",
+  "description_url": "https://forbes.kz/articles/chaplin_zakryil_vse_kinoteatryi_v_regionah_rk",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w549307755": {
+  "description_ru": "Триумфальная арка «Мәңгілік Ел» (2011) высотой около 20 м — по метру на каждый год независимости. На крыше (21,5 м) — смотровая площадка с панорамными биноклями, внутри — выставочная галерея на 120 м².",
+  "description_en": "The Mäñgilik El triumphal arch (2011), about 20 m tall, one metre per year of independence. Its roof (21.5 m) has an observation deck with panoramic binoculars, and inside is a 120 m² exhibition gallery.",
+  "description_url": "https://www.wikidata.org/wiki/Q42422896",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:r16827715": {
+  "description_ru": "Мечеть, открытая в 2005 году при поддержке Катара; до ноября 2021 года называлась «Нур-Астана», затем получила имя аль-Фараби. Купол высотой 43 м, четыре минарета по 62 м, вмещает до 5000 молящихся.",
+  "description_en": "A mosque opened in 2005 with support from Qatar; called Nur-Astana until November 2021, when it was renamed after al-Farabi. It has a 43 m dome and four 62 m minarets and holds up to 5,000 worshippers.",
+  "description_url": "https://ru.wikipedia.org/wiki/Нур-Астана_(мечеть)",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:w1460537088": {
+  "description_ru": "Центральный концертный зал «Qazaqstan» — здание в форме лепестков цветка по проекту Манфреди Николетти, открытое в 2009 году; главный зал вмещает 3500 зрителей. Здесь работают «Қазақконцерт» и государственный театр Astana Musical.",
+  "description_en": "The Qazaqstan Central Concert Hall, a petal-shaped building by Manfredi Nicoletti opened in 2009, with a 3,500-seat main hall. It is home to the Qazaqconcert organisation and the state Astana Musical theatre.",
+  "description_url": "https://en.wikipedia.org/wiki/Kazakhstan_Central_Concert_Hall",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:n10860197906": {
+  "description_ru": "Скульптурная композиция, изображающая участников группы The Beatles, на пешеходном Арбате в районе Сарыарка; появилась летом 2018 года.",
+  "description_en": "A sculpture group depicting the members of The Beatles on Astana's pedestrian Arbat in Saryarka district, installed in summer 2018.",
+  "description_url": "https://newtimes.kz/obshchestvo/74155-zheleznyj-tron-i-the-beatles-poyavilis-v-astane-foto",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w37884583": {
+  "description_ru": "Парк площадью около 14 га на левом берегу, между площадью Дөңгелек и ТРЦ «Хан Шатыр», открыт в 2005 году. Центр парка — большой фонтан, подаренный в 2007 году Габриэлой фон Габсбург.",
+  "description_en": "A park of about 14 hectares on the left bank between Dongelek Square and Khan Shatyr, opened in 2005. Its centrepiece is a large fountain donated in 2007 by Gabriela von Habsburg.",
+  "description_url": "https://en.wikipedia.org/wiki/Lovers%27_Park_(Astana)",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:w1449317673": {
+  "description_ru": "Кинотеатр сети Chaplin на втором этаже ТРЦ «Хан Шатыр»: шесть залов, включая VIP-зал на 24 места, со звуком Dolby Atmos и проекцией 4K и RealD 3D.",
+  "description_en": "A six-screen Chaplin cinema on the second floor of the Khan Shatyr mall, including a 24-seat VIP hall, with Dolby Atmos sound and 4K/RealD 3D projection.",
+  "description_url": "https://ticketon.kz/en/tashkent/place/nur-sultan-chaplin-khanshatyr",
+  "opening_hours": "Mo-Su 10:00-02:00",
+  "hours_url": "https://ticketon.kz/en/tashkent/place/nur-sultan-chaplin-khanshatyr",
+  "hours_note": "ежедневно, до 02:00 следующего дня",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "ov:74210037-b47a-42": {
+  "description_ru": "Пешеходный бульвар Нуржол длиной около 2,2 км в административном центре левого берега, от Ак Орды до «Хан Шатыра»; спроектирован Кисё Курокавой. Вдоль него стоят Байтерек и здания правительства и парламента.",
+  "description_en": "Nurzhol, a 2.2 km pedestrian boulevard in the left-bank administrative centre running from Ak Orda to Khan Shatyr, designed by Kisho Kurokawa and lined by Baiterek and government and parliament buildings.",
+  "description_url": "https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80_%D0%9D%D1%83%D1%80%D0%B6%D0%BE%D0%BB",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:w230358855": {
+  "description_ru": "Национальная академическая библиотека, открытая в 2004 году в пятиэтажном здании на левом берегу рядом с Байтереком. В фонде более 1,3 млн документов, в том числе коллекция арабских рукописей.",
+  "description_en": "The National Academic Library, opened in 2004 in a five-storey building on the left bank near Baiterek. Its holdings exceed 1.3 million items, including a collection of Arabic manuscripts.",
+  "description_url": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%B0%D0%BA%D0%B0%D0%B4%D0%B5%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD%D0%B0",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n11500914669": {
+  "description_ru": "Национальный теннисный центр Beeline Arena в Астане; в 2026 году ITF присвоила ему «золотой статус» как центру подготовки теннисистов.",
+  "description_en": "Beeline Arena is Astana's National Tennis Centre; in 2026 the ITF awarded it 'gold status' as a player-development centre.",
+  "description_url": "https://bes.media/news/natsionalniy-tennisniy-tsentr-kazahstana-poluchil-zolotoy-status-itf-730bb3/",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n3404172551": {
+  "description_ru": "Ресторан среднеазиатской кухни, оформленный как площадь восточного кишлака с арыком и айванами; в меню плов, шурпа, манты, самса и шашлык, есть и европейские блюда.",
+  "description_en": "A Central Asian restaurant styled as an Eastern village square with an irrigation channel and iwan seating; the menu has plov, shurpa, manty, samsa and shashlik, plus some European dishes.",
+  "description_url": "https://kishlak.kz/astana",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "ov:233f9ff9-02f1-4f": {
+  "description_ru": "Галерея искусств, открытая в 2003 году. Дважды в год проводит салоны — весенний для молодых художников и осенний для признанных мастеров; в собрании работы от реализма до авангарда и инсталляций.",
+  "description_en": "An art gallery opened in 2003. It holds two salons a year, a spring one for young artists and an autumn one for established masters; the collection ranges from realism to avant-garde and installations.",
+  "description_url": "https://astana.citypass.kz/en/attractions/galereya-isskustv-has-sanat",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:r18901938": {
+  "description_ru": "Главная республиканская мечеть, открытая в 2022 году, — крупнейшая в Центральной Азии: купол высотой около 83 м и четыре минарета по 130 м. В 2026 году официально получила имя «Нұрсұлтан».",
+  "description_en": "The Grand Republican Mosque, opened in 2022, is the largest in Central Asia, with a dome about 83 m high and four 130 m minarets. In 2026 it was officially named Nursultan Mosque.",
+  "description_url": "https://en.wikipedia.org/wiki/Astana_Grand_Mosque",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:n12508539014": {
+  "description_ru": "Детский «город профессий» сети KidBurg в ТРЦ «Абу-Даби Плаза»: дети в игровой форме пробуют себя в разных профессиях.",
+  "description_en": "A KidBurg children's 'city of professions' in the Abu Dhabi Plaza mall, where kids try out different jobs through play.",
+  "description_url": "https://kidburg.ru/",
+  "features": {
+   "kids_area": true
+  },
+  "features_url": "https://kidburg.ru/",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w734514013": {
+  "description_ru": "Вытянутый линейный парк площадью около 14 га на левом берегу, обустроенный в 2017 году.",
+  "description_en": "An elongated linear park of about 14 ha on the left bank, laid out in 2017.",
+  "description_url": "https://www.wikidata.org/wiki/Q120868822",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n6404769888": {
+  "description_ru": "Кафе турецкой сети MADO: мороженое-дондурма, пахлава, кюнефе и блюда турецкой кухни; по данным сети, заведение сертифицировано как халяль.",
+  "description_en": "A café of the Turkish MADO chain serving dondurma ice cream, baklava, künefe and Turkish dishes; the chain states it is halal-certified.",
+  "description_url": "https://mado.kz/ru/branches/kunayev",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w917478479": {
+  "description_ru": "Государственный театр оперы и балета, открытый в 2013 году оперой «Биржан и Сара»; здание в неоклассическом стиле, главный зал рассчитан на 1250 зрителей.",
+  "description_en": "The state opera and ballet theatre, opened in 2013 with the opera Birzhan and Sara; a neoclassical building whose main hall seats 1,250.",
+  "description_url": "https://ru.wikipedia.org/wiki/Астана_Опера",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:w963855443": {
+  "description_ru": "По этому адресу работает Президентский центр Казахстана, созданный в 2023 году на базе Библиотеки Первого Президента: музей, архив и библиотека; интерактивная экспозиция в девяти залах посвящена истории независимой страны.",
+  "description_en": "This address houses the Presidential Center of Kazakhstan, set up in 2023 from the Library of the First President: a museum, archive and library, with an interactive nine-hall exhibition on the history of independent Kazakhstan.",
+  "description_url": "https://kazakhstan.travel/en/attractions/434",
+  "opening_hours": "Tu-Su 10:00-17:00; Mo off",
+  "hours_url": "https://kazakhstan.travel/en/attractions/434",
+  "hours_note": "выходной — понедельник",
+  "features": {
+   "free_entry": true
+  },
+  "features_url": "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n2681623412": {
+  "description_ru": "Монумент на площади Независимости, открытый в 2009 году: стела высотой 91 м (отсылка к 1991 году — году независимости), окружённая колоннадой из 28 колонн; на постаменте — тематические барельефы.",
+  "description_en": "A monument on Independence Square unveiled in 2009: a 91 m stele (a nod to 1991, the year of independence) ringed by a 28-column colonnade, with themed bas-reliefs on its pedestal.",
+  "description_url": "https://ru.wikipedia.org/wiki/Казак_ели_(монумент)",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:w1470780026": {
+  "description_ru": "Дубовая роща с аллеей рядом с театром «Астана Опера», высаженная в 2021 году: около 700 дубов и тысяча кустов сирени на участке 3,2 га.",
+  "description_en": "An oak grove with an alley next to the Astana Opera theatre, planted in 2021: about 700 oaks and 1,000 lilac bushes on 3.2 ha.",
+  "description_url": "https://ru.sputnik.kz/20210630/Sad-s-dubami-i-sirenyu-razbil-17491776.html",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w1449301315": {
+  "description_ru": "Кофейня сети Starbucks в торгово-развлекательном центре «Хан Шатыр».",
+  "description_en": "A Starbucks coffee shop inside the Khan Shatyr entertainment centre.",
+  "description_url": "https://khanshatyr.com/en/food-court/kafe-restorany-i-kofeyni",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n12093489321": {
+  "description_ru": "Ресторан грузинской кухни сети «Дареджани» на 1-м этаже ТРЦ MEGA Silk Way: хачапури, хинкали и грузинские вина в современной подаче.",
+  "description_en": "A Georgian restaurant of the Daredzhani chain on the first floor of MEGA Silk Way mall, serving khachapuri, khinkali and Georgian wine with a modern touch.",
+  "description_url": "https://abr.kz/restaurant/daredzhani",
+  "opening_hours": "Mo-Su 09:00-23:00",
+  "hours_url": "https://abr.kz/restaurant/daredzhani",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:n4985150252": {
+  "description_ru": "Многофункциональная площадка для концертов, выставок и форумов: трёхэтажное здание площадью более 43 тыс. м² с залом Grand Hall, конференц-залом и VIP-залами «Шанырак» и «Аспан».",
+  "description_en": "A multipurpose venue for concerts, exhibitions and forums: a three-storey building of over 43,000 m² with a Grand Hall, a conference hall and the VIP halls Shanyrak and Aspan.",
+  "description_url": "https://ticketon.kz/place/kongress-centr",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:n13397061026": {
+  "description_ru": "Ресторан современной азиатской кухни сети Luckee Yu на 1-м этаже ТРЦ MEGA Silk Way; в меню бао, роллы и моти, у каждого заведения сети своё тематическое оформление.",
+  "description_en": "A modern Asian restaurant of the Luckee Yu chain on the first floor of MEGA Silk Way mall; the menu includes bao, rolls and mochi, and each venue in the chain has its own themed interior.",
+  "description_url": "https://abr.kz/restaurant/luckee-yu",
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://abr.kz/restaurant/luckee-yu",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:w30014040": {
+  "description_ru": "Профессиональный драматический театр «Жастар», основанный в 2007 году, занимает здание бывшего Дворца культуры железнодорожников. В репертуаре классика и современная драматургия на казахском и русском языках, а также спектакли для детей и молодёжи.",
+  "description_en": "Zhastar is a professional drama theatre founded in 2007, housed in the former Railway Workers' Palace of Culture. It stages classic and contemporary plays in Kazakh and Russian, plus productions for children and young audiences.",
+  "description_url": "https://astana.kz/en/events/places/144f8eff-e7b7-4ff0-a898-4fc06e46df39",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w1460700597": {
+  "status": "closed_permanently",
+  "status_source": "https://bes.media/news/muzey-pod-otkritim-nebom-snosyat-v-astane-chto-poyavitsya-vmesto/",
+  "checked": "2026-10-19"
+ },
+ "osm:n1843876259": {
+  "description_ru": "Кафе сети Rafe Coffee & Food на улице Кунаева, в районе ЖК «Нурсая». В меню пицца, паста, ризотто, салаты, стейки, десерты и кофе.",
+  "description_en": "A Rafe Coffee & Food cafe on Kunaev Street in the Nursaya residential complex area. The menu covers pizza, pasta, risotto, salads, steaks, desserts and coffee.",
+  "description_url": "https://rafe.kz/contacts",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w166197368": {
+  "description_ru": "Стеклянная пирамида высотой 62 м по проекту Foster + Partners, открытая в 2006 году для Съезда лидеров мировых и традиционных религий. Внутри оперный зал на 1302 места, музей, а на вершине зал с витражами Брайана Кларка.",
+  "description_en": "A 62 m glass pyramid designed by Foster + Partners and opened in 2006 to host the Congress of Leaders of World and Traditional Religions. Inside are a 1,302-seat opera hall, a museum and an apex chamber with stained glass by Brian Clarke.",
+  "description_url": "https://en.wikipedia.org/wiki/Palace_of_Peace_and_Reconciliation",
+  "features": {
+   "free_entry": false
+  },
+  "features_url": "https://astana-piramida.kz/tours",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:w240860325": {
+  "description_ru": "Национальная мечеть Казахстана, открытая в 2012 году на правом берегу Есиля рядом с Дворцом мира и согласия. Здание в классическом исламском стиле с казахскими орнаментами: главный купол высотой 51 м и четыре минарета по 77 м, вмещает около 5000 молящихся.",
+  "description_en": "Kazakhstan's national mosque, opened in 2012 on the right bank of the Yesil near the Palace of Peace and Reconciliation. Built in classical Islamic style with Kazakh ornaments, it has a 51 m main dome and four 77 m minarets and holds about 5,000 worshippers.",
+  "description_url": "https://ru.wikipedia.org/wiki/Хазрет_Султан_(мечеть)",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n10564988185": {
+  "description_ru": "Кафе сети Degirmen с турецкой кухней и собственным производством; название означает «мельница». Сеть работает в Казахстане с 2010 года, этот филиал — на улице Кунаева, 14.",
+  "description_en": "A branch of Degirmen, a Turkish-cuisine cafe chain with its own production; the name means 'mill'. The chain has operated in Kazakhstan since 2010; this branch is at 14 Kunaev Street.",
+  "description_url": "http://degirmen.kz/",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w1449317872": {
+  "description_ru": "Киоск Mövenpick в зоне фуд-корта ТРЦ «Хан Шатыр».",
+  "description_en": "A Mövenpick kiosk in the food-court area of the Khan Shatyr mall.",
+  "description_url": "https://www.khanshatyr.com/food-court/kioski",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w460703779": {
+  "description_ru": "Торгово-развлекательный центр в форме гигантского шатра высотой 150 м по проекту бюро Нормана Фостера, открыт в 2010 году. Под прозрачной кровлей на стальных вантах — магазины, рестораны, семейный центр развлечений и крытый пляж с искусственным песком.",
+  "description_en": "A 150 m tent-shaped shopping and entertainment centre designed by Foster + Partners and opened in 2010. Under its transparent roof on steel cables are shops, restaurants, a family entertainment centre and an indoor beach with artificial sand.",
+  "description_url": "https://ru.wikipedia.org/wiki/Хан_Шатыр",
+  "opening_hours": "Mo-Th,Su 10:00-22:00; Fr,Sa 10:00-23:00",
+  "hours_url": "https://www.khanshatyr.com/contacts",
+  "hours_note": "часы ТРЦ; у Sky Beach Club, кинотеатра и Fame City могут быть отдельные часы",
+  "features": {
+   "kids_area": true
+  },
+  "features_url": "http://www.khanshatyr.com/",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:n12293708057": {
+  "description_ru": "Кафе-пекарня французской сети Paul: выпечка и десерты, завтраки, салаты и горячие напитки; можно поесть на месте или забрать заказ с собой.",
+  "description_en": "Café-bakery of the French Paul chain offering pastries and desserts, breakfasts, salads and hot drinks, to eat in or take away.",
+  "description_url": "https://paul.kz/",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n6804086289": {
+  "description_ru": "Магазин астанинской кондитерской сети «Тәп-тәтті», которая печёт с 2009 года: торты, пирожные, выпечка и десерты из собственных цехов; принимают заказы тортов к праздникам.",
+  "description_en": "Shop of the Astana confectionery chain Täp-Tätti, baking since 2009: cakes, pastries, baked goods and desserts from its own workshops; cakes can be ordered for celebrations.",
+  "description_url": "https://taptatti.kz/about",
+  "opening_hours": "Mo-Su 09:00-21:00",
+  "hours_url": "https://taptatti.kz/contacts",
+  "hours_note": "на сайте указан единый график для всех магазинов сети (ежедневно 09:00–21:00); в OSM было 08:00–21:30",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "cp:94": {
+  "description_ru": "Прогулки на речных трамвайчиках по Есилю (Ишиму), которые проводятся с 2008 года. Посадка на набережной у Дворца школьников; маршрут проходит вдоль центральной набережной с остановками у Центрального парка, в Самале и у памятника Кенесары.",
+  "description_en": "River tram trips on the Yesil (Ishim), running since 2008. Boarding is on the embankment by the Palace of Schoolchildren; the route follows the central embankment with stops at Central Park, Samal and the Kenesary monument.",
+  "description_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w243041606": {
+  "description_ru": "Один из крупнейших парков Астаны (около 83 га), открыт в 2007 году: искусственные ручьи, фонтаны и клумбы, центральный фонтан в форме птицы Самрук. В 2021 году реконструирован как часть единой зелёной зоны с набережной Есиля и парком «Триатлон».",
+  "description_en": "One of Astana's largest parks (about 83 ha), opened in 2007, with artificial streams, fountains and flower beds and a central fountain shaped like the mythical Samruk bird. Rebuilt in 2021 as part of one green zone with the Yesil embankment and Triathlon Park.",
+  "description_url": "https://ru.wikipedia.org/wiki/Президентский_парк",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n12603493106": {
+  "description_ru": "Книжный магазин издательства «Алматыкітап баспасы» (дом книги имени Ы. Алтынсарина); издательство работает с 1999 года и выпускает в том числе школьные учебники.",
+  "description_en": "Bookshop of the Almatykitap publishing house (Ybyrai Altynsarin House of Books); the publisher has operated since 1999 and its output includes school textbooks.",
+  "description_url": "https://almatykitap.kz/magaziny-14/",
+  "opening_hours": "Mo-Fr 10:00-19:00; Sa 10:00-17:00; Su off",
+  "hours_url": "https://almatykitap.kz/magaziny-14/",
+  "hours_note": "без перерыва; воскресенье — выходной",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n13308087157": {
+  "description_ru": "Бюст румынского поэта Михая Эминеску, открытый в 2021 году; в это же время в Бухаресте открыли сквер «Казахстан» — в знак дружбы двух стран.",
+  "description_en": "Bust of the Romanian poet Mihai Eminescu, unveiled in 2021 at the same time as a 'Kazakhstan' square opened in Bucharest, as a sign of friendship between the two countries.",
+  "description_url": "https://forbes.kz/news/newsid_258571",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n10570377881": {
+  "description_ru": "Торгово-развлекательный центр на ул. Сыганак: магазины, кафе и рестораны (в том числе фуд-холл The Torium), книжный Marwin, фитнес-клуб и стоматология.",
+  "description_en": "Shopping and entertainment centre on Syganak Street with shops, cafés and restaurants (including The Torium food hall), a Marwin bookshop, a fitness club and a dental clinic.",
+  "description_url": "https://greenmall.kz/ru",
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_url": "https://greenmall.kz/ru",
+  "hours_note": "часы ТРЦ и паркинга; отдельные арендаторы работают по своему графику (например, фитнес-клуб 07:00–00:00)",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w499328514": {
+  "description_ru": "Крупный торгово-развлекательный центр казахстанской сети MEGA, открытый в марте 2017 года у территории EXPO-2017. Двухэтажное здание длиной около 500 м построено по концепции «город в городе» с торговыми улицами и примерно 330 магазинами.",
+  "description_en": "A large shopping and entertainment centre of the Kazakh MEGA chain, opened in March 2017 next to the EXPO-2017 site. The two-storey, roughly 500 m long building follows a 'city within a city' layout with shopping streets and about 330 stores.",
+  "description_url": "https://ru.wikipedia.org/wiki/MEGA_Silk-way",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w499328449": {
+  "description_ru": "Государственный балетный театр, созданный в 2012 году; собственное здание с залом на 783 места открылось в декабре 2016 года. В репертуаре мировая и казахская классика, а также современные хореографические постановки.",
+  "description_en": "A state ballet theatre founded in 2012; its own building with a 783-seat auditorium opened in December 2016. The repertoire mixes world and Kazakh classics with contemporary choreography.",
+  "description_url": "https://astanaballet.com/ru/pages/o-teatre",
+  "features": {
+   "wheelchair": "limited",
+   "free_entry": false
+  },
+  "features_url": "https://astanaballet.com/ru/pages/visit",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:w239954943": {
+  "description_ru": "Кинотеатр в торгово-развлекательном комплексе «Арсенал» с четырьмя цифровыми залами (крупнейший — на 350 мест), показами в 3D и звуком DTS и Dolby Digital. В том же комплексе есть боулинг, бары и игровая зона.",
+  "description_en": "A cinema in the Arsenal entertainment complex with four digital halls (the largest seats 350), 3D screenings and DTS/Dolby Digital sound. The same complex also has bowling, bars and an arcade area.",
+  "description_url": "https://ticketon.kz/place/kinoteatr-arsenal-astana",
+  "opening_hours": "Mo-Su 10:00-02:00",
+  "hours_url": "https://ticketon.kz/place/kinoteatr-arsenal-astana",
+  "hours_note": "по данным Ticketon ежедневно 10:00–02:00 (в OSM указано до 00:00)",
+  "features": {
+   "free_entry": false
+  },
+  "features_url": "https://ticketon.kz/place/kinoteatr-arsenal-astana",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "ov:f7aa608d-d733-49": {
+  "features": {
+   "kids_area": true
+  },
+  "features_url": "https://newtimes.kz/obshchestvo/73916-podarok-ot-semirechya-park-zhetysu-preobrazili-za-3-mlrd-tenge-k-yubileyu-astany-foto",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n4929158878": {
+  "description_ru": "Панорамный ресторан на крыше в микрорайоне Акбулак-3 с летней верандой и видом на город, работает с 2013 года. Авторская гастрономическая кухня, бар и винная карта.",
+  "description_en": "A rooftop panoramic restaurant in the Akbulak-3 area with a summer veranda and city views, open since 2013. It serves chef-driven gastro cuisine and has a bar and wine list.",
+  "description_url": "https://goodproject.kz/projects/na-kryshe/",
+  "opening_hours": "Mo-Th,Su 12:00-01:00; Fr,Sa 12:00-02:00",
+  "hours_url": "https://goodproject.kz/projects/na-kryshe/",
+  "features": {
+   "outdoor_seating": true
+  },
+  "features_url": "https://goodproject.kz/projects/na-kryshe/",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "ov:02b07443-f084-46": {
+  "description_ru": "Стейк-хаус в отеле Sheraton Astana: стейки из местной, американской и бельгийской говядины, морепродукты и живая музыка. Зал оформлен работами современных казахстанских художников.",
+  "description_en": "A steakhouse inside the Sheraton Astana Hotel serving local, American and Belgian beef steaks and seafood, with live music. The dining room is decorated with works by contemporary Kazakh artists.",
+  "description_url": "https://www.marriott.com/en-us/hotels/tsesi-sheraton-astana-hotel/dining/",
+  "opening_hours": "Tu-Sa 18:00-02:00; Su,Mo off",
+  "hours_url": "https://www.marriott.com/en-us/hotels/tsesi-sheraton-astana-hotel/dining/",
+  "hours_note": "выходные — воскресенье и понедельник; дресс-код smart casual",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "ov:a4d7605b-b301-4a": {
+  "description_ru": "Крупнейший концертный зал страны, открытый в декабре 2009 года по проекту итальянского архитектора Манфреди Николетти. Наклонные стены из синего стекла напоминают лепестки цветка; главный зал вмещает 3500 зрителей, есть ещё два малых зала.",
+  "description_en": "The country's largest concert venue, opened in December 2009 to a design by Italian architect Manfredi Nicoletti. Its inclined blue-glass walls evoke flower petals; the main hall seats 3,500 and there are two smaller halls.",
+  "description_url": "https://en.wikipedia.org/wiki/Kazakhstan_Central_Concert_Hall",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:w240376692": {
+  "description_ru": "Музей казахского поэта и государственного деятеля Сакена Сейфуллина в бревенчатом купеческом доме 1846 года, где он работал в 1920–30-х годах; открыт в 1988 году. В шести залах — рукописи, письма, личные вещи и пишущая машинка писателя.",
+  "description_en": "A museum of Kazakh poet and statesman Saken Seifullin in an 1846 merchant's log house where he worked in the 1920s–30s; opened in 1988. Six halls show manuscripts, letters, personal belongings and his typewriter.",
+  "description_url": "https://ru.wikipedia.org/wiki/Музей_Сакена_Сейфуллина",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n4113550330": {
+  "description_ru": "Мемориал жертвам голода 1932–1933 годов, открытый 31 мая 2012 года на пересечении проспектов Республики и Абая. Композиция — «Стена скорби» в виде решётки юрты (кереге) и бронзовые фигуры женщины с поднятыми руками и мальчика.",
+  "description_en": "A memorial to the victims of the 1932–1933 famine, unveiled on 31 May 2012 at the junction of Respublika and Abay avenues. It combines a 'Wall of Grief' shaped like a yurt lattice (kerege) with bronze figures of a woman raising her arms and a boy.",
+  "description_url": "https://tengrinews.kz/kazakhstan_news/foto-nursultan-nazarbaev-otkryl-astane-monument-pamiati-215083/",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "ov:ddc0afc3-dae9-46": {
+  "description_ru": "Старейший православный храм Астаны: церковь, заложенная казаками Акмолинска в 1854 году, в 1900–1902 годах перестроена на нынешнем месте как пятиглавая крестообразная. С 1999 года — кафедральный собор, памятник истории и культуры местного значения.",
+  "description_en": "Astana's oldest Orthodox church: founded by Akmolinsk Cossacks in 1854 and rebuilt on its current site in 1900–1902 as a five-domed, cross-shaped church. A cathedral since 1999 and a locally listed heritage monument.",
+  "description_url": "https://sobor.kz/node/7152",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ }
+}

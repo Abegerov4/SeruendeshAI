@@ -162,8 +162,8 @@ class Recommendation(_Out):
     event: EventInfo | None
     address: str | None
     description: str | None = Field(description="Short description (Wikipedia extract or facts from tags)")
-    description_source: str | None = Field(description="wikipedia | osm | template | generated")
-    description_url: str | None = Field(default=None, description="Wikipedia article the description comes from")
+    description_source: str | None = Field(description="wikipedia | research | osm | template | generated")
+    description_url: str | None = Field(default=None, description="Where the description comes from: the Wikipedia article or the cited source page")
     phone: str | None = None
     instagram: str | None = None
     cuisine: list[str] | None = Field(default=None, description="Cuisine labels in Russian (OSM / Overture)")

@@ -558,6 +558,8 @@ def _description_publication(p: dict, lang: str) -> tuple[str | None, list[dict]
     text = (p.get("description") or "")[:300] or None
     if not text:
         return None, []
+    if p.get("description_kind") == "research":  # our own words from a cited source (pipeline.place_facts)
+        return (p.get("description_en") if lang == "en" and p.get("description_en") else text), []
     # records from our own pipeline (data/processed/pois.jsonl): facts rebuilt per language, Wikipedia with its article
     if not p.get("description_kind") and p.get("description_source") in ("template", "osm"):
         return (describe(p, lang) or "")[:400] or None, []

@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     llm_models: str = "gpt-6-luna,gpt-5.6-luna,gpt-4.1-mini"
     llm_parse_model: str = "gpt-6-luna"
     llm_service_tier: str = "fast"  # "" = default tier; applies to the first model only
-    llm_timeout_s: float = 8.0
+    llm_timeout_s: float = 10.0  # the visit plan is longer than a one-line reason; the UI waits up to 25 s
     parse_timeout_s: float = 3.0
     llm_enabled: bool = True
     llm_warmup_enabled: bool = False  # opt in: startup probes incur provider charges

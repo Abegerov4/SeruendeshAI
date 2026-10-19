@@ -1,0 +1,86 @@
+"""Researched facts for the places the assistant recommends most (`python -m pipeline.place_facts <batch_*.json>...`).
+
+Input: research batches (one object per place: status, short description in our own words, opening hours,
+features — each with the URL it came from). Every fact is checked here before it reaches the product:
+a source URL is required, map/review services whose terms forbid reuse are rejected, hours must parse with the
+same opening_hours parser the API uses, descriptions must not be about another city.
+Output: data/processed/place_facts.json {poi_id: facts}; the API applies it at load (app/store.py).
+"""
+from __future__ import annotations
+
+import json
+import logging
+import re
+import sys
+from urllib.parse import urlparse
+
+from app.hours import _parse
+from app.paths import PROCESSED_DIR
+from app.store import OUTSIDE_ASTANA
+
+log = logging.getLogger("pipeline.place_facts")
+OUT_FILE = PROCESSED_DIR / "place_facts.json"
+CHECKED = "2026-10-19"
+BANNED = re.compile(r"2gis\.|yandex\.|google\.|goo\.gl|tripadvisor\.|restoclub\.|instagram\.|facebook\.|vk\.com|zoon\.|kudago\.", re.I)
+EXCLUDE = {"cp:121"}  # «Музей Искусств»: the researcher could not tie the description to this address
+FEATURES = {"wifi", "power_outlets", "kids_area", "outdoor_seating", "wheelchair", "free_entry"}
+
+
+def _urls(values) -> list[str]:
+    out = []
+    for u in values if isinstance(values, list) else [values]:
+        if isinstance(u, str) and re.match(r"https?://[^\s/]+\.[^\s]+", u) and not BANNED.search(urlparse(u).netloc):
+            out.append(u.strip())
+    return out
+
+
+def clean(rec: dict, poi: dict) -> dict | None:
+    out: dict = {}
+    if rec.get("status") == "closed_permanently" and (src := _urls(rec.get("status_source"))):
+        return {"status": "closed_permanently", "status_source": src[0], "checked": CHECKED}
+    srcs = _urls(rec.get("description_sources") or [])
+    text = (rec.get("description_ru") or "").strip()
+    other_city = OUTSIDE_ASTANA.search(text) and not OUTSIDE_ASTANA.search(poi["name"])
+    # a low-confidence text describes a chain or a guess about the branch: not shown as this place
+    if srcs and 20 <= len(text) <= 320 and not other_city and rec.get("confidence") != "low" and poi["id"] not in EXCLUDE:
+        out["description_ru"] = text
+        if 20 <= len(en := (rec.get("description_en") or "").strip()) <= 360:
+            out["description_en"] = en
+        out["description_url"] = srcs[0]
+    hours = (rec.get("opening_hours") or "").strip()
+    src = [u for u in _urls(rec.get("hours_source")) if ".wikipedia.org" not in u]  # unsourced, often stale
+    box_office = re.search(r"касс|box office|ticket office", rec.get("hours_note") or "", re.I)  # not the show times
+    if hours and src and not box_office and _parse(hours) is not None:
+        out.update(opening_hours=hours, hours_url=src[0])
+        if note := (rec.get("hours_note") or "").strip():
+            out["hours_note"] = note[:120]
+    feats = {k: v for k, v in (rec.get("features") or {}).items()
+             if k in FEATURES and (v in (True, False) or (k == "wheelchair" and v in ("yes", "limited", "no")))}
+    if feats and _urls(rec.get("features_sources") or []):
+        out["features"] = feats
+        out["features_url"] = _urls(rec["features_sources"])[0]
+    if not out:
+        return None
+    out["checked"] = CHECKED
+    out["confidence"] = rec.get("confidence") if rec.get("confidence") in ("high", "medium", "low") else "medium"
+    return out
+
+
+def main(paths: list[str]) -> None:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s %(message)s")
+    pois = {json.loads(line)["id"]: json.loads(line) for line in (PROCESSED_DIR / "pois.jsonl").open(encoding="utf-8") if line.strip()}
+    facts = json.loads(OUT_FILE.read_text()) if OUT_FILE.exists() else {}
+    seen = kept = 0
+    for path in paths:
+        for rec in json.loads(open(path, encoding="utf-8").read()):
+            seen += 1
+            poi = pois.get(rec.get("poi_id"))
+            if poi and (c := clean(rec, poi)):
+                facts[poi["id"]] = c
+                kept += 1
+    OUT_FILE.write_text(json.dumps(facts, ensure_ascii=False, indent=1))
+    log.info("place facts: %d of %d researched places kept (%d in file)", kept, seen, len(facts))
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
