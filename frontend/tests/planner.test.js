@@ -58,3 +58,18 @@ test('default context: walking, 60 minutes, geolocation first', () => {
   assert.equal(initialContext.kid, false);
   assert.equal(initialContext.location, 'Моё местоположение');
 });
+
+test('a typed message wins over the settings for what it states itself', async () => {
+  const {forTypedMessage, textStates} = await import('../src/planner.js');
+  const picked = {...initialContext, time: 120, transport: 'car', touched: {time: true, transport: true}};
+  assert.deepEqual(textStates('хочу попить кофе и прогулка на час'), {time: true, transport: false});
+  assert.deepEqual(textStates('на машине до музея'), {time: false, transport: true});
+  assert.deepEqual(textStates('кофе рядом'), {time: false, transport: false});
+  assert.equal(textStates('что сейчас открыто, Кофе и Часы').time, false);  // not «сейчас», not a café's name
+  assert.equal(textStates('погулять 2 часа').time, true);
+  const body = buildRequest('хочу попить кофе и прогулка на час', forTypedMessage(picked, 'хочу попить кофе и прогулка на час'), 'ru');
+  assert.equal(body.time_budget_min, undefined);  // «на час» from the text, not 120 from the buttons
+  assert.equal(body.mode, 'car');                 // the text says nothing about transport: the setting stays
+  const plain = buildRequest('кофе рядом', forTypedMessage(picked, 'кофе рядом'), 'ru');
+  assert.equal(plain.time_budget_min, 120);
+});
