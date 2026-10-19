@@ -1,5 +1,7 @@
 # Тестовые сценарии и ограничения
 
+> **Обновление 19.10, после сведения веток в `main`:** продукт запущен на https://seruendesh.site. Работают реальные RAG, модель и интерфейс. Актуальные сценарии и результаты — [TEST_SCENARIOS.md](TEST_SCENARIOS.md) и [EVAL_RESULTS.md](EVAL_RESULTS.md). Презентация — [presentation/SeruendeshAI-presentation.pdf](presentation/SeruendeshAI-presentation.pdf). Ниже — исторический отчёт QA на раннем бэкенде.
+
 Статус локального API: **64/64 golden-сценария исполнены, 29 PASS / 35 FAIL**. Проверен настоящий FastAPI с существующими 17 контролируемыми backend-POI и keyword/template fallback; внешние провайдеры отключены. Ни один запрос или ожидаемый результат golden set не изменён. Сводка полного прогона — [eval/results.md](../eval/results.md), доказательства — [локальный отчёт](../eval/runs/2026-10-18-backend-local/README.md). Настоящие RAG, модель и UI: **NOT RUN**.
 
 ## Набор и правила

@@ -66,3 +66,6 @@ backend/.local/
 output/
 brand/*.zip
 .venv-*/
+
+# submission media (video/PDF) are uploaded separately
+/submission/

@@ -26,7 +26,8 @@
 | 2. Демо / прототип | https://seruendesh.site — API + фронтенд в [`frontend/`](frontend/), удобно и с телефона (чат на весь экран, режим «где я?» по фото) |
 | 3. Описание RAG-подхода | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | 4. Тестовые сценарии и ограничения | [docs/TEST_SCENARIOS.md](docs/TEST_SCENARIOS.md), [docs/EVAL_RESULTS.md](docs/EVAL_RESULTS.md) |
-| 5. Презентация | [docs/PRESENTATION.md](docs/PRESENTATION.md) (план слайдов и сценарий демо) |
+| 5. Презентация | [docs/presentation/SeruendeshAI-presentation.pdf](docs/presentation/SeruendeshAI-presentation.pdf) (12 слайдов), план и сценарий демо — [docs/PRESENTATION.md](docs/PRESENTATION.md) |
+| Демо-видео (YouTube) | _ссылка будет добавлена после загрузки_ |
 | 6. Этика и приватность | [docs/ETHICS_PRIVACY.md](docs/ETHICS_PRIVACY.md) |
 | Сбор данных (автоматизирован) | [docs/DATA.md](docs/DATA.md) |
 | Как выбирали стек (исследование) | [docs/RESEARCH.md](docs/RESEARCH.md) |

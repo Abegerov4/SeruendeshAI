@@ -110,6 +110,6 @@ LLM-судья запускается отдельно через `python -m eva
 - [Концепция](docs/product_concept.md), [RAG](docs/rag_approach.md), [этика и приватность](docs/ethics_privacy.md).
 - [План презентации](docs/presentation/pitch_outline.md), [сценарий демо](docs/demo_script.md).
 
-PDF-презентация, запись YouTube и скриншот работающего приложения пока **не готовы**. После их подготовки создайте `docs/submission.json` с `slides_path` (путь к PDF) и `demo_url` (ссылка YouTube). Проверка ссылки offline не подтверждает доступность или содержание видео — это нужно проверить отдельно.
+PDF-презентация готова: `docs/presentation/SeruendeshAI-presentation.pdf`. Демо-видео записано (`submission/SeruendeshAI-demo.mp4`, 2:55), его осталось загрузить на YouTube. После их подготовки создайте `docs/submission.json` с `slides_path` (путь к PDF) и `demo_url` (ссылка YouTube). Проверка ссылки offline не подтверждает доступность или содержание видео — это нужно проверить отдельно.
 
 Исходный план команды в `team/` сохранён. Обнаруженные противоречия и выбранные критерии описаны в стратегии QA. Никакие Git-коммиты, push или merge без разрешения пользователя не выполняются.

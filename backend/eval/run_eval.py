@@ -301,7 +301,9 @@ def main():
                 except Exception as ex:
                     row["judge"] = {"error": type(ex).__name__}
                     row.update(error="judge_failed", passed=False)
-            if resp["llm"]["mode"] != metadata["profile"]:
+            # an expected empty answer (no location, outside Astana) is decided before any model call
+            expected_empty = (sc.get("expect") or {}).get("empty") and not resp.get("recommendations")
+            if resp["llm"]["mode"] != metadata["profile"] and not expected_empty:
                 row.update(error="response_profile_mismatch", passed=False)
             fails = [k for k, v in checks.items() if v is False]
             print(f"{sc['id']:24s} {ms:5d} ms  {resp['llm']['mode']:8s} {'OK' if not fails else 'FAIL ' + ', '.join(fails)}")
