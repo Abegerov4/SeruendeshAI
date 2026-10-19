@@ -25,3 +25,9 @@ def test_cleaning_rejects_unsourced_banned_and_box_office_facts():
     ok = clean({**base, "description_sources": ["https://ru.wikipedia.org/wiki/X"], "hours_note": None}, poi())
     assert ok["description_url"].startswith("https://ru.wikipedia.org") and ok["opening_hours"] == "Mo-Su 10:00-19:00"
     assert clean({**base, "description_sources": ["https://site.kz"], "confidence": "low", "opening_hours": None}, poi()) is None
+
+
+def test_a_hijacked_or_dead_website_is_dropped_from_the_card():
+    p = poi(website="http://tengovka.kz")
+    apply_facts([p], {"p1": {"drop_website": True, "website_problem": "domain now serves an online casino page", "checked": "2026-10-19"}})
+    assert p["website"] is None

@@ -182,7 +182,7 @@
   "price_note": null,
   "price_source": null,
   "confidence": "low",
-  "notes": "Located at ул. Мамбетова 30. A non-allowed city guide (sxodim) describes a bookshop 'Дом книги «Абай»' at this address; no official/allowed source found, so nothing filled in. Category 'souvenir' may be wrong (likely a bookshop)."
+  "notes": "Located at ул. Мамбетова 30. no official/allowed source found, so nothing filled in. Category 'souvenir' may be wrong (likely a bookshop). [notes about non-allowed sources removed]"
  },
  {
   "poi_id": "osm:w1337739866",
@@ -284,7 +284,7 @@
   "price_note": null,
   "price_source": null,
   "confidence": "low",
-  "notes": "Near ул. Кенесары 58. Only a non-allowed city guide (sxodim, 2021) mentions a painting studio 'Renaissance' at Кенесары 58 (master classes, art parties); no official/allowed source, current status unknown."
+  "notes": "Near ул. Кенесары 58. no official/allowed source, current status unknown. [notes about non-allowed sources removed]"
  },
  {
   "poi_id": "osm:n12917088199",

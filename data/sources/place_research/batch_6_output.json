@@ -10,7 +10,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -28,7 +35,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -42,11 +56,20 @@
   "status_source": "https://ru.wikipedia.org/wiki/MEGA_Silk-way",
   "description_ru": "Крупный торгово-развлекательный центр казахстанской сети MEGA, открытый в марте 2017 года у территории EXPO-2017. Двухэтажное здание длиной около 500 м построено по концепции «город в городе» с торговыми улицами и примерно 330 магазинами.",
   "description_en": "A large shopping and entertainment centre of the Kazakh MEGA chain, opened in March 2017 next to the EXPO-2017 site. The two-storey, roughly 500 m long building follows a 'city within a city' layout with shopping streets and about 330 stores.",
-  "description_sources": ["https://ru.wikipedia.org/wiki/MEGA_Silk-way"],
+  "description_sources": [
+   "https://ru.wikipedia.org/wiki/MEGA_Silk-way"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -60,12 +83,26 @@
   "status_source": "https://astanaballet.com/",
   "description_ru": "Государственный балетный театр, созданный в 2012 году; собственное здание с залом на 783 места открылось в декабре 2016 года. В репертуаре мировая и казахская классика, а также современные хореографические постановки.",
   "description_en": "A state ballet theatre founded in 2012; its own building with a 783-seat auditorium opened in December 2016. The repertoire mixes world and Kazakh classics with contemporary choreography.",
-  "description_sources": ["https://astanaballet.com/ru/pages/o-teatre", "https://astanaballet.com/", "https://kazakhstan.travel/ru/attractions/430"],
+  "description_sources": [
+   "https://astanaballet.com/ru/pages/o-teatre",
+   "https://astanaballet.com/",
+   "https://kazakhstan.travel/ru/attractions/430"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": "вход в театр открывается за час до начала спектакля; дети до 7 лет на вечерние спектакли не допускаются; kazakhstan.travel указывает 10:00–18:00 без пояснения (вероятно, касса)",
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": "limited", "free_entry": false},
-  "features_sources": ["https://astanaballet.com/ru/pages/visit", "https://kazakhstan.travel/ru/attractions/430"],
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": "limited",
+   "free_entry": false
+  },
+  "features_sources": [
+   "https://astanaballet.com/ru/pages/visit",
+   "https://kazakhstan.travel/ru/attractions/430"
+  ],
   "price_note": "билеты от 2000 ₸, цена зависит от спектакля",
   "price_source": "https://kazakhstan.travel/ru/attractions/430",
   "confidence": "high",
@@ -82,7 +119,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -100,7 +144,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -118,7 +169,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -132,11 +190,21 @@
   "status_source": null,
   "description_ru": "Кафе-пиццерия сети «Пицца Блюз» — сети недорогих кафе и ресторанов из Восточного Казахстана, работающей также в Астане. Астанинское кафе сети получало ресторанную премию «Золотая вилка» как лучшая пиццерия (2015).",
   "description_en": "A pizzeria of the Pizza Blues chain, an affordable café and restaurant group from East Kazakhstan that also operates in Astana. The chain's Astana café won the 'Golden Fork' award as best pizzeria in 2015.",
-  "description_sources": ["http://www.pizza-blues.kz/komp", "http://www.pizza-blues.kz/kontactPB"],
+  "description_sources": [
+   "http://www.pizza-blues.kz/komp",
+   "http://www.pizza-blues.kz/kontactPB"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -154,7 +222,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -172,7 +247,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -190,7 +272,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -204,12 +293,23 @@
   "status_source": "https://ticketon.kz/place/kinoteatr-arsenal-astana",
   "description_ru": "Кинотеатр в торгово-развлекательном комплексе «Арсенал» с четырьмя цифровыми залами (крупнейший — на 350 мест), показами в 3D и звуком DTS и Dolby Digital. В том же комплексе есть боулинг, бары и игровая зона.",
   "description_en": "A cinema in the Arsenal entertainment complex with four digital halls (the largest seats 350), 3D screenings and DTS/Dolby Digital sound. The same complex also has bowling, bars and an arcade area.",
-  "description_sources": ["https://ticketon.kz/place/kinoteatr-arsenal-astana"],
+  "description_sources": [
+   "https://ticketon.kz/place/kinoteatr-arsenal-astana"
+  ],
   "opening_hours": "Mo-Su 10:00-02:00",
   "hours_source": "https://ticketon.kz/place/kinoteatr-arsenal-astana",
   "hours_note": "по данным Ticketon ежедневно 10:00–02:00 (в OSM указано до 00:00)",
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": false},
-  "features_sources": ["https://ticketon.kz/place/kinoteatr-arsenal-astana"],
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": false
+  },
+  "features_sources": [
+   "https://ticketon.kz/place/kinoteatr-arsenal-astana"
+  ],
   "price_note": "билеты на 2D-сеансы от 1700 ₸",
   "price_source": "https://ticketon.kz/place/kinoteatr-arsenal-astana",
   "confidence": "high",
@@ -226,7 +326,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -240,12 +347,24 @@
   "status_source": "https://tengrinews.kz/home-news/jk-vmesto-parka-jetyisu-akimat-astanyi-otvetil-opaseniya-603025/",
   "description_ru": "Городской парк в районе Есиль, бывший парк «Арай», обновлённый Алматинской областью к 20-летию Астаны в 2018 году. Здесь аллея с фонтанами, сквер с картой Казахстана из растений, велодорожка, спортплощадки и детские игровые комплексы; зимой — каток.",
   "description_en": "A city park in Yesil district, formerly Arai Park, renovated by Almaty Region for Astana's 20th anniversary in 2018. It has a fountain alley, a square with a plant map of Kazakhstan, a bike path, sports grounds and play areas; a rink opens in winter.",
-  "description_sources": ["https://newtimes.kz/obshchestvo/73916-podarok-ot-semirechya-park-zhetysu-preobrazili-za-3-mlrd-tenge-k-yubileyu-astany-foto", "https://tengrinews.kz/home-news/jk-vmesto-parka-jetyisu-akimat-astanyi-otvetil-opaseniya-603025/"],
+  "description_sources": [
+   "https://newtimes.kz/obshchestvo/73916-podarok-ot-semirechya-park-zhetysu-preobrazili-za-3-mlrd-tenge-k-yubileyu-astany-foto",
+   "https://tengrinews.kz/home-news/jk-vmesto-parka-jetyisu-akimat-astanyi-otvetil-opaseniya-603025/"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": true, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
-  "features_sources": ["https://newtimes.kz/obshchestvo/73916-podarok-ot-semirechya-park-zhetysu-preobrazili-za-3-mlrd-tenge-k-yubileyu-astany-foto"],
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": true,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [
+   "https://newtimes.kz/obshchestvo/73916-podarok-ot-semirechya-park-zhetysu-preobrazili-za-3-mlrd-tenge-k-yubileyu-astany-foto"
+  ],
   "price_note": null,
   "price_source": null,
   "confidence": "medium",
@@ -258,12 +377,24 @@
   "status_source": "https://goodproject.kz/projects/na-kryshe/",
   "description_ru": "Панорамный ресторан на крыше в микрорайоне Акбулак-3 с летней верандой и видом на город, работает с 2013 года. Авторская гастрономическая кухня, бар и винная карта.",
   "description_en": "A rooftop panoramic restaurant in the Akbulak-3 area with a summer veranda and city views, open since 2013. It serves chef-driven gastro cuisine and has a bar and wine list.",
-  "description_sources": ["https://goodproject.kz/projects/na-kryshe/", "https://goodproject.kz/"],
+  "description_sources": [
+   "https://goodproject.kz/projects/na-kryshe/",
+   "https://goodproject.kz/"
+  ],
   "opening_hours": "Mo-Th,Su 12:00-01:00; Fr,Sa 12:00-02:00",
   "hours_source": "https://goodproject.kz/projects/na-kryshe/",
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": true, "wheelchair": null, "free_entry": null},
-  "features_sources": ["https://goodproject.kz/projects/na-kryshe/"],
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": true,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [
+   "https://goodproject.kz/projects/na-kryshe/"
+  ],
   "price_note": "средний чек 17 000–20 000 ₸",
   "price_source": "https://goodproject.kz/projects/na-kryshe/",
   "confidence": "high",
@@ -280,7 +411,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -298,7 +436,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -312,11 +457,20 @@
   "status_source": "https://www.marriott.com/en-us/hotels/tsesi-sheraton-astana-hotel/dining/",
   "description_ru": "Стейк-хаус в отеле Sheraton Astana: стейки из местной, американской и бельгийской говядины, морепродукты и живая музыка. Зал оформлен работами современных казахстанских художников.",
   "description_en": "A steakhouse inside the Sheraton Astana Hotel serving local, American and Belgian beef steaks and seafood, with live music. The dining room is decorated with works by contemporary Kazakh artists.",
-  "description_sources": ["https://www.marriott.com/en-us/hotels/tsesi-sheraton-astana-hotel/dining/"],
+  "description_sources": [
+   "https://www.marriott.com/en-us/hotels/tsesi-sheraton-astana-hotel/dining/"
+  ],
   "opening_hours": "Tu-Sa 18:00-02:00; Su,Mo off",
   "hours_source": "https://www.marriott.com/en-us/hotels/tsesi-sheraton-astana-hotel/dining/",
   "hours_note": "выходные — воскресенье и понедельник; дресс-код smart casual",
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -330,11 +484,22 @@
   "status_source": "https://ticketon.kz/concerts/event/tckt2-a-studio-astana",
   "description_ru": "Крупнейший концертный зал страны, открытый в декабре 2009 года по проекту итальянского архитектора Манфреди Николетти. Наклонные стены из синего стекла напоминают лепестки цветка; главный зал вмещает 3500 зрителей, есть ещё два малых зала.",
   "description_en": "The country's largest concert venue, opened in December 2009 to a design by Italian architect Manfredi Nicoletti. Its inclined blue-glass walls evoke flower petals; the main hall seats 3,500 and there are two smaller halls.",
-  "description_sources": ["https://en.wikipedia.org/wiki/Kazakhstan_Central_Concert_Hall", "https://ru.wikipedia.org/wiki/Казахстан_(концертный_зал)", "http://qazaqconcert.kz"],
+  "description_sources": [
+   "https://en.wikipedia.org/wiki/Kazakhstan_Central_Concert_Hall",
+   "https://ru.wikipedia.org/wiki/Казахстан_(концертный_зал)",
+   "http://qazaqconcert.kz"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -352,7 +517,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -366,11 +538,20 @@
   "status_source": null,
   "description_ru": "Мультиплекс сети Kinopark в ТРЦ «Керуен», открытый в 2009 году; помимо обычных залов в нём есть зал формата IMAX.",
   "description_en": "A Kinopark multiplex in Keruen Mall, opened in 2009; besides regular screens it has an IMAX auditorium.",
-  "description_sources": ["https://astanatimes.com/2016/04/astana-offers-array-of-cinema-choices/"],
+  "description_sources": [
+   "https://astanatimes.com/2016/04/astana-offers-array-of-cinema-choices/"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -388,7 +569,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -402,11 +590,20 @@
   "status_source": "https://digitalbusiness.kz/2026-03-13/besplatnie-i-deshevie-razvlecheniya-v-astane-do-1000-tenge-kuda-poyti-vesnoy/",
   "description_ru": "Музей казахского поэта и государственного деятеля Сакена Сейфуллина в бревенчатом купеческом доме 1846 года, где он работал в 1920–30-х годах; открыт в 1988 году. В шести залах — рукописи, письма, личные вещи и пишущая машинка писателя.",
   "description_en": "A museum of Kazakh poet and statesman Saken Seifullin in an 1846 merchant's log house where he worked in the 1920s–30s; opened in 1988. Six halls show manuscripts, letters, personal belongings and his typewriter.",
-  "description_sources": ["https://ru.wikipedia.org/wiki/Музей_Сакена_Сейфуллина"],
+  "description_sources": [
+   "https://ru.wikipedia.org/wiki/Музей_Сакена_Сейфуллина"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -420,11 +617,21 @@
   "status_source": "https://tengrinews.kz/kazakhstan_news/foto-nursultan-nazarbaev-otkryl-astane-monument-pamiati-215083/",
   "description_ru": "Мемориал жертвам голода 1932–1933 годов, открытый 31 мая 2012 года на пересечении проспектов Республики и Абая. Композиция — «Стена скорби» в виде решётки юрты (кереге) и бронзовые фигуры женщины с поднятыми руками и мальчика.",
   "description_en": "A memorial to the victims of the 1932–1933 famine, unveiled on 31 May 2012 at the junction of Respublika and Abay avenues. It combines a 'Wall of Grief' shaped like a yurt lattice (kerege) with bronze figures of a woman raising her arms and a boy.",
-  "description_sources": ["https://tengrinews.kz/kazakhstan_news/foto-nursultan-nazarbaev-otkryl-astane-monument-pamiati-215083/", "https://informburo.kz/novosti/v-astane-bronzovogo-malchika-iz-kompozicii-zhertvam-golodomora-sdali-na-metallolom.html"],
+  "description_sources": [
+   "https://tengrinews.kz/kazakhstan_news/foto-nursultan-nazarbaev-otkryl-astane-monument-pamiati-215083/",
+   "https://informburo.kz/novosti/v-astane-bronzovogo-malchika-iz-kompozicii-zhertvam-golodomora-sdali-na-metallolom.html"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -438,11 +645,22 @@
   "status_source": "https://sobor.kz/raspisanie-bogosluzheniy/raspisanie-bogosluzheniy-v-konstantino-eleninskom-sobore-g-astany-na-55",
   "description_ru": "Старейший православный храм Астаны: церковь, заложенная казаками Акмолинска в 1854 году, в 1900–1902 годах перестроена на нынешнем месте как пятиглавая крестообразная. С 1999 года — кафедральный собор, памятник истории и культуры местного значения.",
   "description_en": "Astana's oldest Orthodox church: founded by Akmolinsk Cossacks in 1854 and rebuilt on its current site in 1900–1902 as a five-domed, cross-shaped church. A cathedral since 1999 and a locally listed heritage monument.",
-  "description_sources": ["https://sobor.kz/node/7152", "https://sobor.kz/node/204", "https://zakon.uchet.kz/kaz/docs/V20A0001295"],
+  "description_sources": [
+   "https://sobor.kz/node/7152",
+   "https://sobor.kz/node/204",
+   "https://zakon.uchet.kz/kaz/docs/V20A0001295"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": "богослужения ежедневно в 9:00 и 17:00, по воскресеньям также ранняя литургия в 7:00 (по расписанию на сентябрь 2026)",
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,

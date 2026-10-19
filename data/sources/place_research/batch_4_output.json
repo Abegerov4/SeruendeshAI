@@ -10,12 +10,19 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
   "confidence": "low",
-  "notes": "No official site or allowed source found; only a 2022 city-guide listing (sxodim, not an allowed source) at Mangilik Yel 51. Current status not verifiable."
+  "notes": "No official site or allowed source found; Current status not verifiable. [notes about non-allowed sources removed]"
  },
  {
   "poi_id": "osm:n10690260962",
@@ -28,7 +35,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -46,7 +60,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -64,7 +85,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -82,7 +110,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -96,11 +131,20 @@
   "status_source": "https://astana.kz/en/events/places/144f8eff-e7b7-4ff0-a898-4fc06e46df39",
   "description_ru": "Профессиональный драматический театр «Жастар», основанный в 2007 году, занимает здание бывшего Дворца культуры железнодорожников. В репертуаре классика и современная драматургия на казахском и русском языках, а также спектакли для детей и молодёжи.",
   "description_en": "Zhastar is a professional drama theatre founded in 2007, housed in the former Railway Workers' Palace of Culture. It stages classic and contemporary plays in Kazakh and Russian, plus productions for children and young audiences.",
-  "description_sources": ["https://astana.kz/en/events/places/144f8eff-e7b7-4ff0-a898-4fc06e46df39"],
+  "description_sources": [
+   "https://astana.kz/en/events/places/144f8eff-e7b7-4ff0-a898-4fc06e46df39"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -118,7 +162,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -136,7 +187,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -150,11 +208,22 @@
   "status_source": "https://bes.media/news/muzey-pod-otkritim-nebom-snosyat-v-astane-chto-poyavitsya-vmesto/",
   "description_ru": "Бывший музей под открытым небом в виде карты Казахстана площадью около 1,7 га с уменьшенными макетами более 200 зданий и памятников страны; открыт в 2001 году. Весной 2026 года комплекс, признанный аварийным, начали сносить.",
   "description_en": "Former open-air museum laid out as a map of Kazakhstan (about 1.7 ha) with scale models of over 200 of the country's buildings and monuments, opened in 2001. Declared dilapidated, it was being demolished in spring 2026.",
-  "description_sources": ["https://kk.wikipedia.org/wiki/Атамекен_(мұражай)", "https://bes.media/news/muzey-pod-otkritim-nebom-snosyat-v-astane-chto-poyavitsya-vmesto/", "https://newtimes.kz/obshchestvo/218637-na-pravom-beregu-nachali-snosit-atameken-astanchane-gadaiut-chto-poiavitsia-na-ego-meste"],
+  "description_sources": [
+   "https://kk.wikipedia.org/wiki/Атамекен_(мұражай)",
+   "https://bes.media/news/muzey-pod-otkritim-nebom-snosyat-v-astane-chto-poyavitsya-vmesto/",
+   "https://newtimes.kz/obshchestvo/218637-na-pravom-beregu-nachali-snosit-atameken-astanchane-gadaiut-chto-poiavitsia-na-ego-meste"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -172,7 +241,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -190,7 +266,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -204,11 +287,21 @@
   "status_source": "https://rafe.kz/contacts",
   "description_ru": "Кафе сети Rafe Coffee & Food на улице Кунаева, в районе ЖК «Нурсая». В меню пицца, паста, ризотто, салаты, стейки, десерты и кофе.",
   "description_en": "A Rafe Coffee & Food cafe on Kunaev Street in the Nursaya residential complex area. The menu covers pizza, pasta, risotto, salads, steaks, desserts and coffee.",
-  "description_sources": ["https://rafe.kz/contacts", "http://rafe.kz/"],
+  "description_sources": [
+   "https://rafe.kz/contacts",
+   "http://rafe.kz/"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": "эспрессо 690 ₸, пицца 1270–4890 ₸ (меню доставки на сайте)",
   "price_source": "http://rafe.kz/",
@@ -226,7 +319,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -240,12 +340,24 @@
   "status_source": "https://astana-piramida.kz/contacts",
   "description_ru": "Стеклянная пирамида высотой 62 м по проекту Foster + Partners, открытая в 2006 году для Съезда лидеров мировых и традиционных религий. Внутри оперный зал на 1302 места, музей, а на вершине зал с витражами Брайана Кларка.",
   "description_en": "A 62 m glass pyramid designed by Foster + Partners and opened in 2006 to host the Congress of Leaders of World and Traditional Religions. Inside are a 1,302-seat opera hall, a museum and an apex chamber with stained glass by Brian Clarke.",
-  "description_sources": ["https://en.wikipedia.org/wiki/Palace_of_Peace_and_Reconciliation", "https://astana-piramida.kz/"],
+  "description_sources": [
+   "https://en.wikipedia.org/wiki/Palace_of_Peace_and_Reconciliation",
+   "https://astana-piramida.kz/"
+  ],
   "opening_hours": null,
   "hours_source": "https://astana-piramida.kz/contacts",
   "hours_note": "на официальном сайте указано лишь время для обращений по посещению и мероприятиям — 10:00–18:00; дни работы не указаны",
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": false},
-  "features_sources": ["https://astana-piramida.kz/tours"],
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": false
+  },
+  "features_sources": [
+   "https://astana-piramida.kz/tours"
+  ],
   "price_note": "экскурсия по зданию и Музею мира и согласия: взрослый 1000 ₸, детский (6–14 лет) 650 ₸; индивидуальная на каз./рус. 1800 ₸, на англ. 2300 ₸",
   "price_source": "https://astana-piramida.kz/tours",
   "confidence": "high",
@@ -262,7 +374,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -276,11 +395,20 @@
   "status_source": "https://ru.wikipedia.org/wiki/Хазрет_Султан_(мечеть)",
   "description_ru": "Национальная мечеть Казахстана, открытая в 2012 году на правом берегу Есиля рядом с Дворцом мира и согласия. Здание в классическом исламском стиле с казахскими орнаментами: главный купол высотой 51 м и четыре минарета по 77 м, вмещает около 5000 молящихся.",
   "description_en": "Kazakhstan's national mosque, opened in 2012 on the right bank of the Yesil near the Palace of Peace and Reconciliation. Built in classical Islamic style with Kazakh ornaments, it has a 51 m main dome and four 77 m minarets and holds about 5,000 worshippers.",
-  "description_sources": ["https://ru.wikipedia.org/wiki/Хазрет_Султан_(мечеть)"],
+  "description_sources": [
+   "https://ru.wikipedia.org/wiki/Хазрет_Султан_(мечеть)"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -298,7 +426,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -312,11 +447,21 @@
   "status_source": "https://degirmen.kz/filialy/",
   "description_ru": "Кафе сети Degirmen с турецкой кухней и собственным производством; название означает «мельница». Сеть работает в Казахстане с 2010 года, этот филиал — на улице Кунаева, 14.",
   "description_en": "A branch of Degirmen, a Turkish-cuisine cafe chain with its own production; the name means 'mill'. The chain has operated in Kazakhstan since 2010; this branch is at 14 Kunaev Street.",
-  "description_sources": ["http://degirmen.kz/", "https://degirmen.kz/filialy/"],
+  "description_sources": [
+   "http://degirmen.kz/",
+   "https://degirmen.kz/filialy/"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -334,7 +479,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -352,7 +504,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -370,7 +529,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -384,11 +550,20 @@
   "status_source": "https://www.khanshatyr.com/food-court/kioski",
   "description_ru": "Киоск Mövenpick в зоне фуд-корта ТРЦ «Хан Шатыр».",
   "description_en": "A Mövenpick kiosk in the food-court area of the Khan Shatyr mall.",
-  "description_sources": ["https://www.khanshatyr.com/food-court/kioski"],
+  "description_sources": [
+   "https://www.khanshatyr.com/food-court/kioski"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -406,7 +581,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -420,12 +602,24 @@
   "status_source": "https://www.khanshatyr.com/contacts",
   "description_ru": "Торгово-развлекательный центр в форме гигантского шатра высотой 150 м по проекту бюро Нормана Фостера, открыт в 2010 году. Под прозрачной кровлей на стальных вантах — магазины, рестораны, семейный центр развлечений и крытый пляж с искусственным песком.",
   "description_en": "A 150 m tent-shaped shopping and entertainment centre designed by Foster + Partners and opened in 2010. Under its transparent roof on steel cables are shops, restaurants, a family entertainment centre and an indoor beach with artificial sand.",
-  "description_sources": ["https://ru.wikipedia.org/wiki/Хан_Шатыр", "http://www.khanshatyr.com/"],
+  "description_sources": [
+   "https://ru.wikipedia.org/wiki/Хан_Шатыр",
+   "http://www.khanshatyr.com/"
+  ],
   "opening_hours": "Mo-Th,Su 10:00-22:00; Fr,Sa 10:00-23:00",
   "hours_source": "https://www.khanshatyr.com/contacts",
   "hours_note": "часы ТРЦ; у Sky Beach Club, кинотеатра и Fame City могут быть отдельные часы",
-  "features": {"wifi": null, "power_outlets": null, "kids_area": true, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
-  "features_sources": ["http://www.khanshatyr.com/"],
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": true,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [
+   "http://www.khanshatyr.com/"
+  ],
   "price_note": null,
   "price_source": null,
   "confidence": "high",
@@ -442,7 +636,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,

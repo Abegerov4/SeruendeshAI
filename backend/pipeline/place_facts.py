@@ -50,7 +50,8 @@ def clean(rec: dict, poi: dict) -> dict | None:
     hours = (rec.get("opening_hours") or "").strip()
     src = [u for u in _urls(rec.get("hours_source")) if ".wikipedia.org" not in u]  # unsourced, often stale
     box_office = re.search(r"касс|box office|ticket office", rec.get("hours_note") or "", re.I)  # not the show times
-    if hours and src and not box_office and _parse(hours) is not None:
+    snippet = re.search(r"snippet|excerpt|сниппет|выдержк", rec.get("notes") or "", re.I)  # page not actually opened / in doubt
+    if hours and src and not box_office and not snippet and _parse(hours) is not None:
         out.update(opening_hours=hours, hours_url=src[0])
         if note := (rec.get("hours_note") or "").strip():
             out["hours_note"] = note[:120]
@@ -66,17 +67,29 @@ def clean(rec: dict, poi: dict) -> dict | None:
     return out
 
 
+def merge_link_checks(facts: dict, path: str) -> int:
+    """Websites checked by hand (domain gone, parked, or now an unrelated or harmful site): the card drops the link."""
+    n = 0
+    for rec in json.loads(open(path, encoding="utf-8").read()):
+        f = facts.setdefault(rec["poi_id"], {"checked": CHECKED})
+        f.update(drop_website=True, website_problem=rec["problem"])
+        n += 1
+    return n
+
+
 def main(paths: list[str]) -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s %(message)s")
     pois = {json.loads(line)["id"]: json.loads(line) for line in (PROCESSED_DIR / "pois.jsonl").open(encoding="utf-8") if line.strip()}
     facts = json.loads(OUT_FILE.read_text()) if OUT_FILE.exists() else {}
     seen = kept = 0
-    for path in paths:
+    for path in [p for p in paths if "link_check" in p]:
+        log.info("link checks: %d websites dropped", merge_link_checks(facts, path))
+    for path in [p for p in paths if "link_check" not in p]:
         for rec in json.loads(open(path, encoding="utf-8").read()):
             seen += 1
             poi = pois.get(rec.get("poi_id"))
             if poi and (c := clean(rec, poi)):
-                facts[poi["id"]] = c
+                facts[poi["id"]] = {**facts.get(poi["id"], {}), **c}
                 kept += 1
     OUT_FILE.write_text(json.dumps(facts, ensure_ascii=False, indent=1))
     log.info("place facts: %d of %d researched places kept (%d in file)", kept, seen, len(facts))

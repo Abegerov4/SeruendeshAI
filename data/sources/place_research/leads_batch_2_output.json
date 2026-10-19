@@ -1,0 +1,654 @@
+[
+ {
+  "poi_id": "osm:w1424109192",
+  "name": "Самал саябағы",
+  "status": "open",
+  "status_source": "https://tengrinews.kz/kazakhstan_news/katok-prud-detskie-ploschadki-novoe-obschestvennoe-596961/",
+  "description_ru": "Новый городской парк в квартале улиц Аль-Фараби, Керей и Жанибек хандар и Бухар жырау: пруд, памп-трек, детские и спортивные площадки, зимой — каток.",
+  "description_en": "A new city park bounded by Al-Farabi, Kerey and Zhanibek Khandar and Bukhar Zhyrau streets, with a pond, a pump track, playgrounds and sports courts that become an ice rink in winter.",
+  "description_sources": [
+   "https://tengrinews.kz/kazakhstan_news/katok-prud-detskie-ploschadki-novoe-obschestvennoe-596961/"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": true,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [
+   "https://tengrinews.kz/kazakhstan_news/katok-prud-detskie-ploschadki-novoe-obschestvennoe-596961/"
+  ],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "Tengrinews, 21.04.2026: park is open for walks while landscaping continues; official opening planned for 2026. No allowed source gives hours or says it is open 24/7."
+ },
+ {
+  "poi_id": "osm:r16002498",
+  "name": "Жерұйық саябағы",
+  "status": "open",
+  "status_source": "https://ru.wikipedia.org/wiki/Парк_Жеруйык",
+  "description_ru": "Парк на пересечении проспекта Б. Момышулы и улицы М. Жумабаева, заложен в 1998 году и открыт в 2008-м; около 10 тысяч деревьев и кустарников, игровые и спортивные площадки, пешеходные и велодорожки.",
+  "description_en": "A park at the corner of Momyshuly Avenue and Zhumabayev Street, planted from 1998 and officially opened in 2008, with about 10,000 trees and shrubs, playgrounds, sports grounds, and walking and cycling paths.",
+  "description_sources": [
+   "https://ru.wikipedia.org/wiki/Парк_Жеруйык"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": true,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [
+   "https://ru.wikipedia.org/wiki/Парк_Жеруйык"
+  ],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "Status rests on Wikipedia only, with no recent official confirmation. Wikipedia gives conflicting areas: 21 ha in the text, 1823 ha in the infobox. News reports describe disputes over a private manager and paid attractions. No allowed source gives hours."
+ },
+ {
+  "poi_id": "osm:w1296051287",
+  "name": "Корей бақшасы",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": "Сад дружбы «Казахстан — Корея», открытый в 2017 году на средства правительства Республики Корея; в саду есть «Колокольня дружбы», зеркальный пруд, цветник и элементы традиционной корейской архитектуры.",
+  "description_en": "The Kazakhstan–Korea Friendship Garden opened in 2017 with funding from the Korean government. It has a Bell Tower of Friendship, a mirror pond, a flower garden and traditional Korean architecture.",
+  "description_sources": [
+   "https://informburo.kz/novosti/koreya-podarila-astane-sad-s-prudom-v-znak-druzhby.html"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "Opening news, 27.09.2017: the garden borders Arai park near the Arai/Zhauqazyn streets and the Chubary mosque. It matches the coordinates approximately but this is not verified exactly. No current-status or hours source found."
+ },
+ {
+  "poi_id": "osm:w258173901",
+  "name": "Парк Афганской войне",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "No allowed source identifies this park at these coordinates. Searches found a monument to soldier-internationalists in Astana but no location, and the kazpravda pages return 403. The OSM name is also ungrammatical. Needs manual check."
+ },
+ {
+  "poi_id": "osm:n4894937300",
+  "name": "Қазақстан Республикасының Ұлттық Мұражайы",
+  "status": "open",
+  "status_source": "https://nmrk.kz/ru/",
+  "description_ru": "Национальный музей Республики Казахстан на площади Независимости — крупнейший музей Центральной Азии; экспозиции охватывают историю от каменного века до наших дней, символ музея — «Золотой человек».",
+  "description_en": "The National Museum of Kazakhstan on Independence Square is the largest museum in Central Asia. Its collection covers history from the Stone Age to the present, and the Golden Man is its emblem.",
+  "description_sources": [
+   "https://ticketon.kz/place/nacionalnyj-muzej-rk",
+   "https://nmrk.kz/ru/"
+  ],
+  "opening_hours": "Tu-Su 10:00-18:00; Mo off",
+  "hours_source": "https://nmrk.kz/ru/",
+  "hours_note": "касса 10:00–17:00; последний вторник месяца — санитарный день",
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": false
+  },
+  "features_sources": [
+   "https://ticketon.kz/place/nacionalnyj-muzej-rk"
+  ],
+  "price_note": "билеты от 500 ₸; каждое третье воскресенье месяца вход для резидентов РК бесплатный (кроме зарубежных выставок)",
+  "price_source": "https://ticketon.kz/place/nacionalnyj-muzej-rk",
+  "confidence": "high",
+  "notes": "The official site and Ticketon both give Tu–Su 10:00–18:00 with Monday off. The cash-desk hours and the sanitary day come from Ticketon."
+ },
+ {
+  "poi_id": "osm:n4916363251",
+  "name": "Е. Рахмадиев атындағы Мемлекеттік академиялық филармония",
+  "status": "open",
+  "status_source": "https://ticketon.kz/place/astana-filarmonia",
+  "description_ru": "Государственная академическая филармония имени Е. Рахмадиева на улице Кенесары, 32; ведёт историю с 1957 года, главный концертный зал рассчитан на 1600 мест.",
+  "description_en": "The E. Rakhmadiev State Academic Philharmonic at 32 Kenesary Street dates back to 1957. Its main concert hall seats 1,600.",
+  "description_sources": [
+   "https://ticketon.kz/place/astana-filarmonia"
+  ],
+  "opening_hours": null,
+  "hours_source": "https://ticketon.kz/place/astana-filarmonia",
+  "hours_note": "Ticketon: Пн–Пт 09:00–18:00 (не указано, касса это или администрация); телефон кассы 8 (7172) 75-23-83",
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": false
+  },
+  "features_sources": [
+   "https://ticketon.kz/place/astana-filarmonia"
+  ],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "This is a concert venue, so opening_hours is left null. Concerts run on Ticketon. The official site philarmonic-astana.kz (named in the goszakup registry) was not checked."
+ },
+ {
+  "poi_id": "osm:w917348929",
+  "name": "Қ.Қуанышбаев атындағы Мемлекеттік академиялық қазақ музыкалық-драма театры",
+  "status": "open",
+  "status_source": "https://ticketon.kz/place/teatr-im-k-kuanyshbajeva-9565",
+  "description_ru": "Казахский национальный музыкально-драматический театр имени К. Куанышбаева открылся в 1991 году; новое здание на улице Куанышбаева, 8/1 построено в 2020 году, в 2024 году театру присвоен статус национального.",
+  "description_en": "The K. Kuanyshbayev Kazakh National Musical Drama Theatre opened in 1991. Its new building at 8/1 Kuanyshbayev Street was built in 2020, and it received national status in 2024.",
+  "description_sources": [
+   "https://ticketon.kz/place/teatr-im-k-kuanyshbajeva-9565"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": false
+  },
+  "features_sources": [
+   "https://ticketon.kz/place/teatr-im-k-kuanyshbajeva-9565"
+  ],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "No box-office hours found. kaztheatre.kz is behind a bot check, and Ticketon gives only the phone 8 (7172) 27-02-35. Since 2024 the official name is the Kazakh National Musical Drama Theatre."
+ },
+ {
+  "poi_id": "osm:n5126825313",
+  "name": "Астаналық Цирк",
+  "status": "open",
+  "status_source": "https://ticketon.kz/place/astaninskiy-cirk",
+  "description_ru": "Астанинский цирк на проспекте Кабанбай батыра, 5 — здание в форме «летающей тарелки», строительство начато в 2001 году; главный зал вмещает 2000 зрителей.",
+  "description_en": "The Astana Circus at 5 Kabanbay Batyr Avenue is housed in a flying-saucer-shaped building begun in 2001. Its main arena seats 2,000.",
+  "description_sources": [
+   "https://ticketon.kz/place/astaninskiy-cirk"
+  ],
+  "opening_hours": null,
+  "hours_source": "https://ticketon.kz/place/astaninskiy-cirk",
+  "hours_note": "касса (по данным Ticketon): ежедневно 10:00–19:00; телефоны кассы 24-40-60, 24-40-61",
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": false
+  },
+  "features_sources": [
+   "https://ticketon.kz/place/astaninskiy-cirk"
+  ],
+  "price_note": "дети до 4 лет — бесплатно (по свидетельству о рождении)",
+  "price_source": "https://ticketon.kz/place/astaninskiy-cirk",
+  "confidence": "medium",
+  "notes": "Ticketon lists 'Ежедневно 10:00–19:00' as working hours, not labelled as the box office. They are recorded only in hours_note."
+ },
+ {
+  "poi_id": "osm:w240873345",
+  "name": "Тәуелсіздік Сарайы",
+  "status": "open",
+  "status_source": "https://ticketon.kz/en/place/dvorec-nezavisimosti",
+  "description_ru": "Дворец Независимости на проспекте Тәуелсіздік, 52 — трёхэтажное здание из стекла площадью около 40 тыс. м² для государственных мероприятий и конгрессов, с художественными экспозициями и залом истории Астаны.",
+  "description_en": "The Palace of Independence at 52 Tauelsizdik Avenue is a three-storey glass building of about 40,000 m² that hosts state events and congresses, with art exhibitions and a floor on Astana's history.",
+  "description_sources": [
+   "https://ticketon.kz/en/place/dvorec-nezavisimosti"
+  ],
+  "opening_hours": null,
+  "hours_source": "https://ticketon.kz/en/place/dvorec-nezavisimosti",
+  "hours_note": "Ticketon: Пн–Пт 09:00–18:00 (похоже на часы администрации; часы для посетителей выставок не подтверждены)",
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "Do not use the catalogue website indepalace.kz. It did not resolve when fetched, and a search result shows indepalace.kz/page/about titled as a casino site, so the domain looks hijacked. A search snippet of visitastana.kz showed 'Пн–Вс 10:00–21:00', but that page could not be opened (DNS), so it is not used."
+ },
+ {
+  "poi_id": "osm:n455447680",
+  "name": "Русский Академический театр драмы им М.Горького",
+  "status": "open",
+  "status_source": "https://ticketon.kz/place/teatr-dramy-im-gorkogo-astana",
+  "description_ru": "Государственный академический русский театр драмы имени М. Горького на улице Желтоксан; ведёт историю с 1899 года, имя Горького носит с 1959 года, академический статус получил в 2012 году.",
+  "description_en": "The Gorky State Academic Russian Drama Theatre on Zheltoksan Street traces its history to 1899. It has carried Gorky's name since 1959 and received academic status in 2012.",
+  "description_sources": [
+   "https://ticketon.kz/place/teatr-dramy-im-gorkogo-astana"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": false
+  },
+  "features_sources": [
+   "https://ticketon.kz/place/teatr-dramy-im-gorkogo-astana"
+  ],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "No box-office hours in allowed sources. Ticketon gives only the cash-desk phone 57-23-75. rtd.kz timed out twice. Ticketon gives the address as Zheltoksan 11 but the stage as Zheltoksan 13."
+ },
+ {
+  "poi_id": "osm:n2349675581",
+  "name": "Театр кукол",
+  "status": "open",
+  "status_source": "https://ticketon.kz/en/place/teatr-kukol-v-nur-sultane",
+  "description_ru": "Астанинский театр кукол на проспекте Республики, 3; вход со стороны проспекта, рядом остановка «Микрорайон Самал».",
+  "description_en": "The Astana Puppet Theatre at 3 Respublika Avenue, entered from the avenue side near the Samal microdistrict bus stop.",
+  "description_sources": [
+   "https://ticketon.kz/en/place/teatr-kukol-v-nur-sultane"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": false
+  },
+  "features_sources": [
+   "https://ticketon.kz/en/place/teatr-kukol-v-nur-sultane"
+  ],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "No box-office hours found. Ticketon gives only the phones 8 (7172) 22-26-46 and 43-96-24. Matching to the OSM node is by location (Respublika Ave near the river), not confirmed by address."
+ },
+ {
+  "poi_id": "ov:e2157a69-731f-46",
+  "name": "ForteBank Kulanshi Art Space",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": "Галерея ForteBank Kulanshi ArtSpace в головном офисе ForteBank (ул. Достык, 8/1), открыта в 2016 году совместно с центром современного искусства «Кулянши»; показывает коллекцию банка и сменные выставки.",
+  "description_en": "The ForteBank Kulanshi ArtSpace gallery in ForteBank's head office at 8/1 Dostyk Street opened in 2016 with the Kulanshi contemporary art centre. It shows the bank's collection and changing exhibitions.",
+  "description_sources": [
+   "https://forbes.kz/articles/v_golovnom_ofise_fortebank_otkryilas_hudojestvennaya_galereya",
+   "https://forte.kz/news/v-forte-bank-kulanshi-artspace-otkrylas-vystavka-hudozhnika-sauleta-zhanibeka"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "The latest official item is forte.kz news from Feb 2024 (exhibition at Dostyk 8/1), so the 2026 status is unconfirmed. The 10:00–20:00 hours in Forbes refer only to the 2016 opening exhibition and are not used. Free entry is suggested ('могут свободно посещать') but not stated outright."
+ },
+ {
+  "poi_id": "ov:a0c98af9-e0c3-43",
+  "name": "Дом дружбы",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "A search snippet of assembly.kz lists the Astana Дом дружбы at Momyshuly 24/9 as the address of the akimat's KGU 'Қоғамдық келісім' (Assembly of People of Kazakhstan). The page could not be opened (expired certificate), so nothing is filled. It is an administrative and community building, likely not a visitor venue."
+ },
+ {
+  "poi_id": "osm:w504774632",
+  "name": "Центральная городская библиотека имени Мухтара Ауэзова",
+  "status": "open",
+  "status_source": "https://library.astana.kz/pages/kontakty.html",
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": "Mo-Sa 10:00-19:00; Su off",
+  "hours_source": "https://library.astana.kz/pages/kontakty.html",
+  "hours_note": "санитарный день — последняя пятница месяца",
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "CAVEAT: the official page (library.astana.kz, Centralized Library System of Astana) would not open directly because its TLS certificate has expired. The hours come from the search engine's verbatim excerpt of that page: 'Проспект Абылай хана 4/1 Часы работы: 10:00 — 19:00 Выходные дни: воскресенье; Санитарный день: последняя пятница каждого месяца'. Drop the hours if strict 'opened' sourcing is required."
+ },
+ {
+  "poi_id": "osm:w424923382",
+  "name": "Тұңғыш Президент Кітапханасы",
+  "status": "open",
+  "status_source": "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya",
+  "description_ru": "С 2023 года на базе бывшей Библиотеки Первого Президента на ул. А. Бокейхана, 1а работает Президентский центр РК: архив, библиотека и музейные фонды, связанные с историей президентства.",
+  "description_en": "Since 2023 the former Library of the First President at 1a Bokeikhan Street has housed the Presidential Center of Kazakhstan, with archives, a library and museum collections on the history of the presidency.",
+  "description_sources": [
+   "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": true
+  },
+  "features_sources": [
+   "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya"
+  ],
+  "price_note": "вход бесплатный (по сообщению 2023 года)",
+  "price_source": "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya",
+  "confidence": "medium",
+  "notes": "RENAMED: since Oct 2023 this is 'Президентский центр Республики Казахстан', not the First President Library, so the catalogue name is outdated. The 2023 news says it is open to all and free. No official site or current hours found."
+ },
+ {
+  "poi_id": "osm:n798212555",
+  "name": "Государственный театр танца",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "No allowed source identifies a 'State Dance Theatre' at these coordinates (51.1797, 71.3388, far north-west of the centre). The search only surfaced Astana Ballet at Uly Dala 43, which is elsewhere. Possibly a stale or misplaced OSM node; needs manual check."
+ },
+ {
+  "poi_id": "osm:w1420898922",
+  "name": "Детская площадка в ЖК «Вена кварталы»",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "This is a playground inside a residential complex. No allowed source covers it, and it may be for residents only, so it is a doubtful fit for a walking guide. Not researched further."
+ },
+ {
+  "poi_id": "osm:n4387005493",
+  "name": "Eagilik - Books & Coffee",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "The official site eagilik.com would not open (expired TLS certificate). Search found only non-allowed listings and lifestyle articles from about 2016–2019, which describe a café with an English-language lending library at Kenesary 61/1 and give conflicting hours. Possibly closed; needs check. The catalogue category 'souvenir' looks wrong; it is a café and library."
+ },
+ {
+  "poi_id": "osm:w166267459",
+  "name": "Алау мұзайдыны сарайы",
+  "status": "open",
+  "status_source": "https://ticketon.kz/place/ledovyj-dvorec-alau",
+  "description_ru": "Ледовый дворец «Алау» на проспекте Кабанбай батыра, 47 открыт в 2011 году к Азиатским играм; 400-метровая конькобежная дорожка и 7462 места, проводятся соревнования, концерты и массовые катания.",
+  "description_en": "The Alau Ice Palace at 47 Kabanbay Batyr Avenue opened in 2011 for the Asian Winter Games. It has a 400 m speed-skating track and 7,462 seats, and hosts competitions, concerts and public skating.",
+  "description_sources": [
+   "https://ticketon.kz/place/ledovyj-dvorec-alau"
+  ],
+  "opening_hours": null,
+  "hours_source": "https://ticketon.kz/place/ledovyj-dvorec-alau",
+  "hours_note": "Ticketon: Пн–Пт 09:00–18:00 (не расписание массовых катаний; сеансы — по отдельному расписанию, не подтверждено); телефон кассы 8 (7172) 29-37-52",
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "The catalogue website alau.info does not resolve (DNS). The public-skating schedule from kazticket.kz and visitastana.kz search snippets could not be opened, so it is not used."
+ },
+ {
+  "poi_id": "osm:w217676871",
+  "name": "Алатау",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "This is the Alatau Sports Palace at Tauelsizdik 1/1 (50 m pool, gyms). The official site alatau-sk.kz did not resolve (DNS) and its Ticketon page returns 410 Gone, so nothing is verified. Non-allowed directories give conflicting hours (08:00–22:00 or 09:00–22:00, with Monday as the pool's sanitary day)."
+ },
+ {
+  "poi_id": "osm:w425276242",
+  "name": "Жақсылық Үшкемпіров атындағы жекпе-жек сарайы",
+  "status": "open",
+  "status_source": "https://www.jekpejek.kz/ru/about/",
+  "description_ru": "Дворец единоборств имени Жаксылыка Ушкемпирова на проспекте Кабанбай батыра, 43 открыт 6 июля 2019 года; трансформируемая арена для бокса, дзюдо, борьбы, тхэквондо и гимнастики, есть фитнес-центр и бассейн.",
+  "description_en": "The Zhaksylyk Ushkempirov Martial Arts Palace at 43 Kabanbay Batyr Avenue opened on 6 July 2019. Its convertible arena hosts boxing, judo, wrestling, taekwondo and gymnastics, and it has a fitness centre and pool.",
+  "description_sources": [
+   "https://www.jekpejek.kz/ru/about/",
+   "https://odo-astana.kz/ru/press-center/news/sk-zhekpe-zhek-pereimenovali-vo-dvorets-edinoborstv-imeni-zhaksylyka-ushkempirova/"
+  ],
+  "opening_hours": null,
+  "hours_source": "https://www.jekpejek.kz/ru/fitness-center/",
+  "hours_note": "фитнес-центр: каждый понедельник — санитарный день (часы работы не найдены)",
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "The official site gives no visitor or fitness hours, only phone +7 (7172) 70 25 75. Ticketon's Mo–Fr 09:00–18:00 looks like office hours and is not used. Formerly the 'Жекпе-жек' sports complex, renamed in Dec 2020."
+ },
+ {
+  "poi_id": "osm:w1460088071",
+  "name": "Qazaqstan",
+  "status": "open",
+  "status_source": "https://lask.kz/",
+  "description_ru": "Легкоатлетический спортивный комплекс «Qazaqstan» на проспекте Туран, 59 построен в 2020 году; трибуны на 6838 мест, работают спортивные секции, фитнес-центр с бассейном, гостиница и ресторан.",
+  "description_en": "The Qazaqstan athletics complex at 59 Turan Avenue was built in 2020. Its stands seat 6,838, and it has sports sections, a fitness centre with a pool, a hotel and a restaurant.",
+  "description_sources": [
+   "https://lask.kz/ru/about-complex/about-center/",
+   "https://lask.kz/"
+  ],
+  "opening_hours": "Mo-Su 07:00-23:00",
+  "hours_source": "https://lask.kz/ru/fitness-center-complex/grafik-raboty-fitnes-qazaqstan/",
+  "hours_note": "часы фитнес-центра (тренажёрный зал и бассейн); последний понедельник месяца — санитарный день",
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "The hours are the fitness centre's (gym and pool), the only visitor hours on the official site; the arena itself is used for events. The official address is Turan 59, Nura district, matching the coordinates."
+ },
+ {
+  "poi_id": "ov:b1c64a5f-1770-41",
+  "name": "парк ск Казахстан",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Unclear entity: a park beside the 'Kazakhstan' sports complex. dskazakhstan.kz does not resolve (DNS). A search snippet from inform.kz (403 when opened) says the sports complex itself is under long reconstruction, with only the frame left, so check for construction fencing. Needs manual check."
+ },
+ {
+  "poi_id": "osm:w241053202",
+  "name": "Спорткомплекс ABYROY (Астана)",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "No official site found; abyroy.kz belongs to an unrelated copyright society. Only non-allowed directories give hours (Mo–Fr 07:00–23:00, Sa–Su 09:00–22:00), so they are not used. Inform.kz utility-outage notices mention the 'Abyroy' sports complex at Saryarka 21 but were not opened."
+ }
+]

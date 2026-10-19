@@ -183,7 +183,7 @@
   "price_note": null,
   "price_source": null,
   "confidence": "low",
-  "notes": "Official site taptatti.kz is a JS app with no readable text; branch info only on aggregators (zoon, 2GIS) which are not allowed. Branch at these coordinates not verified."
+  "notes": "Official site taptatti.kz is a JS app with no readable text; Branch at these coordinates not verified. [notes about non-allowed sources removed]"
  },
  {
   "poi_id": "osm:n11925892164",
@@ -208,7 +208,7 @@
   "price_note": null,
   "price_source": null,
   "confidence": "low",
-  "notes": "Appears to be a branch of the TARY ethno-coffee chain (round-the-clock per city-guide listings), but only non-allowed sources (sxodim) mention the Ulы Dala 41B address; nothing verified."
+  "notes": "nothing verified. [notes about non-allowed sources removed]"
  },
  {
   "poi_id": "osm:n5206773124",

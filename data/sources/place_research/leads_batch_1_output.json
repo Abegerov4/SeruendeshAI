@@ -1,0 +1,640 @@
+[
+ {
+  "poi_id": "osm:w240376692",
+  "name": "Сәкен Сейфуллин музейі",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": "Литературно-мемориальный музей поэта и государственного деятеля Сакена Сейфуллина, открыт в 1988 году в бревенчатом купеческом доме 1846 года. В шести залах — рукописи, письма, личные вещи и прижизненные издания.",
+  "description_en": "Literary memorial museum of poet and statesman Saken Seifullin, opened in 1988 in an 1846 log merchant's house. Six halls show his manuscripts, letters, personal belongings and lifetime editions.",
+  "description_sources": [
+   "https://ru.wikipedia.org/wiki/Музей_Сакена_Сейфуллина"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "No official museum website found; listed website hg2astana.com does not resolve (not the museum's site). Our hours 'Tu-Su 09:00-18:00' could not be verified from an allowed source."
+ },
+ {
+  "poi_id": "osm:w230401645",
+  "name": "Бәйтерек",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": "Монумент-башня высотой 105 м, построенная в 2002 году в честь переноса столицы в Астану; образ «древа жизни» с яйцом птицы Самрук. Смотровая площадка — на высоте 97 м, там же отпечаток ладони Назарбаева.",
+  "description_en": "A 105 m tower completed in 2002 to mark the move of the capital to Astana, shaped as the 'tree of life' holding the egg of the Samruk bird. The observation deck at 97 m holds a gilded handprint of Nazarbayev.",
+  "description_sources": [
+   "https://en.wikipedia.org/wiki/Bayterek_Tower"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Official site astana-bayterek.kz did not respond; baiterek.gov.kz is the investment holding, not the monument. Non-allowed travel sites disagree (09:00-21:00 vs 10:00-21:00 with breaks 13:00-13:30/18:00-18:30, summer to 22:00), so our 'Mo-Su 09:00-21:00' is unverified and may be wrong."
+ },
+ {
+  "poi_id": "osm:w1428964223",
+  "name": "Жастар сарайы алаңы",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Open square in front of the Zhastar Palace of Youth (palace opened 1974). No allowed source states hours or 24/7 access, so left null."
+ },
+ {
+  "poi_id": "osm:w917478479",
+  "name": "Астана Опера",
+  "status": "open",
+  "status_source": "https://astanaopera.kz/",
+  "description_ru": "Театр оперы и балета, открытый в 2013 году оперой «Биржан и Сара»; здание в неоклассическом стиле с казахскими мотивами. Большой зал на 1250 мест и камерный зал на 250 мест.",
+  "description_en": "Opera and ballet house opened in 2013 with the opera 'Birzhan and Sara', in a neoclassical building with Kazakh motifs. Main Hall seats 1,250 and the Chamber Hall 250.",
+  "description_sources": [
+   "https://en.wikipedia.org/wiki/Astana_Opera",
+   "https://astanaopera.kz/"
+  ],
+  "opening_hours": null,
+  "hours_source": "https://astanaopera.kz/ru/contacts",
+  "hours_note": "касса: пн–пт 10:00–19:00, сб–вс 10:00–18:00 (по сайту кассы закрываются за час до окончания работы); вход в кассу со стороны ул. Туран",
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "high",
+  "notes": "Theatre: only box-office hours given, no visitor hours. Box office phone +7 7172 709 600."
+ },
+ {
+  "poi_id": "osm:w230358855",
+  "name": "Қазақстан Республикасының Ұлттық академиялық кітапханасы",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": "Национальная академическая библиотека Республики Казахстан — государственная библиотека, специализирующаяся на научных и академических изданиях.",
+  "description_en": "The National Academic Library of the Republic of Kazakhstan is the state library specialising in academic and scholarly publications.",
+  "description_sources": [
+   "https://en.wikipedia.org/wiki/National_Academic_Library_of_the_Republic_of_Kazakhstan"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Official site nabrk.kz returns 403 to our fetcher, so hours could not be opened. Search snippet of https://nabrk.kz/en/page/work-schedule-library reads 'Mo-Fr 09:00-19:00, Sa-Su 09:00-18:00, last Friday of month sanitary day' (unverified; another page on the site says 10:00-18:00). A reader card (ID required) is needed. Worth a manual check."
+ },
+ {
+  "poi_id": "osm:n13395423568",
+  "name": "Роза Бағланова атындағы Қазақконцерт мемлекеттік академиялық концерттік ұйымы",
+  "status": "open",
+  "status_source": "https://qazaqconcert.kz/",
+  "description_ru": "Государственная академическая концертная организация «Казахконцерт» им. Розы Баглановой: основана в 1960 году в Алматы, с 2016 года работает в Астане в Центральном концертном зале «Qazaqstan».",
+  "description_en": "Roza Baglanova Kazakhconcert, a state academic concert organisation founded in 1960 in Almaty; since 2016 it has been based in Astana at the QAZAQSTAN Central Concert Hall.",
+  "description_sources": [
+   "https://qazaqconcert.kz/",
+   "https://qazaqconcert.kz/contacts"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "Concert venue at Mangilik El Ave 10/1; box-office hours not published (box office phone 8 7172 70 52 56 per https://ticketon.kz/kz/astana/place/ckz-qazaqstan). Tickets sold via ticketon.kz."
+ },
+ {
+  "poi_id": "osm:w243041606",
+  "name": "Президент саябағы",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Open-air park; no allowed source on hours/24-7. A 96 ha reconstruction was announced (informburo.kz, 25 Dec 2023: https://informburo.kz/novosti/dlya-cego-v-astane-ogorodili-territoriyu-prezidentskogo-parka; site fenced); public hearings in 2025 per search results. Current access status unconfirmed — parts may be closed for works."
+ },
+ {
+  "poi_id": "osm:w30014040",
+  "name": "Жастар театры",
+  "status": "open",
+  "status_source": "http://www.zhastar-theatre.kz/",
+  "description_ru": "Молодёжный театр «Жастар» — государственное коммунальное казённое предприятие акимата Астаны на улице Есенберлина, 10.",
+  "description_en": "Zhastar Youth Theatre, a municipal theatre of the Astana city akimat on Esenberlin Street 10.",
+  "description_sources": [
+   "http://www.zhastar-theatre.kz/",
+   "https://www.zhastar-theatre.kz/contacts"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "Box-office hours not published on the official site; box office phone 8 7172 39 26 48, tickets via ticketon.kz."
+ },
+ {
+  "poi_id": "osm:w499328449",
+  "name": "Астана балет",
+  "status": "open",
+  "status_source": "https://astanaballet.com/",
+  "description_ru": "Театр «Астана Балет» создан в 2012 году, первый спектакль прошёл в 2013-м; собственное здание открылось в декабре 2016 года. Зрительный зал на 783 места, репертуар — мировая и казахстанская классика и авторские постановки.",
+  "description_en": "Astana Ballet was founded in 2012 and gave its first performance in 2013; its own building opened in December 2016. The 783-seat hall hosts world and Kazakh classics and original choreography.",
+  "description_sources": [
+   "https://astanaballet.com/ru/pages/o-teatre"
+  ],
+  "opening_hours": null,
+  "hours_source": "https://astanaballet.com/ru/news/novosti-teatra/astana-balet-zapustil-akciyu-dlya-studentov",
+  "hours_note": "касса 11:00–19:00 (по новости театра от 13.10.2018 — возможно устарело); телефон кассы +7 7172 62 12 12",
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "Contacts page (https://astanaballet.com/ru/pages/kontakty) gives address Uly Dala Ave 43 and box-office phone but no current box-office hours; the only hours found are from a 2018 news item."
+ },
+ {
+  "poi_id": "osm:w1460537088",
+  "name": "Astana Musical",
+  "status": "open",
+  "status_source": "https://qazaqconcert.kz/",
+  "description_ru": "Государственный театр мюзикла «Astana Musical», выступающий в Центральном концертном зале «Qazaqstan» (Казахконцерт) на проспекте Мангилик Ел, 10/1; в афише — мюзикл «Алдар Көсе».",
+  "description_en": "Astana Musical, a state musical theatre presented by Kazakhconcert at the QAZAQSTAN Central Concert Hall, Mangilik El Ave 10/1; its bill includes the musical 'Aldar Kose'.",
+  "description_sources": [
+   "https://qazaqconcert.kz/",
+   "https://qazaqconcert.kz/contacts"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "No separate official site found; shares the building with Qazaqconcert. Box-office hours not published (Qazaqconcert box office phone 8 7172 70 52 56 per ticketon). visitastana.kz (said to list Mo-Fr 09:00-18:30 office hours) did not resolve."
+ },
+ {
+  "poi_id": "ov:ad269a74-94c9-44",
+  "name": "Keruen Cinema",
+  "status": "open",
+  "status_source": "https://ticketon.kz/place/keruen-cinema",
+  "description_ru": "Приватный VIP-кинотеатр на 2-м этаже Talan Gallery (Достык, 16): кресла-реклайнеры с наклоном до 180°, индивидуальная подсветка, столик и кнопка вызова официанта.",
+  "description_en": "Private VIP cinema on the 2nd floor of Talan Gallery (Dostyk 16) with fully reclining seats, individual lighting, a table and a waiter-call button at each seat.",
+  "description_sources": [
+   "https://ticketon.kz/place/keruen-cinema"
+  ],
+  "opening_hours": "Mo-Su 10:00-02:00",
+  "hours_source": "https://ticketon.kz/place/keruen-cinema",
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": true,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": false
+  },
+  "features_sources": [
+   "https://ticketon.kz/place/keruen-cinema"
+  ],
+  "price_note": "билеты от 30 000 ₸ (по ticketon)",
+  "price_source": "https://ticketon.kz/place/keruen-cinema",
+  "confidence": "medium",
+  "notes": "Hours from ticketon venue page ('Ежедневно 10:00 – 02:00'); a search-engine snippet of the same page showed 'Mo-Fr 09:00-18:00', so hours may have changed recently. power_outlets = built-in gadget charging at seats. Showtimes listed for Oct–Nov 2026."
+ },
+ {
+  "poi_id": "ov:233f9ff9-02f1-4f",
+  "name": "Has Sanat",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "no official website. All fields left null. [notes about non-allowed sources removed]"
+ },
+ {
+  "poi_id": "osm:n11500914669",
+  "name": "Beeline Arena",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Per search results this is the Beeline Arena National Tennis Center (former Astana National Tennis Center, Central Park), hosting Kazakhstan Tennis Federation events in Aug 2026 (ktf.kz), but ktf.kz failed TLS for our fetcher, so nothing could be opened. No public hours found."
+ },
+ {
+  "poi_id": "osm:n5776315441",
+  "name": "Life fitness",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "No official website found; only aggregator listings (not allowed), none confirming Turkestan 8. Left null."
+ },
+ {
+  "poi_id": "osm:w240860325",
+  "name": "Әзірет Сұлтан мешіті",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": "Мечеть «Хазрет Султан», открытая в 2012 году рядом с Дворцом мира и согласия; классический исламский стиль с казахским орнаментом. Купол высотой 51 м, четыре минарета по 77 м, вмещает до 10 тысяч верующих.",
+  "description_en": "Hazrat Sultan Mosque, opened in 2012 next to the Palace of Peace and Reconciliation, in classical Islamic style with Kazakh ornament. Its dome is 51 m high, four minarets rise 77 m, and it holds up to 10,000 worshippers.",
+  "description_sources": [
+   "https://en.wikipedia.org/wiki/Hazrat_Sultan_Mosque"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Active mosque; no official visitor hours found on an allowed source (muslim.kz not checked to save budget; no hours surfaced in search). Visits are tied to prayer times."
+ },
+ {
+  "poi_id": "osm:r16827715",
+  "name": "Әбу Насыр әл-Фараби мешіті",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": "Мечеть на проспекте Кабанбай батыра, построенная как дар эмира Катара; до 2021 года называлась «Нур-Астана». Высота здания 40 м, четыре минарета по 63 м, вмещает около 5 тысяч верующих.",
+  "description_en": "Mosque on Kabanbay Batyr Avenue built as a gift from the Emir of Qatar; known as Nur-Astana until its 2021 renaming. The building is 40 m high with four 63 m minarets and holds about 5,000 worshippers.",
+  "description_sources": [
+   "https://en.wikipedia.org/wiki/Nur-Astana_Mosque",
+   "https://tengrinews.kz/kazakhstan_news/mechet-nur-astana-pereimenovali-454537/"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Renamed from Nur-Astana to Abu Nasr al-Farabi in Nov 2021 (tengrinews.kz, 20 Nov 2021). Opening year conflicts between sources (2005 vs 2008), so omitted. No visitor hours found."
+ },
+ {
+  "poi_id": "osm:n5936817288",
+  "name": "Библиотека",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Generic name, no address/website; could not identify which city library branch this is, so our 'Su, Tu-Fr 11:00-19:00' (odd pattern) is unverified."
+ },
+ {
+  "poi_id": "osm:n5913515789",
+  "name": "Детская библиотека",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Generic name, no address/website; could not identify the branch, so our 'Tu-Sa 09:00-18:00' is unverified."
+ },
+ {
+  "poi_id": "osm:n10168968308",
+  "name": "Ailand",
+  "status": "open",
+  "status_source": "https://ailand.kz/",
+  "description_ru": "Центр семейного отдыха Ailand на шоссе Коргалжын, 2: океанариум, анимационный театр «Джунгли», экзотариум, колесо обозрения, парк аттракционов и амфитеатр «Айдуман».",
+  "description_en": "Ailand family entertainment centre at Korgalzhyn Highway 2 with an oceanarium, the 'Jungle' animatronic show, an exotarium, a Ferris wheel, an amusement park and the Aiduman amphitheatre.",
+  "description_sources": [
+   "https://ailand.kz/"
+  ],
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_source": "https://ailand.kz/",
+  "hours_note": "без выходных; океанариум 10:00–21:00 (касса до 20:30), «Джунгли» 12:00–20:00, экзотариум 10:00–20:00, колесо обозрения пн–чт 10:00–22:00, пт–вс и праздники 10:00–00:00",
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "medium",
+  "notes": "Centre hours 'Ежедневно 10:00 - 22:00' from site contacts block; per-zone hours from https://ailand.kz/ru/schedule-ru/. Our 'Mo-Su 10:30-20:30' looks outdated. Aquapark closed 1 Sep 2025 for conversion into a new indoor centre (forbes.kz, 11 Aug 2025: https://forbes.kz/articles/ailand-obyavil-o-masshtabnoy-rekonstruktsii-cc018f); site shows it in pre-order/'opening soon'."
+ },
+ {
+  "poi_id": "osm:n9047285104",
+  "name": "Food Solutions",
+  "status": "open",
+  "status_source": "http://foodsolutions.kz/restaurants",
+  "description_ru": "Фастфуд-ресторан казахстанской сети Food Solutions KZ в фуд-корте ТРЦ Mega Silk Way (Кабанбай батыра, 62, 2-й этаж).",
+  "description_en": "Fast-food restaurant of the Kazakh chain Food Solutions KZ in the Mega Silk Way mall food court (Kabanbay Batyr 62, 2nd floor).",
+  "description_sources": [
+   "http://foodsolutions.kz/",
+   "http://foodsolutions.kz/restaurants"
+  ],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "Matched by coordinates to the Mega Silk Way branch listed on the chain site; the site gives no branch hours (chain-wide it mentions free Wi-Fi, not confirmed for this food-court outlet). Our hours unverified."
+ },
+ {
+  "poi_id": "osm:n8121843217",
+  "name": "Boom Boom Room",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "no official website found, so nothing recorded. Our 'Mo-Su 10:00-23:00' unverified. [notes about non-allowed sources removed]"
+ },
+ {
+  "poi_id": "osm:n10064384673",
+  "name": "Del Papa",
+  "status": "open",
+  "status_source": "https://abr.kz/restaurant/del-papa",
+  "description_ru": "Итальянский ресторан сети Del Papa (группа ABR) на проспекте Кабанбай батыра, 34: классика итальянской кухни — завтраки, пицца, паста.",
+  "description_en": "Italian restaurant of the Del Papa chain (ABR group) at Kabanbay Batyr Ave 34, serving Italian classics including breakfasts, pizza and pasta.",
+  "description_sources": [
+   "https://abr.kz/restaurant/del-papa"
+  ],
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_source": "https://abr.kz/restaurant/del-papa",
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "high",
+  "notes": "Official ABR page lists 'пр. Кабанбай батыра, 34 — Пн-Вс с 10:00 до 23:00' (in the Astana group of addresses). Our 'Fr-Sa 11:00-01:00; Mo-Th,Su 11:00-24:00' is outdated."
+ },
+ {
+  "poi_id": "osm:n5866018450",
+  "name": "Coffee Boom",
+  "status": "unknown",
+  "status_source": null,
+  "description_ru": null,
+  "description_en": null,
+  "description_sources": [],
+  "opening_hours": null,
+  "hours_source": null,
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "low",
+  "notes": "No address in our data; chain locations page (https://coffeeboom.kz/coffeeshops/?city=16) loads branches by script, so the branch at these coordinates and its hours could not be confirmed. Our 'Mo-Su 09:00-23:00' unverified."
+ },
+ {
+  "poi_id": "osm:n4874140222",
+  "name": "Дареджани",
+  "status": "open",
+  "status_source": "https://abr.kz/restaurant/daredzhani",
+  "description_ru": "Грузинский ресторан «Дареджани» группы ABR на проспекте Кабанбай батыра, 34: хачапури, хинкали, вино и другая грузинская классика в современной подаче.",
+  "description_en": "Daredzhani, a Georgian restaurant of the ABR group at Kabanbay Batyr Ave 34, serving khachapuri, khinkali, wine and other Georgian classics in a modern take.",
+  "description_sources": [
+   "https://abr.kz/restaurant/daredzhani"
+  ],
+  "opening_hours": "Mo-Su 09:00-24:00",
+  "hours_source": "https://abr.kz/restaurant/daredzhani",
+  "hours_note": null,
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [],
+  "price_note": null,
+  "price_source": null,
+  "confidence": "high",
+  "notes": "Official ABR page lists 'пр. Кабанбай батыра, 34 — Пн-Вс с 9:00 до 00:00' (prospekt Kabanbay Batyr is Astana; same building as Del Papa). Our 'Fr-Sa 10:00-01:00; Mo-Th,Su 10:00-24:00' is outdated."
+ }
+]

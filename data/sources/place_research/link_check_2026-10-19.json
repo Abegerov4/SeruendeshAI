@@ -1,0 +1,47 @@
+[
+ {
+  "poi_id": "ov:cd3cdb1f-a539-4a",
+  "website": "tengovka.kz",
+  "problem": "domain now serves an online casino page"
+ },
+ {
+  "poi_id": "ov:174274f7-036b-40",
+  "website": "presidentfoundation.kz",
+  "problem": "domain now belongs to an unrelated tailoring shop in Almaty"
+ },
+ {
+  "poi_id": "ov:c8cd3543-38ea-4f",
+  "website": "rabbit.kz",
+  "problem": "domain does not resolve"
+ },
+ {
+  "poi_id": "ov:aecc978c-6698-4c",
+  "website": "elipeli.kz",
+  "problem": "domain does not resolve"
+ },
+ {
+  "poi_id": "ov:8fc941dc-24fb-49",
+  "website": "las-vegas.kz",
+  "problem": "domain does not resolve"
+ },
+ {
+  "poi_id": "ov:3bc63836-6697-4c",
+  "website": "shatush.kz",
+  "problem": "domain does not resolve"
+ },
+ {
+  "poi_id": "osm:n5890511001",
+  "website": "mamashvili.kz",
+  "problem": "domain does not resolve"
+ },
+ {
+  "poi_id": "ov:fedb39b3-74e2-4c",
+  "website": "mkfamily.kz",
+  "problem": "hosting placeholder, no venue site"
+ },
+ {
+  "poi_id": "osm:w240873345",
+  "website": "indepalace.kz",
+  "problem": "domain does not resolve (reported to carry a casino title)"
+ }
+]

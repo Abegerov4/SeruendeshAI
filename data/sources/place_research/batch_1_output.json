@@ -24,7 +24,7 @@
   "price_note": null,
   "price_source": null,
   "confidence": "high",
-  "notes": "Hours/prices not verified: official site astana-bayterek.kz and visitastana.kz could not be fetched; only non-allowed guides (sputnik8, tonkosti, aviasales) give 10:00–21:00 (summer 10:00–22:00) and ~2500 ₸ adult — not used."
+  "notes": "Hours/prices not verified: official site astana-bayterek.kz and visitastana.kz could not be fetched; [notes about non-allowed sources removed]"
  },
  {
   "poi_id": "osm:w1460763574",
@@ -197,7 +197,6 @@
   "description_ru": "Сфера диаметром 80 м — бывший павильон Казахстана на ЭКСПО-2017, ныне Музей энергии будущего. На этажах 2–8 — экспозиции об энергии космоса, солнца, ветра, биомассы, кинетической энергии и воды, наверху — смотровая площадка.",
   "description_en": "The 80 m sphere that was Kazakhstan's EXPO-2017 pavilion, now the Museum of Future Energy. Floors 2–8 cover space, solar, wind, biomass, kinetic and water energy, with an observation deck at the top.",
   "description_sources": [
-   "https://www.weproject.media/articles/detail/samaya-bolshaya-sfera-v-mire-i-krupneyshiy-muzey-vozobnovlyaemoy-energii-chto-nakhoditsya-vnutri-pav/",
    "https://tengrinews.kz/culture/nur-alem-simvol-molodoy-stolitsyi-414051/"
   ],
   "opening_hours": null,

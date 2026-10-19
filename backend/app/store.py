@@ -93,6 +93,8 @@ def apply_facts(pois: list[dict], facts: dict[str, dict]) -> None:
         if f.get("status") == "closed_permanently":
             p["closed_permanently"] = True  # a source says it closed: never recommended
             continue
+        if f.get("drop_website"):  # the domain is gone, parked or now someone else's (one served a casino)
+            p["website"] = None
         if f.get("description_ru") and p.get("description_source") != "wikipedia":
             p.update(description=f["description_ru"], description_en=f.get("description_en"), description_source="research",
                      description_kind="research", description_url=f["description_url"])

@@ -1,4 +1,53 @@
 {
+ "ov:cd3cdb1f-a539-4a": {
+  "checked": "2026-10-19",
+  "drop_website": true,
+  "website_problem": "domain now serves an online casino page"
+ },
+ "ov:174274f7-036b-40": {
+  "checked": "2026-10-19",
+  "drop_website": true,
+  "website_problem": "domain now belongs to an unrelated tailoring shop in Almaty"
+ },
+ "ov:c8cd3543-38ea-4f": {
+  "checked": "2026-10-19",
+  "drop_website": true,
+  "website_problem": "domain does not resolve"
+ },
+ "ov:aecc978c-6698-4c": {
+  "checked": "2026-10-19",
+  "drop_website": true,
+  "website_problem": "domain does not resolve"
+ },
+ "ov:8fc941dc-24fb-49": {
+  "checked": "2026-10-19",
+  "drop_website": true,
+  "website_problem": "domain does not resolve"
+ },
+ "ov:3bc63836-6697-4c": {
+  "checked": "2026-10-19",
+  "drop_website": true,
+  "website_problem": "domain does not resolve"
+ },
+ "osm:n5890511001": {
+  "checked": "2026-10-19",
+  "drop_website": true,
+  "website_problem": "domain does not resolve"
+ },
+ "ov:fedb39b3-74e2-4c": {
+  "checked": "2026-10-19",
+  "drop_website": true,
+  "website_problem": "hosting placeholder, no venue site"
+ },
+ "osm:w240873345": {
+  "checked": "2026-10-19",
+  "drop_website": true,
+  "website_problem": "domain does not resolve (reported to carry a casino title)",
+  "description_ru": "Дворец Независимости на проспекте Тәуелсіздік, 52 — трёхэтажное здание из стекла площадью около 40 тыс. м² для государственных мероприятий и конгрессов, с художественными экспозициями и залом истории Астаны.",
+  "description_en": "The Palace of Independence at 52 Tauelsizdik Avenue is a three-storey glass building of about 40,000 m² that hosts state events and congresses, with art exhibitions and a floor on Astana's history.",
+  "description_url": "https://ticketon.kz/en/place/dvorec-nezavisimosti",
+  "confidence": "medium"
+ },
  "osm:w230401645": {
   "description_ru": "Монумент-башня высотой 105 м (1996–2002), символ переноса столицы в Акмолу в 1997 году. В шаре диаметром 22 м — панорамный зал с позолоченным отпечатком ладони первого президента, в подземном уровне — кафе, аквариумы и фотогалерея.",
   "description_en": "A 105 m monument tower (built 1996–2002) marking the 1997 move of the capital to Akmola. Its 22 m sphere holds a panoramic hall with a gilded handprint of the first president; the underground level has a café, aquariums and a photo gallery.",
@@ -34,7 +83,7 @@
  "ov:f156787e-136d-40": {
   "description_ru": "Сфера диаметром 80 м — бывший павильон Казахстана на ЭКСПО-2017, ныне Музей энергии будущего. На этажах 2–8 — экспозиции об энергии космоса, солнца, ветра, биомассы, кинетической энергии и воды, наверху — смотровая площадка.",
   "description_en": "The 80 m sphere that was Kazakhstan's EXPO-2017 pavilion, now the Museum of Future Energy. Floors 2–8 cover space, solar, wind, biomass, kinetic and water energy, with an observation deck at the top.",
-  "description_url": "https://www.weproject.media/articles/detail/samaya-bolshaya-sfera-v-mire-i-krupneyshiy-muzey-vozobnovlyaemoy-energii-chto-nakhoditsya-vnutri-pav/",
+  "description_url": "https://tengrinews.kz/culture/nur-alem-simvol-molodoy-stolitsyi-414051/",
   "checked": "2026-10-19",
   "confidence": "medium"
  },
@@ -60,11 +109,11 @@
   "confidence": "high"
  },
  "osm:w1460537088": {
-  "description_ru": "Центральный концертный зал «Qazaqstan» — здание в форме лепестков цветка по проекту Манфреди Николетти, открытое в 2009 году; главный зал вмещает 3500 зрителей. Здесь работают «Қазақконцерт» и государственный театр Astana Musical.",
-  "description_en": "The Qazaqstan Central Concert Hall, a petal-shaped building by Manfredi Nicoletti opened in 2009, with a 3,500-seat main hall. It is home to the Qazaqconcert organisation and the state Astana Musical theatre.",
-  "description_url": "https://en.wikipedia.org/wiki/Kazakhstan_Central_Concert_Hall",
+  "description_ru": "Государственный театр мюзикла «Astana Musical», выступающий в Центральном концертном зале «Qazaqstan» (Казахконцерт) на проспекте Мангилик Ел, 10/1; в афише — мюзикл «Алдар Көсе».",
+  "description_en": "Astana Musical, a state musical theatre presented by Kazakhconcert at the QAZAQSTAN Central Concert Hall, Mangilik El Ave 10/1; its bill includes the musical 'Aldar Kose'.",
+  "description_url": "https://qazaqconcert.kz/",
   "checked": "2026-10-19",
-  "confidence": "high"
+  "confidence": "medium"
  },
  "osm:n10860197906": {
   "description_ru": "Скульптурная композиция, изображающая участников группы The Beatles, на пешеходном Арбате в районе Сарыарка; появилась летом 2018 года.",
@@ -158,9 +207,9 @@
   "confidence": "medium"
  },
  "osm:w917478479": {
-  "description_ru": "Государственный театр оперы и балета, открытый в 2013 году оперой «Биржан и Сара»; здание в неоклассическом стиле, главный зал рассчитан на 1250 зрителей.",
-  "description_en": "The state opera and ballet theatre, opened in 2013 with the opera Birzhan and Sara; a neoclassical building whose main hall seats 1,250.",
-  "description_url": "https://ru.wikipedia.org/wiki/Астана_Опера",
+  "description_ru": "Театр оперы и балета, открытый в 2013 году оперой «Биржан и Сара»; здание в неоклассическом стиле с казахскими мотивами. Большой зал на 1250 мест и камерный зал на 250 мест.",
+  "description_en": "Opera and ballet house opened in 2013 with the opera 'Birzhan and Sara', in a neoclassical building with Kazakh motifs. Main Hall seats 1,250 and the Chamber Hall 250.",
+  "description_url": "https://en.wikipedia.org/wiki/Astana_Opera",
   "checked": "2026-10-19",
   "confidence": "high"
  },
@@ -225,9 +274,9 @@
   "confidence": "high"
  },
  "osm:w30014040": {
-  "description_ru": "Профессиональный драматический театр «Жастар», основанный в 2007 году, занимает здание бывшего Дворца культуры железнодорожников. В репертуаре классика и современная драматургия на казахском и русском языках, а также спектакли для детей и молодёжи.",
-  "description_en": "Zhastar is a professional drama theatre founded in 2007, housed in the former Railway Workers' Palace of Culture. It stages classic and contemporary plays in Kazakh and Russian, plus productions for children and young audiences.",
-  "description_url": "https://astana.kz/en/events/places/144f8eff-e7b7-4ff0-a898-4fc06e46df39",
+  "description_ru": "Молодёжный театр «Жастар» — государственное коммунальное казённое предприятие акимата Астаны на улице Есенберлина, 10.",
+  "description_en": "Zhastar Youth Theatre, a municipal theatre of the Astana city akimat on Esenberlin Street 10.",
+  "description_url": "http://www.zhastar-theatre.kz/",
   "checked": "2026-10-19",
   "confidence": "medium"
  },
@@ -355,8 +404,8 @@
   "confidence": "medium"
  },
  "osm:w499328449": {
-  "description_ru": "Государственный балетный театр, созданный в 2012 году; собственное здание с залом на 783 места открылось в декабре 2016 года. В репертуаре мировая и казахская классика, а также современные хореографические постановки.",
-  "description_en": "A state ballet theatre founded in 2012; its own building with a 783-seat auditorium opened in December 2016. The repertoire mixes world and Kazakh classics with contemporary choreography.",
+  "description_ru": "Театр «Астана Балет» создан в 2012 году, первый спектакль прошёл в 2013-м; собственное здание открылось в декабре 2016 года. Зрительный зал на 783 места, репертуар — мировая и казахстанская классика и авторские постановки.",
+  "description_en": "Astana Ballet was founded in 2012 and gave its first performance in 2013; its own building opened in December 2016. The 783-seat hall hosts world and Kazakh classics and original choreography.",
   "description_url": "https://astanaballet.com/ru/pages/o-teatre",
   "features": {
    "wheelchair": "limited",
@@ -364,7 +413,7 @@
   },
   "features_url": "https://astanaballet.com/ru/pages/visit",
   "checked": "2026-10-19",
-  "confidence": "high"
+  "confidence": "medium"
  },
  "osm:w239954943": {
   "description_ru": "Кинотеатр в торгово-развлекательном комплексе «Арсенал» с четырьмя цифровыми залами (крупнейший — на 350 мест), показами в 3D и звуком DTS и Dolby Digital. В том же комплексе есть боулинг, бары и игровая зона.",
@@ -438,5 +487,232 @@
   "description_url": "https://sobor.kz/node/7152",
   "checked": "2026-10-19",
   "confidence": "high"
+ },
+ "ov:ad269a74-94c9-44": {
+  "description_ru": "Приватный VIP-кинотеатр на 2-м этаже Talan Gallery (Достык, 16): кресла-реклайнеры с наклоном до 180°, индивидуальная подсветка, столик и кнопка вызова официанта.",
+  "description_en": "Private VIP cinema on the 2nd floor of Talan Gallery (Dostyk 16) with fully reclining seats, individual lighting, a table and a waiter-call button at each seat.",
+  "description_url": "https://ticketon.kz/place/keruen-cinema",
+  "features": {
+   "power_outlets": true,
+   "free_entry": false
+  },
+  "features_url": "https://ticketon.kz/place/keruen-cinema",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n10168968308": {
+  "description_ru": "Центр семейного отдыха Ailand на шоссе Коргалжын, 2: океанариум, анимационный театр «Джунгли», экзотариум, колесо обозрения, парк аттракционов и амфитеатр «Айдуман».",
+  "description_en": "Ailand family entertainment centre at Korgalzhyn Highway 2 with an oceanarium, the 'Jungle' animatronic show, an exotarium, a Ferris wheel, an amusement park and the Aiduman amphitheatre.",
+  "description_url": "https://ailand.kz/",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n10064384673": {
+  "description_ru": "Итальянский ресторан сети Del Papa (группа ABR) на проспекте Кабанбай батыра, 34: классика итальянской кухни — завтраки, пицца, паста.",
+  "description_en": "Italian restaurant of the Del Papa chain (ABR group) at Kabanbay Batyr Ave 34, serving Italian classics including breakfasts, pizza and pasta.",
+  "description_url": "https://abr.kz/restaurant/del-papa",
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_url": "https://abr.kz/restaurant/del-papa",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:n4874140222": {
+  "description_ru": "Грузинский ресторан «Дареджани» группы ABR на проспекте Кабанбай батыра, 34: хачапури, хинкали, вино и другая грузинская классика в современной подаче.",
+  "description_en": "Daredzhani, a Georgian restaurant of the ABR group at Kabanbay Batyr Ave 34, serving khachapuri, khinkali, wine and other Georgian classics in a modern take.",
+  "description_url": "https://abr.kz/restaurant/daredzhani",
+  "opening_hours": "Mo-Su 09:00-24:00",
+  "hours_url": "https://abr.kz/restaurant/daredzhani",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:w1424109192": {
+  "description_ru": "Новый городской парк в квартале улиц Аль-Фараби, Керей и Жанибек хандар и Бухар жырау: пруд, памп-трек, детские и спортивные площадки, зимой — каток.",
+  "description_en": "A new city park bounded by Al-Farabi, Kerey and Zhanibek Khandar and Bukhar Zhyrau streets, with a pond, a pump track, playgrounds and sports courts that become an ice rink in winter.",
+  "description_url": "https://tengrinews.kz/kazakhstan_news/katok-prud-detskie-ploschadki-novoe-obschestvennoe-596961/",
+  "features": {
+   "kids_area": true
+  },
+  "features_url": "https://tengrinews.kz/kazakhstan_news/katok-prud-detskie-ploschadki-novoe-obschestvennoe-596961/",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:r16002498": {
+  "description_ru": "Парк на пересечении проспекта Б. Момышулы и улицы М. Жумабаева, заложен в 1998 году и открыт в 2008-м; около 10 тысяч деревьев и кустарников, игровые и спортивные площадки, пешеходные и велодорожки.",
+  "description_en": "A park at the corner of Momyshuly Avenue and Zhumabayev Street, planted from 1998 and officially opened in 2008, with about 10,000 trees and shrubs, playgrounds, sports grounds, and walking and cycling paths.",
+  "description_url": "https://ru.wikipedia.org/wiki/Парк_Жеруйык",
+  "features": {
+   "kids_area": true
+  },
+  "features_url": "https://ru.wikipedia.org/wiki/Парк_Жеруйык",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w1296051287": {
+  "description_ru": "Сад дружбы «Казахстан — Корея», открытый в 2017 году на средства правительства Республики Корея; в саду есть «Колокольня дружбы», зеркальный пруд, цветник и элементы традиционной корейской архитектуры.",
+  "description_en": "The Kazakhstan–Korea Friendship Garden opened in 2017 with funding from the Korean government. It has a Bell Tower of Friendship, a mirror pond, a flower garden and traditional Korean architecture.",
+  "description_url": "https://informburo.kz/novosti/koreya-podarila-astane-sad-s-prudom-v-znak-druzhby.html",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n4894937300": {
+  "description_ru": "Национальный музей Республики Казахстан на площади Независимости — крупнейший музей Центральной Азии; экспозиции охватывают историю от каменного века до наших дней, символ музея — «Золотой человек».",
+  "description_en": "The National Museum of Kazakhstan on Independence Square is the largest museum in Central Asia. Its collection covers history from the Stone Age to the present, and the Golden Man is its emblem.",
+  "description_url": "https://ticketon.kz/place/nacionalnyj-muzej-rk",
+  "features": {
+   "free_entry": false
+  },
+  "features_url": "https://ticketon.kz/place/nacionalnyj-muzej-rk",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:n4916363251": {
+  "description_ru": "Государственная академическая филармония имени Е. Рахмадиева на улице Кенесары, 32; ведёт историю с 1957 года, главный концертный зал рассчитан на 1600 мест.",
+  "description_en": "The E. Rakhmadiev State Academic Philharmonic at 32 Kenesary Street dates back to 1957. Its main concert hall seats 1,600.",
+  "description_url": "https://ticketon.kz/place/astana-filarmonia",
+  "features": {
+   "free_entry": false
+  },
+  "features_url": "https://ticketon.kz/place/astana-filarmonia",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w917348929": {
+  "description_ru": "Казахский национальный музыкально-драматический театр имени К. Куанышбаева открылся в 1991 году; новое здание на улице Куанышбаева, 8/1 построено в 2020 году, в 2024 году театру присвоен статус национального.",
+  "description_en": "The K. Kuanyshbayev Kazakh National Musical Drama Theatre opened in 1991. Its new building at 8/1 Kuanyshbayev Street was built in 2020, and it received national status in 2024.",
+  "description_url": "https://ticketon.kz/place/teatr-im-k-kuanyshbajeva-9565",
+  "features": {
+   "free_entry": false
+  },
+  "features_url": "https://ticketon.kz/place/teatr-im-k-kuanyshbajeva-9565",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n5126825313": {
+  "description_ru": "Астанинский цирк на проспекте Кабанбай батыра, 5 — здание в форме «летающей тарелки», строительство начато в 2001 году; главный зал вмещает 2000 зрителей.",
+  "description_en": "The Astana Circus at 5 Kabanbay Batyr Avenue is housed in a flying-saucer-shaped building begun in 2001. Its main arena seats 2,000.",
+  "description_url": "https://ticketon.kz/place/astaninskiy-cirk",
+  "features": {
+   "free_entry": false
+  },
+  "features_url": "https://ticketon.kz/place/astaninskiy-cirk",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n455447680": {
+  "description_ru": "Государственный академический русский театр драмы имени М. Горького на улице Желтоксан; ведёт историю с 1899 года, имя Горького носит с 1959 года, академический статус получил в 2012 году.",
+  "description_en": "The Gorky State Academic Russian Drama Theatre on Zheltoksan Street traces its history to 1899. It has carried Gorky's name since 1959 and received academic status in 2012.",
+  "description_url": "https://ticketon.kz/place/teatr-dramy-im-gorkogo-astana",
+  "features": {
+   "free_entry": false
+  },
+  "features_url": "https://ticketon.kz/place/teatr-dramy-im-gorkogo-astana",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n2349675581": {
+  "description_ru": "Астанинский театр кукол на проспекте Республики, 3; вход со стороны проспекта, рядом остановка «Микрорайон Самал».",
+  "description_en": "The Astana Puppet Theatre at 3 Respublika Avenue, entered from the avenue side near the Samal microdistrict bus stop.",
+  "description_url": "https://ticketon.kz/en/place/teatr-kukol-v-nur-sultane",
+  "features": {
+   "free_entry": false
+  },
+  "features_url": "https://ticketon.kz/en/place/teatr-kukol-v-nur-sultane",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w424923382": {
+  "description_ru": "С 2023 года на базе бывшей Библиотеки Первого Президента на ул. А. Бокейхана, 1а работает Президентский центр РК: архив, библиотека и музейные фонды, связанные с историей президентства.",
+  "description_en": "Since 2023 the former Library of the First President at 1a Bokeikhan Street has housed the Presidential Center of Kazakhstan, with archives, a library and museum collections on the history of the presidency.",
+  "description_url": "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya",
+  "features": {
+   "free_entry": true
+  },
+  "features_url": "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w166267459": {
+  "description_ru": "Ледовый дворец «Алау» на проспекте Кабанбай батыра, 47 открыт в 2011 году к Азиатским играм; 400-метровая конькобежная дорожка и 7462 места, проводятся соревнования, концерты и массовые катания.",
+  "description_en": "The Alau Ice Palace at 47 Kabanbay Batyr Avenue opened in 2011 for the Asian Winter Games. It has a 400 m speed-skating track and 7,462 seats, and hosts competitions, concerts and public skating.",
+  "description_url": "https://ticketon.kz/place/ledovyj-dvorec-alau",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w425276242": {
+  "description_ru": "Дворец единоборств имени Жаксылыка Ушкемпирова на проспекте Кабанбай батыра, 43 открыт 6 июля 2019 года; трансформируемая арена для бокса, дзюдо, борьбы, тхэквондо и гимнастики, есть фитнес-центр и бассейн.",
+  "description_en": "The Zhaksylyk Ushkempirov Martial Arts Palace at 43 Kabanbay Batyr Avenue opened on 6 July 2019. Its convertible arena hosts boxing, judo, wrestling, taekwondo and gymnastics, and it has a fitness centre and pool.",
+  "description_url": "https://www.jekpejek.kz/ru/about/",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w1460088071": {
+  "description_ru": "Легкоатлетический спортивный комплекс «Qazaqstan» на проспекте Туран, 59 построен в 2020 году; трибуны на 6838 мест, работают спортивные секции, фитнес-центр с бассейном, гостиница и ресторан.",
+  "description_en": "The Qazaqstan athletics complex at 59 Turan Avenue was built in 2020. Its stands seat 6,838, and it has sports sections, a fitness centre with a pool, a hotel and a restaurant.",
+  "description_url": "https://lask.kz/ru/about-complex/about-center/",
+  "opening_hours": "Mo-Su 07:00-23:00",
+  "hours_url": "https://lask.kz/ru/fitness-center-complex/grafik-raboty-fitnes-qazaqstan/",
+  "hours_note": "часы фитнес-центра (тренажёрный зал и бассейн); последний понедельник месяца — санитарный день",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:n4965336822": {
+  "description_ru": "Крупный торгово-развлекательный центр MEGA Silk Way на проспекте Кабанбай батыра, 62, рядом с территорией ЭКСПО.",
+  "description_en": "MEGA Silk Way is a large shopping and entertainment mall at 62 Kabanbay Batyr Avenue, next to the EXPO site.",
+  "description_url": "https://kazakhstan.travel/ru/attractions/450",
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://kazakhstan.travel/ru/attractions/450",
+  "hours_note": "часы торговой галереи; рестораны, кинотеатр и каток внутри могут работать по своему графику",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "osm:w916153715": {
+  "description_ru": "Банный комплекс в духе исландских геотермальных источников: русская и финская парные, хаммам, соляная сауна, купели с холодной водой, SPA, ресторан и бар.",
+  "description_en": "Bathhouse complex styled after Icelandic geothermal springs, with Russian and Finnish steam rooms, a hammam, a salt sauna, cold plunge pools, a spa, a restaurant and a bar.",
+  "description_url": "https://reyka.kz/",
+  "opening_hours": "Mo-Fr 10:00-01:00; Sa,Su 09:00-24:00",
+  "hours_url": "https://reyka.kz/",
+  "hours_note": "парные до 00:00; последний сеанс общего парения 23:30; кухня — последний заказ 22:30, бар — 23:30",
+  "features": {
+   "free_entry": false
+  },
+  "features_url": "https://reyka.kz/",
+  "checked": "2026-10-19",
+  "confidence": "high"
+ },
+ "osm:n5889815192": {
+  "description_ru": "Гриль-бар Chili Grill в центре Астаны на улице Желтоксан, 2Т; в меню итальянская, японская и европейская кухня.",
+  "description_en": "Chili Grill is a grill bar in central Astana at 2T Zheltoksan Street, serving Italian, Japanese and European dishes.",
+  "description_url": "https://ticketon.kz/place/bar-chili-grill",
+  "opening_hours": "Mo-Fr 17:00-02:00; Sa,Su 12:00-02:00",
+  "hours_url": "https://ticketon.kz/place/bar-chili-grill",
+  "hours_note": "вход со стороны улицы Бухарбай батыра",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "ov:e65c8a39-85d8-47": {
+  "description_ru": "Караоке в казахском национальном стиле на улице Достык, 4 (левый берег, у пересечения проспекта Туран и улицы Сыганак): общий зал до 90 гостей и много отдельных караоке-кабин.",
+  "description_en": "Karaoke venue in Kazakh national style at 4 Dostyk Street (left bank, near Turan Avenue and Syganak Street), with a shared hall for up to 90 guests and many private karaoke rooms.",
+  "description_url": "https://ariya-stepi.kz/",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "ov:f7553d17-04d8-47": {
+  "description_ru": "Отель Aisha Bibi на ул. Айша биби, 38 (район Нура) недалеко от Хан Шатыра и Байтерека; на 6-м этаже — панорамный ресторан CloudBar с террасой, есть SPA-центр AMARI с бассейном.",
+  "description_en": "Aisha Bibi hotel at 38 Aisha Bibi St (Nura district), near Khan Shatyr and Baiterek; its sixth-floor panoramic restaurant CloudBar has a terrace, and there is an AMARI spa with a pool.",
+  "description_url": "https://aisha-bibi.com/astana",
+  "features": {
+   "wifi": true,
+   "outdoor_seating": true
+  },
+  "features_url": "https://aisha-bibi.com/astana",
+  "checked": "2026-10-19",
+  "confidence": "medium"
+ },
+ "ov:a75bc1c1-1527-48": {
+  "description_ru": "Суши-ресторан сети Sushiman в Астане с доставкой: роллы, сеты, пицца, супы, горячие блюда, завтраки и десерты.",
+  "description_en": "Astana sushi restaurant of the Sushiman chain with delivery: rolls, sets, pizza, soups, hot dishes, breakfasts and desserts.",
+  "description_url": "https://sushiman.kz/",
+  "checked": "2026-10-19",
+  "confidence": "medium"
  }
 }

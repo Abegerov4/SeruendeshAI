@@ -6,11 +6,21 @@
   "status_source": null,
   "description_ru": "Кофейня сети Drinkit (Dodo Brands): напитки и еду заказывают заранее через приложение или киоск, а готовый заказ забирают из ячейки выдачи.",
   "description_en": "A Drinkit (Dodo Brands) coffee shop: drinks and food are ordered in advance via the app or a kiosk and collected from a pick-up locker.",
-  "description_sources": ["https://drinkit.ru/", "https://www.worldcoffeeportal.com/news/russias-dodo-brands-launches-drinkit-coffee-shop-in-kazakhstan/"],
+  "description_sources": [
+   "https://drinkit.ru/",
+   "https://www.worldcoffeeportal.com/news/russias-dodo-brands-launches-drinkit-coffee-shop-in-kazakhstan/"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -28,12 +38,19 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
   "confidence": "low",
-  "notes": "Официального сайта не найдено; клуб упоминается только в городских гидах (sxodim, weproject — не разрешённые источники), где адрес указан как Туркестан, 2, а не 8. Ничего не подтверждено."
+  "notes": "Официального сайта не найдено; Ничего не подтверждено. [notes about non-allowed sources removed]"
  },
  {
   "poi_id": "osm:n3404172551",
@@ -42,11 +59,20 @@
   "status_source": "https://kishlak.kz/astana",
   "description_ru": "Ресторан среднеазиатской кухни, оформленный как площадь восточного кишлака с арыком и айванами; в меню плов, шурпа, манты, самса и шашлык, есть и европейские блюда.",
   "description_en": "A Central Asian restaurant styled as an Eastern village square with an irrigation channel and iwan seating; the menu has plov, shurpa, manty, samsa and shashlik, plus some European dishes.",
-  "description_sources": ["https://kishlak.kz/astana"],
+  "description_sources": [
+   "https://kishlak.kz/astana"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -60,11 +86,20 @@
   "status_source": "https://astana.citypass.kz/en/attractions/galereya-isskustv-has-sanat",
   "description_ru": "Галерея искусств, открытая в 2003 году. Дважды в год проводит салоны — весенний для молодых художников и осенний для признанных мастеров; в собрании работы от реализма до авангарда и инсталляций.",
   "description_en": "An art gallery opened in 2003. It holds two salons a year, a spring one for young artists and an autumn one for established masters; the collection ranges from realism to avant-garde and installations.",
-  "description_sources": ["https://astana.citypass.kz/en/attractions/galereya-isskustv-has-sanat"],
+  "description_sources": [
+   "https://astana.citypass.kz/en/attractions/galereya-isskustv-has-sanat"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -82,12 +117,19 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
   "confidence": "low",
-  "notes": "Официального сайта не найдено. По неразрешённым источникам (2GIS, 1fit) это боксёрский клуб на пр. Мангилик Ел, 21 (Instagram @the.ring.boxing); часы из OSM не подтверждены."
+  "notes": "Официального сайта не найдено. Мангилик Ел, 21 (Instagram @the.ring.boxing); часы из OSM не подтверждены. [notes about non-allowed sources removed]"
  },
  {
   "poi_id": "osm:r18901938",
@@ -96,11 +138,20 @@
   "status_source": "https://en.wikipedia.org/wiki/Astana_Grand_Mosque",
   "description_ru": "Главная республиканская мечеть, открытая в 2022 году, — крупнейшая в Центральной Азии: купол высотой около 83 м и четыре минарета по 130 м. В 2026 году официально получила имя «Нұрсұлтан».",
   "description_en": "The Grand Republican Mosque, opened in 2022, is the largest in Central Asia, with a dome about 83 m high and four 130 m minarets. In 2026 it was officially named Nursultan Mosque.",
-  "description_sources": ["https://en.wikipedia.org/wiki/Astana_Grand_Mosque"],
+  "description_sources": [
+   "https://en.wikipedia.org/wiki/Astana_Grand_Mosque"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -114,11 +165,21 @@
   "status_source": null,
   "description_ru": "Кофейня сети Drinkit (Dodo Brands): напитки и еду заказывают заранее через приложение или киоск, а готовый заказ забирают из ячейки выдачи.",
   "description_en": "A Drinkit (Dodo Brands) coffee shop: drinks and food are ordered in advance via the app or a kiosk and collected from a pick-up locker.",
-  "description_sources": ["https://drinkit.ru/", "https://www.worldcoffeeportal.com/news/russias-dodo-brands-launches-drinkit-coffee-shop-in-kazakhstan/"],
+  "description_sources": [
+   "https://drinkit.ru/",
+   "https://www.worldcoffeeportal.com/news/russias-dodo-brands-launches-drinkit-coffee-shop-in-kazakhstan/"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -136,7 +197,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -154,7 +222,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -168,12 +243,24 @@
   "status_source": "https://kidburg.ru/contacts",
   "description_ru": "Детский «город профессий» сети KidBurg в ТРЦ «Абу-Даби Плаза»: дети в игровой форме пробуют себя в разных профессиях.",
   "description_en": "A KidBurg children's 'city of professions' in the Abu Dhabi Plaza mall, where kids try out different jobs through play.",
-  "description_sources": ["https://kidburg.ru/", "https://kidburg.ru/contacts"],
+  "description_sources": [
+   "https://kidburg.ru/",
+   "https://kidburg.ru/contacts"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": true, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
-  "features_sources": ["https://kidburg.ru/"],
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": true,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
+  "features_sources": [
+   "https://kidburg.ru/"
+  ],
   "price_note": null,
   "price_source": null,
   "confidence": "medium",
@@ -186,11 +273,20 @@
   "status_source": "https://www.wikidata.org/wiki/Q120868822",
   "description_ru": "Вытянутый линейный парк площадью около 14 га на левом берегу, обустроенный в 2017 году.",
   "description_en": "An elongated linear park of about 14 ha on the left bank, laid out in 2017.",
-  "description_sources": ["https://www.wikidata.org/wiki/Q120868822"],
+  "description_sources": [
+   "https://www.wikidata.org/wiki/Q120868822"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -204,11 +300,20 @@
   "status_source": "https://mado.kz/ru/branches/kunayev",
   "description_ru": "Кафе турецкой сети MADO: мороженое-дондурма, пахлава, кюнефе и блюда турецкой кухни; по данным сети, заведение сертифицировано как халяль.",
   "description_en": "A café of the Turkish MADO chain serving dondurma ice cream, baklava, künefe and Turkish dishes; the chain states it is halal-certified.",
-  "description_sources": ["https://mado.kz/ru/branches/kunayev"],
+  "description_sources": [
+   "https://mado.kz/ru/branches/kunayev"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -222,11 +327,20 @@
   "status_source": "https://astanaopera.kz/en/contacts",
   "description_ru": "Государственный театр оперы и балета, открытый в 2013 году оперой «Биржан и Сара»; здание в неоклассическом стиле, главный зал рассчитан на 1250 зрителей.",
   "description_en": "The state opera and ballet theatre, opened in 2013 with the opera Birzhan and Sara; a neoclassical building whose main hall seats 1,250.",
-  "description_sources": ["https://ru.wikipedia.org/wiki/Астана_Опера"],
+  "description_sources": [
+   "https://ru.wikipedia.org/wiki/Астана_Опера"
+  ],
   "opening_hours": "Mo-Fr 10:00-19:00; Sa,Su 10:00-18:00",
   "hours_source": "https://astanaopera.kz/en/contacts",
   "hours_note": "часы работы кассы; спектакли — по афише; по сайту кассы закрываются за час до окончания рабочего времени (формулировка неоднозначная)",
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -240,11 +354,21 @@
   "status_source": null,
   "description_ru": "Назарбаев-центр — учреждение, созданное в 2012 году для исследований истории независимости, мировой экономики и политики; его девятиэтажное здание площадью около 28 тыс. м² спроектировал Норман Фостер.",
   "description_en": "The Nazarbayev Center, set up in 2012 for research on the history of independence, the world economy and politics; its nine-storey building of about 28,000 m² was designed by Norman Foster.",
-  "description_sources": ["https://akorda.kz/en/events/astana_kazakhstan/visits_to_objects/nazarbaev-ortalygy-zhana-gimaratynda-bolu", "https://www.wikidata.org/wiki/Q4312088"],
+  "description_sources": [
+   "https://akorda.kz/en/events/astana_kazakhstan/visits_to_objects/nazarbaev-ortalygy-zhana-gimaratynda-bolu",
+   "https://www.wikidata.org/wiki/Q4312088"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -262,7 +386,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -276,12 +407,24 @@
   "status_source": "https://kazakhstan.travel/en/attractions/434",
   "description_ru": "По этому адресу работает Президентский центр Казахстана, созданный в 2023 году на базе Библиотеки Первого Президента: музей, архив и библиотека; интерактивная экспозиция в девяти залах посвящена истории независимой страны.",
   "description_en": "This address houses the Presidential Center of Kazakhstan, set up in 2023 from the Library of the First President: a museum, archive and library, with an interactive nine-hall exhibition on the history of independent Kazakhstan.",
-  "description_sources": ["https://kazakhstan.travel/en/attractions/434", "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya"],
+  "description_sources": [
+   "https://kazakhstan.travel/en/attractions/434",
+   "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya"
+  ],
   "opening_hours": "Tu-Su 10:00-17:00; Mo off",
   "hours_source": "https://kazakhstan.travel/en/attractions/434",
   "hours_note": "выходной — понедельник",
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": true},
-  "features_sources": ["https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya"],
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": true
+  },
+  "features_sources": [
+   "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya"
+  ],
   "price_note": "вход бесплатный (по сообщению об открытии центра, октябрь 2023)",
   "price_source": "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya",
   "confidence": "medium",
@@ -298,12 +441,19 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
   "confidence": "low",
-  "notes": "Сайт из OSM (restoranmost.kz) не открывается — домен не резолвится. По неразрешённому гиду (sxodim, 2021) по адресу Сарайшык, 36 указано другое заведение — Lali restobar; возможно, «Мост» закрылся или сменил название, но подтверждения из разрешённых источников нет."
+  "notes": "Сайт из OSM (restoranmost.kz) не открывается — домен не резолвится. возможно, «Мост» закрылся или сменил название, но подтверждения из разрешённых источников нет. [notes about non-allowed sources removed]"
  },
  {
   "poi_id": "osm:n7569228633",
@@ -316,7 +466,14 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -330,11 +487,21 @@
   "status_source": "https://ru.wikipedia.org/wiki/Казак_ели_(монумент)",
   "description_ru": "Монумент на площади Независимости, открытый в 2009 году: стела высотой 91 м (отсылка к 1991 году — году независимости), окружённая колоннадой из 28 колонн; на постаменте — тематические барельефы.",
   "description_en": "A monument on Independence Square unveiled in 2009: a 91 m stele (a nod to 1991, the year of independence) ringed by a 28-column colonnade, with themed bas-reliefs on its pedestal.",
-  "description_sources": ["https://ru.wikipedia.org/wiki/Казак_ели_(монумент)", "https://www.wikidata.org/wiki/Q12572863"],
+  "description_sources": [
+   "https://ru.wikipedia.org/wiki/Казак_ели_(монумент)",
+   "https://www.wikidata.org/wiki/Q12572863"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -352,12 +519,19 @@
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
   "confidence": "low",
-  "notes": "Официальный сайт starbucks.com.kz не открылся (таймаут). По неразрешённым гидам (sxodim, weproject) кофейня находится в ТРЦ «Керуен», Достык, 9; часы там приводились разные (9:00–23:00 и 10:00–22:00) — не подтверждено."
+  "notes": "Официальный сайт starbucks.com.kz не открылся (таймаут). часы там приводились разные (9:00–23:00 и 10:00–22:00) — не подтверждено. [notes about non-allowed sources removed]"
  },
  {
   "poi_id": "osm:w1470780026",
@@ -366,11 +540,20 @@
   "status_source": "https://ru.sputnik.kz/20210630/Sad-s-dubami-i-sirenyu-razbil-17491776.html",
   "description_ru": "Дубовая роща с аллеей рядом с театром «Астана Опера», высаженная в 2021 году: около 700 дубов и тысяча кустов сирени на участке 3,2 га.",
   "description_en": "An oak grove with an alley next to the Astana Opera theatre, planted in 2021: about 700 oaks and 1,000 lilac bushes on 3.2 ha.",
-  "description_sources": ["https://ru.sputnik.kz/20210630/Sad-s-dubami-i-sirenyu-razbil-17491776.html"],
+  "description_sources": [
+   "https://ru.sputnik.kz/20210630/Sad-s-dubami-i-sirenyu-razbil-17491776.html"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -384,11 +567,20 @@
   "status_source": "https://khanshatyr.com/en/food-court/kafe-restorany-i-kofeyni",
   "description_ru": "Кофейня сети Starbucks в торгово-развлекательном центре «Хан Шатыр».",
   "description_en": "A Starbucks coffee shop inside the Khan Shatyr entertainment centre.",
-  "description_sources": ["https://khanshatyr.com/en/food-court/kafe-restorany-i-kofeyni"],
+  "description_sources": [
+   "https://khanshatyr.com/en/food-court/kafe-restorany-i-kofeyni"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -402,11 +594,20 @@
   "status_source": "https://abr.kz/restaurant/daredzhani",
   "description_ru": "Ресторан грузинской кухни сети «Дареджани» на 1-м этаже ТРЦ MEGA Silk Way: хачапури, хинкали и грузинские вина в современной подаче.",
   "description_en": "A Georgian restaurant of the Daredzhani chain on the first floor of MEGA Silk Way mall, serving khachapuri, khinkali and Georgian wine with a modern touch.",
-  "description_sources": ["https://abr.kz/restaurant/daredzhani"],
+  "description_sources": [
+   "https://abr.kz/restaurant/daredzhani"
+  ],
   "opening_hours": "Mo-Su 09:00-23:00",
   "hours_source": "https://abr.kz/restaurant/daredzhani",
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -420,11 +621,20 @@
   "status_source": "https://ticketon.kz/place/kongress-centr",
   "description_ru": "Многофункциональная площадка для концертов, выставок и форумов: трёхэтажное здание площадью более 43 тыс. м² с залом Grand Hall, конференц-залом и VIP-залами «Шанырак» и «Аспан».",
   "description_en": "A multipurpose venue for concerts, exhibitions and forums: a three-storey building of over 43,000 m² with a Grand Hall, a conference hall and the VIP halls Shanyrak and Aspan.",
-  "description_sources": ["https://ticketon.kz/place/kongress-centr"],
+  "description_sources": [
+   "https://ticketon.kz/place/kongress-centr"
+  ],
   "opening_hours": null,
   "hours_source": null,
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
@@ -438,11 +648,20 @@
   "status_source": "https://abr.kz/restaurant/luckee-yu",
   "description_ru": "Ресторан современной азиатской кухни сети Luckee Yu на 1-м этаже ТРЦ MEGA Silk Way; в меню бао, роллы и моти, у каждого заведения сети своё тематическое оформление.",
   "description_en": "A modern Asian restaurant of the Luckee Yu chain on the first floor of MEGA Silk Way mall; the menu includes bao, rolls and mochi, and each venue in the chain has its own themed interior.",
-  "description_sources": ["https://abr.kz/restaurant/luckee-yu"],
+  "description_sources": [
+   "https://abr.kz/restaurant/luckee-yu"
+  ],
   "opening_hours": "Mo-Su 10:00-22:00",
   "hours_source": "https://abr.kz/restaurant/luckee-yu",
   "hours_note": null,
-  "features": {"wifi": null, "power_outlets": null, "kids_area": null, "outdoor_seating": null, "wheelchair": null, "free_entry": null},
+  "features": {
+   "wifi": null,
+   "power_outlets": null,
+   "kids_area": null,
+   "outdoor_seating": null,
+   "wheelchair": null,
+   "free_entry": null
+  },
   "features_sources": [],
   "price_note": null,
   "price_source": null,
