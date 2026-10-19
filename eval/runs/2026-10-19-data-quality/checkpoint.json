@@ -1,0 +1,7 @@
+{
+  "baseline_data_sha256": "1f815df354ad990d902d76c8676a91013f2d8288a7330e8c3b75a2666db29b74",
+  "reviewed_golden_sha256": "aa146a675a7ba6f09959f5c12fc8e6723c0424efd8938d9039c5558074c98c8b",
+  "phase": "baseline_frozen_before_enrichment",
+  "mode": "bm25",
+  "provider_calls": 0
+}

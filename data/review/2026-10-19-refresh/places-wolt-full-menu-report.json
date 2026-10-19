@@ -1,0 +1,509 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-10-19",
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "bound_branches_requested": 31,
+  "branches_complete": 31,
+  "accepted_menu_items": 3576,
+  "unknown_full_prices": 309,
+  "roles": {
+    "unknown": 1902,
+    "meal": 717,
+    "drink": 725,
+    "dessert": 144,
+    "side": 88
+  },
+  "failed_or_unbound_branches": [],
+  "branch_reviews": [
+    {
+      "canonical_id": "osm:node/10211901020",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/tanuki-nur-sultan",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/b3ae7782a990ebd6f3c574122e399bc52e692d6a88c66e04abd9d86528c49e9a-592e29c4108c2509ced071f0bf0348c52c720f4e9f55df6e67db8d4e0b56aee4.body",
+      "raw_sha256": "592e29c4108c2509ced071f0bf0348c52c720f4e9f55df6e67db8d4e0b56aee4",
+      "assortment_loading_strategy": "full",
+      "structured_items": 227,
+      "visible_unique_cards": 227,
+      "accepted_menu_items": 227,
+      "unknown_full_prices": 0,
+      "held_items": []
+    },
+    {
+      "canonical_id": "osm:node/10248180510",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/delishnsu",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/de1423f45b3d84b324d74bc7a1bd7757d52cc2e3a8a9a04e0c16c54b15cd2c3b-e07e15a9d61f0f692b72b93bbd6f5db5d1aa68482cd0b8a674fce22ca008e459.body",
+      "raw_sha256": "e07e15a9d61f0f692b72b93bbd6f5db5d1aa68482cd0b8a674fce22ca008e459",
+      "assortment_loading_strategy": "full",
+      "structured_items": 200,
+      "visible_unique_cards": 200,
+      "accepted_menu_items": 200,
+      "unknown_full_prices": 0,
+      "held_items": []
+    },
+    {
+      "canonical_id": "osm:node/10861996205",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/veggie-house-green-mall",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/7ea2a2e4fdc43ab7646d4b489667262ac31f92fca342cd3c4b3af1e22a579a6b-8dd51045afdbb8c52a9e2017f41cdd51aedd9b4883cf3cb4709bbfcf9d7b3204.body",
+      "raw_sha256": "8dd51045afdbb8c52a9e2017f41cdd51aedd9b4883cf3cb4709bbfcf9d7b3204",
+      "assortment_loading_strategy": "full",
+      "structured_items": 157,
+      "visible_unique_cards": 156,
+      "accepted_menu_items": 156,
+      "unknown_full_prices": 0,
+      "held_items": [
+        {
+          "id": "3c1a588bd8cbea43737c8a3b",
+          "name": "Столовые приборы",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "osm:node/11290690869",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/tlp-coffee",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/606091452792b8223abcd246191bfe55e8bcf307f6b2deaf47c8816e6ac90c2f-43d391af5e5cd48f798c6a32842892b5fe6a9eae406cc8b916454d70551bf6e6.body",
+      "raw_sha256": "43d391af5e5cd48f798c6a32842892b5fe6a9eae406cc8b916454d70551bf6e6",
+      "assortment_loading_strategy": "full",
+      "structured_items": 45,
+      "visible_unique_cards": 45,
+      "accepted_menu_items": 45,
+      "unknown_full_prices": 5,
+      "held_items": []
+    },
+    {
+      "canonical_id": "osm:node/11898122971",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/turandot-kerey-zhanibek",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/4ee8c3a6551220413778d62cdd88f294dac043e343a62ede1b6fbda553c97426-a66df9cb899c51fa7a91858a7bbdf16dc9ce54a0c8e36d4e5208da0913da7a03.body",
+      "raw_sha256": "a66df9cb899c51fa7a91858a7bbdf16dc9ce54a0c8e36d4e5208da0913da7a03",
+      "assortment_loading_strategy": "full",
+      "structured_items": 129,
+      "visible_unique_cards": 129,
+      "accepted_menu_items": 129,
+      "unknown_full_prices": 0,
+      "held_items": []
+    },
+    {
+      "canonical_id": "osm:node/12093489321",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/daredzhani-mega-silk-way",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/e5b7013505d1adafca560387025e89b53e7e9d036245a5d66c37fa807770b453-8cb73095cb2b46b313808c04fc1c1393941bc28130e305b4cd398aa50bbd7582.body",
+      "raw_sha256": "8cb73095cb2b46b313808c04fc1c1393941bc28130e305b4cd398aa50bbd7582",
+      "assortment_loading_strategy": "full",
+      "structured_items": 77,
+      "visible_unique_cards": 77,
+      "accepted_menu_items": 77,
+      "unknown_full_prices": 0,
+      "held_items": []
+    },
+    {
+      "canonical_id": "osm:node/12990081501",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/discovery-coffee-mangilik-el",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/a99d92a2026f719d33e2b92c9633f8b925a9ae971e431c8e4ffa55a61ae03b23-3175c9d24572f136f928c1ed00149d00539b3d816484a452e6926a058ae12daa.body",
+      "raw_sha256": "3175c9d24572f136f928c1ed00149d00539b3d816484a452e6926a058ae12daa",
+      "assortment_loading_strategy": "full",
+      "structured_items": 56,
+      "visible_unique_cards": 55,
+      "accepted_menu_items": 55,
+      "unknown_full_prices": 7,
+      "held_items": [
+        {
+          "id": "62832eed7a78cad76a0167fc",
+          "name": "Добавить приборы",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "osm:node/13397061028",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/coco-mega-silk-way12",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/71d31d7ebb7728be19b7afa9e61388511d4c80f79df2223e2505d87729c9b303-90a890d1f244df090fce0bbc896841b3e4b5cf40cc544dbbb066c5295dfaaa7d.body",
+      "raw_sha256": "90a890d1f244df090fce0bbc896841b3e4b5cf40cc544dbbb066c5295dfaaa7d",
+      "assortment_loading_strategy": "full",
+      "structured_items": 64,
+      "visible_unique_cards": 64,
+      "accepted_menu_items": 64,
+      "unknown_full_prices": 18,
+      "held_items": []
+    },
+    {
+      "canonical_id": "osm:node/13681674667",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/leto-cafe-mangilik-el",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/f132a6babadb4ee1275105a81456573ee924b613e2a77b0565bf3c54255397ff-73dfaba818c51ae75ce2df7a82ad9245a2a075befa1f733586f1773570360364.body",
+      "raw_sha256": "73dfaba818c51ae75ce2df7a82ad9245a2a075befa1f733586f1773570360364",
+      "assortment_loading_strategy": "full",
+      "structured_items": 103,
+      "visible_unique_cards": 102,
+      "accepted_menu_items": 102,
+      "unknown_full_prices": 0,
+      "held_items": [
+        {
+          "id": "93b077f6dbe2df3d33141e26",
+          "name": "Добавить приборы",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "osm:node/14089471172",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/qaganat-dostyk-ast",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/0979c3354c5162f70f15e595c5e7c58d3dd12c89c651e738aea7eec7ac358af1-1cbb9347641756389a02aac3594a1c91c0aaa946bbf854448c0fdea6ee4d6d46.body",
+      "raw_sha256": "1cbb9347641756389a02aac3594a1c91c0aaa946bbf854448c0fdea6ee4d6d46",
+      "assortment_loading_strategy": "full",
+      "structured_items": 115,
+      "visible_unique_cards": 115,
+      "accepted_menu_items": 115,
+      "unknown_full_prices": 0,
+      "held_items": []
+    },
+    {
+      "canonical_id": "osm:node/14104582301",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/noble-cafe",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/bdc362b28604edc7264baa464fdcf45421ad43d26b1c481e9e867b0ed3a57c7c-033988886ebbb163f501cf44d6cad79164d7baba295784fcf247df014270065a.body",
+      "raw_sha256": "033988886ebbb163f501cf44d6cad79164d7baba295784fcf247df014270065a",
+      "assortment_loading_strategy": "full",
+      "structured_items": 58,
+      "visible_unique_cards": 57,
+      "accepted_menu_items": 57,
+      "unknown_full_prices": 0,
+      "held_items": [
+        {
+          "id": "a75aea7bb0383a7e822bdc63",
+          "name": "Добавить приборы",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "osm:node/6680302780",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/butchers-street-mangilik-el",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/a7c1daa20c797a12f41c022c306e4891ffa00ed89422817fb1686d4905b0fd69-7211081ac445a136211e386a0eec8ca726fa5c91fd42c1cc52ac623b583f5a08.body",
+      "raw_sha256": "7211081ac445a136211e386a0eec8ca726fa5c91fd42c1cc52ac623b583f5a08",
+      "assortment_loading_strategy": "full",
+      "structured_items": 48,
+      "visible_unique_cards": 47,
+      "accepted_menu_items": 47,
+      "unknown_full_prices": 16,
+      "held_items": [
+        {
+          "id": "5de7cffa3193e08f8e397f4d",
+          "name": "Сколько приборов положить?",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "osm:node/9490539961",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/farsh-burger-mega-silk-way",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/af9f740c2da5841bd2fc27f2e972ae8fa369e51fef81e90f69b478940fc6a53b-3db99d99c7649e7f79a318173e506b09917e8528d2987dfbdfd96580fba5f7a4.body",
+      "raw_sha256": "3db99d99c7649e7f79a318173e506b09917e8528d2987dfbdfd96580fba5f7a4",
+      "assortment_loading_strategy": "full",
+      "structured_items": 59,
+      "visible_unique_cards": 59,
+      "accepted_menu_items": 59,
+      "unknown_full_prices": 3,
+      "held_items": []
+    },
+    {
+      "canonical_id": "overture:00442c70-6f40-40c8-96c1-d1233e6362a1",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/ocean-basket-mega-silk-way",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/0dbc2757801546a5f17808f78fb6713bc00938a29092d03c6dd75231265ddd88-f4e7a195153d2d1cc36802d1aa606d0a63f0a669e208f4e9a127502af6bc1b00.body",
+      "raw_sha256": "f4e7a195153d2d1cc36802d1aa606d0a63f0a669e208f4e9a127502af6bc1b00",
+      "assortment_loading_strategy": "full",
+      "structured_items": 125,
+      "visible_unique_cards": 124,
+      "accepted_menu_items": 124,
+      "unknown_full_prices": 33,
+      "held_items": [
+        {
+          "id": "493bfca4efca8f51bb22125f",
+          "name": "Сколько приборов положить?",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "overture:110cdef1-c975-47af-958e-bc74d2b25473",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/friends-breakfast",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/a75abaa87225503be1164d3481e8e13b7b89418a80bc57e3282674589702e62d-8cd8089a060fc8202733a1c7312e2b531ba577efa8a66885b354bb3e76678da8.body",
+      "raw_sha256": "8cd8089a060fc8202733a1c7312e2b531ba577efa8a66885b354bb3e76678da8",
+      "assortment_loading_strategy": "full",
+      "structured_items": 102,
+      "visible_unique_cards": 101,
+      "accepted_menu_items": 101,
+      "unknown_full_prices": 17,
+      "held_items": [
+        {
+          "id": "5e7a0f70973504b594955ca0",
+          "name": "Сколько приборов положить?",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "overture:17c01d0f-b2ba-4b19-bc52-00162d5daaca",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/wallstreet-restaurantbar",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/d5109ad53a11975e36030cb4ba0e93a43ddf35789b7776540b3621390b33dff4-58177a018da37853f2ddd72614916fb61f6902ff0d119df73cecf2cac69ca7e0.body",
+      "raw_sha256": "58177a018da37853f2ddd72614916fb61f6902ff0d119df73cecf2cac69ca7e0",
+      "assortment_loading_strategy": "full",
+      "structured_items": 97,
+      "visible_unique_cards": 97,
+      "accepted_menu_items": 97,
+      "unknown_full_prices": 18,
+      "held_items": []
+    },
+    {
+      "canonical_id": "overture:19a2719f-3e04-43e1-a045-77ebcaf6bd6c",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/home-macaron",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/6b140933f3a57cf44fa9bb904accf811511a1197fc3ce8330fac99520ea4588e-f60f0857b7618f44618673aab5e28ce0f6e8d375c714c9878482edcd83eb6aab.body",
+      "raw_sha256": "f60f0857b7618f44618673aab5e28ce0f6e8d375c714c9878482edcd83eb6aab",
+      "assortment_loading_strategy": "full",
+      "structured_items": 74,
+      "visible_unique_cards": 74,
+      "accepted_menu_items": 74,
+      "unknown_full_prices": 9,
+      "held_items": []
+    },
+    {
+      "canonical_id": "overture:22ad98d6-faf7-4c60-b761-82371ea7424d",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/koktem",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/4b1e738bcebb9b8af8bd8594924b43c1b0f8f2f2f673e688281c37752ef5483b-f065e8a9e7e5a300bf0dac401132263fc1f59db2e179a3abaf84ea241607f02f.body",
+      "raw_sha256": "f065e8a9e7e5a300bf0dac401132263fc1f59db2e179a3abaf84ea241607f02f",
+      "assortment_loading_strategy": "full",
+      "structured_items": 154,
+      "visible_unique_cards": 154,
+      "accepted_menu_items": 154,
+      "unknown_full_prices": 18,
+      "held_items": []
+    },
+    {
+      "canonical_id": "overture:28829958-7ed6-453d-86d4-9c09d890775e",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/doner-20",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/bdf83bb0553fbd6a6a7f2ea52ee8469514daf0f527dba2c987138b8d23ad7d02-e9559b587af19be26de2f29c20659865426547e18c9d3bc644e6ba9dfc4438f9.body",
+      "raw_sha256": "e9559b587af19be26de2f29c20659865426547e18c9d3bc644e6ba9dfc4438f9",
+      "assortment_loading_strategy": "full",
+      "structured_items": 68,
+      "visible_unique_cards": 67,
+      "accepted_menu_items": 67,
+      "unknown_full_prices": 0,
+      "held_items": [
+        {
+          "id": "e7b8666299a280c6fd13d260",
+          "name": "Столовые приборы",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/rumi-megasilkway",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/55bf2e6a86e70277ab4527b99b4c5be33c173af2af7743b4b5065f110dfa4881-80ac6bb5a81b6218a4380c03df1f745a76c00d545a15ff99389e35893201e728.body",
+      "raw_sha256": "80ac6bb5a81b6218a4380c03df1f745a76c00d545a15ff99389e35893201e728",
+      "assortment_loading_strategy": "full",
+      "structured_items": 65,
+      "visible_unique_cards": 64,
+      "accepted_menu_items": 64,
+      "unknown_full_prices": 0,
+      "held_items": [
+        {
+          "id": "6e7a1efe6c7a0dde99794156",
+          "name": "Столовые приборы",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "overture:3dc1ffcd-bab2-4735-bf5e-e2a7c614a292",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/saladbar",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/6b38d4bbfbaecddfca80990dadaedb05071b86fa7fe6d36889be50763b593fab-a6182259fab69432d98d658a0dc2962b2b0ea73fe477bd0f9e5664babb2d8d7c.body",
+      "raw_sha256": "a6182259fab69432d98d658a0dc2962b2b0ea73fe477bd0f9e5664babb2d8d7c",
+      "assortment_loading_strategy": "full",
+      "structured_items": 22,
+      "visible_unique_cards": 21,
+      "accepted_menu_items": 21,
+      "unknown_full_prices": 9,
+      "held_items": [
+        {
+          "id": "5f6c75945984e0e2cca0988b",
+          "name": "Сколько приборов положить?",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "overture:59cea02e-7e38-4fb2-ad1c-ff9b1bd3c5d6",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/meatbeer",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/0b9106779c91196c130d7efbd323720dbf19a6c44d2eff3c3d7e9dba4ba8ce40-93cbe476341639f59aaaf28a5ed15d84b40e1055b5eaf320803bdd248b2fe9c7.body",
+      "raw_sha256": "93cbe476341639f59aaaf28a5ed15d84b40e1055b5eaf320803bdd248b2fe9c7",
+      "assortment_loading_strategy": "full",
+      "structured_items": 157,
+      "visible_unique_cards": 157,
+      "accepted_menu_items": 157,
+      "unknown_full_prices": 0,
+      "held_items": []
+    },
+    {
+      "canonical_id": "overture:5a97a4a2-0118-4f8e-9ad6-9557bcb16665",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/hardees-expo-mall-01",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/b174960806562008600d8ca11630619946cbd1a878f68f8ca99bc9f43b706874-b03c683f6eef70bba70c02f754279263f0b68e4ed3e5b871f81ff2dea56c24a3.body",
+      "raw_sha256": "b03c683f6eef70bba70c02f754279263f0b68e4ed3e5b871f81ff2dea56c24a3",
+      "assortment_loading_strategy": "full",
+      "structured_items": 123,
+      "visible_unique_cards": 123,
+      "accepted_menu_items": 123,
+      "unknown_full_prices": 56,
+      "held_items": []
+    },
+    {
+      "canonical_id": "overture:60482543-0503-4b83-a5a0-9e7e0afd4979",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/hardees-sauran",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/f1ef0da858c53bcd613c26c75e73a23c8eebd7ffc2439c4e109ae82b715c7294-747bb67e4a55fcaa6f12fe57eaf61bb2d4511521a21f4655a46ea71f6ab42687.body",
+      "raw_sha256": "747bb67e4a55fcaa6f12fe57eaf61bb2d4511521a21f4655a46ea71f6ab42687",
+      "assortment_loading_strategy": "full",
+      "structured_items": 124,
+      "visible_unique_cards": 124,
+      "accepted_menu_items": 124,
+      "unknown_full_prices": 56,
+      "held_items": []
+    },
+    {
+      "canonical_id": "overture:a6363e48-45b6-426d-97e3-3771483c92c3",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/meatpoint",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/bbe182f91dd45dc0c2f3b8b77af8a622f72e22e32f87018833416f96084b4c96-5acbdf75da6fc09614ccd4daa2974f50abc78fea4640fa80bc014718bf36a866.body",
+      "raw_sha256": "5acbdf75da6fc09614ccd4daa2974f50abc78fea4640fa80bc014718bf36a866",
+      "assortment_loading_strategy": "full",
+      "structured_items": 135,
+      "visible_unique_cards": 134,
+      "accepted_menu_items": 134,
+      "unknown_full_prices": 11,
+      "held_items": [
+        {
+          "id": "5e9f1bb5becb26224b6406a9",
+          "name": "Сколько приборов положить?",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "overture:a75bc1c1-1527-487f-871b-bb0a4c3512d7",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/sushiman-tse",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/18ad51ed720cd3aa2fdc2fa848d40219ae058f51abcb4b89a211dc7c48c1a469-6ebc2a17fc6aede6bde97f382bd5d9e2236be8e6535cf522250e47670a08acae.body",
+      "raw_sha256": "6ebc2a17fc6aede6bde97f382bd5d9e2236be8e6535cf522250e47670a08acae",
+      "assortment_loading_strategy": "full",
+      "structured_items": 295,
+      "visible_unique_cards": 295,
+      "accepted_menu_items": 295,
+      "unknown_full_prices": 0,
+      "held_items": []
+    },
+    {
+      "canonical_id": "overture:a923ce3d-a6ff-4321-ba5c-7364f9a4065a",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/aura-verdant-mangilik",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/a47817fe1ec53818f83097b6fefe601efeb8f5fb6463f45bd6bd88e141bc7863-bb0ba3cb29f5820fc632994c0fcdd9f7ef38d54132a132ec68c8972f8bfb5067.body",
+      "raw_sha256": "bb0ba3cb29f5820fc632994c0fcdd9f7ef38d54132a132ec68c8972f8bfb5067",
+      "assortment_loading_strategy": "full",
+      "structured_items": 239,
+      "visible_unique_cards": 239,
+      "accepted_menu_items": 239,
+      "unknown_full_prices": 0,
+      "held_items": []
+    },
+    {
+      "canonical_id": "overture:b0d26f91-135b-4ee0-bb0e-1de57b965856",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/espresso-bar-expo",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/70633541129f7795b91f145ee8214a02d2546b1372cd2fee7c349d1e3cae1065-8ed1ee0f652e3207cfb163a0ccb69d81607192f2a3fe9acd5d8c132091010beb.body",
+      "raw_sha256": "8ed1ee0f652e3207cfb163a0ccb69d81607192f2a3fe9acd5d8c132091010beb",
+      "assortment_loading_strategy": "full",
+      "structured_items": 80,
+      "visible_unique_cards": 79,
+      "accepted_menu_items": 79,
+      "unknown_full_prices": 0,
+      "held_items": [
+        {
+          "id": "63d8d50c1e637ff9b0b239e0",
+          "name": "Сколько приборов положить?",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "overture:b106bd1c-dce7-4194-8960-930132cd8dde",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/bookish-cafe",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/9d419219ac4b30d220487d3c99074161a944dd4a5d7e5898f5f29b156d653dcd-07af471b54892777ff72a8df7947aff623b239fa2fa8fc7e2a5fd985cd7a3448.body",
+      "raw_sha256": "07af471b54892777ff72a8df7947aff623b239fa2fa8fc7e2a5fd985cd7a3448",
+      "assortment_loading_strategy": "full",
+      "structured_items": 111,
+      "visible_unique_cards": 110,
+      "accepted_menu_items": 110,
+      "unknown_full_prices": 3,
+      "held_items": [
+        {
+          "id": "26478c4b055c9d1c92944b53",
+          "name": "Сколько приборов добавить?",
+          "reason": "No matching visible published menu card"
+        }
+      ]
+    },
+    {
+      "canonical_id": "overture:b2a982e2-540f-4f2a-9910-1e17cd26d931",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/okadzaki-mangilik-el",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/29d1b42bc33fa0ca2ab2a1e10ebf5372c997a1549497449c50878058f4ccae15-a1599ee57d3b0ad1366dc63fc2d0be24c6ab5d475a8f0ba2c6ae3b958682d2bf.body",
+      "raw_sha256": "a1599ee57d3b0ad1366dc63fc2d0be24c6ab5d475a8f0ba2c6ae3b958682d2bf",
+      "assortment_loading_strategy": "full",
+      "structured_items": 177,
+      "visible_unique_cards": 177,
+      "accepted_menu_items": 177,
+      "unknown_full_prices": 5,
+      "held_items": []
+    },
+    {
+      "canonical_id": "overture:cf63d9e5-9ee7-4c6a-b37e-d50a27245de5",
+      "source_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/luckee-yu-mega-silk-way",
+      "status": "successful_fetch",
+      "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/60357c0401e2a3afbb04ac3691ff2dac86ccb79b080ce46df59e89582857c20d-3f6fc3691dd001c270c07c3cfd4de8f347347864ec6e18152c2204b4e943fa4c.body",
+      "raw_sha256": "3f6fc3691dd001c270c07c3cfd4de8f347347864ec6e18152c2204b4e943fa4c",
+      "assortment_loading_strategy": "full",
+      "structured_items": 103,
+      "visible_unique_cards": 103,
+      "accepted_menu_items": 103,
+      "unknown_full_prices": 25,
+      "held_items": []
+    }
+  ],
+  "source_sha256": "f2c504a57a134206c0b1a549b044206ca6a9a99c882869788be98b953533c9ab",
+  "main_source_sha256_unchanged": "e678d5897147e948fad17fb6d9d25a429f34cae940257dac3a5d53f99ac2dee8",
+  "limits": [
+    "Only provider full public assortment with visible menu cards; no onsite price inference.",
+    "Configured constructors or required paid choices retain price=null.",
+    "No generated aliases or components; uncertain section roles stay unknown.",
+    "Provider-disabled/non-delivery/unrendered items are reported rather than recommended.",
+    "Fresh retrieval proves public listing, not real-time kitchen stock or merchant last-update date."
+  ]
+}

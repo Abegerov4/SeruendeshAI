@@ -1,0 +1,101 @@
+{
+  "generated_at": "2026-10-18T22:12:36.201274+00:00",
+  "scope": "delivery smoke, disposable PostgreSQL, localhost SMTP STARTTLS, public-city weather",
+  "smoke": {
+    "script": "scripts/smoke_runtime.py",
+    "tests": "tests/test_delivery_smoke.py",
+    "result": "2 passed in 7.48s",
+    "runtime": "real local Ayat process restarted against temporary SQLite; canonical production snapshot read-only",
+    "checks": [
+      "Ayat readiness and canonical snapshot identity",
+      "one-origin UI root and referenced assets",
+      "saved deep-link restores UI shell",
+      "unknown API route stays404",
+      "register/login and real canonical recommendation crosschecked against /api/pois",
+      "save and list actual recommendation",
+      "session and card survive process restart",
+      "logout rejects replayed cookie",
+      "state mode0600 outside repository; removed after resume",
+      "stdout contains no session cookie"
+    ],
+    "docker_primary": "root independently owns fresh-image Docker verification; script matches existing CI initial/--resume invocations"
+  },
+  "postgres": {
+    "script": "scripts/test_delivery_postgres.py",
+    "tests": "tests/test_postgres_delivery.py",
+    "runner_test": "tests/test_postgres_runner.py",
+    "command": "DELIVERY_DOCKER_VERIFY=1 .venv/bin/python -m pytest tests/test_postgres_runner.py -q",
+    "result": "1 runner integration test passed in 6.08s; asserts inner5 PostgreSQL tests passed",
+    "image": "postgres:17-alpine",
+    "image_id": "sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24",
+    "isolation": "unique owned container, random loopback port/password, RAM-only database, independent schema per test",
+    "checks": [
+      "existing user and saved-card preservation while adding session/throttle tables",
+      "fresh account registration/login",
+      "two concurrent reset confirmations yield200/400; all older reset links revoked",
+      "prior account sessions revoked on reset",
+      "logout revokes only selected session",
+      "30 concurrent shared-budget requests accept exactly3; TTL rows expire",
+      "account deletion cascades saved rows, reset tokens and sessions"
+    ],
+    "container_removed": true,
+    "owned_container_prefix_check": "docker ps -a --filter name=seru-delivery-pg returned no containers"
+  },
+  "smtp": {
+    "script": "scripts/check_local_smtp.py",
+    "tests": "tests/test_local_delivery_smtp.py",
+    "result": "1 passed in 13.42s",
+    "transport": "real smtplib connection to localhost SMTP capture with STARTTLS and ephemeral self-signed TLS certificate",
+    "captured_messages": 1,
+    "checks": [
+      "reset request202 produces actual captured email",
+      "confirmation200 accepts captured token",
+      "reuse400",
+      "old session401",
+      "logout replay401",
+      "old password401/new password200",
+      "SMTP-disabled request503 email_unavailable; no additional email"
+    ],
+    "external_smtp": "disabled and untouched",
+    "private_state": "certificate/key/mail/account SQLite/logs automatically removed with private temporary directory",
+    "browser_disabled_ui": "root owns browser verification against fresh primary Docker; API503 verified here"
+  },
+  "weather": {
+    "source": "Open-Meteo HTTPS, real context.fetch_weather via httpx",
+    "public_city": "Astana",
+    "live_request_success": true,
+    "observed_at": "2026-10-19T03:00",
+    "temperature_c": 4.5,
+    "wind_ms": 2.85,
+    "fallback_test": "tests/test_delivery_weather.py::test_weather_connection_failure_keeps_context_weather_unknown",
+    "fallback_result": "1 passed in0.05s; injected HTTP transport connection error returns weather=None and serialized weather=None"
+  },
+  "tdd": {
+    "smoke": "2 RED failures before script existed; real HTTP204/no-body parsing issue reproduced and corrected; then2 GREEN",
+    "postgres_runner": "RED before runner existed, then actual Docker run GREEN with5 inner checks and cleanup assertion",
+    "smtp": "RED before localhost transport script existed, then actual STARTTLS/API roundtrip GREEN"
+  },
+  "shared_suite_observation": {
+    "command": ".venv/bin/python -m pytest -q --ignore=.superpowers",
+    "passed": 888,
+    "skipped": 73,
+    "failed": 5,
+    "subtests_passed": 12,
+    "scope_note": "observed during independent root/data modifications, before final local SMTP/weather additions; outside these delivery files",
+    "failures": [
+      "ayat_backend/tests/test_team_data.py::test_real_master_is_preserved_and_all_source_ids_remain_available",
+      "ayat_backend/tests/test_team_data.py::test_current_baiterek_and_all_directory_hours_have_field_source",
+      "backend/tests/test_provider_proof.py::test_schema_invalid_role_responses_cannot_produce_verified_health",
+      "backend/tests/test_provider_proof.py::test_valid_unrelated_model_override_does_not_verify_configured_chain",
+      "backend/tests/test_provider_proof.py::test_unknown_candidate_ids_cannot_establish_generation_role_proof"
+    ]
+  },
+  "constraints": {
+    "production_data_writes": false,
+    "existing_auth_db_limiting_modified": false,
+    "external_smtp_sent": false,
+    "model_provider_calls": false,
+    "commits_push_deploy": false,
+    "git_diff_check": "clean"
+  }
+}

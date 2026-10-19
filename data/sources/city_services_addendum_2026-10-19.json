@@ -1,0 +1,366 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-10-19",
+  "collected_at": "2026-10-18T23:55:15.802776+00:00",
+  "operators": [],
+  "services": [
+    {
+      "id": "service:citypass-astana-opera-tour",
+      "name": "Экскурсия в театре «Астана Опера» — предложение CityPass",
+      "aliases": {
+        "ru": [
+          "Астана Опера экскурсия CityPass",
+          "экскурсия в театре",
+          "citypass:142"
+        ],
+        "kk": [
+          "Астана Опера экскурсиясы CityPass",
+          "театрға экскурсия"
+        ],
+        "en": [
+          "Astana Opera CityPass tour",
+          "opera theatre tour",
+          "citypass:142"
+        ]
+      },
+      "kind": "cultural_activity",
+      "operator_id": null,
+      "evidence": [
+        {
+          "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+          "checked_at": "2026-10-18T23:55:15.802541Z",
+          "excerpt": "Экскурсия в театре «Астана Опера»",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": "Самостоятельное предложение CityPass; не отождествлять с театральным уроком Visit Astana для групп от 10 человек. Оператор и отдельный денежный тариф не подтверждены этой карточкой."
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-opera-tour.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "group_minimum",
+          "value": 5,
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+              "checked_at": "2026-10-18T23:55:15.802541Z",
+              "excerpt": "Экскурсия проводиться от 5 человек.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-opera-tour.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "address",
+          "value": "Улица Динмухамед Конаев, 1",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+              "checked_at": "2026-10-18T23:55:15.802541Z",
+              "excerpt": "Улица Динмухамед Конаев, 1",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-opera-tour.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Адрес существующего театра; не новая самостоятельная достопримечательность."
+        },
+        {
+          "field": "published_schedule_notice",
+          "value": "Ежедневно, кроме понедельника; 11:00 и 15:00 — недатированное описание CityPass.",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+              "checked_at": "2026-10-18T23:55:15.802541Z",
+              "excerpt": "Ежедневно. Кроме понедельника. 11:00; 15:00",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-opera-tour.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Нет подтверждения конкретной даты, доступных мест или фактического сеанса на 19 октября; dated_departures не создаются."
+        },
+        {
+          "field": "citypass_inclusion",
+          "value": "На карточке указано «free with CityPass»; применимость конкретного пропуска и отдельный тариф требуют уточнения.",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+              "checked_at": "2026-10-18T23:55:15.802541Z",
+              "excerpt": "Экскурсия в театре «Астана Опера» free with CityPass",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-opera-tour.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Не означает бесплатную экскурсию без действующего подходящего CityPass и не является подтверждённой ценой билета."
+        }
+      ],
+      "routes": [],
+      "ticket_offers": [],
+      "dated_departures": [],
+      "booking_rules": [
+        {
+          "field": "booking_contact",
+          "value": "+7 7172 709 612; +7 7172 709 600 (касса)",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+              "checked_at": "2026-10-18T23:55:15.802541Z",
+              "excerpt": "Контакты: +7 7172 709 612, +7 7172 709 600(номер кассы)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-opera-tour.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Уточните дату и условия именно этого предложения; не переносить условия театрального урока для групп от 10 человек."
+        }
+      ],
+      "schedule_status": "date_unverified"
+    },
+    {
+      "id": "service:citypass-ishim-river-cruise",
+      "name": "Водные прогулки на теплоходах по реке Ишим — предложение CityPass",
+      "aliases": {
+        "ru": [
+          "теплоход Ишим CityPass",
+          "водные прогулки по реке Ишим",
+          "речной трамвай CityPass",
+          "citypass:94"
+        ],
+        "kk": [
+          "Есілдегі кеме серуені CityPass",
+          "Есіл өзенінде серуен"
+        ],
+        "en": [
+          "Ishim CityPass river cruise",
+          "Esil river boat CityPass",
+          "citypass:94"
+        ]
+      },
+      "kind": "river_cruise",
+      "operator_id": null,
+      "evidence": [
+        {
+          "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+          "checked_at": "2026-10-18T23:55:15.802776Z",
+          "excerpt": "Водные прогулки на теплоходах по реке Ишим",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": "Не отождествлять с пакетным туром Dual.KZ или арендой катера «Голубое ожерелье столицы». Оператор, тариф, сезон и даты рейсов этой карточкой не подтверждены."
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-ishim-boat.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "duration_minutes",
+          "value": 45,
+          "unit": "minutes",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+              "checked_at": "2026-10-18T23:55:15.802776Z",
+              "excerpt": "длится около 45 минут",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-ishim-boat.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Приблизительная продолжительность из недатированного описания."
+        },
+        {
+          "field": "route_length_km",
+          "value": 18.8,
+          "unit": "km",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+              "checked_at": "2026-10-18T23:55:15.802776Z",
+              "excerpt": "Прогулочный маршрут составляет 18,8 километра",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-ishim-boat.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "address",
+          "value": "На набережной перед Дворцом Школьников",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+              "checked_at": "2026-10-18T23:55:15.802776Z",
+              "excerpt": "На набережной перед Дворцом Школьников",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-ishim-boat.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Адресная подпись карточки; точная точка посадки и координаты не проверены, boarding stop не создаётся."
+        },
+        {
+          "field": "river_stop_names",
+          "value": [
+            "Центральный парк",
+            "микрорайон Чубары",
+            "сквер «Времена года»",
+            "микрорайон «Самал»",
+            "памятник Кенесары",
+            "отель Radisson"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+              "checked_at": "2026-10-18T23:55:15.802776Z",
+              "excerpt": "Пассажирский маршрут насчитывает 6 остановок: Центральный парк, микрорайон Чубары, сквер \"Времена года\", микрорайон \"Самал\", памятник Кенесары и отель \"Radisson\".",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-ishim-boat.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Перечень из описания маршрута; возможность посадки на каждой точке не подтверждена."
+        }
+      ],
+      "routes": [],
+      "ticket_offers": [],
+      "dated_departures": [],
+      "booking_rules": [],
+      "schedule_status": "not_published"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "version": "4e9b6ecc5b4c455f9c0443714afb91b2",
+  "files": {
+    "pois.json": {
+      "sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+      "bytes": 55223666
+    },
+    "pois_leisure.json": {
+      "sha256": "d2e37a71d7ea0941b953f0fac35d421da8ff0d30f3973e73a867eaaba4512059",
+      "bytes": 11143167
+    },
+    "source_manifest.json": {
+      "sha256": "4ee22a20c31205dd78b5f470eb70aa1643c99a3aec5d883d34b90cb8b58a8019",
+      "bytes": 118759
+    },
+    "stats.json": {
+      "sha256": "fd0e7ebcf8734207290985aacb3cb03ff5e6aeca9907ef075463a54ae6718197",
+      "bytes": 2550
+    },
+    "field_evidence.json": {
+      "sha256": "3ae539eb1f4ae7b6da475d2e3139fdfff56cb479a8e2722e84c8fc9303fe2663",
+      "bytes": 1475490
+    },
+    "fact_reviews.json": {
+      "sha256": "de339a3c4032cad1c0130205126c422871e7955e80b36531795f61d5b6cb5fa4",
+      "bytes": 51811
+    },
+    "gazetteer.json": {
+      "sha256": "9d7fa5e05f0d7f0c5658a4b36db83732bd2be7490d992048165e2d7ade9719ef",
+      "bytes": 371646
+    },
+    "events.jsonl": {
+      "sha256": "063a631760f561f2608bc4e7dd6cee0d9ed06c4385f3fbbbdf95540d62616676",
+      "bytes": 86085
+    },
+    "river.json": {
+      "sha256": "737cdf5940e52265750ab0bf81eb2791f7e8e93c4c363d10725d8c64733e73aa",
+      "bytes": 29969
+    },
+    "walk_graph.npz": {
+      "sha256": "7d4f873ef7b1812328fb63348e5cc884958913c5c86439d7d707bdc025084ce5",
+      "bytes": 1719412
+    },
+    "astana_boundary.geojson": {
+      "sha256": "c73395da04da48993c54a94b94e42f3a6a67f015db275e51a0d409141374431c",
+      "bytes": 19480
+    },
+    "boundary.geojson": {
+      "sha256": "dba5bbeb077d295eae398a7e609143ca6981bdfac4ba93857c9b335129c3597a",
+      "bytes": 48056
+    },
+    "quarantine.json": {
+      "sha256": "46136321e17e00d4fe302598598cb4c90c6c46d2a3c899f13c15b11b3abd6d63",
+      "bytes": 998
+    },
+    "quality_overrides.json": {
+      "sha256": "ab8d95e90dbb870c896e65df8707d4c34032106341653c6cfe01ffb540f6d4bd",
+      "bytes": 5110
+    },
+    "canonical_index_manifest.json": {
+      "sha256": "e68547165481e1a579d124fa3faae2be721e1d58b4dcfc486f53a7e4fac44641",
+      "bytes": 118245
+    },
+    "vectors-247b19f15fc2c4815c7ea8b8.npy": {
+      "sha256": "247b19f15fc2c4815c7ea8b83813553d896cb438d280c402f970687dd5359ed5",
+      "bytes": 4224128
+    },
+    "review_manifest.json": {
+      "sha256": "f2804051cf69c2738bd8e9093c399c0dd23f5034edfa4d3374967edb2b199d15",
+      "bytes": 383
+    }
+  },
+  "active_count": 2750,
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "dense_shape": [
+    2750,
+    384
+  ]
+}

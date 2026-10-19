@@ -1,0 +1,106 @@
+{
+  "health": {
+    "status": "ok",
+    "pois": 2750,
+    "rag": "real",
+    "search": {
+      "mode": "bm25",
+      "degraded_reason": null
+    },
+    "llm": "disabled",
+    "provider_verified_at": null,
+    "runtime_id": "secondary",
+    "models": null,
+    "tracing": "disabled",
+    "cache": {
+      "items": 0,
+      "hits": 0,
+      "misses": 0,
+      "ttl_s": 900
+    }
+  },
+  "recommend_status": 200,
+  "response": {
+    "request_id": "ae196fe9bf14",
+    "used_context": {
+      "location_source": "gps_rounded",
+      "location_label": "~ ваша локация (±100 м)",
+      "radius_m": 1440,
+      "time_budget_min": 60,
+      "mode": "walk",
+      "filters": [
+        "cafe",
+        "coworking"
+      ],
+      "now": "2026-10-19T03:23:36.067517+05:00"
+    },
+    "recommendations": [
+      {
+        "poi_id": "overture:d12137df-ec03-4ce0-af89-b80381b763fa",
+        "name": "Coffee Like \"Кофе Лайк\"",
+        "category": "cafe",
+        "lat": 51.131101,
+        "lon": 71.421545,
+        "distance_m": 683,
+        "travel_min": 11,
+        "why": "Кафе в 683 м от вас.",
+        "visit_min": [
+          30,
+          49
+        ],
+        "what_to_do": "Зайти на кофе или перекус",
+        "open_status": "unknown",
+        "open_confidence": "none",
+        "source": "poi_data",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=d12137df-ec03-4ce0-af89-b80381b763fa",
+        "rating": null
+      },
+      {
+        "poi_id": "osm:node/12041597369",
+        "name": "MÖKKi",
+        "category": "cafe",
+        "lat": 51.1251254,
+        "lon": 71.4318134,
+        "distance_m": 344,
+        "travel_min": 6,
+        "why": "Кафе в 344 м от вас.",
+        "visit_min": [
+          30,
+          54
+        ],
+        "what_to_do": "Зайти на кофе или перекус",
+        "open_status": "unknown",
+        "open_confidence": "none",
+        "source": "poi_data",
+        "source_url": "https://www.openstreetmap.org/node/12041597369",
+        "rating": null
+      },
+      {
+        "poi_id": "osm:node/14089471172",
+        "name": "Qaganat",
+        "category": "cafe",
+        "lat": 51.1277749,
+        "lon": 71.422767,
+        "distance_m": 505,
+        "travel_min": 8,
+        "why": "Кафе в 505 м от вас.",
+        "visit_min": [
+          30,
+          52
+        ],
+        "what_to_do": "Зайти на кофе или перекус",
+        "open_status": "unknown",
+        "open_confidence": "none",
+        "source": "poi_data",
+        "source_url": "https://www.openstreetmap.org/node/14089471172",
+        "rating": null
+      }
+    ],
+    "route": null,
+    "notes": [
+      "Часть подходящих мест сейчас закрыта, поэтому они не показаны.",
+      "Часы работы «Coffee Like \"Кофе Лайк\"», «MÖKKi», «Qaganat» неизвестны: уточните перед визитом."
+    ],
+    "disclaimer": "Рекомендации основаны на открытых данных о местах (POI). Приблизительная локация используется только для этого запроса и не сохраняется."
+  }
+}

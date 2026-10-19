@@ -472,12 +472,18 @@
    "icon": "ticket"
   }
  ],
- "data_built_at": "2026-10-18T18:20:55+00:00",
- "poi_count": 2307,
+ "data_built_at": "2026-10-19",
+ "poi_count": 2745,
  "sources": {
-  "osm": "© OpenStreetMap contributors, ODbL 1.0 (Overpass API, Astana admin boundary R3087155)",
-  "wikidata": "Wikidata, CC0",
-  "wikipedia": "Wikipedia (ru/en) intro extracts, CC BY-SA 4.0 — linked per POI",
-  "overture": "Overture Maps Foundation Places, CDLA-Permissive-2.0 / Apache-2.0 / CC0 per record"
+  "citypass": "not_specified",
+  "dodo": "not_specified",
+  "geonames": "CC-BY-4.0",
+  "khanshatyr": "not_specified",
+  "marwin": "not_specified",
+  "mega_silkway": "not_specified",
+  "osm": "ODbL-1.0",
+  "overture": "Apache-2.0 AND CDLA-Permissive-2.0; CC0-1.0 AND CDLA-Permissive-2.0; CDLA-Permissive-2.0",
+  "sxodim": "not_specified",
+  "wikipedia": "CC-BY-SA-4.0"
  }
 }

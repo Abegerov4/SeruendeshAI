@@ -8,10 +8,11 @@ from __future__ import annotations
 
 import logging
 import math
+from pathlib import Path
 
 import numpy as np
 
-from app.paths import GRAPH_FILE
+from ayat_backend.app.paths import GRAPH_FILE
 
 log = logging.getLogger("app.geo")
 
@@ -146,12 +147,13 @@ def _thin(pts: list[tuple[float, float]], min_step_m: float = 8.0) -> list[tuple
     return out
 
 
-def load_graph() -> WalkGraph | None:
-    if not GRAPH_FILE.exists():
-        log.warning("no walk graph at %s: using straight-line fallback", GRAPH_FILE)
+def load_graph(path: str | Path | None = None) -> WalkGraph | None:
+    path = Path(path) if path is not None else GRAPH_FILE
+    if not path.exists():
+        log.warning("no walk graph at %s: using straight-line fallback", path)
         return None
     try:
-        return WalkGraph()
+        return WalkGraph(path)
     except Exception as e:
         log.warning("walk graph failed to load (%s): fallback mode", e)
         return None

@@ -8,18 +8,20 @@
 Каждый вызов пишется в учёт запроса (модель, токены, задержка, стоимость) — см. usage_scope().
 """
 import json
+import hashlib
 import logging
 import time
 from contextlib import contextmanager
 from contextvars import ContextVar
 from dataclasses import asdict, dataclass
 from functools import lru_cache
-from typing import Literal
+from typing import Callable, Literal
 
 from openai import BadRequestError, OpenAI
 
 from . import tracing
 from .config import get_settings
+from runtime_support.provider_health import ProbeState
 
 log = logging.getLogger("backend.llm")
 
@@ -38,6 +40,16 @@ class CallUsage:
 
 _usage: ContextVar[list[CallUsage] | None] = ContextVar("llm_usage", default=None)
 _decision_override: ContextVar[str | None] = ContextVar("decision_override", default=None)
+_probes = ProbeState()
+
+
+def _configuration() -> str:
+    s = get_settings()
+    return hashlib.sha256(json.dumps([s.llm_api_key, s.llm_base_url, s.llm_fast_model, s.llm_decision_model, s.llm_reasoning_effort]).encode()).hexdigest()
+
+
+def provider_status() -> dict:
+    return _probes.describe(_configuration(), {"parse-intent", "decide-recommendations"}, configured=is_enabled())
 
 
 @contextmanager
@@ -129,7 +141,8 @@ def _for_trace(messages: list[dict]) -> list[dict]:
 
 
 def chat_json(system: str, user: str | list, role: Role = "fast", name: str = "llm",
-              model_override: str | None = None) -> dict | None:
+              model_override: str | None = None,
+              validate_output: Callable[[dict], object] | None = None) -> dict | None:
     """Один вызов LLM, ответ — JSON-объект. None при любой ошибке.
 
     user может быть строкой или списком content-частей (текст + image_url) для vision.
@@ -139,6 +152,10 @@ def chat_json(system: str, user: str | list, role: Role = "fast", name: str = "l
     if client is None:
         return None
     s = get_settings()
+    configuration = _configuration()
+    # Overrides can be measured without certifying a different configured chain.
+    proof_models = ({s.llm_fast_model} if name == "parse-intent" else
+                    {s.llm_decision_model, s.llm_fast_model} if name == "decide-recommendations" else set())
     messages = [{"role": "system", "content": system}, {"role": "user", "content": user}]
     if role == "decision" and not model_override:
         model_override = _decision_override.get()
@@ -164,9 +181,15 @@ def chat_json(system: str, user: str | list, role: Role = "fast", name: str = "l
                 calls.append(call)
             data = json.loads(content)
             if isinstance(data, dict):
+                if validate_output is not None and (not data or not validate_output(data)):
+                    continue
+                if validate_output is not None and model in proof_models:
+                    _probes.record(configuration, name, True, model)
                 return data
         except Exception as e:  # сеть, таймаут, невалидный JSON — пробуем следующую модель / fallback
             log.warning("llm call failed name=%s model=%s err=%s", name, model, type(e).__name__)
+    if any(model in proof_models for model, _, _ in attempts):
+        _probes.record(configuration, name, False, attempts[-1][0], error="unavailable_or_invalid_output")
     return None
 
 

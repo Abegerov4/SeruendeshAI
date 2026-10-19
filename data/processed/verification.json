@@ -1,0 +1,69 @@
+{
+  "reviewed_on": "2026-10-19",
+  "dataset_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "previous_dataset_sha256": "1f815df354ad990d902d76c8676a91013f2d8288a7330e8c3b75a2666db29b74",
+  "poi_count": 14006,
+  "unique_id_count": 14006,
+  "unique_source_id_count": 14607,
+  "lost_source_ids": [],
+  "outside_boundary": 0,
+  "nonfinite_coordinates": 0,
+  "missing_source_license": 0,
+  "non_null_ratings": 0,
+  "offline_rebuild_identical": true,
+  "repro_dataset_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "raw_cache_files_checked": 311,
+  "raw_cache_files_changed": 0,
+  "test_runs": [
+    {
+      "scope": "Data + main backend + RAG + QA local",
+      "command": "OPENAI_API_KEY= GEMINI_API_KEY= ANTHROPIC_API_KEY= RAG_SEARCH_MODE=bm25 /Users/muratovaslan/Desktop/hackaton/SeruendeshAI/.venv/bin/python -m pytest data/tests rag/tests backend/tests tests --pois data/processed/pois.json --live-backend -q",
+      "passed": 700,
+      "skipped": 40,
+      "failed": 0,
+      "subtests_passed": 12,
+      "log": "eval/runs/2026-10-19-data-quality/primary-tests.log"
+    },
+    {
+      "scope": "Actual local RAG opt-in QA",
+      "command": "RAG_SEARCH_MODE=bm25 /Users/muratovaslan/Desktop/hackaton/SeruendeshAI/.venv/bin/python -m pytest tests/test_rag.py --pois data/processed/pois.json --live-rag -q",
+      "passed": 17,
+      "skipped": 0,
+      "failed": 0,
+      "log": "eval/runs/2026-10-19-data-quality/live-rag-tests.log"
+    },
+    {
+      "scope": "bare project pytest",
+      "command": "RAG_SEARCH_MODE=bm25 /Users/muratovaslan/Desktop/hackaton/SeruendeshAI/.venv/bin/python -m pytest -q",
+      "collection_errors": [
+        {
+          "file": "ayat_backend/tests/test_api.py",
+          "error": "ModuleNotFoundError: No module named 'app'"
+        },
+        {
+          "file": "ayat_backend/tests/test_units.py",
+          "error": "ModuleNotFoundError: No module named 'app'"
+        }
+      ],
+      "log": "eval/runs/2026-10-19-data-quality/root-tests.log"
+    },
+    {
+      "scope": "Pre-push combined primary runtime including real local RAG opt-in",
+      "command": "OPENAI_API_KEY= GEMINI_API_KEY= ANTHROPIC_API_KEY= RAG_SEARCH_MODE=bm25 /Users/muratovaslan/Desktop/hackaton/SeruendeshAI/.venv/bin/python -m pytest data/tests rag/tests backend/tests tests --pois data/processed/pois.json --live-backend --live-rag -q",
+      "passed": 717,
+      "skipped": 23,
+      "failed": 0,
+      "subtests_passed": 12,
+      "log": "eval/runs/2026-10-19-data-quality/prepush-primary-tests.log"
+    }
+  ],
+  "not_tested": [
+    "hybrid embeddings",
+    "external model calls",
+    "live backend HTTP service",
+    "UI browser",
+    "Ayat backend runtime"
+  ],
+  "sample_file": "review_sample.json",
+  "comparison_file": "../../eval/runs/2026-10-19-data-quality/comparison.json"
+}

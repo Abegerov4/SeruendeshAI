@@ -4,7 +4,7 @@ from __future__ import annotations
 import logging
 import re
 
-from pipeline.common import get_json
+from ayat_backend.pipeline.common import get_json
 
 log = logging.getLogger("pipeline.wiki")
 
@@ -116,3 +116,18 @@ def fetch_wikipedia(lang: str) -> list[dict]:
     out = list(pages.values())
     log.info("wikipedia %s articles: %d", lang, len(out))
     return out
+
+
+def fetch_extract(url: str) -> dict | None:
+    """Intro extract of one Wikipedia article given its URL (any language edition)."""
+    from urllib.parse import unquote, urlparse
+    u = urlparse(url)
+    lang = u.netloc.split(".")[0]
+    title = unquote(u.path.rsplit("/", 1)[-1])
+    d = get_json(f"https://{lang}.wikipedia.org/w/api.php", params={
+        "action": "query", "prop": "extracts", "titles": title, "exintro": 1, "explaintext": 1, "exsentences": 3,
+        "redirects": 1, "format": "json", "formatversion": 2}, kind=f"wp_{lang}", max_age_h=24 * 7, delay=0.3)
+    pages = d.get("query", {}).get("pages", [])
+    if not pages or pages[0].get("missing"):
+        return None
+    return {"title": pages[0].get("title", title), "extract": (pages[0].get("extract") or "").strip()}

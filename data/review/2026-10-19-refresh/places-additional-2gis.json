@@ -1,0 +1,425 @@
+[
+  {
+    "slug": "delishnsu",
+    "firm": "70000001051323152",
+    "name": "Delish",
+    "address": "Улица Туркестан,28а",
+    "group": "cafe",
+    "average": 7000,
+    "facts": [
+      [
+        "format",
+        "Кофейня",
+        "Кофейни"
+      ],
+      [
+        "terrace",
+        true,
+        "Летняя веранда"
+      ],
+      [
+        "seating_capacity_max",
+        65,
+        "До 65 мест"
+      ]
+    ]
+  },
+  {
+    "slug": "bookish-cafe",
+    "firm": "70000001096897966",
+    "name": "Bookish cafe",
+    "address": "Проспект Мангилик Ел,35/1",
+    "group": "cafe",
+    "average": 7000,
+    "facts": [
+      [
+        "format",
+        "Кафе",
+        "Кафе"
+      ],
+      [
+        "wifi",
+        true,
+        "Wi-Fi для клиентов"
+      ],
+      [
+        "laptop_allowed",
+        true,
+        "Можно с ноутбуком"
+      ],
+      [
+        "seating_capacity_max",
+        45,
+        "До 45 мест"
+      ]
+    ]
+  },
+  {
+    "slug": "tlp-coffee",
+    "firm": "70000001045449144",
+    "name": "TLP Flowers&Coffee",
+    "address": "Улица Гейдара Алиева,1",
+    "group": "cafe",
+    "average": 3000,
+    "facts": [
+      [
+        "format",
+        "Кофейня",
+        "Кофейни"
+      ],
+      [
+        "wifi",
+        true,
+        "Бесплатный Wi-Fi"
+      ],
+      [
+        "terrace",
+        true,
+        "Летняя веранда"
+      ],
+      [
+        "seating_capacity_max",
+        20,
+        "До 20 мест"
+      ]
+    ]
+  },
+  {
+    "slug": "home-macaron",
+    "firm": "70000001035446317",
+    "name": "Home Macaron",
+    "address": "Кабанбай батыр проспект,58Б корпус7; ЖК EXPO Boulevard-5",
+    "group": "cafe",
+    "average": 2000,
+    "facts": [
+      [
+        "format",
+        "Кофейня",
+        "Кофейни"
+      ],
+      [
+        "wifi",
+        true,
+        "Бесплатный Wi-Fi"
+      ],
+      [
+        "laptop_allowed",
+        true,
+        "Можно с ноутбуком"
+      ],
+      [
+        "terrace",
+        true,
+        "Летняя веранда"
+      ],
+      [
+        "seating_capacity_max",
+        15,
+        "До 15 мест"
+      ]
+    ]
+  },
+  {
+    "slug": "ocean-basket-mega-silk-way",
+    "firm": "70000001028263064",
+    "name": "Ocean Basket",
+    "address": "Кабанбай батыр проспект,62; ТРЦ MEGA Silk Way; 2этаж",
+    "group": "restaurant",
+    "average": 12500,
+    "facts": [
+      [
+        "format",
+        "Ресторан морепродуктов",
+        "Ресторан морепродуктов"
+      ],
+      [
+        "laptop_allowed",
+        true,
+        "Можно с ноутбуком"
+      ],
+      [
+        "seating_capacity_max",
+        160,
+        "До 160 мест"
+      ]
+    ]
+  },
+  {
+    "slug": "meatpoint",
+    "firm": "70000001027751110",
+    "name": "Meat point",
+    "address": "Проспект Улы Дала,45",
+    "group": "restaurant",
+    "average": 7000,
+    "facts": [
+      [
+        "format",
+        "Халяльный ресторан",
+        "Халяльный ресторан"
+      ],
+      [
+        "halal",
+        true,
+        "Халяльная кухня"
+      ],
+      [
+        "cuisines",
+        [
+          "Турецкая"
+        ],
+        "Турецкая кухня"
+      ],
+      [
+        "wifi",
+        true,
+        "Wi-Fi для клиентов"
+      ],
+      [
+        "laptop_allowed",
+        true,
+        "Можно с ноутбуком"
+      ],
+      [
+        "terrace",
+        true,
+        "Летняя веранда"
+      ],
+      [
+        "seating_capacity_max",
+        80,
+        "До 80 мест"
+      ]
+    ]
+  },
+  {
+    "slug": "wallstreet-restaurantbar",
+    "firm": "70000001028292308",
+    "name": "Wall Street Restaurant",
+    "address": "Кабанбай батыр проспект,60/20; 1этаж",
+    "group": "restaurant",
+    "average": 25000,
+    "facts": [
+      [
+        "format",
+        "Стейк-хаус",
+        "Стейк-хаус"
+      ],
+      [
+        "wifi",
+        true,
+        "Wi-Fi для клиентов"
+      ],
+      [
+        "laptop_allowed",
+        true,
+        "Можно с ноутбуком"
+      ],
+      [
+        "terrace",
+        true,
+        "Летняя веранда"
+      ],
+      [
+        "kids_area",
+        true,
+        "Детский уголок"
+      ],
+      [
+        "seating_capacity_max",
+        120,
+        "До 120 мест"
+      ]
+    ]
+  },
+  {
+    "slug": "veggie-house-green-mall",
+    "firm": "70000001022909588",
+    "name": "Veggie House",
+    "address": "Проспект Улы Дала,56/1",
+    "group": "cafe",
+    "average": 4000,
+    "facts": [
+      [
+        "format",
+        "Вегетарианское кафе",
+        "Вегетарианское кафе"
+      ],
+      [
+        "vegan_options",
+        true,
+        "Веганская кухня"
+      ],
+      [
+        "vegetarian_options",
+        true,
+        "Вегетарианская кухня"
+      ],
+      [
+        "wifi",
+        true,
+        "Бесплатный Wi-Fi"
+      ],
+      [
+        "laptop_allowed",
+        true,
+        "Можно с ноутбуком"
+      ],
+      [
+        "seating_capacity_max",
+        50,
+        "До 50 мест"
+      ]
+    ]
+  },
+  {
+    "slug": "turandot-kerey-zhanibek",
+    "firm": "70000001019594023",
+    "name": "Turandot",
+    "address": "Керей,Жанибек хандар улица,18; А блок; цокольный этаж",
+    "group": "restaurant",
+    "average": 8000,
+    "facts": [
+      [
+        "format",
+        "Ресторан",
+        "Ресторан"
+      ],
+      [
+        "cuisines",
+        [
+          "Китайская"
+        ],
+        "Китайская кухня"
+      ],
+      [
+        "seating_capacity_max",
+        160,
+        "До 160 мест"
+      ]
+    ]
+  },
+  {
+    "slug": "butchers-street-mangilik-el",
+    "firm": "70000001031308957",
+    "name": "Butcher`s Street",
+    "address": "Проспект Мангилик Ел,37",
+    "group": "burger",
+    "average": 3500,
+    "facts": [
+      [
+        "format",
+        "Бургерная",
+        "Бургерные"
+      ],
+      [
+        "cuisines",
+        [
+          "Американская"
+        ],
+        "Американская кухня"
+      ],
+      [
+        "terrace",
+        true,
+        "Летняя веранда"
+      ],
+      [
+        "seating_capacity_max",
+        50,
+        "До 50 мест"
+      ]
+    ]
+  },
+  {
+    "canonical_id": "overture:0ad92f14-be7f-4cd0-bf72-bd8e04f0677e",
+    "firm": "70000001032527350",
+    "name": "Discovery Coffee",
+    "address": "Улица Туркестан,8; ЖК Олимп палас",
+    "group": "cafe",
+    "average": 2000,
+    "facts": [
+      [
+        "format",
+        "Кофейня",
+        "Сеть кофеен"
+      ],
+      [
+        "terrace",
+        true,
+        "Летняя веранда"
+      ],
+      [
+        "laptop_allowed",
+        true,
+        "Можно с ноутбуком"
+      ],
+      [
+        "seating_capacity_max",
+        70,
+        "До 70 мест"
+      ]
+    ]
+  },
+  {
+    "canonical_id": "overture:19ef3f22-8107-4488-b4cd-bf31ad2b9b62",
+    "firm": "70000001027813142",
+    "name": "Starbucks",
+    "address": "Кабанбай батыр проспект,62; ТРЦ MEGA Silk Way; 1этаж; правое крыло",
+    "group": "cafe",
+    "average": 3000,
+    "source_lat": 51.089133,
+    "source_lon": 71.408836,
+    "facts": [
+      [
+        "format",
+        "Кофейня",
+        "Кофейни"
+      ],
+      [
+        "laptop_allowed",
+        true,
+        "Можно с ноутбуком"
+      ],
+      [
+        "seating_capacity_max",
+        48,
+        "До 48 мест"
+      ]
+    ]
+  },
+  {
+    "canonical_id": "osm:node/9047331880",
+    "firm": "70000001025639401",
+    "name": "Starbucks",
+    "address": "Улица Достык,9; ТРЦ Керуен; 1этаж",
+    "group": "cafe",
+    "average": 3500,
+    "facts": [
+      [
+        "format",
+        "Кофейня",
+        "Кофейни"
+      ],
+      [
+        "wifi",
+        true,
+        "Бесплатный Wi-Fi"
+      ],
+      [
+        "laptop_allowed",
+        true,
+        "Можно с ноутбуком"
+      ],
+      [
+        "wheelchair_accessible",
+        true,
+        "Доступный вход для людей с инвалидностью"
+      ],
+      [
+        "seating_capacity_max",
+        40,
+        "До 40 мест"
+      ]
+    ]
+  }
+]

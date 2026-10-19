@@ -1,0 +1,1440 @@
+{
+  "as_of": "2026-10-19",
+  "input_total_candidates": 971,
+  "identity_matched_reviewed": 67,
+  "review_checkpoint": "eval/runs/2026-10-19-catalog-refresh/source-audit/audit-review-checkpoint-67.jsonl",
+  "review_checkpoint_sha256": "b4b07ee065f7868fdf3cebdfbf66a2e8a4af36ca999b3e2693132ae03afd24e7",
+  "unmatched_ineligible_candidates": 904,
+  "approved_branches": 65,
+  "approved_facts": 240,
+  "held_matched_branches": 2,
+  "approved_fields": {
+    "address": 65,
+    "phone": 28,
+    "opening_hours": 48,
+    "activities": 1,
+    "group_policy": 1,
+    "website": 1,
+    "booking_policy": 1,
+    "delivery_hours": 23,
+    "delivery": 23,
+    "format": 23,
+    "takeaway": 23,
+    "wifi": 1,
+    "luggage_storage": 1,
+    "parking": 1
+  },
+  "all_reviewed_raw_hashes_verified": true,
+  "changes_to_canonical_master": false,
+  "decisions": [
+    {
+      "candidate_id": "f32f915c02834048f4901af7",
+      "canonical_id": "citypass:119",
+      "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-na-krasnyih-avtobusah",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/79516c41f51fa200f927a2ea611ccea2d20b506fa69e8142ac31a92163101275-2fe20eb0c5ed8185d91ef59deb2a84a317483226471b7bb9eebda3ba4f7554ce.body",
+      "raw_sha256": "2fe20eb0c5ed8185d91ef59deb2a84a317483226471b7bb9eebda3ba4f7554ce",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "7fca1cd275809d5737bcae21",
+      "canonical_id": "citypass:120",
+      "source_url": "https://astana.citypass.kz/ru/attractions/dom-muzej-berika-alibaya",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/5f7d7f923b0862dbd0e2a7cad085cb75499a90d928fe80f5396b1b33dba728db.body",
+      "raw_sha256": "23c48aca1760c89204f8232fbb85709c9a340fe6cd43202aceda7ab8004ae4ed",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "720647a4b3402aa12dc43e18",
+      "canonical_id": "citypass:121",
+      "source_url": "https://astana.citypass.kz/ru/attractions/muzei-iskusstv",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/6aaa13ea46d30d9a8223ef60ee5cb765110f533556c0a31cacf1bf37dcc31536-e0bff596bad36c0b363c9d9d190327540459d6c13ca7207320382cc7dadeeab8.body",
+      "raw_sha256": "e0bff596bad36c0b363c9d9d190327540459d6c13ca7207320382cc7dadeeab8",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "22d2c725a5058512773b286e",
+      "canonical_id": "citypass:122",
+      "source_url": "https://astana.citypass.kz/ru/attractions/multimedijnyj-muzej-lumiere-hall",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/ad67a9900d4d6814b9be4d22178b07f497e519a204045513693c668a6f6cd992-1494e535f5696d5b4441b9d94503714a73d248ee9dcfba1cb35ac255e0db4c4f.body",
+      "raw_sha256": "1494e535f5696d5b4441b9d94503714a73d248ee9dcfba1cb35ac255e0db4c4f",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "6b4872666460dd853a5285c3",
+      "canonical_id": "citypass:142",
+      "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/c979208ff75964612d1983e8b1876208c3bf6f84540b9cdc74cdbcfe341ea791-8a9b7d51249253cb29ed9bb7b6ce4b45ef3dc4999d7da4561c5450a9aadae8b2.body",
+      "raw_sha256": "8a9b7d51249253cb29ed9bb7b6ce4b45ef3dc4999d7da4561c5450a9aadae8b2",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "activities",
+        "group_policy",
+        "phone"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 4,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "b9ab4397e5249f0f196f5a0d",
+      "canonical_id": "citypass:157",
+      "source_url": "https://astana.citypass.kz/ru/attractions/muzey-kazakhstanskoy-zheleznoy-dorogi",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/d50f601e7879bb0fde03ed892707f024c3f0a46a22402e442d2ebcc9f578ac4c-0b98b591a40c5dc3715d4e3961b2a53159af888e9e46adc5855e5b561c94e036.body",
+      "raw_sha256": "0b98b591a40c5dc3715d4e3961b2a53159af888e9e46adc5855e5b561c94e036",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "phone",
+        "website"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 4,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "26fa5c7d87d635844227b780",
+      "canonical_id": "citypass:63",
+      "source_url": "https://astana.citypass.kz/ru/attractions/rts-duman",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/03b52a7e28656c61a35ccac3ff949b0afab89fcc464ee3c3198f6de6b54d3708-d609a44ea077befaf43c384706b5942d5a8a50901b238a37425c8b23bbab14c6.body",
+      "raw_sha256": "d609a44ea077befaf43c384706b5942d5a8a50901b238a37425c8b23bbab14c6",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "a1f237c7b6e494111fdcc712",
+      "canonical_id": "citypass:64",
+      "source_url": "https://astana.citypass.kz/ru/attractions/koleso-obozreniya-duman",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/70783c05920a4e2b71ea9c287407b496572b1e87ba10e996f23709bdf9340d63-4b47190104ffd4d898c4013020c2a5972905c9fcf6d42ead38621fd4f73f7cd0.body",
+      "raw_sha256": "4b47190104ffd4d898c4013020c2a5972905c9fcf6d42ead38621fd4f73f7cd0",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 1,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "84c217139fff085af4c87153",
+      "canonical_id": "citypass:65",
+      "source_url": "https://astana.citypass.kz/ru/attractions/ailand-jungle",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/3b92c58713cb65bc3540cea7013d64bbd5bb5dcad1b1cc5de8f827774bcf5a4c.body",
+      "raw_sha256": "7df54624db7510f328defdf156be512ca2db51c212a257ee876d93f80f66ccfe",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address"
+      ],
+      "withheld_fields": [
+        {
+          "field": "opening_hours",
+          "reason": "10:00-22:00 visible,but no weekday scope"
+        },
+        {
+          "field": "price",
+          "reason": "3000.00 withoutCityPass visible,but no explicit currency/unit in extracted card"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 1,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "03f8dfec05f3660f8c0543b9",
+      "canonical_id": "citypass:81",
+      "source_url": "https://astana.citypass.kz/ru/attractions/muzei-energii-budushchego-nur-alem",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/885b22afee4ce24e982dcbcaf59805f77bc6dce9b461b6b4c999de38a0b0b343-ff26881cdb504c51d77423d75c346b1f534cb7893a5543a78a7b710df3d2b8b3.body",
+      "raw_sha256": "ff26881cdb504c51d77423d75c346b1f534cb7893a5543a78a7b710df3d2b8b3",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address"
+      ],
+      "withheld_fields": [
+        {
+          "field": "opening_hours",
+          "reason": "Source hours describe Singularity Museum within Alem.AI, whereas canonical name identifies the entire center"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 1,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "def84674211557739ce46b38",
+      "canonical_id": "citypass:84",
+      "source_url": "https://astana.citypass.kz/ru/attractions/triumfalnaya-arka-m-gilik-el-2",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/bed3b1515014f26b3202a60cb9e0e2198d5bc1974c7adcdcd11c8d6a2e7d175e-bf2d1e44b33b2f589c69e5f1ca0a7b5e1ce82cf6f227b61f1728c8b60dad23ae.body",
+      "raw_sha256": "bf2d1e44b33b2f589c69e5f1ca0a7b5e1ce82cf6f227b61f1728c8b60dad23ae",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 1,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "df8d90a64aa08e426f6dd0dd",
+      "canonical_id": "citypass:88",
+      "source_url": "https://astana.citypass.kz/ru/attractions/dvorets-mira-i-soglasiya",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/53673fe58702eb661442de65f60b5b7d2b02a249efd8981fcc8e181a14a13aba-c6f74761379cdaccd1254f17f797c87745b7bf717e38359b61fc8ca1f241de9c.body",
+      "raw_sha256": "c6f74761379cdaccd1254f17f797c87745b7bf717e38359b61fc8ca1f241de9c",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "59df7e1eb047c9e940ffd3be",
+      "canonical_id": "citypass:89",
+      "source_url": "https://astana.citypass.kz/ru/attractions/muzey-sakena-seyfullina",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/50137639a2943f185a7770f4139028c5a7cfe8972280b150056a3508fa30dfc0-4c5f2bbb7199a686273553b9814c5e7c5d49138760a8b9dbbf40eb4c1c7f689c.body",
+      "raw_sha256": "4c5f2bbb7199a686273553b9814c5e7c5d49138760a8b9dbbf40eb4c1c7f689c",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "31b14f18ea781770644c53a6",
+      "canonical_id": "citypass:94",
+      "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/15932b69f38721bd2f9628eb99a9e0e3f46caee06c0ba3074070406e4b208e5d-5b52f898015b5f9b2a4a2dfc101f8e76a17638b90241bb0f380d0fe78f495436.body",
+      "raw_sha256": "5b52f898015b5f9b2a4a2dfc101f8e76a17638b90241bb0f380d0fe78f495436",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 1,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "6bb884a65b0cce4922e94fef",
+      "canonical_id": "citypass:97",
+      "source_url": "https://astana.citypass.kz/ru/attractions/muzey-pervogo-prezidenta-rk-2",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/7b6a3e27103fe7435a54066e2f79656c530277adf46dfe123843f6c24047b4fa-93e1b5c48b4752345b57d6c86a9bde8d78ad80ce4e79af9ac28949ac087d59ec.body",
+      "raw_sha256": "93e1b5c48b4752345b57d6c86a9bde8d78ad80ce4e79af9ac28949ac087d59ec",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "booking_policy",
+        "phone"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 4,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "38ac3e717b3faae58b917cf4",
+      "canonical_id": "citypass:98",
+      "source_url": "https://astana.citypass.kz/ru/attractions/voenno-istoricheskiy-muzey-vooruzhennyih-sil-respubliki-kazahstan",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/9cd7a5c4b0725be9ce2bfbeafabd3b5c14db1adfb55a188e77352b7f98006902-c65ba6e036f4224d1c4e1dc5047ba0bb6e9f64ba0ac35c7c65cf5827792cbc19.body",
+      "raw_sha256": "c65ba6e036f4224d1c4e1dc5047ba0bb6e9f64ba0ac35c7c65cf5827792cbc19",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "5313525b720cffd0573ccc7d",
+      "canonical_id": "dodo:117",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "10596d342b040bb605a3cc5d",
+      "canonical_id": "dodo:147",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "7942dfbd9b107828699a16d0",
+      "canonical_id": "dodo:148",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "92899d2e0308734c7be837c5",
+      "canonical_id": "dodo:149",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "39d6172b5c5cd5774ca62726",
+      "canonical_id": "dodo:172",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "d153159fc196dc136bc6848b",
+      "canonical_id": "dodo:174",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "a881b8093adbab517cc3a9c8",
+      "canonical_id": "dodo:18",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "151000e48577644aa249a226",
+      "canonical_id": "dodo:184",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "96c3e233ed6e301970eb6a24",
+      "canonical_id": "dodo:187",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "a81176054ca3116fd0459c30",
+      "canonical_id": "dodo:217",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "ba7b854544d08359d27d8c80",
+      "canonical_id": "dodo:221",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "2f10302d1b879ad3f4686ec3",
+      "canonical_id": "dodo:223",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "37d55071ae9ff1dccbd73363",
+      "canonical_id": "dodo:230",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "7a419e4d54475e1446bfd46b",
+      "canonical_id": "dodo:236",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "46d7467b7f0fa4a673185fb1",
+      "canonical_id": "dodo:241",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "6560a26c99bc9b156e3b81e6",
+      "canonical_id": "dodo:244",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "5edf50ff58ed7ee0e6161437",
+      "canonical_id": "dodo:247",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "5b8dd8d5faf99178c844a87c",
+      "canonical_id": "dodo:248",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "08481bfb13dd27c3d84ddd12",
+      "canonical_id": "dodo:40",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "21345b517243ebeccd0dfffe",
+      "canonical_id": "dodo:83",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "c2981d64a973a10e945d6a10",
+      "canonical_id": "dodo:85",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "d6466e89b1eb7fbf9c6d8aac",
+      "canonical_id": "dodo:88",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "096c88f540fa6689f6752fb0",
+      "canonical_id": "dodo:89",
+      "source_url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.body",
+      "raw_sha256": "55a098766366c6410aae0c2855da5337cff948158db7fbb31d4aeb17f9699548",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "delivery_hours",
+        "delivery",
+        "format",
+        "takeaway"
+      ],
+      "withheld_fields": [
+        {
+          "field": "website",
+          "reason": "Parser supplied generic chain homepage; absent from raw per-unit fields"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 6,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "79192452281903780a134992",
+      "canonical_id": "marwin:s156",
+      "source_url": "https://www.marwin.kz/shops/",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/c9cd2e0918b315d68bfd1093c5c7757783bcbb4269c1ca1a2fc0f41a96c189d7.body",
+      "raw_sha256": "c7c15e0f19fa0524ae255f355616d965ec16a3c9f4de21d183fe4ede5b98b636",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "phone"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "144a849545ed1fa7b94eea28",
+      "canonical_id": "marwin:s16",
+      "source_url": "https://www.marwin.kz/shops/",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/c9cd2e0918b315d68bfd1093c5c7757783bcbb4269c1ca1a2fc0f41a96c189d7.body",
+      "raw_sha256": "c7c15e0f19fa0524ae255f355616d965ec16a3c9f4de21d183fe4ede5b98b636",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "phone"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "09f13fe3e967bde9fc6f9a9c",
+      "canonical_id": "marwin:s17",
+      "source_url": "https://www.marwin.kz/shops/",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/c9cd2e0918b315d68bfd1093c5c7757783bcbb4269c1ca1a2fc0f41a96c189d7.body",
+      "raw_sha256": "c7c15e0f19fa0524ae255f355616d965ec16a3c9f4de21d183fe4ede5b98b636",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "phone"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "91ec88c53a417191da294b4c",
+      "canonical_id": "marwin:s20",
+      "source_url": "https://www.marwin.kz/shops/",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/c9cd2e0918b315d68bfd1093c5c7757783bcbb4269c1ca1a2fc0f41a96c189d7.body",
+      "raw_sha256": "c7c15e0f19fa0524ae255f355616d965ec16a3c9f4de21d183fe4ede5b98b636",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone"
+      ],
+      "withheld_fields": [
+        {
+          "field": "opening_hours",
+          "reason": "Source gives10:00-22:00 without explicit weekdays"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "d809ebe1d1f63c1b2128281c",
+      "canonical_id": "marwin:s3",
+      "source_url": "https://www.marwin.kz/shops/",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/c9cd2e0918b315d68bfd1093c5c7757783bcbb4269c1ca1a2fc0f41a96c189d7.body",
+      "raw_sha256": "c7c15e0f19fa0524ae255f355616d965ec16a3c9f4de21d183fe4ede5b98b636",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "phone"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "1b9b2a480c75a0d8a759b9b8",
+      "canonical_id": "marwin:s4",
+      "source_url": "https://www.marwin.kz/shops/",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/c9cd2e0918b315d68bfd1093c5c7757783bcbb4269c1ca1a2fc0f41a96c189d7.body",
+      "raw_sha256": "c7c15e0f19fa0524ae255f355616d965ec16a3c9f4de21d183fe4ede5b98b636",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "phone"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "9fc47f5b104f64d4eb8a5282",
+      "canonical_id": "marwin:s475",
+      "source_url": "https://www.marwin.kz/shops/",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/c9cd2e0918b315d68bfd1093c5c7757783bcbb4269c1ca1a2fc0f41a96c189d7.body",
+      "raw_sha256": "c7c15e0f19fa0524ae255f355616d965ec16a3c9f4de21d183fe4ede5b98b636",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "phone"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "dfcf5ebff42181e9345b908d",
+      "canonical_id": "marwin:s49",
+      "source_url": "https://www.marwin.kz/shops/",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/c9cd2e0918b315d68bfd1093c5c7757783bcbb4269c1ca1a2fc0f41a96c189d7.body",
+      "raw_sha256": "c7c15e0f19fa0524ae255f355616d965ec16a3c9f4de21d183fe4ede5b98b636",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours",
+        "phone"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "2d4dcd2283c77cfeed6c3166",
+      "canonical_id": "osm:node/11764970669",
+      "source_url": "https://www.eltime.kz/",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/d7f988c0b6c606fdd9d62a5d07272fdc741c2ea8df7887c33655ebf9564b25b5-023a8cca25cd8258a7b89e597c33a7b3a46af44be03b721f37eb524940ab28fb.body",
+      "raw_sha256": "023a8cca25cd8258a7b89e597c33a7b3a46af44be03b721f37eb524940ab28fb",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [],
+      "withheld_fields": [],
+      "status": "held",
+      "reason": "Canonical address is street-only; source house65 has no corroborating canonical house/geo"
+    },
+    {
+      "candidate_id": "33745f11ed7fd8d134f1aa27",
+      "canonical_id": "osm:node/14002297974",
+      "source_url": "https://xn--b1afbkybf2abiz.kz/",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/943798b971c039b1ff077e45bdb7538bc2a4313d629378eb10d873893e0a95b5.body",
+      "raw_sha256": "37181b402c598d07bf2cf808dfe46b2d483873af2783d132ab28a994b5f9ff8a",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [],
+      "withheld_fields": [],
+      "status": "held",
+      "reason": "Visible brand/phone but branch address/hours occur only in JSON-LD; no independent location corroboration"
+    },
+    {
+      "candidate_id": "b5ab3e0785c8894474af4300",
+      "canonical_id": "overture:4a5da355-caa0-4123-a84b-28fa1de33215",
+      "source_url": "https://www.ritzcarlton.com/en/hotels/tserz-the-ritz-carlton-astana/overview/?scid=d2406702-e8ea-4b45-bb9b-69cddaaef03d",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/ff6bc2a9381482592e3e3949a60a70a03a5b7658ff1f7349281d630400e624af.body",
+      "raw_sha256": "ad65ff4b3cdc344250e03b632c161934a726c9578e5d2d4249330c308e2315b3",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone"
+      ],
+      "withheld_fields": [
+        {
+          "field": "price_range",
+          "reason": "Unstructured priceRange is not a typed branch price with known unit/channel"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "74ceeafe5e6c92b2bad15ee9",
+      "canonical_id": "overture:829a5935-9243-49dd-86a2-6c026a09345c",
+      "source_url": "https://fotoholst.kz/",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/fa5d109e36d3df8a16ccc87bba9d8df6002cd4933357f24376b0eb607c6b2067-228824100dd4d66478a2bb2b5ae6f3992a283683f3c104ec11a6bb99c192f845.body",
+      "raw_sha256": "228824100dd4d66478a2bb2b5ae6f3992a283683f3c104ec11a6bb99c192f845",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone",
+        "opening_hours"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "41e960a9cc44ca2cc243fd1d",
+      "canonical_id": "overture:9cc33bec-640e-4e28-bd2c-f796d7524c75",
+      "source_url": "https://comeinnhotel.com/",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/fe20cccc8c289e54eb5ff62335b1dac175e3679f1e1f9362806bab5513b181f3-7fc0647c69297aabe2460db7bb1230e8825711c371517835ca051729bebbcdba.body",
+      "raw_sha256": "7fc0647c69297aabe2460db7bb1230e8825711c371517835ca051729bebbcdba",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone",
+        "wifi",
+        "luggage_storage",
+        "parking"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 5,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "e2272804f7ff98e01f6efa9f",
+      "canonical_id": "overture:b1b01b6d-818a-40b4-bbff-d0d763053a3a",
+      "source_url": "https://www.ihg.com/holidayinnexpress/hotels/us/en/astana/tseat/hoteldetail?cm_mmc=FacebookMaps-_-EX-_-KZ-_-TSEAT",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/52658a780886e2e6cfb7120df98b33b37f22550de24d37e987c13fd90462b318.body",
+      "raw_sha256": "2f21a38894f2a4ecc0981425b9b12dee5b155c4c73773fe5bfba5147034c7fc3",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone"
+      ],
+      "withheld_fields": [
+        {
+          "field": "price_range",
+          "reason": "Unstructured priceRange is not a typed branch price with known unit/channel"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "f9e9feab3584c2d17141e999",
+      "canonical_id": "overture:b7cb3aaa-65ae-4b9a-97fe-521c5d7ae482",
+      "source_url": "https://store.terranovastyle.com/en/kazakhstan/astana/astana/terranova-827",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/ba48e31e71930c50bdc75e8b5266b227396279425e0d3bbdf329c3ebbb1e5469.body",
+      "raw_sha256": "168ee2ab19d417d1c571932e9f9147112beae7ee4ee00307e8554f4e95124b50",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "opening_hours"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "e11391529cfc4995510c957c",
+      "canonical_id": "overture:bd6a9400-ec5a-4e89-aa53-9a5daf6d1597",
+      "source_url": "https://www.deloitte.com/kz/ru/offices/Kazakhstan_office/nur-sultan.html",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/efb1dd4a5a01ee8f1a59858c228f4c82b017007988f10e2fcbeb8a462a9dc08a.body",
+      "raw_sha256": "7bf515d71be8ac17da1d0b4111a2313f56a7968f0c1c3f7e9437bd04387484e3",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "2a41d9270bcbf8ea929a40b5",
+      "canonical_id": "overture:ccebc14a-ed0b-40f6-a13c-82d68292fabc",
+      "source_url": "https://oldboybarbershop.com/astana/milanskiy",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/cadbd81a9ac0a1d034b88696dfec1bfa8610a8fb2ebe2449ef10b08837179a3c-bd943642633938fe045dcd5473316ec790817b5c2ce11c8338a6a96febd5b45c.body",
+      "raw_sha256": "bd943642633938fe045dcd5473316ec790817b5c2ce11c8338a6a96febd5b45c",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone",
+        "opening_hours"
+      ],
+      "withheld_fields": [
+        {
+          "field": "price_range",
+          "reason": "Unstructured priceRange is not a typed branch price with known unit/channel"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "1b74c4a57baf1c4404940d9a",
+      "canonical_id": "sxodim:18722",
+      "source_url": "https://sxodim.com/astana/place/evropejskij-restoran-augustin",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/57f9c17c2d55afa34a646efd37706787d3555bf4f165a3a0ef2939ef73e037b7-3895465bca4b25f28fc16228aa40d1f789afcd8507dd9e263a1e5d6db4243073.body",
+      "raw_sha256": "3895465bca4b25f28fc16228aa40d1f789afcd8507dd9e263a1e5d6db4243073",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone",
+        "opening_hours"
+      ],
+      "withheld_fields": [
+        {
+          "field": "price_range",
+          "reason": "Unstructured priceRange is not a typed branch price with known unit/channel"
+        },
+        {
+          "field": "rating",
+          "reason": "One-review aggregate not imported into the rich-place contract"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "6754095bb2371795c72b6176",
+      "canonical_id": "sxodim:18727",
+      "source_url": "https://sxodim.com/astana/place/mr-coffee",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/58a1509b3dd69baf620ef7a11dddaf1f0df7f5375f2ef7893c331399c923669c-78a815ce8b444af15b2e142ec35c7eca76e64069b520920079927d50e584d06f.body",
+      "raw_sha256": "78a815ce8b444af15b2e142ec35c7eca76e64069b520920079927d50e584d06f",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone",
+        "opening_hours"
+      ],
+      "withheld_fields": [
+        {
+          "field": "price_range",
+          "reason": "Unstructured priceRange is not a typed branch price with known unit/channel"
+        },
+        {
+          "field": "rating",
+          "reason": "One-review aggregate not imported into the rich-place contract"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "c3ea1407fa82cd824b3b7aab",
+      "canonical_id": "sxodim:18728",
+      "source_url": "https://sxodim.com/astana/place/sadu",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/33049866c216ae50d44a1830d442774218e7cb50eb79df0cb0add953090f253e-3f28f2d82870a59436261f2c5004b34f603983039be96fdb34badea91d51feab.body",
+      "raw_sha256": "3f28f2d82870a59436261f2c5004b34f603983039be96fdb34badea91d51feab",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone"
+      ],
+      "withheld_fields": [
+        {
+          "field": "opening_hours",
+          "reason": "Source separately describes restaurant floor1 and cafe floor2; canonical record does not identify floor"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "f3b4a2b4c44973a8495a28d1",
+      "canonical_id": "sxodim:28348",
+      "source_url": "https://sxodim.com/astana/place/restoran-emiliya",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/b3af1579ffd7f3449425d740894091a6c161e28b8c5223db477f73937c181b28-6b407ff34ddf07cc201cb6a908253e8942d969910741014685c6ed57510aef6e.body",
+      "raw_sha256": "6b407ff34ddf07cc201cb6a908253e8942d969910741014685c6ed57510aef6e",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone",
+        "opening_hours"
+      ],
+      "withheld_fields": [
+        {
+          "field": "price_range",
+          "reason": "Unstructured priceRange is not a typed branch price with known unit/channel"
+        },
+        {
+          "field": "rating",
+          "reason": "One-review aggregate not imported into the rich-place contract"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "a2cf2d327c6bfd413522d58f",
+      "canonical_id": "sxodim:37879",
+      "source_url": "https://sxodim.com/astana/place/zvuk",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/c033330f07fd719ed2438620ba6b258f74cc11e137b394c96e23b8aa6477c800-47db6420e5b2b1d696026a9feb1fe3d0f0fbd393bc4c4c18c1d8379535eed67b.body",
+      "raw_sha256": "47db6420e5b2b1d696026a9feb1fe3d0f0fbd393bc4c4c18c1d8379535eed67b",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone"
+      ],
+      "withheld_fields": [
+        {
+          "field": "price_range",
+          "reason": "Unstructured priceRange is not a typed branch price with known unit/channel"
+        },
+        {
+          "field": "rating",
+          "reason": "One-review aggregate not imported into the rich-place contract"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "0b4bdee29e33ebb983b43ab0",
+      "canonical_id": "sxodim:37880",
+      "source_url": "https://sxodim.com/astana/place/grammy-1",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/9be4637552cc0a8e9056b5a509b74c3be0e83164fa717ba68d97b047e06a5776.body",
+      "raw_sha256": "a6c16095a96b5796520f68bb95b5cf8bf7750e9c6a69ce52063f27acdde92611",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone"
+      ],
+      "withheld_fields": [
+        {
+          "field": "price_range",
+          "reason": "Unstructured priceRange is not a typed branch price with known unit/channel"
+        },
+        {
+          "field": "rating",
+          "reason": "One-review aggregate not imported into the rich-place contract"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "bbb186919e39e4fa5d39e78b",
+      "canonical_id": "sxodim:42538",
+      "source_url": "https://sxodim.com/astana/place/velotrek-saryarka",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/bb6d3d1a2b2afe8a10229b3fa8b23fadb0b32a0dbe8ea86d6019d751ba82d4ee-9c624fe9aefadf4777d5dcb3360bf565b95ce18602480a0d045887c58708e137.body",
+      "raw_sha256": "9c624fe9aefadf4777d5dcb3360bf565b95ce18602480a0d045887c58708e137",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone",
+        "opening_hours"
+      ],
+      "withheld_fields": [],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "508f38c665ef01d197899855",
+      "canonical_id": "sxodim:43871",
+      "source_url": "https://sxodim.com/astana/place/rubai",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/50634fc5196de2de680438fbb3353dbabd82d5a5936d4a9e930a4f14eece857d-a42b20810ce563bf33fab079903c39b1e754a6a374be1a1d104e100444c3e3b9.body",
+      "raw_sha256": "a42b20810ce563bf33fab079903c39b1e754a6a374be1a1d104e100444c3e3b9",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone"
+      ],
+      "withheld_fields": [
+        {
+          "field": "price_range",
+          "reason": "Unstructured priceRange is not a typed branch price with known unit/channel"
+        },
+        {
+          "field": "rating",
+          "reason": "One-review aggregate not imported into the rich-place contract"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 2,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "0888da774558d78a45b3336c",
+      "canonical_id": "sxodim:46068",
+      "source_url": "https://sxodim.com/astana/place/salter-s",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/09e8c4f64fe1e0c7b1db837215476283edf860612460eba598f24afc62468f90-80d6b08eb74f2239b54507bd2bf2f43c2893dae8dcb3f0f5e9f3db909d0e388d.body",
+      "raw_sha256": "80d6b08eb74f2239b54507bd2bf2f43c2893dae8dcb3f0f5e9f3db909d0e388d",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone",
+        "opening_hours"
+      ],
+      "withheld_fields": [
+        {
+          "field": "price_range",
+          "reason": "Unstructured priceRange is not a typed branch price with known unit/channel"
+        },
+        {
+          "field": "rating",
+          "reason": "One-review aggregate not imported into the rich-place contract"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "4f3dbe0ad97778eff310b50e",
+      "canonical_id": "sxodim:52966",
+      "source_url": "https://sxodim.com/astana/place/22-bar",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/1545de064b4290003b1730f77d4ff668da6bdcc050fd11cf2caaad4db0e0eebf.body",
+      "raw_sha256": "7775a673a6a529477af5a7a02d1f1d3ad43acfeb8ce9a1303be8e6ff3709e760",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address",
+        "phone",
+        "opening_hours"
+      ],
+      "withheld_fields": [
+        {
+          "field": "price_range",
+          "reason": "Unstructured priceRange is not a typed branch price with known unit/channel"
+        },
+        {
+          "field": "rating",
+          "reason": "One-review aggregate not imported into the rich-place contract"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 3,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    },
+    {
+      "candidate_id": "4130754649930c890589bdd6",
+      "canonical_id": "sxodim:53955",
+      "source_url": "https://sxodim.com/astana/place/palazzo-di-astana",
+      "raw_cache": "eval/runs/2026-10-19-catalog-refresh/source-audit/cache/1153865e2d6e81ee15f9ca5efbe27771e7a33af1866a15e1353876c2669c3bf3-512e9c430d2d509a4b4a0f705abad45520f21e1079d7514aab917b91b380407d.body",
+      "raw_sha256": "512e9c430d2d509a4b4a0f705abad45520f21e1079d7514aab917b91b380407d",
+      "checked_at": "2026-10-19",
+      "accepted_fields": [
+        "address"
+      ],
+      "withheld_fields": [
+        {
+          "field": "price_range",
+          "reason": "Unstructured priceRange is not a typed branch price with known unit/channel"
+        },
+        {
+          "field": "rating",
+          "reason": "One-review aggregate not imported into the rich-place contract"
+        }
+      ],
+      "status": "approved",
+      "approved_fact_count": 1,
+      "reason": "Exact public source record or visible name+address corroborated; source hash checked"
+    }
+  ]
+}

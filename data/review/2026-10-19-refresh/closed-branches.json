@@ -1,0 +1,784 @@
+{
+  "checked_at": "2026-10-19T04:38:45.844418+05:00",
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "records": [
+    {
+      "canonical_record": {
+        "id": "overture:5a405c91-d5d6-47ee-9b9b-546134f0505d",
+        "name": "Tary",
+        "lat": 51.13182683,
+        "lon": 71.3909296,
+        "category": "cafe",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=5a405c91-d5d6-47ee-9b9b-546134f0505d",
+        "updated_at": "2026-10-19",
+        "collected_at": "2026-10-19",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "name_en": null,
+        "name_kk": null,
+        "address": "улица Сыганак 17ф",
+        "opening_hours": null,
+        "phone": "+77474647101",
+        "website": null,
+        "wheelchair": null,
+        "kid_friendly": null,
+        "rating": null,
+        "rating_count": null,
+        "tags": [
+          "coffee_shop",
+          "food_and_drink",
+          "non_alcoholic_beverage_venue"
+        ],
+        "raw_tags": {
+          "id": "5a405c91-d5d6-47ee-9b9b-546134f0505d",
+          "confidence": 0.6316583752632141,
+          "websites": null,
+          "emails": null,
+          "socials": [
+            "https://www.facebook.com/517629764773225"
+          ],
+          "phones": [
+            "+77474647101"
+          ],
+          "brand": {
+            "wikidata": null,
+            "names": {
+              "primary": null,
+              "common": null,
+              "rules": null
+            }
+          },
+          "addresses": [
+            {
+              "freeform": "улица Сыганак 17ф",
+              "locality": "Астана",
+              "postcode": "010000",
+              "region": null,
+              "country": "KZ"
+            }
+          ],
+          "names": {
+            "primary": "Tary",
+            "common": null,
+            "rules": null
+          },
+          "sources": [
+            {
+              "property": "",
+              "dataset": "meta",
+              "license": "CDLA-Permissive-2.0",
+              "record_id": "517629764773225",
+              "update_time": "2026-09-14T00:00:00.000Z",
+              "confidence": 0.6316583752632141,
+              "between": null,
+              "provider": "meta",
+              "resource": "meta",
+              "version": "2026-09-14"
+            },
+            {
+              "property": "/properties/confidence",
+              "dataset": "Overture",
+              "license": "CDLA-Permissive-2.0",
+              "record_id": null,
+              "update_time": "2026-09-17T22:52:12Z",
+              "confidence": null,
+              "between": null,
+              "provider": "overture",
+              "resource": "confidence_calculation",
+              "version": "2026-09-17"
+            }
+          ],
+          "operating_status": null,
+          "basic_category": "coffee_shop",
+          "taxonomy": {
+            "primary": "coffee_shop",
+            "hierarchy": [
+              "food_and_drink",
+              "non_alcoholic_beverage_venue",
+              "coffee_shop"
+            ],
+            "alternates": null
+          },
+          "version": 9,
+          "bbox": {
+            "xmin": 71.39092254638672,
+            "xmax": 71.39093017578125,
+            "ymin": 51.13182067871094,
+            "ymax": 51.13182830810547
+          }
+        },
+        "source_records": [
+          {
+            "id": "overture:5a405c91-d5d6-47ee-9b9b-546134f0505d",
+            "source": "overture",
+            "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=5a405c91-d5d6-47ee-9b9b-546134f0505d",
+            "license": "CDLA-Permissive-2.0",
+            "release": "2026-09-23.1",
+            "collected_at": "2026-10-18T17:17:59.182870+00:00",
+            "source_updated_at": "2026-09-14T00:00:00.000Z",
+            "upstream_sources": [
+              {
+                "property": "",
+                "dataset": "meta",
+                "license": "CDLA-Permissive-2.0",
+                "record_id": "517629764773225",
+                "update_time": "2026-09-14T00:00:00.000Z",
+                "confidence": 0.6316583752632141,
+                "between": null,
+                "provider": "meta",
+                "resource": "meta",
+                "version": "2026-09-14"
+              },
+              {
+                "property": "/properties/confidence",
+                "dataset": "Overture",
+                "license": "CDLA-Permissive-2.0",
+                "record_id": null,
+                "update_time": "2026-09-17T22:52:12Z",
+                "confidence": null,
+                "between": null,
+                "provider": "overture",
+                "resource": "confidence_calculation",
+                "version": "2026-09-17"
+              }
+            ],
+            "raw_taxonomy": {
+              "basic_category": "coffee_shop",
+              "taxonomy": {
+                "primary": "coffee_shop",
+                "hierarchy": [
+                  "food_and_drink",
+                  "non_alcoholic_beverage_venue",
+                  "coffee_shop"
+                ],
+                "alternates": null
+              },
+              "categories": null
+            }
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "coffee_shop",
+          "taxonomy": {
+            "primary": "coffee_shop",
+            "hierarchy": [
+              "food_and_drink",
+              "non_alcoholic_beverage_venue",
+              "coffee_shop"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        },
+        "quality_flags": [
+          "source_classification_unverified"
+        ],
+        "description": "Кафе «Tary» в Астане. Адрес из источника: улица Сыганак 17ф.",
+        "description_source": "website",
+        "description_kind": "structured_template",
+        "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
+      },
+      "decision": {
+        "id": "overture:5a405c91-d5d6-47ee-9b9b-546134f0505d",
+        "reason": "2GIS explicitly lists Tary Astana at Syganak17f as permanently closed; exact branch name and house address match. HTTP410 is retained separately and is not the closure proof.",
+        "reason_code": "confirmed_permanent_closure",
+        "exclude_from_origins": true,
+        "reviewed_on": "2026-10-19",
+        "reviewed_by": "catalog-refresh-source-review",
+        "evidence_urls": [
+          "https://2gis.kz/astana/search/Tary",
+          "https://2gis.kz/astana/firm/70000001066465693"
+        ],
+        "source_name": "Tary Astana",
+        "source_address": "Улица Сыганак,17ф,Астана",
+        "evidence_excerpt": "Tary Astana; Улица Сыганак,17ф; Филиал закрылся"
+      },
+      "source_assertion": "explicit directory closure",
+      "secondary_response": "410 Gone; not used independently as closure proof"
+    },
+    {
+      "canonical_record": {
+        "id": "overture:3105494a-8102-4450-9d78-12ca652ce768",
+        "name": "Smart casual cafe JOULE 27",
+        "lat": 51.08972604,
+        "lon": 71.42341899,
+        "category": "cafe",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=3105494a-8102-4450-9d78-12ca652ce768",
+        "updated_at": "2026-10-19",
+        "collected_at": "2026-10-19",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "name_en": null,
+        "name_kk": null,
+        "address": "Prospekt Mangilik Yel 57A",
+        "opening_hours": null,
+        "phone": "+77780275727",
+        "website": null,
+        "wheelchair": null,
+        "kid_friendly": null,
+        "rating": null,
+        "rating_count": null,
+        "tags": [
+          "cafe",
+          "casual_eatery",
+          "food_and_drink"
+        ],
+        "raw_tags": {
+          "id": "3105494a-8102-4450-9d78-12ca652ce768",
+          "confidence": 0.8789681196212769,
+          "websites": null,
+          "emails": [
+            "joule27.cafe@gmail.com"
+          ],
+          "socials": [
+            "https://www.facebook.com/100282431997841"
+          ],
+          "phones": [
+            "+77780275727"
+          ],
+          "brand": {
+            "wikidata": null,
+            "names": {
+              "primary": null,
+              "common": null,
+              "rules": null
+            }
+          },
+          "addresses": [
+            {
+              "freeform": "Prospekt Mangilik Yel 57A",
+              "locality": "Астана",
+              "postcode": "010000",
+              "region": null,
+              "country": "KZ"
+            }
+          ],
+          "names": {
+            "primary": "Smart casual cafe JOULE 27",
+            "common": null,
+            "rules": null
+          },
+          "sources": [
+            {
+              "property": "",
+              "dataset": "meta",
+              "license": "CDLA-Permissive-2.0",
+              "record_id": "100282431997841",
+              "update_time": "2026-09-14T00:00:00.000Z",
+              "confidence": 0.8789681196212769,
+              "between": null,
+              "provider": "meta",
+              "resource": "meta",
+              "version": "2026-09-14"
+            },
+            {
+              "property": "/properties/confidence",
+              "dataset": "Overture",
+              "license": "CDLA-Permissive-2.0",
+              "record_id": null,
+              "update_time": "2026-09-17T22:52:12Z",
+              "confidence": null,
+              "between": null,
+              "provider": "overture",
+              "resource": "confidence_calculation",
+              "version": "2026-09-17"
+            }
+          ],
+          "operating_status": null,
+          "basic_category": "cafe",
+          "taxonomy": {
+            "primary": "cafe",
+            "hierarchy": [
+              "food_and_drink",
+              "casual_eatery",
+              "cafe"
+            ],
+            "alternates": null
+          },
+          "version": 1,
+          "bbox": {
+            "xmin": 71.42341613769531,
+            "xmax": 71.42342376708984,
+            "ymin": 51.089725494384766,
+            "ymax": 51.0897331237793
+          }
+        },
+        "source_records": [
+          {
+            "id": "overture:3105494a-8102-4450-9d78-12ca652ce768",
+            "source": "overture",
+            "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=3105494a-8102-4450-9d78-12ca652ce768",
+            "license": "CDLA-Permissive-2.0",
+            "release": "2026-09-23.1",
+            "collected_at": "2026-10-18T17:17:59.182870+00:00",
+            "source_updated_at": "2026-09-14T00:00:00.000Z",
+            "upstream_sources": [
+              {
+                "property": "",
+                "dataset": "meta",
+                "license": "CDLA-Permissive-2.0",
+                "record_id": "100282431997841",
+                "update_time": "2026-09-14T00:00:00.000Z",
+                "confidence": 0.8789681196212769,
+                "between": null,
+                "provider": "meta",
+                "resource": "meta",
+                "version": "2026-09-14"
+              },
+              {
+                "property": "/properties/confidence",
+                "dataset": "Overture",
+                "license": "CDLA-Permissive-2.0",
+                "record_id": null,
+                "update_time": "2026-09-17T22:52:12Z",
+                "confidence": null,
+                "between": null,
+                "provider": "overture",
+                "resource": "confidence_calculation",
+                "version": "2026-09-17"
+              }
+            ],
+            "raw_taxonomy": {
+              "basic_category": "cafe",
+              "taxonomy": {
+                "primary": "cafe",
+                "hierarchy": [
+                  "food_and_drink",
+                  "casual_eatery",
+                  "cafe"
+                ],
+                "alternates": null
+              },
+              "categories": null
+            }
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "cafe",
+          "taxonomy": {
+            "primary": "cafe",
+            "hierarchy": [
+              "food_and_drink",
+              "casual_eatery",
+              "cafe"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        },
+        "quality_flags": [
+          "source_classification_unverified"
+        ],
+        "description": "Кафе «Smart casual cafe JOULE 27» в Астане. Адрес из источника: Prospekt Mangilik Yel 57A.",
+        "description_source": "website",
+        "description_kind": "structured_template",
+        "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
+      },
+      "decision": {
+        "id": "overture:3105494a-8102-4450-9d78-12ca652ce768",
+        "reason": "Yandex Maps explicitly states Joule27 no longer operates; canonical branch name, MangilikYel57A address and +77780275727 phone all match.",
+        "reason_code": "confirmed_permanent_closure",
+        "exclude_from_origins": true,
+        "reviewed_on": "2026-10-19",
+        "reviewed_by": "catalog-refresh-source-review",
+        "evidence_urls": [
+          "https://yandex.kz/maps/ru/org/joule_27/127662901008/"
+        ],
+        "source_name": "Joule27",
+        "source_address": "Астана, просп.МангиликЕл,57А",
+        "evidence_excerpt": "Joule27; Больше не работает; +7(778)027-57-27; Астана,просп.МангиликЕл,57А"
+      },
+      "source_assertion": "explicit directory closure; name/address/phone exact match"
+    },
+    {
+      "canonical_record": {
+        "id": "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e",
+        "name": "Sunday",
+        "lat": 51.1298183,
+        "lon": 71.42549947,
+        "category": "cafe",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=a4de9304-82bf-4d82-b811-1a18cc29a44e",
+        "updated_at": "2026-10-19",
+        "collected_at": "2026-10-19",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "name_en": null,
+        "name_kk": null,
+        "address": "улица Динмухамеда Конаева 12/2",
+        "opening_hours": null,
+        "phone": "+77782466661",
+        "website": null,
+        "wheelchair": null,
+        "kid_friendly": null,
+        "rating": null,
+        "rating_count": null,
+        "tags": [
+          "cafe",
+          "casual_eatery",
+          "food_and_drink"
+        ],
+        "raw_tags": {
+          "id": "a4de9304-82bf-4d82-b811-1a18cc29a44e",
+          "confidence": 0.5595544576644897,
+          "websites": null,
+          "emails": null,
+          "socials": [
+            "https://www.facebook.com/109275941231510"
+          ],
+          "phones": [
+            "+77782466661"
+          ],
+          "brand": {
+            "wikidata": null,
+            "names": {
+              "primary": null,
+              "common": null,
+              "rules": null
+            }
+          },
+          "addresses": [
+            {
+              "freeform": "улица Динмухамеда Конаева 12/2",
+              "locality": "Астана",
+              "postcode": "010000",
+              "region": null,
+              "country": "KZ"
+            }
+          ],
+          "names": {
+            "primary": "Sunday",
+            "common": null,
+            "rules": null
+          },
+          "sources": [
+            {
+              "property": "",
+              "dataset": "meta",
+              "license": "CDLA-Permissive-2.0",
+              "record_id": "109275941231510",
+              "update_time": "2026-09-14T00:00:00.000Z",
+              "confidence": 0.5595544576644897,
+              "between": null,
+              "provider": "meta",
+              "resource": "meta",
+              "version": "2026-09-14"
+            },
+            {
+              "property": "/properties/confidence",
+              "dataset": "Overture",
+              "license": "CDLA-Permissive-2.0",
+              "record_id": null,
+              "update_time": "2026-09-17T22:52:12Z",
+              "confidence": null,
+              "between": null,
+              "provider": "overture",
+              "resource": "confidence_calculation",
+              "version": "2026-09-17"
+            }
+          ],
+          "operating_status": null,
+          "basic_category": "cafe",
+          "taxonomy": {
+            "primary": "cafe",
+            "hierarchy": [
+              "food_and_drink",
+              "casual_eatery",
+              "cafe"
+            ],
+            "alternates": null
+          },
+          "version": 11,
+          "bbox": {
+            "xmin": 71.42549896240234,
+            "xmax": 71.42550659179688,
+            "ymin": 51.129817962646484,
+            "ymax": 51.129825592041016
+          }
+        },
+        "source_records": [
+          {
+            "id": "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e",
+            "source": "overture",
+            "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=a4de9304-82bf-4d82-b811-1a18cc29a44e",
+            "license": "CDLA-Permissive-2.0",
+            "release": "2026-09-23.1",
+            "collected_at": "2026-10-18T17:17:59.182870+00:00",
+            "source_updated_at": "2026-09-14T00:00:00.000Z",
+            "upstream_sources": [
+              {
+                "property": "",
+                "dataset": "meta",
+                "license": "CDLA-Permissive-2.0",
+                "record_id": "109275941231510",
+                "update_time": "2026-09-14T00:00:00.000Z",
+                "confidence": 0.5595544576644897,
+                "between": null,
+                "provider": "meta",
+                "resource": "meta",
+                "version": "2026-09-14"
+              },
+              {
+                "property": "/properties/confidence",
+                "dataset": "Overture",
+                "license": "CDLA-Permissive-2.0",
+                "record_id": null,
+                "update_time": "2026-09-17T22:52:12Z",
+                "confidence": null,
+                "between": null,
+                "provider": "overture",
+                "resource": "confidence_calculation",
+                "version": "2026-09-17"
+              }
+            ],
+            "raw_taxonomy": {
+              "basic_category": "cafe",
+              "taxonomy": {
+                "primary": "cafe",
+                "hierarchy": [
+                  "food_and_drink",
+                  "casual_eatery",
+                  "cafe"
+                ],
+                "alternates": null
+              },
+              "categories": null
+            }
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "cafe",
+          "taxonomy": {
+            "primary": "cafe",
+            "hierarchy": [
+              "food_and_drink",
+              "casual_eatery",
+              "cafe"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        },
+        "quality_flags": [
+          "source_classification_unverified"
+        ],
+        "description": "Кафе «Sunday» в Астане. Адрес из источника: улица Динмухамеда Конаева 12/2.",
+        "description_source": "website",
+        "description_kind": "structured_template",
+        "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
+      },
+      "decision": {
+        "id": "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e",
+        "reason": "Public 2GIS exact branch card explicitly states branch closed; distinctive name and full street/house match canonical. Source errors or empty search were not used as closure proof.",
+        "reason_code": "confirmed_permanent_closure",
+        "exclude_from_origins": true,
+        "reviewed_on": "2026-10-19",
+        "reviewed_by": "catalog-discovery-followup-source-review",
+        "evidence_urls": [
+          "https://2gis.kz/astana/search/Sunday",
+          "https://2gis.kz/astana/firm/70000001077487856"
+        ],
+        "source_name": "Sunday",
+        "source_address": "улица Динмухамед Конаев, 12/2",
+        "evidence_excerpt": "Sunday Кафе Улица Динмухамед Конаев, 12/2, Астана Филиал закрылся",
+        "response_sha256": "537fc31a5b28620c9dbe7e6e97392ee854e41cbbcf0c7656f80ee83785093eb2",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/537fc31a5b28620c9dbe7e6e97392ee854e41cbbcf0c7656f80ee83785093eb2.html"
+      },
+      "source_assertion": "Explicit rendered card closure statement bound to matching firm ID; name and street/house match."
+    },
+    {
+      "canonical_record": {
+        "id": "overture:dc97b064-be10-46d8-9168-76343e2e115d",
+        "name": "Chechil.sarayshyq",
+        "lat": 51.13538,
+        "lon": 71.423,
+        "category": "restaurant",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=dc97b064-be10-46d8-9168-76343e2e115d",
+        "updated_at": "2026-10-19",
+        "collected_at": "2026-10-19",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "name_en": null,
+        "name_kk": null,
+        "address": "улица Сарайшык 5г",
+        "opening_hours": null,
+        "phone": "+77717001199",
+        "website": null,
+        "wheelchair": null,
+        "kid_friendly": null,
+        "rating": null,
+        "rating_count": null,
+        "tags": [
+          "bar_and_grill_restaurant",
+          "food_and_drink",
+          "restaurant"
+        ],
+        "raw_tags": {
+          "id": "dc97b064-be10-46d8-9168-76343e2e115d",
+          "confidence": 0.3370654284954071,
+          "websites": null,
+          "emails": null,
+          "socials": [
+            "https://www.facebook.com/949744394884993"
+          ],
+          "phones": [
+            "+77717001199"
+          ],
+          "brand": {
+            "wikidata": null,
+            "names": {
+              "primary": null,
+              "common": null,
+              "rules": null
+            }
+          },
+          "addresses": [
+            {
+              "freeform": "улица Сарайшык 5г",
+              "locality": "Астана",
+              "postcode": "010000",
+              "region": null,
+              "country": "KZ"
+            }
+          ],
+          "names": {
+            "primary": "Chechil.sarayshyq",
+            "common": null,
+            "rules": null
+          },
+          "sources": [
+            {
+              "property": "",
+              "dataset": "meta",
+              "license": "CDLA-Permissive-2.0",
+              "record_id": "949744394884993",
+              "update_time": "2026-09-14T00:00:00.000Z",
+              "confidence": 0.3370654284954071,
+              "between": null,
+              "provider": "meta",
+              "resource": "meta",
+              "version": "2026-09-14"
+            },
+            {
+              "property": "/properties/confidence",
+              "dataset": "Overture",
+              "license": "CDLA-Permissive-2.0",
+              "record_id": null,
+              "update_time": "2026-09-17T22:52:12Z",
+              "confidence": null,
+              "between": null,
+              "provider": "overture",
+              "resource": "confidence_calculation",
+              "version": "2026-09-17"
+            }
+          ],
+          "operating_status": null,
+          "basic_category": "restaurant",
+          "taxonomy": {
+            "primary": "bar_and_grill_restaurant",
+            "hierarchy": [
+              "food_and_drink",
+              "restaurant",
+              "bar_and_grill_restaurant"
+            ],
+            "alternates": null
+          },
+          "version": 3,
+          "bbox": {
+            "xmin": 71.4229965209961,
+            "xmax": 71.42301177978516,
+            "ymin": 51.135379791259766,
+            "ymax": 51.1353874206543
+          }
+        },
+        "source_records": [
+          {
+            "id": "overture:dc97b064-be10-46d8-9168-76343e2e115d",
+            "source": "overture",
+            "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=dc97b064-be10-46d8-9168-76343e2e115d",
+            "license": "CDLA-Permissive-2.0",
+            "release": "2026-09-23.1",
+            "collected_at": "2026-10-18T17:17:59.182870+00:00",
+            "source_updated_at": "2026-09-14T00:00:00.000Z",
+            "upstream_sources": [
+              {
+                "property": "",
+                "dataset": "meta",
+                "license": "CDLA-Permissive-2.0",
+                "record_id": "949744394884993",
+                "update_time": "2026-09-14T00:00:00.000Z",
+                "confidence": 0.3370654284954071,
+                "between": null,
+                "provider": "meta",
+                "resource": "meta",
+                "version": "2026-09-14"
+              },
+              {
+                "property": "/properties/confidence",
+                "dataset": "Overture",
+                "license": "CDLA-Permissive-2.0",
+                "record_id": null,
+                "update_time": "2026-09-17T22:52:12Z",
+                "confidence": null,
+                "between": null,
+                "provider": "overture",
+                "resource": "confidence_calculation",
+                "version": "2026-09-17"
+              }
+            ],
+            "raw_taxonomy": {
+              "basic_category": "restaurant",
+              "taxonomy": {
+                "primary": "bar_and_grill_restaurant",
+                "hierarchy": [
+                  "food_and_drink",
+                  "restaurant",
+                  "bar_and_grill_restaurant"
+                ],
+                "alternates": null
+              },
+              "categories": null
+            }
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "restaurant",
+          "taxonomy": {
+            "primary": "bar_and_grill_restaurant",
+            "hierarchy": [
+              "food_and_drink",
+              "restaurant",
+              "bar_and_grill_restaurant"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        },
+        "quality_flags": [
+          "source_classification_unverified"
+        ],
+        "description": "Ресторан «Chechil.sarayshyq» в Астане. Адрес из источника: улица Сарайшык 5г.",
+        "description_source": "website",
+        "description_kind": "structured_template",
+        "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
+      },
+      "decision": {
+        "id": "overture:dc97b064-be10-46d8-9168-76343e2e115d",
+        "reason": "Public 2GIS exact branch card explicitly states branch closed; distinctive name and full street/house match canonical. Source errors or empty search were not used as closure proof.",
+        "reason_code": "confirmed_permanent_closure",
+        "exclude_from_origins": true,
+        "reviewed_on": "2026-10-19",
+        "reviewed_by": "catalog-discovery-followup-source-review",
+        "evidence_urls": [
+          "https://2gis.kz/astana/search/Chechil.sarayshyq",
+          "https://2gis.kz/astana/firm/70000001102999537"
+        ],
+        "source_name": "Chechil",
+        "source_address": "улица Сарайшык, 5г",
+        "evidence_excerpt": "Chechil Лаундж-бар Улица Сарайшык, 5г, Астана Филиал закрылся",
+        "response_sha256": "4597984b99ccb7d5a824fd10bb5fecfc185d2e1fca58e8a8f4fcb7814d961f37",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/4597984b99ccb7d5a824fd10bb5fecfc185d2e1fca58e8a8f4fcb7814d961f37.html"
+      },
+      "source_assertion": "Explicit rendered card closure statement bound to matching firm ID; name and street/house match."
+    }
+  ]
+}

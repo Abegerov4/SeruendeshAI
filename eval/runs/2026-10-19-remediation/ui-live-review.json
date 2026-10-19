@@ -1,0 +1,30 @@
+{
+  "source_sha256": "e5f713078e41a58b37c8b33549d5c9143e60b18b394504d9bcec4e397e27f324",
+  "browser": [
+    {
+      "checks": {
+        "C1 schema": true,
+        "C2 1–3 items": true,
+        "C3 grounded ids": true,
+        "C4 time budget": true,
+        "C5 categories": null,
+        "C6 source labels": true,
+        "C7 language": null,
+        "C8 no invented hours": true,
+        "C9 coords rounded": true,
+        "C10 safety rules": null,
+        "C11 not closed": true,
+        "C12 latency<8s": true,
+        "S scenario": true
+      },
+      "llm": {
+        "mode": "llm",
+        "model": "gpt-4.1-mini",
+        "latency_ms": 4306
+      },
+      "ms": 4306
+    }
+  ],
+  "human_language_calibration": "NOT_EVALUATED",
+  "SMTP_disabled_UI": "Explanatory email-unavailable message verified"
+}

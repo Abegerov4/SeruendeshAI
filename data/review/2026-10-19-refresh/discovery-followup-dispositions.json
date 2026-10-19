@@ -1,0 +1,539 @@
+{
+  "reviewed_at": "2026-10-19T06:06:11.462574+00:00",
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "records": [
+    {
+      "canonical_id": "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e",
+      "decision": {
+        "id": "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e",
+        "reason": "Public 2GIS exact branch card explicitly states branch closed; distinctive name and full street/house match canonical. Source errors or empty search were not used as closure proof.",
+        "reason_code": "confirmed_permanent_closure",
+        "exclude_from_origins": true,
+        "reviewed_on": "2026-10-19",
+        "reviewed_by": "catalog-discovery-followup-source-review",
+        "evidence_urls": [
+          "https://2gis.kz/astana/search/Sunday",
+          "https://2gis.kz/astana/firm/70000001077487856"
+        ],
+        "source_name": "Sunday",
+        "source_address": "улица Динмухамед Конаев, 12/2",
+        "evidence_excerpt": "Sunday Кафе Улица Динмухамед Конаев, 12/2, Астана Филиал закрылся",
+        "response_sha256": "537fc31a5b28620c9dbe7e6e97392ee854e41cbbcf0c7656f80ee83785093eb2",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/537fc31a5b28620c9dbe7e6e97392ee854e41cbbcf0c7656f80ee83785093eb2.html"
+      },
+      "identity_review": {
+        "index": 68,
+        "decision": "hold",
+        "reason": "Exact Sunday branch but source deleted_at 2026-02-23. Closure candidate pending explicit current closure text; no active facts.",
+        "canonical_id": "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e",
+        "canonical_name": "Sunday",
+        "canonical_address": "улица Динмухамеда Конаева 12/2",
+        "canonical_row_sha256": "202a509fbf559fe3c8ff1c6abc7e6cf43c017f1382213122b4771ae1b7eeef01",
+        "canonical_point": {
+          "lat": 51.1298183,
+          "lon": 71.42549947
+        },
+        "firm_id": "70000001077487856",
+        "firm_name": "Sunday",
+        "firm_address": "улица Динмухамед Конаев, 12/2",
+        "source_point": {
+          "lat": 51.129976,
+          "lon": 71.426474
+        },
+        "distance_m": 70.2,
+        "source_deleted_at": "2026-02-23T12:12:38Z",
+        "source_updated_at": "2026-02-23T12:12:38Z",
+        "source_url": "https://2gis.kz/astana/search/Sunday",
+        "response_sha256": "537fc31a5b28620c9dbe7e6e97392ee854e41cbbcf0c7656f80ee83785093eb2",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/537fc31a5b28620c9dbe7e6e97392ee854e41cbbcf0c7656f80ee83785093eb2.html"
+      },
+      "rendered_card_text": "Sunday Кафе Улица Динмухамед Конаев, 12/2, Астана Филиал закрылся",
+      "canonical_record": {
+        "id": "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e",
+        "name": "Sunday",
+        "lat": 51.1298183,
+        "lon": 71.42549947,
+        "category": "cafe",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=a4de9304-82bf-4d82-b811-1a18cc29a44e",
+        "updated_at": "2026-10-19",
+        "collected_at": "2026-10-19",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "name_en": null,
+        "name_kk": null,
+        "address": "улица Динмухамеда Конаева 12/2",
+        "opening_hours": null,
+        "phone": "+77782466661",
+        "website": null,
+        "wheelchair": null,
+        "kid_friendly": null,
+        "rating": null,
+        "rating_count": null,
+        "tags": [
+          "cafe",
+          "casual_eatery",
+          "food_and_drink"
+        ],
+        "raw_tags": {
+          "id": "a4de9304-82bf-4d82-b811-1a18cc29a44e",
+          "confidence": 0.5595544576644897,
+          "websites": null,
+          "emails": null,
+          "socials": [
+            "https://www.facebook.com/109275941231510"
+          ],
+          "phones": [
+            "+77782466661"
+          ],
+          "brand": {
+            "wikidata": null,
+            "names": {
+              "primary": null,
+              "common": null,
+              "rules": null
+            }
+          },
+          "addresses": [
+            {
+              "freeform": "улица Динмухамеда Конаева 12/2",
+              "locality": "Астана",
+              "postcode": "010000",
+              "region": null,
+              "country": "KZ"
+            }
+          ],
+          "names": {
+            "primary": "Sunday",
+            "common": null,
+            "rules": null
+          },
+          "sources": [
+            {
+              "property": "",
+              "dataset": "meta",
+              "license": "CDLA-Permissive-2.0",
+              "record_id": "109275941231510",
+              "update_time": "2026-09-14T00:00:00.000Z",
+              "confidence": 0.5595544576644897,
+              "between": null,
+              "provider": "meta",
+              "resource": "meta",
+              "version": "2026-09-14"
+            },
+            {
+              "property": "/properties/confidence",
+              "dataset": "Overture",
+              "license": "CDLA-Permissive-2.0",
+              "record_id": null,
+              "update_time": "2026-09-17T22:52:12Z",
+              "confidence": null,
+              "between": null,
+              "provider": "overture",
+              "resource": "confidence_calculation",
+              "version": "2026-09-17"
+            }
+          ],
+          "operating_status": null,
+          "basic_category": "cafe",
+          "taxonomy": {
+            "primary": "cafe",
+            "hierarchy": [
+              "food_and_drink",
+              "casual_eatery",
+              "cafe"
+            ],
+            "alternates": null
+          },
+          "version": 11,
+          "bbox": {
+            "xmin": 71.42549896240234,
+            "xmax": 71.42550659179688,
+            "ymin": 51.129817962646484,
+            "ymax": 51.129825592041016
+          }
+        },
+        "source_records": [
+          {
+            "id": "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e",
+            "source": "overture",
+            "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=a4de9304-82bf-4d82-b811-1a18cc29a44e",
+            "license": "CDLA-Permissive-2.0",
+            "release": "2026-09-23.1",
+            "collected_at": "2026-10-18T17:17:59.182870+00:00",
+            "source_updated_at": "2026-09-14T00:00:00.000Z",
+            "upstream_sources": [
+              {
+                "property": "",
+                "dataset": "meta",
+                "license": "CDLA-Permissive-2.0",
+                "record_id": "109275941231510",
+                "update_time": "2026-09-14T00:00:00.000Z",
+                "confidence": 0.5595544576644897,
+                "between": null,
+                "provider": "meta",
+                "resource": "meta",
+                "version": "2026-09-14"
+              },
+              {
+                "property": "/properties/confidence",
+                "dataset": "Overture",
+                "license": "CDLA-Permissive-2.0",
+                "record_id": null,
+                "update_time": "2026-09-17T22:52:12Z",
+                "confidence": null,
+                "between": null,
+                "provider": "overture",
+                "resource": "confidence_calculation",
+                "version": "2026-09-17"
+              }
+            ],
+            "raw_taxonomy": {
+              "basic_category": "cafe",
+              "taxonomy": {
+                "primary": "cafe",
+                "hierarchy": [
+                  "food_and_drink",
+                  "casual_eatery",
+                  "cafe"
+                ],
+                "alternates": null
+              },
+              "categories": null
+            }
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "cafe",
+          "taxonomy": {
+            "primary": "cafe",
+            "hierarchy": [
+              "food_and_drink",
+              "casual_eatery",
+              "cafe"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        },
+        "quality_flags": [
+          "source_classification_unverified"
+        ],
+        "description": "Кафе «Sunday» в Астане. Адрес из источника: улица Динмухамеда Конаева 12/2.",
+        "description_source": "website",
+        "description_kind": "structured_template",
+        "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
+      }
+    },
+    {
+      "canonical_id": "overture:dc97b064-be10-46d8-9168-76343e2e115d",
+      "decision": {
+        "id": "overture:dc97b064-be10-46d8-9168-76343e2e115d",
+        "reason": "Public 2GIS exact branch card explicitly states branch closed; distinctive name and full street/house match canonical. Source errors or empty search were not used as closure proof.",
+        "reason_code": "confirmed_permanent_closure",
+        "exclude_from_origins": true,
+        "reviewed_on": "2026-10-19",
+        "reviewed_by": "catalog-discovery-followup-source-review",
+        "evidence_urls": [
+          "https://2gis.kz/astana/search/Chechil.sarayshyq",
+          "https://2gis.kz/astana/firm/70000001102999537"
+        ],
+        "source_name": "Chechil",
+        "source_address": "улица Сарайшык, 5г",
+        "evidence_excerpt": "Chechil Лаундж-бар Улица Сарайшык, 5г, Астана Филиал закрылся",
+        "response_sha256": "4597984b99ccb7d5a824fd10bb5fecfc185d2e1fca58e8a8f4fcb7814d961f37",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/4597984b99ccb7d5a824fd10bb5fecfc185d2e1fca58e8a8f4fcb7814d961f37.html"
+      },
+      "identity_review": {
+        "index": 96,
+        "decision": "hold",
+        "reason": "Chechil Сарайшык 5г source deleted_at 2026-09-02. Closure candidate only pending explicit closure text; no active facts.",
+        "canonical_id": "overture:dc97b064-be10-46d8-9168-76343e2e115d",
+        "canonical_name": "Chechil.sarayshyq",
+        "canonical_address": "улица Сарайшык 5г",
+        "canonical_row_sha256": "291a8f16d04614f05214cdade842587a8a738e2b7aeb4a2abb831639fe00034e",
+        "canonical_point": {
+          "lat": 51.13538,
+          "lon": 71.423
+        },
+        "firm_id": "70000001102999537",
+        "firm_name": "Chechil, лаундж-бар",
+        "firm_address": "улица Сарайшык, 5г",
+        "source_point": {
+          "lat": 51.136189,
+          "lon": 71.420949
+        },
+        "distance_m": 169.0,
+        "source_deleted_at": "2026-09-02T12:30:19Z",
+        "source_updated_at": "2026-09-02T12:30:19Z",
+        "source_url": "https://2gis.kz/astana/search/Chechil.sarayshyq",
+        "response_sha256": "4597984b99ccb7d5a824fd10bb5fecfc185d2e1fca58e8a8f4fcb7814d961f37",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/4597984b99ccb7d5a824fd10bb5fecfc185d2e1fca58e8a8f4fcb7814d961f37.html"
+      },
+      "rendered_card_text": "Chechil Лаундж-бар Улица Сарайшык, 5г, Астана Филиал закрылся",
+      "canonical_record": {
+        "id": "overture:dc97b064-be10-46d8-9168-76343e2e115d",
+        "name": "Chechil.sarayshyq",
+        "lat": 51.13538,
+        "lon": 71.423,
+        "category": "restaurant",
+        "source": "overture",
+        "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=dc97b064-be10-46d8-9168-76343e2e115d",
+        "updated_at": "2026-10-19",
+        "collected_at": "2026-10-19",
+        "source_updated_at": "2026-09-14T00:00:00.000Z",
+        "name_en": null,
+        "name_kk": null,
+        "address": "улица Сарайшык 5г",
+        "opening_hours": null,
+        "phone": "+77717001199",
+        "website": null,
+        "wheelchair": null,
+        "kid_friendly": null,
+        "rating": null,
+        "rating_count": null,
+        "tags": [
+          "bar_and_grill_restaurant",
+          "food_and_drink",
+          "restaurant"
+        ],
+        "raw_tags": {
+          "id": "dc97b064-be10-46d8-9168-76343e2e115d",
+          "confidence": 0.3370654284954071,
+          "websites": null,
+          "emails": null,
+          "socials": [
+            "https://www.facebook.com/949744394884993"
+          ],
+          "phones": [
+            "+77717001199"
+          ],
+          "brand": {
+            "wikidata": null,
+            "names": {
+              "primary": null,
+              "common": null,
+              "rules": null
+            }
+          },
+          "addresses": [
+            {
+              "freeform": "улица Сарайшык 5г",
+              "locality": "Астана",
+              "postcode": "010000",
+              "region": null,
+              "country": "KZ"
+            }
+          ],
+          "names": {
+            "primary": "Chechil.sarayshyq",
+            "common": null,
+            "rules": null
+          },
+          "sources": [
+            {
+              "property": "",
+              "dataset": "meta",
+              "license": "CDLA-Permissive-2.0",
+              "record_id": "949744394884993",
+              "update_time": "2026-09-14T00:00:00.000Z",
+              "confidence": 0.3370654284954071,
+              "between": null,
+              "provider": "meta",
+              "resource": "meta",
+              "version": "2026-09-14"
+            },
+            {
+              "property": "/properties/confidence",
+              "dataset": "Overture",
+              "license": "CDLA-Permissive-2.0",
+              "record_id": null,
+              "update_time": "2026-09-17T22:52:12Z",
+              "confidence": null,
+              "between": null,
+              "provider": "overture",
+              "resource": "confidence_calculation",
+              "version": "2026-09-17"
+            }
+          ],
+          "operating_status": null,
+          "basic_category": "restaurant",
+          "taxonomy": {
+            "primary": "bar_and_grill_restaurant",
+            "hierarchy": [
+              "food_and_drink",
+              "restaurant",
+              "bar_and_grill_restaurant"
+            ],
+            "alternates": null
+          },
+          "version": 3,
+          "bbox": {
+            "xmin": 71.4229965209961,
+            "xmax": 71.42301177978516,
+            "ymin": 51.135379791259766,
+            "ymax": 51.1353874206543
+          }
+        },
+        "source_records": [
+          {
+            "id": "overture:dc97b064-be10-46d8-9168-76343e2e115d",
+            "source": "overture",
+            "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=dc97b064-be10-46d8-9168-76343e2e115d",
+            "license": "CDLA-Permissive-2.0",
+            "release": "2026-09-23.1",
+            "collected_at": "2026-10-18T17:17:59.182870+00:00",
+            "source_updated_at": "2026-09-14T00:00:00.000Z",
+            "upstream_sources": [
+              {
+                "property": "",
+                "dataset": "meta",
+                "license": "CDLA-Permissive-2.0",
+                "record_id": "949744394884993",
+                "update_time": "2026-09-14T00:00:00.000Z",
+                "confidence": 0.3370654284954071,
+                "between": null,
+                "provider": "meta",
+                "resource": "meta",
+                "version": "2026-09-14"
+              },
+              {
+                "property": "/properties/confidence",
+                "dataset": "Overture",
+                "license": "CDLA-Permissive-2.0",
+                "record_id": null,
+                "update_time": "2026-09-17T22:52:12Z",
+                "confidence": null,
+                "between": null,
+                "provider": "overture",
+                "resource": "confidence_calculation",
+                "version": "2026-09-17"
+              }
+            ],
+            "raw_taxonomy": {
+              "basic_category": "restaurant",
+              "taxonomy": {
+                "primary": "bar_and_grill_restaurant",
+                "hierarchy": [
+                  "food_and_drink",
+                  "restaurant",
+                  "bar_and_grill_restaurant"
+                ],
+                "alternates": null
+              },
+              "categories": null
+            }
+          }
+        ],
+        "raw_taxonomy": {
+          "basic_category": "restaurant",
+          "taxonomy": {
+            "primary": "bar_and_grill_restaurant",
+            "hierarchy": [
+              "food_and_drink",
+              "restaurant",
+              "bar_and_grill_restaurant"
+            ],
+            "alternates": null
+          },
+          "categories": null
+        },
+        "quality_flags": [
+          "source_classification_unverified"
+        ],
+        "description": "Ресторан «Chechil.sarayshyq» в Астане. Адрес из источника: улица Сарайшык 5г.",
+        "description_source": "website",
+        "description_kind": "structured_template",
+        "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
+      }
+    },
+    {
+      "canonical_id": "osm:node/13448013130",
+      "decision": {
+        "id": "osm:node/13448013130",
+        "reason": "Matched current public 2GIS firm is classified solely as a lottery club, conflicting with canonical cafe classification. Exclude ordinary recommendations until food use is verified; preserve canonical and origin because no closure or geometry issue is established.",
+        "reason_code": "source_classification_conflict",
+        "exclude_from_origins": false,
+        "reviewed_on": "2026-10-19",
+        "reviewed_by": "catalog-discovery-followup-source-review",
+        "evidence_urls": [
+          "https://2gis.kz/astana/search/Loft%20Park",
+          "https://2gis.kz/astana/firm/70000001044455602"
+        ],
+        "source_name": "Loft park",
+        "source_address": "проспект Туран, 33а",
+        "evidence_excerpt": "Loft park; проспект Туран, 33а; sole primary rubric: Лотерейные клубы; no food rubric in exact firm object.",
+        "response_sha256": "42b6a3471d79a06e1edefac35ed691d9d2a1bffadbc840a3dd26dd8d69713ed6",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/42b6a3471d79a06e1edefac35ed691d9d2a1bffadbc840a3dd26dd8d69713ed6.html"
+      },
+      "identity_review": {
+        "index": 122,
+        "decision": "hold",
+        "reason": "Exact public source sole rubric is lottery club, contradicting canonical cafe classification; no verified food service. New enrichment withheld and classification flagged.",
+        "canonical_id": "osm:node/13448013130",
+        "canonical_name": "Loft Park",
+        "canonical_address": null,
+        "canonical_row_sha256": "f5f019e2b07a05ba031d7134b2433192c0f55b8487e495e6b97eb9acbefd8ff4",
+        "canonical_point": {
+          "lat": 51.1392416,
+          "lon": 71.4087264
+        },
+        "firm_id": "70000001044455602",
+        "firm_name": "Loft park",
+        "firm_address": "проспект Туран, 33а",
+        "source_point": {
+          "lat": 51.139278,
+          "lon": 71.408707
+        },
+        "distance_m": 4.3,
+        "source_deleted_at": null,
+        "source_updated_at": "2026-10-13T06:56:03Z",
+        "source_url": "https://2gis.kz/astana/search/Loft%20Park",
+        "response_sha256": "42b6a3471d79a06e1edefac35ed691d9d2a1bffadbc840a3dd26dd8d69713ed6",
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/42b6a3471d79a06e1edefac35ed691d9d2a1bffadbc840a3dd26dd8d69713ed6.html"
+      },
+      "canonical_record": {
+        "id": "osm:node/13448013130",
+        "name": "Loft Park",
+        "lat": 51.1392416,
+        "lon": 71.4087264,
+        "category": "cafe",
+        "source": "osm",
+        "source_url": "https://www.openstreetmap.org/node/13448013130",
+        "updated_at": "2026-10-19",
+        "collected_at": "2026-10-19",
+        "source_updated_at": null,
+        "name_en": null,
+        "name_kk": null,
+        "address": null,
+        "opening_hours": null,
+        "phone": null,
+        "website": null,
+        "wheelchair": null,
+        "kid_friendly": null,
+        "rating": null,
+        "rating_count": null,
+        "tags": [
+          "amenity=cafe"
+        ],
+        "raw_tags": {
+          "amenity": "cafe",
+          "name": "Loft Park"
+        },
+        "source_records": [
+          {
+            "id": "osm:node/13448013130",
+            "source": "osm",
+            "source_url": "https://www.openstreetmap.org/node/13448013130",
+            "license": "ODbL-1.0",
+            "source_updated_at": null,
+            "collected_at": "2026-10-18T17:33:47.211954+00:00"
+          }
+        ],
+        "description": "Кафе «Loft Park» в Астане.",
+        "description_source": "osm",
+        "description_kind": "structured_template",
+        "description_source_detail": "deterministic text from attributed structured fields; no LLM used"
+      }
+    }
+  ]
+}

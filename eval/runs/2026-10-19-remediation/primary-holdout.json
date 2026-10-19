@@ -1,0 +1,2444 @@
+{
+  "runtime_id": "ayat",
+  "scope": "primary_document_retrieval_only_no_intent_planner_generation",
+  "golden_sha256": "8b0230bcf55e8e0f4a45086b491999c7a98dc4f1e313a0e12c5c7570ebe77bf3",
+  "snapshot_version": "4e9b6ecc5b4c455f9c0443714afb91b2",
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "source_sha256": "e5f713078e41a58b37c8b33549d5c9143e60b18b394504d9bcec4e397e27f324",
+  "model": "e5-small",
+  "startup_seconds": 3.3146922500163782,
+  "judgments": "Unlisted results are unjudged; hit/recall use frozen positive labels, not precision.",
+  "modes": {
+    "bm25": {
+      "summary": {
+        "total_cases": 20,
+        "evaluated_cases": 20,
+        "not_evaluated_cases": 0,
+        "error_cases": 0,
+        "hit_cases": 14,
+        "miss_cases": 6,
+        "relevant_ids": 32,
+        "matched_relevant_ids": 16,
+        "hit_at_5": 0.7,
+        "macro_recall_at_5": 0.6,
+        "micro_recall_at_5": 0.5,
+        "hit_at_5_wilson95": [
+          0.4810232237710206,
+          0.854524726031006
+        ],
+        "latency_ms": {
+          "p50": 2.0278955053072423,
+          "p95": 2.5878288652165793,
+          "max": 2.775374974589795
+        }
+      },
+      "cases": [
+        {
+          "id": "sh01",
+          "type": "factual",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "overture:ef624e7d-5df8-45b7-b393-1a3681b7d6a4",
+            "osm:node/11109477264",
+            "osm:node/6290442885",
+            "osm:node/10170946742",
+            "overture:2b49ac32-a6c9-4c61-a85b-e6c7edd0cc15"
+          ],
+          "expected_ids": [
+            "osm:node/10170946742",
+            "osm:node/10295608316",
+            "osm:node/12917112809",
+            "osm:node/4543944911",
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a",
+            "overture:6fb348c5-c760-40c1-8afd-94b32cde5400"
+          ],
+          "label_grades": {
+            "osm:node/4543944911": 2,
+            "osm:node/10295608316": 2,
+            "osm:node/12917112809": 2,
+            "overture:6fb348c5-c760-40c1-8afd-94b32cde5400": 2,
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a": 2,
+            "osm:node/10170946742": 2
+          },
+          "label_id_mapping": {
+            "osm:node/4543944911": "osm:node/4543944911",
+            "osm:node/10295608316": "osm:node/10295608316",
+            "osm:node/12917112809": "osm:node/12917112809",
+            "overture:6fb348c5-c760-40c1-8afd-94b32cde5400": "overture:6fb348c5-c760-40c1-8afd-94b32cde5400",
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a": "overture:21bc4233-9d79-4931-877d-0ca435d4083a",
+            "osm:node/10170946742": "osm:node/10170946742"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:node/10170946742"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 0.16666666666666666,
+          "query": "Покажи кофейни Астаны, где сам филиал прямо указывает бесплатный Wi-Fi.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Покажи кофейни Астаны, где сам филиал прямо указывает бесплатный Wi-Fi.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh02",
+          "type": "named",
+          "lang": "ru",
+          "status": "MISS",
+          "top5_ids": [
+            "overture:7758ab93-4ecb-48c1-baec-292ed6fb3c1d",
+            "overture:ef624e7d-5df8-45b7-b393-1a3681b7d6a4",
+            "dodo:88",
+            "osm:node/4929158878",
+            "overture:34fc389c-3d60-498f-8d10-283dd66d40c6"
+          ],
+          "expected_ids": [
+            "osm:node/2349675581"
+          ],
+          "label_grades": {
+            "osm:node/2349675581": 2
+          },
+          "label_id_mapping": {
+            "osm:node/2349675581": "osm:node/2349675581"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Где на проспекте Республики посмотреть с ребёнком кукольный спектакль?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Где на проспекте Республики посмотреть с ребёнком кукольный спектакль?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh03",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "citypass:63",
+            "osm:way/240921034",
+            "osm:node/10168968309",
+            "overture:039b8283-ba11-4b3c-a9e0-29c367706a2c",
+            "osm:node/10168959440"
+          ],
+          "expected_ids": [
+            "citypass:63"
+          ],
+          "label_grades": {
+            "citypass:63": 2
+          },
+          "label_id_mapping": {
+            "citypass:63": "citypass:63"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:63"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Нужен именно океанариум Ailand с детским билетом, а не всё развлекательное здание.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Нужен именно океанариум Ailand с детским билетом, а не всё развлекательное здание.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh04",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:way/549307755",
+            "citypass:84",
+            "osm:way/230401645",
+            "overture:dc7b5ac4-57dc-46bd-9c60-f4256fb76a99",
+            "dodo:83"
+          ],
+          "expected_ids": [
+            "citypass:84",
+            "osm:way/230401645"
+          ],
+          "label_grades": {
+            "osm:way/230401645": 2,
+            "citypass:84": 2
+          },
+          "label_id_mapping": {
+            "osm:way/230401645": "osm:way/230401645",
+            "citypass:84": "citypass:84"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:84",
+            "osm:way/230401645"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Хочу сравнить два символа Астаны: Байтерек и триумфальную арку Мәңгілік Ел. Какие места искать?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Хочу сравнить два символа Астаны: Байтерек и триумфальную арку Мәңгілік Ел. Какие места искать?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh05",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "citypass:88",
+            "osm:way/1456208624",
+            "citypass:119",
+            "overture:8a68fe37-87f2-426d-b419-7c013b10be86",
+            "overture:ef624e7d-5df8-45b7-b393-1a3681b7d6a4"
+          ],
+          "expected_ids": [
+            "citypass:88"
+          ],
+          "label_grades": {
+            "citypass:88": 2
+          },
+          "label_id_mapping": {
+            "citypass:88": "citypass:88"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:88"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Ищу Дворец мира и согласия, где экскурсии описаны на казахском, русском и английском.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Ищу Дворец мира и согласия, где экскурсии описаны на казахском, русском и английском.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh06",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "citypass:120",
+            "osm:way/240376692",
+            "overture:f17b514d-5f58-4227-90f8-aa46f1c6a29e",
+            "citypass:89",
+            "osm:way/240391776"
+          ],
+          "expected_ids": [
+            "citypass:120",
+            "citypass:89"
+          ],
+          "label_grades": {
+            "citypass:120": 2,
+            "citypass:89": 2
+          },
+          "label_id_mapping": {
+            "citypass:120": "citypass:120",
+            "citypass:89": "citypass:89"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:120",
+            "citypass:89"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Что найти для знакомства с наследием: дом-музей ювелира Берика Алибая или литературный музей Сакена Сейфуллина?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Что найти для знакомства с наследием: дом-музей ювелира Берика Алибая или литературный музей Сакена Сейфуллина?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh07",
+          "type": "factual",
+          "lang": "ru",
+          "status": "MISS",
+          "top5_ids": [
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+            "osm:way/499328514",
+            "overture:f3dd6d11-d015-4451-9b0c-be69bc8fc4aa",
+            "overture:0c72aa3f-570c-4b8d-83f4-ad9899fe68e4",
+            "osm:node/14107301089"
+          ],
+          "expected_ids": [
+            "osm:node/12093489323",
+            "osm:node/13397061026",
+            "osm:node/6404769885"
+          ],
+          "label_grades": {
+            "osm:node/12093489323": 2,
+            "osm:node/6404769885": 2,
+            "osm:node/13397061026": 2
+          },
+          "label_id_mapping": {
+            "osm:node/12093489323": "osm:node/12093489323",
+            "osm:node/6404769885": "osm:node/6404769885",
+            "osm:node/13397061026": "osm:node/13397061026"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "В MEGA Silk Way выбираю ужин: итальянский ресторан, морепродукты или паназиатская кухня.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "В MEGA Silk Way выбираю ужин: итальянский ресторан, морепродукты или паназиатская кухня.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh08",
+          "type": "named",
+          "lang": "kk",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:node/9999465717",
+            "osm:node/4543944911",
+            "overture:33344b87-2e86-42cd-8503-ef09824a19eb",
+            "overture:ecfd853b-8631-43da-896b-50ee52fbff41",
+            "osm:node/13109131801"
+          ],
+          "expected_ids": [
+            "osm:node/4543944911"
+          ],
+          "label_grades": {
+            "osm:node/4543944911": 2
+          },
+          "label_id_mapping": {
+            "osm:node/4543944911": "osm:node/4543944911"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:node/4543944911"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Самал 11 мекенжайындағы CoffeeBoom-да тегін Wi-Fi бар ма?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Самал 11 мекенжайындағы CoffeeBoom-да тегін Wi-Fi бар ма?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh09",
+          "type": "named",
+          "lang": "kk",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:way/454857501",
+            "overture:e42e768a-9a35-408b-9fc3-66118042e47d",
+            "overture:f156787e-136d-4047-9f5e-8ae04ed039bb",
+            "overture:77b74c0f-8c84-4c95-84d1-4f2bffd1edcc",
+            "overture:77db1b47-6ea0-4e58-8fd8-824835bafe47"
+          ],
+          "expected_ids": [
+            "osm:way/454857501"
+          ],
+          "label_grades": {
+            "osm:way/454857501": 2
+          },
+          "label_id_mapping": {
+            "osm:way/454857501": "osm:way/454857501"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:way/454857501"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Он үш жастағы оқушыға Alem.ai ішіндегі TUMO шығармашылық технология бағдарламасын іздеп жүрмін.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Он үш жастағы оқушыға Alem.ai ішіндегі TUMO шығармашылық технология бағдарламасын іздеп жүрмін.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh10",
+          "type": "factual",
+          "lang": "kk",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:relation/16002498",
+            "overture:2367cb05-eb03-40f1-bddf-a1da63b2243d",
+            "overture:420e6825-71ce-4be9-aa07-3465444ddb15",
+            "osm:way/1428964223",
+            "osm:way/37883865"
+          ],
+          "expected_ids": [
+            "osm:relation/15957444",
+            "osm:relation/16002498"
+          ],
+          "label_grades": {
+            "osm:relation/15957444": 2,
+            "osm:relation/16002498": 2
+          },
+          "label_id_mapping": {
+            "osm:relation/15957444": "osm:relation/15957444",
+            "osm:relation/16002498": "osm:relation/16002498"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:relation/16002498"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 0.5,
+          "query": "Балалар ойнайтын алаңы бар саябақ іздеймін: Орталық саябақ немесе Жерұйық жарай ма?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Балалар ойнайтын алаңы бар саябақ іздеймін: Орталық саябақ немесе Жерұйық жарай ма?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh11",
+          "type": "named",
+          "lang": "kk",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:way/1363058986",
+            "osm:node/10583824445",
+            "osm:node/4955093906",
+            "overture:dc495dfc-b7e4-400a-9ac5-b58c33a02519",
+            "osm:way/241241695"
+          ],
+          "expected_ids": [
+            "osm:way/1363058986"
+          ],
+          "label_grades": {
+            "osm:way/1363058986": 2
+          },
+          "label_id_mapping": {
+            "osm:way/1363058986": "osm:way/1363058986"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:way/1363058986"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Есіл жағасындағы Триатлон саябағында жүгіру мен велосипед тебуге арналған жолдарды тапқым келеді.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Есіл жағасындағы Триатлон саябағында жүгіру мен велосипед тебуге арналған жолдарды тапқым келеді.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh12",
+          "type": "named",
+          "lang": "kk",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:way/69232075",
+            "overture:f0a5c75b-8872-4acc-8559-79ff840c25c6",
+            "overture:bb2c9e5d-f12b-4376-89cc-17fb7ffe58ed",
+            "overture:84aefc78-4e3a-4014-a6ec-301e8f94a875",
+            "overture:0342f0df-7c0d-4ee6-a8e1-6d8f6b3482dd"
+          ],
+          "expected_ids": [
+            "osm:way/69232075"
+          ],
+          "label_grades": {
+            "osm:way/69232075": 2
+          },
+          "label_id_mapping": {
+            "osm:way/69232075": "osm:way/69232075"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:way/69232075"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Сарайшық 13/1-дегі Жетісу саябағын көрсетші.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Сарайшық 13/1-дегі Жетісу саябағын көрсетші.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh13",
+          "type": "named",
+          "lang": "kk",
+          "status": "MISS",
+          "top5_ids": [
+            "osm:way/1456208624",
+            "osm:way/51431624",
+            "osm:node/4936483940",
+            "overture:5d3730f6-1558-4b1c-8e96-15f76a18cb86",
+            "osm:node/3351711364"
+          ],
+          "expected_ids": [
+            "osm:way/112177946"
+          ],
+          "label_grades": {
+            "osm:way/112177946": 2
+          },
+          "label_id_mapping": {
+            "osm:way/112177946": "osm:way/112177946"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Бейбітшілік және келісім сарайының айналасындағы Президент саябағында серуендегім келеді.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Бейбітшілік және келісім сарайының айналасындағы Президент саябағында серуендегім келеді.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh14",
+          "type": "named",
+          "lang": "kk",
+          "status": "MISS",
+          "top5_ids": [
+            "osm:way/240391776",
+            "overture:7972273c-f99e-4cd9-b552-c94b2a59adde",
+            "osm:way/1239171353",
+            "overture:7758ab93-4ecb-48c1-baec-292ed6fb3c1d",
+            "dodo:88"
+          ],
+          "expected_ids": [
+            "citypass:98"
+          ],
+          "label_grades": {
+            "citypass:98": 2
+          },
+          "label_id_mapping": {
+            "citypass:98": "citypass:98"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Республика 2 мекенжайындағы әскери-тарихи музейге кіріп, әскери техника көргім келеді.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Республика 2 мекенжайындағы әскери-тарихи музейге кіріп, әскери техника көргім келеді.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh15",
+          "type": "named",
+          "lang": "en",
+          "status": "MISS",
+          "top5_ids": [
+            "osm:node/9999465717",
+            "overture:1b11a693-b954-465b-b52e-c314a8e1efe4",
+            "osm:node/12686463901",
+            "osm:node/12873415104",
+            "overture:75b7f416-3485-4eb9-9b8c-941e2b71a9a6"
+          ],
+          "expected_ids": [
+            "osm:node/10295608316"
+          ],
+          "label_grades": {
+            "osm:node/10295608316": 2
+          },
+          "label_id_mapping": {
+            "osm:node/10295608316": "osm:node/10295608316"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Which CoffeeBoom is on Zhenis Avenue 28 and explicitly offers free Wi-Fi?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Which CoffeeBoom is on Zhenis Avenue 28 and explicitly offers free Wi-Fi?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh16",
+          "type": "named",
+          "lang": "en",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:node/4409067789",
+            "osm:way/1196402246",
+            "overture:d5b2cda9-d72f-440f-8a3e-5b57c772491a",
+            "osm:way/1470723968",
+            "osm:relation/3573848"
+          ],
+          "expected_ids": [
+            "osm:way/1196402246"
+          ],
+          "label_grades": {
+            "osm:way/1196402246": 2
+          },
+          "label_id_mapping": {
+            "osm:way/1196402246": "osm:way/1196402246"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:way/1196402246"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "I want the greenhouse complex at Astana Botanical Garden on Orynbor, rather than just an outdoor park.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "I want the greenhouse complex at Astana Botanical Garden on Orynbor, rather than just an outdoor park.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh17",
+          "type": "named",
+          "lang": "en",
+          "status": "MISS",
+          "top5_ids": [
+            "osm:node/5181103422",
+            "osm:node/4384857439",
+            "osm:node/5918102092",
+            "osm:node/9092969813",
+            "osm:node/12009143370"
+          ],
+          "expected_ids": [
+            "osm:way/1239177393"
+          ],
+          "label_grades": {
+            "osm:way/1239177393": 2
+          },
+          "label_id_mapping": {
+            "osm:way/1239177393": "osm:way/1239177393"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Find the Atyrau pedestrian bridge over the Yesil for a city walk.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Find the Atyrau pedestrian bridge over the Yesil for a city walk.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh18",
+          "type": "named",
+          "lang": "en",
+          "status": "HIT",
+          "top5_ids": [
+            "overture:32f0c5c2-2477-47e0-a184-02a129fd3cb5",
+            "overture:a8698b96-83f9-4218-9b97-3415103e64a0",
+            "osm:node/4894937300",
+            "osm:way/1239171353",
+            "citypass:98"
+          ],
+          "expected_ids": [
+            "osm:node/4894937300"
+          ],
+          "label_grades": {
+            "osm:node/4894937300": 2
+          },
+          "label_id_mapping": {
+            "osm:node/4894937300": "osm:node/4894937300"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:node/4894937300"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "I am looking for Kazakhstan history and ethnography at the National Museum on Tauelsizdik Avenue 54.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "I am looking for Kazakhstan history and ethnography at the National Museum on Tauelsizdik Avenue 54.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh19",
+          "type": "named",
+          "lang": "en",
+          "status": "HIT",
+          "top5_ids": [
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3",
+            "overture:1d46ff10-4188-4495-b4a5-0501cf6120bf",
+            "overture:733c8593-79ae-4b09-a4b8-8775858b2097",
+            "overture:effb1a1c-c1f1-46cc-9b5c-5bdf9d466bca",
+            "overture:8224c98f-c37f-4065-bd79-c2601285de32"
+          ],
+          "expected_ids": [
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3"
+          ],
+          "label_grades": {
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3": 2
+          },
+          "label_id_mapping": {
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3": "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Where is ForteBank Kulanshi Art Space on Dostyk 8/1 for contemporary art exhibitions?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Where is ForteBank Kulanshi Art Space on Dostyk 8/1 for contemporary art exhibitions?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh20",
+          "type": "factual",
+          "lang": "en",
+          "status": "HIT",
+          "top5_ids": [
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+            "osm:node/12101838401",
+            "osm:way/499328514",
+            "overture:19d3f31c-c744-4ddd-9b36-553044261f28",
+            "overture:f3dd6d11-d015-4451-9b0c-be69bc8fc4aa"
+          ],
+          "expected_ids": [
+            "osm:node/12293708057",
+            "osm:node/13397061028",
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf"
+          ],
+          "label_grades": {
+            "osm:node/12293708057": 2,
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf": 2,
+            "osm:node/13397061028": 2
+          },
+          "label_id_mapping": {
+            "osm:node/12293708057": "osm:node/12293708057",
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf": "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+            "osm:node/13397061028": "osm:node/13397061028"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 0.3333333333333333,
+          "query": "At MEGA Silk Way, suggest French bakery food, pilaf, or gourmet street food for an evening meal.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "At MEGA Silk Way, suggest French bakery food, pilaf, or gourmet street food for an evening meal.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        }
+      ]
+    },
+    "dense": {
+      "summary": {
+        "total_cases": 20,
+        "evaluated_cases": 20,
+        "not_evaluated_cases": 0,
+        "error_cases": 0,
+        "hit_cases": 11,
+        "miss_cases": 9,
+        "relevant_ids": 32,
+        "matched_relevant_ids": 13,
+        "hit_at_5": 0.55,
+        "macro_recall_at_5": 0.475,
+        "micro_recall_at_5": 0.40625,
+        "hit_at_5_wilson95": [
+          0.3420820083075997,
+          0.7418049791429071
+        ],
+        "latency_ms": {
+          "p50": 5.974687504931353,
+          "p95": 8.487452098052017,
+          "max": 9.626542014302686
+        }
+      },
+      "cases": [
+        {
+          "id": "sh01",
+          "type": "factual",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:node/11109477264",
+            "osm:node/12917061572",
+            "osm:node/4632918092",
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a",
+            "osm:node/12873415104"
+          ],
+          "expected_ids": [
+            "osm:node/10170946742",
+            "osm:node/10295608316",
+            "osm:node/12917112809",
+            "osm:node/4543944911",
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a",
+            "overture:6fb348c5-c760-40c1-8afd-94b32cde5400"
+          ],
+          "label_grades": {
+            "osm:node/4543944911": 2,
+            "osm:node/10295608316": 2,
+            "osm:node/12917112809": 2,
+            "overture:6fb348c5-c760-40c1-8afd-94b32cde5400": 2,
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a": 2,
+            "osm:node/10170946742": 2
+          },
+          "label_id_mapping": {
+            "osm:node/4543944911": "osm:node/4543944911",
+            "osm:node/10295608316": "osm:node/10295608316",
+            "osm:node/12917112809": "osm:node/12917112809",
+            "overture:6fb348c5-c760-40c1-8afd-94b32cde5400": "overture:6fb348c5-c760-40c1-8afd-94b32cde5400",
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a": "overture:21bc4233-9d79-4931-877d-0ca435d4083a",
+            "osm:node/10170946742": "osm:node/10170946742"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 0.16666666666666666,
+          "query": "Покажи кофейни Астаны, где сам филиал прямо указывает бесплатный Wi-Fi.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Покажи кофейни Астаны, где сам филиал прямо указывает бесплатный Wi-Fi.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh02",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:node/2349675581",
+            "overture:41859546-b3d1-4587-a25f-c47217ef9377",
+            "overture:e265b4b3-b422-4390-be13-b880558923de",
+            "osm:node/455447680",
+            "osm:node/4920065833"
+          ],
+          "expected_ids": [
+            "osm:node/2349675581"
+          ],
+          "label_grades": {
+            "osm:node/2349675581": 2
+          },
+          "label_id_mapping": {
+            "osm:node/2349675581": "osm:node/2349675581"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:node/2349675581"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Где на проспекте Республики посмотреть с ребёнком кукольный спектакль?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Где на проспекте Республики посмотреть с ребёнком кукольный спектакль?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh03",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:node/10168968309",
+            "citypass:63",
+            "osm:way/112384559",
+            "osm:node/11345949790",
+            "citypass:64"
+          ],
+          "expected_ids": [
+            "citypass:63"
+          ],
+          "label_grades": {
+            "citypass:63": 2
+          },
+          "label_id_mapping": {
+            "citypass:63": "citypass:63"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:63"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Нужен именно океанариум Ailand с детским билетом, а не всё развлекательное здание.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Нужен именно океанариум Ailand с детским билетом, а не всё развлекательное здание.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh04",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:way/230401645",
+            "citypass:84",
+            "overture:ad5d249f-902b-48f4-9be0-7baed8a5db67",
+            "osm:node/4892204728",
+            "osm:node/12125755601"
+          ],
+          "expected_ids": [
+            "citypass:84",
+            "osm:way/230401645"
+          ],
+          "label_grades": {
+            "osm:way/230401645": 2,
+            "citypass:84": 2
+          },
+          "label_id_mapping": {
+            "osm:way/230401645": "osm:way/230401645",
+            "citypass:84": "citypass:84"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:84",
+            "osm:way/230401645"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Хочу сравнить два символа Астаны: Байтерек и триумфальную арку Мәңгілік Ел. Какие места искать?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Хочу сравнить два символа Астаны: Байтерек и триумфальную арку Мәңгілік Ел. Какие места искать?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh05",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "citypass:88",
+            "citypass:97",
+            "osm:way/1456208624",
+            "osm:node/2864129921",
+            "osm:node/2681623412"
+          ],
+          "expected_ids": [
+            "citypass:88"
+          ],
+          "label_grades": {
+            "citypass:88": 2
+          },
+          "label_id_mapping": {
+            "citypass:88": "citypass:88"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:88"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Ищу Дворец мира и согласия, где экскурсии описаны на казахском, русском и английском.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Ищу Дворец мира и согласия, где экскурсии описаны на казахском, русском и английском.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh06",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "citypass:89",
+            "osm:way/240376692",
+            "overture:f17b514d-5f58-4227-90f8-aa46f1c6a29e",
+            "overture:2a0a3fbb-f435-4cc1-8ef5-f54daebe1245",
+            "citypass:120"
+          ],
+          "expected_ids": [
+            "citypass:120",
+            "citypass:89"
+          ],
+          "label_grades": {
+            "citypass:120": 2,
+            "citypass:89": 2
+          },
+          "label_id_mapping": {
+            "citypass:120": "citypass:120",
+            "citypass:89": "citypass:89"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:120",
+            "citypass:89"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Что найти для знакомства с наследием: дом-музей ювелира Берика Алибая или литературный музей Сакена Сейфуллина?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Что найти для знакомства с наследием: дом-музей ювелира Берика Алибая или литературный музей Сакена Сейфуллина?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh07",
+          "type": "factual",
+          "lang": "ru",
+          "status": "MISS",
+          "top5_ids": [
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+            "osm:node/2864129921",
+            "overture:f5fe3628-67b9-41ad-9c6a-de3f23ca1d97",
+            "osm:node/12293708057",
+            "osm:node/13397061028"
+          ],
+          "expected_ids": [
+            "osm:node/12093489323",
+            "osm:node/13397061026",
+            "osm:node/6404769885"
+          ],
+          "label_grades": {
+            "osm:node/12093489323": 2,
+            "osm:node/6404769885": 2,
+            "osm:node/13397061026": 2
+          },
+          "label_id_mapping": {
+            "osm:node/12093489323": "osm:node/12093489323",
+            "osm:node/6404769885": "osm:node/6404769885",
+            "osm:node/13397061026": "osm:node/13397061026"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "В MEGA Silk Way выбираю ужин: итальянский ресторан, морепродукты или паназиатская кухня.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "В MEGA Silk Way выбираю ужин: итальянский ресторан, морепродукты или паназиатская кухня.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh08",
+          "type": "named",
+          "lang": "kk",
+          "status": "MISS",
+          "top5_ids": [
+            "overture:e1942572-91cd-45f8-8f14-110ec398493e",
+            "overture:92b4837d-a320-42f7-a67d-8fdc0c6d3da9",
+            "osm:node/4286102095",
+            "overture:3105494a-8102-4450-9d78-12ca652ce768",
+            "overture:f8c243f4-0fe1-439e-a961-c013b95878f6"
+          ],
+          "expected_ids": [
+            "osm:node/4543944911"
+          ],
+          "label_grades": {
+            "osm:node/4543944911": 2
+          },
+          "label_id_mapping": {
+            "osm:node/4543944911": "osm:node/4543944911"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Самал 11 мекенжайындағы CoffeeBoom-да тегін Wi-Fi бар ма?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Самал 11 мекенжайындағы CoffeeBoom-да тегін Wi-Fi бар ма?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh09",
+          "type": "named",
+          "lang": "kk",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:node/4893378512",
+            "osm:way/454857501",
+            "osm:node/4891810007",
+            "osm:way/1179903477",
+            "overture:334e2ef9-7166-43b5-a46d-3129e709e70b"
+          ],
+          "expected_ids": [
+            "osm:way/454857501"
+          ],
+          "label_grades": {
+            "osm:way/454857501": 2
+          },
+          "label_id_mapping": {
+            "osm:way/454857501": "osm:way/454857501"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:way/454857501"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Он үш жастағы оқушыға Alem.ai ішіндегі TUMO шығармашылық технология бағдарламасын іздеп жүрмін.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Он үш жастағы оқушыға Alem.ai ішіндегі TUMO шығармашылық технология бағдарламасын іздеп жүрмін.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh10",
+          "type": "factual",
+          "lang": "kk",
+          "status": "MISS",
+          "top5_ids": [
+            "osm:way/112384559",
+            "osm:node/13391110631",
+            "overture:f5027bd4-2ecc-4c4d-b239-8bb0934478b6",
+            "osm:node/11345949790",
+            "osm:way/425721187"
+          ],
+          "expected_ids": [
+            "osm:relation/15957444",
+            "osm:relation/16002498"
+          ],
+          "label_grades": {
+            "osm:relation/15957444": 2,
+            "osm:relation/16002498": 2
+          },
+          "label_id_mapping": {
+            "osm:relation/15957444": "osm:relation/15957444",
+            "osm:relation/16002498": "osm:relation/16002498"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Балалар ойнайтын алаңы бар саябақ іздеймін: Орталық саябақ немесе Жерұйық жарай ма?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Балалар ойнайтын алаңы бар саябақ іздеймін: Орталық саябақ немесе Жерұйық жарай ма?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh11",
+          "type": "named",
+          "lang": "kk",
+          "status": "MISS",
+          "top5_ids": [
+            "citypass:94",
+            "osm:way/112384559",
+            "citypass:119",
+            "osm:way/1211337246",
+            "overture:f5027bd4-2ecc-4c4d-b239-8bb0934478b6"
+          ],
+          "expected_ids": [
+            "osm:way/1363058986"
+          ],
+          "label_grades": {
+            "osm:way/1363058986": 2
+          },
+          "label_id_mapping": {
+            "osm:way/1363058986": "osm:way/1363058986"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Есіл жағасындағы Триатлон саябағында жүгіру мен велосипед тебуге арналған жолдарды тапқым келеді.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Есіл жағасындағы Триатлон саябағында жүгіру мен велосипед тебуге арналған жолдарды тапқым келеді.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh12",
+          "type": "named",
+          "lang": "kk",
+          "status": "MISS",
+          "top5_ids": [
+            "overture:cea79d76-658d-400d-9c03-364a8229c8b5",
+            "overture:abe8e012-e307-40c6-bd61-38f018423b03",
+            "overture:4db7a84c-892a-4f70-a659-12d86583b554",
+            "overture:f0a5c75b-8872-4acc-8559-79ff840c25c6",
+            "overture:d186c188-d3fe-4016-9d0c-2ae4f09f1725"
+          ],
+          "expected_ids": [
+            "osm:way/69232075"
+          ],
+          "label_grades": {
+            "osm:way/69232075": 2
+          },
+          "label_id_mapping": {
+            "osm:way/69232075": "osm:way/69232075"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Сарайшық 13/1-дегі Жетісу саябағын көрсетші.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Сарайшық 13/1-дегі Жетісу саябағын көрсетші.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh13",
+          "type": "named",
+          "lang": "kk",
+          "status": "MISS",
+          "top5_ids": [
+            "citypass:88",
+            "osm:node/2864129921",
+            "osm:node/12613308529",
+            "osm:way/1428966977",
+            "osm:way/1456208624"
+          ],
+          "expected_ids": [
+            "osm:way/112177946"
+          ],
+          "label_grades": {
+            "osm:way/112177946": 2
+          },
+          "label_id_mapping": {
+            "osm:way/112177946": "osm:way/112177946"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Бейбітшілік және келісім сарайының айналасындағы Президент саябағында серуендегім келеді.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Бейбітшілік және келісім сарайының айналасындағы Президент саябағында серуендегім келеді.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh14",
+          "type": "named",
+          "lang": "kk",
+          "status": "HIT",
+          "top5_ids": [
+            "citypass:98",
+            "osm:way/240391776",
+            "overture:d2f834c2-bedd-4e70-9d4f-0e62c98a5298",
+            "osm:way/1239171353",
+            "overture:7972273c-f99e-4cd9-b552-c94b2a59adde"
+          ],
+          "expected_ids": [
+            "citypass:98"
+          ],
+          "label_grades": {
+            "citypass:98": 2
+          },
+          "label_id_mapping": {
+            "citypass:98": "citypass:98"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:98"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Республика 2 мекенжайындағы әскери-тарихи музейге кіріп, әскери техника көргім келеді.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Республика 2 мекенжайындағы әскери-тарихи музейге кіріп, әскери техника көргім келеді.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh15",
+          "type": "named",
+          "lang": "en",
+          "status": "MISS",
+          "top5_ids": [
+            "overture:6fb348c5-c760-40c1-8afd-94b32cde5400",
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a",
+            "osm:node/12917112809",
+            "osm:node/4543944911",
+            "osm:node/10170946742"
+          ],
+          "expected_ids": [
+            "osm:node/10295608316"
+          ],
+          "label_grades": {
+            "osm:node/10295608316": 2
+          },
+          "label_id_mapping": {
+            "osm:node/10295608316": "osm:node/10295608316"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Which CoffeeBoom is on Zhenis Avenue 28 and explicitly offers free Wi-Fi?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Which CoffeeBoom is on Zhenis Avenue 28 and explicitly offers free Wi-Fi?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh16",
+          "type": "named",
+          "lang": "en",
+          "status": "MISS",
+          "top5_ids": [
+            "overture:ae0bcaf1-2f57-4b0b-87a8-c33c5ab439d8",
+            "osm:relation/16002498",
+            "osm:relation/3573848",
+            "osm:way/1534678435",
+            "osm:way/1450732938"
+          ],
+          "expected_ids": [
+            "osm:way/1196402246"
+          ],
+          "label_grades": {
+            "osm:way/1196402246": 2
+          },
+          "label_id_mapping": {
+            "osm:way/1196402246": "osm:way/1196402246"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "I want the greenhouse complex at Astana Botanical Garden on Orynbor, rather than just an outdoor park.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "I want the greenhouse complex at Astana Botanical Garden on Orynbor, rather than just an outdoor park.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh17",
+          "type": "named",
+          "lang": "en",
+          "status": "HIT",
+          "top5_ids": [
+            "overture:ad5d249f-902b-48f4-9be0-7baed8a5db67",
+            "osm:way/69232075",
+            "osm:node/12993941023",
+            "citypass:94",
+            "osm:way/1239177393"
+          ],
+          "expected_ids": [
+            "osm:way/1239177393"
+          ],
+          "label_grades": {
+            "osm:way/1239177393": 2
+          },
+          "label_id_mapping": {
+            "osm:way/1239177393": "osm:way/1239177393"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:way/1239177393"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Find the Atyrau pedestrian bridge over the Yesil for a city walk.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Find the Atyrau pedestrian bridge over the Yesil for a city walk.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh18",
+          "type": "named",
+          "lang": "en",
+          "status": "MISS",
+          "top5_ids": [
+            "overture:ba86b8e0-3a2f-4e65-bec8-181a934c33f1",
+            "overture:32f0c5c2-2477-47e0-a184-02a129fd3cb5",
+            "overture:d884409a-6d05-4a84-a6a5-cc083ba5aed1",
+            "overture:dd3617a1-a856-439a-919d-306b4f7c1c9e",
+            "osm:node/13948916190"
+          ],
+          "expected_ids": [
+            "osm:node/4894937300"
+          ],
+          "label_grades": {
+            "osm:node/4894937300": 2
+          },
+          "label_id_mapping": {
+            "osm:node/4894937300": "osm:node/4894937300"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "I am looking for Kazakhstan history and ethnography at the National Museum on Tauelsizdik Avenue 54.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "I am looking for Kazakhstan history and ethnography at the National Museum on Tauelsizdik Avenue 54.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh19",
+          "type": "named",
+          "lang": "en",
+          "status": "HIT",
+          "top5_ids": [
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3",
+            "overture:1d46ff10-4188-4495-b4a5-0501cf6120bf",
+            "osm:way/916153705",
+            "overture:5a524721-3c6f-45f9-a6f0-9610c03104e5",
+            "overture:906770cc-832a-4303-bf9b-6a9f82abe4a8"
+          ],
+          "expected_ids": [
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3"
+          ],
+          "label_grades": {
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3": 2
+          },
+          "label_id_mapping": {
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3": "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Where is ForteBank Kulanshi Art Space on Dostyk 8/1 for contemporary art exhibitions?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Where is ForteBank Kulanshi Art Space on Dostyk 8/1 for contemporary art exhibitions?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh20",
+          "type": "factual",
+          "lang": "en",
+          "status": "HIT",
+          "top5_ids": [
+            "overture:629b098d-13bb-4f05-94d7-5c7f7bb880af",
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+            "osm:node/5913449625",
+            "osm:node/12101838401",
+            "dodo:149"
+          ],
+          "expected_ids": [
+            "osm:node/12293708057",
+            "osm:node/13397061028",
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf"
+          ],
+          "label_grades": {
+            "osm:node/12293708057": 2,
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf": 2,
+            "osm:node/13397061028": 2
+          },
+          "label_id_mapping": {
+            "osm:node/12293708057": "osm:node/12293708057",
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf": "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+            "osm:node/13397061028": "osm:node/13397061028"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 0.3333333333333333,
+          "query": "At MEGA Silk Way, suggest French bakery food, pilaf, or gourmet street food for an evening meal.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "At MEGA Silk Way, suggest French bakery food, pilaf, or gourmet street food for an evening meal.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        }
+      ]
+    },
+    "hybrid": {
+      "summary": {
+        "total_cases": 20,
+        "evaluated_cases": 20,
+        "not_evaluated_cases": 0,
+        "error_cases": 0,
+        "hit_cases": 14,
+        "miss_cases": 6,
+        "relevant_ids": 32,
+        "matched_relevant_ids": 17,
+        "hit_at_5": 0.7,
+        "macro_recall_at_5": 0.6083333333333333,
+        "micro_recall_at_5": 0.53125,
+        "hit_at_5_wilson95": [
+          0.4810232237710206,
+          0.854524726031006
+        ],
+        "latency_ms": {
+          "p50": 5.312291512382217,
+          "p95": 8.237197611015292,
+          "max": 9.823500004131347
+        }
+      },
+      "cases": [
+        {
+          "id": "sh01",
+          "type": "factual",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:node/11109477264",
+            "osm:node/6290442885",
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a",
+            "osm:node/4548937189",
+            "osm:node/10170946742"
+          ],
+          "expected_ids": [
+            "osm:node/10170946742",
+            "osm:node/10295608316",
+            "osm:node/12917112809",
+            "osm:node/4543944911",
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a",
+            "overture:6fb348c5-c760-40c1-8afd-94b32cde5400"
+          ],
+          "label_grades": {
+            "osm:node/4543944911": 2,
+            "osm:node/10295608316": 2,
+            "osm:node/12917112809": 2,
+            "overture:6fb348c5-c760-40c1-8afd-94b32cde5400": 2,
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a": 2,
+            "osm:node/10170946742": 2
+          },
+          "label_id_mapping": {
+            "osm:node/4543944911": "osm:node/4543944911",
+            "osm:node/10295608316": "osm:node/10295608316",
+            "osm:node/12917112809": "osm:node/12917112809",
+            "overture:6fb348c5-c760-40c1-8afd-94b32cde5400": "overture:6fb348c5-c760-40c1-8afd-94b32cde5400",
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a": "overture:21bc4233-9d79-4931-877d-0ca435d4083a",
+            "osm:node/10170946742": "osm:node/10170946742"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:node/10170946742",
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 0.3333333333333333,
+          "query": "Покажи кофейни Астаны, где сам филиал прямо указывает бесплатный Wi-Fi.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Покажи кофейни Астаны, где сам филиал прямо указывает бесплатный Wi-Fi.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh02",
+          "type": "named",
+          "lang": "ru",
+          "status": "MISS",
+          "top5_ids": [
+            "overture:7758ab93-4ecb-48c1-baec-292ed6fb3c1d",
+            "overture:9f44e1f4-23f0-4056-bc09-aa8848af58c5",
+            "overture:7972273c-f99e-4cd9-b552-c94b2a59adde",
+            "overture:d2f834c2-bedd-4e70-9d4f-0e62c98a5298",
+            "overture:c015311d-dbe7-46b5-847d-e55767d318ce"
+          ],
+          "expected_ids": [
+            "osm:node/2349675581"
+          ],
+          "label_grades": {
+            "osm:node/2349675581": 2
+          },
+          "label_id_mapping": {
+            "osm:node/2349675581": "osm:node/2349675581"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Где на проспекте Республики посмотреть с ребёнком кукольный спектакль?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Где на проспекте Республики посмотреть с ребёнком кукольный спектакль?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh03",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "citypass:63",
+            "osm:node/10168968309",
+            "citypass:64",
+            "citypass:65",
+            "osm:way/112384559"
+          ],
+          "expected_ids": [
+            "citypass:63"
+          ],
+          "label_grades": {
+            "citypass:63": 2
+          },
+          "label_id_mapping": {
+            "citypass:63": "citypass:63"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:63"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Нужен именно океанариум Ailand с детским билетом, а не всё развлекательное здание.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Нужен именно океанариум Ailand с детским билетом, а не всё развлекательное здание.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh04",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:way/230401645",
+            "citypass:84",
+            "osm:way/549307755",
+            "osm:node/2681623412",
+            "overture:9a54cfda-86a8-4c07-8046-51e8f0aba6b5"
+          ],
+          "expected_ids": [
+            "citypass:84",
+            "osm:way/230401645"
+          ],
+          "label_grades": {
+            "osm:way/230401645": 2,
+            "citypass:84": 2
+          },
+          "label_id_mapping": {
+            "osm:way/230401645": "osm:way/230401645",
+            "citypass:84": "citypass:84"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:84",
+            "osm:way/230401645"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Хочу сравнить два символа Астаны: Байтерек и триумфальную арку Мәңгілік Ел. Какие места искать?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Хочу сравнить два символа Астаны: Байтерек и триумфальную арку Мәңгілік Ел. Какие места искать?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh05",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "citypass:88",
+            "osm:way/1456208624",
+            "osm:node/4920065833",
+            "osm:node/455447680",
+            "osm:way/917348929"
+          ],
+          "expected_ids": [
+            "citypass:88"
+          ],
+          "label_grades": {
+            "citypass:88": 2
+          },
+          "label_id_mapping": {
+            "citypass:88": "citypass:88"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:88"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Ищу Дворец мира и согласия, где экскурсии описаны на казахском, русском и английском.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Ищу Дворец мира и согласия, где экскурсии описаны на казахском, русском и английском.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh06",
+          "type": "named",
+          "lang": "ru",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:way/240376692",
+            "citypass:89",
+            "citypass:120",
+            "overture:f17b514d-5f58-4227-90f8-aa46f1c6a29e",
+            "overture:2a0a3fbb-f435-4cc1-8ef5-f54daebe1245"
+          ],
+          "expected_ids": [
+            "citypass:120",
+            "citypass:89"
+          ],
+          "label_grades": {
+            "citypass:120": 2,
+            "citypass:89": 2
+          },
+          "label_id_mapping": {
+            "citypass:120": "citypass:120",
+            "citypass:89": "citypass:89"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "citypass:120",
+            "citypass:89"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Что найти для знакомства с наследием: дом-музей ювелира Берика Алибая или литературный музей Сакена Сейфуллина?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Что найти для знакомства с наследием: дом-музей ювелира Берика Алибая или литературный музей Сакена Сейфуллина?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh07",
+          "type": "factual",
+          "lang": "ru",
+          "status": "MISS",
+          "top5_ids": [
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+            "overture:869dece6-6c31-427d-87e5-dab5efb3f6ca",
+            "osm:node/14107301089",
+            "overture:629b098d-13bb-4f05-94d7-5c7f7bb880af",
+            "overture:1126bddc-a32a-4122-8ddc-88f65b430a5b"
+          ],
+          "expected_ids": [
+            "osm:node/12093489323",
+            "osm:node/13397061026",
+            "osm:node/6404769885"
+          ],
+          "label_grades": {
+            "osm:node/12093489323": 2,
+            "osm:node/6404769885": 2,
+            "osm:node/13397061026": 2
+          },
+          "label_id_mapping": {
+            "osm:node/12093489323": "osm:node/12093489323",
+            "osm:node/6404769885": "osm:node/6404769885",
+            "osm:node/13397061026": "osm:node/13397061026"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "В MEGA Silk Way выбираю ужин: итальянский ресторан, морепродукты или паназиатская кухня.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "В MEGA Silk Way выбираю ужин: итальянский ресторан, морепродукты или паназиатская кухня.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh08",
+          "type": "named",
+          "lang": "kk",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:node/4543944911",
+            "overture:6fb348c5-c760-40c1-8afd-94b32cde5400",
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a",
+            "osm:node/11206429884",
+            "osm:node/12809042306"
+          ],
+          "expected_ids": [
+            "osm:node/4543944911"
+          ],
+          "label_grades": {
+            "osm:node/4543944911": 2
+          },
+          "label_id_mapping": {
+            "osm:node/4543944911": "osm:node/4543944911"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:node/4543944911"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Самал 11 мекенжайындағы CoffeeBoom-да тегін Wi-Fi бар ма?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Самал 11 мекенжайындағы CoffeeBoom-да тегін Wi-Fi бар ма?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh09",
+          "type": "named",
+          "lang": "kk",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:way/454857501",
+            "overture:f156787e-136d-4047-9f5e-8ae04ed039bb",
+            "overture:784c8949-205b-499f-9ef1-6225e3d28258",
+            "overture:75cab13d-da0c-48d6-8eec-15ff9498182b",
+            "overture:334e2ef9-7166-43b5-a46d-3129e709e70b"
+          ],
+          "expected_ids": [
+            "osm:way/454857501"
+          ],
+          "label_grades": {
+            "osm:way/454857501": 2
+          },
+          "label_id_mapping": {
+            "osm:way/454857501": "osm:way/454857501"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:way/454857501"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Он үш жастағы оқушыға Alem.ai ішіндегі TUMO шығармашылық технология бағдарламасын іздеп жүрмін.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Он үш жастағы оқушыға Alem.ai ішіндегі TUMO шығармашылық технология бағдарламасын іздеп жүрмін.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh10",
+          "type": "factual",
+          "lang": "kk",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:node/2691137163",
+            "overture:2367cb05-eb03-40f1-bddf-a1da63b2243d",
+            "osm:way/734514013",
+            "osm:way/1428966977",
+            "osm:relation/16002498"
+          ],
+          "expected_ids": [
+            "osm:relation/15957444",
+            "osm:relation/16002498"
+          ],
+          "label_grades": {
+            "osm:relation/15957444": 2,
+            "osm:relation/16002498": 2
+          },
+          "label_id_mapping": {
+            "osm:relation/15957444": "osm:relation/15957444",
+            "osm:relation/16002498": "osm:relation/16002498"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:relation/16002498"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 0.5,
+          "query": "Балалар ойнайтын алаңы бар саябақ іздеймін: Орталық саябақ немесе Жерұйық жарай ма?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Балалар ойнайтын алаңы бар саябақ іздеймін: Орталық саябақ немесе Жерұйық жарай ма?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh11",
+          "type": "named",
+          "lang": "kk",
+          "status": "HIT",
+          "top5_ids": [
+            "citypass:119",
+            "osm:way/1363058986",
+            "overture:784c8949-205b-499f-9ef1-6225e3d28258",
+            "overture:799112aa-4895-4401-8f3b-ba79c379d685",
+            "osm:node/4955093906"
+          ],
+          "expected_ids": [
+            "osm:way/1363058986"
+          ],
+          "label_grades": {
+            "osm:way/1363058986": 2
+          },
+          "label_id_mapping": {
+            "osm:way/1363058986": "osm:way/1363058986"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:way/1363058986"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Есіл жағасындағы Триатлон саябағында жүгіру мен велосипед тебуге арналған жолдарды тапқым келеді.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Есіл жағасындағы Триатлон саябағында жүгіру мен велосипед тебуге арналған жолдарды тапқым келеді.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh12",
+          "type": "named",
+          "lang": "kk",
+          "status": "MISS",
+          "top5_ids": [
+            "overture:f0a5c75b-8872-4acc-8559-79ff840c25c6",
+            "overture:da5c105d-b071-4a8e-926d-f608726567e8",
+            "overture:37e14625-fae1-4c79-ab75-53190d5faffb",
+            "overture:aafeee23-7549-447c-85ca-51f8b96c3444",
+            "overture:faebe2e8-80b5-4260-a1d3-6d44f9460d5d"
+          ],
+          "expected_ids": [
+            "osm:way/69232075"
+          ],
+          "label_grades": {
+            "osm:way/69232075": 2
+          },
+          "label_id_mapping": {
+            "osm:way/69232075": "osm:way/69232075"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Сарайшық 13/1-дегі Жетісу саябағын көрсетші.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Сарайшық 13/1-дегі Жетісу саябағын көрсетші.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh13",
+          "type": "named",
+          "lang": "kk",
+          "status": "MISS",
+          "top5_ids": [
+            "osm:way/1456208624",
+            "osm:way/1428966977",
+            "overture:5d3730f6-1558-4b1c-8e96-15f76a18cb86",
+            "osm:way/51431624",
+            "osm:way/243041606"
+          ],
+          "expected_ids": [
+            "osm:way/112177946"
+          ],
+          "label_grades": {
+            "osm:way/112177946": 2
+          },
+          "label_id_mapping": {
+            "osm:way/112177946": "osm:way/112177946"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Бейбітшілік және келісім сарайының айналасындағы Президент саябағында серуендегім келеді.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Бейбітшілік және келісім сарайының айналасындағы Президент саябағында серуендегім келеді.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh14",
+          "type": "named",
+          "lang": "kk",
+          "status": "MISS",
+          "top5_ids": [
+            "osm:way/240391776",
+            "overture:7972273c-f99e-4cd9-b552-c94b2a59adde",
+            "osm:way/1239171353",
+            "overture:d2f834c2-bedd-4e70-9d4f-0e62c98a5298",
+            "overture:784c8949-205b-499f-9ef1-6225e3d28258"
+          ],
+          "expected_ids": [
+            "citypass:98"
+          ],
+          "label_grades": {
+            "citypass:98": 2
+          },
+          "label_id_mapping": {
+            "citypass:98": "citypass:98"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Республика 2 мекенжайындағы әскери-тарихи музейге кіріп, әскери техника көргім келеді.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Республика 2 мекенжайындағы әскери-тарихи музейге кіріп, әскери техника көргім келеді.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh15",
+          "type": "named",
+          "lang": "en",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:node/10170946742",
+            "osm:node/9999465717",
+            "overture:21bc4233-9d79-4931-877d-0ca435d4083a",
+            "overture:6fb348c5-c760-40c1-8afd-94b32cde5400",
+            "osm:node/10295608316"
+          ],
+          "expected_ids": [
+            "osm:node/10295608316"
+          ],
+          "label_grades": {
+            "osm:node/10295608316": 2
+          },
+          "label_id_mapping": {
+            "osm:node/10295608316": "osm:node/10295608316"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:node/10295608316"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Which CoffeeBoom is on Zhenis Avenue 28 and explicitly offers free Wi-Fi?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Which CoffeeBoom is on Zhenis Avenue 28 and explicitly offers free Wi-Fi?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh16",
+          "type": "named",
+          "lang": "en",
+          "status": "HIT",
+          "top5_ids": [
+            "osm:relation/3573848",
+            "osm:way/1196402246",
+            "overture:ae0bcaf1-2f57-4b0b-87a8-c33c5ab439d8",
+            "overture:d5b2cda9-d72f-440f-8a3e-5b57c772491a",
+            "overture:76f3b923-7295-454c-a4ce-eb60a42611eb"
+          ],
+          "expected_ids": [
+            "osm:way/1196402246"
+          ],
+          "label_grades": {
+            "osm:way/1196402246": 2
+          },
+          "label_id_mapping": {
+            "osm:way/1196402246": "osm:way/1196402246"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:way/1196402246"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "I want the greenhouse complex at Astana Botanical Garden on Orynbor, rather than just an outdoor park.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "I want the greenhouse complex at Astana Botanical Garden on Orynbor, rather than just an outdoor park.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh17",
+          "type": "named",
+          "lang": "en",
+          "status": "MISS",
+          "top5_ids": [
+            "citypass:94",
+            "osm:node/12009143370",
+            "overture:7793e632-dc63-4bd5-85f1-fe40bcd9ad2d",
+            "citypass:84",
+            "osm:node/5126825313"
+          ],
+          "expected_ids": [
+            "osm:way/1239177393"
+          ],
+          "label_grades": {
+            "osm:way/1239177393": 2
+          },
+          "label_id_mapping": {
+            "osm:way/1239177393": "osm:way/1239177393"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [],
+          "hit_at_5": false,
+          "recall_at_5": 0.0,
+          "query": "Find the Atyrau pedestrian bridge over the Yesil for a city walk.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Find the Atyrau pedestrian bridge over the Yesil for a city walk.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh18",
+          "type": "named",
+          "lang": "en",
+          "status": "HIT",
+          "top5_ids": [
+            "overture:32f0c5c2-2477-47e0-a184-02a129fd3cb5",
+            "citypass:97",
+            "osm:node/4894937300",
+            "citypass:98",
+            "osm:way/1239171353"
+          ],
+          "expected_ids": [
+            "osm:node/4894937300"
+          ],
+          "label_grades": {
+            "osm:node/4894937300": 2
+          },
+          "label_id_mapping": {
+            "osm:node/4894937300": "osm:node/4894937300"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "osm:node/4894937300"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "I am looking for Kazakhstan history and ethnography at the National Museum on Tauelsizdik Avenue 54.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "I am looking for Kazakhstan history and ethnography at the National Museum on Tauelsizdik Avenue 54.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh19",
+          "type": "named",
+          "lang": "en",
+          "status": "HIT",
+          "top5_ids": [
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3",
+            "overture:1d46ff10-4188-4495-b4a5-0501cf6120bf",
+            "overture:effb1a1c-c1f1-46cc-9b5c-5bdf9d466bca",
+            "overture:8224c98f-c37f-4065-bd79-c2601285de32",
+            "overture:733c8593-79ae-4b09-a4b8-8775858b2097"
+          ],
+          "expected_ids": [
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3"
+          ],
+          "label_grades": {
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3": 2
+          },
+          "label_id_mapping": {
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3": "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 1.0,
+          "query": "Where is ForteBank Kulanshi Art Space on Dostyk 8/1 for contemporary art exhibitions?",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "Where is ForteBank Kulanshi Art Space on Dostyk 8/1 for contemporary art exhibitions?",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        },
+        {
+          "id": "sh20",
+          "type": "factual",
+          "lang": "en",
+          "status": "HIT",
+          "top5_ids": [
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+            "osm:node/12101838401",
+            "osm:node/5913449625",
+            "osm:way/499328514",
+            "overture:d3ce0382-6f67-4aec-878a-da0df6b28d1c"
+          ],
+          "expected_ids": [
+            "osm:node/12293708057",
+            "osm:node/13397061028",
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf"
+          ],
+          "label_grades": {
+            "osm:node/12293708057": 2,
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf": 2,
+            "osm:node/13397061028": 2
+          },
+          "label_id_mapping": {
+            "osm:node/12293708057": "osm:node/12293708057",
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf": "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+            "osm:node/13397061028": "osm:node/13397061028"
+          },
+          "label_scope": "provided_graded_poi_ids",
+          "matched_ids": [
+            "overture:38122d40-1d49-4e81-8427-0c49b65114cf"
+          ],
+          "hit_at_5": true,
+          "recall_at_5": 0.3333333333333333,
+          "query": "At MEGA Silk Way, suggest French bakery food, pilaf, or gourmet street food for an evening meal.",
+          "label_source": "explicit_ids",
+          "retrieval_request": {
+            "query": "At MEGA Silk Way, suggest French bakery food, pilaf, or gourmet street food for an evening meal.",
+            "lat": null,
+            "lon": null,
+            "radius_m": 2500,
+            "categories": null,
+            "top_k": 5
+          }
+        }
+      ]
+    }
+  }
+}

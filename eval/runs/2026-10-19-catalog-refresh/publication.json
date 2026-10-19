@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-10-19",
+  "published_at": "2026-10-19T11:52:10.677436+05:00",
+  "scope": "Bounded public-source enrichment; whole catalog audited, not every branch independently verified",
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "canonical_records": 14006,
+  "active_recommendation_records": 2742,
+  "gazetteer_records": 13999,
+  "preserved_source_ids": 14607,
+  "accepted_detail_branches": 377,
+  "detail_counts": {
+    "facts": 2988,
+    "menu_items": 3775,
+    "prices": 183
+  },
+  "services": 10,
+  "source_hashes": {
+    "data/sources/place_details_2026-10-19.json": "e678d5897147e948fad17fb6d9d25a429f34cae940257dac3a5d53f99ac2dee8",
+    "data/sources/place_details_discovery_2026-10-19.json": "1afa1b34e9456b504b0b3a24707853ffd7e91ba6305b0be3d1ccc0852ac47d4e",
+    "data/review/2026-10-19-refresh/discovery-gasteria.json": "c28f0114297568b3cdb91b4e3cd5806d200844b80236be0a2ef80cfb02e7bf3f",
+    "data/sources/place_menus_full_2026-10-19.json": "f2c504a57a134206c0b1a549b044206ca6a9a99c882869788be98b953533c9ab",
+    "data/sources/place_food_service_2026-10-19.json": "fc825d2f0d9f672e2fa31168b07f581e0fcadac0385b1a3a070d80d9abf3bb78",
+    "data/sources/city_services_2026-10-19.json": "cd79dbdeb222b57dc801f0a3b43e0ef15a43cc43bf9875ac388a6a9dfbf7c9e5",
+    "data/review/2026-10-19-refresh/coordinate-review.json": "e4c965d017dd2836815b5018d350b122aced7e28b083a04eb9e6ccc08d5f25ae",
+    "data/review/2026-10-19-food-service/classification-review.json": "d27fd20be2c70a108e5e01d5d6495f87612c7da7fe0e169da263ba094e1d9835"
+  },
+  "discovery_overlap_held": [],
+  "food_overlap_held": [],
+  "archived_canonical_ids": [
+    "citypass:119",
+    "citypass:142",
+    "citypass:94",
+    "overture:3105494a-8102-4450-9d78-12ca652ce768",
+    "overture:5a405c91-d5d6-47ee-9b9b-546134f0505d",
+    "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e",
+    "overture:dc97b064-be10-46d8-9168-76343e2e115d"
+  ],
+  "dense_index_rows": 2742,
+  "dense_index_model": "e5-small",
+  "source_audit": "eval/runs/2026-10-19-catalog-refresh/source-audit/summary.json",
+  "version": "eb1ec17246ca4c2ab820160e1a62bb9b",
+  "prior_version": "c0d3e2f710f64d399c01c97b853ca05d",
+  "bundle_files": 19,
+  "quality_gates": "passed"
+}

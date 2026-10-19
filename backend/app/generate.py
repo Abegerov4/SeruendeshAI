@@ -64,8 +64,13 @@ def llm_generate(query: str, intent: Intent, candidates: list[dict], location_la
         f"Запрос пользователя:\n<user_query>\n{_user_block(query, intent, location_label)}\n</user_query>\n\n"
         f"Кандидаты:\n{wrap_untrusted([_candidate_view(c) for c in candidates])}"
     )
+    candidate_ids = {c["id"] for c in candidates}
+    def accepted_output(data):
+        answer = LlmAnswer.model_validate(data)
+        return not answer.recommendations or any(r.poi_id in candidate_ids for r in answer.recommendations)
     for _ in range(2):  # один ретрай при невалидном ответе
-        data = llm.chat_json(system, user, role="decision", name="decide-recommendations")
+        data = llm.chat_json(system, user, role="decision", name="decide-recommendations",
+                             validate_output=accepted_output)
         if not data:
             return None
         try:
@@ -80,19 +85,19 @@ def llm_generate(query: str, intent: Intent, candidates: list[dict], location_la
                 continue
             seen.add(r.poi_id)
             lo, hi = sorted(max(5, min(v, 600)) for v in r.visit_min)
-            why, what = clean_llm_text(r.why), clean_llm_text(r.what_to_do)
-            source = "generated" if r.source == "generated" else "poi_data"
-            if not why or not what:  # после чистки ссылок текст пуст — подставляем факты, а не пустую карточку
-                t_why, t_what, grounded = template_texts(by_id[r.poi_id], _lang(intent))
-                why, what = why or t_why, what or t_what
-                source = source if grounded else "generated"
+            why, what, grounded = template_texts(by_id[r.poi_id], _lang(intent))
+            source = "poi_data" if grounded else "generated"
             recs.append({"poi_id": r.poi_id, "why": why, "visit_min": [lo, hi], "what_to_do": what, "source": source})
-        notes = [clean_llm_text(n, 200) for n in ans.notes if n.strip() and not DUP_NOTE.search(n)]
+        # Free model notes can assert the same unsupported facts as card prose.
+        notes = []
         if recs:
             return recs[:3], notes[:1]
         if not ans.recommendations:
             # модель осознанно решила, что ничего не подходит — это ответ, а не сбой: шаблон не подставляем
-            return [], notes[:1]
+            note = {"ru": "Для текущего запроса подбор не сформирован; попробуйте изменить фильтры или локацию.",
+                    "kk": "Бұл сұрауға орындар таңдалмады; сүзгілерді немесе орынды өзгертіп көріңіз.",
+                    "en": "No selection was made for this request; try changing filters or location."}[_lang(intent)]
+            return [], [note]
         # все poi_id невалидны (галлюцинация) — ретрай
     return None
 
@@ -157,11 +162,12 @@ def template_texts(c: dict, lang: str) -> tuple[str, str, bool]:
     label = CATEGORY_LABEL[lang].get(c["category"], CATEGORY_LABEL[lang]["other"])
     dist = c.get("distance_m")
     near = NEAR[lang][0].format(d=dist) if dist is not None else NEAR[lang][1]
-    real_desc = c.get("description_source") not in (None, "llm_generated", "template")
-    desc = _first_sentence(c.get("description")) if real_desc else ""
-    why = clean_llm_text(f"{label} {near}. {desc}".strip()) or f"{label} {near}"
+    # Category and computed proximity are accepted fields. Source narrative can
+    # contain unverified facility claims or injected instructions; it is not a
+    # substitute for field-level evidence in this factual explanation.
+    why = clean_llm_text(f"{label} {near}.")
     what = WHAT_TO_DO[lang].get(c["category"], WHAT_TO_DO[lang]["other"])
-    return why, what, bool(desc)
+    return why, what, True
 
 
 def template_generate(intent: Intent, candidates: list[dict]) -> list[dict]:

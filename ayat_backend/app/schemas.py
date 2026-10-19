@@ -3,7 +3,8 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
+from ayat_backend.app.food import FoodRequirement
 
 API_VERSION = "1.0"
 
@@ -21,12 +22,14 @@ class _Out(BaseModel):
 
 
 class LatLon(BaseModel):
+    model_config = ConfigDict(strict=True)
     lat: float = Field(ge=-90, le=90, description="Latitude; the client should round to 3 decimals (~100 m)")
     lon: float = Field(ge=-180, le=180, description="Longitude; the client should round to 3 decimals")
 
 
 class WeatherOverride(BaseModel):
-    """Demo/test override of live weather (e.g. show the winter mode in July)."""
+    """Test override of live weather (reproducible evaluations)."""
+    model_config = ConfigDict(strict=True)
     temperature_c: float = Field(ge=-60, le=60)
     feels_like_c: float = Field(ge=-70, le=60)
     wind_ms: float = Field(0, ge=0, le=60)
@@ -34,6 +37,7 @@ class WeatherOverride(BaseModel):
 
 
 class Profile(BaseModel):
+    model_config = ConfigDict(strict=True)
     with_kids: bool = False
     tourist: bool = False
     accessibility: bool = False
@@ -41,10 +45,19 @@ class Profile(BaseModel):
 
 
 class RecommendRequest(BaseModel):
-    query: str = Field("", max_length=500, description="Free text in RU/KK/EN, e.g. «Я возле Байтерека, хочу погулять час»")
+    model_config = ConfigDict(strict=True)  # "51.1" / "true" strings are rejected (422), like the team contract tests expect
+    query: str = Field(description="Free text in RU/KK/EN, e.g. «Я возле Байтерека, хочу погулять час» (long text is truncated)")
+
+    @field_validator("query", mode="before")
+    @classmethod
+    def _truncate(cls, v):
+        return v[:1000] if isinstance(v, str) else v
     lang: Lang | None = Field(None, description="UI language; null = detect from the query")
     location: LatLon | None = Field(None, description="Approximate user position (rounded). Server rounds again.")
     landmark: str | None = Field(None, max_length=80, description="Landmark key or name from GET /api/meta instead of GPS")
+    service_id: str | None = Field(None, max_length=120, description="Previous service context for a relevant follow-up; a new topic takes precedence")
+    food_context: list[FoodRequirement] = Field(default_factory=list, max_length=16,
+        description="Previous user food requirements, reused only for an unambiguous refinement; never venue facts")
     time_budget_min: int | None = Field(None, ge=10, le=480, description="Total time the user has (null = from text or 60)")
     mode: TravelMode | None = Field(None, description="Team contract §3.3: walk | car | transit")
     profile: Profile | None = Field(None, description="Team contract §3.3 profile (with_kids, tourist, accessibility, group_size)")
@@ -54,15 +67,20 @@ class RecommendRequest(BaseModel):
     accessibility: bool | None = Field(None, description="Need step-free / wheelchair-accessible places")
     group_size: int | None = Field(None, ge=1, le=20)
     want_route: bool | None = Field(None, description="Ask for a 2–3 stop mini-route (default: auto)")
-    now: str | None = Field(None, description="ISO datetime override for demos/tests, e.g. 2026-10-18T19:30:00+05:00")
-    weather: WeatherOverride | None = Field(None, description="Weather override for demos/tests (null = live Open-Meteo)")
+    now: str | None = Field(None, description="ISO datetime override for tests, e.g. 2026-10-18T19:30:00+05:00")
+    weather: WeatherOverride | None = Field(None, description="Weather override for tests (null = live Open-Meteo)")
+    refine: list[Literal["closer", "no_coffee", "indoor"]] = Field(
+        default_factory=list, description="Follow-up refinements of the previous request: closer, no_coffee, indoor")
 
 
 class Opening(_Out):
     status: OpenStatus
     confidence: Confidence
     label: str = Field(description="Human text in the response language, e.g. «Открыто до 22:00 (данные OSM)»")
-    raw: str | None = Field(description="Original OSM opening_hours string, if any")
+    raw: str | None = Field(description="Original opening_hours string, if any")
+    source: str | None = None
+    source_url: str | None = None
+    check_date: str | None = None
     next_change: str | None = Field(description="Local HH:MM of the next open/close change, if known")
 
 
@@ -72,6 +90,16 @@ class EventInfo(_Out):
     url: str | None
     source: str
     price_from: str | None
+
+
+class DescriptionAttribution(_Out):
+    source: Literal["wikipedia"]
+    title: str
+    url: str
+    license: Literal["CC-BY-SA-4.0"]
+    license_url: str
+    attribution: str
+    notice: str = Field(description="Indicates that the displayed text is a shortened source excerpt")
 
 
 class Recommendation(_Out):
@@ -89,8 +117,9 @@ class Recommendation(_Out):
     open_status: Literal["open", "closed", "unknown"]
     open_confidence: Literal["high", "low", "none"]
     source: Literal["poi_data", "generated"] = Field(description="poi_data = collected dataset; generated = AI idea")
-    source_url: str | None
+    source_url: str | None = Field(description="Exactly the dataset source (OSM / Wikidata / Wikipedia page) or null")
     rating: float | None = Field(description="Always null in v1: no open rating source exists for Astana")
+    website: str | None = Field(description="The place's own website, if known")
     # --- extensions (superset of the contract)
     rank: int
     category_detail: str = Field(description="Fine-grained category key (33 types), see GET /api/meta")
@@ -98,8 +127,11 @@ class Recommendation(_Out):
     icon: str
     walk_distance_m: int | None = Field(description="Network walking distance (car: estimated road distance)")
     travel_mode: TravelMode
+    arrival_at: str | None = Field(None, description="Planned local arrival time for a route stop")
+    departure_at: str | None = Field(None, description="Planned local departure time for a route stop")
     visit_suggested_min: int
     leave_by: str | None = Field(description="HH:MM to leave this place to keep the user's deadline (flight etc.)")
+    return_min: int = Field(0, ge=0, description="Travel from this alternative to the deadline destination;0 if no deadline return")
     opening: Opening
     source_label: str
     data_sources: list[str] = Field(description="Where the facts come from: osm, wikidata, wikipedia, overture, ticketon, sxodim")
@@ -111,6 +143,10 @@ class Recommendation(_Out):
     address: str | None
     description: str | None = Field(description="Short description (Wikipedia extract or facts from tags)")
     description_source: str | None = Field(description="wikipedia | osm | template | generated")
+    description_attribution: list[DescriptionAttribution] = Field(default_factory=list)
+    structured_facts: list[dict] = Field(default_factory=list, description="Accepted branch facts with source and validity")
+    menu_items: list[dict] = Field(default_factory=list, description="Published menu entries; delivery prices do not imply dine-in prices")
+    prices: list[dict] = Field(default_factory=list, description="Source-reported price/check with currency, unit and channel")
 
 
 class RouteLeg(_Out):
@@ -125,7 +161,8 @@ class RouteLeg(_Out):
 class Route(_Out):
     order: list[str] = Field(description="poi_ids in visiting order (team contract)")
     legs: list[RouteLeg]
-    total_min: int = Field(description="Travel + visits (+ return leg if returns_to_start)")
+    total_min: int = Field(description="Travel + fixed visits + back_min (if return travel has no leg)")
+    back_min: int = Field(0, description="Deadline return travel not represented by route legs")
     fits_budget: bool
     returns_to_start: bool
     summary: str
@@ -189,7 +226,9 @@ class RecommendResponse(_Out):
     request_id: str
     lang: Lang
     summary: str
-    recommendations: list[Recommendation]
+    recommendations: list[Recommendation] = Field(description="1–3 places from the dataset (source=poi_data)")
+    service_results: list[dict] = Field(default_factory=list, description="Source-bound services, routes, fares and dated departures; distinct from POIs")
+    ideas: list[Recommendation] = Field(description="AI-generated micro-activities (source=generated), anchored to a recommended place")
     route: Route | None
     used_context: UsedContext
     considered: list[Considered] = Field(description="A few places that were rejected and why (transparency)")
@@ -234,7 +273,12 @@ class PoiBrief(_Out):
 class HealthResponse(_Out):
     status: Literal["ok", "degraded"]
     pois: int = Field(description="Team contract field")
-    llm: Literal["ok", "off"] = Field(description="Team contract field")
+    llm: Literal["ok", "off", "configured", "degraded"] = Field(description="Configured provider is not verified readiness")
+    runtime_id: str = "ayat"
+    readiness_profile: Literal["template", "llm"] = "template"
+    ready: bool = False
+    snapshot_version: str | None = None
+    provider_verified_at: str | None = None
     poi_count: int
     events: int
     dense_retrieval: bool

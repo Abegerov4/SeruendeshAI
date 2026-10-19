@@ -1,168 +1,197 @@
 {
  "api_version": "1.0",
- "request_id": "4231a94a0b95",
+ "request_id": "662adb4d8f13",
  "lang": "ru",
- "summary": "Для позднего вечера подойдут крытый бар и необычная фотопауза у символа столицы.",
+ "summary": "Подобрал 3 места рядом: Avtor, Арман 3D, CrepeCafe.",
  "recommendations": [
   {
-   "poi_id": "osm:n4199896989",
+   "poi_id": "osm:node/4199896989",
    "name": "Avtor",
    "category": "bar",
-   "lat": 51.128084,
-   "lon": 71.43654,
+   "lat": 51.1280843,
+   "lon": 71.4365396,
    "distance_m": 456,
    "travel_min": 8,
-   "why": "Avtor — бар с круглосуточным режимом, подходящий для позднего выхода; в прохладную ветреную погоду приятно выбрать место в помещении.",
+   "why": "Бар / паб: совсем рядом, есть круглосуточно.",
    "visit_min": [
     45,
     75
    ],
-   "what_to_do": "Загляните на напиток и устройте неспешную паузу перед завершением вечера.",
+   "what_to_do": "Уточните условия посещения и выберите напиток.",
    "open_status": "open",
-   "open_confidence": "high",
+   "open_confidence": "low",
    "source": "poi_data",
    "source_url": "https://www.openstreetmap.org/node/4199896989",
    "rating": null,
+   "website": null,
    "rank": 1,
    "category_detail": "bar",
    "category_label": "Бар / паб",
    "icon": "beer",
    "walk_distance_m": 580,
    "travel_mode": "walk",
-   "visit_suggested_min": 60,
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 75,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
     "status": "open",
-    "confidence": "medium",
+    "confidence": "low",
     "label": "Открыто по данным часов работы · 24/7 (данные OSM)",
     "raw": "24/7",
+    "source": "osm",
+    "source_url": "https://www.openstreetmap.org/node/4199896989",
+    "check_date": null,
     "next_change": null
    },
    "source_label": "Данные POI",
    "data_sources": [
     "osm"
    ],
-   "popularity": 0.036,
+   "popularity": 0.0,
    "features": [
     "круглосуточно"
    ],
    "accessibility": "unknown",
    "badges": [
-    "indoor",
     "night"
    ],
    "event": null,
    "address": null,
-   "description": "Бар / паб. Удобства: круглосуточно.",
-   "description_source": "template"
+   "description": "Бар «Avtor» в Астане.",
+   "description_source": "osm",
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
   },
   {
-   "poi_id": "osm:w230401645",
-   "name": "Байтерек",
-   "category": "attraction",
-   "lat": 51.128288,
-   "lon": 71.430455,
-   "distance_m": 45,
-   "travel_min": 2,
-   "why": "Бәйтерек — монумент и смотровая башня, ставшая символом переноса столицы; ночной визит добавит прогулке необычную точку.",
+   "poi_id": "osm:node/2474931663",
+   "name": "Арман 3D",
+   "category": "cinema",
+   "lat": 51.1280881,
+   "lon": 71.4124401,
+   "distance_m": 1225,
+   "travel_min": 22,
+   "why": "Кинотеатр: укладывается в ваше время.",
    "visit_min": [
-    15,
-    30
+    98,
+    98
    ],
-   "what_to_do": "Остановитесь у монумента и сделайте ночное фото его силуэта.",
+   "what_to_do": "Уточните расписание и выберите фильм.",
    "open_status": "open",
    "open_confidence": "low",
    "source": "poi_data",
-   "source_url": "https://www.openstreetmap.org/way/230401645",
+   "source_url": "https://www.openstreetmap.org/node/2474931663",
    "rating": null,
+   "website": "https://arman3d.kz/61",
    "rank": 2,
-   "category_detail": "landmark",
-   "category_label": "Достопримечательность",
-   "icon": "landmark",
-   "walk_distance_m": 110,
+   "category_detail": "cinema",
+   "category_label": "Кинотеатр",
+   "icon": "cinema",
+   "walk_distance_m": 1620,
    "travel_mode": "walk",
-   "visit_suggested_min": 20,
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 98,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
-    "status": "always",
-    "confidence": "medium",
-    "label": "Открытая территория — часы не ограничены",
-    "raw": null,
-    "next_change": null
+    "status": "open",
+    "confidence": "low",
+    "label": "Открыто до 02:00 (данные OSM)",
+    "raw": "Mo-Su 10:00-02:00",
+    "source": "osm",
+    "source_url": "https://www.openstreetmap.org/node/2474931663",
+    "check_date": null,
+    "next_change": "02:00"
+   },
+   "source_label": "Данные POI",
+   "data_sources": [
+    "osm"
+   ],
+   "popularity": 0.0,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [
+    "night"
+   ],
+   "event": null,
+   "address": null,
+   "description": "Кинотеатр «Арман 3D» в Астане.",
+   "description_source": "osm",
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
+  },
+  {
+   "poi_id": "osm:node/6408271985",
+   "name": "CrepeCafe",
+   "category": "cafe",
+   "lat": 51.1293821,
+   "lon": 71.4285934,
+   "distance_m": 182,
+   "travel_min": 4,
+   "why": "Кофейня / кафе: совсем рядом.",
+   "visit_min": [
+    25,
+    45
+   ],
+   "what_to_do": "Зайдите на кофе или перекус.",
+   "open_status": "open",
+   "open_confidence": "low",
+   "source": "poi_data",
+   "source_url": "https://www.openstreetmap.org/node/6408271985",
+   "rating": null,
+   "website": null,
+   "rank": 3,
+   "category_detail": "cafe",
+   "category_label": "Кофейня / кафе",
+   "icon": "coffee",
+   "walk_distance_m": 280,
+   "travel_mode": "walk",
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 45,
+   "leave_by": null,
+   "return_min": 0,
+   "opening": {
+    "status": "open",
+    "confidence": "low",
+    "label": "Открыто до 00:00 (данные OSM)",
+    "raw": "Mo-Fr 08:00-00:00; Sa-Su 09:00-00:00",
+    "source": "osm",
+    "source_url": "https://www.openstreetmap.org/node/6408271985",
+    "check_date": null,
+    "next_change": "00:00"
    },
    "source_label": "Данные POI",
    "data_sources": [
     "osm",
-    "overture",
-    "wikidata",
-    "wikipedia"
+    "overture"
    ],
-   "popularity": 0.82,
+   "popularity": 0.0,
    "features": [],
    "accessibility": "unknown",
-   "badges": [
-    "outdoor",
-    "popular"
-   ],
+   "badges": [],
    "event": null,
-   "address": "Нұржол желек жолы, 14",
-   "description": "«Байтере́к» — монумент и смотровая башня в столице Казахстана — Астане. Монумент был построен как символ переноса столицы Казахстана в 1997 году.",
-   "description_source": "wikipedia"
-  },
-  {
-   "poi_id": "idea-3",
-   "name": "Ночной силуэт",
-   "category": "attraction",
-   "lat": 51.128288,
-   "lon": 71.430455,
-   "distance_m": 45,
-   "travel_min": 2,
-   "why": "Сфотографируйте Бәйтерек так, чтобы его силуэт стал главным акцентом кадра.",
-   "visit_min": [
-    5,
-    20
-   ],
-   "what_to_do": "Сфотографируйте Бәйтерек так, чтобы его силуэт стал главным акцентом кадра.",
-   "open_status": "unknown",
-   "open_confidence": "none",
-   "source": "generated",
-   "source_url": null,
-   "rating": null,
-   "rank": 3,
-   "category_detail": "idea",
-   "category_label": "Идея ИИ",
-   "icon": "sparkles",
-   "walk_distance_m": null,
-   "travel_mode": "walk",
-   "visit_suggested_min": 10,
-   "leave_by": null,
-   "opening": {
-    "status": "unknown",
-    "confidence": "low",
-    "label": "Часы работы неизвестны — уточните перед визитом",
-    "raw": null,
-    "next_change": null
-   },
-   "source_label": "Идея ИИ",
-   "data_sources": [
-    "llm"
-   ],
-   "popularity": null,
-   "features": [],
-   "accessibility": "unknown",
-   "badges": [
-    "ai_idea"
-   ],
-   "event": null,
-   "address": "Рядом с: Байтерек",
-   "description": null,
-   "description_source": "generated"
+   "address": "Dinmukhamed Qonayev St 12/1",
+   "description": "Кафе «CrepeCafe» в Астане. Адрес из источника: Dinmukhamed Qonayev St 12/1.",
+   "description_source": "osm",
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
   }
  ],
+ "service_results": [],
+ "ideas": [],
  "route": null,
  "used_context": {
   "location_source": "gps_rounded",
-  "location_label": "~ район «Байтерек» (округлено)",
+  "location_label": "~ район «Бақытты Шаңырақ» (округлено)",
   "radius_m": 2050,
   "time_budget_min": 120,
   "mode": "walk",
@@ -172,7 +201,7 @@
   "now": "2026-10-18T23:00:00+05:00",
   "location": {
    "source": "gps_rounded",
-   "label": "~ район «Байтерек» (округлено)",
+   "label": "~ район «Бақытты Шаңырақ» (округлено)",
    "lat": 51.128,
    "lon": 71.43,
    "precision_m": 100
@@ -194,28 +223,25 @@
   "party": "solo",
   "parsed_from_query": {
    "categories": [],
-   "preferences": [
-    "arts_centre",
-    "gallery",
-    "viewpoint",
-    "active",
-    "karaoke"
-   ],
+   "preferences": [],
    "needs": [],
    "time_budget_min": 120,
+   "food_requirements": [],
    "deadline": null,
    "deadline_in_min": null,
+   "flight_type": "unknown",
+   "deadline_buffer_min": 0,
    "landmark": null,
    "night": true,
    "surprise": true,
-   "parser": "llm+rules (gpt-6-luna)"
+   "parser": "rules"
   },
   "relaxations": [],
   "funnel": {
-   "total": 2307,
-   "within_reach": 554,
-   "after_filters": 121,
-   "shown": 2
+   "total": 2745,
+   "within_reach": 719,
+   "after_filters": 167,
+   "shown": 3
   },
   "data_sources": [
    "OpenStreetMap (ODbL)",
@@ -225,33 +251,35 @@
    "Ticketon / Sxodim",
    "Open-Meteo (CC BY 4.0)"
   ],
-  "data_built_at": "2026-10-18T18:20:55+00:00",
+  "data_built_at": "2026-10-19",
   "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
  },
  "considered": [
   {
-   "name": "Ádemi ai",
+   "name": "Сәтті",
    "reason": "закрыто к моменту прихода"
   },
   {
-   "name": "Дебют",
+   "name": "Kinopark",
    "reason": "закрыто к моменту прихода"
   },
   {
-   "name": "Tequila bar",
+   "name": "TURANDOT+",
    "reason": "закрыто к моменту прихода"
   },
   {
-   "name": "Алматыкітап",
+   "name": "Selfie",
    "reason": "закрыто к моменту прихода"
   }
  ],
- "notes": [],
+ "notes": [
+  "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+ ],
  "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
  "ai_generated": true,
  "llm": {
-  "mode": "llm",
-  "model": "gpt-6-luna",
-  "latency_ms": 3547
+  "mode": "template",
+  "model": null,
+  "latency_ms": 72
  }
 }

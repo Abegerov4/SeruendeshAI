@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-19",
+  "candidates": [
+    {
+      "canonical_id": "overture:5a405c91-d5d6-47ee-9b9b-546134f0505d",
+      "canonical_name": "Tary",
+      "canonical_address": "улица Сыганак 17ф",
+      "source_name": "Tary Astana",
+      "source_address": "Улица Сыганак,17ф,Астана",
+      "source_url": "https://2gis.kz/astana/search/Tary",
+      "evidence_excerpt": "Tary Astana; Улица Сыганак,17ф; Филиал закрылся",
+      "branch_url": "https://2gis.kz/astana/firm/70000001066465693",
+      "branch_fetch_result": "410 Gone via public web tool",
+      "status": "explicit_directory_closure_candidate",
+      "action": "none; root review required before exclusion",
+      "caution": "Closure assertion comes from the named,address-matched search result; HTTP410 alone is not closure proof. No merchant notice was obtained.",
+      "identity_binding": "Brand Tary + exact street Syganaq/Syganak + house17ф; canonical address matches the explicit directory closure row",
+      "source_rechecked_at": "2026-10-19",
+      "source_recheck_excerpt": "Tary Astana; Улица Сыганак, 17ф, Астана; Филиал закрылся"
+    }
+  ],
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63"
+}

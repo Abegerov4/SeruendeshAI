@@ -1,0 +1,48 @@
+2026-10-19 12:16:14,549 INFO app.store: store: 2742 POIs, 14022 gazetteer entries, dense=False, events=60
+2026-10-19 12:16:14,672 INFO app.geo: walk graph: 42455 nodes, 122036 edges
+2026-10-19 12:16:14,693 INFO app: ready in 4.0s: 2742 POIs, graph=True, dense=False, llm=False, db=sqlite
+2026-10-19 12:16:14,697 INFO httpx2: HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+2026-10-19 12:16:14,846 INFO app.service: recommend id=094a0846b5ef lang=ru mode=walk budget=60 items=3 route=False llm=template 146ms
+2026-10-19 12:16:14,846 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:14,920 INFO app.service: recommend id=8cd922a18be7 lang=ru mode=walk budget=60 items=3 route=False llm=template 70ms
+2026-10-19 12:16:14,920 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:14,968 INFO app.service: recommend id=6316454d5587 lang=ru mode=walk budget=60 items=1 route=False llm=template 45ms
+2026-10-19 12:16:14,968 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:14,999 INFO app.service: recommend id=1f0f85939f54 lang=ru mode=walk budget=0 items=0 route=False llm=template 29ms
+2026-10-19 12:16:14,999 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:15,819 INFO app.service: recommend id=f33d522b9c24 lang=ru mode=walk budget=120 items=3 route=False llm=template 818ms
+2026-10-19 12:16:15,820 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:15,918 INFO app.service: recommend id=e1b0234b1f58 lang=kk mode=walk budget=60 items=3 route=False llm=template 96ms
+2026-10-19 12:16:15,918 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:17,199 INFO app.service: recommend id=fc50c9147dc9 lang=en mode=walk budget=180 items=3 route=True llm=template 1278ms
+2026-10-19 12:16:17,200 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:19,975 INFO app.service: recommend id=bb8fd316b81a lang=ru mode=car budget=60 items=3 route=False llm=template 2772ms
+2026-10-19 12:16:19,975 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:20,047 INFO app.service: recommend id=7592cb72adea lang=ru mode=walk budget=60 items=3 route=False llm=template 68ms
+2026-10-19 12:16:20,047 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:20,125 INFO app.service: recommend id=c50cc2842457 lang=ru mode=walk budget=60 items=3 route=False llm=template 76ms
+2026-10-19 12:16:20,126 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:20,151 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:20,224 INFO app.service: recommend id=4ceb344e3f87 lang=ru mode=walk budget=60 items=3 route=False llm=template 70ms
+2026-10-19 12:16:20,224 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:20,249 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:20,317 INFO app.service: recommend id=e5d2912fdd5c lang=ru mode=walk budget=60 items=3 route=False llm=template 65ms
+2026-10-19 12:16:20,317 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 12:16:21,995 INFO app.service: recommend id=cb2071c53b90 lang=ru mode=car budget=60 items=2 route=True llm=template 1676ms
+2026-10-19 12:16:21,995 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+S1_mega_walk               149 ms  template OK
+S2_quiet_coffee_socket      73 ms  template OK
+S3_kids                     47 ms  template OK
+S4_tourist_flight           31 ms  template OK
+S5_night_unusual           820 ms  template OK
+S6_kazakh                   98 ms  template OK
+S7_english_tourist        1281 ms  template OK
+S8_cold_winter            2775 ms  template OK
+S9_accessibility            71 ms  template OK
+S10_museum_late             78 ms  template OK
+S11_no_location             25 ms  template OK
+S12_injection               72 ms  template OK
+S13_outside_city            24 ms  template OK
+S14_friends_evening         67 ms  template OK
+S15_car                   1678 ms  template OK
+wrote .local/food-service-scenario.md

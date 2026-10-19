@@ -26,6 +26,7 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(title="Seruendesh AI — Astana walk assistant", version="0.2.0", lifespan=lifespan)
+app.add_middleware(vision.PhotoUploadLimitMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=get_settings().cors_origins,
@@ -36,12 +37,15 @@ app.add_middleware(
 
 @app.get("/api/health")
 def health() -> dict:
+    provider = llm.provider_status()
     return {
         "status": "ok",
         "pois": len(rag.all_pois()),
         "rag": rag.backend_name(),
         "search": rag.search_mode(),
-        "llm": "ok" if llm.is_enabled() else "disabled",
+        "llm": provider["status"] if llm.is_enabled() else "disabled",
+        "provider_verified_at": provider["verified_at"],
+        "runtime_id": "secondary",
         "models": llm.models() if llm.is_enabled() else None,
         "tracing": "langfuse" if tracing.is_enabled() else "disabled",
         "cache": cache.responses.stats(),
@@ -75,7 +79,8 @@ async def api_recommend_photo(
     except ValidationError as e:
         raise HTTPException(422, detail=e.errors(include_url=False, include_context=False)) from e
     try:
-        data_url = vision.prepare_image(await image.read(), image.content_type)
+        data = await image.read(vision.MAX_BYTES + 1)
+        data_url = await run_in_threadpool(vision.prepare_image, data, image.content_type)
     except vision.PhotoError as e:
         raise HTTPException(422, detail=str(e)) from e
 

@@ -1,0 +1,236 @@
+{
+  "as_of": "2026-10-19",
+  "held_sources": [
+    {
+      "name": "Marrone Rosso MEGA",
+      "canonical_ids": [
+        "overture:6e82f8c5-48f7-4fab-b0c6-929cb742c9fc"
+      ],
+      "decision": "held",
+      "reason": "Current public onsite menu served but publisher version2024-05-28; exact branch menu candidate retained for reviewer decision. Hours conflict RU22vsEN/KZ23; no kitchen or complete cost proof.",
+      "source_quotes": [],
+      "source": {
+        "url": "https://marrone-rosso.kamiqr.com/menu/basic",
+        "checked_at": "2026-10-19T06:14:36.935332+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/marrone-root.html",
+        "response_sha256": "b047ce36e46b1cafde4c4bf90b0c9b074894032e545529150a711737c278f581",
+        "http_status": 200
+      },
+      "menu_source": {
+        "url": "https://marrone-rosso.kamiqr.com/menu/basic/list",
+        "checked_at": "2026-10-19T06:14:38.119940+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/marrone-list.html",
+        "response_sha256": "1dfee46f2c70fccabc492938240053d1086da612c6008abb2384ca51f795e992",
+        "http_status": 200
+      },
+      "source_updated_at": "2024-05-28T09:11:56.85Z",
+      "visible_items": 32
+    },
+    {
+      "name": "Veggie House Uly Dala",
+      "canonical_ids": [
+        "osm:node/10861996205"
+      ],
+      "decision": "held",
+      "reason": "Same page has conflicting addresses6/2 in header vs56/1 in contact/main/footer; legacy venue hours10-22 vscurrentstore/footer10-21. Cannot prove kitchen closing statement belongs to current branch independently. Do not infer kitchen opening10.",
+      "source_quotes": [
+        "Нур–Султан, ул. Улы Дала 6/2",
+        "Нур–Султан, ул: Улы Дала 56/1",
+        "с 10.00 до 22.00",
+        "Без выходных и перерыва",
+        "Кухня работает до 21.00",
+        "Ежедневно 10:00-21:00"
+      ],
+      "source": {
+        "url": "https://veganhouse.kz/index.php?route=information%2Fcontact",
+        "checked_at": "2026-10-19T06:15:04.237539+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/veggie-contact.html",
+        "response_sha256": "60977f3d576a407c7cca1734cb603132ead8a001c6807556ce54edc37b270f52",
+        "http_status": 200
+      },
+      "proposed_kitchen_closes_at": "21:00",
+      "weekday_scope": "Legacy paragraph says no days off, but current-branch identity remains disputed."
+    },
+    {
+      "name": "Жағалау Syganak2",
+      "canonical_ids": [
+        "overture:b7685797-d2d5-4091-a763-1730a7254b52"
+      ],
+      "decision": "held",
+      "reason": "Merchant links exact2GIS cardSyganak2 and nearby masterpoint(~52m), but master phone differs. Branch match pending review. Advertised1200 set has no composition, time or fee statement; not a complete-cost offering.",
+      "source_quotes": [
+        "Комплексный обед - 1200, банкеты - 5000"
+      ],
+      "source": {
+        "url": "https://jahalay-cafe.kamiqr.com/menu/at-place",
+        "checked_at": "2026-10-19T06:14:38.472455+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/jahalay-root.html",
+        "response_sha256": "455c8ca4522415af692c7153e7a8284befc2bf723088f6ff419b4dc8a9838ebc",
+        "http_status": 200
+      },
+      "directory": {
+        "url": "https://2gis.kz/astana/firm/70000001036006367",
+        "checked_at": "2026-10-19T06:16:36.069691+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/jahalay-identity.html",
+        "response_sha256": "670fe5c3db57bfde23cbfa71692df799db00b316803bb3db01372f851c68304e",
+        "http_status": 200
+      },
+      "menu_source": {
+        "url": "https://jahalay-cafe.kamiqr.com/menu/at-place/list",
+        "checked_at": "2026-10-19T06:14:39.487690+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/jahalay-list.html",
+        "response_sha256": "1de84a77bb282fba8a955417cad40767c3f2de74fde28e3f19b7eb635a93ac72",
+        "http_status": 200
+      },
+      "source_updated_at": "2025-07-18T11:13:08.598Z",
+      "canonical_phone": "+77784481577",
+      "merchant_phones": [
+        {
+          "number": "+77754988270",
+          "countryCode": "KZ",
+          "label": null
+        },
+        {
+          "number": "+77172999121",
+          "countryCode": "KZ",
+          "label": null
+        }
+      ]
+    },
+    {
+      "name": "Lazania Saraishyq",
+      "canonical_ids": [
+        "overture:ca114858-bc35-4942-ba03-c82e00aa8527"
+      ],
+      "decision": "held",
+      "reason": "Merchant source lists two addresses; branch-specificSaraishyq landingexists but returnedzero menuitems. No prices/fees/kitchenhours inferred.",
+      "source_quotes": [],
+      "source": {
+        "url": "https://lazania-cafe.kamiqr.com/menu/saraishyq",
+        "checked_at": "2026-10-19T06:14:35.572461+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/lazania-saraishyq-root.html",
+        "response_sha256": "bf4d362ff1f6e7e2e5fe02776fd9046148bf051bb305f210c74c7a8d45715765",
+        "http_status": 200
+      },
+      "menu_source": {
+        "url": "https://lazania-cafe.kamiqr.com/menu/saraishyq/list",
+        "checked_at": "2026-10-19T06:14:36.773070+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/lazania-saraishyq-list.html",
+        "response_sha256": "1c84b56d3f12feb59ce5aaf4decdf05cbb8bda737d6acdd51e2d45b43576219d",
+        "http_status": 200
+      }
+    },
+    {
+      "name": "Home Patio",
+      "canonical_ids": [
+        "overture:012742c7-3c7e-4968-8102-f8a03f1879f0"
+      ],
+      "decision": "held",
+      "reason": "Known merchant URL returnedHTTP200 with visibleСтраница не найдена. Root redirects genericKamiQR salespage. No menu; not evidenceofclosure.",
+      "source_quotes": [],
+      "source": {
+        "name": "home-patio",
+        "url": "https://home-patio.kamiqr.com/menu/1?type=for_order",
+        "final_url": "https://home-patio.kamiqr.com/404",
+        "status": 200,
+        "checked_at": "2026-10-19T06:11:54.358854+00:00",
+        "sha256": "9dd74569767107a3da4ae4bf44ab5a27d5918560974513bec157dac793a17bea",
+        "raw_path": ".local/food-pack-research/home-patio.html"
+      },
+      "root_source": {
+        "url": "https://home-patio.kamiqr.com/",
+        "checked_at": "2026-10-19T06:12:52.849475+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/home-root.html",
+        "response_sha256": "ab1aa9478aae7d6ab7d497817ccc85987800816af19430c354dd5c174cfb497a",
+        "http_status": 200
+      }
+    },
+    {
+      "name": "Olivka Astana candidate",
+      "canonical_ids": [
+        "overture:b16b2f3f-8ecf-4b2a-b41c-d34148adb268"
+      ],
+      "decision": "held",
+      "reason": "olivka-stolovaya.kz linked by exactYandex cardtoKostanayTauelsizdik34, not confirmedAstanaTauelsizdikavenue34. Primarymenu cheapcutlets/puree must not transfer acrosscities. No closure claim.",
+      "source_quotes": [
+        "Костанай, ул. Тауелсиздик, 34",
+        "olivka-stolovaya.kz"
+      ],
+      "source": {
+        "name": "olivka",
+        "url": "https://olivka-stolovaya.kz",
+        "final_url": "https://olivka-stolovaya.kz",
+        "status": 200,
+        "checked_at": "2026-10-19T06:11:20.312017+00:00",
+        "sha256": "4cf0ade064a67f116ec54114d5d200d3457c8ef70f7a75f81bd38f3cacadd5a9",
+        "raw_path": ".local/food-pack-research/olivka.html"
+      },
+      "menu_source": {
+        "url": "https://olivka-stolovaya.kz/store",
+        "checked_at": "2026-10-19T06:15:15.355959+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/olivka-store.html",
+        "response_sha256": "2695eb6083e043261fd5fc8d9fce3d1f2a642c5b5d5bf4686121b344c6c0a146",
+        "http_status": 200
+      },
+      "independent_identity_url": "https://yandex.kz/maps/ru/org/olivka/91350942112/",
+      "direct_fetch_status": "429; web search/open supplied indexedexactcard, not treatedasfreshdirectHTTPsuccess"
+    },
+    {
+      "name": "Qazanok",
+      "canonical_ids": [
+        "overture:4a9e17b6-def7-468c-aaae-45eb6b12c226",
+        "overture:beb61eaf-c11a-4499-98bc-54afea091726"
+      ],
+      "decision": "held",
+      "reason": "qazanok.kz DNSfailed. Searchresultsmostlydeliveryaggregators; neverconvertedtoonsite. OneclosedQazanokGoldMangilik37/1 isdifferentbranch; noclosureapplied.",
+      "source_quotes": [],
+      "source": {
+        "name": "qazanok",
+        "url": "https://qazanok.kz",
+        "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+      }
+    },
+    {
+      "name": "Qaganat Astana",
+      "canonical_ids": [
+        "osm:node/14089471172"
+      ],
+      "decision": "held",
+      "reason": "OfficialcatalogURLonlyinstructsscanningphysicalbranchQR. No branch token guessed, privateAPIorcheckoutused. AllexistingWoltpricesremain delivery.",
+      "source_quotes": [],
+      "source": {
+        "url": "https://qaganat24.kz/catalog",
+        "checked_at": "2026-10-19T06:14:41.285212+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/qaganat-catalog.html",
+        "response_sha256": "36eb3ed70eda53e651d017fca4bad7b6536ab4188fa125452d8560d65f8bcc2a",
+        "http_status": 200
+      }
+    },
+    {
+      "name": "Asqazan bs",
+      "canonical_ids": [
+        "overture:7b78999e-b65f-41c7-835e-f6bc2f3078a2"
+      ],
+      "decision": "held",
+      "reason": "Exactmapcardcontacttaplinkfound; publictaplinkHTMLcontainsnomenu/pricebranchfacts. Menurequiresadditionalprimaryverification.",
+      "source_quotes": [],
+      "source": {
+        "url": "https://as-qazan.taplink.ws",
+        "checked_at": "2026-10-19T06:13:02.214305+00:00",
+        "raw_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/asqazan-taplink.html",
+        "response_sha256": "11f4a40eb9ff67b4124b1a1a794b143fcdd6c1691926a2a43a805183449d08b2",
+        "http_status": 200
+      }
+    },
+    {
+      "name": "Elaman",
+      "canonical_ids": [
+        "overture:090d5ca7-6aa5-4563-9577-867bc8238879"
+      ],
+      "decision": "held",
+      "reason": "IndexedElamanMangilik50 isfarfrommasterpoint51.1632,71.4506. No distantbranchmenuoraveragechecktransferred.",
+      "source_quotes": [],
+      "independent_identity_url": "https://yandex.kz/maps/ru/org/elaman/103024684211/"
+    }
+  ]
+}

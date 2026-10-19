@@ -1,0 +1,4138 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-10-19",
+  "collected_at": "2026-10-18T23:55:15.802776+00:00",
+  "operators": [
+    {
+      "id": "operator:crocos-travel",
+      "name": "ТОО Crocos Travel / RedBus",
+      "evidence": [
+        {
+          "source_url": "https://redbus.kz/ru/marshruty/",
+          "checked_at": "2026-10-18T23:13:29.931593Z",
+          "excerpt": "Товарищество с ограниченной ответственностью «Crocos Travel»",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "phone",
+          "value": "+7 777 555 7575",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Узнай больше о RedBus: +7 777 555 7575",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "email",
+          "value": "info@redbus.kz",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "info@redbus.kz",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "office_address",
+          "value": "БЦ Нұр Тау, Проспект Республики 34а, 602 офис, 6 этаж",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "БЦ Нұр Тау, Проспект Республики 34а, 602 офис, 6 этаж",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Адрес офиса, не посадки и не туристическая достопримечательность."
+        }
+      ]
+    },
+    {
+      "id": "operator:dual-kz",
+      "name": "ТОО Dual.KZ",
+      "evidence": [
+        {
+          "source_url": "https://www.visitastana.kz/ru/exkursion/teplokhod/",
+          "checked_at": "2026-10-18T23:13:29.931991Z",
+          "excerpt": "ТОО Dual.KZ, г. Астана",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-river-parks.json"
+        }
+      ],
+      "facts": []
+    },
+    {
+      "id": "operator:national-museum",
+      "name": "Национальный музей Республики Казахстан",
+      "evidence": [
+        {
+          "source_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-zalam-zoloto/",
+          "checked_at": "2026-10-18T23:13:30.139454Z",
+          "excerpt": "Национальный музей Республики Казахстан приглашает на экскурсию",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-gold-museum.json"
+        }
+      ],
+      "facts": []
+    },
+    {
+      "id": "operator:astana-opera",
+      "name": "Астана Опера",
+      "evidence": [
+        {
+          "source_url": "https://www.visitastana.kz/ru/exkursion/teatralnyy-urok-v-teatre-astana-opera/",
+          "checked_at": "2026-10-18T23:13:30.326610Z",
+          "excerpt": "Контакты для записи: Астана Опера",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-opera.json"
+        }
+      ],
+      "facts": []
+    },
+    {
+      "id": "operator:tamyr",
+      "name": "Этноцентр «Тамыр»",
+      "evidence": [
+        {
+          "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+          "checked_at": "2026-10-18T23:13:30.435851Z",
+          "excerpt": "этноцентр «Тамыр»",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+        }
+      ],
+      "facts": []
+    },
+    {
+      "id": "operator:aomi-travel",
+      "name": "Омиралина Айжан / Aomi Travel",
+      "evidence": [
+        {
+          "source_url": "https://www.visitastana.kz/ru/exkursion/ob-astane-s-interesom-i-lyubovyu/",
+          "checked_at": "2026-10-18T23:13:30.651710Z",
+          "excerpt": "Контакты для записи: Омиралина Айжан",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-walk-nurzhol.json"
+        }
+      ],
+      "facts": []
+    }
+  ],
+  "services": [
+    {
+      "id": "service:redbus-astana",
+      "name": "RedBus — обзорная экскурсия по Астане",
+      "aliases": {
+        "ru": [
+          "РедБас",
+          "Ред Бас",
+          "Красный автобус",
+          "двухэтажный автобус",
+          "Red Bus Астана"
+        ],
+        "kk": [
+          "RedBus Астана",
+          "Редбас",
+          "екі қабатты автобус",
+          "қалаға шолу экскурсиясы"
+        ],
+        "en": [
+          "RedBus Astana",
+          "Red Bus",
+          "double decker sightseeing bus",
+          "Astana sightseeing bus"
+        ]
+      },
+      "kind": "bus_tour",
+      "operator_id": "operator:crocos-travel",
+      "evidence": [
+        {
+          "source_url": "https://redbus.kz/ru/marshruty/",
+          "checked_at": "2026-10-18T23:13:29.931593Z",
+          "excerpt": "Экскурсии по городу Астана на двухэтажных автобусах Red Bus.",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "duration_minutes",
+          "value": [
+            "Маршруты/расписание: 60–90",
+            "FAQ: 120",
+            "Visit Astana: 90–120"
+          ],
+          "unit": "minutes",
+          "status": "conflicting",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Длительность маршрута 1-1,5 часа",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            },
+            {
+              "source_url": "https://redbus.kz/ru/faq/",
+              "checked_at": "2026-10-18T23:13:29.931826Z",
+              "excerpt": "Продолжительность маршрута составляет 2 часа.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-faq.json"
+            },
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/redbus/",
+              "checked_at": "2026-10-18T23:13:29.931916Z",
+              "excerpt": "Продолжительность: 1,5–2 часа",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-visit-redbus.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Длительность расходится между официальными страницами; сообщать диапазон источников и уточнять конкретный маршрут."
+        },
+        {
+          "field": "child_age_policy",
+          "value": [
+            "Маршруты: до 3 лет включительно бесплатно без места",
+            "FAQ: льготный билет с 3 до 15 лет"
+          ],
+          "unit": null,
+          "status": "conflicting",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Детям до 3 лет (включительно) бесплатно * Без предоставления места",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            },
+            {
+              "source_url": "https://redbus.kz/ru/faq/",
+              "checked_at": "2026-10-18T23:13:29.931826Z",
+              "excerpt": "льготные билеты (3000 ₽) доступны для детей в возрасте от 3 до 15 лет",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-faq.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "В модальном блоке Боровое также указано «До 12 лет», но это другой город: не переносить на Астану."
+        },
+        {
+          "field": "concession_currency",
+          "value": [
+            "Маршруты и Visit Astana: 3000 KZT",
+            "FAQ: 3000 ₽"
+          ],
+          "unit": null,
+          "status": "conflicting",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Взрослый билет 6 000 тенге Льготный билет для детей и пенсионеров 3 000 тенге",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            },
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/redbus/",
+              "checked_at": "2026-10-18T23:13:29.931916Z",
+              "excerpt": "Стоимость: 6 000 ₸ с человека (взрослый билет) / 3 000 ₸ (льготный билет — дети, многодетные семьи, пенсионеры, лица с инвалидностью II и III группы)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-visit-redbus.json"
+            },
+            {
+              "source_url": "https://redbus.kz/ru/faq/",
+              "checked_at": "2026-10-18T23:13:29.931826Z",
+              "excerpt": "льготные билеты (3000 ₽) доступны для детей в возрасте от 3 до 15 лет",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-faq.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Не исправлять символ валюты в исходной FAQ без подтверждения. Для оценки бюджета указаны подтверждённые цены в тенге со страницы маршрутов и Visit Astana."
+        },
+        {
+          "field": "published_schedule_notice",
+          "value": "12.10 - 11:00 / 14:00 / 16:00 / 18:00 13.10 - 11:00 / 18:00 14.10 - 14:00 / 16:00 / 18:00 15.10 - 11:00 / 13:00 / 15:00 / 17:00 16.10 - 11:00 / 13:00 / 15:00 / 17:00 17.10 - 11:00 / 13:00 / 15:00 / 17:00 18.10 - 11:00 / 13:00 / 15:00 / 17:00",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "12.10 - 11:00 / 14:00 / 16:00 / 18:00 13.10 - 11:00 / 18:00 14.10 - 14:00 / 16:00 / 18:00 15.10 - 11:00 / 13:00 / 15:00 / 17:00 16.10 - 11:00 / 13:00 / 15:00 / 17:00 17.10 - 11:00 / 13:00 / 15:00 / 17:00 18.10 - 11:00 / 13:00 / 15:00 / 17:00",
+              "validity": {
+                "precision": "year_unspecified",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": "На странице указаны день и месяц 12.10–18.10 без года. Датированные отправления не создаются; расписание на 19.10 не опубликовано в этом блоке."
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ],
+          "validity": {
+            "precision": "year_unspecified",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": "На странице указаны день и месяц 12.10–18.10 без года. Датированные отправления не создаются; расписание на 19.10 не опубликовано в этом блоке."
+          },
+          "notes": null
+        },
+        {
+          "field": "other_undated_schedule",
+          "value": "Visit Astana перечисляет сеансы 11:00 / 14:00 / 17:00 без даты; таблица оператора также содержит иные круги.",
+          "unit": null,
+          "status": "conflicting",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/redbus/",
+              "checked_at": "2026-10-18T23:13:29.931916Z",
+              "excerpt": "сеансы: 11:00 / 14:00 / 17:00",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-visit-redbus.json"
+            },
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Монумент Астана-Байтерек 19:45 20:00",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Не использовать эти строки для ответа о последнем рейсе сегодня."
+        },
+        {
+          "field": "route_alternation",
+          "value": "Маршруты по правому и левому берегу чередуются; привязка к рейсам не опубликована.",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "экскурсии по правому и левому берегу горду будут чередоваться.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "languages",
+          "value": [
+            "kk",
+            "ru",
+            "en"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/redbus/",
+              "checked_at": "2026-10-18T23:13:29.931916Z",
+              "excerpt": "Язык проведения: казахский, русский, английский",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-visit-redbus.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "wheelchair_access",
+          "value": true,
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/faq/",
+              "checked_at": "2026-10-18T23:13:29.931826Z",
+              "excerpt": "наш автобус оборудован для доступа инвалидных колясок.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-faq.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "route_location_counts",
+          "value": [
+            "Левый берег: 14",
+            "Правый берег: 16"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Левый берег 14 локаций",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            },
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Правый берег 16 локаций",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Число достопримечательностей; не количество мест посадки."
+        },
+        {
+          "field": "legacy_stop_table",
+          "value": "В недатированной таблице указаны ЦСО Айланд, Лодочная станция (Набережная), Хан Шатыр, Триумфальная арка; актуальность посадки требует уточнения.",
+          "unit": null,
+          "status": "conflicting",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "ЦСО Айланд Остановка по требованию Остановка по требованию Лодочная станция (Набережная) 11:30 11:40 ТРЦ Хан Шатыр Остановка по требованию Остановка по требованию Триумфальная Арка Остановка по требованию",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Не смешивать со списком 14/16 локаций. Текущий блок посадки указывает главный вход Байтерека."
+        }
+      ],
+      "routes": [
+        {
+          "id": "route:redbus-left",
+          "name": "Левый берег",
+          "stops": [
+            {
+              "id": "stop:redbus-baiterek",
+              "name": "Перед главным входом в монумент «Астана-Байтерек»",
+              "role": "boarding",
+              "canonical_poi_id": null,
+              "map_url": "https://2gis.kz/astana/firm/70000001089193403",
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Посадка перед главным входом в Байтерек",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                },
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Место посадки на карте 2GIS",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Ссылка места посадки опубликована оператором. Координаты и canonical_poi_id не установлены: одноимённая запись OSM является городским автобусным остановочным пунктом."
+            },
+            {
+              "id": "location:redbus-left-1",
+              "name": "Монумент «Байтерек» и бульвар Нуржол",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Монумент «Байтерек» и бульвар Нуржол",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-2",
+              "name": "Театр «Астана Опера»",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Театр «Астана Опера»",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-3",
+              "name": "ТРЦ «Хан Шатыр» и Парк влюблённых",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "ТРЦ «Хан Шатыр» и Парк влюблённых",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-4",
+              "name": "Медицинский кластер",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Медицинский кластер",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-5",
+              "name": "«Барыс Арена» и «Астана Арена»",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "«Барыс Арена» и «Астана Арена»",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-6",
+              "name": "Легкоатлетический спортивный комплекс Qazaqstan",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Легкоатлетический спортивный комплекс Qazaqstan",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-7",
+              "name": "Назарбаев Университет",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Назарбаев Университет",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-8",
+              "name": "Театр «Астана Балет» и Казахская национальная академия хореографии",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Театр «Астана Балет» и Казахская национальная академия хореографии",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-9",
+              "name": "EXPO и сфера «Нур Алем»",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "EXPO и сфера «Нур Алем»",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-10",
+              "name": "MEGA Silk Way",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "MEGA Silk Way",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-11",
+              "name": "Главная Республиканская мечеть",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Главная Республиканская мечеть",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-12",
+              "name": "Триумфальная арка «Мәңгілік Ел»",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Триумфальная арка «Мәңгілік Ел»",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-13",
+              "name": "Ботанический сад",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Ботанический сад",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-left-14",
+              "name": "Abu Dhabi Plaza",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Abu Dhabi Plaza",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            }
+          ],
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Левый берег 14 локаций",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ]
+        },
+        {
+          "id": "route:redbus-right",
+          "name": "Правый берег",
+          "stops": [
+            {
+              "id": "stop:redbus-baiterek",
+              "name": "Перед главным входом в монумент «Астана-Байтерек»",
+              "role": "boarding",
+              "canonical_poi_id": null,
+              "map_url": "https://2gis.kz/astana/firm/70000001089193403",
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Посадка перед главным входом в Байтерек",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                },
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Место посадки на карте 2GIS",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Ссылка места посадки опубликована оператором. Координаты и canonical_poi_id не установлены: одноимённая запись OSM является городским автобусным остановочным пунктом."
+            },
+            {
+              "id": "location:redbus-right-1",
+              "name": "Монумент «Байтерек» и бульвар Нуржол",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Монумент «Байтерек» и бульвар Нуржол",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-2",
+              "name": "ЖК «Триумф Астаны»",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "ЖК «Триумф Астаны»",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-3",
+              "name": "Астана Цирк",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Астана Цирк",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-4",
+              "name": "Площадь государственных символов",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Площадь государственных символов",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-5",
+              "name": "Центр семейного отдыха Ailand",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Центр семейного отдыха Ailand",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-6",
+              "name": "Памятник Курмангазы",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Памятник Курмангазы",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-7",
+              "name": "Столичный парк",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Столичный парк",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-8",
+              "name": "Набережная реки Есиль",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Набережная реки Есиль",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-9",
+              "name": "Государственная филармония и Демалыс Променад",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Государственная филармония и Демалыс Променад",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-10",
+              "name": "Проспект Республики",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Проспект Республики",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-11",
+              "name": "Парк Жамбыла Жабаева",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Парк Жамбыла Жабаева",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-12",
+              "name": "Триатлон-парк",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Триатлон-парк",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-13",
+              "name": "Дворец мира и согласия",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Дворец мира и согласия",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-14",
+              "name": "Площадь и монумент «Қазақ елі»",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Площадь и монумент «Қазақ елі»",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-15",
+              "name": "Национальный музей Республики Казахстан",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Национальный музей Республики Казахстан",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            },
+            {
+              "id": "location:redbus-right-16",
+              "name": "Президентский парк",
+              "role": "pass_by",
+              "canonical_poi_id": null,
+              "map_url": null,
+              "evidence": [
+                {
+                  "source_url": "https://redbus.kz/ru/marshruty/",
+                  "checked_at": "2026-10-18T23:13:29.931593Z",
+                  "excerpt": "Президентский парк",
+                  "validity": {
+                    "precision": "undated",
+                    "valid_from": null,
+                    "valid_to": null,
+                    "months": [],
+                    "notes": null
+                  },
+                  "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                }
+              ],
+              "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+            }
+          ],
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Правый берег 16 локаций",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ]
+        }
+      ],
+      "ticket_offers": [
+        {
+          "id": "ticket:redbus-adult",
+          "name": "Взрослый билет",
+          "audience": "Взрослый",
+          "amount": 6000,
+          "currency": "KZT",
+          "unit": "per_person",
+          "group_size": null,
+          "age_min": null,
+          "age_max": null,
+          "age_max_inclusive": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Взрослый билет 6 000 тенге Льготный билет для детей и пенсионеров 3 000 тенге",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            },
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/redbus/",
+              "checked_at": "2026-10-18T23:13:29.931916Z",
+              "excerpt": "Стоимость: 6 000 ₸ с человека (взрослый билет) / 3 000 ₸ (льготный билет — дети, многодетные семьи, пенсионеры, лица с инвалидностью II и III группы)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-visit-redbus.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "id": "ticket:redbus-concession",
+          "name": "Льготный билет",
+          "audience": "Дети и пенсионеры; другие льготные категории по условиям оператора",
+          "amount": 3000,
+          "currency": "KZT",
+          "unit": "per_person",
+          "group_size": null,
+          "age_min": null,
+          "age_max": null,
+          "age_max_inclusive": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Взрослый билет 6 000 тенге Льготный билет для детей и пенсионеров 3 000 тенге",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            },
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/redbus/",
+              "checked_at": "2026-10-18T23:13:29.931916Z",
+              "excerpt": "Стоимость: 6 000 ₸ с человека (взрослый билет) / 3 000 ₸ (льготный билет — дети, многодетные семьи, пенсионеры, лица с инвалидностью II и III группы)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-visit-redbus.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Возрастные границы детской льготы расходятся на страницах оператора; уточните возраст ребёнка и условия у оператора."
+        },
+        {
+          "id": "ticket:redbus-child-free",
+          "name": "Бесплатно без отдельного места",
+          "audience": "Ребёнок до 3 лет включительно, по странице маршрутов",
+          "amount": 0,
+          "currency": "KZT",
+          "unit": "per_person",
+          "group_size": null,
+          "age_min": null,
+          "age_max": 3,
+          "age_max_inclusive": true,
+          "status": "conflicting",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Детям до 3 лет (включительно) бесплатно * Без предоставления места",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            },
+            {
+              "source_url": "https://redbus.kz/ru/faq/",
+              "checked_at": "2026-10-18T23:13:29.931826Z",
+              "excerpt": "льготные билеты (3000 ₽) доступны для детей в возрасте от 3 до 15 лет",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-faq.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Страница маршрутов включает 3 года в бесплатную категорию; FAQ назначает льготный билет с 3 лет. Не обещать бесплатный проезд трёхлетнему без уточнения."
+        }
+      ],
+      "dated_departures": [],
+      "booking_rules": [
+        {
+          "field": "boarding_minutes_before_departure",
+          "value": 20,
+          "unit": "minutes",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "посадка на автобус начинается строго за 20 минут до времени отправления",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "boarding_queue",
+          "value": "Живая очередь независимо от наличия билета",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "осуществляется в порядке живой очереди, независимо от наличия билета.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "seat_reservation",
+          "value": false,
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/faq/",
+              "checked_at": "2026-10-18T23:13:29.931826Z",
+              "excerpt": "бронирование мест не предусмотрено.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-faq.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "ticket_sales",
+          "value": "На сайте, в кассе у Байтерека и в автобусе на остановках",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/faq/",
+              "checked_at": "2026-10-18T23:13:29.931826Z",
+              "excerpt": "Билеты можно приобрести онлайн на нашем сайте или на кассе около Монумента «Астана-Байтерек». Также билеты можно приобрести на других остановках внутри автобуса.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-faq.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "confirm_schedule",
+          "value": "Уточнить расписание до посещения по +7 777 555 7575",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Рекомендуем уточнять расписание перед посещением экскурсии, так как оно может меняться.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            },
+            {
+              "source_url": "https://redbus.kz/ru/marshruty/",
+              "checked_at": "2026-10-18T23:13:29.931593Z",
+              "excerpt": "Узнай больше о RedBus: +7 777 555 7575",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "schedule_status": "date_unverified"
+    },
+    {
+      "id": "service:dual-parks-river",
+      "name": "Пеший сити-тур по паркам с прогулкой по Ишиму",
+      "aliases": {
+        "ru": [
+          "теплоход",
+          "Ишим",
+          "Есиль",
+          "парки и речная прогулка",
+          "Dual.KZ"
+        ],
+        "kk": [
+          "Есілдегі кеме серуені",
+          "саябақтар экскурсиясы"
+        ],
+        "en": [
+          "Ishim river cruise and parks tour",
+          "Dual.KZ",
+          "Esil boat tour"
+        ]
+      },
+      "kind": "city_tour",
+      "operator_id": "operator:dual-kz",
+      "evidence": [
+        {
+          "source_url": "https://www.visitastana.kz/ru/exkursion/teplokhod/",
+          "checked_at": "2026-10-18T23:13:29.931991Z",
+          "excerpt": "Пеший групповой сити-тур по паркам Астаны с прогулкой на теплоходе по Ишиму",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-river-parks.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "duration_minutes",
+          "value": 450,
+          "unit": "minutes",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teplokhod/",
+              "checked_at": "2026-10-18T23:13:29.931991Z",
+              "excerpt": "Маршрут длится с 10:00 до 17:30",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-parks.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "river_segment_minutes",
+          "value": 45,
+          "unit": "minutes",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teplokhod/",
+              "checked_at": "2026-10-18T23:13:29.931991Z",
+              "excerpt": "речная прогулка — около 45 минут",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-parks.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "season",
+          "value": "Май–октябрь",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teplokhod/",
+              "checked_at": "2026-10-18T23:13:29.931991Z",
+              "excerpt": "Сезон: с мая по октябрь",
+              "validity": {
+                "precision": "seasonal",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10
+                ],
+                "notes": "Указан сезон май–октябрь; конкретные даты и навигация на 19 октября не подтверждены."
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-parks.json"
+            }
+          ],
+          "validity": {
+            "precision": "seasonal",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "notes": "Указан сезон май–октябрь; конкретные даты и навигация на 19 октября не подтверждены."
+          },
+          "notes": null
+        },
+        {
+          "field": "group_minimum",
+          "value": 3,
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teplokhod/",
+              "checked_at": "2026-10-18T23:13:29.931991Z",
+              "excerpt": "Стоимость: группа от 3 человек — 250 у.е. за группу (в тенге по курсу на день оплаты)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-parks.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "group_price_text",
+          "value": "250 у.е. за группу; оплата в тенге по курсу дня",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teplokhod/",
+              "checked_at": "2026-10-18T23:13:29.931991Z",
+              "excerpt": "Стоимость: группа от 3 человек — 250 у.е. за группу (в тенге по курсу на день оплаты)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-parks.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Валюта у.е. и курс не определены. Не преобразовывать в USD/KZT и не использовать средний чек ~118000 как подтверждённую цену."
+        },
+        {
+          "field": "included",
+          "value": [
+            "Сопровождение гида",
+            "Билеты в парки",
+            "Теплоход",
+            "Юрта"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teplokhod/",
+              "checked_at": "2026-10-18T23:13:29.931991Z",
+              "excerpt": "Что входит: сопровождение квалифицированного гида; билеты на посещение парков, теплохода и юрты.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-parks.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "river_stop_names",
+          "value": [
+            "Центральный парк",
+            "Чубары",
+            "Времена года",
+            "Самал",
+            "памятник Кенесары",
+            "Radisson"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teplokhod/",
+              "checked_at": "2026-10-18T23:13:29.931991Z",
+              "excerpt": "Пассажирский маршрут насчитывает 6 остановок: Центральный парк, микрорайон Чубары, сквер «Времена года», микрорайон «Самал», памятник Кенесары и отель Radisson.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-parks.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Описаны остановки речного маршрута; конкретная точка сбора этого пакетного тура не подтверждена."
+        }
+      ],
+      "routes": [],
+      "ticket_offers": [],
+      "dated_departures": [],
+      "booking_rules": [
+        {
+          "field": "booking_contact",
+          "value": "+7 707 828 15 48; dualkz@bk.ru",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teplokhod/",
+              "checked_at": "2026-10-18T23:13:29.931991Z",
+              "excerpt": "Телефон: +7 707 828 15 48 E-mail: dualkz@bk.ru",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-parks.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "schedule_status": "on_request"
+    },
+    {
+      "id": "service:blue-necklace-river",
+      "name": "Голубое ожерелье столицы — прогулка на катере",
+      "aliases": {
+        "ru": [
+          "катер",
+          "речная прогулка",
+          "Есиль",
+          "Ишим",
+          "Голубое ожерелье столицы"
+        ],
+        "kk": [
+          "Есілде катермен серуен",
+          "өзен серуені"
+        ],
+        "en": [
+          "Blue Necklace of the Capital",
+          "Esil boat cruise",
+          "Ishim river boat"
+        ]
+      },
+      "kind": "river_cruise",
+      "operator_id": null,
+      "evidence": [
+        {
+          "source_url": "https://www.visitastana.kz/ru/exkursion/goluboe-ozherele-stolitsy-/",
+          "checked_at": "2026-10-18T23:13:30.129035Z",
+          "excerpt": "«Голубое ожерелье столицы»",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-river-necklace.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "duration_minutes",
+          "value": 60,
+          "unit": "minutes",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/goluboe-ozherele-stolitsy-/",
+              "checked_at": "2026-10-18T23:13:30.129035Z",
+              "excerpt": "Продолжительность: 1 час",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-necklace.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "languages",
+          "value": [
+            "kk",
+            "ru",
+            "en"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/goluboe-ozherele-stolitsy-/",
+              "checked_at": "2026-10-18T23:13:30.129035Z",
+              "excerpt": "Языки проведения: казахский, русский, английский",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-necklace.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "price_formula",
+          "value": "20000 KZT за катер + 4000 KZT × число участников",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/goluboe-ozherele-stolitsy-/",
+              "checked_at": "2026-10-18T23:13:30.129035Z",
+              "excerpt": "Стоимость: 20 000 тг за аренду катера + 4 000 тг с человека (входной билет)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-necklace.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "routes": [],
+      "ticket_offers": [
+        {
+          "id": "ticket:blue-necklace-boat",
+          "name": "Аренда катера",
+          "audience": "Группа, аренда катера",
+          "amount": 20000,
+          "currency": "KZT",
+          "unit": "per_group",
+          "group_size": null,
+          "age_min": null,
+          "age_max": null,
+          "age_max_inclusive": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/goluboe-ozherele-stolitsy-/",
+              "checked_at": "2026-10-18T23:13:30.129035Z",
+              "excerpt": "Стоимость: 20 000 тг за аренду катера + 4 000 тг с человека (входной билет)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-necklace.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "К аренде дополнительно 4000 тенге с каждого человека."
+        },
+        {
+          "id": "ticket:blue-necklace-entry",
+          "name": "Входной билет, доплата к аренде",
+          "audience": "Каждый участник",
+          "amount": 4000,
+          "currency": "KZT",
+          "unit": "per_person",
+          "group_size": null,
+          "age_min": null,
+          "age_max": null,
+          "age_max_inclusive": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/goluboe-ozherele-stolitsy-/",
+              "checked_at": "2026-10-18T23:13:30.129035Z",
+              "excerpt": "Стоимость: 20 000 тг за аренду катера + 4 000 тг с человека (входной билет)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-river-necklace.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Не является полной стоимостью прогулки: дополнительно 20000 тенге за катер."
+        }
+      ],
+      "dated_departures": [],
+      "booking_rules": [],
+      "schedule_status": "not_published"
+    },
+    {
+      "id": "service:national-museum-gold",
+      "name": "Экскурсия по залам «Золото» Национального музея",
+      "aliases": {
+        "ru": [
+          "Национальный музей",
+          "Золотой человек",
+          "Золото 1",
+          "Золото 2"
+        ],
+        "kk": [
+          "Ұлттық музей",
+          "Алтын адам",
+          "Алтын залдары"
+        ],
+        "en": [
+          "National Museum gold halls tour",
+          "Golden Man",
+          "Gold halls"
+        ]
+      },
+      "kind": "guided_museum",
+      "operator_id": "operator:national-museum",
+      "evidence": [
+        {
+          "source_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-zalam-zoloto/",
+          "checked_at": "2026-10-18T23:13:30.139454Z",
+          "excerpt": "Экскурсия по залам «Золото»",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-gold-museum.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "duration_minutes",
+          "value": 60,
+          "unit": "minutes",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-zalam-zoloto/",
+              "checked_at": "2026-10-18T23:13:30.139454Z",
+              "excerpt": "Продолжительность: 1 час (полный осмотр всех залов музея занимает от 2 до 4 часов)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-gold-museum.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "address",
+          "value": "Астана, проспект Тауелсиздик, 54",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-zalam-zoloto/",
+              "checked_at": "2026-10-18T23:13:30.139454Z",
+              "excerpt": "Адрес: г. Астана, проспект Тауелсиздик, 54",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-gold-museum.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "venue_hours",
+          "value": "Вторник–воскресенье 09:30–18:00; последний вход и касса до 17:00; понедельник технический день; последний вторник месяца санитарный день.",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-zalam-zoloto/",
+              "checked_at": "2026-10-18T23:13:30.139454Z",
+              "excerpt": "График работы: вторник–воскресенье 09:30–18:00 (касса до 17:00, последний вход в 17:00). Технический день — понедельник, санитарный день — последний вторник месяца.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-gold-museum.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Это часы музея, не подтверждённые часы начала экскурсии."
+        },
+        {
+          "field": "advertised_average_spend",
+          "value": 2000,
+          "unit": "KZT",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-zalam-zoloto/",
+              "checked_at": "2026-10-18T23:13:30.139454Z",
+              "excerpt": "Средний чек:: ~2000 тг",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-gold-museum.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Средний чек страницы, не официальный тариф входного/экскурсионного билета; ticket_offers остаются пустыми."
+        }
+      ],
+      "routes": [],
+      "ticket_offers": [],
+      "dated_departures": [],
+      "booking_rules": [
+        {
+          "field": "booking_contact",
+          "value": "+7 (7172) 91-90-35, +7 (7172) 91-90-36",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-zalam-zoloto/",
+              "checked_at": "2026-10-18T23:13:30.139454Z",
+              "excerpt": "Телефон: +7 (7172) 91-90-35, +7 (7172) 91-90-36",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-gold-museum.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "schedule_status": "on_request"
+    },
+    {
+      "id": "service:astana-opera-theatre-lesson",
+      "name": "Театральный урок в «Астана Опера»",
+      "aliases": {
+        "ru": [
+          "Астана Опера экскурсия",
+          "закулисье театра",
+          "театральный урок"
+        ],
+        "kk": [
+          "Астана Опера театр сабағы",
+          "театрға экскурсия"
+        ],
+        "en": [
+          "Astana Opera backstage tour",
+          "theatre lesson",
+          "opera house tour"
+        ]
+      },
+      "kind": "cultural_activity",
+      "operator_id": "operator:astana-opera",
+      "evidence": [
+        {
+          "source_url": "https://www.visitastana.kz/ru/exkursion/teatralnyy-urok-v-teatre-astana-opera/",
+          "checked_at": "2026-10-18T23:13:30.326610Z",
+          "excerpt": "Театральный урок в театре «Астана Опера»",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-opera.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "duration_minutes",
+          "value": [
+            "75",
+            "80"
+          ],
+          "unit": "minutes",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teatralnyy-urok-v-teatre-astana-opera/",
+              "checked_at": "2026-10-18T23:13:30.326610Z",
+              "excerpt": "Продолжительность: 1 час 15–20 минут",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-opera.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "group_minimum",
+          "value": 10,
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teatralnyy-urok-v-teatre-astana-opera/",
+              "checked_at": "2026-10-18T23:13:30.326610Z",
+              "excerpt": "Группа: от 10 человек",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-opera.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "languages",
+          "value": [
+            "ru"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teatralnyy-urok-v-teatre-astana-opera/",
+              "checked_at": "2026-10-18T23:13:30.326610Z",
+              "excerpt": "Язык проведения: русский",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-opera.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "activities",
+          "value": [
+            "Большой зал",
+            "Костюмерные и театральные цеха",
+            "Репетиционные залы",
+            "Закулисье"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teatralnyy-urok-v-teatre-astana-opera/",
+              "checked_at": "2026-10-18T23:13:30.326610Z",
+              "excerpt": "В программу входят: посещение Большого зала; знакомство с общественными пространствами театра; посещение театральных цехов",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-opera.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "routes": [],
+      "ticket_offers": [
+        {
+          "id": "ticket:opera-lesson",
+          "name": "Театральный урок",
+          "audience": "Участник организованной группы от 10 человек",
+          "amount": 5000,
+          "currency": "KZT",
+          "unit": "per_person",
+          "group_size": null,
+          "age_min": null,
+          "age_max": null,
+          "age_max_inclusive": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teatralnyy-urok-v-teatre-astana-opera/",
+              "checked_at": "2026-10-18T23:13:30.326610Z",
+              "excerpt": "Стоимость: 5000 тг с человека",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-opera.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "dated_departures": [],
+      "booking_rules": [
+        {
+          "field": "advance_booking",
+          "value": true,
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teatralnyy-urok-v-teatre-astana-opera/",
+              "checked_at": "2026-10-18T23:13:30.326610Z",
+              "excerpt": "Для организации театрального урока необходимо заранее связаться с театром, согласовать дату и время, а также забронировать места для группы.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-opera.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "suggested_start_times",
+          "value": [
+            "11:00",
+            "15:00"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teatralnyy-urok-v-teatre-astana-opera/",
+              "checked_at": "2026-10-18T23:13:30.326610Z",
+              "excerpt": "рекомендуемое время начала — 11:00 или 15:00",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-opera.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Рекомендованное время по согласованию; не ежедневные отправления и не наличие билетов."
+        },
+        {
+          "field": "booking_contact",
+          "value": "+7 7172 709-571; +7 7172 709-622",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/teatralnyy-urok-v-teatre-astana-opera/",
+              "checked_at": "2026-10-18T23:13:30.326610Z",
+              "excerpt": "Телефон для связи: +7 7172 709-571 +7 7172 709-622",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-opera.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "schedule_status": "on_request"
+    },
+    {
+      "id": "service:tamyr-tea-ceremony",
+      "name": "Чайная церемония в этноцентре «Тамыр»",
+      "aliases": {
+        "ru": [
+          "Тамыр",
+          "чай в юрте",
+          "казахский чай",
+          "жент",
+          "талкан",
+          "национальные костюмы"
+        ],
+        "kk": [
+          "Тамыр",
+          "шай рәсімі",
+          "киіз үй",
+          "жент"
+        ],
+        "en": [
+          "Tamyr tea ceremony",
+          "Kazakh yurt experience",
+          "tea ceremony"
+        ]
+      },
+      "kind": "cultural_activity",
+      "operator_id": "operator:tamyr",
+      "evidence": [
+        {
+          "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+          "checked_at": "2026-10-18T23:13:30.435851Z",
+          "excerpt": "Чайная церемония в этноцентре «Тамыр»",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "address",
+          "value": "Парк Ailand, Коргалжынское шоссе 2",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Адрес: парк Ailand, Коргалжынское шоссе 2",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "venue_hours",
+          "value": "11:00–21:00",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Режим работы: с 11:00 до 21:00",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Часы площадки; посещение требуется согласовать."
+        },
+        {
+          "field": "group_size",
+          "value": [
+            "3",
+            "15"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Количество мест: от 3 до 15 человек",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "duration_minutes",
+          "value": 60,
+          "unit": "minutes",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Продолжительность: 1 час. Предварительная бронь обязательна.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "activities",
+          "value": [
+            "Три вида национального чая",
+            "Баурсаки и сладости",
+            "Фото в национальных костюмах",
+            "Мастер-класс жент/талкан"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "дегустация 3 видов национального чая; баурсаки и национальные сладости; фотосессия в национальных костюмах; мастер-класс по приготовлению жента/талкана.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "routes": [],
+      "ticket_offers": [
+        {
+          "id": "ticket:tamyr-tea-adult",
+          "name": "Чайная церемония",
+          "audience": "Обычный участник",
+          "amount": 6000,
+          "currency": "KZT",
+          "unit": "per_person",
+          "group_size": null,
+          "age_min": null,
+          "age_max": null,
+          "age_max_inclusive": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Вариант 2 — Чайная церемония (6000 тг, дети до 8 лет — 5000 тг)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "id": "ticket:tamyr-tea-child",
+          "name": "Детская чайная церемония",
+          "audience": "Ребёнок до 8 лет",
+          "amount": 5000,
+          "currency": "KZT",
+          "unit": "per_person",
+          "group_size": null,
+          "age_min": null,
+          "age_max": 8,
+          "age_max_inclusive": false,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Вариант 2 — Чайная церемония (6000 тг, дети до 8 лет — 5000 тг)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "dated_departures": [],
+      "booking_rules": [
+        {
+          "field": "booking_contact",
+          "value": "+7 708 024 39 41",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Телефон: +7 708 024 39 41",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "advance_booking",
+          "value": "По предварительной записи согласно позднему объявлению на той же странице; год начала правила не указан.",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Сообщаем вам, что с 3 августа этноцентр «Тамыр», а именно этническая юрта, переходит на режим работы по предварительной записи. Все программы, включая чайные церемонии, мастер-классы, экскурсии и другие мероприятия, будут проводиться только по предварительному бронированию.",
+              "validity": {
+                "precision": "year_unspecified",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": "3 августа указано без года. Более поздний текст страницы противоречит раннему предложению посещать дегустацию без записи."
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "advance_booking_required",
+          "value": true,
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Продолжительность: 1 час. Предварительная бронь обязательна.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "schedule_status": "on_request"
+    },
+    {
+      "id": "service:tamyr-ethno-tasting",
+      "name": "Этно-дегустация в юрте «Тамыр»",
+      "aliases": {
+        "ru": [
+          "Тамыр дегустация",
+          "тары-шай",
+          "баурсаки",
+          "национальные сладости"
+        ],
+        "kk": [
+          "Тамыр этно-дегустация",
+          "тары шай",
+          "бауырсақ"
+        ],
+        "en": [
+          "Tamyr ethno tasting",
+          "Kazakh tea tasting",
+          "yurt tasting"
+        ]
+      },
+      "kind": "cultural_activity",
+      "operator_id": "operator:tamyr",
+      "evidence": [
+        {
+          "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+          "checked_at": "2026-10-18T23:13:30.435851Z",
+          "excerpt": "Вариант 1 — Этно-дегустация (3000 тг)",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "address",
+          "value": "Парк Ailand, Коргалжынское шоссе 2",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Адрес: парк Ailand, Коргалжынское шоссе 2",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "venue_hours",
+          "value": "11:00–21:00",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Режим работы: с 11:00 до 21:00",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Часы площадки; посещение требуется согласовать."
+        },
+        {
+          "field": "group_size",
+          "value": [
+            "3",
+            "15"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Количество мест: от 3 до 15 человек",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "duration_minutes",
+          "value": 30,
+          "unit": "minutes",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Продолжительность: 30 минут.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "included",
+          "value": [
+            "Тары-шай",
+            "Горячие баурсаки",
+            "Национальные сладости",
+            "Рассказ о чае"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "В программу входит: тары-шай; горячие баурсаки; дегустация национальных сладостей; рассказ о чае и национальных угощениях.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "routes": [],
+      "ticket_offers": [
+        {
+          "id": "ticket:tamyr-tasting",
+          "name": "Этно-дегустация",
+          "audience": "Участник",
+          "amount": 3000,
+          "currency": "KZT",
+          "unit": "per_person",
+          "group_size": null,
+          "age_min": null,
+          "age_max": null,
+          "age_max_inclusive": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Вариант 1 — Этно-дегустация (3000 тг)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "dated_departures": [],
+      "booking_rules": [
+        {
+          "field": "booking_contact",
+          "value": "+7 708 024 39 41",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Телефон: +7 708 024 39 41",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "advance_booking",
+          "value": "По предварительной записи согласно позднему объявлению на той же странице; год начала правила не указан.",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Сообщаем вам, что с 3 августа этноцентр «Тамыр», а именно этническая юрта, переходит на режим работы по предварительной записи. Все программы, включая чайные церемонии, мастер-классы, экскурсии и другие мероприятия, будут проводиться только по предварительному бронированию.",
+              "validity": {
+                "precision": "year_unspecified",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": "3 августа указано без года. Более поздний текст страницы противоречит раннему предложению посещать дегустацию без записи."
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "advance_booking_conflict",
+          "value": "Раннее описание допускает посещение без записи, позднее объявление требует бронь для всех программ.",
+          "unit": null,
+          "status": "conflicting",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Без предварительной регистрации — можно прийти сразу.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            },
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+              "checked_at": "2026-10-18T23:13:30.435851Z",
+              "excerpt": "Сообщаем вам, что с 3 августа этноцентр «Тамыр», а именно этническая юрта, переходит на режим работы по предварительной записи. Все программы, включая чайные церемонии, мастер-классы, экскурсии и другие мероприятия, будут проводиться только по предварительному бронированию.",
+              "validity": {
+                "precision": "year_unspecified",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": "3 августа указано без года. Более поздний текст страницы противоречит раннему предложению посещать дегустацию без записи."
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-tamyr.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Рекомендовать предварительно связаться с этноцентром; не обещать вход без записи."
+        }
+      ],
+      "schedule_status": "on_request"
+    },
+    {
+      "id": "service:nurzhol-interest-love",
+      "name": "Об Астане: с интересом и любовью — прогулка по Нуржолу",
+      "aliases": {
+        "ru": [
+          "Нуржол",
+          "Аллея тысячелетий",
+          "Айжан Омиралина",
+          "пешая экскурсия"
+        ],
+        "kk": [
+          "Нұржол",
+          "жаяу экскурсия",
+          "Айжан Омиралина"
+        ],
+        "en": [
+          "Nurzhol walking tour",
+          "Astana with interest and love",
+          "Aomi Travel"
+        ]
+      },
+      "kind": "walking_tour",
+      "operator_id": "operator:aomi-travel",
+      "evidence": [
+        {
+          "source_url": "https://www.visitastana.kz/ru/exkursion/ob-astane-s-interesom-i-lyubovyu/",
+          "checked_at": "2026-10-18T23:13:30.651710Z",
+          "excerpt": "Об Астане: с интересом и любовью",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-walk-nurzhol.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "duration_minutes",
+          "value": 120,
+          "unit": "minutes",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ob-astane-s-interesom-i-lyubovyu/",
+              "checked_at": "2026-10-18T23:13:30.651710Z",
+              "excerpt": "Продолжительность: 2 часа (12:00–14:00)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-walk-nurzhol.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "group_size",
+          "value": [
+            "5",
+            "15"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ob-astane-s-interesom-i-lyubovyu/",
+              "checked_at": "2026-10-18T23:13:30.651710Z",
+              "excerpt": "Группа: от 5 до 15 человек",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-walk-nurzhol.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "languages",
+          "value": [
+            "ru"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ob-astane-s-interesom-i-lyubovyu/",
+              "checked_at": "2026-10-18T23:13:30.651710Z",
+              "excerpt": "Язык проведения: русский",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-walk-nurzhol.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "route_description",
+          "value": "По бульвару между Хан-Шатыром и резиденцией Ак Орда; точка сбора не опубликована.",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ob-astane-s-interesom-i-lyubovyu/",
+              "checked_at": "2026-10-18T23:13:30.651710Z",
+              "excerpt": "Бульвар простираясь от Хан-Шатыра до резиденции Президента «Ак Орды»",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-walk-nurzhol.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "routes": [],
+      "ticket_offers": [
+        {
+          "id": "ticket:nurzhol-adult",
+          "name": "Взрослый билет",
+          "audience": "Взрослый",
+          "amount": 7000,
+          "currency": "KZT",
+          "unit": "per_person",
+          "group_size": null,
+          "age_min": null,
+          "age_max": null,
+          "age_max_inclusive": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ob-astane-s-interesom-i-lyubovyu/",
+              "checked_at": "2026-10-18T23:13:30.651710Z",
+              "excerpt": "Стоимость: 7000 тг с человека (взрослый) / 3500 тг (детский от 5 до 14 лет, пенсионеры)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-walk-nurzhol.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "id": "ticket:nurzhol-concession",
+          "name": "Детский/пенсионный билет",
+          "audience": "Дети от 5 до 14 лет и пенсионеры",
+          "amount": 3500,
+          "currency": "KZT",
+          "unit": "per_person",
+          "group_size": null,
+          "age_min": 5,
+          "age_max": 14,
+          "age_max_inclusive": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ob-astane-s-interesom-i-lyubovyu/",
+              "checked_at": "2026-10-18T23:13:30.651710Z",
+              "excerpt": "Стоимость: 7000 тг с человека (взрослый) / 3500 тг (детский от 5 до 14 лет, пенсионеры)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-walk-nurzhol.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Возрастные границы относятся к детям, не к пенсионерам."
+        }
+      ],
+      "dated_departures": [],
+      "booking_rules": [
+        {
+          "field": "suggested_time_window",
+          "value": "12:00–14:00, дата не указана",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ob-astane-s-interesom-i-lyubovyu/",
+              "checked_at": "2026-10-18T23:13:30.651710Z",
+              "excerpt": "Продолжительность: 2 часа (12:00–14:00)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-walk-nurzhol.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Не ежедневное подтверждённое отправление."
+        },
+        {
+          "field": "booking_contact",
+          "value": "+7 775 334 56 65; Omiralina.aijan@gmail.com",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://www.visitastana.kz/ru/exkursion/ob-astane-s-interesom-i-lyubovyu/",
+              "checked_at": "2026-10-18T23:13:30.651710Z",
+              "excerpt": "Телефон: +7 775 334 56 65 E-mail: Omiralina.aijan@gmail.com",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-walk-nurzhol.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        }
+      ],
+      "schedule_status": "on_request"
+    },
+    {
+      "id": "service:citypass-astana-opera-tour",
+      "name": "Экскурсия в театре «Астана Опера» — предложение CityPass",
+      "aliases": {
+        "ru": [
+          "Астана Опера экскурсия CityPass",
+          "экскурсия в театре",
+          "citypass:142"
+        ],
+        "kk": [
+          "Астана Опера экскурсиясы CityPass",
+          "театрға экскурсия"
+        ],
+        "en": [
+          "Astana Opera CityPass tour",
+          "opera theatre tour",
+          "citypass:142"
+        ]
+      },
+      "kind": "cultural_activity",
+      "operator_id": null,
+      "evidence": [
+        {
+          "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+          "checked_at": "2026-10-18T23:55:15.802541Z",
+          "excerpt": "Экскурсия в театре «Астана Опера»",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": "Самостоятельное предложение CityPass; не отождествлять с театральным уроком Visit Astana для групп от 10 человек. Оператор и отдельный денежный тариф не подтверждены этой карточкой."
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-opera-tour.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "group_minimum",
+          "value": 5,
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+              "checked_at": "2026-10-18T23:55:15.802541Z",
+              "excerpt": "Экскурсия проводиться от 5 человек.",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-opera-tour.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "address",
+          "value": "Улица Динмухамед Конаев, 1",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+              "checked_at": "2026-10-18T23:55:15.802541Z",
+              "excerpt": "Улица Динмухамед Конаев, 1",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-opera-tour.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Адрес существующего театра; не новая самостоятельная достопримечательность."
+        },
+        {
+          "field": "published_schedule_notice",
+          "value": "Ежедневно, кроме понедельника; 11:00 и 15:00 — недатированное описание CityPass.",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+              "checked_at": "2026-10-18T23:55:15.802541Z",
+              "excerpt": "Ежедневно. Кроме понедельника. 11:00; 15:00",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-opera-tour.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Нет подтверждения конкретной даты, доступных мест или фактического сеанса на 19 октября; dated_departures не создаются."
+        },
+        {
+          "field": "citypass_inclusion",
+          "value": "На карточке указано «free with CityPass»; применимость конкретного пропуска и отдельный тариф требуют уточнения.",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+              "checked_at": "2026-10-18T23:55:15.802541Z",
+              "excerpt": "Экскурсия в театре «Астана Опера» free with CityPass",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-opera-tour.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Не означает бесплатную экскурсию без действующего подходящего CityPass и не является подтверждённой ценой билета."
+        }
+      ],
+      "routes": [],
+      "ticket_offers": [],
+      "dated_departures": [],
+      "booking_rules": [
+        {
+          "field": "booking_contact",
+          "value": "+7 7172 709 612; +7 7172 709 600 (касса)",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+              "checked_at": "2026-10-18T23:55:15.802541Z",
+              "excerpt": "Контакты: +7 7172 709 612, +7 7172 709 600(номер кассы)",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-opera-tour.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Уточните дату и условия именно этого предложения; не переносить условия театрального урока для групп от 10 человек."
+        }
+      ],
+      "schedule_status": "date_unverified"
+    },
+    {
+      "id": "service:citypass-ishim-river-cruise",
+      "name": "Водные прогулки на теплоходах по реке Ишим — предложение CityPass",
+      "aliases": {
+        "ru": [
+          "теплоход Ишим CityPass",
+          "водные прогулки по реке Ишим",
+          "речной трамвай CityPass",
+          "citypass:94"
+        ],
+        "kk": [
+          "Есілдегі кеме серуені CityPass",
+          "Есіл өзенінде серуен"
+        ],
+        "en": [
+          "Ishim CityPass river cruise",
+          "Esil river boat CityPass",
+          "citypass:94"
+        ]
+      },
+      "kind": "river_cruise",
+      "operator_id": null,
+      "evidence": [
+        {
+          "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+          "checked_at": "2026-10-18T23:55:15.802776Z",
+          "excerpt": "Водные прогулки на теплоходах по реке Ишим",
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": "Не отождествлять с пакетным туром Dual.KZ или арендой катера «Голубое ожерелье столицы». Оператор, тариф, сезон и даты рейсов этой карточкой не подтверждены."
+          },
+          "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-ishim-boat.json"
+        }
+      ],
+      "facts": [
+        {
+          "field": "duration_minutes",
+          "value": 45,
+          "unit": "minutes",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+              "checked_at": "2026-10-18T23:55:15.802776Z",
+              "excerpt": "длится около 45 минут",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-ishim-boat.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Приблизительная продолжительность из недатированного описания."
+        },
+        {
+          "field": "route_length_km",
+          "value": 18.8,
+          "unit": "km",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+              "checked_at": "2026-10-18T23:55:15.802776Z",
+              "excerpt": "Прогулочный маршрут составляет 18,8 километра",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-ishim-boat.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": null
+        },
+        {
+          "field": "address",
+          "value": "На набережной перед Дворцом Школьников",
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+              "checked_at": "2026-10-18T23:55:15.802776Z",
+              "excerpt": "На набережной перед Дворцом Школьников",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-ishim-boat.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Адресная подпись карточки; точная точка посадки и координаты не проверены, boarding stop не создаётся."
+        },
+        {
+          "field": "river_stop_names",
+          "value": [
+            "Центральный парк",
+            "микрорайон Чубары",
+            "сквер «Времена года»",
+            "микрорайон «Самал»",
+            "памятник Кенесары",
+            "отель Radisson"
+          ],
+          "unit": null,
+          "status": "confirmed",
+          "evidence": [
+            {
+              "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+              "checked_at": "2026-10-18T23:55:15.802776Z",
+              "excerpt": "Пассажирский маршрут насчитывает 6 остановок: Центральный парк, микрорайон Чубары, сквер \"Времена года\", микрорайон \"Самал\", памятник Кенесары и отель \"Radisson\".",
+              "validity": {
+                "precision": "undated",
+                "valid_from": null,
+                "valid_to": null,
+                "months": [],
+                "notes": null
+              },
+              "archive_path": "data/review/2026-10-19-refresh/services-source-citypass-ishim-boat.json"
+            }
+          ],
+          "validity": {
+            "precision": "undated",
+            "valid_from": null,
+            "valid_to": null,
+            "months": [],
+            "notes": null
+          },
+          "notes": "Перечень из описания маршрута; возможность посадки на каждой точке не подтверждена."
+        }
+      ],
+      "routes": [],
+      "ticket_offers": [],
+      "dated_departures": [],
+      "booking_rules": [],
+      "schedule_status": "not_published"
+    }
+  ]
+}

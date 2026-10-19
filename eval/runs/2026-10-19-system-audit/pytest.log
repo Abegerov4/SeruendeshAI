@@ -1,0 +1,29 @@
+........................................................................ [  8%]
+........................................................................ [ 17%]
+............................................................ [ 25%]
+........................................................................ [ 34%]
+........................................................ssssssssss...... [ 43%]
+........................................................................ [ 52%]
+........................................................................ [ 61%]
+........................................................................ [ 70%]
+........................................................................ [ 79%]
+..................................................sssssssssssss......... [ 88%]
+........................................................................ [ 97%]
+........................                                                 [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_api_contract.py:14: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:23: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:31: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [6] tests/test_api_contract.py:39: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:50: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [4] tests/test_safety.py:13: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_safety.py:28: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_safety.py:41: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_ui.py:26: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:40: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:49: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:61: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:73: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:96: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:106: Product backend NOT TESTED: enable --live-api to run
+781 passed, 23 skipped, 12 subtests passed in 22.45s

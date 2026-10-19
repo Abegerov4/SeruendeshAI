@@ -20,6 +20,43 @@ def _load(path, modified, size):
     average = sum(sum(d.values()) for d in docs) / max(1, len(docs))
     return pois, docs, frequencies, average, hashlib.sha256(raw).hexdigest()
 
+@lru_cache(maxsize=4)
+def _catalog(root, legacy):
+    from data.snapshot import resolve_snapshot
+    from data.eligibility import load_reviews, review_matches, exclusion_reasons, safe_facts, evidence_for_hours
+    handle = resolve_snapshot(Path(root) / "data/processed", legacy=legacy)
+    path = handle.path / "pois.json"
+    raw = path.read_bytes()
+    rows = json.loads(raw)
+    overlay = handle.path / "fact_reviews.json"
+    if overlay.exists():
+        from data.eligibility import apply_fact_reviews
+        rows = apply_fact_reviews(rows, json.loads(overlay.read_bytes()), canonical_sha256=hashlib.sha256(raw).hexdigest())
+    review_path = handle.path / "quarantine.json" if handle.version != "legacy" else Path(root) / "data/quarantine.json"
+    matches, unmatched, ambiguous = review_matches(rows, load_reviews(review_path))
+    evidence_path = handle.path / "field_evidence.json"
+    external = json.loads(evidence_path.read_bytes()) if evidence_path.exists() else {}
+    from data.eligibility import source_ids
+    pois = [dict(safe_facts(p), **evidence_for_hours(p, [e for ident in source_ids(p) for e in external.get(ident, [])])) for p in rows]
+    eligible = {i for i, row in enumerate(rows) if not exclusion_reasons(row, row["id"] in matches)}
+    docs = [Counter(tokens(document(p))) for p in pois]
+    frequencies = Counter(t for doc in docs for t in doc)
+    average = sum(sum(d.values()) for d in docs) / max(1, len(docs))
+    return {"handle": handle, "pois": pois, "eligible": eligible, "docs": docs,
+            "frequencies": frequencies, "average": average, "digest": hashlib.sha256(raw).hexdigest(),
+            "quarantine_unmatched_ids": unmatched, "quarantine_ambiguous_ids": ambiguous}
+
+
+def catalog():
+    """One bound version for search, map and ID lookup; restart to adopt current."""
+    return _catalog(str(ROOT), os.getenv("DATA_SNAPSHOT_MODE", "") == "legacy")
+
+
+def all_pois():
+    selected = catalog()
+    return [p for i, p in enumerate(selected["pois"]) if i in selected["eligible"]]
+
+
 def _bm25(query_tokens, docs, frequencies, average, indices):
     scores = {}
     n = len(docs)
@@ -62,11 +99,13 @@ def search(query: str, lat: float | None, lon: float | None,
         raise ValueError('radius_m and top_k must be nonnegative')
     if not query.strip() or top_k == 0:
         return []
-    path = ROOT / 'data/processed/pois.json'
-    stat = path.stat()
-    pois, docs, frequencies, average, digest = _load(str(path), stat.st_mtime_ns, stat.st_size)
+    selected = catalog()
+    pois, docs = selected["pois"], selected["docs"]
+    frequencies, average, digest = selected["frequencies"], selected["average"], selected["digest"]
     distances, indices = {}, []
     for i, poi in enumerate(pois):
+        if i not in selected["eligible"]:
+            continue
         if categories is not None and poi['category'] not in categories:
             continue
         distance = None if lat is None else haversine_m(lat, lon, poi['lat'], poi['lon'])

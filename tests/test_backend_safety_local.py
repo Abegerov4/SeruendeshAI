@@ -37,7 +37,10 @@ def _provider(backend, monkeypatch, answer):
     calls = []
 
     def chat_json(system, user, **options):
-        calls.append({'system': system, 'user': user, **options})
+        # Application validators execute locally; provider payload/role metadata
+        # remains the boundary inspected for PII and exact-coordinate leakage.
+        provider_options = {key: options[key] for key in ('role', 'name', 'model_override') if key in options}
+        calls.append({'system': system, 'user': user, **provider_options})
         # Real intent rules remain active; the controlled malicious/valid output
         # is returned only to the actual generation validation layer.
         if options.get('name') == 'parse-intent':
@@ -170,7 +173,9 @@ def test_duplicate_model_ids_are_removed_before_response_and_route(qa_backend, m
     _provider(qa_backend, monkeypatch, answer)
     body = _post(qa_backend)
     assert [r['poi_id'] for r in body['recommendations']] == [park['id']]
-    assert body['recommendations'][0]['why'] == 'Первое объяснение.'
+    # Facts-only mode is user-approved: duplicate model prose is never evidence.
+    assert body['recommendations'][0]['why'].startswith('Парк ')
+    assert 'объяснение' not in body['recommendations'][0]['why']
     assert body['route'] is None
 
 

@@ -1,41 +1,106 @@
 {
  "api_version": "1.0",
- "request_id": "8ee56a4dd822",
+ "request_id": "d311ab396de9",
  "lang": "ru",
- "summary": "Для прогулки на свежем воздухе выбирайте парк, а если захочется согреться — рядом есть кофейня.",
+ "summary": "Подобрал 3 места рядом: Happylon, Аллея мира и согласия, Chaplin Cinemas.",
  "recommendations": [
   {
-   "poi_id": "osm:w1456208624",
+   "poi_id": "overture:ededa1ba-9d4e-4977-9724-adb8ee572540",
+   "name": "Happylon",
+   "category": "attraction",
+   "lat": 51.088743,
+   "lon": 71.407917,
+   "distance_m": 56,
+   "travel_min": 3,
+   "why": "Достопримечательность: совсем рядом.",
+   "visit_min": [
+    15,
+    30
+   ],
+   "what_to_do": "Осмотрите место и выберите ракурс для фотографии. Уточните часы работы перед выходом.",
+   "open_status": "unknown",
+   "open_confidence": "none",
+   "source": "poi_data",
+   "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=ededa1ba-9d4e-4977-9724-adb8ee572540",
+   "rating": null,
+   "website": null,
+   "rank": 1,
+   "category_detail": "landmark",
+   "category_label": "Достопримечательность",
+   "icon": "landmark",
+   "walk_distance_m": 190,
+   "travel_mode": "walk",
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 15,
+   "leave_by": null,
+   "return_min": 0,
+   "opening": {
+    "status": "unknown",
+    "confidence": "low",
+    "label": "Часы работы неизвестны — уточните перед визитом",
+    "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
+    "next_change": null
+   },
+   "source_label": "Данные POI",
+   "data_sources": [
+    "overture"
+   ],
+   "popularity": 0.0,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [],
+   "event": null,
+   "address": null,
+   "description": "Достопримечательность «Happylon» в Астане.",
+   "description_source": "website",
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
+  },
+  {
+   "poi_id": "osm:way/1456208624",
    "name": "Аллея мира и согласия",
    "category": "park",
-   "lat": 51.093812,
-   "lon": 71.41695,
+   "lat": 51.0938123,
+   "lon": 71.41694975,
    "distance_m": 853,
    "travel_min": 18,
-   "why": "Парк подходит для неспешной прогулки в светлое время; заявленный диапазон посещения укладывается в ваш план.",
+   "why": "Парк: укладывается в ваше время.",
    "visit_min": [
     20,
-    45
+    42
    ],
-   "what_to_do": "Пройдитесь по аллее и устройте короткую прогулку без спешки.",
-   "open_status": "open",
-   "open_confidence": "low",
+   "what_to_do": "Прогуляйтесь по парку в удобном для вас темпе. Уточните часы работы перед выходом.",
+   "open_status": "unknown",
+   "open_confidence": "none",
    "source": "poi_data",
    "source_url": "https://www.openstreetmap.org/way/1456208624",
    "rating": null,
-   "rank": 1,
+   "website": null,
+   "rank": 2,
    "category_detail": "park",
    "category_label": "Парк",
    "icon": "trees",
    "walk_distance_m": 1300,
    "travel_mode": "walk",
-   "visit_suggested_min": 30,
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 20,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
-    "status": "always",
-    "confidence": "medium",
-    "label": "Открытая территория — часы не ограничены",
+    "status": "unknown",
+    "confidence": "low",
+    "label": "Часы работы неизвестны — уточните перед визитом",
     "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
     "next_change": null
    },
    "source_label": "Данные POI",
@@ -45,70 +110,79 @@
    "popularity": 0.0,
    "features": [],
    "accessibility": "unknown",
-   "badges": [
-    "outdoor",
-    "kids",
-    "free"
-   ],
+   "badges": [],
    "event": null,
    "address": null,
-   "description": "Парк.",
-   "description_source": "template"
+   "description": "Парк или сад «Бейбітшілік пен Келісім аллеясы» в Астане.",
+   "description_source": "osm",
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
   },
   {
-   "poi_id": "osm:n14275682079",
-   "name": "Drinkit",
-   "category": "cafe",
-   "lat": 51.089076,
-   "lon": 71.40609,
-   "distance_m": 87,
-   "travel_min": 3,
-   "why": "Drinkit совсем рядом и в помещении — удобно согреться, если ветер сделает прогулку некомфортной.",
+   "poi_id": "overture:808c4fbc-cebc-44e7-a0a9-4fb230648633",
+   "name": "Chaplin Cinemas",
+   "category": "cinema",
+   "lat": 51.09409,
+   "lon": 71.40454,
+   "distance_m": 589,
+   "travel_min": 14,
+   "why": "Кинотеатр: укладывается в ваше время.",
    "visit_min": [
-    25,
-    45
+    46,
+    46
    ],
-   "what_to_do": "Загляните на кофе и передохните после прогулки.",
-   "open_status": "open",
-   "open_confidence": "high",
+   "what_to_do": "Уточните расписание и выберите фильм. Уточните часы работы перед выходом.",
+   "open_status": "unknown",
+   "open_confidence": "none",
    "source": "poi_data",
-   "source_url": "https://www.openstreetmap.org/node/14275682079",
+   "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=808c4fbc-cebc-44e7-a0a9-4fb230648633",
    "rating": null,
-   "rank": 2,
-   "category_detail": "cafe",
-   "category_label": "Кофейня / кафе",
-   "icon": "coffee",
-   "walk_distance_m": 220,
+   "website": "http://chaplin.kz/",
+   "rank": 3,
+   "category_detail": "cinema",
+   "category_label": "Кинотеатр",
+   "icon": "cinema",
+   "walk_distance_m": 980,
    "travel_mode": "walk",
-   "visit_suggested_min": 25,
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 46,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
-    "status": "open",
-    "confidence": "medium",
-    "label": "Открыто до 22:00 (данные OSM)",
-    "raw": "Mo-Su 08:00-22:00",
-    "next_change": "22:00"
+    "status": "unknown",
+    "confidence": "low",
+    "label": "Часы работы неизвестны — уточните перед визитом",
+    "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
+    "next_change": null
    },
    "source_label": "Данные POI",
    "data_sources": [
-    "osm"
+    "overture"
    ],
-   "popularity": 0.127,
-   "features": [
-    "Wi-Fi",
-    "без курения",
-    "есть туалет"
-   ],
+   "popularity": 0.0,
+   "features": [],
    "accessibility": "unknown",
    "badges": [
-    "indoor"
+    "night"
    ],
    "event": null,
-   "address": "Қабанбай Батыр даңғылы, 62",
-   "description": "Кофейня / кафе. Кухня: кофе. Удобства: Wi-Fi, без курения, есть туалет. Адрес: Қабанбай Батыр даңғылы, 62.",
-   "description_source": "template"
+   "address": "проспект Кабанбай батыра 60",
+   "description": "Кинотеатр «Chaplin Cinemas» в Астане. Адрес из источника: проспект Кабанбай батыра 60.",
+   "description_source": "website",
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
   }
  ],
+ "service_results": [],
+ "ideas": [],
  "route": null,
  "used_context": {
   "location_source": "landmark",
@@ -142,28 +216,25 @@
   "party": "solo",
   "parsed_from_query": {
    "categories": [],
-   "preferences": [
-    "park",
-    "garden",
-    "landmark",
-    "viewpoint",
-    "museum"
-   ],
+   "preferences": [],
    "needs": [],
    "time_budget_min": 60,
+   "food_requirements": [],
    "deadline": null,
    "deadline_in_min": null,
-   "landmark": "Mega Silk Way",
+   "flight_type": "unknown",
+   "deadline_buffer_min": 0,
+   "landmark": null,
    "night": false,
    "surprise": false,
-   "parser": "llm+rules (gpt-6-luna)"
+   "parser": "rules"
   },
   "relaxations": [],
   "funnel": {
-   "total": 2307,
-   "within_reach": 132,
-   "after_filters": 47,
-   "shown": 2
+   "total": 2745,
+   "within_reach": 158,
+   "after_filters": 16,
+   "shown": 3
   },
   "data_sources": [
    "OpenStreetMap (ODbL)",
@@ -173,16 +244,18 @@
    "Ticketon / Sxodim",
    "Open-Meteo (CC BY 4.0)"
   ],
-  "data_built_at": "2026-10-18T18:20:55+00:00",
+  "data_built_at": "2026-10-19",
   "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
  },
  "considered": [],
- "notes": [],
+ "notes": [
+  "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+ ],
  "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
  "ai_generated": true,
  "llm": {
-  "mode": "llm",
-  "model": "gpt-6-luna",
-  "latency_ms": 3603
+  "mode": "template",
+  "model": null,
+  "latency_ms": 165
  }
 }

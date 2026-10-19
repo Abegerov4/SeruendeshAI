@@ -12,16 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
-      - working-directory: ayat_backend
-        run: uv sync --all-groups
+      - run: uv venv --python 3.12 .venv
+      - run: uv pip install --python .venv/bin/python -r requirements-integration.txt
       - name: Collect and build
-        working-directory: ayat_backend
         run: |
-          uv run python -m pipeline.cli fetch
-          uv run python -m pipeline.cli build
-          uv run python -m pipeline.cli graph
-          uv run python -m pipeline.cli embed --model e5-large
-          uv run python -m pipeline.cli events || true
+          .venv/bin/python -m data.run_pipeline --help
+          .venv/bin/python -m data.run_pipeline --refresh
+          .venv/bin/python -m pytest data/tests -q
+          .venv/bin/python -m rag.evaluate eval/datasets/astana_retrieval_v2.json --mode bm25 --output-dir /tmp/refresh-eval
+        env: {RAG_SEARCH_MODE: bm25}
       - uses: peter-evans/create-pull-request@v7
         with:
           branch: data-refresh

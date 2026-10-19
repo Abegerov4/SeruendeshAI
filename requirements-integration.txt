@@ -1,0 +1,18 @@
+# Sparse local integration of both backends and the current canonical dataset.
+-r backend/requirements.txt
+-r data/requirements.txt
+-r requirements-qa.txt
+pydantic-settings>=2.16
+openai>=3.35,<4
+scipy>=1.16
+rank-bm25>=0.2.2
+snowballstemmer>=3.0
+rapidfuzz>=3.14
+opening-hours-py>=2.1
+holidays>=0.106
+astral>=3.2
+sqlalchemy>=2.0
+argon2-cffi>=23.1
+itsdangerous>=2.2
+email-validator>=2.2
+tzdata>=2025.2

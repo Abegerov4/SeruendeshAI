@@ -1,5 +1,7 @@
 """Детерминированная математика: радиус поиска, время в пути, длительность визита, мини-маршрут."""
-from .rag_adapter import haversine_m
+from datetime import datetime, timedelta
+
+from .rag_adapter import haversine_m, open_status
 
 # метров в минуту; DETOUR — поправка на то, что по улицам дольше, чем по прямой
 SPEED = {"walk": 80, "car": 400, "transit": 250}
@@ -35,7 +37,20 @@ def default_visit(category: str, time_budget_min: int) -> list[int]:
     return [min(lo, hi), hi]
 
 
-def build_route(start: tuple[float, float] | None, recs: list[dict], time_budget_min: int, mode: str) -> dict | None:
+def visit_open_status(raw: str | None, arrival: datetime, visit: int) -> tuple[str, str]:
+    """Validate the complete interval; minute precision matches OSM hours data."""
+    samples = [arrival + timedelta(minutes=i) for i in range(max(1, int(visit)))]
+    samples.append(arrival + timedelta(minutes=visit) - timedelta(microseconds=1))
+    states = [open_status(raw, at) for at in samples]
+    if any(state == "closed" for state, _ in states):
+        return "closed", "high"
+    if any(state != "open" for state, _ in states):
+        return "unknown", "none"
+    return "open", "high" if all(conf == "high" for _, conf in states) else "low"
+
+
+def build_route(start: tuple[float, float] | None, recs: list[dict], time_budget_min: int, mode: str,
+                now: datetime | None = None) -> dict | None:
     """Nearest neighbour от пользователя. Маршрут возвращаем, только если в нём ≥ 2 точки и он влезает в бюджет."""
     if start is None or len(recs) < 2:
         return None
@@ -45,8 +60,14 @@ def build_route(start: tuple[float, float] | None, recs: list[dict], time_budget
         nxt = min(left, key=lambda r: haversine_m(pos[0], pos[1], r["lat"], r["lon"]))
         leg = travel_min(haversine_m(pos[0], pos[1], nxt["lat"], nxt["lon"]), mode) or 0
         visit = nxt["visit_min"][0]  # минимальный визит: маршрут честно влезает в бюджет
-        if order and total + leg + visit > time_budget_min:
-            break
+        if total + leg + visit > time_budget_min:
+            left.remove(nxt)
+            continue
+        if now is not None:
+            arrival = now + timedelta(minutes=total + leg)
+            if visit_open_status(nxt.get("opening_hours"), arrival, visit)[0] == "closed":
+                left.remove(nxt)
+                continue
         order.append(nxt["poi_id"])
         total += leg + visit
         pos = (nxt["lat"], nxt["lon"])

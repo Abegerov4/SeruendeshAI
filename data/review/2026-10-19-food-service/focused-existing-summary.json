@@ -1,0 +1,22 @@
+{
+  "as_of": "2026-10-19",
+  "bounded_scope": "12 existing exact branches chosen from current reviewed lowest map averagechecks, prioritizing canteens. This is not an exhaustive internet/merchant review.",
+  "selected_existing_branches": 12,
+  "cached_exact_firms_inspected": 12,
+  "fresh_firm_http_successes": 11,
+  "fresh_firm_errors": 1,
+  "merchant_roots_checked": 3,
+  "merchant_root_http_successes": 2,
+  "followup_public_menu_and_branch_pages": 7,
+  "new_accepted_menu_items": 0,
+  "new_accepted_kitchen_windows": 1,
+  "complete_cost_statements": 0,
+  "new_canonical_ids": 0,
+  "paid_calls": 0,
+  "sidecar": ".local/food-pack-research/additional-existing.json",
+  "accepted_branch": "osm:node/12135856708",
+  "accepted_kitchen_hours": "Mo-Su 08:00-21:30",
+  "original_food_sidecar_modified": false,
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "runtime_validation_status": "Current data.place_details loader still withholds kitchen_hours field; expected until root implementation adds schema support. Source evidence and same-identity equality validated independently."
+}

@@ -1,6 +1,6 @@
 """Export the API contract for the frontend: docs/api/openapi.json + real example responses.
 
-    cd backend && uv run python ../scripts/export_contract.py [--no-llm]
+    uv run --project ayat_backend python -m ayat_backend.scripts.export_contract [--no-llm]
 """
 from __future__ import annotations
 
@@ -10,13 +10,13 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT.parent))
 if "--no-llm" in sys.argv:
     os.environ["LLM_ENABLED"] = "false"
 
 from fastapi.testclient import TestClient  # noqa: E402
 
-from app.main import app  # noqa: E402
+from ayat_backend.app.main import app  # noqa: E402
 
 EXAMPLES = {
     "walk": {"query": "Я сейчас возле Mega Silk Way, хочу прогуляться 30–60 минут — что посоветуете?",

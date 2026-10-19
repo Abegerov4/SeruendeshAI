@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "as_of": "2026-10-19",
+  "accepted_records": 101,
+  "attached_rows": 101,
+  "facts": 454,
+  "menu_items": 155,
+  "menu_items_with_unknown_full_price": 2,
+  "delivery_menu_branches": 31,
+  "average_check_branches": 20,
+  "average_check_comparison_groups": {
+    "restaurant": {
+      "n": 8,
+      "min_kzt": 7000,
+      "median_kzt": 9000.0,
+      "max_kzt": 25000,
+      "branches": [
+        {
+          "canonical_id": "overture:38122d40-1d49-4e81-8427-0c49b65114cf",
+          "name": "RUMI Mega Silk Way",
+          "amount": 7000,
+          "source_url": "https://2gis.kz/astana/firm/70000001027297427/tab/info",
+          "distance_to_expo_m": 492
+        },
+        {
+          "canonical_id": "overture:00442c70-6f40-40c8-96c1-d1233e6362a1",
+          "name": "Ocean Basket Mega Silk Way",
+          "amount": 12500,
+          "source_url": "https://2gis.kz/astana/firm/70000001028263064/tab/info",
+          "distance_to_expo_m": 477
+        },
+        {
+          "canonical_id": "osm:node/12093489321",
+          "name": "Daredzhani Mega Silk Way",
+          "amount": 10000,
+          "source_url": "https://2gis.kz/astana/firm/70000001087635586/tab/info",
+          "distance_to_expo_m": 420
+        },
+        {
+          "canonical_id": "overture:17c01d0f-b2ba-4b19-bc52-00162d5daaca",
+          "name": "Wall Street Restaurant & Bar",
+          "amount": 25000,
+          "source_url": "https://2gis.kz/astana/firm/70000001028292308/tab/info",
+          "distance_to_expo_m": 513
+        },
+        {
+          "canonical_id": "osm:node/10211901020",
+          "name": "TANUKI ASTANA",
+          "amount": 7000,
+          "source_url": "https://2gis.kz/astana/firm/70000001060637337/tab/info",
+          "distance_to_expo_m": 664
+        },
+        {
+          "canonical_id": "overture:a6363e48-45b6-426d-97e3-3771483c92c3",
+          "name": "Meat Point",
+          "amount": 7000,
+          "source_url": "https://2gis.kz/astana/firm/70000001027751110/tab/info",
+          "distance_to_expo_m": 895
+        },
+        {
+          "canonical_id": "osm:node/11898122971",
+          "name": "TURANDOT Kerey Zhanibek khandar",
+          "amount": 8000,
+          "source_url": "https://2gis.kz/astana/firm/70000001019594023/tab/info",
+          "distance_to_expo_m": 2753
+        },
+        {
+          "canonical_id": "overture:c0ebebea-c333-467e-9649-e3fb823b1491",
+          "name": "Line Brew",
+          "amount": 18000,
+          "source_url": "https://2gis.kz/astana/firm/70000001030035728/tab/info",
+          "distance_to_expo_m": 102
+        }
+      ]
+    },
+    "cafe": {
+      "n": 11,
+      "min_kzt": 2000,
+      "median_kzt": 3000,
+      "max_kzt": 7000,
+      "branches": [
+        {
+          "canonical_id": "overture:19a2719f-3e04-43e1-a045-77ebcaf6bd6c",
+          "name": "Home macaron Expo",
+          "amount": 2000,
+          "source_url": "https://2gis.kz/astana/firm/70000001035446317/tab/info",
+          "distance_to_expo_m": 640
+        },
+        {
+          "canonical_id": "osm:node/12990081501",
+          "name": "Discovery Coffee Mangilik El",
+          "amount": 2000,
+          "source_url": "https://2gis.kz/astana/firm/70000001059485628/tab/info",
+          "distance_to_expo_m": 792
+        },
+        {
+          "canonical_id": "overture:b0d26f91-135b-4ee0-bb0e-1de57b965856",
+          "name": "Espresso Bar EXPO",
+          "amount": 3000,
+          "source_url": "https://2gis.kz/astana/firm/70000001029139626/tab/info",
+          "distance_to_expo_m": 839
+        },
+        {
+          "canonical_id": "osm:node/10861996205",
+          "name": "Veggie House Green Mall",
+          "amount": 4000,
+          "source_url": "https://2gis.kz/astana/firm/70000001022909588/tab/info",
+          "distance_to_expo_m": 843
+        },
+        {
+          "canonical_id": "osm:node/11290690869",
+          "name": "TLP COFFEE",
+          "amount": 3000,
+          "source_url": "https://2gis.kz/astana/firm/70000001045449144/tab/info",
+          "distance_to_expo_m": 1211
+        },
+        {
+          "canonical_id": "osm:node/10248180510",
+          "name": "Delish Turkestan",
+          "amount": 7000,
+          "source_url": "https://2gis.kz/astana/firm/70000001051323152/tab/info",
+          "distance_to_expo_m": 1375
+        },
+        {
+          "canonical_id": "overture:b106bd1c-dce7-4194-8960-930132cd8dde",
+          "name": "Bookish Cafe",
+          "amount": 7000,
+          "source_url": "https://2gis.kz/astana/firm/70000001096897966/tab/info",
+          "distance_to_expo_m": 1925
+        },
+        {
+          "canonical_id": "overture:22ad98d6-faf7-4c60-b761-82371ea7424d",
+          "name": "Koktem",
+          "amount": 5000,
+          "source_url": "https://2gis.kz/astana/firm/70000001032494391/tab/info",
+          "distance_to_expo_m": 4522
+        },
+        {
+          "canonical_id": "overture:0ad92f14-be7f-4cd0-bf72-bd8e04f0677e",
+          "name": "Discovery Coffee",
+          "amount": 2000,
+          "source_url": "https://2gis.kz/astana/firm/70000001032527350/tab/info",
+          "distance_to_expo_m": 3055
+        },
+        {
+          "canonical_id": "overture:19ef3f22-8107-4488-b4cd-bf31ad2b9b62",
+          "name": "Starbucks",
+          "amount": 3000,
+          "source_url": "https://2gis.kz/astana/firm/70000001027813142/tab/info",
+          "distance_to_expo_m": 410
+        },
+        {
+          "canonical_id": "osm:node/9047331880",
+          "name": "Starbucks",
+          "amount": 3500,
+          "source_url": "https://2gis.kz/astana/firm/70000001025639401/tab/info",
+          "distance_to_expo_m": 4321
+        }
+      ]
+    },
+    "burger": {
+      "n": 1,
+      "min_kzt": 3500,
+      "median_kzt": 3500,
+      "max_kzt": 3500,
+      "branches": [
+        {
+          "canonical_id": "osm:node/6680302780",
+          "name": "Butcher's Street Mangilik El",
+          "amount": 3500,
+          "source_url": "https://2gis.kz/astana/firm/70000001031308957/tab/info",
+          "distance_to_expo_m": 1829
+        }
+      ]
+    }
+  },
+  "sampling_limits": [
+    "Curated merchant sample,not a random or citywide price survey.",
+    "Every quoted menu price is delivery; no dine-in item prices verified.",
+    "Unknown amenities remain absent,not false.",
+    "Source page checked_at is a retrieval date,not merchant last-update date.",
+    "No generic cheap threshold or cheapest-in-city claim is authorized by these statistics."
+  ],
+  "held_branch_candidates": 2,
+  "buffet_sauran34_format_status": "unconfirmed_no_change",
+  "full_pytest": "1190 passed,73 skipped,12 subtests passed in44.47s",
+  "detail_targeted_tests": 48,
+  "external_llm_cost_usd": 0,
+  "audit_review": {
+    "as_of": "2026-10-19",
+    "input_total_candidates": 971,
+    "identity_matched_reviewed": 67,
+    "review_checkpoint": "eval/runs/2026-10-19-catalog-refresh/source-audit/audit-review-checkpoint-67.jsonl",
+    "review_checkpoint_sha256": "b4b07ee065f7868fdf3cebdfbf66a2e8a4af36ca999b3e2693132ae03afd24e7",
+    "unmatched_ineligible_candidates": 904,
+    "approved_branches": 65,
+    "approved_facts": 240,
+    "held_matched_branches": 2,
+    "approved_fields": {
+      "address": 65,
+      "phone": 28,
+      "opening_hours": 48,
+      "activities": 1,
+      "group_policy": 1,
+      "website": 1,
+      "booking_policy": 1,
+      "delivery_hours": 23,
+      "delivery": 23,
+      "format": 23,
+      "takeaway": 23,
+      "wifi": 1,
+      "luggage_storage": 1,
+      "parking": 1
+    },
+    "all_reviewed_raw_hashes_verified": true,
+    "changes_to_canonical_master": false
+  },
+  "accepted_branches": 101,
+  "accepted_general_facts": 454,
+  "accepted_menu_items": 155,
+  "source_sidecar_sha256": "e678d5897147e948fad17fb6d9d25a429f34cae940257dac3a5d53f99ac2dee8"
+}

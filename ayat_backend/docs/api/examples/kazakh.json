@@ -1,160 +1,186 @@
 {
  "api_version": "1.0",
- "request_id": "f85626ccff35",
+ "request_id": "5b607a497c98",
  "lang": "kk",
- "summary": "Бәйтерек маңындағы серуенге саябақ пен скверді қосып, ашық ауада тынығып қайтыңыз.",
+ "summary": "Жақын жерден 3 орын таптым: Водно-Зеленый Бульвар, Астана, Караоткель 4, ForteBank Kulanshi Art Space.",
  "recommendations": [
   {
-   "poi_id": "osm:w734514013",
-   "name": "Сызықтық саябақ",
+   "poi_id": "overture:74210037-b47a-4274-a0c1-219f613c3f43",
+   "name": "Водно-Зеленый Бульвар",
    "category": "park",
-   "lat": 51.118568,
-   "lon": 71.426647,
-   "distance_m": 1113,
-   "travel_min": 18,
-   "why": "Саябақта таза ауада серуендеуге болады; жаяу бағыт пен бір сағаттық уақытыңызға сай келеді.",
+   "lat": 51.1304877635873,
+   "lon": 71.42586116491849,
+   "distance_m": 403,
+   "travel_min": 10,
+   "why": "Саябақ: өте жақын.",
    "visit_min": [
     20,
     45
    ],
-   "what_to_do": "Саябақтың ішімен асықпай жүріп, айналаға көз салыңыз.",
-   "open_status": "open",
-   "open_confidence": "low",
+   "what_to_do": "Саябақта өзіңізге ыңғайлы қарқынмен серуендеңіз. Жұмыс уақытын алдын ала нақтылаңыз.",
+   "open_status": "unknown",
+   "open_confidence": "none",
    "source": "poi_data",
-   "source_url": "https://www.openstreetmap.org/way/734514013",
+   "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=74210037-b47a-4274-a0c1-219f613c3f43",
    "rating": null,
+   "website": null,
    "rank": 1,
    "category_detail": "park",
    "category_label": "Саябақ",
    "icon": "trees",
-   "walk_distance_m": 1320,
+   "walk_distance_m": 720,
    "travel_mode": "walk",
-   "visit_suggested_min": 30,
-   "leave_by": null,
-   "opening": {
-    "status": "always",
-    "confidence": "medium",
-    "label": "Ашық аумақ — уақыт шектелмеген",
-    "raw": null,
-    "next_change": null
-   },
-   "source_label": "POI деректері",
-   "data_sources": [
-    "osm"
-   ],
-   "popularity": 0.0,
-   "features": [],
-   "accessibility": "unknown",
-   "badges": [
-    "outdoor",
-    "kids",
-    "free"
-   ],
-   "event": null,
-   "address": null,
-   "description": "Парк.",
-   "description_source": "template"
-  },
-  {
-   "poi_id": "ov:05a08159-b2a2-4f",
-   "name": "Дөңгелек алаң / Круглая Площадь / Round Square",
-   "category": "park",
-   "lat": 51.130733,
-   "lon": 71.414005,
-   "distance_m": 1180,
-   "travel_min": 19,
-   "why": "Нұржол бульварындағы сквер серуенді жалғастыруға лайық; салқын желді ескеріп, жылырақ киініңіз.",
-   "visit_min": [
-    15,
-    30
-   ],
-   "what_to_do": "Скверді аралап, ұнаған көріністі суретке түсіріңіз.",
-   "open_status": "open",
-   "open_confidence": "low",
-   "source": "poi_data",
-   "source_url": null,
-   "rating": null,
-   "rank": 2,
-   "category_detail": "garden",
-   "category_label": "Гүлзар / бақ",
-   "icon": "flower",
-   "walk_distance_m": 1410,
-   "travel_mode": "walk",
+   "arrival_at": null,
+   "departure_at": null,
    "visit_suggested_min": 20,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
-    "status": "always",
-    "confidence": "medium",
-    "label": "Ашық аумақ — уақыт шектелмеген",
+    "status": "unknown",
+    "confidence": "low",
+    "label": "Жұмыс уақыты белгісіз — алдын ала нақтылаңыз",
     "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
     "next_change": null
    },
    "source_label": "POI деректері",
    "data_sources": [
     "overture"
    ],
-   "popularity": 0.018,
+   "popularity": 0.0,
    "features": [],
    "accessibility": "unknown",
-   "badges": [
-    "outdoor",
-    "free"
-   ],
+   "badges": [],
    "event": null,
-   "address": "бульвар Нуржол",
-   "description": "Сквер / сад. Адрес: бульвар Нуржол.",
-   "description_source": "template"
+   "address": "Нуржол",
+   "description": "Парк или сад «Водно-Зеленый Бульвар» в Астане. Адрес из источника: Нуржол.",
+   "description_source": "website",
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
   },
   {
-   "poi_id": "idea-3",
-   "name": "Көрініс іздеу",
-   "category": "park",
-   "lat": 51.130733,
-   "lon": 71.414005,
-   "distance_m": 1180,
-   "travel_min": 19,
-   "why": "Серуен бойы көзге түскен ең қызық сәулет бөлшегін тауып, суретке түсіріңіз.",
+   "poi_id": "overture:7974d8b6-09a1-43b6-9373-df2e693ce46c",
+   "name": "Астана, Караоткель 4",
+   "category": "attraction",
+   "lat": 51.14381,
+   "lon": 71.43011,
+   "distance_m": 1726,
+   "travel_min": 29,
+   "why": "Көрікті орын: уақытыңызға сыяды.",
    "visit_min": [
-    5,
-    20
+    15,
+    30
    ],
-   "what_to_do": "Серуен бойы көзге түскен ең қызық сәулет бөлшегін тауып, суретке түсіріңіз.",
+   "what_to_do": "Орынды тамашалап, суретке түсетін ракурс таңдаңыз. Жұмыс уақытын алдын ала нақтылаңыз.",
    "open_status": "unknown",
    "open_confidence": "none",
-   "source": "generated",
-   "source_url": null,
+   "source": "poi_data",
+   "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=7974d8b6-09a1-43b6-9373-df2e693ce46c",
    "rating": null,
-   "rank": 3,
-   "category_detail": "idea",
-   "category_label": "ЖИ идеясы",
-   "icon": "sparkles",
-   "walk_distance_m": null,
+   "website": null,
+   "rank": 2,
+   "category_detail": "landmark",
+   "category_label": "Көрікті орын",
+   "icon": "landmark",
+   "walk_distance_m": 2130,
    "travel_mode": "walk",
-   "visit_suggested_min": 10,
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 15,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
     "status": "unknown",
     "confidence": "low",
     "label": "Жұмыс уақыты белгісіз — алдын ала нақтылаңыз",
     "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
     "next_change": null
    },
-   "source_label": "ЖИ идеясы",
+   "source_label": "POI деректері",
    "data_sources": [
-    "llm"
+    "overture"
    ],
-   "popularity": null,
+   "popularity": 0.0,
    "features": [],
    "accessibility": "unknown",
-   "badges": [
-    "ai_idea"
-   ],
+   "badges": [],
    "event": null,
-   "address": "Жанында: Дөңгелек алаң / Круглая Площадь / Round Square",
-   "description": null,
-   "description_source": "generated"
+   "address": "улица Караоткель 4",
+   "description": "Достопримечательность «Астана, Караоткель 4» в Астане. Адрес из источника: улица Караоткель 4.",
+   "description_source": "website",
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
+  },
+  {
+   "poi_id": "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3",
+   "name": "ForteBank Kulanshi Art Space",
+   "category": "gallery",
+   "lat": 51.12676344,
+   "lon": 71.41862359,
+   "distance_m": 843,
+   "travel_min": 16,
+   "why": "Галерея: уақытыңызға сыяды.",
+   "visit_min": [
+    30,
+    44
+   ],
+   "what_to_do": "Қызықтырған туындыларды тамашалаңыз.",
+   "open_status": "open",
+   "open_confidence": "low",
+   "source": "poi_data",
+   "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=e2157a69-731f-461d-a2cf-ff1bb56406b3",
+   "rating": null,
+   "website": null,
+   "rank": 3,
+   "category_detail": "gallery",
+   "category_label": "Галерея",
+   "icon": "gallery",
+   "walk_distance_m": 1140,
+   "travel_mode": "walk",
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 30,
+   "leave_by": null,
+   "return_min": 0,
+   "opening": {
+    "status": "open",
+    "confidence": "low",
+    "label": "20:00 дейін ашық (жұмыс уақытының дереккөзі: city_tourism)",
+    "raw": "Mo-Su 10:00-20:00",
+    "source": "city_tourism",
+    "source_url": "https://visitastana.kz/ru/map/",
+    "check_date": "2026-10-19",
+    "next_change": "20:00"
+   },
+   "source_label": "POI деректері",
+   "data_sources": [
+    "overture"
+   ],
+   "popularity": 0.0,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [],
+   "event": null,
+   "address": "8/1 Dostyk Street |",
+   "description": "Галерея «ForteBank Kulanshi Art Space» в Астане. Адрес из источника: 8/1 Dostyk Street |.",
+   "description_source": "website",
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
   }
  ],
+ "service_results": [],
+ "ideas": [],
  "route": null,
  "used_context": {
   "location_source": "landmark",
@@ -188,28 +214,25 @@
   "party": "solo",
   "parsed_from_query": {
    "categories": [],
-   "preferences": [
-    "park",
-    "garden",
-    "landmark",
-    "viewpoint",
-    "museum"
-   ],
+   "preferences": [],
    "needs": [],
    "time_budget_min": 60,
+   "food_requirements": [],
    "deadline": null,
    "deadline_in_min": null,
-   "landmark": "Бәйтеректің",
+   "flight_type": "unknown",
+   "deadline_buffer_min": 0,
+   "landmark": null,
    "night": false,
    "surprise": false,
-   "parser": "llm+rules (gpt-6-luna)"
+   "parser": "rules"
   },
   "relaxations": [],
   "funnel": {
-   "total": 2307,
-   "within_reach": 424,
-   "after_filters": 161,
-   "shown": 2
+   "total": 2745,
+   "within_reach": 542,
+   "after_filters": 74,
+   "shown": 3
   },
   "data_sources": [
    "OpenStreetMap (ODbL)",
@@ -219,29 +242,18 @@
    "Ticketon / Sxodim",
    "Open-Meteo (CC BY 4.0)"
   ],
-  "data_built_at": "2026-10-18T18:20:55+00:00",
+  "data_built_at": "2026-10-19",
   "privacy": "Орналасу ~100 м-ге дейін дөңгелектенген, тек осы сұрауға қолданылады және сақталмайды. Координаттар тілдік модельге жіберілмейді."
  },
- "considered": [
-  {
-   "name": "Алматыкітап",
-   "reason": "барған кезде жабық"
-  },
-  {
-   "name": "Coffee Like",
-   "reason": "барған кезде жабық"
-  },
-  {
-   "name": "Starbucks",
-   "reason": "барған кезде жабық"
-  }
+ "considered": [],
+ "notes": [
+  "Жол уақыты түзу сызық бойынша бағаланды."
  ],
- "notes": [],
  "disclaimer": "Жауапты ЖИ ашық деректер негізінде құрастырды (OpenStreetMap, Wikidata/Wikipedia және т.б.). Жұмыс уақыты өзгеруі мүмкін — барар алдында тексеріңіз.",
  "ai_generated": true,
  "llm": {
-  "mode": "llm",
-  "model": "gpt-6-luna",
-  "latency_ms": 3657
+  "mode": "template",
+  "model": null,
+  "latency_ms": 109
  }
 }

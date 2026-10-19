@@ -82,13 +82,28 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 async def forget(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    timer = context.chat_data.pop("_loc_timer", None)
+    if timer:
+        timer.cancel()
     context.chat_data.clear()
     await update.message.reply_text("Готово, локацию забыл.")
 
 
 async def on_location(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     loc = update.message.location
-    context.chat_data["loc"] = {"lat": round(loc.latitude, 3), "lon": round(loc.longitude, 3), "ts": time.monotonic()}
+    saved = {"lat": round(loc.latitude, 3), "lon": round(loc.longitude, 3), "ts": time.monotonic()}
+    timer = context.chat_data.pop("_loc_timer", None)
+    if timer:
+        timer.cancel()
+    context.chat_data["loc"] = saved
+
+    def expire():
+        # Identity prevents a stale timer from deleting a newer location.
+        if context.chat_data.get("loc") is saved:
+            context.chat_data.pop("loc", None)
+            context.chat_data.pop("_loc_timer", None)
+
+    context.chat_data["_loc_timer"] = asyncio.get_running_loop().call_later(LOCATION_TTL_S, expire)
     await update.message.reply_text(
         "Локацию получил (округлил до ~100 м). Что хочется? Можно нажать кнопку или написать своими словами.",
         reply_markup=_scenario_buttons(),
@@ -114,11 +129,18 @@ async def on_text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def on_photo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.effective_chat.send_action(ChatAction.TYPING)
     photo = update.message.photo[-1]  # самый большой размер
-    data = bytes(await (await photo.get_file()).download_as_bytearray())
+    file = await photo.get_file()
+    # Telegram supplies trusted file metadata; reject missing/oversized sizes
+    # before asking its client to buffer the download.
+    size = file.file_size or photo.file_size
+    if not size or size > vision.MAX_BYTES:
+        await update.message.reply_text("Фото больше 8 МБ или размер неизвестен")
+        return
+    data = bytes(await file.download_as_bytearray())
     caption = update.message.caption or "Что интересного рядом?"
     req = RecommendRequest(query=caption[:1000], lang=_lang(update))
     try:
-        data_url = vision.prepare_image(data, "image/jpeg")
+        data_url = await asyncio.to_thread(vision.prepare_image, data, "image/jpeg")
     except vision.PhotoError as e:
         await update.message.reply_text(str(e))
         return

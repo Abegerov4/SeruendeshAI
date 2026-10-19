@@ -11,6 +11,7 @@ RUN pip install --no-cache-dir -r backend/requirements.txt -r rag/requirements.t
 COPY backend/ backend/
 COPY rag/ rag/
 COPY data/ data/
+COPY runtime_support/ runtime_support/
 
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"

@@ -1,0 +1,23 @@
+nurzhol.jpg
+Real Nurzhol boulevard photograph from Advantour:
+https://www.advantour.com/img/kazakhstan/tours/millennium-axis-tour/nurzhol2.jpg
+Source page: https://www.advantour.com/kazakhstan/tours/millennium-axis-tour.htm
+Used in the local visual prototype. Image rights were not independently verified for public redistribution.
+
+coffee.jpg
+Atmospheric coffee illustration (photograph), not a named Astana establishment:
+https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1000&q=85&fit=crop
+
+astana-hero.png
+AI-generated visualization based on an Astana architecture reference.
+See astana-hero-provenance.txt for prompt and provenance.
+
+stories/walk.png and stories/walk.webp
+AI-generated walking scene based on the real Nurzhol reference above.
+Not a documentary photograph. Labeled as an AI visualization in the UI.
+
+stories/coffee.png and stories/coffee.webp
+AI-generated cafe mood illustration, not a named establishment.
+
+Exact prompts for the scenes and mascot: brand/mascot/generation-prompts.json.
+WebP files are compressed copies; original PNGs remain available.

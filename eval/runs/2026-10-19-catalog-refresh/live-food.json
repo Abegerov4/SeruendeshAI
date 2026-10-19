@@ -1,0 +1,2761 @@
+{
+  "timestamp_utc": "2026-10-19T00:01:20.867963+00:00",
+  "execution_kind": "live_http_external_provider",
+  "snapshot_version": "b479f2445492454782a09e8d95495ae7",
+  "health_before": {
+    "status": "degraded",
+    "pois": 2745,
+    "llm": "configured",
+    "runtime_id": "ayat",
+    "readiness_profile": "llm",
+    "ready": false,
+    "snapshot_version": "b479f2445492454782a09e8d95495ae7",
+    "provider_verified_at": null,
+    "poi_count": 2745,
+    "events": 60,
+    "dense_retrieval": true,
+    "walk_graph": true,
+    "llm_configured": true,
+    "data_built_at": "2026-10-19"
+  },
+  "health_after": {
+    "status": "ok",
+    "pois": 2745,
+    "llm": "ok",
+    "runtime_id": "ayat",
+    "readiness_profile": "llm",
+    "ready": true,
+    "snapshot_version": "b479f2445492454782a09e8d95495ae7",
+    "provider_verified_at": "2026-10-19T00:01:17.975728+00:00",
+    "poi_count": 2745,
+    "events": 60,
+    "dense_retrieval": true,
+    "walk_graph": true,
+    "llm_configured": true,
+    "data_built_at": "2026-10-19"
+  },
+  "results": [
+    {
+      "id": "meal-unconfirmed",
+      "request": {
+        "lang": "ru",
+        "landmark": "expo",
+        "now": "2026-10-19T13:00:00+05:00",
+        "query": "Я рядом с экспо хочу домашней еды пюре с котлетой очень дешево"
+      },
+      "response": {
+        "api_version": "1.0",
+        "request_id": "01eb67356e6c",
+        "lang": "ru",
+        "summary": "В данных нет подтверждения подходящего блюда, формата питания или цены под ваши условия. Могу подобрать места без этих ограничений — напишите «просто где поесть рядом».",
+        "recommendations": [],
+        "service_results": [],
+        "ideas": [],
+        "route": null,
+        "used_context": {
+          "location_source": "landmark",
+          "location_label": "EXPO / Нур Алем",
+          "radius_m": 1406,
+          "time_budget_min": 60,
+          "mode": "walk",
+          "filters": [
+            "Ресторан",
+            "Кофейня / кафе"
+          ],
+          "now": "2026-10-19T13:00:00+05:00",
+          "location": {
+            "source": "text_landmark",
+            "label": "EXPO / Нур Алем",
+            "lat": 51.093,
+            "lon": 71.421,
+            "precision_m": 50
+          },
+          "local_time": "13:00",
+          "weekday": "понедельник",
+          "is_holiday": null,
+          "is_dark": false,
+          "weather": null,
+          "speed_kmh": 4.5,
+          "party": "solo",
+          "parsed_from_query": {
+            "categories": [
+              "restaurant",
+              "cafe"
+            ],
+            "preferences": [
+              "restaurant",
+              "cafe"
+            ],
+            "needs": [],
+            "time_budget_min": null,
+            "food_requirements": [
+              {
+                "kind": "style",
+                "text": "домашней еды"
+              },
+              {
+                "kind": "menu",
+                "text": "пюре"
+              },
+              {
+                "kind": "menu",
+                "text": "котлетой"
+              },
+              {
+                "kind": "price",
+                "text": "очень дешево"
+              },
+              {
+                "kind": "menu",
+                "text": "пюре с котлетой"
+              }
+            ],
+            "deadline": null,
+            "deadline_in_min": null,
+            "flight_type": "unknown",
+            "deadline_buffer_min": 0,
+            "landmark": "экспо",
+            "night": false,
+            "surprise": false,
+            "parser": "llm+rules (gpt-4.1-mini)"
+          },
+          "relaxations": [],
+          "funnel": {
+            "total": 2745,
+            "within_reach": 184,
+            "after_filters": 0,
+            "shown": 0
+          },
+          "data_sources": [
+            "OpenStreetMap (ODbL)",
+            "Wikidata (CC0)",
+            "Wikipedia (CC BY-SA)",
+            "Overture Maps (CDLA)",
+            "Ticketon / Sxodim"
+          ],
+          "data_built_at": "2026-10-19",
+          "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+        },
+        "considered": [
+          {
+            "name": "Додо пицца Мега силквей",
+            "reason": "нет подтверждения нужного блюда, формата или цены"
+          },
+          {
+            "name": "ЖК Only Sun-2",
+            "reason": "нет подтверждения нужного блюда, формата или цены"
+          },
+          {
+            "name": "Додо Пицца Мангилик Ел",
+            "reason": "нет подтверждения нужного блюда, формата или цены"
+          },
+          {
+            "name": "Тануки",
+            "reason": "нет подтверждения нужного блюда, формата или цены"
+          }
+        ],
+        "notes": [
+          "В данных нет подтверждения подходящего блюда, формата питания или цены под ваши условия. Могу подобрать места без этих ограничений — напишите «просто где поесть рядом».",
+          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+        ],
+        "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+        "ai_generated": true,
+        "llm": {
+          "mode": "template",
+          "model": null,
+          "latency_ms": 2828
+        }
+      },
+      "checks": {
+        "http": true,
+        "no_unproved_places": true,
+        "honest_unknown": true,
+        "requirements_retained": true
+      }
+    },
+    {
+      "id": "nearer-preserves-meal",
+      "request": {
+        "lang": "ru",
+        "landmark": "expo",
+        "now": "2026-10-19T13:00:00+05:00",
+        "query": "Поближе пожалуйста",
+        "food_context": [
+          {
+            "kind": "menu",
+            "text": "пюре"
+          },
+          {
+            "kind": "menu",
+            "text": "котлетой"
+          },
+          {
+            "kind": "price",
+            "text": "до2000тенге"
+          }
+        ],
+        "refine": [
+          "closer"
+        ]
+      },
+      "response": {
+        "api_version": "1.0",
+        "request_id": "e340c1d3f25b",
+        "lang": "ru",
+        "summary": "В данных нет подтверждения подходящего блюда, формата питания или цены под ваши условия. Могу подобрать места без этих ограничений — напишите «просто где поесть рядом».",
+        "recommendations": [],
+        "service_results": [],
+        "ideas": [],
+        "route": null,
+        "used_context": {
+          "location_source": "landmark",
+          "location_label": "EXPO / Нур Алем",
+          "radius_m": 703,
+          "time_budget_min": 60,
+          "mode": "walk",
+          "filters": [
+            "Ресторан",
+            "Кофейня / кафе",
+            "ближе"
+          ],
+          "now": "2026-10-19T13:00:00+05:00",
+          "location": {
+            "source": "landmark",
+            "label": "EXPO / Нур Алем",
+            "lat": 51.093,
+            "lon": 71.421,
+            "precision_m": 50
+          },
+          "local_time": "13:00",
+          "weekday": "понедельник",
+          "is_holiday": null,
+          "is_dark": false,
+          "weather": null,
+          "speed_kmh": 4.5,
+          "party": "solo",
+          "parsed_from_query": {
+            "categories": [
+              "restaurant",
+              "cafe"
+            ],
+            "preferences": [
+              "restaurant",
+              "cafe"
+            ],
+            "needs": [],
+            "time_budget_min": null,
+            "food_requirements": [
+              {
+                "kind": "menu",
+                "text": "пюре"
+              },
+              {
+                "kind": "menu",
+                "text": "котлетой"
+              },
+              {
+                "kind": "price",
+                "text": "до2000тенге"
+              }
+            ],
+            "deadline": null,
+            "deadline_in_min": null,
+            "flight_type": "unknown",
+            "deadline_buffer_min": 0,
+            "landmark": null,
+            "night": false,
+            "surprise": false,
+            "parser": "llm+rules (gpt-4.1-mini)"
+          },
+          "relaxations": [],
+          "funnel": {
+            "total": 2745,
+            "within_reach": 37,
+            "after_filters": 0,
+            "shown": 0
+          },
+          "data_sources": [
+            "OpenStreetMap (ODbL)",
+            "Wikidata (CC0)",
+            "Wikipedia (CC BY-SA)",
+            "Overture Maps (CDLA)",
+            "Ticketon / Sxodim"
+          ],
+          "data_built_at": "2026-10-19",
+          "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+        },
+        "considered": [
+          {
+            "name": "Тануки",
+            "reason": "нет подтверждения нужного блюда, формата или цены"
+          },
+          {
+            "name": "Golpas",
+            "reason": "нет подтверждения нужного блюда, формата или цены"
+          },
+          {
+            "name": "Discovery Coffee",
+            "reason": "нет подтверждения нужного блюда, формата или цены"
+          },
+          {
+            "name": "Alem.ai",
+            "reason": "нет подтверждения нужного блюда, формата или цены"
+          }
+        ],
+        "notes": [
+          "В данных нет подтверждения подходящего блюда, формата питания или цены под ваши условия. Могу подобрать места без этих ограничений — напишите «просто где поесть рядом».",
+          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+        ],
+        "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+        "ai_generated": true,
+        "llm": {
+          "mode": "template",
+          "model": null,
+          "latency_ms": 2224
+        }
+      },
+      "checks": {
+        "http": true,
+        "no_unproved_places": true,
+        "honest_unknown": true,
+        "requirements_retained": true
+      }
+    },
+    {
+      "id": "generic-food-model",
+      "request": {
+        "lang": "ru",
+        "landmark": "expo",
+        "now": "2026-10-19T13:00:00+05:00",
+        "query": "Где поесть рядом с экспо?"
+      },
+      "response": {
+        "api_version": "1.0",
+        "request_id": "ac0c88f8afd2",
+        "lang": "ru",
+        "summary": "Подобрал 3 места рядом: Giraffe, Тáп Тáттi, Berezka.",
+        "recommendations": [
+          {
+            "poi_id": "overture:b96dcbec-1284-480d-9252-40cb04a4c570",
+            "name": "Giraffe",
+            "category": "restaurant",
+            "lat": 51.09582958,
+            "lon": 71.42048065,
+            "distance_m": 345,
+            "travel_min": 6,
+            "why": "Ресторан: совсем рядом.",
+            "visit_min": [
+              45,
+              54
+            ],
+            "what_to_do": "Зайдите поесть и выберите что-нибудь по вкусу. Уточните часы работы перед выходом.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=b96dcbec-1284-480d-9252-40cb04a4c570",
+            "rating": null,
+            "website": "http://restoran.kz/",
+            "rank": 1,
+            "category_detail": "restaurant",
+            "category_label": "Ресторан",
+            "icon": "utensils",
+            "walk_distance_m": 440,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 45,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "overture"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": "Turkistan Street 30",
+            "description": "Ресторан «Giraffe» в Астане. Адрес из источника: Turkistan Street 30.",
+            "description_source": "website",
+            "description_attribution": [],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
+          },
+          {
+            "poi_id": "overture:5860a341-98e7-480a-b56d-63c21d14e410",
+            "name": "Тáп Тáттi",
+            "category": "restaurant",
+            "lat": 51.095165,
+            "lon": 71.42617,
+            "distance_m": 421,
+            "travel_min": 9,
+            "why": "Ресторан: совсем рядом, есть кофе/еда с собой.",
+            "visit_min": [
+              45,
+              51
+            ],
+            "what_to_do": "Зайдите поесть и выберите что-нибудь по вкусу.",
+            "open_status": "open",
+            "open_confidence": "high",
+            "source": "poi_data",
+            "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=5860a341-98e7-480a-b56d-63c21d14e410",
+            "rating": null,
+            "website": null,
+            "rank": 2,
+            "category_detail": "restaurant",
+            "category_label": "Ресторан",
+            "icon": "utensils",
+            "walk_distance_m": 640,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 45,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "open",
+              "confidence": "high",
+              "label": "Открыто до 22:00 (источник часов: reviewed branch source)",
+              "raw": "Mo-Su 08:00-22:00",
+              "source": "reviewed branch source",
+              "source_url": "https://2gis.kz/astana/firm/70000001030630928",
+              "check_date": "2026-10-19",
+              "next_change": "22:00"
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "overture"
+            ],
+            "popularity": 0.0,
+            "features": [
+              "кофе/еда с собой"
+            ],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": "Мәңгілік Ел даңғылы 51",
+            "description": "Ресторан «Тáп Тáттi» в Астане. Адрес из источника: Мәңгілік Ел даңғылы 51.",
+            "description_source": "website",
+            "description_attribution": [],
+            "structured_facts": [
+              {
+                "field": "address",
+                "value": "проспект Мангилик Ел, 51",
+                "status": "accepted",
+                "conflict_status": "none",
+                "branch_scope": "exact",
+                "branch_confirmation": {
+                  "source_name": "Тәп-Тәтті",
+                  "source_address": "проспект Мангилик Ел, 51"
+                },
+                "source": {
+                  "url": "https://2gis.kz/astana/firm/70000001030630928",
+                  "excerpt": "проспект Мангилик Ел, 51",
+                  "checked_at": "2026-10-19",
+                  "channel": "onsite",
+                  "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-4de1e9c667e55932.html",
+                  "response_sha256": "4de1e9c667e5593244af28026aa6e541c2953941275e96c77fb541b958946a8b",
+                  "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+                },
+                "valid_from": null,
+                "valid_to": null
+              },
+              {
+                "field": "format",
+                "value": "Кондитерская",
+                "status": "accepted",
+                "conflict_status": "none",
+                "branch_scope": "exact",
+                "branch_confirmation": {
+                  "source_name": "Тәп-Тәтті",
+                  "source_address": "проспект Мангилик Ел, 51"
+                },
+                "source": {
+                  "url": "https://2gis.kz/astana/firm/70000001030630928/tab/info",
+                  "excerpt": "Кондитерская",
+                  "checked_at": "2026-10-19",
+                  "channel": "onsite",
+                  "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-ebee7000395b30a9.html",
+                  "response_sha256": "ebee7000395b30a9077613d88f3021cfc348b90d33fb1e3a1a6057ed00f3da8f",
+                  "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+                },
+                "valid_from": null,
+                "valid_to": null
+              },
+              {
+                "field": "takeaway",
+                "value": true,
+                "status": "accepted",
+                "conflict_status": "none",
+                "branch_scope": "exact",
+                "branch_confirmation": {
+                  "source_name": "Тәп-Тәтті",
+                  "source_address": "проспект Мангилик Ел, 51"
+                },
+                "source": {
+                  "url": "https://2gis.kz/astana/firm/70000001030630928/tab/info",
+                  "excerpt": "отдел самовывоза",
+                  "checked_at": "2026-10-19",
+                  "channel": "onsite",
+                  "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-ebee7000395b30a9.html",
+                  "response_sha256": "ebee7000395b30a9077613d88f3021cfc348b90d33fb1e3a1a6057ed00f3da8f",
+                  "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+                },
+                "valid_from": null,
+                "valid_to": null
+              },
+              {
+                "field": "delivery",
+                "value": true,
+                "status": "accepted",
+                "conflict_status": "none",
+                "branch_scope": "exact",
+                "branch_confirmation": {
+                  "source_name": "Тәп-Тәтті",
+                  "source_address": "проспект Мангилик Ел, 51"
+                },
+                "source": {
+                  "url": "https://2gis.kz/astana/firm/70000001030630928/tab/info",
+                  "excerpt": "Услуги Доставка",
+                  "checked_at": "2026-10-19",
+                  "channel": "onsite",
+                  "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-ebee7000395b30a9.html",
+                  "response_sha256": "ebee7000395b30a9077613d88f3021cfc348b90d33fb1e3a1a6057ed00f3da8f",
+                  "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+                },
+                "valid_from": null,
+                "valid_to": null
+              },
+              {
+                "field": "wheelchair_accessible",
+                "value": true,
+                "status": "accepted",
+                "conflict_status": "none",
+                "branch_scope": "exact",
+                "branch_confirmation": {
+                  "source_name": "Тәп-Тәтті",
+                  "source_address": "проспект Мангилик Ел, 51"
+                },
+                "source": {
+                  "url": "https://2gis.kz/astana/firm/70000001030630928/tab/info",
+                  "excerpt": "Доступный вход для людей с инвалидностью",
+                  "checked_at": "2026-10-19",
+                  "channel": "onsite",
+                  "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-ebee7000395b30a9.html",
+                  "response_sha256": "ebee7000395b30a9077613d88f3021cfc348b90d33fb1e3a1a6057ed00f3da8f",
+                  "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+                },
+                "valid_from": null,
+                "valid_to": null
+              },
+              {
+                "field": "opening_hours",
+                "value": "Mo-Su 08:00-22:00",
+                "status": "accepted",
+                "conflict_status": "none",
+                "branch_scope": "exact",
+                "branch_confirmation": {
+                  "source_name": "Тәп-Тәтті",
+                  "source_address": "проспект Мангилик Ел, 51"
+                },
+                "source": {
+                  "url": "https://2gis.kz/astana/firm/70000001030630928",
+                  "excerpt": "Matched firm public schedule: Mon–Sun 08:00–22:00",
+                  "checked_at": "2026-10-19",
+                  "channel": "onsite",
+                  "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-4de1e9c667e55932.html",
+                  "response_sha256": "4de1e9c667e5593244af28026aa6e541c2953941275e96c77fb541b958946a8b",
+                  "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+                },
+                "valid_from": null,
+                "valid_to": null
+              }
+            ],
+            "menu_items": [],
+            "prices": []
+          },
+          {
+            "poi_id": "overture:1d1d9fa4-2028-4c5a-aa2e-f39b17980495",
+            "name": "Berezka",
+            "category": "restaurant",
+            "lat": 51.09083611,
+            "lon": 71.42344869,
+            "distance_m": 257,
+            "travel_min": 7,
+            "why": "Ресторан: совсем рядом.",
+            "visit_min": [
+              45,
+              53
+            ],
+            "what_to_do": "Зайдите поесть и выберите что-нибудь по вкусу. Уточните часы работы перед выходом.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=1d1d9fa4-2028-4c5a-aa2e-f39b17980495",
+            "rating": null,
+            "website": "https://www.instagram.com/berezka.ast/",
+            "rank": 3,
+            "category_detail": "restaurant",
+            "category_label": "Ресторан",
+            "icon": "utensils",
+            "walk_distance_m": 480,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 45,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "overture"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": "Манглилик Ел, 55а",
+            "description": "Ресторан «Berezka» в Астане. Адрес из источника: Манглилик Ел, 55а.",
+            "description_source": "website",
+            "description_attribution": [],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
+          }
+        ],
+        "service_results": [],
+        "ideas": [
+          {
+            "poi_id": "idea-4",
+            "name": "Фотоохота на детали",
+            "category": "restaurant",
+            "lat": 51.09582958,
+            "lon": 71.42048065,
+            "distance_m": 345,
+            "travel_min": 6,
+            "why": "Найдите и сфотографируйте интересные элементы декора в ресторане «Giraffe» — это добавит веселья вашему обеду.",
+            "visit_min": [
+              5,
+              20
+            ],
+            "what_to_do": "Найдите и сфотографируйте интересные элементы декора в ресторане «Giraffe» — это добавит веселья вашему обеду.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "generated",
+            "source_url": null,
+            "rating": null,
+            "website": null,
+            "rank": 4,
+            "category_detail": "idea",
+            "category_label": "Идея ИИ",
+            "icon": "sparkles",
+            "walk_distance_m": null,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 10,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Идея ИИ",
+            "data_sources": [
+              "llm"
+            ],
+            "popularity": null,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [
+              "ai_idea"
+            ],
+            "event": null,
+            "address": "Рядом с: Giraffe",
+            "description": null,
+            "description_source": "generated",
+            "description_attribution": [],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
+          }
+        ],
+        "route": null,
+        "used_context": {
+          "location_source": "landmark",
+          "location_label": "EXPO / Нур Алем",
+          "radius_m": 1406,
+          "time_budget_min": 60,
+          "mode": "walk",
+          "filters": [
+            "Ресторан",
+            "Кофейня / кафе"
+          ],
+          "now": "2026-10-19T13:00:00+05:00",
+          "location": {
+            "source": "text_landmark",
+            "label": "EXPO / Нур Алем",
+            "lat": 51.093,
+            "lon": 71.421,
+            "precision_m": 50
+          },
+          "local_time": "13:00",
+          "weekday": "понедельник",
+          "is_holiday": null,
+          "is_dark": false,
+          "weather": null,
+          "speed_kmh": 4.5,
+          "party": "solo",
+          "parsed_from_query": {
+            "categories": [
+              "restaurant",
+              "cafe"
+            ],
+            "preferences": [
+              "restaurant",
+              "cafe"
+            ],
+            "needs": [],
+            "time_budget_min": null,
+            "food_requirements": [],
+            "deadline": null,
+            "deadline_in_min": null,
+            "flight_type": "unknown",
+            "deadline_buffer_min": 0,
+            "landmark": "экспо",
+            "night": false,
+            "surprise": false,
+            "parser": "llm+rules (gpt-4.1-mini)"
+          },
+          "relaxations": [],
+          "funnel": {
+            "total": 2745,
+            "within_reach": 184,
+            "after_filters": 142,
+            "shown": 3
+          },
+          "data_sources": [
+            "OpenStreetMap (ODbL)",
+            "Wikidata (CC0)",
+            "Wikipedia (CC BY-SA)",
+            "Overture Maps (CDLA)",
+            "Ticketon / Sxodim"
+          ],
+          "data_built_at": "2026-10-19",
+          "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+        },
+        "considered": [],
+        "notes": [
+          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+        ],
+        "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+        "ai_generated": true,
+        "llm": {
+          "mode": "llm",
+          "model": "gpt-4.1-mini",
+          "latency_ms": 4699
+        }
+      },
+      "checks": {
+        "http": true,
+        "places": true,
+        "model_used": true
+      }
+    },
+    {
+      "id": "redbus-route",
+      "request": {
+        "lang": "ru",
+        "landmark": "expo",
+        "now": "2026-10-19T13:00:00+05:00",
+        "query": "Какой маршрут у RedBus?"
+      },
+      "response": {
+        "api_version": "1.0",
+        "request_id": "586a6c76fd0f",
+        "lang": "ru",
+        "summary": "RedBus — обзорная экскурсия по Астане. Левый берег: Перед главным входом в монумент «Астана-Байтерек» (посадка) → Монумент «Байтерек» и бульвар Нуржол (проезд мимо) → Театр «Астана Опера» (проезд мимо) → ТРЦ «Хан Шатыр» и Парк влюблённых (проезд мимо) → Медицинский кластер (проезд мимо) → «Барыс Арена» и «Астана Арена» (проезд мимо) → Легкоатлетический спортивный комплекс Qazaqstan (проезд мимо) → Назарбаев Университет (проезд мимо) → Театр «Астана Балет» и Казахская национальная академия хореографии (проезд мимо) → EXPO и сфера «Нур Алем» (проезд мимо) → MEGA Silk Way (проезд мимо) → Главная Республиканская мечеть (проезд мимо) → Триумфальная арка «Мәңгілік Ел» (проезд мимо) → Ботанический сад (проезд мимо) → Abu Dhabi Plaza (проезд мимо); Правый берег: Перед главным входом в монумент «Астана-Байтерек» (посадка) → Монумент «Байтерек» и бульвар Нуржол (проезд мимо) → ЖК «Триумф Астаны» (проезд мимо) → Астана Цирк (проезд мимо) → Площадь государственных символов (проезд мимо) → Центр семейного отдыха Ailand (проезд мимо) → Памятник Курмангазы (проезд мимо) → Столичный парк (проезд мимо) → Набережная реки Есиль (проезд мимо) → Государственная филармония и Демалыс Променад (проезд мимо) → Проспект Республики (проезд мимо) → Парк Жамбыла Жабаева (проезд мимо) → Триатлон-парк (проезд мимо) → Дворец мира и согласия (проезд мимо) → Площадь и монумент «Қазақ елі» (проезд мимо) → Национальный музей Республики Казахстан (проезд мимо) → Президентский парк (проезд мимо)",
+        "recommendations": [],
+        "service_results": [
+          {
+            "id": "service:redbus-astana",
+            "name": "RedBus — обзорная экскурсия по Астане",
+            "aliases": {
+              "ru": [
+                "РедБас",
+                "Ред Бас",
+                "Красный автобус",
+                "двухэтажный автобус",
+                "Red Bus Астана"
+              ],
+              "kk": [
+                "RedBus Астана",
+                "Редбас",
+                "екі қабатты автобус",
+                "қалаға шолу экскурсиясы"
+              ],
+              "en": [
+                "RedBus Astana",
+                "Red Bus",
+                "double decker sightseeing bus",
+                "Astana sightseeing bus"
+              ]
+            },
+            "kind": "bus_tour",
+            "operator_id": "operator:crocos-travel",
+            "evidence": [
+              {
+                "source_url": "https://redbus.kz/ru/marshruty/",
+                "checked_at": "2026-10-18T23:13:29.931593Z",
+                "excerpt": "Экскурсии по городу Астана на двухэтажных автобусах Red Bus.",
+                "validity": {
+                  "precision": "undated",
+                  "valid_from": null,
+                  "valid_to": null,
+                  "months": [],
+                  "notes": null
+                },
+                "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+              }
+            ],
+            "facts": [
+              {
+                "field": "route_alternation",
+                "value": "Маршруты по правому и левому берегу чередуются; привязка к рейсам не опубликована.",
+                "unit": null,
+                "status": "confirmed",
+                "evidence": [
+                  {
+                    "source_url": "https://redbus.kz/ru/marshruty/",
+                    "checked_at": "2026-10-18T23:13:29.931593Z",
+                    "excerpt": "экскурсии по правому и левому берегу горду будут чередоваться.",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                  }
+                ],
+                "validity": {
+                  "precision": "undated",
+                  "valid_from": null,
+                  "valid_to": null,
+                  "months": [],
+                  "notes": null
+                },
+                "notes": null
+              },
+              {
+                "field": "languages",
+                "value": [
+                  "kk",
+                  "ru",
+                  "en"
+                ],
+                "unit": null,
+                "status": "confirmed",
+                "evidence": [
+                  {
+                    "source_url": "https://www.visitastana.kz/ru/exkursion/redbus/",
+                    "checked_at": "2026-10-18T23:13:29.931916Z",
+                    "excerpt": "Язык проведения: казахский, русский, английский",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-visit-redbus.json"
+                  }
+                ],
+                "validity": {
+                  "precision": "undated",
+                  "valid_from": null,
+                  "valid_to": null,
+                  "months": [],
+                  "notes": null
+                },
+                "notes": null
+              },
+              {
+                "field": "wheelchair_access",
+                "value": true,
+                "unit": null,
+                "status": "confirmed",
+                "evidence": [
+                  {
+                    "source_url": "https://redbus.kz/ru/faq/",
+                    "checked_at": "2026-10-18T23:13:29.931826Z",
+                    "excerpt": "наш автобус оборудован для доступа инвалидных колясок.",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-faq.json"
+                  }
+                ],
+                "validity": {
+                  "precision": "undated",
+                  "valid_from": null,
+                  "valid_to": null,
+                  "months": [],
+                  "notes": null
+                },
+                "notes": null
+              },
+              {
+                "field": "route_location_counts",
+                "value": [
+                  "Левый берег: 14",
+                  "Правый берег: 16"
+                ],
+                "unit": null,
+                "status": "confirmed",
+                "evidence": [
+                  {
+                    "source_url": "https://redbus.kz/ru/marshruty/",
+                    "checked_at": "2026-10-18T23:13:29.931593Z",
+                    "excerpt": "Левый берег 14 локаций",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                  },
+                  {
+                    "source_url": "https://redbus.kz/ru/marshruty/",
+                    "checked_at": "2026-10-18T23:13:29.931593Z",
+                    "excerpt": "Правый берег 16 локаций",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                  }
+                ],
+                "validity": {
+                  "precision": "undated",
+                  "valid_from": null,
+                  "valid_to": null,
+                  "months": [],
+                  "notes": null
+                },
+                "notes": "Число достопримечательностей; не количество мест посадки."
+              }
+            ],
+            "routes": [
+              {
+                "id": "route:redbus-left",
+                "name": "Левый берег",
+                "stops": [
+                  {
+                    "id": "stop:redbus-baiterek",
+                    "name": "Перед главным входом в монумент «Астана-Байтерек»",
+                    "role": "boarding",
+                    "canonical_poi_id": null,
+                    "map_url": "https://2gis.kz/astana/firm/70000001089193403",
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Посадка перед главным входом в Байтерек",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      },
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Место посадки на карте 2GIS",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Ссылка места посадки опубликована оператором. Координаты и canonical_poi_id не установлены: одноимённая запись OSM является городским автобусным остановочным пунктом."
+                  },
+                  {
+                    "id": "location:redbus-left-1",
+                    "name": "Монумент «Байтерек» и бульвар Нуржол",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Монумент «Байтерек» и бульвар Нуржол",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-2",
+                    "name": "Театр «Астана Опера»",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Театр «Астана Опера»",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-3",
+                    "name": "ТРЦ «Хан Шатыр» и Парк влюблённых",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "ТРЦ «Хан Шатыр» и Парк влюблённых",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-4",
+                    "name": "Медицинский кластер",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Медицинский кластер",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-5",
+                    "name": "«Барыс Арена» и «Астана Арена»",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "«Барыс Арена» и «Астана Арена»",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-6",
+                    "name": "Легкоатлетический спортивный комплекс Qazaqstan",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Легкоатлетический спортивный комплекс Qazaqstan",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-7",
+                    "name": "Назарбаев Университет",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Назарбаев Университет",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-8",
+                    "name": "Театр «Астана Балет» и Казахская национальная академия хореографии",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Театр «Астана Балет» и Казахская национальная академия хореографии",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-9",
+                    "name": "EXPO и сфера «Нур Алем»",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "EXPO и сфера «Нур Алем»",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-10",
+                    "name": "MEGA Silk Way",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "MEGA Silk Way",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-11",
+                    "name": "Главная Республиканская мечеть",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Главная Республиканская мечеть",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-12",
+                    "name": "Триумфальная арка «Мәңгілік Ел»",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Триумфальная арка «Мәңгілік Ел»",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-13",
+                    "name": "Ботанический сад",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Ботанический сад",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-left-14",
+                    "name": "Abu Dhabi Plaza",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Abu Dhabi Plaza",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  }
+                ],
+                "evidence": [
+                  {
+                    "source_url": "https://redbus.kz/ru/marshruty/",
+                    "checked_at": "2026-10-18T23:13:29.931593Z",
+                    "excerpt": "Левый берег 14 локаций",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                  }
+                ]
+              },
+              {
+                "id": "route:redbus-right",
+                "name": "Правый берег",
+                "stops": [
+                  {
+                    "id": "stop:redbus-baiterek",
+                    "name": "Перед главным входом в монумент «Астана-Байтерек»",
+                    "role": "boarding",
+                    "canonical_poi_id": null,
+                    "map_url": "https://2gis.kz/astana/firm/70000001089193403",
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Посадка перед главным входом в Байтерек",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      },
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Место посадки на карте 2GIS",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Ссылка места посадки опубликована оператором. Координаты и canonical_poi_id не установлены: одноимённая запись OSM является городским автобусным остановочным пунктом."
+                  },
+                  {
+                    "id": "location:redbus-right-1",
+                    "name": "Монумент «Байтерек» и бульвар Нуржол",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Монумент «Байтерек» и бульвар Нуржол",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-2",
+                    "name": "ЖК «Триумф Астаны»",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "ЖК «Триумф Астаны»",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-3",
+                    "name": "Астана Цирк",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Астана Цирк",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-4",
+                    "name": "Площадь государственных символов",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Площадь государственных символов",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-5",
+                    "name": "Центр семейного отдыха Ailand",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Центр семейного отдыха Ailand",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-6",
+                    "name": "Памятник Курмангазы",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Памятник Курмангазы",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-7",
+                    "name": "Столичный парк",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Столичный парк",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-8",
+                    "name": "Набережная реки Есиль",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Набережная реки Есиль",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-9",
+                    "name": "Государственная филармония и Демалыс Променад",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Государственная филармония и Демалыс Променад",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-10",
+                    "name": "Проспект Республики",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Проспект Республики",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-11",
+                    "name": "Парк Жамбыла Жабаева",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Парк Жамбыла Жабаева",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-12",
+                    "name": "Триатлон-парк",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Триатлон-парк",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-13",
+                    "name": "Дворец мира и согласия",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Дворец мира и согласия",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-14",
+                    "name": "Площадь и монумент «Қазақ елі»",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Площадь и монумент «Қазақ елі»",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-15",
+                    "name": "Национальный музей Республики Казахстан",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Национальный музей Республики Казахстан",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  },
+                  {
+                    "id": "location:redbus-right-16",
+                    "name": "Президентский парк",
+                    "role": "pass_by",
+                    "canonical_poi_id": null,
+                    "map_url": null,
+                    "evidence": [
+                      {
+                        "source_url": "https://redbus.kz/ru/marshruty/",
+                        "checked_at": "2026-10-18T23:13:29.931593Z",
+                        "excerpt": "Президентский парк",
+                        "validity": {
+                          "precision": "undated",
+                          "valid_from": null,
+                          "valid_to": null,
+                          "months": [],
+                          "notes": null
+                        },
+                        "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                      }
+                    ],
+                    "notes": "Объект из списка «Что мы посмотрим?». Это не подтверждение посадки или высадки пассажиров."
+                  }
+                ],
+                "evidence": [
+                  {
+                    "source_url": "https://redbus.kz/ru/marshruty/",
+                    "checked_at": "2026-10-18T23:13:29.931593Z",
+                    "excerpt": "Правый берег 16 локаций",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                  }
+                ]
+              }
+            ],
+            "ticket_offers": [
+              {
+                "id": "ticket:redbus-adult",
+                "name": "Взрослый билет",
+                "audience": "Взрослый",
+                "amount": 6000,
+                "currency": "KZT",
+                "unit": "per_person",
+                "group_size": null,
+                "age_min": null,
+                "age_max": null,
+                "age_max_inclusive": null,
+                "status": "confirmed",
+                "evidence": [
+                  {
+                    "source_url": "https://redbus.kz/ru/marshruty/",
+                    "checked_at": "2026-10-18T23:13:29.931593Z",
+                    "excerpt": "Взрослый билет 6 000 тенге Льготный билет для детей и пенсионеров 3 000 тенге",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                  },
+                  {
+                    "source_url": "https://www.visitastana.kz/ru/exkursion/redbus/",
+                    "checked_at": "2026-10-18T23:13:29.931916Z",
+                    "excerpt": "Стоимость: 6 000 ₸ с человека (взрослый билет) / 3 000 ₸ (льготный билет — дети, многодетные семьи, пенсионеры, лица с инвалидностью II и III группы)",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-visit-redbus.json"
+                  }
+                ],
+                "validity": {
+                  "precision": "undated",
+                  "valid_from": null,
+                  "valid_to": null,
+                  "months": [],
+                  "notes": null
+                },
+                "notes": null
+              },
+              {
+                "id": "ticket:redbus-concession",
+                "name": "Льготный билет",
+                "audience": "Дети и пенсионеры; другие льготные категории по условиям оператора",
+                "amount": 3000,
+                "currency": "KZT",
+                "unit": "per_person",
+                "group_size": null,
+                "age_min": null,
+                "age_max": null,
+                "age_max_inclusive": null,
+                "status": "confirmed",
+                "evidence": [
+                  {
+                    "source_url": "https://redbus.kz/ru/marshruty/",
+                    "checked_at": "2026-10-18T23:13:29.931593Z",
+                    "excerpt": "Взрослый билет 6 000 тенге Льготный билет для детей и пенсионеров 3 000 тенге",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                  },
+                  {
+                    "source_url": "https://www.visitastana.kz/ru/exkursion/redbus/",
+                    "checked_at": "2026-10-18T23:13:29.931916Z",
+                    "excerpt": "Стоимость: 6 000 ₸ с человека (взрослый билет) / 3 000 ₸ (льготный билет — дети, многодетные семьи, пенсионеры, лица с инвалидностью II и III группы)",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-visit-redbus.json"
+                  }
+                ],
+                "validity": {
+                  "precision": "undated",
+                  "valid_from": null,
+                  "valid_to": null,
+                  "months": [],
+                  "notes": null
+                },
+                "notes": "Возрастные границы детской льготы расходятся на страницах оператора; уточните возраст ребёнка и условия у оператора."
+              }
+            ],
+            "dated_departures": [],
+            "booking_rules": [
+              {
+                "field": "boarding_minutes_before_departure",
+                "value": 20,
+                "unit": "minutes",
+                "status": "confirmed",
+                "evidence": [
+                  {
+                    "source_url": "https://redbus.kz/ru/marshruty/",
+                    "checked_at": "2026-10-18T23:13:29.931593Z",
+                    "excerpt": "посадка на автобус начинается строго за 20 минут до времени отправления",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                  }
+                ],
+                "validity": {
+                  "precision": "undated",
+                  "valid_from": null,
+                  "valid_to": null,
+                  "months": [],
+                  "notes": null
+                },
+                "notes": null
+              },
+              {
+                "field": "boarding_queue",
+                "value": "Живая очередь независимо от наличия билета",
+                "unit": null,
+                "status": "confirmed",
+                "evidence": [
+                  {
+                    "source_url": "https://redbus.kz/ru/marshruty/",
+                    "checked_at": "2026-10-18T23:13:29.931593Z",
+                    "excerpt": "осуществляется в порядке живой очереди, независимо от наличия билета.",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                  }
+                ],
+                "validity": {
+                  "precision": "undated",
+                  "valid_from": null,
+                  "valid_to": null,
+                  "months": [],
+                  "notes": null
+                },
+                "notes": null
+              },
+              {
+                "field": "seat_reservation",
+                "value": false,
+                "unit": null,
+                "status": "confirmed",
+                "evidence": [
+                  {
+                    "source_url": "https://redbus.kz/ru/faq/",
+                    "checked_at": "2026-10-18T23:13:29.931826Z",
+                    "excerpt": "бронирование мест не предусмотрено.",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-faq.json"
+                  }
+                ],
+                "validity": {
+                  "precision": "undated",
+                  "valid_from": null,
+                  "valid_to": null,
+                  "months": [],
+                  "notes": null
+                },
+                "notes": null
+              },
+              {
+                "field": "ticket_sales",
+                "value": "На сайте, в кассе у Байтерека и в автобусе на остановках",
+                "unit": null,
+                "status": "confirmed",
+                "evidence": [
+                  {
+                    "source_url": "https://redbus.kz/ru/faq/",
+                    "checked_at": "2026-10-18T23:13:29.931826Z",
+                    "excerpt": "Билеты можно приобрести онлайн на нашем сайте или на кассе около Монумента «Астана-Байтерек». Также билеты можно приобрести на других остановках внутри автобуса.",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-faq.json"
+                  }
+                ],
+                "validity": {
+                  "precision": "undated",
+                  "valid_from": null,
+                  "valid_to": null,
+                  "months": [],
+                  "notes": null
+                },
+                "notes": null
+              },
+              {
+                "field": "confirm_schedule",
+                "value": "Уточнить расписание до посещения по +7 777 555 7575",
+                "unit": null,
+                "status": "confirmed",
+                "evidence": [
+                  {
+                    "source_url": "https://redbus.kz/ru/marshruty/",
+                    "checked_at": "2026-10-18T23:13:29.931593Z",
+                    "excerpt": "Рекомендуем уточнять расписание перед посещением экскурсии, так как оно может меняться.",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                  },
+                  {
+                    "source_url": "https://redbus.kz/ru/marshruty/",
+                    "checked_at": "2026-10-18T23:13:29.931593Z",
+                    "excerpt": "Узнай больше о RedBus: +7 777 555 7575",
+                    "validity": {
+                      "precision": "undated",
+                      "valid_from": null,
+                      "valid_to": null,
+                      "months": [],
+                      "notes": null
+                    },
+                    "archive_path": "data/review/2026-10-19-refresh/services-source-redbus-routes.json"
+                  }
+                ],
+                "validity": {
+                  "precision": "undated",
+                  "valid_from": null,
+                  "valid_to": null,
+                  "months": [],
+                  "notes": null
+                },
+                "notes": null
+              }
+            ],
+            "schedule_status": "date_unverified",
+            "departures_today": [],
+            "notes": [
+              "Расписание на 2026-10-19 не подтверждено; время последнего рейса неизвестно.",
+              "В источниках есть расхождения в условиях услуги; спорные сведения не подтверждены."
+            ]
+          }
+        ],
+        "ideas": [],
+        "route": null,
+        "used_context": {
+          "location_source": "landmark",
+          "location_label": "EXPO / Нур Алем",
+          "radius_m": null,
+          "time_budget_min": 60,
+          "mode": "walk",
+          "filters": [],
+          "now": "2026-10-19T13:00:00+05:00",
+          "location": {
+            "source": "landmark",
+            "label": "EXPO / Нур Алем",
+            "lat": 51.093,
+            "lon": 71.421,
+            "precision_m": 50
+          },
+          "local_time": "13:00",
+          "weekday": "понедельник",
+          "is_holiday": null,
+          "is_dark": false,
+          "weather": null,
+          "speed_kmh": 4.5,
+          "party": "solo",
+          "parsed_from_query": {
+            "categories": [],
+            "preferences": [],
+            "needs": [],
+            "parser": "rules"
+          },
+          "relaxations": [],
+          "funnel": {
+            "total": 2745
+          },
+          "data_sources": [
+            "https://redbus.kz/ru/marshruty/"
+          ],
+          "data_built_at": "2026-10-19",
+          "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+        },
+        "considered": [],
+        "notes": [
+          "Расписание на 2026-10-19 не подтверждено; время последнего рейса неизвестно.",
+          "В источниках есть расхождения в условиях услуги; спорные сведения не подтверждены."
+        ],
+        "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+        "ai_generated": true,
+        "llm": {
+          "mode": "template",
+          "model": null,
+          "latency_ms": 1
+        }
+      },
+      "checks": {
+        "http": true,
+        "route_roles": true
+      }
+    }
+  ],
+  "cost": {
+    "model": "gpt-4.1-mini",
+    "cap_usd": 0.1,
+    "reserved_usd": 0.031522400000000006,
+    "actual_usd": 0.031522400000000006,
+    "attempts": [
+      {
+        "id": "28aaa740d00340868351f293e2523af5",
+        "number": 1,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.004646,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1303,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 114,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1417
+        },
+        "actual_usd": 0.0007036,
+        "settled": true
+      },
+      {
+        "id": "1a67552132d644f5ba1e5c9bb529cae5",
+        "number": 2,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.0080164,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2760,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 198,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2958
+        },
+        "actual_usd": 0.0014208,
+        "settled": true
+      },
+      {
+        "id": "894987aceae346de8af63b089b6cca0c",
+        "number": 3,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.004646,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1304,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 124,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1428
+        },
+        "actual_usd": 0.00072,
+        "settled": true
+      },
+      {
+        "id": "d5454299807e446dab59dbed4d7249a5",
+        "number": 4,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.0080304,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2698,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 255,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2953
+        },
+        "actual_usd": 0.0014872000000000002,
+        "settled": true
+      },
+      {
+        "id": "fdb399234d1d4218993b981dd8267bd4",
+        "number": 5,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.00463,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1299,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 141,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1440
+        },
+        "actual_usd": 0.0007452,
+        "settled": true
+      },
+      {
+        "id": "1b10a0de820b45e7b1126f6e1d799de5",
+        "number": 6,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.007954,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2666,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 177,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2843
+        },
+        "actual_usd": 0.0013496,
+        "settled": true
+      },
+      {
+        "id": "4cf04b343b7942268368d5b61f9849ff",
+        "number": 7,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.004646,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1303,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 111,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1414
+        },
+        "actual_usd": 0.0006988000000000001,
+        "settled": true
+      },
+      {
+        "id": "ee6cc6276bb24227a53ae44ebbbe3279",
+        "number": 8,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.0080164,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2760,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 230,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2990
+        },
+        "actual_usd": 0.001472,
+        "settled": true
+      },
+      {
+        "id": "42a68da33361474684184070fc2a5b7c",
+        "number": 9,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.004646,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1304,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 117,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1421
+        },
+        "actual_usd": 0.0007088000000000001,
+        "settled": true
+      },
+      {
+        "id": "54426fa6a1c042ea98e678489df26a00",
+        "number": 10,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.0081176,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2738,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 242,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2980
+        },
+        "actual_usd": 0.0014824,
+        "settled": true
+      },
+      {
+        "id": "308e653ded1744e2b9497480fe22d0ba",
+        "number": 11,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.00463,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1299,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 144,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1443
+        },
+        "actual_usd": 0.00075,
+        "settled": true
+      },
+      {
+        "id": "da9c1f9fbe1d4cf9a6c3c817741d01d8",
+        "number": 12,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.007954,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2666,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 233,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2899
+        },
+        "actual_usd": 0.0014392,
+        "settled": true
+      },
+      {
+        "id": "8f70974caa864d2096ba689d46ae3268",
+        "number": 13,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.0046512,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1309,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 131,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1440
+        },
+        "actual_usd": 0.0007332,
+        "settled": true
+      },
+      {
+        "id": "ebb0029016ca49e3a330d33041266bff",
+        "number": 14,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.007978,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2651,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 226,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2877
+        },
+        "actual_usd": 0.001422,
+        "settled": true
+      },
+      {
+        "id": "fdec6eac95154effb1bf2be3e7e92778",
+        "number": 15,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.004646,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1303,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 122,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1425
+        },
+        "actual_usd": 0.0007164000000000001,
+        "settled": true
+      },
+      {
+        "id": "e8e0460318344ab2972641f93bcb3202",
+        "number": 16,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.0079948,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2744,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 207,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2951
+        },
+        "actual_usd": 0.0014288000000000003,
+        "settled": true
+      },
+      {
+        "id": "67e836c0a85b401ca48199f5648d5754",
+        "number": 17,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.004646,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1304,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 115,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1419
+        },
+        "actual_usd": 0.0007056,
+        "settled": true
+      },
+      {
+        "id": "398cb1483818487cb40bffca6e3fd6ec",
+        "number": 18,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.00812,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2738,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 251,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2989
+        },
+        "actual_usd": 0.0014968000000000002,
+        "settled": true
+      },
+      {
+        "id": "ef38232c80e545ceb854be15a3914350",
+        "number": 19,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.00463,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1299,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 129,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1428
+        },
+        "actual_usd": 0.000726,
+        "settled": true
+      },
+      {
+        "id": "14f948ed225e4e5eadc6d1d1cb17be45",
+        "number": 20,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.007954,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2666,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 176,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2842
+        },
+        "actual_usd": 0.001348,
+        "settled": true
+      },
+      {
+        "id": "f16ff99c47584237a8a0a201efc76aca",
+        "number": 21,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.0046512,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1309,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 1152
+          },
+          "output_tokens": 130,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1439
+        },
+        "actual_usd": 0.0007316,
+        "settled": true
+      },
+      {
+        "id": "678180ac35ad49b39ba0adbd9feb9e48",
+        "number": 22,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.008034,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2685,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 243,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2928
+        },
+        "actual_usd": 0.0014628,
+        "settled": true
+      },
+      {
+        "id": "c6fe1a0d7ec8415686dc52224bfa3a76",
+        "number": 23,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.005100400000000001,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1526,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 162,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1688
+        },
+        "actual_usd": 0.0008695999999999999,
+        "settled": true
+      },
+      {
+        "id": "111f9196dec34e7d9c009965fba8e4d4",
+        "number": 24,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.005069199999999999,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1512,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 114,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1626
+        },
+        "actual_usd": 0.0007872,
+        "settled": true
+      },
+      {
+        "id": "f7d21690d10c40d0b5eb7244e229f662",
+        "number": 25,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.0050732,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1516,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 124,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1640
+        },
+        "actual_usd": 0.0008047999999999999,
+        "settled": true
+      },
+      {
+        "id": "6ba61242c6f9428b91d1384935426c9e",
+        "number": 26,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.0078948,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2631,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 193,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2824
+        },
+        "actual_usd": 0.0013612000000000001,
+        "settled": true
+      },
+      {
+        "id": "3a90b0140d124728b866bd395102c6d7",
+        "number": 27,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.005100400000000001,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1526,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 169,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1695
+        },
+        "actual_usd": 0.0008807999999999999,
+        "settled": true
+      },
+      {
+        "id": "c31c3a1bd6f3422e9ed90860bfd74f0c",
+        "number": 28,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.005069199999999999,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1512,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 106,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1618
+        },
+        "actual_usd": 0.0007744000000000001,
+        "settled": true
+      },
+      {
+        "id": "ae17e6d5e83e4cb6a871bbca2a39dca9",
+        "number": 29,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.0050732,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1516,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 124,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1640
+        },
+        "actual_usd": 0.0008047999999999999,
+        "settled": true
+      },
+      {
+        "id": "13ee5c35cb3b46498db9a96f59145854",
+        "number": 30,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.0078616,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2611,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 279,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2890
+        },
+        "actual_usd": 0.0014908000000000002,
+        "settled": true
+      }
+    ],
+    "pricing_url": "https://developers.openai.com/api/docs/models/gpt-4.1-mini"
+  },
+  "passed": true
+}

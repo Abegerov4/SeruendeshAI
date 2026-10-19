@@ -9,7 +9,7 @@ import logging
 
 import numpy as np
 
-from app.paths import GRAPH_FILE, RAW_DIR
+from ayat_backend.app.paths import GRAPH_FILE, RAW_DIR
 
 log = logging.getLogger("pipeline.graph")
 

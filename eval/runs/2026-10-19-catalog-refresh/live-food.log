@@ -1,0 +1,17 @@
+2026-10-19 05:01:10,399 INFO app.store: store: 2745 POIs, 14024 gazetteer entries, dense=True, events=60
+2026-10-19 05:01:10,524 INFO app.geo: walk graph: 42455 nodes, 122036 edges
+2026-10-19 05:01:10,990 INFO app: ready in 4.9s: 2745 POIs, graph=True, dense=True, llm=True, db=sqlite
+2026-10-19 05:01:11,098 INFO httpx: HTTP Request: GET http://127.0.0.1:55577/api/health "HTTP/1.1 200 OK"
+2026-10-19 05:01:13,770 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2026-10-19 05:01:13,930 INFO app.service: recommend id=01eb67356e6c lang=ru mode=walk budget=60 items=0 route=False llm=template 2828ms
+2026-10-19 05:01:13,930 INFO httpx: HTTP Request: POST http://127.0.0.1:55577/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 05:01:16,145 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2026-10-19 05:01:16,158 INFO app.service: recommend id=e340c1d3f25b lang=ru mode=walk budget=60 items=0 route=False llm=template 2224ms
+2026-10-19 05:01:16,158 INFO httpx: HTTP Request: POST http://127.0.0.1:55577/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 05:01:17,975 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2026-10-19 05:01:20,858 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2026-10-19 05:01:20,860 INFO app.service: recommend id=ac0c88f8afd2 lang=ru mode=walk budget=60 items=3 route=False llm=gpt-4.1-mini 4699ms
+2026-10-19 05:01:20,860 INFO httpx: HTTP Request: POST http://127.0.0.1:55577/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 05:01:20,866 INFO httpx: HTTP Request: POST http://127.0.0.1:55577/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 05:01:20,867 INFO httpx: HTTP Request: GET http://127.0.0.1:55577/api/health "HTTP/1.1 200 OK"
+{"passed": true, "cases": 4, "actual_usd_total": 0.031522400000000006, "reserved_usd_total": 0.031522400000000006}

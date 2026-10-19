@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "reviews": [
+    {
+      "canonical_id": "citypass:64",
+      "field": "coordinates",
+      "value": {
+        "lat": 51.147356,
+        "lon": 71.414465
+      },
+      "status": "accepted",
+      "source": "2gis",
+      "source_id": "2gis:70000001028675326",
+      "source_url": "https://2gis.kz/astana/firm/70000001028675326/tab/info",
+      "checked_at": "2026-10-19",
+      "reviewed_by": "codex-public-source-review",
+      "evidence_excerpt": "Ailand: высота 65 метров; 36 кабин. Маршрут этой карточки: 71.414465,51.147356.",
+      "canonical_identity": {
+        "name": "Колесо обозрения «Ailand»",
+        "address": "Коргальжынское шоссе 2",
+        "lat": 51.1351,
+        "lon": 71.4001
+      },
+      "secondary_sources": [
+        {
+          "url": "https://2gis.kz/astana/directions/points/%7C71.414465%2C51.147356%3B70000001028675326",
+          "evidence_excerpt": "The exact wheel card route link encodes destination longitude71.414465, latitude51.147356 and firm70000001028675326.",
+          "evidence_kind": "provider_route_link"
+        },
+        {
+          "url": "https://ailand.kz/ru/attractions/fw-ru/",
+          "evidence_excerpt": "Official Ailand wheel: height65m;36cabins.",
+          "evidence_kind": "merchant_identity_confirmation"
+        },
+        {
+          "url": "https://astana.citypass.kz/ru/attractions/koleso-obozreniya-duman",
+          "evidence_excerpt": "Колесо обозрения «Ailand»; Коргальжынское шоссе2;65m;36cabins.",
+          "evidence_kind": "canonical_provider_identity_confirmation"
+        }
+      ]
+    }
+  ]
+}

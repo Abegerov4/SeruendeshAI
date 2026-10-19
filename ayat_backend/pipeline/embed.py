@@ -7,9 +7,9 @@ import time
 
 import numpy as np
 
-from app.embedder import Embedder
-from app.paths import EMBEDDINGS_FILE, MANIFEST_FILE, POIS_FILE
-from app.store import poi_document
+from ayat_backend.app.embedder import Embedder
+from ayat_backend.app.paths import EMBEDDINGS_FILE, MANIFEST_FILE, POIS_FILE
+from ayat_backend.app.store import poi_document
 
 log = logging.getLogger("pipeline.embed")
 

@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-19",
+  "timezone": "Asia/Almaty",
+  "baseline_commit": "5a08f6f898da41f92aecd20e5bef6b09eab8347f",
+  "scope": "current dirty integration working tree; read-only product/data audit, local providers disabled; new report/evidence only",
+  "python": "3.12.15",
+  "packages": {
+    "fastapi": "0.146.0",
+    "pydantic": "2.14.1",
+    "openai": "3.35.1",
+    "sqlalchemy": "2.1.5",
+    "pillow": "13.0.0",
+    "httpx": "0.28.1"
+  },
+  "canonical": {
+    "count": 14006,
+    "sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63"
+  },
+  "tests": {
+    "passed": 781,
+    "skipped": 23,
+    "subtests_passed": 12,
+    "exit_code": 0,
+    "seconds": 22.45,
+    "log": "pytest.log"
+  },
+  "retrieval": {
+    "summary": {
+      "total_cases": 35,
+      "evaluated_cases": 35,
+      "not_evaluated_cases": 0,
+      "error_cases": 0,
+      "hit_cases": 32,
+      "miss_cases": 3,
+      "relevant_ids": 324,
+      "matched_relevant_ids": 68,
+      "hit_at_5": 0.9142857142857143,
+      "macro_recall_at_5": 0.7536113183862981,
+      "micro_recall_at_5": 0.20987654320987653,
+      "by_type": {
+        "fact": {
+          "total_cases": 4,
+          "evaluated_cases": 4,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 4,
+          "miss_cases": 0,
+          "relevant_ids": 4,
+          "matched_relevant_ids": 4,
+          "hit_at_5": 1.0,
+          "macro_recall_at_5": 1.0,
+          "micro_recall_at_5": 1.0
+        },
+        "named": {
+          "total_cases": 20,
+          "evaluated_cases": 20,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 18,
+          "miss_cases": 2,
+          "relevant_ids": 21,
+          "matched_relevant_ids": 19,
+          "hit_at_5": 0.9,
+          "macro_recall_at_5": 0.9,
+          "micro_recall_at_5": 0.9047619047619048
+        },
+        "nearby": {
+          "total_cases": 11,
+          "evaluated_cases": 11,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 10,
+          "miss_cases": 1,
+          "relevant_ids": 299,
+          "matched_relevant_ids": 45,
+          "hit_at_5": 0.9090909090909091,
+          "macro_recall_at_5": 0.39785419486549395,
+          "micro_recall_at_5": 0.1505016722408027
+        }
+      },
+      "by_lang": {
+        "en": {
+          "total_cases": 5,
+          "evaluated_cases": 5,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 5,
+          "miss_cases": 0,
+          "relevant_ids": 20,
+          "matched_relevant_ids": 9,
+          "hit_at_5": 1.0,
+          "macro_recall_at_5": 0.8625,
+          "micro_recall_at_5": 0.45
+        },
+        "kk": {
+          "total_cases": 3,
+          "evaluated_cases": 3,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 3,
+          "miss_cases": 0,
+          "relevant_ids": 31,
+          "matched_relevant_ids": 7,
+          "hit_at_5": 1.0,
+          "macro_recall_at_5": 0.7241379310344828,
+          "micro_recall_at_5": 0.22580645161290322
+        },
+        "ru": {
+          "total_cases": 27,
+          "evaluated_cases": 27,
+          "not_evaluated_cases": 0,
+          "error_cases": 0,
+          "hit_cases": 24,
+          "miss_cases": 3,
+          "relevant_ids": 273,
+          "matched_relevant_ids": 52,
+          "hit_at_5": 0.8888888888888888,
+          "macro_recall_at_5": 0.7367215685339624,
+          "micro_recall_at_5": 0.19047619047619047
+        }
+      }
+    },
+    "exit_code": 0,
+    "report": "retrieval-report.json"
+  },
+  "readiness": {
+    "status": "NOT READY",
+    "exit_code": 1,
+    "live_evidence_supplied": false,
+    "report": "readiness.md"
+  },
+  "additional_reproductions": {
+    "eval_budget": {
+      "budget": 10,
+      "travel": 1,
+      "visit_range": [
+        120,
+        180
+      ],
+      "visit_suggested": 120,
+      "schema_valid": true,
+      "incorrect_budget_check_passed": true
+    },
+    "docker_eligibility_loader": {
+      "with_quarantine": 2751,
+      "without_quarantine": 2756,
+      "docker_build_executed": false
+    },
+    "ci_rag_test_count": {
+      "unittest_executed": 7,
+      "pytest_collected": 35
+    },
+    "provenance": {
+      "ayat_source_change_left_fingerprint_unchanged": true
+    },
+    "hot_snapshot": {
+      "new_id_in_search": true,
+      "new_id_in_all_pois": false
+    }
+  },
+  "warnings": [
+    "Synthetic and mocked model outputs establish validator failure cases, not actual-model behavior or hallucination frequency.",
+    "No actual model/dense/weather/SMTP, Docker build or public deployment was executed.",
+    "Readiness without live evidence is expected to fail; it is not the full test-suite result."
+  ]
+}

@@ -1,0 +1,26 @@
+
+> seruendesh-web@0.1.0 test
+> node --test tests/*.test.js
+
+✔ coordinates are rounded to ~100 m before sending (0.583ms)
+✔ untouched UI defaults do not override the text; refinements are sent (0.069917ms)
+✔ API recommendation maps to a card with honest labels (0.205792ms)
+✔ plan diff and totals use route when present, alternatives otherwise (0.192292ms)
+✔ guest favourites join the first account without duplicating server favourites (1.151ms)
+✔ logout clears account favourites before a different account logs in (0.58575ms)
+✔ switching accounts hides the previous list while the new list is loading (0.123875ms)
+✔ a delayed saved response from the previous account cannot mix lists or upload cards (0.115625ms)
+✔ a saved request completed after logout cannot replace new guest favourites (0.090541ms)
+✔ local additions and removals survive an older response for the same account (0.114834ms)
+✔ failed loading keeps the current account edits and remains isolated after logout (0.156416ms)
+✔ a server-restored saved place renders the real card with its category icon (85.472458ms)
+✔ older saved snapshots render with a fallback icon and safe empty amenities (1.627709ms)
+✔ real auth transitions update the rendered saved page without transferring the previous account cards (7.678708ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 241.167875

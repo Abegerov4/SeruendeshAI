@@ -56,4 +56,5 @@ def test_llm_saying_nothing_fits_is_respected(monkeypatch):
     r = recommend(RecommendRequest(query="с ребёнком площадка", location={"lat": 51.0899, "lon": 71.4110},
                                    now="2026-10-18T15:00:00+05:00"))
     assert r.recommendations == []
-    assert any("площадок" in n for n in r.notes)
+    assert r.notes and any("подбор не сформирован" in n for n in r.notes)
+    assert not any("Рядом нет" in n for n in r.notes), "Model refusal is not evidence that the city has no such places"

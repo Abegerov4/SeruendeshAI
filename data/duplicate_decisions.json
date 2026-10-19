@@ -1,0 +1,12 @@
+{
+  "dodo:247|osm:node/10570377881": {
+    "decision": "keep",
+    "reason": "Dodo unit 247 is a restaurant with pizza/pizzeria tags and dodopizza.kz website; the OSM record is the mall. The restaurant unit uses its host mall as its label. Keep separate entity scopes; do not merge tenant with mall.",
+    "evidence_urls": [
+      "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+      "https://www.openstreetmap.org/node/10570377881"
+    ],
+    "reviewed_on": "2026-10-19",
+    "review_origin": "docs/audits/2026-10-19-data/duplicate_review.json#dup-015"
+  }
+}

@@ -1,120 +1,17 @@
 {
  "api_version": "1.0",
- "request_id": "ec90a5a82a37",
+ "request_id": "ea0c389c8304",
  "lang": "ru",
- "summary": "Перед вылетом лучше выбрать короткую прогулку к знаковому символу столицы и осмотреть его без спешки.",
- "recommendations": [
-  {
-   "poi_id": "osm:w230401645",
-   "name": "Байтерек",
-   "category": "attraction",
-   "lat": 51.128288,
-   "lon": 71.430455,
-   "distance_m": 45,
-   "travel_min": 2,
-   "why": "Бәйтерек — узнаваемый символ Астаны и смотровая башня, особенно подходящая для первого знакомства с городом.",
-   "visit_min": [
-    15,
-    30
-   ],
-   "what_to_do": "Прогуляйтесь вокруг монумента и рассмотрите его как символ переноса столицы.",
-   "open_status": "open",
-   "open_confidence": "low",
-   "source": "poi_data",
-   "source_url": "https://www.openstreetmap.org/way/230401645",
-   "rating": null,
-   "rank": 1,
-   "category_detail": "landmark",
-   "category_label": "Достопримечательность",
-   "icon": "landmark",
-   "walk_distance_m": 110,
-   "travel_mode": "walk",
-   "visit_suggested_min": 20,
-   "leave_by": "14:54",
-   "opening": {
-    "status": "always",
-    "confidence": "medium",
-    "label": "Открытая территория — часы не ограничены",
-    "raw": null,
-    "next_change": null
-   },
-   "source_label": "Данные POI",
-   "data_sources": [
-    "osm",
-    "overture",
-    "wikidata",
-    "wikipedia"
-   ],
-   "popularity": 0.82,
-   "features": [],
-   "accessibility": "unknown",
-   "badges": [
-    "outdoor",
-    "popular"
-   ],
-   "event": null,
-   "address": "Нұржол желек жолы, 14",
-   "description": "«Байтере́к» — монумент и смотровая башня в столице Казахстана — Астане. Монумент был построен как символ переноса столицы Казахстана в 1997 году.",
-   "description_source": "wikipedia"
-  },
-  {
-   "poi_id": "wd:Q85758095",
-   "name": "Круглая площадь (Астана)",
-   "category": "park",
-   "lat": 51.1308,
-   "lon": 71.4145,
-   "distance_m": 1126,
-   "travel_min": 18,
-   "why": "Круглая площадь окружена архитектурными объектами, скульптурами и цветочными аллеями — приятный вариант для прогулки при дневном свете.",
-   "visit_min": [
-    15,
-    30
-   ],
-   "what_to_do": "Пройдитесь по площади, разглядывая скульптурные композиции и окружающую архитектуру.",
-   "open_status": "open",
-   "open_confidence": "low",
-   "source": "poi_data",
-   "source_url": "https://www.wikidata.org/wiki/Q85758095",
-   "rating": null,
-   "rank": 2,
-   "category_detail": "garden",
-   "category_label": "Сквер / сад",
-   "icon": "flower",
-   "walk_distance_m": 1320,
-   "travel_mode": "walk",
-   "visit_suggested_min": 20,
-   "leave_by": "14:52",
-   "opening": {
-    "status": "always",
-    "confidence": "medium",
-    "label": "Открытая территория — часы не ограничены",
-    "raw": null,
-    "next_change": null
-   },
-   "source_label": "Данные POI",
-   "data_sources": [
-    "wikidata",
-    "wikipedia"
-   ],
-   "popularity": 0.322,
-   "features": [],
-   "accessibility": "unknown",
-   "badges": [
-    "outdoor",
-    "free"
-   ],
-   "event": null,
-   "address": null,
-   "description": "Круглая площадь — городская площадь, одна из основных достопримечательностей в столице Казахстана, находится в самом центре Астаны, в окружении уникальных архитектурных объектов, скульптурных композиций и цветочных аллей. Круглая площадь представляет собой архитектурный комплекс, в которых входит ря",
-   "description_source": "wikipedia"
-  }
- ],
+ "summary": "Рядом не нашлось подходящих мест под эти условия.",
+ "recommendations": [],
+ "service_results": [],
+ "ideas": [],
  "route": null,
  "used_context": {
   "location_source": "gps_rounded",
-  "location_label": "~ район «Байтерек» (округлено)",
-  "radius_m": 2050,
-  "time_budget_min": 90,
+  "location_label": "~ район «Бақытты Шаңырақ» (округлено)",
+  "radius_m": 468,
+  "time_budget_min": 0,
   "mode": "walk",
   "filters": [
    "турист"
@@ -122,7 +19,7 @@
   "now": "2026-10-18T14:00:00+05:00",
   "location": {
    "source": "gps_rounded",
-   "label": "~ район «Байтерек» (округлено)",
+   "label": "~ район «Бақытты Шаңырақ» (округлено)",
    "lat": 51.128,
    "lon": 71.43,
    "precision_m": 100
@@ -144,28 +41,22 @@
   "party": "tourist",
   "parsed_from_query": {
    "categories": [],
-   "preferences": [
-    "park",
-    "garden",
-    "landmark",
-    "viewpoint",
-    "museum"
-   ],
+   "preferences": [],
    "needs": [],
    "time_budget_min": null,
+   "food_requirements": [],
    "deadline": "flight",
    "deadline_in_min": 120,
+   "flight_type": "unknown",
+   "deadline_buffer_min": 195,
    "landmark": null,
    "night": false,
    "surprise": false,
-   "parser": "llm+rules (gpt-6-luna)"
+   "parser": "rules"
   },
   "relaxations": [],
   "funnel": {
-   "total": 2307,
-   "within_reach": 554,
-   "after_filters": 368,
-   "shown": 2
+   "shown": 0
   },
   "data_sources": [
    "OpenStreetMap (ODbL)",
@@ -175,37 +66,21 @@
    "Ticketon / Sxodim",
    "Open-Meteo (CC BY 4.0)"
   ],
-  "data_built_at": "2026-10-18T18:20:55+00:00",
+  "data_built_at": "2026-10-19",
   "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
  },
- "considered": [
-  {
-   "name": "Назарбаев орталығы-2",
-   "reason": "дорога ~64 мин — не укладывается во время"
-  },
-  {
-   "name": "Пряник",
-   "reason": "дорога ~70 мин — не укладывается во время"
-  },
-  {
-   "name": "Дебют",
-   "reason": "дорога ~60 мин — не укладывается во время"
-  },
-  {
-   "name": "Триатлон саябағы",
-   "reason": "дорога ~72 мин — не укладывается во время"
-  }
- ],
+ "considered": [],
  "notes": [
-  "Учёл дедлайн: в аэропорту/на вокзале нужно быть не позже 15:30 (с запасом 30 мин); у каждого места указано, когда выйти.",
-  "Считаю, что через 120 мин вам нужно уже быть в аэропорту. Если это время вылета — оставьте ещё ~1,5 ч на регистрацию и сократите прогулку.",
-  "Обратно до аэропорта/вокзала — на такси: время поездки учтено в «выйти до»."
+  "Учёл дедлайн: прибыть нужно не позже 12:45; запас 195 мин, дорога считается отдельно.",
+  "До вылета оставляю 180 мин на регистрацию и контроль (тип рейса: unknown); дорога и запас на неё отдельно. Если тип рейса не указан, уточните его.",
+  "Обратно до аэропорта/вокзала — на такси: время поездки учтено в «выйти до».",
+  "Для прогулки времени недостаточно — отправляйтесь в аэропорт/на вокзал сейчас."
  ],
  "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
  "ai_generated": true,
  "llm": {
-  "mode": "llm",
-  "model": "gpt-6-luna",
-  "latency_ms": 3489
+  "mode": "template",
+  "model": null,
+  "latency_ms": 32
  }
 }

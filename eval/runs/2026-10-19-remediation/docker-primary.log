@@ -1,0 +1,118 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 DONE 0.0s
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.46kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-slim
+#2 DONE 0.9s
+
+#3 [internal] load metadata for ghcr.io/astral-sh/uv:0.12.23
+#3 DONE 1.0s
+
+#4 [internal] load metadata for docker.io/library/node:22-alpine
+#4 DONE 0.9s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 326B done
+#5 DONE 0.0s
+
+#6 [stage-1  1/12] FROM docker.io/library/python:3.12-slim@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1
+#6 resolve docker.io/library/python:3.12-slim@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1 0.0s done
+#6 DONE 0.0s
+
+#7 [frontend 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#7 resolve docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402 0.0s done
+#7 DONE 0.0s
+
+#8 FROM ghcr.io/astral-sh/uv:0.12.23@sha256:61d393e44e249f2e4b526b6c7ddcecce245946826e608e11c93ad4f5bba55b21
+#8 resolve ghcr.io/astral-sh/uv:0.12.23@sha256:61d393e44e249f2e4b526b6c7ddcecce245946826e608e11c93ad4f5bba55b21 0.0s done
+#8 DONE 0.0s
+
+#9 [internal] load build context
+#9 transferring context: 22.69MB 0.2s done
+#9 DONE 0.2s
+
+#10 [stage-1  4/12] COPY ayat_backend/pyproject.toml ayat_backend/uv.lock ayat_backend/.python-version ./
+#10 CACHED
+
+#11 [stage-1  2/12] COPY --from=ghcr.io/astral-sh/uv:0.12.23 /uv /bin/uv
+#11 CACHED
+
+#12 [stage-1  3/12] WORKDIR /srv/ayat_backend
+#12 CACHED
+
+#13 [stage-1  5/12] RUN uv sync --python /usr/local/bin/python --frozen --no-dev --no-group pipeline --no-install-project
+#13 CACHED
+
+#14 [frontend 2/6] WORKDIR /web
+#14 CACHED
+
+#15 [frontend 3/6] COPY frontend/package.json frontend/package-lock.json ./
+#15 CACHED
+
+#16 [frontend 4/6] RUN npm ci --no-audit --no-fund
+#16 CACHED
+
+#17 [frontend 5/6] COPY frontend/ ./
+#17 DONE 0.0s
+
+#18 [stage-1  6/12] COPY ayat_backend/app ./app
+#18 DONE 0.0s
+
+#19 [stage-1  7/12] COPY ayat_backend/pipeline ./pipeline
+#19 DONE 0.0s
+
+#20 [stage-1  8/12] COPY ayat_backend/__init__.py ./__init__.py
+#20 DONE 0.0s
+
+#21 [stage-1  9/12] COPY data/ /srv/data/
+#21 DONE 0.3s
+
+#22 [frontend 6/6] RUN npm run build
+#22 ...
+
+#23 [stage-1 10/12] COPY runtime_support/ /srv/runtime_support/
+#23 DONE 0.0s
+
+#22 [frontend 6/6] RUN npm run build
+#22 0.444 
+#22 0.444 > seruendesh-web@0.1.0 build
+#22 0.444 > vite build
+#22 0.444 
+#22 0.597 vite v6.4.4 building for production...
+#22 0.637 transforming...
+#22 2.034 ✓ 1604 modules transformed.
+#22 2.185 rendering chunks...
+#22 2.197 computing gzip size...
+#22 2.212 dist/index.html                   0.71 kB │ gzip:   0.49 kB
+#22 2.212 dist/assets/index-BhComZ6G.css   96.27 kB │ gzip:  24.16 kB
+#22 2.212 dist/assets/index-BmN8bGBY.js   532.90 kB │ gzip: 164.65 kB
+#22 2.212 
+#22 2.212 (!) Some chunks are larger than 500 kB after minification. Consider:
+#22 2.212 - Using dynamic import() to code-split the application
+#22 2.212 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+#22 2.212 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+#22 2.212 ✓ built in 1.60s
+#22 DONE 2.3s
+
+#24 [stage-1 11/12] COPY --from=frontend /web/dist /srv/frontend/dist
+#24 DONE 0.0s
+
+#25 [stage-1 12/12] RUN if [ "off" != "off" ]; then python -c "from ayat_backend.app.embedder import Embedder; Embedder('off')"; fi
+#25 DONE 0.1s
+
+#26 exporting to image
+#26 exporting layers
+#26 exporting layers 1.3s done
+#26 exporting manifest sha256:09bae78bd64a5e261ca9dcd59f292276525dd04f043d641b7b039dc7c5f4413b done
+#26 exporting config sha256:7b799e84be4366c83780f34e53d643541a296ea11a19d8ea89e7817e981b7ccd done
+#26 exporting attestation manifest sha256:ccc69ddbc3f7f0d49b94dc7e51bfa873e016ff504ff86be03652a0329bba5a89 done
+#26 exporting manifest list sha256:52ab40f1870d10cf178297d0d221e1dd6ace17e7edd174fe4697c5731e1b79db done
+#26 naming to docker.io/library/seruendesh-audit-primary:latest done
+#26 unpacking to docker.io/library/seruendesh-audit-primary:latest
+#26 unpacking to docker.io/library/seruendesh-audit-primary:latest 0.3s done
+#26 DONE 1.6s

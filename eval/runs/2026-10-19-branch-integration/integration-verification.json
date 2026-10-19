@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-19",
+  "scope": "local integration only; uncommitted; no pushes",
+  "baseline_commit": "5a08f6f898da41f92aecd20e5bef6b09eab8347f",
+  "imported_refs": {
+    "ayat": "4e0b5030bef43879effd6c0e9bb9bb0a3627dc07",
+    "main_already_integrated": "56d2ca8bec8157d43a4920350115234261b6ff7c",
+    "backend_already_integrated": "1ff09f3e0f9d058d27d685181f7e3b20582cd84b",
+    "rag_older": "32c03fbe71ed4828059669873f6ee6c59eb414ae",
+    "qa_already_equivalent": "ff697ef44826be1c9eedd28a486dcc47f9f83a5d"
+  },
+  "preservation": {
+    "local_heads_unchanged": true,
+    "local_head_count": 6,
+    "original_data_files_checked": 48,
+    "original_data_files_changed": [],
+    "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+    "canonical_count": 14006,
+    "canonical_source_ids": 14607,
+    "primary_Aslan_head_unchanged": true
+  },
+  "ayat_view": {
+    "recommendation_count": 2751,
+    "origins_preserved": 14006,
+    "gazetteer_count_with_curated_landmarks": 14029,
+    "exclusions": {
+      "origin_only_category": 11247,
+      "quarantine": 5,
+      "unverified_playground": 3
+    },
+    "events": {
+      "loaded": 140,
+      "active": 60,
+      "remapped": 60,
+      "excluded": 80,
+      "excluded_unmatched": 80,
+      "excluded_ambiguous": 0
+    },
+    "dense_retrieval": false,
+    "llm_enabled": false
+  },
+  "tests": {
+    "combined": {
+      "passed": 781,
+      "skipped": 23,
+      "failed": 0,
+      "subtests_passed": 12,
+      "log": "all-tests.log"
+    },
+    "bare_pytest": {
+      "log": "root-tests.log",
+      "passed": 737,
+      "skipped": 67,
+      "failed": 0,
+      "subtests_passed": 12
+    },
+    "frontend": {
+      "passed": 14,
+      "failed": 0,
+      "build": "passed",
+      "warning": "Vite main bundle above 500 kB before gzip"
+    },
+    "primary_live_http": {
+      "passed": 15,
+      "failed": 1,
+      "failed_test": "tests/test_api_contract.py::test_health_describes_actual_readiness",
+      "reason": "Local profile intentionally has llm=disabled; the readiness assertion requires llm=ok. Test was not weakened.",
+      "log": "primary-http-tests.log"
+    },
+    "primary_bm25": {
+      "hits": 32,
+      "cases": 35,
+      "hit_at_5": 0.9142857142857143,
+      "log": "bm25/report.json"
+    },
+    "ayat_http_scenarios": {
+      "count": 6,
+      "schema_valid": 6,
+      "canonical_ids_only": true,
+      "report": "http-smoke.json",
+      "semantic_review": "airport scenario needs deadline-policy correction; all six HTTP200/schema checks do not establish recommendation usefulness"
+    }
+  },
+  "review": {
+    "important_findings_fixed": [
+      "Encoded slash IDs in saved-place routes",
+      "Saved snapshot icon hydration",
+      "Saved account isolation/stale responses",
+      "Ambiguous chain names bypassing shorter/fuzzy matching",
+      "Legacy event venue IDs disconnected from canonical IDs"
+    ],
+    "remaining_critical_or_important_in_integration_fixes": 0
+  },
+  "limitations": [
+    "No actual model or dense-embedding quality measurement; external providers disabled.",
+    "Airport flight-time query is interpreted as airport-arrival deadline with30min reserve; warning asks user to reserve additional1.5h. This is insufficient for a trustworthy flight-departure scenario.",
+    "Browser QA blocks external map tiles/fonts; local map markers/controls are exercised, external basemap availability is not proven.",
+    "Existing old UI-hook suite remains opt-in; live browser workflow is recorded separately.",
+    "No deployment, commit, push or other-local-branch update."
+  ],
+  "browser": {
+    "actual_local_api": true,
+    "registered_local_accounts": 2,
+    "saved_osm_id": "osm:node/13667384701",
+    "reload_persisted": true,
+    "logout_cleared": true,
+    "second_account_received_first_account_cards": false,
+    "languages": [
+      "ru",
+      "kk",
+      "en"
+    ],
+    "mobile_width": 390,
+    "mobile_scroll_width": 390,
+    "javascript_errors": 0,
+    "external_resource_policy": "localhost only; basemap/fonts blocked intentionally",
+    "screenshots": [
+      "screenshots/mobile-en.png",
+      "screenshots/mobile-kk.png",
+      "screenshots/desktop-chat.png"
+    ]
+  }
+}

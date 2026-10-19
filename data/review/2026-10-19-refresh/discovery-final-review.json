@@ -1,0 +1,99 @@
+{
+  "reviewed_at": "2026-10-19T00:01:53.967044+00:00",
+  "scope": "Independent targeted review of reported regression fixes and stable final publication alignment",
+  "remaining_important_findings": [],
+  "remaining_critical_findings": [],
+  "verification": {
+    "snapshot_version": "b479f2445492454782a09e8d95495ae7",
+    "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+    "canonical_records": 14006,
+    "place_details_sha256": "6236e37f9c3e9bf3c3f14abfb39f06c9e64748bfbdc8b5b493ae65dcdd24f628",
+    "rich_records_raw": 106,
+    "rich_records_loaded": 106,
+    "facts_loaded": 493,
+    "menus_raw": 3673,
+    "menus_loaded": 3673,
+    "menu_price_channels": {
+      "delivery": 3267,
+      "unknown": 309,
+      "dine_in": 97
+    },
+    "runtime_pois": 2745,
+    "gazetteer_entries": 14001,
+    "archived_canonical_count": 5,
+    "service_offer_rows_removed_from_pois_origins_active_export": [
+      "citypass:119",
+      "citypass:142",
+      "citypass:94"
+    ],
+    "service_offer_rows_retained_in_master": true,
+    "physical_opera_venue_preserved": true,
+    "closures_reported_separately_from_service_offers": 2,
+    "quarantine_reason_code_counts": {
+      "unspecified": 6,
+      "confirmed_permanent_closure": 2,
+      "service_catalog_only": 3
+    },
+    "city_services": 10,
+    "index_model": "e5-small",
+    "index_shape": [
+      2745,
+      384
+    ],
+    "index_exact_ids_documents_policy_hashes": true,
+    "all_bundle_manifest_hashes": true,
+    "coordinate_review_export_runtime_alignment": [
+      {
+        "id": "citypass:64",
+        "master_original_pair": [
+          51.1351,
+          71.4001
+        ],
+        "runtime_and_active_export_pair": [
+          51.147356,
+          71.414465
+        ]
+      }
+    ]
+  },
+  "tests": {
+    "focused_food_service_adapter_review": 44,
+    "coordinate_reviews": 33,
+    "discovery_runner_policy": 8
+  },
+  "gasteria_price_review": {
+    "accepted_items": 97,
+    "modifier_groups": 0,
+    "alternative_prices": 0,
+    "hidden_or_off_items": 0,
+    "zero_or_absent_base_prices": 0,
+    "meal_roles": 47,
+    "dessert_roles": 31,
+    "unknown_roles": 19,
+    "source_updated_at": "2026-04-14T10:57:28.55844505+05:00",
+    "components_inferred": false,
+    "publisher_price_divisor100_verified": true
+  },
+  "wider_queue": {
+    "observed_at": "2026-10-19T00:01:53.966658+00:00",
+    "session_id": 60592,
+    "status": "running",
+    "total_rows_at_launch": 1091,
+    "rows_started": 330,
+    "actual_requests": 660,
+    "outcomes": {
+      "candidates_found": 392,
+      "skipped_provider_block": 330,
+      "incomplete_source_error": 90,
+      "search_returned_no_candidates": 178
+    },
+    "no_information_confirmed": 0,
+    "exhaustive_search_completed": 0
+  },
+  "limitations": [
+    "This targeted review does not imply whole-catalog field verification.",
+    "The wider discovery queue remains unfinished and collects unreviewed candidates only.",
+    "Provider failures and fewer than three independent successful sources cannot support no-information or closure.",
+    "Final full-project tests and live UI validation are owned by root."
+  ]
+}

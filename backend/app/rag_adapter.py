@@ -109,8 +109,7 @@ def open_status(opening_hours: str | None, dt: datetime) -> tuple[str, str]:
 
 @lru_cache(maxsize=1)
 def _load_processed() -> list[dict]:
-    path = REPO_ROOT / "data" / "processed" / "pois.json"
-    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+    return _retriever.all_pois()
 
 
 def all_pois() -> list[dict]:

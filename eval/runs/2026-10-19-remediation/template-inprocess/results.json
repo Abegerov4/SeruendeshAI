@@ -1,0 +1,4230 @@
+[
+ {
+  "id": "S1_mega_walk",
+  "title": "Официальный: возле Mega Silk Way, прогулка 30–60 мин",
+  "ms": 165,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": null,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [
+   "Happylon (Достопримечательность, 3 мин)",
+   "Chaplin Cinemas (Кинотеатр, 14 мин)",
+   "Alem.ai Международный центр искусственного интеллекта (Музей, 13 мин)"
+  ],
+  "route": null,
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "a89e4a24142b",
+   "lang": "ru",
+   "summary": "Подобрал 3 места рядом: Happylon, Chaplin Cinemas, Alem.ai Международный центр искусственного интеллекта.",
+   "recommendations": [
+    {
+     "poi_id": "overture:ededa1ba-9d4e-4977-9724-adb8ee572540",
+     "name": "Happylon",
+     "category": "attraction",
+     "lat": 51.088743,
+     "lon": 71.407917,
+     "distance_m": 56,
+     "travel_min": 3,
+     "why": "Достопримечательность: совсем рядом.",
+     "visit_min": [
+      15,
+      30
+     ],
+     "what_to_do": "Осмотрите место и выберите ракурс для фотографии. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=ededa1ba-9d4e-4977-9724-adb8ee572540",
+     "rating": null,
+     "website": null,
+     "rank": 1,
+     "category_detail": "landmark",
+     "category_label": "Достопримечательность",
+     "icon": "landmark",
+     "walk_distance_m": 190,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 15,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": null,
+     "description": "Достопримечательность «Happylon» в Астане.",
+     "description_source": "website"
+    },
+    {
+     "poi_id": "overture:808c4fbc-cebc-44e7-a0a9-4fb230648633",
+     "name": "Chaplin Cinemas",
+     "category": "cinema",
+     "lat": 51.09409,
+     "lon": 71.40454,
+     "distance_m": 589,
+     "travel_min": 14,
+     "why": "Кинотеатр: укладывается в ваше время.",
+     "visit_min": [
+      46,
+      46
+     ],
+     "what_to_do": "Уточните расписание и выберите фильм. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=808c4fbc-cebc-44e7-a0a9-4fb230648633",
+     "rating": null,
+     "website": "http://chaplin.kz/",
+     "rank": 2,
+     "category_detail": "cinema",
+     "category_label": "Кинотеатр",
+     "icon": "cinema",
+     "walk_distance_m": 980,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 46,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [
+      "night"
+     ],
+     "event": null,
+     "address": "проспект Кабанбай батыра 60",
+     "description": "Кинотеатр «Chaplin Cinemas» в Астане. Адрес из источника: проспект Кабанбай батыра 60.",
+     "description_source": "website"
+    },
+    {
+     "poi_id": "osm:way/454857501",
+     "name": "Alem.ai Международный центр искусственного интеллекта",
+     "category": "museum",
+     "lat": 51.08925205,
+     "lon": 71.4161925,
+     "distance_m": 619,
+     "travel_min": 13,
+     "why": "Музей: укладывается в ваше время.",
+     "visit_min": [
+      40,
+      47
+     ],
+     "what_to_do": "Посмотрите экспозицию по своим интересам.",
+     "open_status": "open",
+     "open_confidence": "low",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/way/454857501",
+     "rating": null,
+     "website": "https://alem.ai/kk/",
+     "rank": 3,
+     "category_detail": "museum",
+     "category_label": "Музей",
+     "icon": "museum",
+     "walk_distance_m": 970,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 40,
+     "leave_by": null,
+     "opening": {
+      "status": "open",
+      "confidence": "low",
+      "label": "Открыто до 18:30 (источник часов: venue_self_published)",
+      "raw": "Tu-Su 10:00-18:30",
+      "source": "venue_self_published",
+      "source_url": "https://alem.ai/en/",
+      "check_date": "2026-10-19",
+      "next_change": "18:30"
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "Мәңгілік Ел даңғылы, В1",
+     "description": "Место «Alem.ai» в Астане. Адрес из источника: Мәңгілік Ел даңғылы, В1. Сведения источника: office: yes.",
+     "description_source": "osm"
+    }
+   ],
+   "ideas": [],
+   "route": null,
+   "used_context": {
+    "location_source": "landmark",
+    "location_label": "Mega Silk Way",
+    "radius_m": 1757,
+    "time_budget_min": 60,
+    "mode": "walk",
+    "filters": [],
+    "now": "2026-10-18T15:00:00+05:00",
+    "location": {
+     "source": "text_landmark",
+     "label": "Mega Silk Way",
+     "lat": 51.089,
+     "lon": 71.407,
+     "precision_m": 50
+    },
+    "local_time": "15:00",
+    "weekday": "воскресенье",
+    "is_holiday": null,
+    "is_dark": false,
+    "weather": {
+     "temperature_c": 9.0,
+     "feels_like_c": 6.0,
+     "wind_ms": 5.0,
+     "precipitation": false,
+     "description": "9°C (ощущается 6°C), ветер 5 м/с",
+     "max_outdoor_min": 60,
+     "source": "demo override"
+    },
+    "speed_kmh": 4.5,
+    "party": "solo",
+    "parsed_from_query": {
+     "categories": [],
+     "preferences": [],
+     "needs": [],
+     "time_budget_min": 60,
+     "deadline": null,
+     "deadline_in_min": null,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 0,
+     "landmark": null,
+     "night": false,
+     "surprise": false,
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "total": 2750,
+     "within_reach": 159,
+     "after_filters": 16,
+     "shown": 3
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [],
+   "notes": [
+    "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+   ],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 162
+   }
+  }
+ },
+ {
+  "id": "S2_quiet_coffee_socket",
+  "title": "Официальный: тихое место с кофе и розеткой рядом",
+  "ms": 77,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": true,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": null,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [
+   "ҚР Ұлттық академиялық кітапханасының \"Кітап мұражайы\" (Библиотека, 6 мин)",
+   "Starbucks (Кофейня / кафе, 7 мин)",
+   "NIS Centre of Excellence (Библиотека, 18 мин)"
+  ],
+  "route": null,
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "d878e4452423",
+   "lang": "ru",
+   "summary": "Подобрал 3 места рядом: ҚР Ұлттық академиялық кітапханасының \"Кітап мұражайы\", Starbucks, NIS Centre of Excellence.",
+   "recommendations": [
+    {
+     "poi_id": "overture:88adbe93-674e-4791-8455-e49b30a21b20",
+     "name": "ҚР Ұлттық академиялық кітапханасының \"Кітап мұражайы\"",
+     "category": "library",
+     "lat": 51.12718899429,
+     "lon": 71.427247524261,
+     "distance_m": 212,
+     "travel_min": 6,
+     "why": "Библиотека: совсем рядом.",
+     "visit_min": [
+      30,
+      54
+     ],
+     "what_to_do": "Уточните условия посещения и выберите место для чтения или работы. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=88adbe93-674e-4791-8455-e49b30a21b20",
+     "rating": null,
+     "website": "http://www.nabrk.kz/",
+     "rank": 1,
+     "category_detail": "library",
+     "category_label": "Библиотека",
+     "icon": "book",
+     "walk_distance_m": 400,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 30,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "Достық көшесі 11",
+     "description": "Библиотека «ҚР Ұлттық академиялық кітапханасының \"Кітап мұражайы\"» в Астане. Адрес из источника: Достық көшесі 11.",
+     "description_source": "website"
+    },
+    {
+     "poi_id": "osm:node/9047331880",
+     "name": "Starbucks",
+     "category": "cafe",
+     "lat": 51.1280727,
+     "lon": 71.4254906,
+     "distance_m": 315,
+     "travel_min": 7,
+     "why": "Кофейня / кафе: совсем рядом, есть кофе/еда с собой.",
+     "visit_min": [
+      25,
+      45
+     ],
+     "what_to_do": "Зайдите на кофе или перекус.",
+     "open_status": "open",
+     "open_confidence": "low",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/node/9047331880",
+     "rating": null,
+     "website": null,
+     "rank": 2,
+     "category_detail": "cafe",
+     "category_label": "Кофейня / кафе",
+     "icon": "coffee",
+     "walk_distance_m": 480,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 25,
+     "leave_by": null,
+     "opening": {
+      "status": "open",
+      "confidence": "low",
+      "label": "Открыто до 23:00 (данные OSM)",
+      "raw": "Mo-Su 09:00-23:00",
+      "source": "osm",
+      "source_url": "https://www.openstreetmap.org/node/9047331880",
+      "check_date": null,
+      "next_change": "23:00"
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm",
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [
+      "кофе/еда с собой"
+     ],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "Dostyk Street, 9",
+     "description": "Кафе «Starbucks» в Астане. Адрес из источника: Dostyk Street, 9. Сведения источника: кухня: coffee_shop.",
+     "description_source": "osm"
+    },
+    {
+     "poi_id": "overture:a6eda79e-3764-4766-94ff-d049ccffc918",
+     "name": "NIS Centre of Excellence",
+     "category": "library",
+     "lat": 51.12875,
+     "lon": 71.41367,
+     "distance_m": 1143,
+     "travel_min": 18,
+     "why": "Библиотека: укладывается в ваше время.",
+     "visit_min": [
+      30,
+      42
+     ],
+     "what_to_do": "Уточните условия посещения и выберите место для чтения или работы. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=a6eda79e-3764-4766-94ff-d049ccffc918",
+     "rating": null,
+     "website": null,
+     "rank": 3,
+     "category_detail": "library",
+     "category_label": "Библиотека",
+     "icon": "book",
+     "walk_distance_m": 1340,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 30,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "Turkestan 2 Block A",
+     "description": "Библиотека «NIS Centre of Excellence» в Астане. Адрес из источника: Turkestan 2 Block A.",
+     "description_source": "website"
+    }
+   ],
+   "ideas": [],
+   "route": null,
+   "used_context": {
+    "location_source": "gps_rounded",
+    "location_label": "~ район «Бақытты Шаңырақ» (округлено)",
+    "radius_m": 1406,
+    "time_budget_min": 60,
+    "mode": "walk",
+    "filters": [
+     "Кофейня / кафе",
+     "Коворкинг",
+     "Библиотека"
+    ],
+    "now": "2026-10-18T15:00:00+05:00",
+    "location": {
+     "source": "gps_rounded",
+     "label": "~ район «Бақытты Шаңырақ» (округлено)",
+     "lat": 51.128,
+     "lon": 71.43,
+     "precision_m": 100
+    },
+    "local_time": "15:00",
+    "weekday": "воскресенье",
+    "is_holiday": null,
+    "is_dark": false,
+    "weather": {
+     "temperature_c": 9.0,
+     "feels_like_c": 6.0,
+     "wind_ms": 5.0,
+     "precipitation": false,
+     "description": "9°C (ощущается 6°C), ветер 5 м/с",
+     "max_outdoor_min": 60,
+     "source": "demo override"
+    },
+    "speed_kmh": 4.5,
+    "party": "solo",
+    "parsed_from_query": {
+     "categories": [
+      "cafe",
+      "coworking",
+      "library"
+     ],
+     "preferences": [],
+     "needs": [
+      "power_outlets",
+      "quiet"
+     ],
+     "time_budget_min": null,
+     "deadline": null,
+     "deadline_in_min": null,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 0,
+     "landmark": null,
+     "night": false,
+     "surprise": false,
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "total": 2750,
+     "within_reach": 418,
+     "after_filters": 89,
+     "shown": 3
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [
+    {
+     "name": "Coffee Like",
+     "reason": "закрыто к моменту прихода"
+    },
+    {
+     "name": "Coffee Like",
+     "reason": "закрыто к моменту прихода"
+    }
+   ],
+   "notes": [
+    "Розетки в открытых данных почти не отмечены: наличие розеток стоит уточнить на месте.",
+    "«Тихое место» — оценка по типу заведения (библиотека, кофейня, сквер), шум в данных не измеряется.",
+    "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+   ],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 73
+   }
+  }
+ },
+ {
+  "id": "S3_kids",
+  "title": "Официальный: с ребёнком — площадка или интерактивный музей",
+  "ms": 76,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": true,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [
+   "Gymboree (Детская площадка, 19 мин)"
+  ],
+  "route": null,
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "3df9818a661c",
+   "lang": "ru",
+   "summary": "Подобрал 1 место рядом: Gymboree.",
+   "recommendations": [
+    {
+     "poi_id": "osm:node/2691137163",
+     "name": "Gymboree",
+     "category": "playground",
+     "lat": 51.1289248,
+     "lon": 71.4220016,
+     "distance_m": 846,
+     "travel_min": 19,
+     "why": "Детская площадка: подходит для детей.",
+     "visit_min": [
+      20,
+      40
+     ],
+     "what_to_do": "Предложите ребёнку поиграть, учитывая условия на месте. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/node/2691137163",
+     "rating": null,
+     "website": null,
+     "rank": 1,
+     "category_detail": "playground",
+     "category_label": "Детская площадка",
+     "icon": "baby",
+     "walk_distance_m": 1090,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 20,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [
+      "kids"
+     ],
+     "event": null,
+     "address": null,
+     "description": "Детская площадка «Gymboree» в Астане.",
+     "description_source": "osm"
+    }
+   ],
+   "ideas": [],
+   "route": null,
+   "used_context": {
+    "location_source": "gps_rounded",
+    "location_label": "~ район «Europharma» (округлено)",
+    "radius_m": 1687,
+    "time_budget_min": 60,
+    "mode": "walk",
+    "filters": [
+     "с ребёнком",
+     "Детская площадка",
+     "Музей",
+     "Детский игровой центр"
+    ],
+    "now": "2026-10-18T12:00:00+05:00",
+    "location": {
+     "source": "gps_rounded",
+     "label": "~ район «Europharma» (округлено)",
+     "lat": 51.13,
+     "lon": 71.41,
+     "precision_m": 100
+    },
+    "local_time": "12:00",
+    "weekday": "воскресенье",
+    "is_holiday": null,
+    "is_dark": false,
+    "weather": {
+     "temperature_c": 9.0,
+     "feels_like_c": 6.0,
+     "wind_ms": 5.0,
+     "precipitation": false,
+     "description": "9°C (ощущается 6°C), ветер 5 м/с",
+     "max_outdoor_min": 60,
+     "source": "demo override"
+    },
+    "speed_kmh": 3.6,
+    "party": "family_kids",
+    "parsed_from_query": {
+     "categories": [
+      "playground",
+      "museum",
+      "kids_indoor"
+     ],
+     "preferences": [],
+     "needs": [
+      "kids"
+     ],
+     "time_budget_min": null,
+     "deadline": null,
+     "deadline_in_min": null,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 0,
+     "landmark": null,
+     "night": false,
+     "surprise": false,
+     "parser": "rules"
+    },
+    "relaxations": [
+     "Рядом мало вариантов — расширил радиус поиска до 1.7 км."
+    ],
+    "funnel": {
+     "total": 2750,
+     "within_reach": 260,
+     "after_filters": 1,
+     "shown": 1
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [
+    {
+     "name": "Там где всегда любят и ждут",
+     "reason": "не для детей"
+    },
+    {
+     "name": "GRAMMY",
+     "reason": "не для детей"
+    },
+    {
+     "name": "Zaberi Menya",
+     "reason": "не для детей"
+    },
+    {
+     "name": "1917 jabyq bar",
+     "reason": "не для детей"
+    }
+   ],
+   "notes": [
+    "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен).",
+    "Рядом мало вариантов — расширил радиус поиска до 1.7 км."
+   ],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 73
+   }
+  }
+ },
+ {
+  "id": "S4_tourist_flight",
+  "title": "Официальный: турист, 2 часа перед вылетом",
+  "ms": 37,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": false,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": null,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": false
+  },
+  "items": [],
+  "route": null,
+  "executed": true,
+  "http_status": 200,
+  "passed": false,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "af976b05e2a4",
+   "lang": "ru",
+   "summary": "Рядом не нашлось подходящих мест под эти условия.",
+   "recommendations": [],
+   "ideas": [],
+   "route": null,
+   "used_context": {
+    "location_source": "gps_rounded",
+    "location_label": "~ район «Бақытты Шаңырақ» (округлено)",
+    "radius_m": 468,
+    "time_budget_min": 0,
+    "mode": "walk",
+    "filters": [
+     "турист"
+    ],
+    "now": "2026-10-18T14:00:00+05:00",
+    "location": {
+     "source": "gps_rounded",
+     "label": "~ район «Бақытты Шаңырақ» (округлено)",
+     "lat": 51.128,
+     "lon": 71.43,
+     "precision_m": 100
+    },
+    "local_time": "14:00",
+    "weekday": "воскресенье",
+    "is_holiday": null,
+    "is_dark": false,
+    "weather": {
+     "temperature_c": 9.0,
+     "feels_like_c": 6.0,
+     "wind_ms": 5.0,
+     "precipitation": false,
+     "description": "9°C (ощущается 6°C), ветер 5 м/с",
+     "max_outdoor_min": 60,
+     "source": "demo override"
+    },
+    "speed_kmh": 4.5,
+    "party": "tourist",
+    "parsed_from_query": {
+     "categories": [],
+     "preferences": [],
+     "needs": [],
+     "time_budget_min": null,
+     "deadline": "flight",
+     "deadline_in_min": 120,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 195,
+     "landmark": null,
+     "night": false,
+     "surprise": false,
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "shown": 0
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [],
+   "notes": [
+    "Учёл дедлайн: прибыть нужно не позже 12:45; запас 195 мин, дорога считается отдельно.",
+    "До вылета оставляю 180 мин на регистрацию и контроль (тип рейса: unknown); дорога и запас на неё отдельно. Если тип рейса не указан, уточните его.",
+    "Обратно до аэропорта/вокзала — на такси: время поездки учтено в «выйти до».",
+    "Для прогулки времени недостаточно — отправляйтесь в аэропорт/на вокзал сейчас."
+   ],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 34
+   }
+  }
+ },
+ {
+  "id": "S5_night_unusual",
+  "title": "Официальный: необычная ночная активность",
+  "ms": 69,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": true,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [
+   "Zaza (Ночной клуб, 6 мин)",
+   "CrepeCafe (Кофейня / кафе, 4 мин)",
+   "Арман 3D (Кинотеатр, 22 мин)"
+  ],
+  "route": null,
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "ee4cfabb5966",
+   "lang": "ru",
+   "summary": "Подобрал 3 места рядом: Zaza, CrepeCafe, Арман 3D.",
+   "recommendations": [
+    {
+     "poi_id": "overture:716d9d6c-1266-444f-b7d3-de4bf16fdb95",
+     "name": "Zaza",
+     "category": "nightlife",
+     "lat": 51.128310011021,
+     "lon": 71.434949635027,
+     "distance_m": 347,
+     "travel_min": 6,
+     "why": "Ночной клуб: совсем рядом.",
+     "visit_min": [
+      60,
+      114
+     ],
+     "what_to_do": "Уточните программу и условия посещения. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=716d9d6c-1266-444f-b7d3-de4bf16fdb95",
+     "rating": null,
+     "website": null,
+     "rank": 1,
+     "category_detail": "nightclub",
+     "category_label": "Ночной клуб",
+     "icon": "music",
+     "walk_distance_m": 440,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 114,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [
+      "night"
+     ],
+     "event": null,
+     "address": null,
+     "description": "Ночное заведение «Zaza» в Астане.",
+     "description_source": "website"
+    },
+    {
+     "poi_id": "osm:node/6408271985",
+     "name": "CrepeCafe",
+     "category": "cafe",
+     "lat": 51.1293821,
+     "lon": 71.4285934,
+     "distance_m": 182,
+     "travel_min": 4,
+     "why": "Кофейня / кафе: совсем рядом.",
+     "visit_min": [
+      25,
+      45
+     ],
+     "what_to_do": "Зайдите на кофе или перекус.",
+     "open_status": "open",
+     "open_confidence": "low",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/node/6408271985",
+     "rating": null,
+     "website": null,
+     "rank": 2,
+     "category_detail": "cafe",
+     "category_label": "Кофейня / кафе",
+     "icon": "coffee",
+     "walk_distance_m": 280,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 45,
+     "leave_by": null,
+     "opening": {
+      "status": "open",
+      "confidence": "low",
+      "label": "Открыто до 00:00 (данные OSM)",
+      "raw": "Mo-Fr 08:00-00:00; Sa-Su 09:00-00:00",
+      "source": "osm",
+      "source_url": "https://www.openstreetmap.org/node/6408271985",
+      "check_date": null,
+      "next_change": "00:00"
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm",
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "Dinmukhamed Qonayev St 12/1",
+     "description": "Кафе «CrepeCafe» в Астане. Адрес из источника: Dinmukhamed Qonayev St 12/1.",
+     "description_source": "osm"
+    },
+    {
+     "poi_id": "osm:node/2474931663",
+     "name": "Арман 3D",
+     "category": "cinema",
+     "lat": 51.1280881,
+     "lon": 71.4124401,
+     "distance_m": 1225,
+     "travel_min": 22,
+     "why": "Кинотеатр: укладывается в ваше время.",
+     "visit_min": [
+      98,
+      98
+     ],
+     "what_to_do": "Уточните расписание и выберите фильм.",
+     "open_status": "open",
+     "open_confidence": "low",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/node/2474931663",
+     "rating": null,
+     "website": "https://arman3d.kz/61",
+     "rank": 3,
+     "category_detail": "cinema",
+     "category_label": "Кинотеатр",
+     "icon": "cinema",
+     "walk_distance_m": 1620,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 98,
+     "leave_by": null,
+     "opening": {
+      "status": "open",
+      "confidence": "low",
+      "label": "Открыто до 02:00 (данные OSM)",
+      "raw": "Mo-Su 10:00-02:00",
+      "source": "osm",
+      "source_url": "https://www.openstreetmap.org/node/2474931663",
+      "check_date": null,
+      "next_change": "02:00"
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [
+      "night"
+     ],
+     "event": null,
+     "address": null,
+     "description": "Кинотеатр «Арман 3D» в Астане.",
+     "description_source": "osm"
+    }
+   ],
+   "ideas": [],
+   "route": null,
+   "used_context": {
+    "location_source": "gps_rounded",
+    "location_label": "~ район «Бақытты Шаңырақ» (округлено)",
+    "radius_m": 2050,
+    "time_budget_min": 120,
+    "mode": "walk",
+    "filters": [
+     "вечер/ночь"
+    ],
+    "now": "2026-10-18T23:00:00+05:00",
+    "location": {
+     "source": "gps_rounded",
+     "label": "~ район «Бақытты Шаңырақ» (округлено)",
+     "lat": 51.128,
+     "lon": 71.43,
+     "precision_m": 100
+    },
+    "local_time": "23:00",
+    "weekday": "воскресенье",
+    "is_holiday": null,
+    "is_dark": true,
+    "weather": {
+     "temperature_c": 2.0,
+     "feels_like_c": -2.0,
+     "wind_ms": 4.0,
+     "precipitation": false,
+     "description": "2°C (ощущается -2°C), ветер 4 м/с",
+     "max_outdoor_min": 60,
+     "source": "demo override"
+    },
+    "speed_kmh": 4.5,
+    "party": "solo",
+    "parsed_from_query": {
+     "categories": [],
+     "preferences": [],
+     "needs": [],
+     "time_budget_min": 120,
+     "deadline": null,
+     "deadline_in_min": null,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 0,
+     "landmark": null,
+     "night": true,
+     "surprise": true,
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "total": 2750,
+     "within_reach": 721,
+     "after_filters": 167,
+     "shown": 3
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [
+    {
+     "name": "Mafamille London Paris",
+     "reason": "закрыто к моменту прихода"
+    },
+    {
+     "name": "Restaurant Sogdiana / Ресторан Согдиана",
+     "reason": "закрыто к моменту прихода"
+    },
+    {
+     "name": "Beau Monde",
+     "reason": "закрыто к моменту прихода"
+    },
+    {
+     "name": "Syganak orda",
+     "reason": "закрыто к моменту прихода"
+    }
+   ],
+   "notes": [
+    "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+   ],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 66
+   }
+  }
+ },
+ {
+  "id": "S6_kazakh",
+  "title": "Казахский запрос: возле Байтерека, час прогулки",
+  "ms": 105,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": null,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [
+   "Экскурсия на двухэтажном автобусе Red Bus (Көрікті орын, 2 мин)",
+   "Водно-Зеленый Бульвар (Саябақ, 10 мин)"
+  ],
+  "route": "Шағын маршрут: Экскурсия на двухэтажном автобусе Red Bus → Водно-Зеленый Бульвар. Барлығы ≈ 57 мин (22 мин жолда + 35 мин орындарда). Бастапқы нүктеге оралумен.",
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "9f463715840e",
+   "lang": "kk",
+   "summary": "Шағын маршрут: Экскурсия на двухэтажном автобусе Red Bus → Водно-Зеленый Бульвар. Барлығы ≈ 57 мин (22 мин жолда + 35 мин орындарда). Бастапқы нүктеге оралумен.",
+   "recommendations": [
+    {
+     "poi_id": "citypass:119",
+     "name": "Экскурсия на двухэтажном автобусе Red Bus",
+     "category": "attraction",
+     "lat": 51.128197,
+     "lon": 71.430444,
+     "distance_m": 10,
+     "travel_min": 2,
+     "why": "Көрікті орын: өте жақын.",
+     "visit_min": [
+      15,
+      15
+     ],
+     "what_to_do": "Орынды тамашалап, суретке түсетін ракурс таңдаңыз. Жұмыс уақытын алдын ала нақтылаңыз.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-na-krasnyih-avtobusah",
+     "rating": null,
+     "website": null,
+     "rank": 1,
+     "category_detail": "landmark",
+     "category_label": "Көрікті орын",
+     "icon": "landmark",
+     "walk_distance_m": 90,
+     "travel_mode": "walk",
+     "arrival_at": "2026-10-18T16:02:00+05:00",
+     "departure_at": "2026-10-18T16:17:00+05:00",
+     "visit_suggested_min": 15,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Жұмыс уақыты белгісіз — алдын ала нақтылаңыз",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "POI деректері",
+     "data_sources": [
+      "citypass"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "площадь Монумента Байтерек",
+     "description": null,
+     "description_source": "website"
+    },
+    {
+     "poi_id": "overture:74210037-b47a-4274-a0c1-219f613c3f43",
+     "name": "Водно-Зеленый Бульвар",
+     "category": "park",
+     "lat": 51.1304877635873,
+     "lon": 71.42586116491849,
+     "distance_m": 403,
+     "travel_min": 10,
+     "why": "Саябақ: өте жақын.",
+     "visit_min": [
+      20,
+      20
+     ],
+     "what_to_do": "Саябақта өзіңізге ыңғайлы қарқынмен серуендеңіз. Жұмыс уақытын алдын ала нақтылаңыз.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=74210037-b47a-4274-a0c1-219f613c3f43",
+     "rating": null,
+     "website": null,
+     "rank": 2,
+     "category_detail": "park",
+     "category_label": "Саябақ",
+     "icon": "trees",
+     "walk_distance_m": 720,
+     "travel_mode": "walk",
+     "arrival_at": "2026-10-18T16:27:00+05:00",
+     "departure_at": "2026-10-18T16:47:00+05:00",
+     "visit_suggested_min": 20,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Жұмыс уақыты белгісіз — алдын ала нақтылаңыз",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "POI деректері",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "Нуржол",
+     "description": "Парк или сад «Водно-Зеленый Бульвар» в Астане. Адрес из источника: Нуржол.",
+     "description_source": "website"
+    }
+   ],
+   "ideas": [],
+   "route": {
+    "order": [
+     "citypass:119",
+     "overture:74210037-b47a-4274-a0c1-219f613c3f43"
+    ],
+    "legs": [
+     {
+      "from_id": "start",
+      "to_id": "citypass:119",
+      "distance_m": 87,
+      "travel_min": 2,
+      "polyline": [
+       [
+        51.128288,
+        71.430455
+       ],
+       [
+        51.128273,
+        71.430545
+       ],
+       [
+        51.128253,
+        71.430671
+       ],
+       [
+        51.128235,
+        71.430794
+       ],
+       [
+        51.128143,
+        71.430779
+       ],
+       [
+        51.128078,
+        71.430664
+       ],
+       [
+        51.128048,
+        71.430527
+       ],
+       [
+        51.128053,
+        71.430371
+       ],
+       [
+        51.128127,
+        71.430399
+       ],
+       [
+        51.128197,
+        71.430444
+       ]
+      ],
+      "geometry": "network"
+     },
+     {
+      "from_id": "citypass:119",
+      "to_id": "overture:74210037-b47a-4274-a0c1-219f613c3f43",
+      "distance_m": 749,
+      "travel_min": 10,
+      "polyline": [
+       [
+        51.128197,
+        71.430444
+       ],
+       [
+        51.128127,
+        71.430399
+       ],
+       [
+        51.128053,
+        71.430371
+       ],
+       [
+        51.128094,
+        71.430237
+       ],
+       [
+        51.128162,
+        71.430138
+       ],
+       [
+        51.128254,
+        71.430084
+       ],
+       [
+        51.128347,
+        71.430093
+       ],
+       [
+        51.128433,
+        71.430161
+       ],
+       [
+        51.128498,
+        71.430275
+       ],
+       [
+        51.128529,
+        71.430412
+       ],
+       [
+        51.128524,
+        71.43056
+       ],
+       [
+        51.128646,
+        71.430613
+       ],
+       [
+        51.128748,
+        71.430657
+       ],
+       [
+        51.12892,
+        71.430721
+       ],
+       [
+        51.129027,
+        71.430761
+       ],
+       [
+        51.129102,
+        71.43079
+       ],
+       [
+        51.129218,
+        71.430636
+       ],
+       [
+        51.129223,
+        71.430405
+       ],
+       [
+        51.129219,
+        71.43029
+       ],
+       [
+        51.129481,
+        71.430099
+       ],
+       [
+        51.129786,
+        71.429992
+       ],
+       [
+        51.130057,
+        71.429898
+       ],
+       [
+        51.130602,
+        71.429707
+       ],
+       [
+        51.130715,
+        71.429594
+       ],
+       [
+        51.130517,
+        71.429443
+       ],
+       [
+        51.130541,
+        71.429263
+       ],
+       [
+        51.130669,
+        71.42848
+       ],
+       [
+        51.13085,
+        71.427379
+       ],
+       [
+        51.131103,
+        71.425837
+       ],
+       [
+        51.130488,
+        71.425861
+       ]
+      ],
+      "geometry": "network"
+     },
+     {
+      "from_id": "overture:74210037-b47a-4274-a0c1-219f613c3f43",
+      "to_id": "start",
+      "distance_m": 718,
+      "travel_min": 10,
+      "polyline": [
+       [
+        51.130488,
+        71.425861
+       ],
+       [
+        51.131103,
+        71.425837
+       ],
+       [
+        51.13085,
+        71.427379
+       ],
+       [
+        51.130669,
+        71.42848
+       ],
+       [
+        51.130549,
+        71.429216
+       ],
+       [
+        51.130517,
+        71.429443
+       ],
+       [
+        51.130735,
+        71.429533
+       ],
+       [
+        51.130653,
+        71.429727
+       ],
+       [
+        51.130057,
+        71.429898
+       ],
+       [
+        51.129786,
+        71.429992
+       ],
+       [
+        51.129481,
+        71.430099
+       ],
+       [
+        51.129207,
+        71.430197
+       ],
+       [
+        51.129221,
+        71.430368
+       ],
+       [
+        51.129218,
+        71.430636
+       ],
+       [
+        51.129102,
+        71.43079
+       ],
+       [
+        51.129027,
+        71.430761
+       ],
+       [
+        51.12892,
+        71.430721
+       ],
+       [
+        51.128748,
+        71.430657
+       ],
+       [
+        51.128646,
+        71.430613
+       ],
+       [
+        51.128524,
+        71.43056
+       ],
+       [
+        51.128483,
+        71.430702
+       ],
+       [
+        51.12841,
+        71.430801
+       ],
+       [
+        51.128323,
+        71.430847
+       ],
+       [
+        51.128228,
+        71.430843
+       ],
+       [
+        51.128253,
+        71.430671
+       ],
+       [
+        51.128273,
+        71.430545
+       ],
+       [
+        51.128288,
+        71.430455
+       ]
+      ],
+      "geometry": "network"
+     }
+    ],
+    "total_min": 57,
+    "back_min": 0,
+    "fits_budget": true,
+    "returns_to_start": true,
+    "summary": "Шағын маршрут: Экскурсия на двухэтажном автобусе Red Bus → Водно-Зеленый Бульвар. Барлығы ≈ 57 мин (22 мин жолда + 35 мин орындарда). Бастапқы нүктеге оралумен."
+   },
+   "used_context": {
+    "location_source": "landmark",
+    "location_label": "Байтерек",
+    "radius_m": 1757,
+    "time_budget_min": 60,
+    "mode": "walk",
+    "filters": [],
+    "now": "2026-10-18T16:00:00+05:00",
+    "location": {
+     "source": "text_landmark",
+     "label": "Байтерек",
+     "lat": 51.128,
+     "lon": 71.43,
+     "precision_m": 50
+    },
+    "local_time": "16:00",
+    "weekday": "жексенбі",
+    "is_holiday": null,
+    "is_dark": false,
+    "weather": {
+     "temperature_c": 9.0,
+     "feels_like_c": 6.0,
+     "wind_ms": 5.0,
+     "precipitation": false,
+     "description": "9°C (6°C сезіледі), жел 5 м/с",
+     "max_outdoor_min": 60,
+     "source": "demo override"
+    },
+    "speed_kmh": 4.5,
+    "party": "solo",
+    "parsed_from_query": {
+     "categories": [],
+     "preferences": [],
+     "needs": [],
+     "time_budget_min": 60,
+     "deadline": null,
+     "deadline_in_min": null,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 0,
+     "landmark": null,
+     "night": false,
+     "surprise": false,
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "total": 2750,
+     "within_reach": 544,
+     "after_filters": 76,
+     "shown": 2
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Орналасу ~100 м-ге дейін дөңгелектенген, тек осы сұрауға қолданылады және сақталмайды. Координаттар тілдік модельге жіберілмейді."
+   },
+   "considered": [],
+   "notes": [
+    "Жол уақыты түзу сызық бойынша бағаланды."
+   ],
+   "disclaimer": "Жауапты ЖИ ашық деректер негізінде құрастырды (OpenStreetMap, Wikidata/Wikipedia және т.б.). Жұмыс уақыты өзгеруі мүмкін — барар алдында тексеріңіз.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 103
+   }
+  }
+ },
+ {
+  "id": "S7_english_tourist",
+  "title": "English: first time, 3 hours near Khan Shatyr",
+  "ms": 164,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": null,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [
+   "Конвой (Landmark, 2 мин)",
+   "Zul Sultan (Monument, 7 мин)",
+   "ForteBank Kulanshi Art Space (Gallery, 22 мин)"
+  ],
+  "route": "Mini-route: Конвой → Zur Sultan → ForteBank Kulanshi Art Space. Total ≈ 115 min (25 min travelling + 90 min at places).",
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "44e2b5d3f69e",
+   "lang": "en",
+   "summary": "Mini-route: Конвой → Zur Sultan → ForteBank Kulanshi Art Space. Total ≈ 115 min (25 min travelling + 90 min at places).",
+   "recommendations": [
+    {
+     "poi_id": "osm:way/1449322329",
+     "name": "Конвой",
+     "category": "attraction",
+     "lat": 51.13284725,
+     "lon": 71.40381205,
+     "distance_m": 38,
+     "travel_min": 2,
+     "why": "Landmark: very close.",
+     "visit_min": [
+      30,
+      30
+     ],
+     "what_to_do": "Look around and choose an angle for a photo. Check opening hours before you go.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/way/1449322329",
+     "rating": null,
+     "website": null,
+     "rank": 1,
+     "category_detail": "landmark",
+     "category_label": "Landmark",
+     "icon": "landmark",
+     "walk_distance_m": 130,
+     "travel_mode": "walk",
+     "arrival_at": "2026-10-18T11:02:00+05:00",
+     "departure_at": "2026-10-18T11:32:00+05:00",
+     "visit_suggested_min": 30,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Opening hours unknown — check before going",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "POI data",
+     "data_sources": [
+      "osm"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": null,
+     "description": "Достопримечательность «Конвой» в Астане.",
+     "description_source": "osm"
+    },
+    {
+     "poi_id": "osm:node/4958412863",
+     "name": "Zul Sultan",
+     "category": "monument",
+     "lat": 51.1318179,
+     "lon": 71.4077184,
+     "distance_m": 279,
+     "travel_min": 7,
+     "why": "Monument: very close.",
+     "visit_min": [
+      15,
+      15
+     ],
+     "what_to_do": "Take a closer look at the monument and take a photo. Check opening hours before you go.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/node/4958412863",
+     "rating": null,
+     "website": null,
+     "rank": 2,
+     "category_detail": "monument",
+     "category_label": "Monument",
+     "icon": "monument",
+     "walk_distance_m": 490,
+     "travel_mode": "walk",
+     "arrival_at": "2026-10-18T11:39:00+05:00",
+     "departure_at": "2026-10-18T11:54:00+05:00",
+     "visit_suggested_min": 15,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Opening hours unknown — check before going",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "POI data",
+     "data_sources": [
+      "osm"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": null,
+     "description": "Памятник «Zur Sultan» в Астане.",
+     "description_source": "osm"
+    },
+    {
+     "poi_id": "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3",
+     "name": "ForteBank Kulanshi Art Space",
+     "category": "gallery",
+     "lat": 51.12676344,
+     "lon": 71.41862359,
+     "distance_m": 1211,
+     "travel_min": 22,
+     "why": "Gallery: fits your time.",
+     "visit_min": [
+      45,
+      45
+     ],
+     "what_to_do": "Take a closer look at the works that interest you.",
+     "open_status": "open",
+     "open_confidence": "low",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=e2157a69-731f-461d-a2cf-ff1bb56406b3",
+     "rating": null,
+     "website": null,
+     "rank": 3,
+     "category_detail": "gallery",
+     "category_label": "Gallery",
+     "icon": "gallery",
+     "walk_distance_m": 1590,
+     "travel_mode": "walk",
+     "arrival_at": "2026-10-18T12:10:00+05:00",
+     "departure_at": "2026-10-18T12:55:00+05:00",
+     "visit_suggested_min": 45,
+     "leave_by": null,
+     "opening": {
+      "status": "open",
+      "confidence": "low",
+      "label": "Open until 20:00 (hours source: city_tourism)",
+      "raw": "Mo-Su 10:00-20:00",
+      "source": "city_tourism",
+      "source_url": "https://visitastana.kz/ru/map/",
+      "check_date": "2026-10-19",
+      "next_change": "20:00"
+     },
+     "source_label": "POI data",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "8/1 Dostyk Street |",
+     "description": "Галерея «ForteBank Kulanshi Art Space» в Астане. Адрес из источника: 8/1 Dostyk Street |.",
+     "description_source": "website"
+    }
+   ],
+   "ideas": [],
+   "route": {
+    "order": [
+     "osm:way/1449322329",
+     "osm:node/4958412863",
+     "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3"
+    ],
+    "legs": [
+     {
+      "from_id": "start",
+      "to_id": "osm:way/1449322329",
+      "distance_m": 132,
+      "travel_min": 2,
+      "polyline": [
+       [
+        51.132509,
+        71.403873
+       ],
+       [
+        51.133246,
+        71.40413
+       ],
+       [
+        51.132847,
+        71.403812
+       ]
+      ],
+      "geometry": "network"
+     },
+     {
+      "from_id": "osm:way/1449322329",
+      "to_id": "osm:node/4958412863",
+      "distance_m": 456,
+      "travel_min": 7,
+      "polyline": [
+       [
+        51.132847,
+        71.403812
+       ],
+       [
+        51.133246,
+        71.40413
+       ],
+       [
+        51.133691,
+        71.404327
+       ],
+       [
+        51.133621,
+        71.40461
+       ],
+       [
+        51.133595,
+        71.404732
+       ],
+       [
+        51.133457,
+        71.405112
+       ],
+       [
+        51.133243,
+        71.405523
+       ],
+       [
+        51.133167,
+        71.405617
+       ],
+       [
+        51.133026,
+        71.405769
+       ],
+       [
+        51.132839,
+        71.405952
+       ],
+       [
+        51.132641,
+        71.406067
+       ],
+       [
+        51.132511,
+        71.406113
+       ],
+       [
+        51.132397,
+        71.406136
+       ],
+       [
+        51.132309,
+        71.406128
+       ],
+       [
+        51.132112,
+        71.406086
+       ],
+       [
+        51.132069,
+        71.406372
+       ],
+       [
+        51.132004,
+        71.406799
+       ],
+       [
+        51.131961,
+        71.407128
+       ],
+       [
+        51.131916,
+        71.407471
+       ],
+       [
+        51.131895,
+        71.407614
+       ],
+       [
+        51.131818,
+        71.407718
+       ]
+      ],
+      "geometry": "network"
+     },
+     {
+      "from_id": "osm:node/4958412863",
+      "to_id": "overture:e2157a69-731f-461d-a2cf-ff1bb56406b3",
+      "distance_m": 1126,
+      "travel_min": 16,
+      "polyline": [
+       [
+        51.131818,
+        71.407718
+       ],
+       [
+        51.131895,
+        71.407614
+       ],
+       [
+        51.131584,
+        71.407539
+       ],
+       [
+        51.131414,
+        71.407566
+       ],
+       [
+        51.131257,
+        71.407611
+       ],
+       [
+        51.131078,
+        71.407722
+       ],
+       [
+        51.130943,
+        71.407845
+       ],
+       [
+        51.130886,
+        71.407894
+       ],
+       [
+        51.130722,
+        71.408095
+       ],
+       [
+        51.130638,
+        71.408249
+       ],
+       [
+        51.130512,
+        71.408531
+       ],
+       [
+        51.130421,
+        71.408836
+       ],
+       [
+        51.130367,
+        71.409172
+       ],
+       [
+        51.130354,
+        71.409498
+       ],
+       [
+        51.130009,
+        71.409668
+       ],
+       [
+        51.12973,
+        71.409851
+       ],
+       [
+        51.129612,
+        71.40999
+       ],
+       [
+        51.129438,
+        71.410114
+       ],
+       [
+        51.1294,
+        71.410357
+       ],
+       [
+        51.129353,
+        71.41066
+       ],
+       [
+        51.129272,
+        71.410632
+       ],
+       [
+        51.129013,
+        71.412315
+       ],
+       [
+        51.128963,
+        71.412453
+       ],
+       [
+        51.128858,
+        71.412576
+       ],
+       [
+        51.128642,
+        71.412679
+       ],
+       [
+        51.128574,
+        71.413125
+       ],
+       [
+        51.128498,
+        71.413619
+       ],
+       [
+        51.128437,
+        71.414015
+       ],
+       [
+        51.128216,
+        71.415413
+       ],
+       [
+        51.128096,
+        71.416169
+       ],
+       [
+        51.128025,
+        71.416138
+       ],
+       [
+        51.127964,
+        71.416115
+       ],
+       [
+        51.127825,
+        71.416767
+       ],
+       [
+        51.12775,
+        71.417227
+       ],
+       [
+        51.127655,
+        71.417803
+       ],
+       [
+        51.127621,
+        71.417976
+       ],
+       [
+        51.127608,
+        71.418078
+       ],
+       [
+        51.127586,
+        71.418198
+       ],
+       [
+        51.127569,
+        71.418309
+       ],
+       [
+        51.127182,
+        71.418159
+       ],
+       [
+        51.12712,
+        71.418352
+       ],
+       [
+        51.126763,
+        71.418624
+       ]
+      ],
+      "geometry": "network"
+     }
+    ],
+    "total_min": 115,
+    "back_min": 0,
+    "fits_budget": true,
+    "returns_to_start": false,
+    "summary": "Mini-route: Конвой → Zur Sultan → ForteBank Kulanshi Art Space. Total ≈ 115 min (25 min travelling + 90 min at places)."
+   },
+   "used_context": {
+    "location_source": "landmark",
+    "location_label": "Хан Шатыр",
+    "radius_m": 2050,
+    "time_budget_min": 180,
+    "mode": "walk",
+    "filters": [
+     "tourist"
+    ],
+    "now": "2026-10-18T11:00:00+05:00",
+    "location": {
+     "source": "text_landmark",
+     "label": "Хан Шатыр",
+     "lat": 51.133,
+     "lon": 71.404,
+     "precision_m": 50
+    },
+    "local_time": "11:00",
+    "weekday": "Sunday",
+    "is_holiday": null,
+    "is_dark": false,
+    "weather": {
+     "temperature_c": 12.0,
+     "feels_like_c": 10.0,
+     "wind_ms": 4.0,
+     "precipitation": false,
+     "description": "12°C (feels 10°C), wind 4 m/s",
+     "max_outdoor_min": 60,
+     "source": "demo override"
+    },
+    "speed_kmh": 4.5,
+    "party": "tourist",
+    "parsed_from_query": {
+     "categories": [],
+     "preferences": [],
+     "needs": [],
+     "time_budget_min": 180,
+     "deadline": null,
+     "deadline_in_min": null,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 0,
+     "landmark": null,
+     "night": false,
+     "surprise": false,
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "total": 2750,
+     "within_reach": 578,
+     "after_filters": 461,
+     "shown": 3
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Location is rounded to ~100 m, used only for this request and not stored. Coordinates are never sent to the language model."
+   },
+   "considered": [
+    {
+     "name": "Кишлак",
+     "reason": "closed by the time you arrive"
+    },
+    {
+     "name": "Metis",
+     "reason": "closed by the time you arrive"
+    },
+    {
+     "name": "Leto Cafe",
+     "reason": "closed by the time you arrive"
+    },
+    {
+     "name": "Selfie",
+     "reason": "closed by the time you arrive"
+    }
+   ],
+   "notes": [
+    "Travel time estimated from straight-line distance with a city detour factor."
+   ],
+   "disclaimer": "AI-generated from open data (OpenStreetMap, Wikidata/Wikipedia, etc.). Hours and accessibility may change — please verify before visiting.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 161
+   }
+  }
+ },
+ {
+  "id": "S8_cold_winter",
+  "title": "Мороз −28°C: только тёплые места",
+  "ms": 41,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": true,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [
+   "Mafamille London Paris (Кофейня / кафе, 9 мин)",
+   "ҚР ҚК Әскери-тарихи музейі (Музей, 14 мин)",
+   "APM Music Land (Торговый центр, 11 мин)"
+  ],
+  "route": null,
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "ee47f70013c8",
+   "lang": "ru",
+   "summary": "Подобрал 3 места рядом: Mafamille London Paris, ҚР ҚК Әскери-тарихи музейі, APM Music Land.",
+   "recommendations": [
+    {
+     "poi_id": "overture:787d93e1-7eb2-4ee7-891a-52f027745904",
+     "name": "Mafamille London Paris",
+     "category": "cafe",
+     "lat": 51.139164203971,
+     "lon": 71.41817978917,
+     "distance_m": 1482,
+     "travel_min": 9,
+     "why": "Кофейня / кафе: совсем рядом.",
+     "visit_min": [
+      25,
+      45
+     ],
+     "what_to_do": "Зайдите на кофе или перекус. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=787d93e1-7eb2-4ee7-891a-52f027745904",
+     "rating": null,
+     "website": null,
+     "rank": 1,
+     "category_detail": "cafe",
+     "category_label": "Кофейня / кафе",
+     "icon": "coffee",
+     "walk_distance_m": 2000,
+     "travel_mode": "car",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 25,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "проспект Кабанбай батыра 20",
+     "description": "Кафе «Mafamille London Paris» в Астане. Адрес из источника: проспект Кабанбай батыра 20.",
+     "description_source": "website"
+    },
+    {
+     "poi_id": "overture:7972273c-f99e-4cd9-b552-c94b2a59adde",
+     "name": "ҚР ҚК Әскери-тарихи музейі",
+     "category": "museum",
+     "lat": 51.156865568032295,
+     "lon": 71.43428398400204,
+     "distance_m": 3189,
+     "travel_min": 14,
+     "why": "Музей: укладывается в ваше время.",
+     "visit_min": [
+      40,
+      46
+     ],
+     "what_to_do": "Посмотрите экспозицию по своим интересам. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=7972273c-f99e-4cd9-b552-c94b2a59adde",
+     "rating": null,
+     "website": null,
+     "rank": 2,
+     "category_detail": "museum",
+     "category_label": "Музей",
+     "icon": "museum",
+     "walk_distance_m": 4300,
+     "travel_mode": "car",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 40,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "проспект Республики 2",
+     "description": "Музей «ҚР ҚК Әскери-тарихи музейі» в Астане. Адрес из источника: проспект Республики 2.",
+     "description_source": "website"
+    },
+    {
+     "poi_id": "overture:784c8949-205b-499f-9ef1-6225e3d28258",
+     "name": "APM Music Land",
+     "category": "mall",
+     "lat": 51.149013075331,
+     "lon": 71.4257765909,
+     "distance_m": 2328,
+     "travel_min": 11,
+     "why": "Торговый центр: укладывается в ваше время.",
+     "visit_min": [
+      30,
+      49
+     ],
+     "what_to_do": "Прогуляйтесь по торговому центру и осмотрите магазины. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=784c8949-205b-499f-9ef1-6225e3d28258",
+     "rating": null,
+     "website": "http://www.apm.kz/",
+     "rank": 3,
+     "category_detail": "mall",
+     "category_label": "Торговый центр",
+     "icon": "shopping",
+     "walk_distance_m": 3140,
+     "travel_mode": "car",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 30,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "Kabanbay Batyr Ave. 2/1",
+     "description": "Торговый центр «APM Music Land» в Астане. Адрес из источника: Kabanbay Batyr Ave. 2/1.",
+     "description_source": "website"
+    }
+   ],
+   "ideas": [],
+   "route": null,
+   "used_context": {
+    "location_source": "landmark",
+    "location_label": "Байтерек",
+    "radius_m": 6229,
+    "time_budget_min": 60,
+    "mode": "car",
+    "filters": [],
+    "now": "2027-01-15T13:00:00+05:00",
+    "location": {
+     "source": "text_landmark",
+     "label": "Байтерек",
+     "lat": 51.128,
+     "lon": 71.43,
+     "precision_m": 50
+    },
+    "local_time": "13:00",
+    "weekday": "пятница",
+    "is_holiday": null,
+    "is_dark": false,
+    "weather": {
+     "temperature_c": -22.0,
+     "feels_like_c": -30.0,
+     "wind_ms": 9.0,
+     "precipitation": false,
+     "description": "-22°C (ощущается -30°C), ветер 9 м/с",
+     "max_outdoor_min": 0,
+     "source": "demo override"
+    },
+    "speed_kmh": 25.0,
+    "party": "solo",
+    "parsed_from_query": {
+     "categories": [],
+     "preferences": [],
+     "needs": [],
+     "time_budget_min": 60,
+     "deadline": null,
+     "deadline_in_min": null,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 0,
+     "landmark": null,
+     "night": false,
+     "surprise": false,
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "total": 2750,
+     "within_reach": 2492,
+     "after_filters": 751,
+     "shown": 3
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [
+    {
+     "name": "Городские часы",
+     "reason": "на улице — слишком холодно/ветрено сейчас"
+    },
+    {
+     "name": "Экскурсия на двухэтажном автобусе Red Bus",
+     "reason": "на улице — слишком холодно/ветрено сейчас"
+    },
+    {
+     "name": "Қазақ Елі монументі",
+     "reason": "на улице — слишком холодно/ветрено сейчас"
+    },
+    {
+     "name": "Green Village",
+     "reason": "на улице — слишком холодно/ветрено сейчас"
+    }
+   ],
+   "notes": [
+    "Слишком холодно и ветрено для прогулки — считаю время в пути на такси.",
+    "Ощущается как -30°C, ветер 9 м/с — отдаю приоритет местам в помещении, на улице не дольше ~0 мин."
+   ],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 38
+   }
+  }
+ },
+ {
+  "id": "S9_accessibility",
+  "title": "Доступность: без ступенек",
+  "ms": 61,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": true,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [
+   "Избушка (Кофейня / кафе, 21 мин)",
+   "Керуен (Торговый центр, 9 мин)",
+   "Корме (Галерея, 15 мин)"
+  ],
+  "route": null,
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "4e5643aec58e",
+   "lang": "ru",
+   "summary": "Подобрал 3 места рядом: Избушка, Керуен, Корме.",
+   "recommendations": [
+    {
+     "poi_id": "osm:node/2671060738",
+     "name": "Избушка",
+     "category": "cafe",
+     "lat": 51.1283377,
+     "lon": 71.4180466,
+     "distance_m": 835,
+     "travel_min": 21,
+     "why": "Кофейня / кафе: есть доступно для колясок.",
+     "visit_min": [
+      25,
+      39
+     ],
+     "what_to_do": "Зайдите на кофе или перекус. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/node/2671060738",
+     "rating": null,
+     "website": null,
+     "rank": 1,
+     "category_detail": "cafe",
+     "category_label": "Кофейня / кафе",
+     "icon": "coffee",
+     "walk_distance_m": 1210,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 25,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm"
+     ],
+     "popularity": 0.0,
+     "features": [
+      "доступно для колясок"
+     ],
+     "accessibility": "yes",
+     "badges": [],
+     "event": null,
+     "address": null,
+     "description": "Кафе «Избушка» в Астане.",
+     "description_source": "osm"
+    },
+    {
+     "poi_id": "osm:way/108096984",
+     "name": "Керуен",
+     "category": "mall",
+     "lat": 51.127790149999996,
+     "lon": 71.42530995,
+     "distance_m": 328,
+     "travel_min": 9,
+     "why": "Торговый центр: совсем рядом, есть доступно для колясок, Wi-Fi.",
+     "visit_min": [
+      30,
+      51
+     ],
+     "what_to_do": "Прогуляйтесь по торговому центру и осмотрите магазины. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/way/108096984",
+     "rating": null,
+     "website": "http://galmart.kz",
+     "rank": 2,
+     "category_detail": "mall",
+     "category_label": "Торговый центр",
+     "icon": "shopping",
+     "walk_distance_m": 540,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 30,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm",
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [
+      "доступно для колясок",
+      "Wi-Fi"
+     ],
+     "accessibility": "yes",
+     "badges": [],
+     "event": null,
+     "address": null,
+     "description": "Торговый центр «Керуен» в Астане. Адрес из источника: Достық көшесі, 9. Сведения источника: тип магазина: mall.",
+     "description_source": "osm"
+    },
+    {
+     "poi_id": "osm:way/230358847",
+     "name": "Корме",
+     "category": "gallery",
+     "lat": 51.12864055,
+     "lon": 71.42037955,
+     "distance_m": 675,
+     "travel_min": 15,
+     "why": "Галерея: есть частично доступно для колясок.",
+     "visit_min": [
+      30,
+      45
+     ],
+     "what_to_do": "Рассмотрите работы, которые вас заинтересуют. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/way/230358847",
+     "rating": null,
+     "website": null,
+     "rank": 3,
+     "category_detail": "gallery",
+     "category_label": "Галерея",
+     "icon": "gallery",
+     "walk_distance_m": 870,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 30,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm",
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [
+      "частично доступно для колясок"
+     ],
+     "accessibility": "limited",
+     "badges": [],
+     "event": null,
+     "address": null,
+     "description": "Галерея «Көрме» в Астане. Адрес из источника: Достық көшесі, 3.",
+     "description_source": "osm"
+    }
+   ],
+   "ideas": [],
+   "route": null,
+   "used_context": {
+    "location_source": "gps_rounded",
+    "location_label": "~ район «Бақытты Шаңырақ» (округлено)",
+    "radius_m": 1125,
+    "time_budget_min": 60,
+    "mode": "walk",
+    "filters": [
+     "без ступенек"
+    ],
+    "now": "2026-10-18T15:00:00+05:00",
+    "location": {
+     "source": "gps_rounded",
+     "label": "~ район «Бақытты Шаңырақ» (округлено)",
+     "lat": 51.128,
+     "lon": 71.43,
+     "precision_m": 100
+    },
+    "local_time": "15:00",
+    "weekday": "воскресенье",
+    "is_holiday": null,
+    "is_dark": false,
+    "weather": {
+     "temperature_c": 9.0,
+     "feels_like_c": 6.0,
+     "wind_ms": 5.0,
+     "precipitation": false,
+     "description": "9°C (ощущается 6°C), ветер 5 м/с",
+     "max_outdoor_min": 60,
+     "source": "demo override"
+    },
+    "speed_kmh": 3.6,
+    "party": "solo",
+    "parsed_from_query": {
+     "categories": [],
+     "preferences": [],
+     "needs": [
+      "wheelchair"
+     ],
+     "time_budget_min": null,
+     "deadline": null,
+     "deadline_in_min": null,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 0,
+     "landmark": null,
+     "night": false,
+     "surprise": false,
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "total": 2750,
+     "within_reach": 335,
+     "after_filters": 3,
+     "shown": 3
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [
+    {
+     "name": "Coffee Like",
+     "reason": "закрыто к моменту прихода"
+    },
+    {
+     "name": "Starbucks",
+     "reason": "закрыто к моменту прихода"
+    },
+    {
+     "name": "Coffee Like",
+     "reason": "закрыто к моменту прихода"
+    }
+   ],
+   "notes": [
+    "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+   ],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 57
+   }
+  }
+ },
+ {
+  "id": "S10_museum_late",
+  "title": "Музей в 21:00 — закрытые не предлагаем",
+  "ms": 109,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": null,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [
+   "Экскурсия на двухэтажном автобусе Red Bus (Достопримечательность, 1 мин)",
+   "Urban Street Food (Кофейня / кафе, 5 мин)",
+   "Abu Dhabi Plaza (Торговый центр, 12 мин)"
+  ],
+  "route": null,
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "c5cd5ec984f1",
+   "lang": "ru",
+   "summary": "Подобрал 3 места рядом: Экскурсия на двухэтажном автобусе Red Bus, Urban Street Food, Abu Dhabi Plaza.",
+   "recommendations": [
+    {
+     "poi_id": "citypass:119",
+     "name": "Экскурсия на двухэтажном автобусе Red Bus",
+     "category": "attraction",
+     "lat": 51.128197,
+     "lon": 71.430444,
+     "distance_m": 38,
+     "travel_min": 1,
+     "why": "Достопримечательность: совсем рядом.",
+     "visit_min": [
+      15,
+      30
+     ],
+     "what_to_do": "Осмотрите место и выберите ракурс для фотографии. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-na-krasnyih-avtobusah",
+     "rating": null,
+     "website": null,
+     "rank": 1,
+     "category_detail": "landmark",
+     "category_label": "Достопримечательность",
+     "icon": "landmark",
+     "walk_distance_m": 60,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 15,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "citypass"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "площадь Монумента Байтерек",
+     "description": null,
+     "description_source": "website"
+    },
+    {
+     "poi_id": "overture:6895ab54-3c3b-478f-b8a3-db992dfda930",
+     "name": "Urban Street Food",
+     "category": "cafe",
+     "lat": 51.12976469,
+     "lon": 71.42760636,
+     "distance_m": 258,
+     "travel_min": 5,
+     "why": "Кофейня / кафе: совсем рядом.",
+     "visit_min": [
+      25,
+      45
+     ],
+     "what_to_do": "Зайдите на кофе или перекус. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=6895ab54-3c3b-478f-b8a3-db992dfda930",
+     "rating": null,
+     "website": null,
+     "rank": 2,
+     "category_detail": "cafe",
+     "category_label": "Кофейня / кафе",
+     "icon": "coffee",
+     "walk_distance_m": 360,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 25,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "Dinmukhamed Qonayev St 12/2",
+     "description": "Кафе «Urban Street Food» в Астане. Адрес из источника: Dinmukhamed Qonayev St 12/2.",
+     "description_source": "website"
+    },
+    {
+     "poi_id": "osm:way/762780007",
+     "name": "Abu Dhabi Plaza",
+     "category": "mall",
+     "lat": 51.1219718,
+     "lon": 71.4279322,
+     "distance_m": 686,
+     "travel_min": 12,
+     "why": "Торговый центр: укладывается в ваше время.",
+     "visit_min": [
+      30,
+      48
+     ],
+     "what_to_do": "Прогуляйтесь по торговому центру и осмотрите магазины.",
+     "open_status": "open",
+     "open_confidence": "low",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/way/762780007",
+     "rating": null,
+     "website": "https://abudhabiplaza.info/",
+     "rank": 3,
+     "category_detail": "mall",
+     "category_label": "Торговый центр",
+     "icon": "shopping",
+     "walk_distance_m": 880,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 30,
+     "leave_by": null,
+     "opening": {
+      "status": "open",
+      "confidence": "low",
+      "label": "Открыто до 22:00 (данные OSM)",
+      "raw": "Mo-Su 10:00-22:00",
+      "source": "osm",
+      "source_url": "https://www.openstreetmap.org/way/762780007",
+      "check_date": null,
+      "next_change": "22:00"
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm",
+      "overture",
+      "wikidata",
+      "wikipedia"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": null,
+     "description": "«Абу-Даби Плаза» (каз. Абу-Даби Плаза, англ.",
+     "description_source": "wikipedia"
+    }
+   ],
+   "ideas": [],
+   "route": null,
+   "used_context": {
+    "location_source": "gps_rounded",
+    "location_label": "~ район «Бақытты Шаңырақ» (округлено)",
+    "radius_m": 1406,
+    "time_budget_min": 60,
+    "mode": "walk",
+    "filters": [
+     "Музей"
+    ],
+    "now": "2026-10-18T21:00:00+05:00",
+    "location": {
+     "source": "gps_rounded",
+     "label": "~ район «Бақытты Шаңырақ» (округлено)",
+     "lat": 51.128,
+     "lon": 71.43,
+     "precision_m": 100
+    },
+    "local_time": "21:00",
+    "weekday": "воскресенье",
+    "is_holiday": null,
+    "is_dark": true,
+    "weather": {
+     "temperature_c": 5.0,
+     "feels_like_c": 2.0,
+     "wind_ms": 3.0,
+     "precipitation": false,
+     "description": "5°C (ощущается 2°C), ветер 3 м/с",
+     "max_outdoor_min": 60,
+     "source": "demo override"
+    },
+    "speed_kmh": 4.5,
+    "party": "solo",
+    "parsed_from_query": {
+     "categories": [
+      "museum"
+     ],
+     "preferences": [
+      "museum"
+     ],
+     "needs": [],
+     "time_budget_min": null,
+     "deadline": null,
+     "deadline_in_min": null,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 0,
+     "landmark": null,
+     "night": false,
+     "surprise": false,
+     "parser": "rules"
+    },
+    "relaxations": [
+     "«Музей» поблизости в это время закрыты (отброшено: 0) — показываю то, что можно посетить сейчас."
+    ],
+    "funnel": {
+     "total": 2750,
+     "within_reach": 418,
+     "after_filters": 115,
+     "shown": 3
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [
+    {
+     "name": "Водно-Зеленый Бульвар",
+     "reason": "неосвещённая открытая территория в тёмное время"
+    },
+    {
+     "name": "Водно-Зеленый Бульвар",
+     "reason": "неосвещённая открытая территория в тёмное время"
+    },
+    {
+     "name": "Fashion Park Almaty, Достык, 40",
+     "reason": "неосвещённая открытая территория в тёмное время"
+    },
+    {
+     "name": "Fashion Park Almaty, Достык, 40",
+     "reason": "неосвещённая открытая территория в тёмное время"
+    }
+   ],
+   "notes": [
+    "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен).",
+    "«Музей» поблизости в это время закрыты (отброшено: 0) — показываю то, что можно посетить сейчас."
+   ],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 104
+   }
+  }
+ },
+ {
+  "id": "S11_no_location",
+  "title": "Без локации и ориентира — честно просим уточнить (контракт команды)",
+  "ms": 26,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": null,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [],
+  "route": null,
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "376474d5f435",
+   "lang": "ru",
+   "summary": "Не удалось определить локацию — нажмите «Моё местоположение» или напишите, возле чего вы находитесь (например, «возле Байтерека»).",
+   "recommendations": [],
+   "ideas": [],
+   "route": null,
+   "used_context": {
+    "location_source": "none",
+    "location_label": null,
+    "radius_m": null,
+    "time_budget_min": 60,
+    "mode": "walk",
+    "filters": [],
+    "now": "2026-10-18T10:00:00+05:00",
+    "location": null,
+    "local_time": "10:00",
+    "weekday": "воскресенье",
+    "is_holiday": null,
+    "is_dark": false,
+    "weather": null,
+    "speed_kmh": 4.5,
+    "party": "solo",
+    "parsed_from_query": {
+     "categories": [
+      "cafe"
+     ],
+     "preferences": [],
+     "needs": [],
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "total": 2750
+    },
+    "data_sources": [],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [],
+   "notes": [
+    "Не удалось определить локацию — нажмите «Моё местоположение» или напишите, возле чего вы находитесь (например, «возле Байтерека»)."
+   ],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 23
+   }
+  }
+ },
+ {
+  "id": "S12_injection",
+  "title": "Prompt injection в запросе",
+  "ms": 93,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": null,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [
+   "Кафе - Рафе (Кофейня / кафе, 9 мин)",
+   "Degirmen (Кофейня / кафе, 5 мин)",
+   "Кафе \"SUNDAY\" (Кофейня / кафе, 7 мин)"
+  ],
+  "route": null,
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "31934fa04b4a",
+   "lang": "ru",
+   "summary": "Подобрал 3 места рядом: Кафе - Рафе, Degirmen, Кафе \"SUNDAY\".",
+   "recommendations": [
+    {
+     "poi_id": "overture:b33e2fbe-39f8-44bb-be37-28cb323733fa",
+     "name": "Кафе - Рафе",
+     "category": "cafe",
+     "lat": 51.12790116669828,
+     "lon": 71.43752911106183,
+     "distance_m": 526,
+     "travel_min": 9,
+     "why": "Кофейня / кафе: совсем рядом.",
+     "visit_min": [
+      25,
+      45
+     ],
+     "what_to_do": "Зайдите на кофе или перекус. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=b33e2fbe-39f8-44bb-be37-28cb323733fa",
+     "rating": null,
+     "website": "http://rafe.kz/",
+     "rank": 1,
+     "category_detail": "cafe",
+     "category_label": "Кофейня / кафе",
+     "icon": "coffee",
+     "walk_distance_m": 650,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 25,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "ЖК «Нурсая-1»",
+     "description": "Кафе «Кафе - Рафе» в Астане. Адрес из источника: ЖК «Нурсая-1».",
+     "description_source": "website"
+    },
+    {
+     "poi_id": "osm:node/10564988185",
+     "name": "Degirmen",
+     "category": "cafe",
+     "lat": 51.1285659,
+     "lon": 71.4333254,
+     "distance_m": 240,
+     "travel_min": 5,
+     "why": "Кофейня / кафе: совсем рядом.",
+     "visit_min": [
+      25,
+      45
+     ],
+     "what_to_do": "Зайдите на кофе или перекус.",
+     "open_status": "open",
+     "open_confidence": "low",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/node/10564988185",
+     "rating": null,
+     "website": "http://degirmen.kz/",
+     "rank": 2,
+     "category_detail": "cafe",
+     "category_label": "Кофейня / кафе",
+     "icon": "coffee",
+     "walk_distance_m": 320,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 25,
+     "leave_by": null,
+     "opening": {
+      "status": "open",
+      "confidence": "low",
+      "label": "Открыто до 00:00 (данные OSM)",
+      "raw": "Mo-Su 08:00-00:00",
+      "source": "osm",
+      "source_url": "https://www.openstreetmap.org/node/10564988185",
+      "check_date": null,
+      "next_change": "00:00"
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": null,
+     "description": "Кафе «Degirmen» в Астане.",
+     "description_source": "osm"
+    },
+    {
+     "poi_id": "overture:42683af7-67a1-4103-b024-96c3f811abcf",
+     "name": "Кафе \"SUNDAY\"",
+     "category": "cafe",
+     "lat": 51.129554,
+     "lon": 71.425174,
+     "distance_m": 379,
+     "travel_min": 7,
+     "why": "Кофейня / кафе: совсем рядом.",
+     "visit_min": [
+      25,
+      45
+     ],
+     "what_to_do": "Зайдите на кофе или перекус. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=42683af7-67a1-4103-b024-96c3f811abcf",
+     "rating": null,
+     "website": null,
+     "rank": 3,
+     "category_detail": "cafe",
+     "category_label": "Кофейня / кафе",
+     "icon": "coffee",
+     "walk_distance_m": 490,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 25,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "Kcell На Кунаева, Дінмұхамед Қонаев көшесі 12/3",
+     "description": "Кафе «Кафе \"SUNDAY\"» в Астане. Адрес из источника: Kcell На Кунаева, Дінмұхамед Қонаев көшесі 12/3.",
+     "description_source": "website"
+    }
+   ],
+   "ideas": [],
+   "route": null,
+   "used_context": {
+    "location_source": "gps_rounded",
+    "location_label": "~ район «Бақытты Шаңырақ» (округлено)",
+    "radius_m": 1406,
+    "time_budget_min": 60,
+    "mode": "walk",
+    "filters": [
+     "Кофейня / кафе"
+    ],
+    "now": "2026-10-18T15:00:00+05:00",
+    "location": {
+     "source": "gps_rounded",
+     "label": "~ район «Бақытты Шаңырақ» (округлено)",
+     "lat": 51.128,
+     "lon": 71.43,
+     "precision_m": 100
+    },
+    "local_time": "15:00",
+    "weekday": "воскресенье",
+    "is_holiday": null,
+    "is_dark": false,
+    "weather": {
+     "temperature_c": 9.0,
+     "feels_like_c": 6.0,
+     "wind_ms": 5.0,
+     "precipitation": false,
+     "description": "9°C (ощущается 6°C), ветер 5 м/с",
+     "max_outdoor_min": 60,
+     "source": "demo override"
+    },
+    "speed_kmh": 4.5,
+    "party": "solo",
+    "parsed_from_query": {
+     "categories": [
+      "cafe"
+     ],
+     "preferences": [],
+     "needs": [],
+     "time_budget_min": null,
+     "deadline": null,
+     "deadline_in_min": null,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 0,
+     "landmark": null,
+     "night": false,
+     "surprise": false,
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "total": 2750,
+     "within_reach": 418,
+     "after_filters": 86,
+     "shown": 3
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [
+    {
+     "name": "Coffee Like",
+     "reason": "закрыто к моменту прихода"
+    },
+    {
+     "name": "Starbucks",
+     "reason": "закрыто к моменту прихода"
+    },
+    {
+     "name": "Coffee Like",
+     "reason": "закрыто к моменту прихода"
+    }
+   ],
+   "notes": [
+    "Часть запроса похожа на попытку изменить инструкции — её я пропустил.",
+    "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+   ],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 84
+   }
+  }
+ },
+ {
+  "id": "S13_outside_city",
+  "title": "Координаты вне Астаны",
+  "ms": 34,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": null,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [],
+  "route": null,
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "48749b3448d3",
+   "lang": "ru",
+   "summary": "Не удалось определить локацию — нажмите «Моё местоположение» или напишите, возле чего вы находитесь (например, «возле Байтерека»).",
+   "recommendations": [],
+   "ideas": [],
+   "route": null,
+   "used_context": {
+    "location_source": "none",
+    "location_label": null,
+    "radius_m": null,
+    "time_budget_min": 60,
+    "mode": "walk",
+    "filters": [],
+    "now": "2026-10-18T15:00:00+05:00",
+    "location": null,
+    "local_time": "15:00",
+    "weekday": "воскресенье",
+    "is_holiday": null,
+    "is_dark": false,
+    "weather": null,
+    "speed_kmh": 4.5,
+    "party": "solo",
+    "parsed_from_query": {
+     "categories": [],
+     "preferences": [],
+     "needs": [],
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "total": 2750
+    },
+    "data_sources": [],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [],
+   "notes": [
+    "Координаты вне Астаны — напиши ориентир в городе (например, «возле Байтерека»).",
+    "Не удалось определить локацию — нажмите «Моё местоположение» или напишите, возле чего вы находитесь (например, «возле Байтерека»)."
+   ],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 28
+   }
+  }
+ },
+ {
+  "id": "S14_friends_evening",
+  "title": "Группа друзей вечером",
+  "ms": 77,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": null,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [
+   "IMAX Кинопарк7 (Кинотеатр, 8 мин)",
+   "Xpress Fitness (Активный отдых, 6 мин)",
+   "Арман 3D (Кинотеатр, 22 мин)"
+  ],
+  "route": null,
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "490cf19867dd",
+   "lang": "ru",
+   "summary": "Подобрал 3 места рядом: IMAX Кинопарк7, Xpress Fitness, Арман 3D.",
+   "recommendations": [
+    {
+     "poi_id": "osm:node/4506675474",
+     "name": "IMAX Кинопарк7",
+     "category": "cinema",
+     "lat": 51.1278051,
+     "lon": 71.4253284,
+     "distance_m": 327,
+     "travel_min": 8,
+     "why": "Кинотеатр: совсем рядом.",
+     "visit_min": [
+      52,
+      52
+     ],
+     "what_to_do": "Уточните расписание и выберите фильм. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/node/4506675474",
+     "rating": null,
+     "website": null,
+     "rank": 1,
+     "category_detail": "cinema",
+     "category_label": "Кинотеатр",
+     "icon": "cinema",
+     "walk_distance_m": 540,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 52,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [
+      "night"
+     ],
+     "event": null,
+     "address": null,
+     "description": "Кинотеатр «IMAX Кинопарк7» в Астане.",
+     "description_source": "osm"
+    },
+    {
+     "poi_id": "overture:740d9142-ea4c-43b0-aa04-1f62617a3fd1",
+     "name": "Xpress Fitness",
+     "category": "sport",
+     "lat": 51.12830015489985,
+     "lon": 71.43472147059879,
+     "distance_m": 331,
+     "travel_min": 6,
+     "why": "Активный отдых: совсем рядом.",
+     "visit_min": [
+      45,
+      54
+     ],
+     "what_to_do": "Уточните доступные занятия и выберите подходящее. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=740d9142-ea4c-43b0-aa04-1f62617a3fd1",
+     "rating": null,
+     "website": null,
+     "rank": 2,
+     "category_detail": "active",
+     "category_label": "Активный отдых",
+     "icon": "activity",
+     "walk_distance_m": 440,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 45,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": "Нурсая 1",
+     "description": "Спортивный объект «Xpress Fitness» в Астане. Адрес из источника: Нурсая 1.",
+     "description_source": "website"
+    },
+    {
+     "poi_id": "osm:node/2474931663",
+     "name": "Арман 3D",
+     "category": "cinema",
+     "lat": 51.1280881,
+     "lon": 71.4124401,
+     "distance_m": 1225,
+     "travel_min": 22,
+     "why": "Кинотеатр: укладывается в ваше время.",
+     "visit_min": [
+      38,
+      38
+     ],
+     "what_to_do": "Уточните расписание и выберите фильм.",
+     "open_status": "open",
+     "open_confidence": "low",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/node/2474931663",
+     "rating": null,
+     "website": "https://arman3d.kz/61",
+     "rank": 3,
+     "category_detail": "cinema",
+     "category_label": "Кинотеатр",
+     "icon": "cinema",
+     "walk_distance_m": 1620,
+     "travel_mode": "walk",
+     "arrival_at": null,
+     "departure_at": null,
+     "visit_suggested_min": 38,
+     "leave_by": null,
+     "opening": {
+      "status": "open",
+      "confidence": "low",
+      "label": "Открыто до 02:00 (данные OSM)",
+      "raw": "Mo-Su 10:00-02:00",
+      "source": "osm",
+      "source_url": "https://www.openstreetmap.org/node/2474931663",
+      "check_date": null,
+      "next_change": "02:00"
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [
+      "night"
+     ],
+     "event": null,
+     "address": null,
+     "description": "Кинотеатр «Арман 3D» в Астане.",
+     "description_source": "osm"
+    }
+   ],
+   "ideas": [],
+   "route": null,
+   "used_context": {
+    "location_source": "gps_rounded",
+    "location_label": "~ район «Бақытты Шаңырақ» (округлено)",
+    "radius_m": 1406,
+    "time_budget_min": 60,
+    "mode": "walk",
+    "filters": [
+     "Кинотеатр",
+     "Караоке",
+     "Активный отдых",
+     "Парк аттракционов"
+    ],
+    "now": "2026-10-18T20:00:00+05:00",
+    "location": {
+     "source": "gps_rounded",
+     "label": "~ район «Бақытты Шаңырақ» (округлено)",
+     "lat": 51.128,
+     "lon": 71.43,
+     "precision_m": 100
+    },
+    "local_time": "20:00",
+    "weekday": "воскресенье",
+    "is_holiday": null,
+    "is_dark": true,
+    "weather": {
+     "temperature_c": 5.0,
+     "feels_like_c": 2.0,
+     "wind_ms": 3.0,
+     "precipitation": false,
+     "description": "5°C (ощущается 2°C), ветер 3 м/с",
+     "max_outdoor_min": 60,
+     "source": "demo override"
+    },
+    "speed_kmh": 4.5,
+    "party": "friends_group",
+    "parsed_from_query": {
+     "categories": [
+      "cinema",
+      "karaoke",
+      "active",
+      "theme_park",
+      "kids_indoor"
+     ],
+     "preferences": [],
+     "needs": [],
+     "time_budget_min": null,
+     "deadline": null,
+     "deadline_in_min": null,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 0,
+     "landmark": null,
+     "night": false,
+     "surprise": false,
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "total": 2750,
+     "within_reach": 418,
+     "after_filters": 28,
+     "shown": 3
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [
+    {
+     "name": "Водно-Зеленый Бульвар",
+     "reason": "неосвещённая открытая территория в тёмное время"
+    },
+    {
+     "name": "Jetisy Park",
+     "reason": "неосвещённая открытая территория в тёмное время"
+    },
+    {
+     "name": "Fashion Park Almaty, Достык, 40",
+     "reason": "неосвещённая открытая территория в тёмное время"
+    },
+    {
+     "name": "Green Park Astana",
+     "reason": "неосвещённая открытая территория в тёмное время"
+    }
+   ],
+   "notes": [
+    "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+   ],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 74
+   }
+  }
+ },
+ {
+  "id": "S15_car",
+  "title": "На машине, час",
+  "ms": 45,
+  "mode": "template",
+  "model": null,
+  "checks": {
+   "C1 schema": true,
+   "C2 1–3 items": true,
+   "C3 grounded ids": true,
+   "C4 time budget": true,
+   "C5 categories": null,
+   "C6 source labels": true,
+   "C7 language": true,
+   "C8 no invented hours": true,
+   "C9 coords rounded": true,
+   "C10 safety rules": null,
+   "C11 not closed": true,
+   "C12 latency<8s": true,
+   "S scenario": true
+  },
+  "items": [
+   "Зеленая аллея на Бараева (Достопримечательность, 12 мин)",
+   "Городские часы (Памятник / мемориал, 16 мин)"
+  ],
+  "route": "Мини-маршрут: Зеленая аллея на Бараева → Городские часы. Всего ≈ 41 мин (21 мин в пути + 20 мин на местах).",
+  "executed": true,
+  "http_status": 200,
+  "passed": true,
+  "response": {
+   "api_version": "1.0",
+   "request_id": "bc7c48c18ddc",
+   "lang": "ru",
+   "summary": "Мини-маршрут: Зеленая аллея на Бараева → Городские часы. Всего ≈ 41 мин (21 мин в пути + 20 мин на местах).",
+   "recommendations": [
+    {
+     "poi_id": "overture:534ec4e3-def7-4e83-8d0d-2e0a45f095a9",
+     "name": "Зеленая аллея на Бараева",
+     "category": "attraction",
+     "lat": 51.155361747731,
+     "lon": 71.434672621625,
+     "distance_m": 2517,
+     "travel_min": 12,
+     "why": "Достопримечательность: укладывается в ваше время.",
+     "visit_min": [
+      15,
+      15
+     ],
+     "what_to_do": "Осмотрите место и выберите ракурс для фотографии. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=534ec4e3-def7-4e83-8d0d-2e0a45f095a9",
+     "rating": null,
+     "website": null,
+     "rank": 1,
+     "category_detail": "landmark",
+     "category_label": "Достопримечательность",
+     "icon": "landmark",
+     "walk_distance_m": 3400,
+     "travel_mode": "car",
+     "arrival_at": "2026-10-18T12:12:00+05:00",
+     "departure_at": "2026-10-18T12:27:00+05:00",
+     "visit_suggested_min": 15,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "overture"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": null,
+     "description": "Достопримечательность «Зеленая аллея на Бараева» в Астане.",
+     "description_source": "website"
+    },
+    {
+     "poi_id": "osm:node/11500907369",
+     "name": "Городские часы",
+     "category": "monument",
+     "lat": 51.1533667,
+     "lon": 71.4139175,
+     "distance_m": 3980,
+     "travel_min": 16,
+     "why": "Памятник / мемориал: укладывается в ваше время.",
+     "visit_min": [
+      5,
+      5
+     ],
+     "what_to_do": "Рассмотрите памятник и сделайте фотографию. Уточните часы работы перед выходом.",
+     "open_status": "unknown",
+     "open_confidence": "none",
+     "source": "poi_data",
+     "source_url": "https://www.openstreetmap.org/node/11500907369",
+     "rating": null,
+     "website": null,
+     "rank": 2,
+     "category_detail": "monument",
+     "category_label": "Памятник / мемориал",
+     "icon": "monument",
+     "walk_distance_m": 5370,
+     "travel_mode": "car",
+     "arrival_at": "2026-10-18T12:36:00+05:00",
+     "departure_at": "2026-10-18T12:41:00+05:00",
+     "visit_suggested_min": 5,
+     "leave_by": null,
+     "opening": {
+      "status": "unknown",
+      "confidence": "low",
+      "label": "Часы работы неизвестны — уточните перед визитом",
+      "raw": null,
+      "source": null,
+      "source_url": null,
+      "check_date": null,
+      "next_change": null
+     },
+     "source_label": "Данные POI",
+     "data_sources": [
+      "osm"
+     ],
+     "popularity": 0.0,
+     "features": [],
+     "accessibility": "unknown",
+     "badges": [],
+     "event": null,
+     "address": null,
+     "description": "Памятник «Городские часы» в Астане.",
+     "description_source": "osm"
+    }
+   ],
+   "ideas": [],
+   "route": {
+    "order": [
+     "overture:534ec4e3-def7-4e83-8d0d-2e0a45f095a9",
+     "osm:node/11500907369"
+    ],
+    "legs": [
+     {
+      "from_id": "start",
+      "to_id": "overture:534ec4e3-def7-4e83-8d0d-2e0a45f095a9",
+      "distance_m": 3398,
+      "travel_min": 12,
+      "polyline": [
+       [
+        51.16,
+        71.47
+       ],
+       [
+        51.155362,
+        71.434673
+       ]
+      ],
+      "geometry": "straight"
+     },
+     {
+      "from_id": "overture:534ec4e3-def7-4e83-8d0d-2e0a45f095a9",
+      "to_id": "osm:node/11500907369",
+      "distance_m": 1977,
+      "travel_min": 9,
+      "polyline": [
+       [
+        51.155362,
+        71.434673
+       ],
+       [
+        51.153367,
+        71.413917
+       ]
+      ],
+      "geometry": "straight"
+     }
+    ],
+    "total_min": 41,
+    "back_min": 0,
+    "fits_budget": true,
+    "returns_to_start": false,
+    "summary": "Мини-маршрут: Зеленая аллея на Бараева → Городские часы. Всего ≈ 41 мин (21 мин в пути + 20 мин на местах)."
+   },
+   "used_context": {
+    "location_source": "gps_rounded",
+    "location_label": "~ район «Calzedonia» (округлено)",
+    "radius_m": 6229,
+    "time_budget_min": 60,
+    "mode": "car",
+    "filters": [
+     "турист"
+    ],
+    "now": "2026-10-18T12:00:00+05:00",
+    "location": {
+     "source": "gps_rounded",
+     "label": "~ район «Calzedonia» (округлено)",
+     "lat": 51.16,
+     "lon": 71.47,
+     "precision_m": 100
+    },
+    "local_time": "12:00",
+    "weekday": "воскресенье",
+    "is_holiday": null,
+    "is_dark": false,
+    "weather": {
+     "temperature_c": 9.0,
+     "feels_like_c": 6.0,
+     "wind_ms": 5.0,
+     "precipitation": false,
+     "description": "9°C (ощущается 6°C), ветер 5 м/с",
+     "max_outdoor_min": 60,
+     "source": "demo override"
+    },
+    "speed_kmh": 25.0,
+    "party": "tourist",
+    "parsed_from_query": {
+     "categories": [],
+     "preferences": [],
+     "needs": [],
+     "time_budget_min": 60,
+     "deadline": null,
+     "deadline_in_min": null,
+     "flight_type": "unknown",
+     "deadline_buffer_min": 0,
+     "landmark": null,
+     "night": false,
+     "surprise": false,
+     "parser": "rules"
+    },
+    "relaxations": [],
+    "funnel": {
+     "total": 2750,
+     "within_reach": 2199,
+     "after_filters": 895,
+     "shown": 2
+    },
+    "data_sources": [
+     "OpenStreetMap (ODbL)",
+     "Wikidata (CC0)",
+     "Wikipedia (CC BY-SA)",
+     "Overture Maps (CDLA)",
+     "Ticketon / Sxodim",
+     "Open-Meteo (CC BY 4.0)"
+    ],
+    "data_built_at": "2026-10-19",
+    "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+   },
+   "considered": [
+    {
+     "name": "Музей Первого Президента",
+     "reason": "закрыто к моменту прихода"
+    },
+    {
+     "name": "Дом-музей Берика Алибая",
+     "reason": "закрыто к моменту прихода"
+    },
+    {
+     "name": "Хиты ХХ века",
+     "reason": "закрыто к моменту прихода"
+    },
+    {
+     "name": "Детская библиотека",
+     "reason": "закрыто к моменту прихода"
+    }
+   ],
+   "notes": [],
+   "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+   "ai_generated": true,
+   "llm": {
+    "mode": "template",
+    "model": null,
+    "latency_ms": 42
+   }
+  }
+ }
+]

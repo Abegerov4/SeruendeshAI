@@ -1,0 +1,984 @@
+{
+  "reviewed_on": "2026-10-18",
+  "project": "SeruendeshAI — Astana Smart City",
+  "record_count": 39,
+  "evidence_levels": [
+    "live_local_response",
+    "live_html_or_embedded_data",
+    "official_documentation_only",
+    "unverified_or_blocked"
+  ],
+  "note": "Additional research, not an imported production POI dataset. Public visibility and technical retrieval are distinct from permission to reuse. No purchases, signups, contacts, commits or pushes performed.",
+  "bundles": {
+    "additional_tools_and_sources": {
+      "reviewed_on": "2026-10-18",
+      "scope": "Additional Astana Smart City data options",
+      "candidates": [
+        {
+          "name": "GeoNames",
+          "kind": "geographic_names",
+          "status": "sample_download_verified",
+          "urls": [
+            "https://www.geonames.org/export/",
+            "https://download.geonames.org/export/dump/KZ.zip"
+          ],
+          "finding": "Kazakhstan dump downloaded. Bounding box lon 71.20..71.70 / lat 51.00..51.30 contained 85 records, including settlements, administrative areas, hotels, airport and railway stations. Useful for aliases/landmarks rather than a complete leisure POI inventory.",
+          "evidence": "geonames_sample.json"
+        },
+        {
+          "name": "Wikimedia Pageviews",
+          "kind": "ranking_signal",
+          "status": "documentation_verified",
+          "urls": [
+            "https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/reference/page-views.html"
+          ],
+          "finding": "Article traffic can supply a clearly labelled notability/popularity proxy. It is not a visitor rating and is biased by language and media attention."
+        },
+        {
+          "name": "extruct",
+          "kind": "extraction_tool",
+          "status": "documentation_verified",
+          "urls": [
+            "https://github.com/scrapinghub/extruct"
+          ],
+          "finding": "Extracts embedded JSON-LD, microdata and other metadata; suitable before LLM extraction."
+        },
+        {
+          "name": "Trafilatura",
+          "kind": "extraction_tool",
+          "status": "documentation_verified",
+          "urls": [
+            "https://trafilatura.readthedocs.io/en/stable/quickstart.html"
+          ],
+          "finding": "Extracts main text and metadata; useful for permitted venue descriptions and guides."
+        },
+        {
+          "name": "Scrapy",
+          "kind": "collection_tool",
+          "status": "documentation_verified",
+          "urls": [
+            "https://docs.scrapy.org/en/latest/topics/spiders.html"
+          ],
+          "finding": "Spiders, sitemap/feed discovery, pipelines and exports; optional when sources grow beyond a few straightforward HTTP requests."
+        },
+        {
+          "name": "Exa",
+          "kind": "web_discovery_tool",
+          "status": "documentation_verified",
+          "urls": [
+            "https://exa.ai/docs/reference/search"
+          ],
+          "finding": "API-based targeted source discovery; does not independently establish the truth or reuse rights of source content."
+        },
+        {
+          "name": "Tavily",
+          "kind": "web_discovery_tool",
+          "status": "documentation_verified",
+          "urls": [
+            "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+          ],
+          "finding": "API-based search/extraction candidate for targeted enrichment, not a persistent POI dataset."
+        },
+        {
+          "name": "Municipal Astana geoportal",
+          "kind": "municipal_geospatial",
+          "status": "official_description_only",
+          "urls": [
+            "https://www.gov.kz/org/astana/activities/15951?lang=ru",
+            "https://www.gov.kz/org/astana-saulet/press/news/details/324850?lang=ru"
+          ],
+          "finding": "Official description confirms city boundary and planning map use. A reusable, current POI API/export was not verified."
+        },
+        {
+          "name": "Astana.kz culture section",
+          "kind": "municipal_catalogue",
+          "status": "not_ready",
+          "urls": [
+            "https://astana.kz/ru"
+          ],
+          "finding": "Culture and libraries sections are labelled coming soon on the inspected homepage; not a verified feed."
+        },
+        {
+          "name": "NextGIS Astana POI",
+          "kind": "repackaged_dataset",
+          "status": "listing_verified_no_purchase",
+          "urls": [
+            "https://data.nextgis.com/ru/region/KZ-71/poi/"
+          ],
+          "finding": "Paid convenience package lists OSM, Overture, Foursquare and Wikidata as sources. Not a new independent source; no purchase or export performed."
+        },
+        {
+          "name": "Audiala Places",
+          "kind": "editorial_dataset",
+          "status": "metadata_only_local_coverage_unverified",
+          "urls": [
+            "https://github.com/audiala/open-data"
+          ],
+          "finding": "Open metadata with Wikidata IDs, names and generated-guide links. Astana records and guide-content reuse were not verified; lower priority than primary local sources."
+        },
+        {
+          "name": "Tripadvisor Content API",
+          "kind": "commercial_poi_api",
+          "status": "unsuitable_for_persistent_public_dataset_under_standard_policy",
+          "urls": [
+            "https://tripadvisor-content-api.readme.io/reference/caching-policy"
+          ],
+          "finding": "Standard policy permits storing location_id, prohibits storing/indexing other content."
+        },
+        {
+          "name": "Viator Partner API",
+          "kind": "tour_products_api",
+          "status": "conditional_partner_access",
+          "urls": [
+            "https://docs.viator.com/partner-api"
+          ],
+          "finding": "Tour descriptions/prices/availability for partners; future commercial activities integration rather than base hackathon POI source. Astana coverage not probed."
+        },
+        {
+          "name": "Yelp Places API",
+          "kind": "commercial_poi_api",
+          "status": "local_suitability_unverified",
+          "urls": [
+            "https://docs.developer.yelp.com/docs/resources-supported-locales"
+          ],
+          "finding": "Kazakhstan absent from listed supported locales. This alone does not prove every Kazakhstan record is absent; not recommended as first choice without local evidence."
+        },
+        {
+          "name": "Firecrawl CLI in this environment",
+          "kind": "research_tool_probe",
+          "status": "failed_fetch",
+          "urls": [
+            "https://github.com/firecrawl/cli"
+          ],
+          "finding": "Skills installed. Keyless scrape and search tests failed with fetch failed; research used built-in web and bounded ordinary HTTP requests. No successful Firecrawl collection claimed."
+        }
+      ]
+    },
+    "poi_apis": {
+      "checked_on": "2026-10-18",
+      "scope": "Remaining POI API options for an Astana walking recommender hackathon; already-covered primary datasets deliberately omitted.",
+      "method": "Current official vendor product pages, API specifications, coverage tables and terms. No signup, purchase or authenticated API calls. Firecrawl CLI unavailable; used built-in web search and direct public official page retrieval.",
+      "important_boundary": "A global claim, country coverage table, and an observed city record are different evidence levels. No Astana API response was executed. Unknown local density and missing optional fields remain unknown.",
+      "candidates": [
+        {
+          "provider": "Geoapify Places + Place Details",
+          "decision": "recommend",
+          "decision_scope": "Hosted open-data query/export option if the team wants convenience over its existing OSM extraction; run an Astana sample before adopting.",
+          "why_useful": "Category and spatial filtering make nearby attractions, cafes, toilets, parks and accessible places easy to query. This is mainly an OSM delivery/enrichment service, so it is not independent evidence or guaranteed extra coverage beyond OSM.",
+          "fields_and_operations": {
+            "places": [
+              "name",
+              "latitude/longitude",
+              "structured address",
+              "categories/conditions",
+              "distance",
+              "place_id"
+            ],
+            "details_optional": [
+              "opening_hours",
+              "website",
+              "description",
+              "international and alternative names",
+              "contact information",
+              "wiki references",
+              "building/park geometry"
+            ],
+            "filters": [
+              "circle",
+              "bounding box",
+              "place boundary",
+              "isoline geometry",
+              "category",
+              "free access",
+              "Wi-Fi",
+              "wheelchair accessibility"
+            ],
+            "retrieval": "JSON/GeoJSON; limit up to 500 and offset; broader dense areas may require controlled tiling rather than treating one page as exhaustive."
+          },
+          "access": "API key and registered account/project for app API usage. Official docs say no credit card required. Public playground can be tried without registration.",
+          "quota_note": "Pricing section says free plan has 3,000 credits/day; Places costs one credit per 20 returned places. Do not equate a 500-place query with one credit. Introductory wording also says requests/day, so use the detailed credit rule.",
+          "storage_export": "Official Places FAQ expressly permits caching, storage and redistribution without added limits, with required attribution. Terms require OpenStreetMap attribution and Geoapify attribution on the free plan; follow the applicable underlying data licence. No proprietary review/photo rights inferred.",
+          "coverage_evidence": {
+            "level": "global/open-data only; local unverified",
+            "kazakhstan_explicit": false,
+            "astana_observed": false,
+            "detail": "Vendor describes worldwide OSM-derived coverage; no Astana-specific API result or vendor coverage guarantee verified in this research."
+          },
+          "next_check": "With an already-authorized key, sample tourism/entertainment/leisure and catering within central Astana; count unique IDs and opening_hours completeness, then compare to existing OSM records.",
+          "sources": [
+            {
+              "url": "https://apidocs.geoapify.com/docs/places/index.html",
+              "supports": "Schema, spatial/category/condition filters, API key, public playground, pagination, quota credit rule."
+            },
+            {
+              "url": "https://apidocs.geoapify.com/docs/place-details/",
+              "supports": "Optional opening hours, names, descriptions, contacts, wiki references and geometry."
+            },
+            {
+              "url": "https://www.geoapify.com/places-api/",
+              "supports": "Explicit caching/storage/redistribution permission and OSM-derived data source."
+            },
+            {
+              "url": "https://www.geoapify.com/terms-and-conditions/",
+              "supports": "Registration, free-plan attribution, underlying API-specific attribution. Version 5 dated 2024-02-02."
+            }
+          ]
+        },
+        {
+          "provider": "OpenTripMap",
+          "decision": "conditional",
+          "decision_scope": "Promising tourism enrichment for a non-commercial demo; confirm actual Astana density and commercial-plan suitability.",
+          "why_useful": "Tourism-oriented category hierarchy and existing links among geographic objects, Wikipedia text and images can reduce integration work. It aggregates sources already researched, so expect duplicates rather than a wholly new proprietary inventory.",
+          "fields_and_operations": {
+            "fields": [
+              "xid",
+              "name",
+              "kinds",
+              "point",
+              "distance",
+              "rate",
+              "OSM ID",
+              "Wikidata ID",
+              "address",
+              "Wikipedia URL/extracts",
+              "image/preview URL",
+              "website",
+              "source metadata"
+            ],
+            "operations": [
+              "bounding-box list",
+              "radius list",
+              "count",
+              "object detail by xid",
+              "autosuggest"
+            ],
+            "languages": "Official OpenAPI enumerates English and Russian with fallback if requested-language content is missing. Popularity rate is a source-specific 0–3/heritage indicator, not a crowd review score."
+          },
+          "access": "API key passed as apikey; free signup is offered. No key obtained or API request made.",
+          "quota_note": "Current official price page: free non-commercial plan, 5,000 requests/day and 10 requests/second. Other plans were not reliably exposed in the page; no commercial rights inferred from a free key.",
+          "storage_export": "Product page explicitly allows prefetching, indexing, storing, caching, modification and display on any map under ODbL. Terms require respecting licences of returned source data. An image URL or Wikipedia extract does not establish blanket image/text reuse rights; keep source licence/provenance.",
+          "coverage_evidence": {
+            "level": "global claim only; local unverified",
+            "kazakhstan_explicit": false,
+            "astana_observed": false,
+            "detail": "Official product claims over 10 million global attractions/facilities. No successful Astana card or API response verified. Guessed Bayterek card URLs returned 404, which does not prove absence."
+          },
+          "next_check": "Use a valid authorized key for a small central-Astana bbox/count and detail request. Check actual objects, Russian/English text, image licences and duplicate OSM/Wikidata IDs before bulk retrieval.",
+          "sources": [
+            {
+              "url": "https://dev.opentripmap.org/product",
+              "supports": "Tourism source aggregation, worldwide scope, JSON/GeoJSON, explicit storage/index/cache and ODbL policy."
+            },
+            {
+              "url": "https://dev.opentripmap.org/openapi.en.json",
+              "supports": "Current official API schema, fields, radius/bbox/count/detail/autosuggest, key and language requirements."
+            },
+            {
+              "url": "https://dev.opentripmap.org/price",
+              "supports": "Free plan non-commercial restriction and 5,000/day, 10/second quotas."
+            },
+            {
+              "url": "https://dev.opentripmap.org/legal/short-offer",
+              "supports": "Underlying returned-data licence obligations; retrieved successfully directly though web parser could not open it."
+            }
+          ]
+        },
+        {
+          "provider": "HERE Geocoding & Search v7",
+          "decision": "conditional",
+          "decision_scope": "Live search/detail comparator only; reject as the default permanent seed/export dataset.",
+          "fields_and_operations": {
+            "fields": [
+              "title",
+              "HERE ID",
+              "position",
+              "access coordinates",
+              "structured address",
+              "categories",
+              "foodTypes",
+              "contacts",
+              "openingHours",
+              "chains",
+              "supplier references"
+            ],
+            "operations": [
+              "discover free text",
+              "browse category",
+              "lookup by ID"
+            ],
+            "note": "Contacts/hours are optional. Geocode/revgeocode place results omit additional place attributes, so use discover/browse/lookup for enrichment."
+          },
+          "access": "HERE account, app registration and API key. Getting-started documentation offers free account onboarding; exact allowance depends on the selected plan and was not assumed.",
+          "storage_export": "Platform terms section 6.4(j) sets a general 30-day off-platform cap with limited internal exceptions; Location Services Exhibit 2 section 1.3 additionally limits prefetch/cache/store to explicit HTTP caching headers. The 30-day cap is not blanket permission to build an offline city database. Open-source database mixing and redistribution also have restrictions.",
+          "coverage_evidence": {
+            "level": "explicit Kazakhstan search quality; no Astana response",
+            "kazakhstan_explicit": true,
+            "astana_observed": false,
+            "detail": "Official discover search-local coverage lists Kazakhstan as Entry, defined as entry-level search experience. This is weaker than Full and proves no Astana POI density/completeness."
+          },
+          "next_check": "Only if an existing key is available, test central Astana discover and category browse for known landmarks and compare optional hours/contact completeness; obey returned cache headers.",
+          "sources": [
+            {
+              "url": "https://docs.here.com/geocoding-and-search/docs/search-local-coverage",
+              "supports": "Kazakhstan Entry search-quality designation and definitions."
+            },
+            {
+              "url": "https://docs.here.com/geocoding-and-search/docs/result-types-place",
+              "supports": "Place fields, optional hours/contacts, supported endpoints and omission from geocode/revgeocode."
+            },
+            {
+              "url": "https://docs.here.com/geocoding-and-search/docs/get-started-with-here-geocoding-and-search-api-v7",
+              "supports": "Account, app and API-key requirements."
+            },
+            {
+              "url": "https://legal.here.com/us-en/terms/here-platform-terms",
+              "supports": "General storage cap plus stricter Location Services HTTP caching-header condition, mixing and licence restrictions."
+            }
+          ]
+        },
+        {
+          "provider": "TomTom Search / Orbis / Places Search",
+          "decision": "conditional",
+          "decision_scope": "Live alternative with explicit country POI coverage; reject for an unrestricted permanent city seed database.",
+          "fields_and_operations": {
+            "fields": [
+              "stable POI ID",
+              "name",
+              "position",
+              "address",
+              "phone",
+              "website",
+              "category/classification",
+              "distance",
+              "openingHours",
+              "timezone",
+              "entry points",
+              "source references"
+            ],
+            "operations": [
+              "POI search",
+              "category search",
+              "nearby",
+              "geometry search",
+              "along-route search"
+            ],
+            "version_note": "Current Search API docs say it remains generally available and fully supported, but recommend Places Search API for new integrations. Do not silently mix classic Search and Orbis coverage tables."
+          },
+          "access": "Registered/signed-in account and API key; evaluation usage is advertised. No account or key created; current exact allowance not assumed.",
+          "storage_export": "Current official terms 11.4 generally prohibit storage except client cache permitted by returned control headers, only through max-age; no shared-result scaling. Section 11.6.1 prohibits compiling secondary/derived databases from licensed results. Section 3 separately preserves rights in data actually identified as ODbL; do not assume all Orbis POIs are ODbL or unrestricted merely because Orbis contains open data. Dataset redistribution and AI retention clauses also apply.",
+          "coverage_evidence": {
+            "level": "explicit Kazakhstan POI coverage; no Astana response",
+            "kazakhstan_explicit": true,
+            "astana_observed": false,
+            "detail": "Official Orbis Search market table has a POI column checked for Kazakhstan. Classic Search market table primarily demonstrates address/street/city support and should not be misread as a POI inventory count. Orbis table also has a public-preview notice."
+          },
+          "next_check": "Use only within an existing authorized integration; evaluate the new Places Search contract and known central-Astana landmarks; never use classic table address checkmarks as evidence of POI density.",
+          "sources": [
+            {
+              "url": "https://docs.tomtom.com/search-api/documentation/tomtom-orbis-maps/product-information/market-coverage",
+              "supports": "Explicit Kazakhstan POI support; public-preview caveat."
+            },
+            {
+              "url": "https://docs.tomtom.com/search-api/documentation/product-information/market-coverage",
+              "supports": "Classic address/street/city market table; distinction from POI evidence."
+            },
+            {
+              "url": "https://docs.tomtom.com/search-api/documentation/search-service/points-of-interest-search",
+              "supports": "Fields and POI query parameters."
+            },
+            {
+              "url": "https://docs.tomtom.com/search-api/documentation/product-information/introduction",
+              "supports": "Key/account/evaluation access and new-integration recommendation."
+            },
+            {
+              "url": "https://docs.tomtom.com/legal/terms-and-conditions",
+              "supports": "Current terms 3, 11.4, 11.6; body renders client-side."
+            },
+            {
+              "url": "https://docs.tomtom.com/_astro/LegalTabs.CZQaVJ02.js",
+              "supports": "Official page client module containing current readable terms; retrieved directly because standard parser exposed no body."
+            }
+          ]
+        },
+        {
+          "provider": "Yandex Organization Search",
+          "decision": "reject",
+          "decision_scope": "Reject for a cheap open/exported hackathon seed; reconsider only with an existing suitable paid licence.",
+          "fields_and_operations": {
+            "fields": [
+              "organization ID",
+              "name",
+              "coordinates",
+              "address",
+              "website",
+              "categories",
+              "phones",
+              "hours/intervals",
+              "accessibility features"
+            ],
+            "operations": [
+              "name/address/phone/service search",
+              "bbox",
+              "strict region rspn=1",
+              "paging"
+            ],
+            "note": "API docs say results are the most suitable matches, not every organization. Current request documentation caps results at 50 while the marketing page says up to 100; use the API contract. Ratings/reviews visible on consumer Maps are not guaranteed Organization Search response fields."
+          },
+          "access": "Yandex account/developer dashboard and product key. Product is sold as an annual licence; published basic tier starts at 250,000 yearly requests. Broad free Maps API access must not be assumed to include unrestricted organization-search data.",
+          "storage_export": "Official free-use page prohibits storing/modifying API data and changing result ranking. Organization Search page sells server storage/modification capability as paid additional rights. Its paid terms describe up-to-30-day caching for internal system performance; permanent export/reuse rights depend on the purchased agreement, not on website accessibility.",
+          "coverage_evidence": {
+            "level": "actual Astana consumer record plus explicit Kazakhstan contractual territory; no API response",
+            "kazakhstan_explicit": true,
+            "astana_observed": true,
+            "detail": "Official Astana Maps search shows Bayterek landmark at Nurzhol boulevard 14 with opening-hour and category information. Paid geosearch terms explicitly list Kazakhstan within CIS territory. Consumer UI evidence does not guarantee identical API fields, ranking or density."
+          },
+          "next_check": "If the team already holds a licence, inspect its storage and result-modification entitlements before integrating into an independently ranked recommender.",
+          "sources": [
+            {
+              "url": "https://yandex.com/maps-api/products/geosearch-api",
+              "supports": "Product capabilities, annual account/licence setup and paid storage/modification option."
+            },
+            {
+              "url": "https://yandex.kz/maps-api/docs/geosearch-api/request.html",
+              "supports": "Key, bbox, rspn, paging and current result limit."
+            },
+            {
+              "url": "https://yandex.ru/maps-api/docs/geosearch-api/response.html",
+              "supports": "Guaranteed organization fields and search non-exhaustiveness."
+            },
+            {
+              "url": "https://yandex.com/dev/commercial/doc/en/",
+              "supports": "Free-use storage/modification and ranking restrictions."
+            },
+            {
+              "url": "https://yandex.com/dev/tariffs/doc/en/geosearch/terms/",
+              "supports": "Kazakhstan territory and internal 30-day cache clause for paid agreement."
+            },
+            {
+              "url": "https://yandex.com/maps/163/astana/search/%D0%B1%D0%B0%D0%B9%D1%82%D0%B5%D1%80%D0%B5%D0%BA/",
+              "supports": "Observed Astana Bayterek landmark in first-party consumer map; not API proof."
+            }
+          ]
+        },
+        {
+          "provider": "Mapbox Search Box API",
+          "decision": "reject",
+          "decision_scope": "Reject for persistent seed/export; local availability remains unverified and vendor coverage statements conflict.",
+          "fields_and_operations": {
+            "fields": [
+              "Mapbox ID",
+              "name",
+              "coordinates",
+              "address/context",
+              "POI categories",
+              "brand",
+              "closed-place filtering"
+            ],
+            "operations": [
+              "suggest/retrieve",
+              "forward",
+              "category",
+              "reverse"
+            ],
+            "access": "Mapbox account and access token; interactive suggest/retrieve also require session_token."
+          },
+          "storage_export": "API documentation says returned data is for temporary use only and directs storage use cases to sales. A different Mapbox permanent geocoding entitlement is not evidence of persistent Search Box POI rights.",
+          "coverage_evidence": {
+            "level": "contradictory generic official coverage claims; Kazakhstan/Astana unverified",
+            "kazakhstan_explicit": false,
+            "astana_observed": false,
+            "detail": "Current API reference says United States, Canada and Europe. A dated official 2025-10-16 product post claims 53 additional countries and global search but does not name Kazakhstan. Do not claim Kazakhstan unsupported or supported based only on these conflicting generic statements."
+          },
+          "sources": [
+            {
+              "url": "https://docs.mapbox.com/api/search/search-box/",
+              "supports": "Token/session requirements, fields, temporary-only storage and stated regions."
+            },
+            {
+              "url": "https://www.mapbox.com/blog/mapbox-search-box-api-expanded-poi-coverage-smarter-search",
+              "supports": "Dated broader/global expansion claim; no Kazakhstan list."
+            }
+          ]
+        }
+      ],
+      "recommended_order": [
+        "Geoapify for hosted open-data querying if useful beyond existing extraction",
+        "OpenTripMap for tourism enrichment after local sample and non-commercial suitability check",
+        "HERE/TomTom only for live supplementary lookup under account terms",
+        "Yandex only with pre-existing appropriate paid rights",
+        "Skip Mapbox as a persistent seed source"
+      ],
+      "not_performed": [
+        "No signup or account creation",
+        "No purchase or subscription",
+        "No authenticated provider API call",
+        "No messages to providers",
+        "No Git operations",
+        "No inference of permission from public visibility"
+      ]
+    },
+    "local_catalogues": {
+      "checked_at": "2026-10-18",
+      "scope": "Astana tourism, culture, retail, cafe and event directories; source inspection only, no bulk crawl, contact, account access, purchase, or Git changes.",
+      "method": "Primary website pages inspected using web search/open plus a small number of direct ordinary HTTP GETs. Firecrawl CLI absent. Raw sample pages are in round4/raw_local; no endpoint fuzzing or access-control bypass.",
+      "reuse_status": "Technical accessibility is recorded separately from rights. No open-data licence, public bulk-download permission, or documented generally available POI API was established for these sources. Check terms and obtain appropriate reuse rights before systematic ingestion; public HTML and embedded JSON alone are not permission.",
+      "sources": [
+        {
+          "name": "Astana CityPass",
+          "priority": "high",
+          "urls": [
+            "https://astana.citypass.kz/en/attractions",
+            "https://astana.citypass.kz/en/attractions/muzey-kazakhstanskoy-zheleznoy-dorogi"
+          ],
+          "type": "Tourist-pass operator attraction directory",
+          "observed_data": [
+            "Catalogue says more than 34 attractions; first page exposes 12 cards and three-page controls.",
+            "Names, categories, addresses, map links, pass eligibility; detail descriptions, photos, hours, phone, external site where supplied.",
+            "Railways museum detail supplies address, Tue-Sun hours, phone and railwaymuseum.kz."
+          ],
+          "access": "HTML/Next.js server-rendered cards and details; page-source JSON-LD observed but sampled JSON-LD was Organization/WebSite metadata, not a verified complete attraction feed. No documented open API located.",
+          "extraction": "Follow catalogue pagination and canonical detail links; deduplicate excursions vs actual venues. Use attraction-specific sections, retain field provenance.",
+          "constraints": [
+            "Pass eligibility and Available today are commercial-product state, not a general guarantee that a venue is open.",
+            "Pass benefit must not be represented as unconditional free admission.",
+            "Some entries such as ALZHIR are outside municipal Astana: apply geometry/city filtering.",
+            "Hours and prices should be timestamped and refreshed; illustrative refresh weekly is a product choice."
+          ],
+          "verification": "Live HTML and individual detail verified."
+        },
+        {
+          "name": "MEGA Restaurants — Silk Way",
+          "priority": "high",
+          "urls": [
+            "https://restaurants.mega.kz/ru/?sm=2"
+          ],
+          "type": "Official mall restaurant directory",
+          "observed_data": [
+            "Restaurant names/logos, narrative cuisine descriptions, Silk Way floor, individual schedules, menu links.",
+            "Observed examples include Cafeteria with weekday-specific schedule, Starbucks, Rumi, JINAU, Coffee BOOM, Del Papa and Korean House."
+          ],
+          "access": "Ordinary HTML; one GET succeeded. Wagtail asset paths observed; no documented public restaurant API established.",
+          "extraction": "Keep sm=2 mall selection; parse each restaurant block and its menu href; menu links can be PDF or other pages.",
+          "constraints": [
+            "Mall-specific coverage; cannot infer all Astana branches or citywide coverage.",
+            "Some names appear through logos/alt text and some hours differ from mall hours.",
+            "Menu availability and listed prices may change independently."
+          ],
+          "verification": "Live rendered HTML and raw single page verified.",
+          "related_blocked_or_partial": [
+            {
+              "url": "https://www.mega.kz/mega.silkway",
+              "result": "Ordinary GET returned a short Nuxt loading shell, not a verified tenant directory. Web tool could not access it."
+            }
+          ]
+        },
+        {
+          "name": "Khan Shatyr tenant and floor-map directory",
+          "priority": "high",
+          "urls": [
+            "https://khanshatyr.com/ru",
+            "https://khanshatyr.com/ru/food-court/kafe-restorany-i-kofeyni",
+            "https://khanshatyr.com/ru/map/1/show/342"
+          ],
+          "type": "Official shopping-centre directory",
+          "observed_data": [
+            "Shopping categories with counts, cafes/restaurants, foodcourt, entertainment and address.",
+            "Cafe category links include Starbucks, Ottoman cafe, Cafe latte, Pizza City, CUPS coffee, Expresso and Le Pain.",
+            "Tenant links expose floor and numeric tenant identity, e.g. /map/1/show/342 for Starbucks; source includes generated SVG/D3 text and data-id values."
+          ],
+          "access": "Categories are ordinary HTML. Floor map is script-generated and text-only scrapers may miss tenant content. No documented public API verified.",
+          "extraction": "Start with category link lists; preserve floor and tenant ID from linked map URL. Render map or parse only verified embedded labels if indoor placement matters.",
+          "constraints": [
+            "Do not sum category counts as unique tenant count; brands can occur across categories and multiple floors.",
+            "Two CUPS entries appear in the same cafe category; preserve separate units until confirmed duplicates.",
+            "An SVG indoor position is not a geographic latitude/longitude.",
+            "Tenant detail popups may need rendering; initial text scraper did not expose full Starbucks popup details."
+          ],
+          "verification": "Live category HTML and single floor-map raw HTML verified."
+        },
+        {
+          "name": "Green Mall tenant directory",
+          "priority": "high",
+          "urls": [
+            "https://greenmall.kz/ru/brands",
+            "https://greenmall.kz/ru/brands/marwin2"
+          ],
+          "type": "Official shopping-centre directory",
+          "observed_data": [
+            "All-brands category shows 69 entries, filter categories and individual opening hours.",
+            "Includes coffee, restaurants, groceries, pharmacy, fitness, retail and services; mall address is Syganak 17B.",
+            "Marwin tenant detail provides description, individual schedule, indoor-location text, phone, external website and social link."
+          ],
+          "access": "Readable ordinary HTML with linked tenant detail pages; no documented open API verified.",
+          "extraction": "Parse brand cards and canonical details; use mall as parent POI.",
+          "constraints": [
+            "The directory includes a vacant-leasing entry; it is not an active business POI.",
+            "Published category counts need not match unique active tenants.",
+            "Indoor location and mall coordinate should be stored separately.",
+            "Copyright footer year does not establish update freshness."
+          ],
+          "verification": "Official directory and sample detail verified."
+        },
+        {
+          "name": "Astana Centralized Library System",
+          "priority": "high",
+          "urls": [
+            "https://astana-library.kz/contacts",
+            "https://astana-library.kz/o-nas",
+            "https://www.gov.kz/org/astana/press/news/details/1206891?lang=ru"
+          ],
+          "type": "Official public-library branch directory",
+          "observed_data": [
+            "Branch names and street addresses, branch-specific opening hours, weekly closed days, sanitary closure rules, phone and map links.",
+            "Central M. Auezov library gives Abilay Khan 4/1, a later evening schedule and separate Saturday hours; child and accessibility-specialist branches are distinguished.",
+            "Older about page says 22 branches; a current city-government article says 25."
+          ],
+          "access": "Contacts are static readable HTML. No documented POI API or downloadable branch feed verified.",
+          "extraction": "Parse repeated branch sections; separately model weekly schedule and monthly sanitary-day exception; map shortlinks are location references, not a licence to ingest a third-party map database.",
+          "constraints": [
+            "Do not use an old about-page total to limit current branch extraction.",
+            "Branch numbers can overlap for general and children libraries; key by system+type+branch number/address.",
+            "Book/electronic catalogues are a separate content domain and do not constitute a POI inventory."
+          ],
+          "verification": "Live contacts HTML and conflicting official count evidence verified."
+        },
+        {
+          "name": "MARWIN / Meloman official store locator",
+          "priority": "high",
+          "urls": [
+            "https://www.marwin.kz/shops/"
+          ],
+          "type": "Official chain locator with embedded structured data",
+          "observed_data": [
+            "Single HTML page embeds Magento JSON with path [\"*\"][\"Magento_Ui/js/core/app\"].components.shops.config.stores.astana.shops.",
+            "Astana group contains 28 entries in this sample: 8 MARWIN/Meloman stores and 20 Europharma partner pickup points.",
+            "Fields: name, code, address, schedule, image_url, location.lat, location.lng, phoneNumbers."
+          ],
+          "access": "One ordinary HTTP GET succeeded; text web reader intermittently timed out. Structured config is inside script type=text/x-magento-init; a separate API is unnecessary for this sampled page. This is embedded application data, not a documented open-data API.",
+          "extraction": "Parse JSON strictly and select stores.astana.shops; filter names or explicit business classification for genuine bookstore/toy branches. Preserve code as source ID, not a universal ID.",
+          "constraints": [
+            "Pickup locations are not MARWIN retail stores; do not turn all 28 into bookstores.",
+            "Coordinates should be validated against the city boundary and address.",
+            "Record count is a point-in-time sample, not a guaranteed ongoing total.",
+            "Store images and descriptive copy have separate rights from factual attributes."
+          ],
+          "verification": "Raw HTML config parsed successfully; Astana group and fields verified without crawling store details."
+        },
+        {
+          "name": "Sxodim Astana places and events",
+          "priority": "high",
+          "urls": [
+            "https://sxodim.com/astana/places",
+            "https://sxodim.com/astana/places/kofejni",
+            "https://sxodim.com/astana/place/rafe-coffee-food",
+            "https://sxodim.com/astana/afisha"
+          ],
+          "type": "Local editorial venue catalogue and event discovery",
+          "observed_data": [
+            "Coffee category has canonical /place/ detail links and page= pagination; first page links to Rafe, Tary, Jasyl, Nektar and others.",
+            "Sample Rafe detail has address, cuisine, daily hours, phone, average check, menu link, multiple branches, descriptive traits, and publication date 2022-01-30.",
+            "Current afisha pages expose event names, venue/address, dates/times, price-from and category."
+          ],
+          "access": "Ordinary HTML with linked place details and pagination; JS load-more/calendar in some views. No documented generally available API or data feed verified.",
+          "extraction": "Place listings provide discovery; parse explicit place blocks rather than entire page text. Event source needs independent event records with starts/ends and venue linkage.",
+          "constraints": [
+            "Historical place publication dates can make cuisine/hours/prices stale; source date and checked time must both be retained.",
+            "Page footer contains long irrelevant old event terms; do not feed entire HTML text into RAG.",
+            "Category JSON-LD may describe promoted events rather than the place directory; validate schema and scope.",
+            "A multi-branch place page must be split into separate physical POIs.",
+            "Keep subjective editorial descriptions separate from verified amenities."
+          ],
+          "verification": "Live place detail + event HTML, single raw catalogue and coffee category verified."
+        },
+        {
+          "name": "Ticketon venue pages",
+          "priority": "medium",
+          "urls": [
+            "https://ticketon.kz/en/place/kongress-centr",
+            "https://m.ticketon.kz/en/place/astana-arena-22",
+            "https://ticketon.kz/astana"
+          ],
+          "type": "Ticket operator venue catalogue and attached events",
+          "observed_data": [
+            "Indexed official Congress Center page shows current event list, age labels, dates/times, ticket-price-from, street address, phone, venue description and parking/access notes.",
+            "Indexed official Astana Arena detail supplies address, telephone and parking/entrance information."
+          ],
+          "access": "Search index exposes official HTML, but direct requests using web open returned 403/failed for sampled main and mobile pages. No documented publicly reusable API established.",
+          "extraction": "Use approved feed/partner access if available; otherwise handle accessible pages conservatively and do not bypass the observed 403. Treat event list as volatile.",
+          "constraints": [
+            "Not currently reliable as an unattended crawl backbone based on observed blocking.",
+            "Indexed content can lag; verify event dates and cancellations before user-facing recommendations.",
+            "Prices distinguish normal price and cashback/discount price; do not collapse these.",
+            "Venue-level facts and event-level occurrences are different records."
+          ],
+          "verification": "Primary search results inspected; direct page reading blocked, explicitly partial."
+        }
+      ],
+      "assessed_lower_priority_or_unusable": [
+        {
+          "name": "Kazakhstan Travel",
+          "urls": [
+            "https://www.kazakhstan.travel/en/regions/astana",
+            "https://www.kazakhstan.travel/ru/regions/astana"
+          ],
+          "status": "Readable official regional narrative, but Tourist attractions and Tourist routes sections remained Loading in inspected output; regional news/events empty. Useful multilingual historical/architectural context, low incremental POI coverage against VisitAstana, not a verified complete feed or current-hours source."
+        },
+        {
+          "name": "iTicket Kazakhstan",
+          "urls": [
+            "https://iticket.kz/",
+            "https://iticket.kz/maintenance",
+            "https://iticket.global/"
+          ],
+          "status": "The .kz homepage redirected to corporate iticket.global with event-production marketing; indexed /maintenance page also exists. No functioning Astana venue/event catalogue verified; do not list it as an available ingestion source."
+        },
+        {
+          "name": "Astana Ballet official contact page",
+          "urls": [
+            "https://astanaballet.com/ru/pages/kontakty"
+          ],
+          "status": "Useful direct single-venue authority. Explicitly gives current Uly Dala 43 and former Uly Dala 9, plus box-office phone. Good for address-alias corrections; no bulk catalogue/API verified."
+        }
+      ],
+      "recommended_order": [
+        "MARWIN embedded locator for small structured seed",
+        "Astana-library official contacts for underrepresented civic/culture POIs",
+        "CityPass for tourist attraction enrichment",
+        "MEGA Restaurants + Khan Shatyr + Green Mall for indoor tenant coverage",
+        "Sxodim places for long-tail discovery and subjective tags with staleness handling",
+        "Sxodim events as separate expiring layer",
+        "Ticketon only when access/reuse are settled; direct sample currently blocked"
+      ],
+      "diminishing_returns": "Further individual brand/mall/venue sites repeat this pattern and add narrow coverage rather than another citywide database. These should be selected to fill measured gaps after core OSM/Overture/FSQ + tourism sources are deduplicated."
+    },
+    "supplemental_context": {
+      "checked_date": "2026-10-18",
+      "scope": "Astana supplementary/contextual data only; six categories, seven source records; no accounts, purchases, contacts or Git changes",
+      "research_method": "Official primary documentation and read-only HTTP probes. Firecrawl unavailable locally; used web research and standard HTTP requests.",
+      "ready_now": [
+        "Open-Meteo weather (noncommercial)",
+        "Kazhydromet WIS2 SYNOP observations",
+        "Wikimedia Commons per-file licensed photos",
+        "Valhalla pedestrian prototype under demo fair use"
+      ],
+      "conditional": [
+        "accessibility.cloud after token and Astana completeness audit",
+        "ORS/GraphHopper after key and hosted terms review",
+        "CTS official GTFS only after feed and license discovery"
+      ],
+      "sources": [
+        {
+          "id": "accessibility_cloud_wheelmap",
+          "name": "accessibility.cloud / Wheelmap",
+          "role": "POI accessibility enrichment; not a complete new inventory",
+          "primary_urls": [
+            "https://github.com/sozialhelden/accessibility-cloud/blob/main/app/docs/json-api.md",
+            "https://github.com/sozialhelden/accessibility-cloud"
+          ],
+          "access": "App authentication token required as appToken; no account or token created. Recommended CDN base: https://accessibility-cloud-v2.freetls.fastly.net .",
+          "useful_fields": [
+            "place-infos accessibility object",
+            "wheelchair status",
+            "source IDs",
+            "per-source licenseId"
+          ],
+          "coverage": "API capability verified from official documentation; Astana record count and completeness NOT verified because no app token was used.",
+          "storage_license": "Licenses vary by source. Read returned licenses and retain source/license provenance before storing or redistributing; do not label all data CC BY or ODbL. Pagination max 1000/page; CDN cache up to 5 minutes.",
+          "recommendation": "Optional enrichment after local coverage audit. Missing information means unknown accessibility, never inaccessible."
+        },
+        {
+          "id": "open_meteo_weather",
+          "name": "Open-Meteo Forecast API",
+          "role": "Walking-time weather context; not POIs",
+          "primary_urls": [
+            "https://open-meteo.com/en/docs",
+            "https://open-meteo.com/en/terms"
+          ],
+          "access": "No key or signup for non-commercial free service. Free hosted service: <10000/day, 5000/hour, 600/min; commercial use requires paid plan even though underlying data license permits commercial reuse.",
+          "useful_fields": [
+            "apparent_temperature",
+            "wind_speed_10m",
+            "wind_gusts_10m",
+            "precipitation_probability",
+            "snowfall",
+            "visibility",
+            "UV index"
+          ],
+          "coverage": "Live Astana coordinate request HTTP 200 on 2026-10-18, timezone Asia/Almaty, 24 hourly points; provider grid coordinate differs from requested coordinate.",
+          "live_evidence": {
+            "url": "https://api.open-meteo.com/v1/forecast?latitude=51.1282&longitude=71.4304&current=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_gusts_10m&hourly=temperature_2m,precipitation_probability,snowfall,visibility,uv_index&forecast_days=1&timezone=Asia%2FAlmaty",
+            "current_time": "2026-10-18T21:30",
+            "hourly_points": 24,
+            "raw_file": "openmeteo_astana.txt"
+          },
+          "storage_license": "API data CC BY 4.0; attribution required. Data can be stored and redistributed under that license; distinguish data license from hosted API commercial-use conditions.",
+          "recommendation": "Best immediately usable weather source for hackathon; cache city forecasts and use to adjust walk duration/indoor recommendations."
+        },
+        {
+          "id": "kazhydromet_wis2",
+          "name": "Kazhydromet WIS2 observations",
+          "role": "Official local observation context; not forecast, warning feed, or POIs",
+          "primary_urls": [
+            "https://wis2box.kazhydromet.kz/oapi?f=html",
+            "https://wis2box.kazhydromet.kz/oapi/collections/stations/items?bbox=71,50.9,71.7,51.4&limit=20&f=json",
+            "https://training.wis2box.wis.wmo.int/practical-sessions/datasets-with-access-control/"
+          ],
+          "access": "Public OGC API JSON endpoints returned HTTP 200 without key.",
+          "useful_fields": [
+            "SYNOP station observations",
+            "reportTime",
+            "phenomenonTime",
+            "variable name",
+            "value",
+            "units",
+            "wigos_station_identifier"
+          ],
+          "coverage": "Live Astana bbox station metadata returned 2 operational stations: Bayterek (35180) and Nur-Sultan (35188). Actual SYNOP observation probe returned station 35188 reports at 2026-10-18T15:00:00Z.",
+          "live_evidence": {
+            "observation_url": "https://wis2box.kazhydromet.kz/oapi/collections/urn:wmo:md:kz-kazhydromet:core.surface-based-observations.synop/items?bbox=71,50.9,71.7,51.4&sortby=-reportTime&limit=2&f=json",
+            "raw_file": "kazhydromet_astana_observations.txt",
+            "metadata_file": "kazhydromet_discovery.txt"
+          },
+          "storage_license": "SYNOP discovery metadata says wmo:dataPolicy=core. WMO official training defines core as free, unrestricted, no charge and no conditions on use. Preserve provider, timestamps and station IDs.",
+          "recommendation": "Strong official observation supplement; normalize one-feature-per-variable observations. Do not infer official alerts or future forecast from this endpoint."
+        },
+        {
+          "id": "pedestrian_routing",
+          "name": "Pedestrian routing services",
+          "role": "Route geometry, realistic distance/time, matrices/isochrones; not an independent POI inventory",
+          "primary_urls": [
+            "https://valhalla.github.io/valhalla/api/route/api-reference/",
+            "https://github.com/valhalla/valhalla/blob/master/README.md",
+            "https://openrouteservice.org/services/",
+            "https://docs.graphhopper.com/openapi/routing"
+          ],
+          "providers": [
+            {
+              "name": "Valhalla",
+              "access": "Self-host, or fair-use FOSSGIS public demo; demo has no key. For published end-user apps the README asks for Github notice and identifying X-Client-Id. No contact made.",
+              "coverage": "LIVE Astana route using costing=pedestrian succeeded: 1.552 km, 1115.686 seconds (~18.6 min) for supplied coordinates. One route confirms response, not full network quality.",
+              "storage_license": "Self-host supports controlled persistence; comply with upstream data licenses. OSM attribution required; additional attribution if elevation data used. Public demo is fair-use, not unlimited production infrastructure.",
+              "primary_urls": [
+                "https://github.com/valhalla/valhalla/blob/master/README.md",
+                "https://valhalla.github.io/valhalla/contributing/data/attribution/"
+              ]
+            },
+            {
+              "name": "openrouteservice",
+              "access": "Hosted API key required; free token is available after signup. No key obtained. Walking, hiking, wheelchair directions plus matrices/isochrones.",
+              "coverage": "Official docs claim global directions coverage; Astana routing not live-tested without a key.",
+              "storage_license": "OSM/ORS attribution applies; current hosted Terms page redirects to HeiGIT app and was not readable by text fetch. Do not assume indefinite commercial route database rights. Self-host is an alternative.",
+              "primary_urls": [
+                "https://openrouteservice.org/services/",
+                "https://openrouteservice.org/restrictions/",
+                "https://account.heigit.org/info/tos"
+              ]
+            },
+            {
+              "name": "GraphHopper",
+              "access": "Hosted Directions API requires account and API key; self-hosted engine alternative.",
+              "coverage": "Routing docs verified; Astana route not live-tested without key.",
+              "storage_license": "Terms explicitly allow temporary client-side caching and prohibit scraping/mass download unless package states otherwise; API redistribution needs custom agreement. Current attribution page requires OSM; GraphHopper attribution page says their attribution is appreciated (older terms differ).",
+              "primary_urls": [
+                "https://www.graphhopper.com/terms/",
+                "https://www.graphhopper.com/attribution/",
+                "https://docs.graphhopper.com/openapi/routing"
+              ]
+            }
+          ],
+          "live_evidence": {
+            "request": {
+              "locations": [
+                {
+                  "lat": 51.1282,
+                  "lon": 71.4304
+                },
+                {
+                  "lat": 51.1255,
+                  "lon": 71.4464
+                }
+              ],
+              "costing": "pedestrian",
+              "units": "kilometers"
+            },
+            "response_status": 0,
+            "summary": {
+              "has_time_restrictions": false,
+              "has_toll": false,
+              "has_highway": false,
+              "has_ferry": false,
+              "min_lat": 51.125166,
+              "min_lon": 71.430273,
+              "max_lat": 51.128674,
+              "max_lon": 71.446867,
+              "time": 1115.686,
+              "length": 1.552,
+              "cost": 1206.959
+            },
+            "raw_file": "valhalla_astana_route_curl.json"
+          },
+          "warning": "OSRM transport mode is determined by graph preprocessing Lua profile; changing URL profile text alone does not select a pedestrian graph. Do not use driving demo results as walking times.",
+          "warning_source": "https://project-osrm.org/docs/v5.24.0/api/",
+          "recommendation": "Use an actual pedestrian profile. Valhalla live check is promising; for production choose self-host or documented hosted plan and visually audit bridges, crossings, entrances and closures."
+        },
+        {
+          "id": "cts_transit",
+          "name": "Astana City Transportation Systems (CTS)",
+          "role": "Transit access/return-trip context and service-change references; not sightseeing inventory",
+          "primary_urls": [
+            "https://cts.gov.kz/ru/",
+            "https://cts.gov.kz/ru/for-passengers/transport/"
+          ],
+          "access": "Official public website available. No downloadable official GTFS ZIP, GTFS-RT feed, developer API, key policy or open data license found during this research.",
+          "coverage": "Operator and Astana relevance verified. Current official routes page says information temporarily unavailable. Official GTFS availability NOT verified; do not represent any guessed URL as a feed.",
+          "storage_license": "No dataset license verified; web accessibility is not permission to mirror an operational transit dataset.",
+          "recommendation": "Keep as an official reference lead; exclude transit feed integration from ready-to-import sources until public feed URL and license are verified."
+        },
+        {
+          "id": "wikimedia_commons_photos",
+          "name": "Wikimedia Commons",
+          "role": "Licensed visual enrichment, photo-backed landmarks; not complete POI inventory",
+          "primary_urls": [
+            "https://www.mediawiki.org/wiki/API:Geosearch",
+            "https://www.mediawiki.org/wiki/API:Imageinfo",
+            "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia/licenses"
+          ],
+          "access": "Public MediaWiki read API, no key for tested requests. Geosearch file namespace=6 plus imageinfo url|extmetadata.",
+          "coverage": "Live 10 km search around 51.1282,71.4304 returned 10 file records (requested limit=10, NOT total coverage). Sample Astana SAM 0086 by Alex J. Butler is CC BY 2.0.",
+          "live_evidence": {
+            "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=geosearch&ggscoord=51.1282%7C71.4304&ggsradius=10000&ggslimit=10&ggsnamespace=6&prop=imageinfo&iiprop=url%7Cextmetadata&iiextmetadatafilter=Artist%7CLicenseShortName%7CLicenseUrl%7CAttributionRequired%7CCopyrighted%7CImageDescription",
+            "sample_file": "https://commons.wikimedia.org/wiki/File:Astana_SAM_0086_(14933889040).jpg",
+            "raw_file": "commons_astana_geo.txt"
+          },
+          "storage_license": "Per-file license. Retain author, source file description URL, license URL, attribution requirements and modification note. CC BY-SA derivatives require compatible sharing; public-domain status still needs provenance.",
+          "recommendation": "Best reusable photo source; match to POI by Wikidata Commons/P18 linkage or manual curation. Nearby geotag does not prove the photo depicts a specific POI."
+        },
+        {
+          "id": "open_meteo_air_quality",
+          "name": "Open-Meteo / CAMS Air Quality API",
+          "role": "City-scale outdoor context; not street-level pollution, safety certification or POI inventory",
+          "primary_urls": [
+            "https://open-meteo.com/en/docs/air-quality-api",
+            "https://open-meteo.com/en/terms"
+          ],
+          "access": "Same free non-commercial hosted API terms as Open-Meteo weather; no key for tested JSON request.",
+          "useful_fields": [
+            "PM2.5",
+            "PM10",
+            "US AQI",
+            "European AQI",
+            "ozone",
+            "dust"
+          ],
+          "coverage": "Live Astana JSON HTTP 200 with 24 hourly points. Global CAMS composition model is ~45 km spatial and 3-hourly native temporal resolution; API hourly outputs do not make it street-level. Pollen fields are Europe-only.",
+          "live_evidence": {
+            "current_time": "2026-10-18T21:00",
+            "raw_file": "openmeteo_astana_air_quality.txt"
+          },
+          "storage_license": "CC BY 4.0 data; docs request attribution to Open-Meteo and CAMS data provider. Keep model/time metadata.",
+          "recommendation": "Optional after core route/POI quality; helps choose outdoor duration, but cannot rank adjacent streets for cleaner air."
+        }
+      ]
+    }
+  }
+}

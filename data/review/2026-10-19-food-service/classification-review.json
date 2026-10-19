@@ -1,0 +1,691 @@
+{
+  "schema_version": 1,
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "review_scope": "Independent food-service category review using published accepted exact-branch format facts and verified local public cache/report; no network or paid calls. Proposed records only; no publication mutation.",
+  "reviews": [
+    {
+      "canonical_id": "overture:19a2719f-3e04-43e1-a045-77ebcaf6bd6c",
+      "field": "category",
+      "value": "cafe",
+      "status": "accepted",
+      "fact_status": "source_reported",
+      "source": "public_directory",
+      "source_id": "2gis:firm/70000001035446317",
+      "source_url": "https://2gis.kz/astana/firm/70000001035446317/tab/info",
+      "source_title": "2GIS — exact Astana branch",
+      "checked_at": "2026-10-19",
+      "reviewed_by": "codex_food_classification_independent_review",
+      "evidence_excerpt": "Home Macaron; Кабанбай батыр проспект,58Б корпус7; ЖК EXPO Boulevard-5; Кофейни",
+      "evidence_kind": "paraphrase",
+      "scope": "venue",
+      "license": "all_rights_reserved",
+      "reuse_permission": "not_established",
+      "prior_category": "restaurant",
+      "branch_scope": "exact",
+      "branch_confirmation": {
+        "source_name": "Home Macaron",
+        "source_address": "Кабанбай батыр проспект,58Б корпус7; ЖК EXPO Boulevard-5"
+      },
+      "audit_proof": {
+        "accepted_format": "Кофейня",
+        "source_url": "https://2gis.kz/astana/firm/70000001035446317/tab/info",
+        "source_id": "2gis:firm/70000001035446317",
+        "source_city": "Астана",
+        "exact_branch": "пр. Кабанбай Батыра 58Б, корпус 7, офис 16",
+        "canonical_address": "Qabanbay Batyr Ave 58Б",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "audited_report_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/places-2gis-evidence.json",
+        "audited_report_sha256": "46ec8e7ae6cb66f80d7bdd1c8b4f3fdc4d15a4c9d519aad0b9683563e3c42ee8",
+        "raw_response_available": false,
+        "source_name": "Home Macaron",
+        "source_branch_address": "Кабанбай батыр проспект,58Б корпус7; ЖК EXPO Boulevard-5",
+        "rubrics": [
+          {
+            "name": "Кофейни",
+            "kind": "source_reported"
+          }
+        ],
+        "limitation": "Uses published accepted branch format and earlier audited report; original directory response body was not retained in this cache."
+      }
+    },
+    {
+      "canonical_id": "overture:5860a341-98e7-480a-b56d-63c21d14e410",
+      "field": "category",
+      "value": "cafe",
+      "status": "accepted",
+      "fact_status": "source_reported",
+      "source": "public_directory",
+      "source_id": "2gis:firm/70000001030630928",
+      "source_url": "https://2gis.kz/astana/firm/70000001030630928/tab/info",
+      "source_title": "2GIS — exact Astana branch",
+      "checked_at": "2026-10-19",
+      "reviewed_by": "codex_food_classification_independent_review",
+      "evidence_excerpt": "Тәп-Тәтті, кондитерская; проспект Мангилик Ел, 51; Кафе-кондитерские; Кондитерские изделия; Пекарни",
+      "evidence_kind": "paraphrase",
+      "scope": "venue",
+      "license": "all_rights_reserved",
+      "reuse_permission": "not_established",
+      "prior_category": "restaurant",
+      "branch_scope": "exact",
+      "branch_confirmation": {
+        "source_name": "Тәп-Тәтті, кондитерская",
+        "source_address": "проспект Мангилик Ел, 51"
+      },
+      "audit_proof": {
+        "accepted_format": "Кондитерская",
+        "source_url": "https://2gis.kz/astana/firm/70000001030630928/tab/info",
+        "source_id": "2gis:firm/70000001030630928",
+        "source_city": "Астана",
+        "exact_branch": "проспект Мангилик Ел, 51",
+        "canonical_address": "Мәңгілік Ел даңғылы 51",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-ebee7000395b30a9.html",
+        "response_sha256": "ebee7000395b30a9077613d88f3021cfc348b90d33fb1e3a1a6057ed00f3da8f",
+        "hash_verified": true,
+        "firm_id": "70000001030630928",
+        "source_name": "Тәп-Тәтті, кондитерская",
+        "rubrics": [
+          {
+            "name": "Кафе-кондитерские",
+            "kind": "primary",
+            "id": "112658"
+          },
+          {
+            "name": "Кондитерские изделия",
+            "kind": "additional",
+            "id": "363"
+          },
+          {
+            "name": "Пекарни",
+            "kind": "additional",
+            "id": "111594"
+          }
+        ]
+      }
+    },
+    {
+      "canonical_id": "overture:de980279-1653-4e1b-b5fb-e12137d5a68e",
+      "field": "category",
+      "value": "cafe",
+      "status": "accepted",
+      "fact_status": "source_reported",
+      "source": "public_directory",
+      "source_id": "2gis:firm/70000001051170179",
+      "source_url": "https://2gis.kz/astana/search/Inclaircafe",
+      "source_title": "2GIS — exact Astana branch",
+      "checked_at": "2026-10-19",
+      "reviewed_by": "codex_food_classification_independent_review",
+      "evidence_excerpt": "InClair, кофейня-кондитерская; улица Туркестан, 20; Кондитерские изделия; Кофейни; Кафе-кондитерские",
+      "evidence_kind": "paraphrase",
+      "scope": "venue",
+      "license": "all_rights_reserved",
+      "reuse_permission": "not_established",
+      "prior_category": "restaurant",
+      "branch_scope": "exact",
+      "branch_confirmation": {
+        "source_name": "InClair, кофейня-кондитерская",
+        "source_address": "улица Туркестан, 20"
+      },
+      "audit_proof": {
+        "accepted_format": "кофейня-кондитерская / Кондитерские изделия",
+        "source_url": "https://2gis.kz/astana/search/Inclaircafe",
+        "source_id": "2gis:firm/70000001051170179",
+        "source_city": "Астана",
+        "exact_branch": "улица Туркестан, 20",
+        "canonical_address": "Түркістан көшесі 20",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/27a0734ca869af4f7cc41b1c70ead6cd41ef1debd2e73eb6cb590230b30e7eba.html",
+        "response_sha256": "27a0734ca869af4f7cc41b1c70ead6cd41ef1debd2e73eb6cb590230b30e7eba",
+        "hash_verified": true,
+        "firm_id": "70000001051170179",
+        "source_name": "InClair, кофейня-кондитерская",
+        "rubrics": [
+          {
+            "name": "Кондитерские изделия",
+            "kind": "primary",
+            "id": "363"
+          },
+          {
+            "name": "Кофейни",
+            "kind": "additional",
+            "id": "162"
+          },
+          {
+            "name": "Кафе-кондитерские",
+            "kind": "additional",
+            "id": "112658"
+          }
+        ]
+      }
+    },
+    {
+      "canonical_id": "overture:75b7f416-3485-4eb9-9b8c-941e2b71a9a6",
+      "field": "category",
+      "value": "cafe",
+      "status": "accepted",
+      "fact_status": "source_reported",
+      "source": "public_directory",
+      "source_id": "2gis:firm/70000001036064398",
+      "source_url": "https://2gis.kz/astana/search/La%20Maison%20De%20Rafe",
+      "source_title": "2GIS — exact Astana branch",
+      "checked_at": "2026-10-19",
+      "reviewed_by": "codex_food_classification_independent_review",
+      "evidence_excerpt": "La Maison de Rafe; Керей, Жанибек хандар улица, 28; Кофейни; Кафе; Доставка еды",
+      "evidence_kind": "paraphrase",
+      "scope": "venue",
+      "license": "all_rights_reserved",
+      "reuse_permission": "not_established",
+      "prior_category": "restaurant",
+      "branch_scope": "exact",
+      "branch_confirmation": {
+        "source_name": "La Maison de Rafe",
+        "source_address": "Керей, Жанибек хандар улица, 28"
+      },
+      "audit_proof": {
+        "accepted_format": "Кофейни",
+        "source_url": "https://2gis.kz/astana/search/La%20Maison%20De%20Rafe",
+        "source_id": "2gis:firm/70000001036064398",
+        "source_city": "Астана",
+        "exact_branch": "Керей, Жанибек хандар улица, 28",
+        "canonical_address": "Kerey and Zhanibek Khans St 28",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/f2de6c6f4e94cc7e5cc32c818f831720a6d15b16bcfc8c99cc9fbddaed63a700.html",
+        "response_sha256": "f2de6c6f4e94cc7e5cc32c818f831720a6d15b16bcfc8c99cc9fbddaed63a700",
+        "hash_verified": true,
+        "firm_id": "70000001036064398",
+        "source_name": "La Maison de Rafe",
+        "rubrics": [
+          {
+            "name": "Кофейни",
+            "kind": "primary",
+            "id": "162"
+          },
+          {
+            "name": "Кафе",
+            "kind": "additional",
+            "id": "161"
+          },
+          {
+            "name": "Доставка еды",
+            "kind": "additional",
+            "id": "1203"
+          }
+        ]
+      }
+    },
+    {
+      "canonical_id": "overture:796dec46-e1e1-40b4-b137-fe423439c25d",
+      "field": "category",
+      "value": "cafe",
+      "status": "accepted",
+      "fact_status": "source_reported",
+      "source": "public_directory",
+      "source_id": "2gis:firm/70000001062652439",
+      "source_url": "https://2gis.kz/astana/search/Janzeto",
+      "source_title": "2GIS — exact Astana branch",
+      "checked_at": "2026-10-19",
+      "reviewed_by": "codex_food_classification_independent_review",
+      "evidence_excerpt": "JANZETO; улица Сыганак, 15/1; Кофейни; Кондитерские изделия; Кафе-кондитерские",
+      "evidence_kind": "paraphrase",
+      "scope": "venue",
+      "license": "all_rights_reserved",
+      "reuse_permission": "not_established",
+      "prior_category": "restaurant",
+      "branch_scope": "exact",
+      "branch_confirmation": {
+        "source_name": "JANZETO",
+        "source_address": "улица Сыганак, 15/1"
+      },
+      "audit_proof": {
+        "accepted_format": "Кофейни",
+        "source_url": "https://2gis.kz/astana/search/Janzeto",
+        "source_id": "2gis:firm/70000001062652439",
+        "source_city": "Астана",
+        "exact_branch": "улица Сыганак, 15/1",
+        "canonical_address": "Syganak St 15/1",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/a83523292ec185f990f5ee2fc0a5f6f98f3c6d207871a32f3cc6deab283a46c5.html",
+        "response_sha256": "a83523292ec185f990f5ee2fc0a5f6f98f3c6d207871a32f3cc6deab283a46c5",
+        "hash_verified": true,
+        "firm_id": "70000001062652439",
+        "source_name": "JANZETO",
+        "rubrics": [
+          {
+            "name": "Кофейни",
+            "kind": "primary",
+            "id": "162"
+          },
+          {
+            "name": "Кондитерские изделия",
+            "kind": "additional",
+            "id": "363"
+          },
+          {
+            "name": "Кафе-кондитерские",
+            "kind": "additional",
+            "id": "112658"
+          }
+        ]
+      }
+    },
+    {
+      "canonical_id": "overture:8f8b36c5-61c6-4a37-8186-2daa45cf93ca",
+      "field": "category",
+      "value": "cafe",
+      "status": "accepted",
+      "fact_status": "source_reported",
+      "source": "public_directory",
+      "source_id": "2gis:firm/70000001074627875",
+      "source_url": "https://2gis.kz/astana/search/Motimus",
+      "source_title": "2GIS — exact Astana branch",
+      "checked_at": "2026-10-19",
+      "reviewed_by": "codex_food_classification_independent_review",
+      "evidence_excerpt": "Motimus and bubble tea; улица Бейбитшилик, 32; Кафе-кондитерские",
+      "evidence_kind": "paraphrase",
+      "scope": "venue",
+      "license": "all_rights_reserved",
+      "reuse_permission": "not_established",
+      "prior_category": "restaurant",
+      "branch_scope": "exact",
+      "branch_confirmation": {
+        "source_name": "Motimus and bubble tea",
+        "source_address": "улица Бейбитшилик, 32"
+      },
+      "audit_proof": {
+        "accepted_format": "Кафе-кондитерские",
+        "source_url": "https://2gis.kz/astana/search/Motimus",
+        "source_id": "2gis:firm/70000001074627875",
+        "source_city": "Астана",
+        "exact_branch": "улица Бейбитшилик, 32",
+        "canonical_address": "Бейбітшілік көшесі 32",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/cdad09eccd392005ef41413434edb8a714446b23071b4886ee0a6d8cbea88edc.html",
+        "response_sha256": "cdad09eccd392005ef41413434edb8a714446b23071b4886ee0a6d8cbea88edc",
+        "hash_verified": true,
+        "firm_id": "70000001074627875",
+        "source_name": "Motimus and bubble tea",
+        "rubrics": [
+          {
+            "name": "Кафе-кондитерские",
+            "kind": "primary",
+            "id": "112658"
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "canonical_id": "overture:19a2719f-3e04-43e1-a045-77ebcaf6bd6c",
+      "canonical_name": "Home Macaron",
+      "decision": "supported",
+      "proof": {
+        "accepted_format": "Кофейня",
+        "source_url": "https://2gis.kz/astana/firm/70000001035446317/tab/info",
+        "source_id": "2gis:firm/70000001035446317",
+        "source_city": "Астана",
+        "exact_branch": "пр. Кабанбай Батыра 58Б, корпус 7, офис 16",
+        "canonical_address": "Qabanbay Batyr Ave 58Б",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "audited_report_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/places-2gis-evidence.json",
+        "audited_report_sha256": "46ec8e7ae6cb66f80d7bdd1c8b4f3fdc4d15a4c9d519aad0b9683563e3c42ee8",
+        "raw_response_available": false,
+        "source_name": "Home Macaron",
+        "source_branch_address": "Кабанбай батыр проспект,58Б корпус7; ЖК EXPO Boulevard-5",
+        "rubrics": [
+          {
+            "name": "Кофейни",
+            "kind": "source_reported"
+          }
+        ],
+        "limitation": "Uses published accepted branch format and earlier audited report; original directory response body was not retained in this cache."
+      },
+      "reason": "Explicit coffee/café/café-confectionery rubric for accepted exact Astana branch; no conflicting restaurant/bar rubric. Coarse category becomes cafe; existing format preserves subtype."
+    },
+    {
+      "canonical_id": "overture:5860a341-98e7-480a-b56d-63c21d14e410",
+      "canonical_name": "Тáп Тáттi",
+      "decision": "supported",
+      "proof": {
+        "accepted_format": "Кондитерская",
+        "source_url": "https://2gis.kz/astana/firm/70000001030630928/tab/info",
+        "source_id": "2gis:firm/70000001030630928",
+        "source_city": "Астана",
+        "exact_branch": "проспект Мангилик Ел, 51",
+        "canonical_address": "Мәңгілік Ел даңғылы 51",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-ebee7000395b30a9.html",
+        "response_sha256": "ebee7000395b30a9077613d88f3021cfc348b90d33fb1e3a1a6057ed00f3da8f",
+        "hash_verified": true,
+        "firm_id": "70000001030630928",
+        "source_name": "Тәп-Тәтті, кондитерская",
+        "rubrics": [
+          {
+            "name": "Кафе-кондитерские",
+            "kind": "primary",
+            "id": "112658"
+          },
+          {
+            "name": "Кондитерские изделия",
+            "kind": "additional",
+            "id": "363"
+          },
+          {
+            "name": "Пекарни",
+            "kind": "additional",
+            "id": "111594"
+          }
+        ]
+      },
+      "reason": "Explicit coffee/café/café-confectionery rubric for accepted exact Astana branch; no conflicting restaurant/bar rubric. Coarse category becomes cafe; existing format preserves subtype."
+    },
+    {
+      "canonical_id": "overture:de980279-1653-4e1b-b5fb-e12137d5a68e",
+      "canonical_name": "Inclaircafe",
+      "decision": "supported",
+      "proof": {
+        "accepted_format": "кофейня-кондитерская / Кондитерские изделия",
+        "source_url": "https://2gis.kz/astana/search/Inclaircafe",
+        "source_id": "2gis:firm/70000001051170179",
+        "source_city": "Астана",
+        "exact_branch": "улица Туркестан, 20",
+        "canonical_address": "Түркістан көшесі 20",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/27a0734ca869af4f7cc41b1c70ead6cd41ef1debd2e73eb6cb590230b30e7eba.html",
+        "response_sha256": "27a0734ca869af4f7cc41b1c70ead6cd41ef1debd2e73eb6cb590230b30e7eba",
+        "hash_verified": true,
+        "firm_id": "70000001051170179",
+        "source_name": "InClair, кофейня-кондитерская",
+        "rubrics": [
+          {
+            "name": "Кондитерские изделия",
+            "kind": "primary",
+            "id": "363"
+          },
+          {
+            "name": "Кофейни",
+            "kind": "additional",
+            "id": "162"
+          },
+          {
+            "name": "Кафе-кондитерские",
+            "kind": "additional",
+            "id": "112658"
+          }
+        ]
+      },
+      "reason": "Explicit coffee/café/café-confectionery rubric for accepted exact Astana branch; no conflicting restaurant/bar rubric. Coarse category becomes cafe; existing format preserves subtype."
+    },
+    {
+      "canonical_id": "overture:75b7f416-3485-4eb9-9b8c-941e2b71a9a6",
+      "canonical_name": "La Maison De Rafe",
+      "decision": "supported",
+      "proof": {
+        "accepted_format": "Кофейни",
+        "source_url": "https://2gis.kz/astana/search/La%20Maison%20De%20Rafe",
+        "source_id": "2gis:firm/70000001036064398",
+        "source_city": "Астана",
+        "exact_branch": "Керей, Жанибек хандар улица, 28",
+        "canonical_address": "Kerey and Zhanibek Khans St 28",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/f2de6c6f4e94cc7e5cc32c818f831720a6d15b16bcfc8c99cc9fbddaed63a700.html",
+        "response_sha256": "f2de6c6f4e94cc7e5cc32c818f831720a6d15b16bcfc8c99cc9fbddaed63a700",
+        "hash_verified": true,
+        "firm_id": "70000001036064398",
+        "source_name": "La Maison de Rafe",
+        "rubrics": [
+          {
+            "name": "Кофейни",
+            "kind": "primary",
+            "id": "162"
+          },
+          {
+            "name": "Кафе",
+            "kind": "additional",
+            "id": "161"
+          },
+          {
+            "name": "Доставка еды",
+            "kind": "additional",
+            "id": "1203"
+          }
+        ]
+      },
+      "reason": "Explicit coffee/café/café-confectionery rubric for accepted exact Astana branch; no conflicting restaurant/bar rubric. Coarse category becomes cafe; existing format preserves subtype."
+    },
+    {
+      "canonical_id": "overture:796dec46-e1e1-40b4-b137-fe423439c25d",
+      "canonical_name": "Janzeto",
+      "decision": "supported",
+      "proof": {
+        "accepted_format": "Кофейни",
+        "source_url": "https://2gis.kz/astana/search/Janzeto",
+        "source_id": "2gis:firm/70000001062652439",
+        "source_city": "Астана",
+        "exact_branch": "улица Сыганак, 15/1",
+        "canonical_address": "Syganak St 15/1",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/a83523292ec185f990f5ee2fc0a5f6f98f3c6d207871a32f3cc6deab283a46c5.html",
+        "response_sha256": "a83523292ec185f990f5ee2fc0a5f6f98f3c6d207871a32f3cc6deab283a46c5",
+        "hash_verified": true,
+        "firm_id": "70000001062652439",
+        "source_name": "JANZETO",
+        "rubrics": [
+          {
+            "name": "Кофейни",
+            "kind": "primary",
+            "id": "162"
+          },
+          {
+            "name": "Кондитерские изделия",
+            "kind": "additional",
+            "id": "363"
+          },
+          {
+            "name": "Кафе-кондитерские",
+            "kind": "additional",
+            "id": "112658"
+          }
+        ]
+      },
+      "reason": "Explicit coffee/café/café-confectionery rubric for accepted exact Astana branch; no conflicting restaurant/bar rubric. Coarse category becomes cafe; existing format preserves subtype."
+    },
+    {
+      "canonical_id": "overture:8f8b36c5-61c6-4a37-8186-2daa45cf93ca",
+      "canonical_name": "Motimus",
+      "decision": "supported",
+      "proof": {
+        "accepted_format": "Кафе-кондитерские",
+        "source_url": "https://2gis.kz/astana/search/Motimus",
+        "source_id": "2gis:firm/70000001074627875",
+        "source_city": "Астана",
+        "exact_branch": "улица Бейбитшилик, 32",
+        "canonical_address": "Бейбітшілік көшесі 32",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/cdad09eccd392005ef41413434edb8a714446b23071b4886ee0a6d8cbea88edc.html",
+        "response_sha256": "cdad09eccd392005ef41413434edb8a714446b23071b4886ee0a6d8cbea88edc",
+        "hash_verified": true,
+        "firm_id": "70000001074627875",
+        "source_name": "Motimus and bubble tea",
+        "rubrics": [
+          {
+            "name": "Кафе-кондитерские",
+            "kind": "primary",
+            "id": "112658"
+          }
+        ]
+      },
+      "reason": "Explicit coffee/café/café-confectionery rubric for accepted exact Astana branch; no conflicting restaurant/bar rubric. Coarse category becomes cafe; existing format preserves subtype."
+    },
+    {
+      "canonical_id": "overture:a5ffb890-ca42-40f9-abbc-8de17cfd16cf",
+      "canonical_name": "Tika cake",
+      "decision": "held",
+      "proof": {
+        "accepted_format": "Кондитерские изделия",
+        "source_url": "https://2gis.kz/astana/search/Tika%20cake",
+        "source_id": "2gis:firm/70000001030449617",
+        "source_city": "Астана",
+        "exact_branch": "улица Акмешит, 9/2",
+        "canonical_address": "Aqmeshit St 9/2",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/e5e14ae97773752ea629b554a39732c6969cb42f5c0c5451c3523ac7820980bd.html",
+        "response_sha256": "e5e14ae97773752ea629b554a39732c6969cb42f5c0c5451c3523ac7820980bd",
+        "hash_verified": true,
+        "firm_id": "70000001030449617",
+        "source_name": "Tika Cake",
+        "rubrics": [
+          {
+            "name": "Кондитерские изделия",
+            "kind": "primary",
+            "id": "363"
+          }
+        ]
+      },
+      "reason": "Pure retail confectionery rubric; no café/table-service rubric. Coarse taxonomy has no confectionery-retail category. Do not map to cafe or other without an explicit taxonomy decision."
+    },
+    {
+      "canonical_id": "overture:db92b67a-e0b1-492d-af36-75bad0d9f10d",
+      "canonical_name": "Iz Amsterdama",
+      "decision": "held",
+      "proof": {
+        "accepted_format": "магазин сладостей / Кондитерские изделия",
+        "source_url": "https://2gis.kz/astana/search/Iz%20Amsterdama",
+        "source_id": "2gis:firm/70000001049841298",
+        "source_city": "Астана",
+        "exact_branch": "улица Анатолий Храпатый, 14",
+        "canonical_address": "Анатолий Храпатый 14",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/97f6840f6dcf4d2cb065bd5f2fbc016b97bcfc38bc9815dbbf9a82bfeb9b801c.html",
+        "response_sha256": "97f6840f6dcf4d2cb065bd5f2fbc016b97bcfc38bc9815dbbf9a82bfeb9b801c",
+        "hash_verified": true,
+        "firm_id": "70000001049841298",
+        "source_name": "Из AmsterDama, магазин сладостей",
+        "rubrics": [
+          {
+            "name": "Кондитерские изделия",
+            "kind": "primary",
+            "id": "363"
+          },
+          {
+            "name": "Продажа кофе",
+            "kind": "additional",
+            "id": "558"
+          },
+          {
+            "name": "Сувенирные композиции",
+            "kind": "additional",
+            "id": "102026"
+          },
+          {
+            "name": "Новогодние сладкие подарки",
+            "kind": "additional",
+            "id": "112441"
+          }
+        ]
+      },
+      "reason": "Retail confectionery/coffee sales/gift rubrics, no café/table-service rubric. Coffee sales does not prove a café. Hold for taxonomy decision or branch café evidence."
+    },
+    {
+      "canonical_id": "overture:61aa5485-d4b1-41c6-a723-b11f63b9a9e1",
+      "canonical_name": "Chateau DeCanter",
+      "decision": "held",
+      "proof": {
+        "accepted_format": "винотека / Алкогольные напитки",
+        "source_url": "https://2gis.kz/astana/search/Chateau%20DeCanter",
+        "source_id": "2gis:firm/70000001056036653",
+        "source_city": "Астана",
+        "exact_branch": "Кабанбай батыр проспект, 13",
+        "canonical_address": "Kabanbay batyr 13",
+        "identity_match_basis": "name_coordinates",
+        "prior_category": "restaurant",
+        "existing_category_conflicts": [],
+        "conflict_resolution_required_source_ids": [],
+        "existing_accepted_category_review_count": 0,
+        "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/9fb85dda4b1e51803c06c563c8dd8514ffc41fb4f56b5319fdc6325c6e8ebb41.html",
+        "response_sha256": "9fb85dda4b1e51803c06c563c8dd8514ffc41fb4f56b5319fdc6325c6e8ebb41",
+        "hash_verified": true,
+        "firm_id": "70000001056036653",
+        "source_name": "Chateau DeCanter, винотека",
+        "rubrics": [
+          {
+            "name": "Алкогольные напитки",
+            "kind": "primary",
+            "id": "360"
+          },
+          {
+            "name": "Бары",
+            "kind": "additional",
+            "id": "159"
+          },
+          {
+            "name": "Безалкогольные напитки",
+            "kind": "additional",
+            "id": "361"
+          }
+        ]
+      },
+      "reason": "Primary alcoholic drinks retail plus additional Bars and wine-bar/table service attributes. Mixed retail/bar classification; do not infer nonfood or remove food eligibility from primary rubric alone."
+    }
+  ],
+  "policy": "Only explicit café/coffee/café-confectionery rubric supports cafe. Pure retail confectionery and mixed retail/bar remain held. No taxonomy expansion or closure inference.",
+  "nonfood_corrections_supported": 0,
+  "external_paid_calls": 0,
+  "network_requests": 0
+}

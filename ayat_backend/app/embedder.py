@@ -11,7 +11,7 @@ from functools import lru_cache
 
 import numpy as np
 
-from app.paths import MODELS_DIR
+from ayat_backend.app.paths import MODELS_DIR
 
 log = logging.getLogger("app.embedder")
 

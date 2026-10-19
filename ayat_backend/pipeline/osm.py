@@ -4,8 +4,8 @@ from __future__ import annotations
 import json
 import logging
 
-from app.paths import BOUNDARY_FILE, RAW_DIR
-from pipeline.common import ASTANA_AREA_ID, ASTANA_RELATION, get_json, overpass
+from ayat_backend.app.paths import BOUNDARY_FILE, RAW_DIR
+from ayat_backend.pipeline.common import ASTANA_AREA_ID, ASTANA_RELATION, get_json, overpass
 
 log = logging.getLogger("pipeline.osm")
 

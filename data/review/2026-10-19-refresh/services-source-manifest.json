@@ -1,0 +1,101 @@
+[
+  {
+    "key": "redbus-routes",
+    "source_url": "https://redbus.kz/ru/marshruty/",
+    "checked_at": "2026-10-18T23:13:29.931593+00:00",
+    "status": 200,
+    "final_url": "https://redbus.kz/ru/marshruty/",
+    "response_sha256": "987cef4dc93f185579b02d2a526ebfd12fbe225de574bfe0da84f1cb7e1c44da",
+    "title": "RedBus | экскурсии на двухэтажных автобусах по городу Астана"
+  },
+  {
+    "key": "redbus-faq",
+    "source_url": "https://redbus.kz/ru/faq/",
+    "checked_at": "2026-10-18T23:13:29.931826+00:00",
+    "status": 200,
+    "final_url": "https://redbus.kz/ru/faq/",
+    "response_sha256": "4d3d4167c2ed161779690d18460e40f19d3651a6aaade24a4c01de15b29967cb",
+    "title": "RedBus | экскурсии на двухэтажных автобусах по городу Астана"
+  },
+  {
+    "key": "visit-redbus",
+    "source_url": "https://www.visitastana.kz/ru/exkursion/redbus/",
+    "checked_at": "2026-10-18T23:13:29.931916+00:00",
+    "status": 200,
+    "final_url": "https://www.visitastana.kz/ru/exkursion/redbus/",
+    "response_sha256": "70476883f9bf12cf133e3826d8cc17ad7bc429225530881b9d6c39d8ed4394d0",
+    "title": "Visit Astana - RedBus"
+  },
+  {
+    "key": "river-parks",
+    "source_url": "https://www.visitastana.kz/ru/exkursion/teplokhod/",
+    "checked_at": "2026-10-18T23:13:29.931991+00:00",
+    "status": 200,
+    "final_url": "https://www.visitastana.kz/ru/exkursion/teplokhod/",
+    "response_sha256": "5885ca8b2f165cc545bf113fde8e927b96be09a8079809a312784e46422f268c",
+    "title": "Visit Astana - Пеший групповой сити-тур по паркам Астаны с прогулкой на теплоходе по Ишиму"
+  },
+  {
+    "key": "river-necklace",
+    "source_url": "https://www.visitastana.kz/ru/exkursion/goluboe-ozherele-stolitsy-/",
+    "checked_at": "2026-10-18T23:13:30.129035+00:00",
+    "status": 200,
+    "final_url": "https://www.visitastana.kz/ru/exkursion/goluboe-ozherele-stolitsy-/",
+    "response_sha256": "6d4207bfd339738e7d84ec6a1ec4bdba6b82e41e78e71e46a613629e593b08b0",
+    "title": "Visit Astana - «Голубое ожерелье столицы»"
+  },
+  {
+    "key": "gold-museum",
+    "source_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-zalam-zoloto/",
+    "checked_at": "2026-10-18T23:13:30.139454+00:00",
+    "status": 200,
+    "final_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-zalam-zoloto/",
+    "response_sha256": "541a2bc8530e7aa3261b69ad868227d37e960442499002d6b9dbb81884142815",
+    "title": "Visit Astana - Экскурсия по залам «Золото»"
+  },
+  {
+    "key": "mosque",
+    "source_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-mecheti-n-rs-ltan-/",
+    "checked_at": "2026-10-18T23:13:30.314000+00:00",
+    "status": 200,
+    "final_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-mecheti-n-rs-ltan-/",
+    "response_sha256": "829c53ea85bfb265053de65ce295f4e105d1f89d65e88baff3d7a2e957519ee6",
+    "title": "INDOJP Login Website Link Promaxwin Yang Hadir Memberikan Kemenangan Dengan Bermain Di Mahjong Ways2 Dengan Scatter Jp - visitastana."
+  },
+  {
+    "key": "opera",
+    "source_url": "https://www.visitastana.kz/ru/exkursion/teatralnyy-urok-v-teatre-astana-opera/",
+    "checked_at": "2026-10-18T23:13:30.326610+00:00",
+    "status": 200,
+    "final_url": "https://www.visitastana.kz/ru/exkursion/teatralnyy-urok-v-teatre-astana-opera/",
+    "response_sha256": "3d429f67103d389f53e56c883a762757d028b854235896843f35511a876d11a4",
+    "title": "Visit Astana - Театральный урок в театре «Астана Опера»"
+  },
+  {
+    "key": "tamyr",
+    "source_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+    "checked_at": "2026-10-18T23:13:30.435851+00:00",
+    "status": 200,
+    "final_url": "https://www.visitastana.kz/ru/exkursion/chaynaya-tseremoniya-v-etnotsentre-tamyr/",
+    "response_sha256": "916c986d6d848224f7bb7631652dc6e8762a76b151f0a224a922e6660a4c4599",
+    "title": "Visit Astana - Чайная церемония в этноцентре «Тамыр»"
+  },
+  {
+    "key": "murals",
+    "source_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-muralam/",
+    "checked_at": "2026-10-18T23:13:30.514049+00:00",
+    "status": 200,
+    "final_url": "https://www.visitastana.kz/ru/exkursion/ekskursiya-po-muralam/",
+    "response_sha256": "4aa770c1b7ed24a284bca837dc30876bed09a92ee074391a40069e8a74371908",
+    "title": "GOPAY303 Login Website Link Promaxwin Yang Hadir Memberikan Kemenangan Dengan Bermain Di Mahjong Ways2 Dengan Scatter Jp - visitastana."
+  },
+  {
+    "key": "walk-nurzhol",
+    "source_url": "https://www.visitastana.kz/ru/exkursion/ob-astane-s-interesom-i-lyubovyu/",
+    "checked_at": "2026-10-18T23:13:30.651710+00:00",
+    "status": 200,
+    "final_url": "https://www.visitastana.kz/ru/exkursion/ob-astane-s-interesom-i-lyubovyu/",
+    "response_sha256": "15c8eb26b4937df1e3c956bc50d7643eb059f063444ac503aa6da6e1486e3157",
+    "title": "Visit Astana - Об Астане: с интересом и любовью"
+  }
+]

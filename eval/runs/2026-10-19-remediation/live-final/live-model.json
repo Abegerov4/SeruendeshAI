@@ -1,0 +1,2460 @@
+{
+  "runtime_id": "ayat",
+  "execution_kind": "live_http_external_provider",
+  "timestamp_utc": "2026-10-18T22:23:06.378405+00:00",
+  "source_sha256": "233622c9c05f1437eefd175f0caa62d91524574b39140a72ddb6eecebec99b3a",
+  "git_head": "5a08f6f898da41f92aecd20e5bef6b09eab8347f",
+  "git_dirty": true,
+  "dataset_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "snapshot_version": "4e9b6ecc5b4c455f9c0443714afb91b2",
+  "health_before": {
+    "status": "degraded",
+    "pois": 2750,
+    "llm": "configured",
+    "runtime_id": "ayat",
+    "readiness_profile": "llm",
+    "ready": false,
+    "snapshot_version": "4e9b6ecc5b4c455f9c0443714afb91b2",
+    "provider_verified_at": null,
+    "poi_count": 2750,
+    "events": 60,
+    "dense_retrieval": true,
+    "walk_graph": true,
+    "llm_configured": true,
+    "data_built_at": "2026-10-19"
+  },
+  "health_after": {
+    "status": "ok",
+    "pois": 2750,
+    "llm": "ok",
+    "runtime_id": "ayat",
+    "readiness_profile": "llm",
+    "ready": true,
+    "snapshot_version": "4e9b6ecc5b4c455f9c0443714afb91b2",
+    "provider_verified_at": "2026-10-18T22:22:19.117188+00:00",
+    "poi_count": 2750,
+    "events": 60,
+    "dense_retrieval": true,
+    "walk_graph": true,
+    "llm_configured": true,
+    "data_built_at": "2026-10-19"
+  },
+  "planned": 3,
+  "executed": 3,
+  "results": [
+    {
+      "id": "ru-coffee",
+      "request": {
+        "query": "Хочу выпить кофе рядом с Байтереком",
+        "lang": "ru",
+        "time_budget_min": 60,
+        "location": {
+          "lat": 51.128,
+          "lon": 71.43
+        },
+        "want_route": true,
+        "now": "2026-10-19T14:00:00+05:00",
+        "weather": {
+          "temperature_c": 15,
+          "feels_like_c": 15,
+          "wind_ms": 2
+        }
+      },
+      "http_status": 200,
+      "ms": 4087,
+      "checks": {
+        "C1 schema": true,
+        "C2 1–3 items": true,
+        "C3 grounded ids": true,
+        "C4 time budget": true,
+        "C5 categories": null,
+        "C6 source labels": true,
+        "C7 language": true,
+        "C8 no invented hours": true,
+        "C9 coords rounded": true,
+        "C10 safety rules": null,
+        "C11 not closed": true,
+        "C12 latency<8s": true,
+        "S scenario": true,
+        "real_llm_mode": true
+      },
+      "response": {
+        "api_version": "1.0",
+        "request_id": "1d952f465962",
+        "lang": "ru",
+        "summary": "Мини-маршрут: Mado → Degirmen. Всего ≈ 59 мин (9 мин в пути + 50 мин на местах).",
+        "recommendations": [
+          {
+            "poi_id": "osm:node/6404769888",
+            "name": "Мадо",
+            "category": "cafe",
+            "lat": 51.128348,
+            "lon": 71.4348209,
+            "distance_m": 339,
+            "travel_min": 6,
+            "why": "Кофейня / кафе: совсем рядом, есть кофе/еда с собой.",
+            "visit_min": [
+              25,
+              25
+            ],
+            "what_to_do": "Зайдите на кофе или перекус. Уточните часы работы перед выходом.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://www.openstreetmap.org/node/6404769888",
+            "rating": null,
+            "website": "http://www.mado.com.kz/",
+            "rank": 1,
+            "category_detail": "cafe",
+            "category_label": "Кофейня / кафе",
+            "icon": "coffee",
+            "walk_distance_m": 440,
+            "travel_mode": "walk",
+            "arrival_at": "2026-10-19T14:06:00+05:00",
+            "departure_at": "2026-10-19T14:31:00+05:00",
+            "visit_suggested_min": 25,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "osm",
+              "overture"
+            ],
+            "popularity": 0.0,
+            "features": [
+              "кофе/еда с собой"
+            ],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": "Dinmukhamed Qonayev St 14",
+            "description": "Кафе «Mado» в Астане. Адрес из источника: Dinmukhamed Qonayev St 14. Сведения источника: кухня: coffee_shop.",
+            "description_source": "osm"
+          },
+          {
+            "poi_id": "osm:node/10564988185",
+            "name": "Degirmen",
+            "category": "cafe",
+            "lat": 51.1285659,
+            "lon": 71.4333254,
+            "distance_m": 240,
+            "travel_min": 5,
+            "why": "Кофейня / кафе: совсем рядом.",
+            "visit_min": [
+              25,
+              25
+            ],
+            "what_to_do": "Зайдите на кофе или перекус.",
+            "open_status": "open",
+            "open_confidence": "low",
+            "source": "poi_data",
+            "source_url": "https://www.openstreetmap.org/node/10564988185",
+            "rating": null,
+            "website": "http://degirmen.kz/",
+            "rank": 2,
+            "category_detail": "cafe",
+            "category_label": "Кофейня / кафе",
+            "icon": "coffee",
+            "walk_distance_m": 320,
+            "travel_mode": "walk",
+            "arrival_at": "2026-10-19T14:34:00+05:00",
+            "departure_at": "2026-10-19T14:59:00+05:00",
+            "visit_suggested_min": 25,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "open",
+              "confidence": "low",
+              "label": "Открыто до 00:00 (данные OSM)",
+              "raw": "Mo-Su 08:00-00:00",
+              "source": "osm",
+              "source_url": "https://www.openstreetmap.org/node/10564988185",
+              "check_date": null,
+              "next_change": "00:00"
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "osm"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": null,
+            "description": "Кафе «Degirmen» в Астане.",
+            "description_source": "osm"
+          }
+        ],
+        "ideas": [
+          {
+            "poi_id": "idea-3",
+            "name": "Фото с кофе и Байтереком",
+            "category": "cafe",
+            "lat": 51.128348,
+            "lon": 71.4348209,
+            "distance_m": 339,
+            "travel_min": 6,
+            "why": "Сфотографируйте свою чашку кофе на фоне Байтерека или рядом с кафе — создайте свою маленькую кофейную историю в Астане!",
+            "visit_min": [
+              5,
+              20
+            ],
+            "what_to_do": "Сфотографируйте свою чашку кофе на фоне Байтерека или рядом с кафе — создайте свою маленькую кофейную историю в Астане!",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "generated",
+            "source_url": null,
+            "rating": null,
+            "website": null,
+            "rank": 3,
+            "category_detail": "idea",
+            "category_label": "Идея ИИ",
+            "icon": "sparkles",
+            "walk_distance_m": null,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 10,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Идея ИИ",
+            "data_sources": [
+              "llm"
+            ],
+            "popularity": null,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [
+              "ai_idea"
+            ],
+            "event": null,
+            "address": "Рядом с: Мадо",
+            "description": null,
+            "description_source": "generated"
+          }
+        ],
+        "route": {
+          "order": [
+            "osm:node/6404769888",
+            "osm:node/10564988185"
+          ],
+          "legs": [
+            {
+              "from_id": "start",
+              "to_id": "osm:node/6404769888",
+              "distance_m": 439,
+              "travel_min": 6,
+              "polyline": [
+                [
+                  51.128,
+                  71.43
+                ],
+                [
+                  51.127994,
+                  71.430066
+                ],
+                [
+                  51.127957,
+                  71.430148
+                ],
+                [
+                  51.127914,
+                  71.430298
+                ],
+                [
+                  51.127835,
+                  71.430284
+                ],
+                [
+                  51.127804,
+                  71.430456
+                ],
+                [
+                  51.127675,
+                  71.43118
+                ],
+                [
+                  51.127728,
+                  71.431259
+                ],
+                [
+                  51.127773,
+                  71.431328
+                ],
+                [
+                  51.127842,
+                  71.431419
+                ],
+                [
+                  51.127899,
+                  71.43148
+                ],
+                [
+                  51.127956,
+                  71.431526
+                ],
+                [
+                  51.128006,
+                  71.431564
+                ],
+                [
+                  51.128063,
+                  71.431595
+                ],
+                [
+                  51.128084,
+                  71.431751
+                ],
+                [
+                  51.128053,
+                  71.431974
+                ],
+                [
+                  51.128034,
+                  71.432117
+                ],
+                [
+                  51.128,
+                  71.4323
+                ],
+                [
+                  51.127987,
+                  71.432396
+                ],
+                [
+                  51.128028,
+                  71.43249
+                ],
+                [
+                  51.128006,
+                  71.432632
+                ],
+                [
+                  51.127993,
+                  71.432728
+                ],
+                [
+                  51.127981,
+                  71.433027
+                ],
+                [
+                  51.127811,
+                  71.434099
+                ],
+                [
+                  51.127907,
+                  71.434135
+                ],
+                [
+                  51.127971,
+                  71.43428
+                ],
+                [
+                  51.128037,
+                  71.434476
+                ],
+                [
+                  51.127995,
+                  71.43474
+                ],
+                [
+                  51.128128,
+                  71.434792
+                ],
+                [
+                  51.128348,
+                  71.434821
+                ]
+              ],
+              "geometry": "network"
+            },
+            {
+              "from_id": "osm:node/6404769888",
+              "to_id": "osm:node/10564988185",
+              "distance_m": 193,
+              "travel_min": 3,
+              "polyline": [
+                [
+                  51.128348,
+                  71.434821
+                ],
+                [
+                  51.128128,
+                  71.434792
+                ],
+                [
+                  51.127995,
+                  71.43474
+                ],
+                [
+                  51.128037,
+                  71.434476
+                ],
+                [
+                  51.128079,
+                  71.434215
+                ],
+                [
+                  51.128258,
+                  71.43313
+                ],
+                [
+                  51.128359,
+                  71.433168
+                ],
+                [
+                  51.128566,
+                  71.433325
+                ]
+              ],
+              "geometry": "network"
+            }
+          ],
+          "total_min": 59,
+          "back_min": 0,
+          "fits_budget": true,
+          "returns_to_start": false,
+          "summary": "Мини-маршрут: Mado → Degirmen. Всего ≈ 59 мин (9 мин в пути + 50 мин на местах)."
+        },
+        "used_context": {
+          "location_source": "gps_rounded",
+          "location_label": "~ район «Бақытты Шаңырақ» (округлено)",
+          "radius_m": 1406,
+          "time_budget_min": 60,
+          "mode": "walk",
+          "filters": [
+            "Кофейня / кафе"
+          ],
+          "now": "2026-10-19T14:00:00+05:00",
+          "location": {
+            "source": "gps_rounded",
+            "label": "~ район «Бақытты Шаңырақ» (округлено)",
+            "lat": 51.128,
+            "lon": 71.43,
+            "precision_m": 100
+          },
+          "local_time": "14:00",
+          "weekday": "понедельник",
+          "is_holiday": null,
+          "is_dark": false,
+          "weather": {
+            "temperature_c": 15.0,
+            "feels_like_c": 15.0,
+            "wind_ms": 2.0,
+            "precipitation": false,
+            "description": "15°C (ощущается 15°C), ветер 2 м/с",
+            "max_outdoor_min": 60,
+            "source": "demo override"
+          },
+          "speed_kmh": 4.5,
+          "party": "solo",
+          "parsed_from_query": {
+            "categories": [
+              "cafe"
+            ],
+            "preferences": [
+              "cafe"
+            ],
+            "needs": [],
+            "time_budget_min": null,
+            "deadline": null,
+            "deadline_in_min": null,
+            "flight_type": "unknown",
+            "deadline_buffer_min": 0,
+            "landmark": null,
+            "night": false,
+            "surprise": false,
+            "parser": "llm+rules (gpt-4.1-mini)"
+          },
+          "relaxations": [],
+          "funnel": {
+            "total": 2750,
+            "within_reach": 418,
+            "after_filters": 89,
+            "shown": 2
+          },
+          "data_sources": [
+            "OpenStreetMap (ODbL)",
+            "Wikidata (CC0)",
+            "Wikipedia (CC BY-SA)",
+            "Overture Maps (CDLA)",
+            "Ticketon / Sxodim",
+            "Open-Meteo (CC BY 4.0)"
+          ],
+          "data_built_at": "2026-10-19",
+          "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+        },
+        "considered": [],
+        "notes": [
+          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+        ],
+        "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+        "ai_generated": true,
+        "llm": {
+          "mode": "llm",
+          "model": "gpt-4.1-mini",
+          "latency_ms": 4082
+        }
+      }
+    },
+    {
+      "id": "kk-tourist",
+      "request": {
+        "query": "Мен туристпін, қаланы көргім келеді",
+        "lang": "kk",
+        "tourist": true,
+        "time_budget_min": 90,
+        "location": {
+          "lat": 51.128,
+          "lon": 71.43
+        },
+        "want_route": true,
+        "now": "2026-10-19T14:00:00+05:00",
+        "weather": {
+          "temperature_c": 15,
+          "feels_like_c": 15,
+          "wind_ms": 2
+        }
+      },
+      "http_status": 200,
+      "ms": 4043,
+      "checks": {
+        "C1 schema": true,
+        "C2 1–3 items": true,
+        "C3 grounded ids": true,
+        "C4 time budget": true,
+        "C5 categories": null,
+        "C6 source labels": true,
+        "C7 language": true,
+        "C8 no invented hours": true,
+        "C9 coords rounded": true,
+        "C10 safety rules": null,
+        "C11 not closed": true,
+        "C12 latency<8s": true,
+        "S scenario": true,
+        "real_llm_mode": true
+      },
+      "response": {
+        "api_version": "1.0",
+        "request_id": "19e4140df906",
+        "lang": "kk",
+        "summary": "Шағын маршрут: Атамекен → Бәйтерек. Барлығы ≈ 65 мин (20 мин жолда + 45 мин орындарда). Бастапқы нүктеге оралумен.",
+        "recommendations": [
+          {
+            "poi_id": "overture:8ac37848-609b-4fb5-9ab2-c76a52562788",
+            "name": "Атамекен",
+            "category": "attraction",
+            "lat": 51.13007,
+            "lon": 71.42443,
+            "distance_m": 452,
+            "travel_min": 8,
+            "why": "Көрікті орын: өте жақын.",
+            "visit_min": [
+              30,
+              30
+            ],
+            "what_to_do": "Орынды тамашалап, суретке түсетін ракурс таңдаңыз. Жұмыс уақытын алдын ала нақтылаңыз.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=8ac37848-609b-4fb5-9ab2-c76a52562788",
+            "rating": null,
+            "website": "http://atamekenmap.kz/",
+            "rank": 1,
+            "category_detail": "landmark",
+            "category_label": "Көрікті орын",
+            "icon": "landmark",
+            "walk_distance_m": 600,
+            "travel_mode": "walk",
+            "arrival_at": "2026-10-19T14:08:00+05:00",
+            "departure_at": "2026-10-19T14:38:00+05:00",
+            "visit_suggested_min": 30,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Жұмыс уақыты белгісіз — алдын ала нақтылаңыз",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "POI деректері",
+            "data_sources": [
+              "overture"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": null,
+            "description": "Достопримечательность «Атамекен» в Астане.",
+            "description_source": "website"
+          },
+          {
+            "poi_id": "osm:way/230401645",
+            "name": "Бәйтерек",
+            "category": "monument",
+            "lat": 51.12828825,
+            "lon": 71.4304546,
+            "distance_m": 45,
+            "travel_min": 2,
+            "why": "Ескерткіш / мемориал: өте жақын.",
+            "visit_min": [
+              15,
+              15
+            ],
+            "what_to_do": "Ескерткішті тамашалап, суретке түсіріңіз. Жұмыс уақытын алдын ала нақтылаңыз.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://www.openstreetmap.org/way/230401645",
+            "rating": null,
+            "website": "http://astana-bayterek.kz/",
+            "rank": 2,
+            "category_detail": "monument",
+            "category_label": "Ескерткіш / мемориал",
+            "icon": "monument",
+            "walk_distance_m": 110,
+            "travel_mode": "walk",
+            "arrival_at": "2026-10-19T14:48:00+05:00",
+            "departure_at": "2026-10-19T15:03:00+05:00",
+            "visit_suggested_min": 15,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Жұмыс уақыты белгісіз — алдын ала нақтылаңыз",
+              "raw": null,
+              "source": "citypass",
+              "source_url": "https://astana.citypass.kz/ru/attractions/bayterek",
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "POI деректері",
+            "data_sources": [
+              "citypass",
+              "geonames",
+              "osm",
+              "overture",
+              "wikidata",
+              "wikipedia"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": null,
+            "description": "«Байтере́к» (каз. Бәйтерек — тополь; полное название — «Астана-Байтерек») — монумент и смотровая башня в столице Казахстана — Астане.",
+            "description_source": "wikipedia"
+          }
+        ],
+        "ideas": [
+          {
+            "poi_id": "idea-3",
+            "name": "Қала атмосферасын сезіну",
+            "category": "attraction",
+            "lat": 51.13007,
+            "lon": 71.42443,
+            "distance_m": 452,
+            "travel_min": 8,
+            "why": "«Атамекен мен Бәйтерек» аралығында серуендеп, қала шуымен танысыңыз, әр ескерткіш орнында үзіліс алыңыз.",
+            "visit_min": [
+              5,
+              20
+            ],
+            "what_to_do": "«Атамекен мен Бәйтерек» аралығында серуендеп, қала шуымен танысыңыз, әр ескерткіш орнында үзіліс алыңыз.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "generated",
+            "source_url": null,
+            "rating": null,
+            "website": null,
+            "rank": 3,
+            "category_detail": "idea",
+            "category_label": "ЖИ идеясы",
+            "icon": "sparkles",
+            "walk_distance_m": null,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 10,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Жұмыс уақыты белгісіз — алдын ала нақтылаңыз",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "ЖИ идеясы",
+            "data_sources": [
+              "llm"
+            ],
+            "popularity": null,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [
+              "ai_idea"
+            ],
+            "event": null,
+            "address": "Жанында: Атамекен",
+            "description": null,
+            "description_source": "generated"
+          }
+        ],
+        "route": {
+          "order": [
+            "overture:8ac37848-609b-4fb5-9ab2-c76a52562788",
+            "osm:way/230401645"
+          ],
+          "legs": [
+            {
+              "from_id": "start",
+              "to_id": "overture:8ac37848-609b-4fb5-9ab2-c76a52562788",
+              "distance_m": 596,
+              "travel_min": 8,
+              "polyline": [
+                [
+                  51.128,
+                  71.43
+                ],
+                [
+                  51.127994,
+                  71.430066
+                ],
+                [
+                  51.127877,
+                  71.430018
+                ],
+                [
+                  51.127974,
+                  71.429406
+                ],
+                [
+                  51.128029,
+                  71.429369
+                ],
+                [
+                  51.128124,
+                  71.429321
+                ],
+                [
+                  51.128258,
+                  71.429291
+                ],
+                [
+                  51.128391,
+                  71.429298
+                ],
+                [
+                  51.12848,
+                  71.429321
+                ],
+                [
+                  51.128503,
+                  71.429155
+                ],
+                [
+                  51.128535,
+                  71.42894
+                ],
+                [
+                  51.128555,
+                  71.428807
+                ],
+                [
+                  51.128579,
+                  71.428635
+                ],
+                [
+                  51.128601,
+                  71.428485
+                ],
+                [
+                  51.128729,
+                  71.428242
+                ],
+                [
+                  51.128771,
+                  71.427981
+                ],
+                [
+                  51.12889,
+                  71.427251
+                ],
+                [
+                  51.128943,
+                  71.426926
+                ],
+                [
+                  51.12928,
+                  71.427064
+                ],
+                [
+                  51.129297,
+                  71.426781
+                ],
+                [
+                  51.129312,
+                  71.426496
+                ],
+                [
+                  51.129355,
+                  71.426223
+                ],
+                [
+                  51.129391,
+                  71.425987
+                ],
+                [
+                  51.129459,
+                  71.425751
+                ],
+                [
+                  51.129505,
+                  71.42543
+                ],
+                [
+                  51.129694,
+                  71.424105
+                ],
+                [
+                  51.13007,
+                  71.42443
+                ]
+              ],
+              "geometry": "network"
+            },
+            {
+              "from_id": "overture:8ac37848-609b-4fb5-9ab2-c76a52562788",
+              "to_id": "osm:way/230401645",
+              "distance_m": 692,
+              "travel_min": 10,
+              "polyline": [
+                [
+                  51.13007,
+                  71.42443
+                ],
+                [
+                  51.129694,
+                  71.424105
+                ],
+                [
+                  51.129505,
+                  71.42543
+                ],
+                [
+                  51.129466,
+                  71.425705
+                ],
+                [
+                  51.129408,
+                  71.425957
+                ],
+                [
+                  51.129355,
+                  71.426223
+                ],
+                [
+                  51.129312,
+                  71.426496
+                ],
+                [
+                  51.129276,
+                  71.42672
+                ],
+                [
+                  51.129288,
+                  71.427002
+                ],
+                [
+                  51.128943,
+                  71.426926
+                ],
+                [
+                  51.1289,
+                  71.42719
+                ],
+                [
+                  51.128771,
+                  71.427981
+                ],
+                [
+                  51.128729,
+                  71.428242
+                ],
+                [
+                  51.128601,
+                  71.428485
+                ],
+                [
+                  51.128579,
+                  71.428635
+                ],
+                [
+                  51.128563,
+                  71.428757
+                ],
+                [
+                  51.128535,
+                  71.42894
+                ],
+                [
+                  51.128514,
+                  71.429081
+                ],
+                [
+                  51.128483,
+                  71.429283
+                ],
+                [
+                  51.128391,
+                  71.429298
+                ],
+                [
+                  51.128258,
+                  71.429291
+                ],
+                [
+                  51.128181,
+                  71.429306
+                ],
+                [
+                  51.128059,
+                  71.429352
+                ],
+                [
+                  51.127974,
+                  71.429406
+                ],
+                [
+                  51.127877,
+                  71.430018
+                ],
+                [
+                  51.127862,
+                  71.430109
+                ],
+                [
+                  51.127835,
+                  71.430284
+                ],
+                [
+                  51.127914,
+                  71.430317
+                ],
+                [
+                  51.128053,
+                  71.430371
+                ],
+                [
+                  51.128048,
+                  71.430527
+                ],
+                [
+                  51.128078,
+                  71.430664
+                ],
+                [
+                  51.128143,
+                  71.430779
+                ],
+                [
+                  51.128228,
+                  71.430843
+                ],
+                [
+                  51.128253,
+                  71.430671
+                ],
+                [
+                  51.128273,
+                  71.430545
+                ],
+                [
+                  51.128288,
+                  71.430455
+                ]
+              ],
+              "geometry": "network"
+            },
+            {
+              "from_id": "osm:way/230401645",
+              "to_id": "start",
+              "distance_m": 110,
+              "travel_min": 2,
+              "polyline": [
+                [
+                  51.128288,
+                  71.430455
+                ],
+                [
+                  51.128273,
+                  71.430545
+                ],
+                [
+                  51.128253,
+                  71.430671
+                ],
+                [
+                  51.128235,
+                  71.430794
+                ],
+                [
+                  51.128143,
+                  71.430779
+                ],
+                [
+                  51.128078,
+                  71.430664
+                ],
+                [
+                  51.128048,
+                  71.430527
+                ],
+                [
+                  51.128053,
+                  71.430371
+                ],
+                [
+                  51.127914,
+                  71.430317
+                ],
+                [
+                  51.127941,
+                  71.430191
+                ],
+                [
+                  51.127979,
+                  71.430092
+                ],
+                [
+                  51.127994,
+                  71.430066
+                ],
+                [
+                  51.128,
+                  71.43
+                ]
+              ],
+              "geometry": "network"
+            }
+          ],
+          "total_min": 65,
+          "back_min": 0,
+          "fits_budget": true,
+          "returns_to_start": true,
+          "summary": "Шағын маршрут: Атамекен → Бәйтерек. Барлығы ≈ 65 мин (20 мин жолда + 45 мин орындарда). Бастапқы нүктеге оралумен."
+        },
+        "used_context": {
+          "location_source": "gps_rounded",
+          "location_label": "~ «Бақытты Шаңырақ» маңы (дөңгелектенген)",
+          "radius_m": 2050,
+          "time_budget_min": 90,
+          "mode": "walk",
+          "filters": [
+            "турист"
+          ],
+          "now": "2026-10-19T14:00:00+05:00",
+          "location": {
+            "source": "gps_rounded",
+            "label": "~ «Бақытты Шаңырақ» маңы (дөңгелектенген)",
+            "lat": 51.128,
+            "lon": 71.43,
+            "precision_m": 100
+          },
+          "local_time": "14:00",
+          "weekday": "дүйсенбі",
+          "is_holiday": null,
+          "is_dark": false,
+          "weather": {
+            "temperature_c": 15.0,
+            "feels_like_c": 15.0,
+            "wind_ms": 2.0,
+            "precipitation": false,
+            "description": "15°C (15°C сезіледі), жел 2 м/с",
+            "max_outdoor_min": 60,
+            "source": "demo override"
+          },
+          "speed_kmh": 4.5,
+          "party": "tourist",
+          "parsed_from_query": {
+            "categories": [],
+            "preferences": [
+              "landmark",
+              "viewpoint",
+              "park",
+              "museum"
+            ],
+            "needs": [],
+            "time_budget_min": null,
+            "deadline": null,
+            "deadline_in_min": null,
+            "flight_type": "unknown",
+            "deadline_buffer_min": 0,
+            "landmark": null,
+            "night": false,
+            "surprise": false,
+            "parser": "llm+rules (gpt-4.1-mini)"
+          },
+          "relaxations": [],
+          "funnel": {
+            "total": 2750,
+            "within_reach": 721,
+            "after_filters": 106,
+            "shown": 2
+          },
+          "data_sources": [
+            "OpenStreetMap (ODbL)",
+            "Wikidata (CC0)",
+            "Wikipedia (CC BY-SA)",
+            "Overture Maps (CDLA)",
+            "Ticketon / Sxodim",
+            "Open-Meteo (CC BY 4.0)"
+          ],
+          "data_built_at": "2026-10-19",
+          "privacy": "Орналасу ~100 м-ге дейін дөңгелектенген, тек осы сұрауға қолданылады және сақталмайды. Координаттар тілдік модельге жіберілмейді."
+        },
+        "considered": [],
+        "notes": [
+          "Жол уақыты түзу сызық бойынша бағаланды."
+        ],
+        "disclaimer": "Жауапты ЖИ ашық деректер негізінде құрастырды (OpenStreetMap, Wikidata/Wikipedia және т.б.). Жұмыс уақыты өзгеруі мүмкін — барар алдында тексеріңіз.",
+        "ai_generated": true,
+        "llm": {
+          "mode": "llm",
+          "model": "gpt-4.1-mini",
+          "latency_ms": 4039
+        }
+      }
+    },
+    {
+      "id": "en-short",
+      "request": {
+        "query": "A short walk with a child",
+        "lang": "en",
+        "with_child": true,
+        "time_budget_min": 45,
+        "location": {
+          "lat": 51.128,
+          "lon": 71.43
+        },
+        "want_route": true,
+        "now": "2026-10-19T14:00:00+05:00",
+        "weather": {
+          "temperature_c": 15,
+          "feels_like_c": 15,
+          "wind_ms": 2
+        }
+      },
+      "http_status": 200,
+      "ms": 3761,
+      "checks": {
+        "C1 schema": true,
+        "C2 1–3 items": true,
+        "C3 grounded ids": true,
+        "C4 time budget": true,
+        "C5 categories": null,
+        "C6 source labels": true,
+        "C7 language": true,
+        "C8 no invented hours": true,
+        "C9 coords rounded": true,
+        "C10 safety rules": null,
+        "C11 not closed": true,
+        "C12 latency<8s": true,
+        "S scenario": true,
+        "real_llm_mode": true
+      },
+      "response": {
+        "api_version": "1.0",
+        "request_id": "18e94833b294",
+        "lang": "en",
+        "summary": "Found 3 places nearby: Gymboree, Сквер, Excursion by the double decker bus (Red Bus).",
+        "recommendations": [
+          {
+            "poi_id": "osm:node/2691137163",
+            "name": "Gymboree",
+            "category": "playground",
+            "lat": 51.1289248,
+            "lon": 71.4220016,
+            "distance_m": 568,
+            "travel_min": 12,
+            "why": "Playground: good for kids.",
+            "visit_min": [
+              20,
+              33
+            ],
+            "what_to_do": "Invite the children to play, following the conditions on site. Check opening hours before you go.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://www.openstreetmap.org/node/2691137163",
+            "rating": null,
+            "website": null,
+            "rank": 1,
+            "category_detail": "playground",
+            "category_label": "Playground",
+            "icon": "baby",
+            "walk_distance_m": 700,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 20,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Opening hours unknown — check before going",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "POI data",
+            "data_sources": [
+              "osm"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [
+              "kids"
+            ],
+            "event": null,
+            "address": null,
+            "description": "Детская площадка «Gymboree» в Астане.",
+            "description_source": "osm"
+          },
+          {
+            "poi_id": "osm:way/230358854",
+            "name": "Сквер",
+            "category": "park",
+            "lat": 51.127997,
+            "lon": 71.42357055,
+            "distance_m": 449,
+            "travel_min": 11,
+            "why": "Park: fits your time.",
+            "visit_min": [
+              20,
+              34
+            ],
+            "what_to_do": "Walk around the park at your own pace. Check opening hours before you go.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://www.openstreetmap.org/way/230358854",
+            "rating": null,
+            "website": null,
+            "rank": 2,
+            "category_detail": "park",
+            "category_label": "Park",
+            "icon": "trees",
+            "walk_distance_m": 630,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 20,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Opening hours unknown — check before going",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "POI data",
+            "data_sources": [
+              "osm"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": null,
+            "description": "Парк или сад «Сквер» в Астане.",
+            "description_source": "osm"
+          },
+          {
+            "poi_id": "citypass:119",
+            "name": "Excursion by the double decker bus (Red Bus)",
+            "category": "attraction",
+            "lat": 51.128197,
+            "lon": 71.430444,
+            "distance_m": 38,
+            "travel_min": 1,
+            "why": "Landmark: very close.",
+            "visit_min": [
+              15,
+              30
+            ],
+            "what_to_do": "Look around and choose an angle for a photo. Check opening hours before you go.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-na-krasnyih-avtobusah",
+            "rating": null,
+            "website": null,
+            "rank": 3,
+            "category_detail": "landmark",
+            "category_label": "Landmark",
+            "icon": "landmark",
+            "walk_distance_m": 60,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 15,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Opening hours unknown — check before going",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "POI data",
+            "data_sources": [
+              "citypass"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": "площадь Монумента Байтерек",
+            "description": null,
+            "description_source": "website"
+          }
+        ],
+        "ideas": [
+          {
+            "poi_id": "idea-4",
+            "name": "Photo Hunt in the Park",
+            "category": "park",
+            "lat": 51.127997,
+            "lon": 71.42357055,
+            "distance_m": 449,
+            "travel_min": 11,
+            "why": "With your child, find three different types of leaves or flowers in Skver and take close-up photos of each.",
+            "visit_min": [
+              5,
+              20
+            ],
+            "what_to_do": "With your child, find three different types of leaves or flowers in Skver and take close-up photos of each.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "generated",
+            "source_url": null,
+            "rating": null,
+            "website": null,
+            "rank": 4,
+            "category_detail": "idea",
+            "category_label": "AI idea",
+            "icon": "sparkles",
+            "walk_distance_m": null,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 10,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Opening hours unknown — check before going",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "AI idea",
+            "data_sources": [
+              "llm"
+            ],
+            "popularity": null,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [
+              "ai_idea"
+            ],
+            "event": null,
+            "address": "Near: Сквер",
+            "description": null,
+            "description_source": "generated"
+          }
+        ],
+        "route": null,
+        "used_context": {
+          "location_source": "gps_rounded",
+          "location_label": "~ near «Бақытты Шаңырақ» (rounded)",
+          "radius_m": 1031,
+          "time_budget_min": 45,
+          "mode": "walk",
+          "filters": [
+            "with kids"
+          ],
+          "now": "2026-10-19T14:00:00+05:00",
+          "location": {
+            "source": "gps_rounded",
+            "label": "~ near «Бақытты Шаңырақ» (rounded)",
+            "lat": 51.128,
+            "lon": 71.43,
+            "precision_m": 100
+          },
+          "local_time": "14:00",
+          "weekday": "Monday",
+          "is_holiday": null,
+          "is_dark": false,
+          "weather": {
+            "temperature_c": 15.0,
+            "feels_like_c": 15.0,
+            "wind_ms": 2.0,
+            "precipitation": false,
+            "description": "15°C (feels 15°C), wind 2 m/s",
+            "max_outdoor_min": 60,
+            "source": "demo override"
+          },
+          "speed_kmh": 3.6,
+          "party": "family_kids",
+          "parsed_from_query": {
+            "categories": [],
+            "preferences": [
+              "park",
+              "garden",
+              "landmark",
+              "viewpoint",
+              "museum",
+              "playground",
+              "kids_indoor"
+            ],
+            "needs": [
+              "kids"
+            ],
+            "time_budget_min": null,
+            "deadline": null,
+            "deadline_in_min": null,
+            "flight_type": "unknown",
+            "deadline_buffer_min": 0,
+            "landmark": null,
+            "night": false,
+            "surprise": false,
+            "parser": "llm+rules (gpt-4.1-mini)"
+          },
+          "relaxations": [],
+          "funnel": {
+            "total": 2750,
+            "within_reach": 311,
+            "after_filters": 50,
+            "shown": 3
+          },
+          "data_sources": [
+            "OpenStreetMap (ODbL)",
+            "Wikidata (CC0)",
+            "Wikipedia (CC BY-SA)",
+            "Overture Maps (CDLA)",
+            "Ticketon / Sxodim",
+            "Open-Meteo (CC BY 4.0)"
+          ],
+          "data_built_at": "2026-10-19",
+          "privacy": "Location is rounded to ~100 m, used only for this request and not stored. Coordinates are never sent to the language model."
+        },
+        "considered": [
+          {
+            "name": "Capital Music & Pub",
+            "reason": "not suitable for children"
+          },
+          {
+            "name": "ШЕFF Bar&Kitchen",
+            "reason": "not suitable for children"
+          },
+          {
+            "name": "Salieri �RestoBar & Karaoke�",
+            "reason": "not suitable for children"
+          },
+          {
+            "name": "Skvot.",
+            "reason": "not suitable for children"
+          }
+        ],
+        "notes": [
+          "Travel time estimated from straight-line distance with a city detour factor."
+        ],
+        "disclaimer": "AI-generated from open data (OpenStreetMap, Wikidata/Wikipedia, etc.). Hours and accessibility may change — please verify before visiting.",
+        "ai_generated": true,
+        "llm": {
+          "mode": "llm",
+          "model": "gpt-4.1-mini",
+          "latency_ms": 3759
+        }
+      }
+    }
+  ],
+  "human_text_review": "NOT_EVALUATED",
+  "ui_browser": [
+    {
+      "request": {
+        "query": "Я возле Байтерека. Хочу погулять 30–60 минут",
+        "lang": "ru",
+        "location": null,
+        "landmark": "baiterek",
+        "time_budget_min": null,
+        "mode": null,
+        "profile": {
+          "with_kids": false,
+          "tourist": false,
+          "accessibility": false,
+          "group_size": 1
+        },
+        "travel_mode": null,
+        "with_child": null,
+        "tourist": null,
+        "accessibility": null,
+        "group_size": null,
+        "want_route": null,
+        "now": null,
+        "weather": null,
+        "refine": []
+      },
+      "response": {
+        "api_version": "1.0",
+        "request_id": "916cac511724",
+        "lang": "ru",
+        "summary": "Мини-маршрут: Экскурсия на двухэтажном автобусе Red Bus → Атамекен. Всего ≈ 51 мин (21 мин в пути + 30 мин на местах). С возвращением к старту.",
+        "recommendations": [
+          {
+            "poi_id": "citypass:119",
+            "name": "Экскурсия на двухэтажном автобусе Red Bus",
+            "category": "attraction",
+            "lat": 51.128197,
+            "lon": 71.430444,
+            "distance_m": 10,
+            "travel_min": 2,
+            "why": "Достопримечательность: совсем рядом.",
+            "visit_min": [
+              15,
+              15
+            ],
+            "what_to_do": "Осмотрите место и выберите ракурс для фотографии. Уточните часы работы перед выходом.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-na-krasnyih-avtobusah",
+            "rating": null,
+            "website": null,
+            "rank": 1,
+            "category_detail": "landmark",
+            "category_label": "Достопримечательность",
+            "icon": "landmark",
+            "walk_distance_m": 90,
+            "travel_mode": "walk",
+            "visit_suggested_min": 15,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "next_change": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "citypass"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": "площадь Монумента Байтерек",
+            "description": null,
+            "description_source": "website",
+            "arrival_at": "2026-10-19T03:24:17+05:00",
+            "departure_at": "2026-10-19T03:39:17+05:00"
+          },
+          {
+            "poi_id": "overture:8ac37848-609b-4fb5-9ab2-c76a52562788",
+            "name": "Атамекен",
+            "category": "attraction",
+            "lat": 51.13007,
+            "lon": 71.42443,
+            "distance_m": 465,
+            "travel_min": 10,
+            "why": "Достопримечательность: совсем рядом.",
+            "visit_min": [
+              15,
+              15
+            ],
+            "what_to_do": "Осмотрите место и выберите ракурс для фотографии. Уточните часы работы перед выходом.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json#gers_id=8ac37848-609b-4fb5-9ab2-c76a52562788",
+            "rating": null,
+            "website": "http://atamekenmap.kz/",
+            "rank": 2,
+            "category_detail": "landmark",
+            "category_label": "Достопримечательность",
+            "icon": "landmark",
+            "walk_distance_m": 690,
+            "travel_mode": "walk",
+            "visit_suggested_min": 15,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "next_change": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "overture"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": null,
+            "description": "Достопримечательность «Атамекен» в Астане.",
+            "description_source": "website",
+            "arrival_at": "2026-10-19T03:48:17+05:00",
+            "departure_at": "2026-10-19T04:03:17+05:00"
+          }
+        ],
+        "ideas": [
+          {
+            "poi_id": "idea-3",
+            "name": "Фото-квест миниатюр",
+            "category": "attraction",
+            "lat": 51.13007,
+            "lon": 71.42443,
+            "distance_m": 465,
+            "travel_min": 10,
+            "why": "Найдите на территории Атамекена самые необычные и узнаваемые миниатюрные здания и сделайте креативные фото.",
+            "visit_min": [
+              5,
+              20
+            ],
+            "what_to_do": "Найдите на территории Атамекена самые необычные и узнаваемые миниатюрные здания и сделайте креативные фото.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "generated",
+            "source_url": null,
+            "rating": null,
+            "website": null,
+            "rank": 3,
+            "category_detail": "idea",
+            "category_label": "Идея ИИ",
+            "icon": "sparkles",
+            "walk_distance_m": null,
+            "travel_mode": "walk",
+            "visit_suggested_min": 10,
+            "leave_by": null,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "next_change": null
+            },
+            "source_label": "Идея ИИ",
+            "data_sources": [
+              "llm"
+            ],
+            "popularity": null,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [
+              "ai_idea"
+            ],
+            "event": null,
+            "address": "Рядом с: Атамекен",
+            "description": null,
+            "description_source": "generated"
+          }
+        ],
+        "route": {
+          "order": [
+            "citypass:119",
+            "overture:8ac37848-609b-4fb5-9ab2-c76a52562788"
+          ],
+          "legs": [
+            {
+              "from_id": "start",
+              "to_id": "citypass:119",
+              "distance_m": 87,
+              "travel_min": 2,
+              "polyline": [
+                [
+                  51.128288,
+                  71.430455
+                ],
+                [
+                  51.128273,
+                  71.430545
+                ],
+                [
+                  51.128253,
+                  71.430671
+                ],
+                [
+                  51.128235,
+                  71.430794
+                ],
+                [
+                  51.128143,
+                  71.430779
+                ],
+                [
+                  51.128078,
+                  71.430664
+                ],
+                [
+                  51.128048,
+                  71.430527
+                ],
+                [
+                  51.128053,
+                  71.430371
+                ],
+                [
+                  51.128127,
+                  71.430399
+                ],
+                [
+                  51.128197,
+                  71.430444
+                ]
+              ],
+              "geometry": "network"
+            },
+            {
+              "from_id": "citypass:119",
+              "to_id": "overture:8ac37848-609b-4fb5-9ab2-c76a52562788",
+              "distance_m": 639,
+              "travel_min": 9,
+              "polyline": [
+                [
+                  51.128197,
+                  71.430444
+                ],
+                [
+                  51.128127,
+                  71.430399
+                ],
+                [
+                  51.128053,
+                  71.430371
+                ],
+                [
+                  51.127914,
+                  71.430317
+                ],
+                [
+                  51.127835,
+                  71.430284
+                ],
+                [
+                  51.127862,
+                  71.430109
+                ],
+                [
+                  51.127877,
+                  71.430018
+                ],
+                [
+                  51.127974,
+                  71.429406
+                ],
+                [
+                  51.128029,
+                  71.429369
+                ],
+                [
+                  51.128124,
+                  71.429321
+                ],
+                [
+                  51.128258,
+                  71.429291
+                ],
+                [
+                  51.128391,
+                  71.429298
+                ],
+                [
+                  51.12848,
+                  71.429321
+                ],
+                [
+                  51.128503,
+                  71.429155
+                ],
+                [
+                  51.128535,
+                  71.42894
+                ],
+                [
+                  51.128555,
+                  71.428807
+                ],
+                [
+                  51.128579,
+                  71.428635
+                ],
+                [
+                  51.128601,
+                  71.428485
+                ],
+                [
+                  51.128729,
+                  71.428242
+                ],
+                [
+                  51.128771,
+                  71.427981
+                ],
+                [
+                  51.12889,
+                  71.427251
+                ],
+                [
+                  51.128943,
+                  71.426926
+                ],
+                [
+                  51.12928,
+                  71.427064
+                ],
+                [
+                  51.129297,
+                  71.426781
+                ],
+                [
+                  51.129312,
+                  71.426496
+                ],
+                [
+                  51.129355,
+                  71.426223
+                ],
+                [
+                  51.129391,
+                  71.425987
+                ],
+                [
+                  51.129459,
+                  71.425751
+                ],
+                [
+                  51.129505,
+                  71.42543
+                ],
+                [
+                  51.129694,
+                  71.424105
+                ],
+                [
+                  51.13007,
+                  71.42443
+                ]
+              ],
+              "geometry": "network"
+            },
+            {
+              "from_id": "overture:8ac37848-609b-4fb5-9ab2-c76a52562788",
+              "to_id": "start",
+              "distance_m": 692,
+              "travel_min": 10,
+              "polyline": [
+                [
+                  51.13007,
+                  71.42443
+                ],
+                [
+                  51.129694,
+                  71.424105
+                ],
+                [
+                  51.129505,
+                  71.42543
+                ],
+                [
+                  51.129466,
+                  71.425705
+                ],
+                [
+                  51.129408,
+                  71.425957
+                ],
+                [
+                  51.129355,
+                  71.426223
+                ],
+                [
+                  51.129312,
+                  71.426496
+                ],
+                [
+                  51.129276,
+                  71.42672
+                ],
+                [
+                  51.129288,
+                  71.427002
+                ],
+                [
+                  51.128943,
+                  71.426926
+                ],
+                [
+                  51.1289,
+                  71.42719
+                ],
+                [
+                  51.128771,
+                  71.427981
+                ],
+                [
+                  51.128729,
+                  71.428242
+                ],
+                [
+                  51.128601,
+                  71.428485
+                ],
+                [
+                  51.128579,
+                  71.428635
+                ],
+                [
+                  51.128563,
+                  71.428757
+                ],
+                [
+                  51.128535,
+                  71.42894
+                ],
+                [
+                  51.128514,
+                  71.429081
+                ],
+                [
+                  51.128483,
+                  71.429283
+                ],
+                [
+                  51.128391,
+                  71.429298
+                ],
+                [
+                  51.128258,
+                  71.429291
+                ],
+                [
+                  51.128181,
+                  71.429306
+                ],
+                [
+                  51.128059,
+                  71.429352
+                ],
+                [
+                  51.127974,
+                  71.429406
+                ],
+                [
+                  51.127877,
+                  71.430018
+                ],
+                [
+                  51.127862,
+                  71.430109
+                ],
+                [
+                  51.127835,
+                  71.430284
+                ],
+                [
+                  51.127914,
+                  71.430317
+                ],
+                [
+                  51.128053,
+                  71.430371
+                ],
+                [
+                  51.128048,
+                  71.430527
+                ],
+                [
+                  51.128078,
+                  71.430664
+                ],
+                [
+                  51.128143,
+                  71.430779
+                ],
+                [
+                  51.128228,
+                  71.430843
+                ],
+                [
+                  51.128253,
+                  71.430671
+                ],
+                [
+                  51.128273,
+                  71.430545
+                ],
+                [
+                  51.128288,
+                  71.430455
+                ]
+              ],
+              "geometry": "network"
+            }
+          ],
+          "total_min": 51,
+          "fits_budget": true,
+          "returns_to_start": true,
+          "back_min": 0,
+          "summary": "Мини-маршрут: Экскурсия на двухэтажном автобусе Red Bus → Атамекен. Всего ≈ 51 мин (21 мин в пути + 30 мин на местах). С возвращением к старту."
+        },
+        "used_context": {
+          "location_source": "landmark",
+          "location_label": "Байтерек",
+          "radius_m": 1757,
+          "time_budget_min": 60,
+          "mode": "walk",
+          "filters": [],
+          "now": "2026-10-19T03:22:17+05:00",
+          "location": {
+            "source": "text_landmark",
+            "label": "Байтерек",
+            "precision_m": 50,
+            "lat": 51.128,
+            "lon": 71.43
+          },
+          "local_time": "03:22",
+          "weekday": "понедельник",
+          "is_holiday": null,
+          "is_dark": true,
+          "weather": null,
+          "speed_kmh": 4.5,
+          "party": "solo",
+          "parsed_from_query": {
+            "categories": [],
+            "preferences": [
+              "park",
+              "garden",
+              "landmark",
+              "viewpoint",
+              "museum"
+            ],
+            "needs": [],
+            "time_budget_min": 60,
+            "deadline": null,
+            "deadline_in_min": null,
+            "flight_type": "unknown",
+            "deadline_buffer_min": 0,
+            "landmark": "Байтерека",
+            "night": false,
+            "surprise": false,
+            "parser": "llm+rules (gpt-4.1-mini)"
+          },
+          "relaxations": [],
+          "funnel": {
+            "total": 2750,
+            "within_reach": 544,
+            "after_filters": 41,
+            "shown": 2
+          },
+          "data_sources": [
+            "OpenStreetMap (ODbL)",
+            "Wikidata (CC0)",
+            "Wikipedia (CC BY-SA)",
+            "Overture Maps (CDLA)",
+            "Ticketon / Sxodim"
+          ],
+          "data_built_at": "2026-10-19",
+          "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+        },
+        "considered": [
+          {
+            "name": "ТЦ Abu Dhabi Plaza",
+            "reason": "закрыто к моменту прихода"
+          },
+          {
+            "name": "Сквер",
+            "reason": "неосвещённая открытая территория в тёмное время"
+          },
+          {
+            "name": "Asia Park Mall",
+            "reason": "закрыто к моменту прихода"
+          },
+          {
+            "name": "Сызықтық саябақ",
+            "reason": "неосвещённая открытая территория в тёмное время"
+          }
+        ],
+        "notes": [
+          "Уже темно — парки без освещения не предлагаю, приоритет у работающих мест в оживлённых районах.",
+          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+        ],
+        "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+        "ai_generated": true,
+        "llm": {
+          "mode": "llm",
+          "model": "gpt-4.1-mini",
+          "latency_ms": 3731
+        }
+      },
+      "ms": 3732,
+      "transport": "browser_to_live_local_http"
+    }
+  ],
+  "source_sha256_before": "233622c9c05f1437eefd175f0caa62d91524574b39140a72ddb6eecebec99b3a",
+  "source_stable": true,
+  "cost": {
+    "model": "gpt-4.1-mini",
+    "cap_usd": 0.1,
+    "reserved_usd": 0.08856199999999999,
+    "actual_usd": 0.015132800000000002,
+    "attempts": [
+      {
+        "id": "28aaa740d00340868351f293e2523af5",
+        "number": 1,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.004646,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1303,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 114,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1417
+        },
+        "actual_usd": 0.0007036
+      },
+      {
+        "id": "1a67552132d644f5ba1e5c9bb529cae5",
+        "number": 2,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.0080164,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2760,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 198,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2958
+        },
+        "actual_usd": 0.0014208
+      },
+      {
+        "id": "894987aceae346de8af63b089b6cca0c",
+        "number": 3,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.004646,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1304,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 124,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1428
+        },
+        "actual_usd": 0.00072
+      },
+      {
+        "id": "d5454299807e446dab59dbed4d7249a5",
+        "number": 4,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.0080304,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2698,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 255,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2953
+        },
+        "actual_usd": 0.0014872000000000002
+      },
+      {
+        "id": "fdb399234d1d4218993b981dd8267bd4",
+        "number": 5,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.00463,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1299,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 141,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1440
+        },
+        "actual_usd": 0.0007452
+      },
+      {
+        "id": "1b10a0de820b45e7b1126f6e1d799de5",
+        "number": 6,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.007954,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2666,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 177,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2843
+        },
+        "actual_usd": 0.0013496
+      },
+      {
+        "id": "4cf04b343b7942268368d5b61f9849ff",
+        "number": 7,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.004646,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1303,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 111,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1414
+        },
+        "actual_usd": 0.0006988000000000001
+      },
+      {
+        "id": "ee6cc6276bb24227a53ae44ebbbe3279",
+        "number": 8,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.0080164,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2760,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 230,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2990
+        },
+        "actual_usd": 0.001472
+      },
+      {
+        "id": "42a68da33361474684184070fc2a5b7c",
+        "number": 9,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.004646,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1304,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 117,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1421
+        },
+        "actual_usd": 0.0007088000000000001
+      },
+      {
+        "id": "54426fa6a1c042ea98e678489df26a00",
+        "number": 10,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.0081176,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2738,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 242,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2980
+        },
+        "actual_usd": 0.0014824
+      },
+      {
+        "id": "308e653ded1744e2b9497480fe22d0ba",
+        "number": 11,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.00463,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1299,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 144,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1443
+        },
+        "actual_usd": 0.00075
+      },
+      {
+        "id": "da9c1f9fbe1d4cf9a6c3c817741d01d8",
+        "number": 12,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.007954,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2666,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 233,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2899
+        },
+        "actual_usd": 0.0014392
+      },
+      {
+        "id": "8f70974caa864d2096ba689d46ae3268",
+        "number": 13,
+        "max_output_tokens": 500,
+        "reserved_usd": 0.0046512,
+        "status": 200,
+        "usage": {
+          "input_tokens": 1309,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 131,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1440
+        },
+        "actual_usd": 0.0007332
+      },
+      {
+        "id": "ebb0029016ca49e3a330d33041266bff",
+        "number": 14,
+        "max_output_tokens": 1200,
+        "reserved_usd": 0.007978,
+        "status": 200,
+        "usage": {
+          "input_tokens": 2651,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 226,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2877
+        },
+        "actual_usd": 0.001422
+      }
+    ],
+    "pricing_url": "https://developers.openai.com/api/docs/models/gpt-4.1-mini"
+  },
+  "passed": true
+}

@@ -61,16 +61,24 @@ def source_fingerprint(root: Path) -> str:
     extensions = {".py", ".js", ".ts", ".tsx", ".jsx", ".mjs", ".cjs", ".json", ".html", ".css",
                   ".scss", ".vue", ".svelte", ".toml", ".yaml", ".yml", ".md", ".txt"}
     paths = []
-    for name in ("backend", "rag", "frontend"):
+    for name in ("backend", "ayat_backend", "rag", "frontend", "scripts", "runtime_support", "data/collect"):
         directory = root / name
         digest.update(f"root:{name}:{directory.is_dir()}\0".encode())
         if directory.is_dir():
             for current, directories, files in os.walk(directory):
                 directories[:] = sorted(item for item in directories if item not in excluded and not item.endswith(".egg-info"))
                 paths.extend(Path(current) / name for name in files
-                             if Path(name).suffix in extensions and not name.startswith(".env"))
+                             if Path(name).suffix in extensions and not name.startswith(".env")
+                             and (Path(current) / name).relative_to(root).as_posix() not in {
+                                 "ayat_backend/docs/EVAL_RESULTS.md", "ayat_backend/eval/results.json"})
     eval_sources = ("eval/run_eval.py", "eval/check_readiness.py", "eval/judge.py", "eval/validators.py", "eval/metrics.py")
-    configs = ("pytest.ini", "requirements-qa.txt", "pyproject.toml", "requirements.txt", "package.json")
+    configs = ("pytest.ini", "requirements-qa.txt", "requirements-integration.txt", "pyproject.toml", "requirements.txt", "package.json",
+               "docker-compose.yml", "backend/Dockerfile", "ayat_backend/Dockerfile", "ayat_backend/uv.lock", "ayat_backend/.python-version", ".dockerignore",
+               ".github/workflows/backend.yml", ".github/workflows/ayat-backend.yml", ".github/workflows/data-refresh.yml",
+               "data/run_pipeline.py", "data/snapshot.py", "data/eligibility.py", "data/quarantine.json", "data/quality_overrides.json",
+               "data/processed/field_evidence.json", "data/processed/fact_reviews.json",
+               "data/processed/current/bundle_manifest.json", "data/processed/current/quarantine.json",
+               "data/processed/current/field_evidence.json", "data/processed/current/fact_reviews.json")
     for name in (*eval_sources, *configs):
         path = root / name
         digest.update(f"file:{name}:{path.is_file()}\0".encode())
@@ -188,6 +196,7 @@ def _metadata(base_url, pois_path, cases_path, repeat, model_label, root, fixtur
         hash_errors.append("source provenance fingerprint could not be read")
     builtin_cases = cases_path.resolve() == (PROJECT_ROOT / "eval/golden_set.json").resolve()
     return {
+        "runtime_id": "secondary",
         "provenance_errors": hash_errors, "source_sha256": source_sha256,
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "dataset_sha256": hash_input("dataset", pois_path),

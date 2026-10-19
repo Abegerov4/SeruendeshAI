@@ -1,0 +1,20 @@
+2026-10-19 05:01:10,452 INFO app.store: store: 2745 POIs, 14024 gazetteer entries, dense=True, events=60
+2026-10-19 05:01:10,567 INFO app.geo: walk graph: 42455 nodes, 122036 edges
+2026-10-19 05:01:10,991 INFO app: ready in 4.8s: 2745 POIs, graph=True, dense=True, llm=False, db=sqlite
+2026-10-19 05:01:11,161 INFO app.service: recommend id=d311ab396de9 lang=ru mode=walk budget=60 items=3 route=False llm=template 165ms
+2026-10-19 05:01:11,161 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 05:01:11,216 INFO app.service: recommend id=eb322d0a609c lang=ru mode=walk budget=60 items=1 route=False llm=template 52ms
+2026-10-19 05:01:11,217 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 05:01:11,252 INFO app.service: recommend id=ea0c389c8304 lang=ru mode=walk budget=0 items=0 route=False llm=template 32ms
+2026-10-19 05:01:11,252 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 05:01:11,365 INFO app.service: recommend id=5b607a497c98 lang=kk mode=walk budget=60 items=3 route=False llm=template 109ms
+2026-10-19 05:01:11,365 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 05:01:11,440 INFO app.service: recommend id=662adb4d8f13 lang=ru mode=walk budget=120 items=3 route=False llm=template 72ms
+2026-10-19 05:01:11,440 INFO httpx2: HTTP Request: POST http://testserver/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 05:01:11,443 INFO httpx2: HTTP Request: GET http://testserver/api/meta "HTTP/1.1 200 OK"
+walk {'mode': 'template', 'model': None, 'latency_ms': 165}
+child {'mode': 'template', 'model': None, 'latency_ms': 52}
+tourist {'mode': 'template', 'model': None, 'latency_ms': 32}
+kazakh {'mode': 'template', 'model': None, 'latency_ms': 109}
+night {'mode': 'template', 'model': None, 'latency_ms': 72}
+exported to /Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/ayat_backend/docs/api
