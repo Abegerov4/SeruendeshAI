@@ -43,6 +43,14 @@ const COVER_GROUP = {park: 'green', garden: 'green', playground: 'kids', theme_p
   mall: 'shop', souvenir: 'shop', active: 'active', spa: 'active', water_park: 'active', zoo_aquarium: 'kids'};
 export const coverGroup = key => COVER_GROUP[key] || 'sights';
 
+// Persist the icon name, then restore the React component when reading saved places.
+// Older snapshots have only a category; their cover group supplies a safe fallback.
+export function placeIcon(iconKey, categoryKey) {
+  const fallback = {green: Trees, kids: Baby, sights: Landmark, culture: Landmark,
+    coffee: Coffee, food: Utensils, night: Moon, shop: ShoppingBag, active: Activity};
+  return ICONS[iconKey] || fallback[coverGroup(categoryKey)] || Sparkles;
+}
+
 export const BADGE_LABELS = {indoor: 'В помещении', outdoor: 'На свежем воздухе', kids: 'Можно с детьми', popular: 'Знаковое место',
   hidden_gem: 'Скрытая жемчужина', event: 'Сегодня событие', night: 'Вечерний вариант', free: 'Бесплатно', ai_idea: 'Идея ИИ'};
 
@@ -65,7 +73,7 @@ export function toPlace(r) {
   const generated = r.source === 'generated';
   return {
     id: r.poi_id, name: r.name, category: r.category_label, categoryKey: r.category_detail,
-    icon: ICONS[r.icon] || Sparkles,
+    iconKey: r.icon, icon: placeIcon(r.icon, r.category_detail),
     distance: formatDistance(r.walk_distance_m ?? r.distance_m), distanceM: r.walk_distance_m ?? r.distance_m,
     travel: r.travel_min, visit: r.visit_suggested_min, visitRange: r.visit_min, mode: r.travel_mode,
     why: r.why, action: r.what_to_do, rating: r.rating,

@@ -24,6 +24,12 @@ export function smoothZoom(m, el) {
     moving = false; target = null;
     m._move(m.getCenter(), m.getZoom())._moveEnd(true);
   };
+  const cancel = () => {
+    cancelAnimationFrame(frame); clearTimeout(settle);
+    frame = settle = 0; dx = dy = 0;
+    if (moving) end();
+    target = at = null;
+  };
   const step = () => {
     frame = 0;
     if (!moving) {  // a plain pan
@@ -56,7 +62,7 @@ export function smoothZoom(m, el) {
   };
   el.addEventListener('wheel', onWheel, { passive: false });
   return {
-    zoomBy,
+    zoomBy, cancel,
     stop: () => { cancelAnimationFrame(frame); clearTimeout(settle); el.removeEventListener('wheel', onWheel); },
   };
 }

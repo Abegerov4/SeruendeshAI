@@ -55,7 +55,7 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
       const visible = w > 200 && h > 200;
       if (visible && hidden && bounds.current) {
         clearTimeout(timer);
-        timer = setTimeout(() => { m.invalidateSize(); m.fitBounds(bounds.current, fitOpts()); }, 180);
+        timer = setTimeout(() => { m.invalidateSize(); zoomer.current.cancel(); m.fitBounds(bounds.current, fitOpts()); }, 180);
       }
       hidden = !visible;
     });
@@ -101,7 +101,7 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
     if (pts.length) {
       bounds.current = L.latLngBounds(pts);
       if (location.search.includes('debug')) window.__seruBounds = bounds.current;
-      if (box.current.clientWidth > 200 && box.current.clientHeight > 200) m.fitBounds(bounds.current, fitOpts());
+      if (box.current.clientWidth > 200 && box.current.clientHeight > 200) { zoomer.current.cancel(); m.fitBounds(bounds.current, fitOpts()); }
     }
   }, [places, origin, route, showRoute, resultVersion]);
 
@@ -119,7 +119,7 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
     L.marker(start, { icon: L.divIcon({ className: 'leaflet-you', html: `<span class="you-dot"></span><label>${esc(focusRoute.origin_label ? tr('Старт') + ': ' + focusRoute.origin_label : tr('Вы здесь'))}</label>`, iconSize: [18, 18], iconAnchor: [9, 9] }), keyboard: false }).addTo(g);
     focusLayer.current = g;
     bounds.current = L.latLngBounds(focusRoute.polyline);  // a hidden map tab re-fits to the route when shown
-    const fitNow = () => { m.invalidateSize(); m.fitBounds(L.latLngBounds(focusRoute.polyline), { ...fitOpts(), maxZoom: 17 }); };
+    const fitNow = () => { zoomer.current.cancel(); m.invalidateSize(); m.fitBounds(L.latLngBounds(focusRoute.polyline), { ...fitOpts(), maxZoom: 17 }); };
     if (box.current.clientWidth > 200 && box.current.clientHeight > 200) fitNow(); else setTimeout(fitNow, 350);  // tab just became visible
   }, [focusRoute]);
 
@@ -140,6 +140,7 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
   }, [selected, hovered]);
 
   const fit = () => {
+    zoomer.current.cancel();
     const pts = places.filter(p => p.lat != null).map(p => [p.lat, p.lon]);
     if (origin?.lat != null) pts.push([origin.lat, origin.lon]);
     if (pts.length) map.current.fitBounds(L.latLngBounds(pts), fitOpts());

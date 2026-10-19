@@ -1,6 +1,6 @@
 // Accounts: session lives in an httpOnly cookie set by the API; here we only keep the public profile.
 import {useSyncExternalStore} from 'react';
-import {API_BASE} from './api';
+import {API_BASE, placeIcon} from './api';
 
 let state = {user: null, ready: false};
 const listeners = new Set();
@@ -28,9 +28,9 @@ export async function requestReset(email) { return call('/api/auth/password-rese
 export async function confirmReset(token, password) { const user = await call('/api/auth/password-reset/confirm', {method: 'POST', body: {token, password}}); emit({user}); return user; }
 
 // saved places (server-side when logged in)
-const SNAPSHOT = ['name', 'category', 'categoryKey', 'lat', 'lon', 'address', 'why', 'action', 'url', 'image', 'status', 'distance',
+const SNAPSHOT = ['iconKey', 'name', 'category', 'categoryKey', 'lat', 'lon', 'address', 'why', 'action', 'url', 'image', 'status', 'distance',
   'travel', 'visit', 'visitRange', 'mode', 'features', 'badges', 'source', 'generated', 'dataSources', 'descriptionSource', 'openConfidence', 'accessibility'];
-export async function fetchSaved() { return (await call('/api/me/saved')).map(r => ({id: r.poi_id, ...r.data})); }
+export async function fetchSaved() { return (await call('/api/me/saved')).map(r => ({id: r.poi_id, ...r.data, icon: placeIcon(r.data?.iconKey, r.data?.categoryKey)})); }
 export async function putSaved(place) {
   const data = Object.fromEntries(SNAPSHOT.filter(k => place[k] !== undefined).map(k => [k, place[k]]));
   return call(`/api/me/saved/${encodeURIComponent(place.id)}`, {method: 'PUT', body: {data}});
