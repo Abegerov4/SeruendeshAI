@@ -120,18 +120,61 @@ def test_accounts_flow(client):
     assert r.status_code == 422
     r = client.post("/api/auth/register", json={"name": "Аят", "email": email, "password": "correct horse 1"})
     assert r.status_code == 201 and r.json()["email"] == email
-    assert client.get("/api/auth/me").json()["name"] == "Аят"
+    me = client.get("/api/auth/me")
+    assert me.status_code == 200 and me.json()["name"] == "Аят" and me.json()["email"] == email  # flat UserOut, as before
+    assert {"id", "email", "name", "lang", "created_at"} == set(me.json())
     assert client.post("/api/auth/register", json={"name": "X Y", "email": email, "password": "another pass"}).status_code == 409
     assert client.put("/api/me/saved/osm:n1", json={"data": {"name": "Кафе", "lat": 51.1, "secret": "x"}}).status_code == 200
     saved = client.get("/api/me/saved").json()
     assert saved[0]["poi_id"] == "osm:n1" and "secret" not in saved[0]["data"]
     client.post("/api/auth/logout")
-    assert client.get("/api/auth/me").status_code == 401
+    guest = client.get("/api/auth/me")
+    assert guest.status_code == 200 and guest.json() == {"user": None}  # guests: no 401
+    assert client.get("/api/me/saved").status_code == 401  # private endpoints still require a session
     assert client.post("/api/auth/login", json={"email": email, "password": "wrong"}).status_code == 401
     assert client.post("/api/auth/login", json={"email": email.upper(), "password": "correct horse 1"}).status_code == 200
     assert client.delete("/api/me").status_code == 204
-    assert client.get("/api/auth/me").status_code == 401
+    assert client.get("/api/auth/me").json() == {"user": None}
     assert client.post("/api/auth/login", json={"email": email, "password": "correct horse 1"}).status_code == 401
+
+
+def test_auth_me_guest_and_bad_cookie(client):
+    client.cookies.set("seru_session", "garbage")
+    r = client.get("/api/auth/me")
+    client.cookies.clear()
+    assert r.status_code == 200 and r.json() == {"user": None}
+
+
+def test_meta_features(client):
+    f = client.get("/api/meta").json()["features"]
+    assert set(f) == {"password_reset_email", "photo", "mcp"} and isinstance(f["password_reset_email"], bool)
+    assert f["photo"] is False and f["mcp"] is True  # tests run without an LLM
+
+
+def test_off_topic_queries_get_a_friendly_note(client):
+    from tests.test_units import OFF_TOPIC_QUERIES
+    for q in OFF_TOPIC_QUERIES[:3]:
+        d = post(client, query=q, landmark="baiterek")
+        assert d["off_topic"] is True and d["recommendations"] == [] and d["route"] is None, q
+        assert "Астан" in d["summary"] and d["summary"] in d["notes"]
+    d = post(client, query="write me some code in python", lang="en")
+    assert d["off_topic"] is True and "Astana" in d["notes"][-1]
+    d = post(client, query="код жазып бер", lang="kk")
+    assert d["off_topic"] is True and "Астанадағы" in d["summary"]
+
+
+def test_normal_queries_are_never_off_topic(client):
+    from tests.test_units import NORMAL_QUERIES
+    for q in NORMAL_QUERIES:
+        d = post(client, query=q, landmark="baiterek", time_budget_min=120)
+        assert d["off_topic"] is False and "Серу" not in d["summary"], q
+        assert d["recommendations"], q
+
+
+def test_llm_usage_block_is_additive(client):
+    d = post(client, query="кофе рядом", landmark="baiterek")
+    assert d["llm"]["mode"] == "template" and d["llm"]["usage"] == {"input_tokens": 0, "output_tokens": 0, "cost_usd": 0.0}
+    assert d["off_topic"] is False
 
 
 def test_strict_schema_and_query_truncation(client):

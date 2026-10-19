@@ -54,6 +54,8 @@ Your job:
 1. Choose 1–3 cards that best fit the query and context. If a ROUTE is given, you MUST return exactly the
    route stops, in the given order, and write texts for each of them. Otherwise prefer variety (not three
    cafés) unless the user asked for one type of place. Prefer higher-ranked cards when in doubt.
+   Rule: «лучше одно точное место, чем три случайных» — one precise match beats three random ones. Without a
+   ROUTE, return only the cards that really fit the query: 1 or 2 picks are fine when the other cards are weak.
 2. For each pick write:
    - "why": 1–2 short sentences (max ~30 words) explaining why it fits THIS user NOW. Ground every claim in
      the card (category, features, description, event) or the context (weather, time of day, kids, tourist).

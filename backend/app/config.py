@@ -18,6 +18,14 @@ class Settings(BaseSettings):
     llm_timeout_s: float = 8.0
     parse_timeout_s: float = 3.0
     llm_enabled: bool = True
+    photo_timeout_s: float = 12.0  # vision call of POST /api/recommend/photo
+    # USD per 1M tokens [input, output] for cost logging (developers.openai.com/api/docs/pricing, Oct 2026).
+    # Edit here or override with LLM_PRICES='{"model": [in, out]}'; "model@tier" = price on that service tier.
+    # A model missing from the table -> cost_usd null.
+    llm_prices: dict[str, tuple[float, float]] = {
+        "gpt-6-luna": (0.10, 0.50), "gpt-6-luna@fast": (0.20, 1.00),
+        "gpt-5.6-luna": (0.20, 1.20), "gpt-4.1-mini": (0.40, 1.60), "gpt-4o-mini": (0.15, 0.60),
+    }
 
     embed_model: str = "e5-large"  # e5-large | e5-base | e5-small | off
     weather_enabled: bool = True
@@ -35,6 +43,8 @@ class Settings(BaseSettings):
     smtp_password: str = ""
     smtp_from: str = ""
     rate_limit_per_min: int = 30
+    mcp_rate_limit_per_min: int = 30  # MCP tool calls per client per minute
+    photo_rate_limit_per_min: int = 10  # vision calls cost more
     log_level: str = "INFO"
 
     @property

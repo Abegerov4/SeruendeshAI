@@ -8,7 +8,7 @@ import asyncio
 import logging
 import os
 import time
-from collections import defaultdict, deque
+from collections import defaultdict
 from contextlib import asynccontextmanager
 
 import httpx
@@ -16,20 +16,26 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.datastructures import UploadFile
 
 from app.paths import ROOT_DIR
 
+from app import mcp_connector, photo
 from app.auth import router as auth_router
 from app.categories import CATEGORIES
 from app.config import get_settings
 from app.db import db_kind, init_db
 from app.embedder import get_embedder
 from app.geo import load_graph
+from app.guards import RateLimiter
+from app.i18n import t
 from app.llm import client as llm_client
+from app.llm import usage_begin, usage_summary
 from app.categories import CONTRACT_CATEGORY
 from app.geo import hav_m
-from app.schemas import (CategoryOut, FeedbackRequest, FeedbackResponse, HealthResponse, LandmarkOut, MetaResponse,
-                         PoiBrief, RecommendRequest, RecommendResponse)
+from app.query import detect_lang
+from app.schemas import (CategoryOut, FeedbackRequest, FeedbackResponse, HealthResponse, LandmarkOut, MetaFeatures,
+                         MetaResponse, PhotoRecommendResponse, PoiBrief, RecommendRequest, RecommendResponse)
 from app.service import Runtime, recommend, snap_pois
 from app.store import load_store
 
@@ -38,6 +44,7 @@ logging.basicConfig(level=settings.log_level, format="%(asctime)s %(levelname)s 
 log = logging.getLogger("app")
 RT: dict[str, Runtime] = {}
 FEEDBACK: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))  # aggregated counts only, no user data
+mcp_connector.attach(lambda: RT.get("rt"))
 
 
 @asynccontextmanager
@@ -60,7 +67,8 @@ async def lifespan(app: FastAPI):
         asyncio.create_task(_warmup())  # first call with a new strict schema is slow; pay it at startup
     log.info("ready in %.1fs: %d POIs, graph=%s, dense=%s, llm=%s, db=%s", time.perf_counter() - t0, store.size,
              graph is not None, embedder is not None, llm_client() is not None, db_kind())
-    yield
+    async with mcp_connector.serve():  # MCP session manager lives as long as the app
+        yield
     await http.aclose()
 
 
@@ -72,7 +80,9 @@ async def _warmup():
         await asyncio.gather(
             parse(LLMParsed, PARSE_SYSTEM, "Хочу кофе рядом", models=[settings.llm_parse_model], timeout_s=20, max_output_tokens=300),
             parse(GenOut, SYSTEM, 'TARGET LANGUAGE: Russian\nQUERY: кофе\nCANDIDATES:\n{"id":"c1","name":"Кофейня","category":"Кофейня"}',
-                  models=settings.llm_chain[:1], timeout_s=20, max_output_tokens=300))
+                  models=settings.llm_chain[:1], timeout_s=20, max_output_tokens=300),
+            parse(photo.PhotoGuessLLM, photo.PHOTO_SYSTEM, "TARGET LANGUAGE: Russian\nPLACES:\nbaiterek — Байтерек\n(no photo)",
+                  models=settings.llm_chain[:1], timeout_s=20, max_output_tokens=100))
         log.info("LLM schemas warmed up")
     except Exception as e:  # warm-up is best effort
         log.warning("warm-up failed: %s", type(e).__name__)
@@ -94,20 +104,20 @@ app.add_middleware(
     allow_credentials=True,
     allow_headers=["*"],
 )
+# MCP connector (streamable HTTP, stateless): registered before the SPA catch-all below
+app.add_route("/connector/mcp", mcp_connector.asgi, include_in_schema=False)
 
-_hits: dict[str, deque] = defaultdict(deque)
+_limiter = RateLimiter(settings.rate_limit_per_min)
+_photo_limiter = RateLimiter(settings.photo_rate_limit_per_min)
+
+
+def _client_ip(request: Request) -> str:
+    return request.headers.get("x-forwarded-for", request.client.host if request.client else "?").split(",")[0].strip()
 
 
 def _rate_limited(request: Request) -> bool:
     """Tiny in-memory per-client limiter (IP kept in RAM for 60 s only, never logged)."""
-    key = request.headers.get("x-forwarded-for", request.client.host if request.client else "?").split(",")[0]
-    q, now = _hits[key], time.time()
-    while q and now - q[0] > 60:
-        q.popleft()
-    if len(q) >= settings.rate_limit_per_min:
-        return True
-    q.append(now)
-    return False
+    return _limiter.limited(_client_ip(request))
 
 
 @app.exception_handler(Exception)
@@ -131,8 +141,97 @@ async def api_meta():
            for g in st.gazetteer if g["kind"] == "landmark"]
     cats = [CategoryOut(key=c.key, group=c.group, icon=c.icon, labels={"ru": c.labels[0], "kk": c.labels[1], "en": c.labels[2]})
             for c in CATEGORIES.values()]
+    feats = MetaFeatures(password_reset_email=bool(settings.smtp_host and settings.smtp_from),
+                         photo=llm_client() is not None, mcp=True)
     return MetaResponse(landmarks=lms, categories=cats, data_built_at=st.manifest.get("built_at"),
-                        poi_count=st.size, sources=st.manifest.get("sources", {}))
+                        poi_count=st.size, sources=st.manifest.get("sources", {}), features=feats)
+
+
+def _photo_err(status: int, code: str) -> JSONResponse:
+    return JSONResponse(status_code=status, content={"error": code})
+
+
+_PHOTO_FORM = {"type": "object", "required": ["image"], "properties": {
+    "image": {"type": "string", "format": "binary", "description": "JPEG / PNG / WebP, up to 8 MB"},
+    "query": {"type": "string", "description": "Optional request text, e.g. «кофе рядом»"},
+    "landmark": {"type": "string", "description": "Optional fallback landmark key if the photo is not recognised"},
+    "lang": {"type": "string", "enum": ["ru", "kk", "en"]}}}
+
+
+@app.post("/api/recommend/photo", response_model=PhotoRecommendResponse, tags=["recommend"],
+          summary="Recommendations around a known place recognised in a photo (multipart form)",
+          openapi_extra={"requestBody": {"required": True, "content": {"multipart/form-data": {"schema": _PHOTO_FORM}}}},
+          responses={413: {"description": '{"error": "photo_too_large"}'},
+                     415: {"description": '{"error": "unsupported_media_type" | "unsupported_format"}'},
+                     422: {"description": '{"error": "image_required" | "invalid_image" | "invalid_form" | "invalid_lang"}'},
+                     503: {"description": '{"error": "photo_unavailable"} (no LLM configured)'}})
+async def api_recommend_photo(request: Request):
+    """The photo is decoded with a pixel cap, stripped of EXIF (GPS is never read), downscaled to 1024 px and
+    re-encoded before the LLM picks a place from a closed list; nothing is stored."""
+    ip = _client_ip(request)
+    if _limiter.limited(ip) or _photo_limiter.limited(ip):
+        raise HTTPException(status_code=429, detail="Too many requests, try again in a minute")
+    size = request.headers.get("content-length", "")
+    if size.isdigit() and int(size) > photo.MAX_BYTES + 256 * 1024:
+        return _photo_err(413, "photo_too_large")
+    if "multipart/form-data" not in request.headers.get("content-type", ""):
+        return _photo_err(415, "unsupported_media_type")
+    try:
+        form = await request.form(max_files=1, max_fields=10)
+    except Exception:  # malformed multipart / too many parts
+        return _photo_err(422, "invalid_form")
+    try:
+        image = form.get("image") or form.get("file")
+        if not isinstance(image, UploadFile):
+            return _photo_err(422, "image_required")
+        if (image.content_type or "").split(";")[0].strip().lower() not in photo.ALLOWED_TYPES:
+            return _photo_err(415, "unsupported_media_type")
+        data = await image.read(photo.MAX_BYTES + 1)
+    finally:
+        await form.close()
+    if len(data) > photo.MAX_BYTES:
+        return _photo_err(413, "photo_too_large")
+    if not data:
+        return _photo_err(422, "image_required")
+    query = form.get("query") if isinstance(form.get("query"), str) else ""
+    landmark = (form.get("landmark") if isinstance(form.get("landmark"), str) else "").strip()[:80] or None
+    lang = form.get("lang") or None
+    if lang not in (None, "ru", "kk", "en"):
+        return _photo_err(422, "invalid_lang")
+    if llm_client() is None:
+        return _photo_err(503, "photo_unavailable")
+    try:
+        jpeg = await asyncio.get_running_loop().run_in_executor(None, photo.prepare_image, data)
+    except photo.PhotoError as e:
+        return _photo_err(415 if str(e) == "unsupported_format" else 422, str(e))
+    del data
+
+    rt = RT["rt"]
+    meter, mark = usage_begin()
+    ui_lang = lang or (detect_lang(query) if sum(ch.isalpha() for ch in query) >= 3 else "ru")
+    places = photo.closed_set(rt.store)
+    guess, _ = await photo.guess_place(jpeg, places, ui_lang)
+    hit = places.get(guess.place_id) if guess and guess.place_id else None
+    recognized = bool(hit and guess.confidence in ("medium", "high"))
+    start = hit["id"] if recognized else landmark
+    resp = await recommend(rt, RecommendRequest(query=query[:1000] if start else "", landmark=start, lang=lang or ui_lang))
+    lang_out = resp["lang"]
+    if recognized:
+        resp["notes"] = [t("photo_recognized", lang_out, name=hit["name"])] + resp["notes"]
+    elif start:
+        resp["notes"] = [t("photo_fallback", lang_out)] + resp["notes"]
+    else:  # not recognised and no fallback: ask for a landmark (no recommendations)
+        resp["summary"] = t("photo_unrecognized", lang_out)
+        resp["notes"] = [t("photo_unrecognized", lang_out)]
+    resp["notes"].append(t("photo_privacy", lang_out))
+    resp["photo_guess"] = {"recognized": recognized, "place_id": hit["id"] if hit else None,
+                           "kind": hit["kind"] if hit else None, "name": hit["name"] if hit else None,
+                           "confidence": guess.confidence if guess else "low", "description": guess.description if guess else ""}
+    resp["llm"]["usage"] = u = usage_summary(meter[mark:])  # vision + recommendation calls
+    log.info("photo id=%s recognized=%s kind=%s items=%d tokens_in=%d tokens_out=%d cost_usd=%s", resp["request_id"],
+             recognized, hit["kind"] if hit else None, len(resp["recommendations"]), u["input_tokens"], u["output_tokens"],
+             u["cost_usd"])
+    return resp
 
 
 @app.get("/api/health", response_model=HealthResponse, tags=["meta"])

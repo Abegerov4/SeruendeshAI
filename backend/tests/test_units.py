@@ -117,3 +117,94 @@ def test_team_anchor_keys_cover_russian_spelling():
     from pipeline.team_data import anchor_keys
     keys = anchor_keys(["Hilton Astana"])
     assert "hilton" in keys and "хилтон" in keys
+
+
+NORMAL_QUERIES = [
+    "Где выпить кофе возле Байтерека?", "Хочу погулять час, я у Хан Шатыра", "куда сходить вечером с друзьями",
+    "есть 2 часа до вылета, что посмотреть?", "посоветуй, где поработать с ноутбуком", "Хочу посмотреть на резиденцию президента",
+    "Бәйтеректің жанындамын, баламен қайда барамыз?", "Мұражайға барғым келеді",
+    "Where can I get coffee near Khan Shatyr?", "First time in Astana, what should I see in 2 hours?",
+]
+OFF_TOPIC_QUERIES = ["напиши код на Python для сортировки списка", "реши уравнение x^2 - 4 = 0", "кто президент США?",
+                     "write a poem about cats", "код жазып бер"]
+
+
+def test_off_topic_rules():
+    from app.query import is_off_topic
+    assert not any(is_off_topic(q) for q in NORMAL_QUERIES)
+    assert all(is_off_topic(q) for q in OFF_TOPIC_QUERIES)
+    assert not is_off_topic("напиши код и посоветуй кофейню", place_signal=True)  # a place request wins
+    assert not is_off_topic("")
+
+
+def test_llm_usage_and_cost():
+    from types import SimpleNamespace as NS
+
+    from app import llm
+    acc, mark = llm.usage_begin()
+    resp = NS(usage=NS(input_tokens=1000, output_tokens=200), service_tier="default")
+    llm._record("gpt-6-luna", resp, "fast")
+    llm._record("gpt-4.1-mini", NS(usage=NS(input_tokens=1_000_000, output_tokens=0), service_tier=None), None)
+    u = llm.usage_summary(acc[mark:])
+    assert u["input_tokens"] == 1_001_000 and u["output_tokens"] == 200
+    assert u["cost_usd"] == round(1000 * 0.10 / 1e6 + 200 * 0.50 / 1e6 + 0.40, 6)
+    assert llm.cost_usd("gpt-6-luna", "fast", 1_000_000, 1_000_000) == 1.2  # tier price wins
+    llm._record("some-unknown-model", NS(usage=NS(input_tokens=5, output_tokens=5)), None)
+    assert llm.usage_summary(acc[mark:])["cost_usd"] is None  # unknown price -> null, tokens still counted
+    assert llm.usage_summary([]) == {"input_tokens": 0, "output_tokens": 0, "cost_usd": 0.0}
+    llm._usage.set(None)
+
+
+def test_validator_accepts_a_single_precise_pick():
+    from types import SimpleNamespace as NS
+
+    from app.generate import GenOut, GenPick, validate
+    cmap = {"c1": NS(visit_range=(10, 40)), "c2": NS(visit_range=(10, 40))}
+    out = GenOut(summary="Одно точное место.", picks=[GenPick(cand="c2", why="Тихо и уютно.", what_to_do="Возьмите чай.", visit_min=20)],
+                 idea=None)
+    v = validate(out, cmap, None, "ru")
+    assert v is not None and [p.cand for p in v.picks] == ["c2"]
+
+
+def test_prepare_image_strips_exif_and_downscales():
+    import io
+
+    from PIL import Image
+
+    from app.photo import PhotoError, prepare_image
+    im = Image.new("RGB", (3000, 2000), (200, 30, 30))
+    exif = Image.Exif()
+    exif[0x010F] = "SecretCam"  # Make
+    exif[0x8825] = {2: (51.0, 7.0, 42.0), 1: "N", 4: (71.0, 25.0, 48.0), 3: "E"}  # GPS IFD
+    buf = io.BytesIO()
+    im.save(buf, format="JPEG", exif=exif.tobytes())
+    assert b"SecretCam" in buf.getvalue()
+    out = prepare_image(buf.getvalue())
+    res = Image.open(io.BytesIO(out))
+    assert res.format == "JPEG" and max(res.size) == 1024 and res.size == (1024, 683)
+    assert not res.getexif() and b"SecretCam" not in out and "exif" not in res.info
+    png = io.BytesIO()
+    Image.new("RGBA", (300, 200)).save(png, format="PNG")
+    assert Image.open(io.BytesIO(prepare_image(png.getvalue()))).size == (300, 200)  # small images are not upscaled
+    for bad in (b"not an image", b""):
+        try:
+            prepare_image(bad)
+            raise AssertionError("must fail")
+        except PhotoError:
+            pass
+
+
+def test_prepare_image_rejects_decompression_bombs(monkeypatch):
+    import io
+
+    from PIL import Image
+
+    from app import photo
+    buf = io.BytesIO()
+    Image.new("L", (2000, 2000)).save(buf, format="PNG")  # 4 MP, tiny file
+    monkeypatch.setattr(photo, "MAX_PIXELS", 1_000_000)
+    try:
+        photo.prepare_image(buf.getvalue())
+        raise AssertionError("must fail")
+    except photo.PhotoError as e:
+        assert str(e) == "too_many_pixels"
