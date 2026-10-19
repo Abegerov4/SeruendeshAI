@@ -11,6 +11,7 @@ Run:  TELEGRAM_BOT_TOKEN=... SERU_API=https://seruendesh.site python -m bot.tele
 import asyncio
 import logging
 import os
+import re
 import time
 
 import httpx
@@ -47,9 +48,19 @@ def _scenario_buttons() -> InlineKeyboardMarkup:
                                  for i in range(0, len(items), 2)])
 
 
-def _lang(update: Update) -> str:
+def detect_lang(text: str, ui_code: str = "") -> str:
+    """Answer in the language of the message; the Telegram UI language is only a fallback (an English phone
+    UI must not turn a Russian question into an English answer)."""
+    if re.search(r"[әғқңөұүһі]", text, re.IGNORECASE):
+        return "kk"
+    if re.search(r"[а-яё]", text, re.IGNORECASE):
+        return "ru"
+    return ui_code if ui_code in {"kk", "en"} and text.strip() else "ru"
+
+
+def _lang(update: Update, text: str = "") -> str:
     code = (update.effective_user.language_code or "") if update.effective_user else ""
-    return code if code in {"kk", "en"} else "ru"
+    return detect_lang(text, code)
 
 
 def _saved_location(context: ContextTypes.DEFAULT_TYPE) -> dict | None:
@@ -67,7 +78,7 @@ async def _reply(update: Update, text: str) -> None:
 
 async def _run(update: Update, context: ContextTypes.DEFAULT_TYPE, query: str) -> None:
     await update.effective_chat.send_action(ChatAction.TYPING)
-    body = {"query": query[:1000], "lang": _lang(update)}
+    body = {"query": query[:1000], "lang": _lang(update, query), "channel": "telegram"}
     if loc := _saved_location(context):
         body["location"] = loc
     r = await _http.post(f"{API}/api/recommend", json=body)
@@ -119,7 +130,7 @@ async def on_text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def on_photo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.effective_chat.send_action(ChatAction.TYPING)
     data = bytes(await (await update.message.photo[-1].get_file()).download_as_bytearray())
-    form = {"lang": _lang(update)}
+    form = {"lang": _lang(update, update.message.caption or ""), "channel": "telegram"}
     if update.message.caption:
         form["query"] = update.message.caption[:1000]
     r = await _http.post(f"{API}/api/recommend/photo", data=form, files={"image": ("photo.jpg", data, "image/jpeg")})

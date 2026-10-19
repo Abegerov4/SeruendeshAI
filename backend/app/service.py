@@ -315,7 +315,7 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     model, gen_ms, cmap = None, 0, {}
     route_stops = route["stops"] if route else None
     if cands and llm_client() is not None:
-        out, model, gen_ms, cmap = await generate(cands, route_stops, ctx, plan, parsed, req.query or "", lang)
+        out, model, gen_ms, cmap = await generate(cands, route_stops, ctx, plan, parsed, req.query or "", lang, req.channel)
         gen = validate(out, cmap, route_stops, lang) if out else None
         if gen is None:
             model = None

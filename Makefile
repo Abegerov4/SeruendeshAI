@@ -1,7 +1,8 @@
-.PHONY: setup api web test eval eval-llm data data-build embed graph events contract docker deploy
+.PHONY: setup api web test eval eval-llm data data-build embed graph events contract docker deploy bot
 
 UV := cd backend && uv run
 CAP := systemd-run --user --scope -p MemoryMax=2500M -p MemorySwapMax=0 --quiet
+BOT_PY ?= $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 
 setup:            ## install backend deps (runtime + pipeline + dev)
 	cd backend && uv sync --all-groups
@@ -44,3 +45,6 @@ docker:
 
 deploy:           ## deploy the latest commit of branch ayat to Railway (seruendesh.site)
 	bash scripts/deploy_railway.sh
+
+bot:              ## run the Telegram bot; reads TELEGRAM_BOT_TOKEN / SERU_API from .env
+	set -a; [ -f .env ] && . ./.env; set +a; $(BOT_PY) -m bot.telegram_bot

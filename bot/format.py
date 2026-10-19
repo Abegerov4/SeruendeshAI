@@ -27,6 +27,8 @@ def format_response(resp: dict) -> str:
         if g.get("recognized") and g.get("name"):
             lines += [f"📷 Похоже, это <b>{escape(g['name'])}</b>.", ""]
     recs = resp.get("recommendations") or []
+    if recs and (summary := (resp.get("summary") or "").strip()):
+        lines += [escape(summary), ""]
     mode = MODE_WORD.get(ctx.get("mode"), ctx.get("mode") or "")
     for i, r in enumerate(recs, 1):
         dist = f"{r['distance_m']} м, {r['travel_min']} мин {mode}" if r.get("distance_m") is not None else ""

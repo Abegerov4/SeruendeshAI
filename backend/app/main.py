@@ -193,6 +193,7 @@ async def api_recommend_photo(request: Request):
     lang = form.get("lang") or None
     if lang not in (None, "ru", "kk", "en"):
         return _photo_err(422, "invalid_lang")
+    channel = form.get("channel") if form.get("channel") in ("web", "telegram") else None
     if llm_client() is None:
         return _photo_err(503, "photo_unavailable")
     try:
@@ -210,7 +211,8 @@ async def api_recommend_photo(request: Request):
     hit = places.get(guess.place_id) if guess and guess.place_id else None
     recognized = bool(hit and guess.confidence in ("medium", "high"))
     start = hit["id"] if recognized else landmark
-    resp = await recommend(rt, RecommendRequest(query=query[:1000] if start else "", landmark=start, lang=lang or ui_lang))
+    resp = await recommend(rt, RecommendRequest(query=query[:1000] if start else "", landmark=start, lang=lang or ui_lang,
+                                                channel=channel))
     lang_out = resp["lang"]
     if recognized:
         resp["notes"] = [t("photo_recognized", lang_out, name=hit["name"])] + resp["notes"]
