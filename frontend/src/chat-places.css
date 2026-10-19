@@ -60,3 +60,6 @@
 .voice-button.listening{background:#174b3e;color:#f1f7df;border-color:#174b3e;animation:voice-pulse 1.2s ease-in-out infinite}
 @keyframes voice-pulse{0%,100%{box-shadow:0 0 0 0 #c6e73066}50%{box-shadow:0 0 0 6px #c6e73000}}
 @media (prefers-reduced-motion:reduce){.voice-button.listening{animation:none}}
+
+/* desktop: loading placeholders keep the size of real cards in the horizontal strip */
+@media (min-width:900px){.map-first .skeleton-card{flex:0 0 300px;height:330px}}
