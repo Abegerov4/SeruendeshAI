@@ -1,0 +1,29 @@
+/* Keep route controls above the recommendation strip, not behind the cards. */
+@media(min-width:900px){.map-first .map-bottom{top:78px;bottom:auto;left:22px;right:auto}}
+/* Shared pages must fit the same phone widths as the map workspace. */
+@media(max-width:899px){
+ .app:not(.map-app) .site-header{height:auto;min-height:68px;display:flex;flex-wrap:wrap;gap:10px;padding:12px 0}
+ .app:not(.map-app) .site-header .brand{font-size:20px;min-width:0;margin-right:auto}
+ .app:not(.map-app) .site-header .header-actions{gap:6px;min-width:0;max-width:100%;margin-left:auto}
+ .app:not(.map-app) .site-header nav{order:3;flex-basis:100%;margin:0;display:flex;gap:8px}
+ .app:not(.map-app) .site-header nav>a{display:flex;font-size:12px;min-height:40px;padding:8px 12px}
+ .app:not(.map-app) .site-header nav .nav-insights{display:none}
+ .app:not(.map-app) .site-header .header-city{display:none}
+ .map-first.mobile-view-places .discovery-column,.map-first.mobile-view-plan .conversation-column{scroll-padding-bottom:24px;padding-bottom:32px}
+ .mobile-app-nav button{min-height:0}
+}
+@media(max-width:580px){
+ .app:not(.map-app) .site-header .brand{font-size:19px}
+ .app:not(.map-app) .site-header .header-actions{gap:5px}
+ .app:not(.map-app) .site-header .login-link{font-size:0;width:34px;padding:7px;gap:0;min-height:36px}
+ .app:not(.map-app) .site-header .login-link svg{display:block;width:18px;height:18px}
+ .app:not(.map-app) .site-header .lang-trigger{padding:7px 9px;min-height:36px}
+ .app:not(.map-app) .site-header .lang-trigger>svg:first-child{display:none}
+ .app:not(.map-app) .app-install-trigger{width:34px;height:36px}
+}
+/* Let the landmark text yield room to camera / voice / send controls on every screen. */
+.map-first .composer-bottom{gap:6px;align-items:center}
+.map-first .location-picker{min-width:0;flex:1 1 0}
+.map-first .location-toggle{max-width:100%}
+.map-first .photo-button,.map-first .send-button{flex-shrink:0}
+.map-first .voice-button+.photo-button{margin-left:0}

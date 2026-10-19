@@ -24,6 +24,7 @@ import './mobile-fit.css';
 import './chat-places.css';
 import './insights.css';
 import './keyboard.css';
+import './interaction-fixes.css';
 import {initPwa} from './pwa';
 import PwaExperience from './components/PwaExperience';
 initPwa();

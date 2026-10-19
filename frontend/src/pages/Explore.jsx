@@ -72,13 +72,13 @@ export default function Explore({ saved, toggleSaved }) {
   useEffect(() => {
     if (!phone) return;
     const vv = window.visualViewport, root = document.documentElement;
-    let baseline = vv?.height || innerHeight, frame = 0, sawShrink = false;
+    let baseline = vv?.height || innerHeight, frame = 0, sawShrink = false, focusTimer = 0, openingUntil = 0;
     const fit = () => {
       const height = vv?.height || innerHeight;
       const focused = document.activeElement?.id === 'chat-input';
       const shrunk = baseline - height > 120 && (!vv || vv.scale < 1.15);
       if (focused && shrunk) sawShrink = true;
-      const keyboard = shrunk || (focused && !sawShrink);
+      const keyboard = shrunk || (focused && !sawShrink && Date.now() < openingUntil);
       if (!focused && !shrunk) { baseline = height; sawShrink = false; }
       root.style.setProperty('--mobile-vh', height + 'px');
       root.style.setProperty('--mobile-vt', (vv?.offsetTop || 0) + 'px');
@@ -87,12 +87,12 @@ export default function Explore({ saved, toggleSaved }) {
       if (nav) { nav.inert = keyboard; nav.setAttribute('aria-hidden', String(keyboard)); }
     };
     const schedule = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(fit); };
-    const focus = e => { if(e.target?.id === 'chat-input') sawShrink = false; schedule(); };
+    const focus = e => { if(e.target?.id === 'chat-input') { sawShrink = false; openingUntil = Date.now() + 900; clearTimeout(focusTimer); focusTimer = setTimeout(schedule, 920); } schedule(); };
     const rotate = () => { baseline = vv?.height || innerHeight; sawShrink = false; schedule(); };
     fit(); vv?.addEventListener('resize', schedule); vv?.addEventListener('scroll', schedule);
     document.addEventListener('focusin', focus); document.addEventListener('focusout', schedule);
     addEventListener('resize', schedule); addEventListener('orientationchange', rotate);
-    return () => { cancelAnimationFrame(frame); vv?.removeEventListener('resize', schedule); vv?.removeEventListener('scroll', schedule);
+    return () => { clearTimeout(focusTimer); cancelAnimationFrame(frame); vv?.removeEventListener('resize', schedule); vv?.removeEventListener('scroll', schedule);
       document.removeEventListener('focusin', focus); document.removeEventListener('focusout', schedule);
       removeEventListener('resize', schedule); removeEventListener('orientationchange', rotate);
       root.style.removeProperty('--mobile-vh'); root.style.removeProperty('--mobile-vt'); root.classList.remove('kb-open');
