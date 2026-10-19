@@ -27,6 +27,7 @@ import './keyboard.css';
 import './interaction-fixes.css';
 import './chat-clean.css';
 import './reference-layout.css';
+import './page-frame.css';
 import {initPwa} from './pwa';
 import PwaExperience from './components/PwaExperience';
 initPwa();
@@ -53,6 +54,7 @@ function App() {
   useEffect(() => {
     if (path === '/') document.title = tr('SeruendeshAI — открой свою Астану');
     if (path === '/saved') document.title = tr('Избранное — SeruendeshAI');
+    if (path === '/insights') document.title = tr('Для города — SeruendeshAI');
   }, [path, language]);
   const authMode = { '/login': 'login', '/register': 'register', '/forgot-password': 'reset', '/reset-password': 'confirm' }[path];
   if (authMode) return <Auth key={path} mode={authMode} />;
