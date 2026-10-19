@@ -358,11 +358,17 @@ def deadline_minutes(p: Parsed, now: dt.datetime) -> int | None:
 # --- landmark resolution -------------------------------------------------------------------
 
 _GENERIC = {"парк", "сквер", "кафе", "музей", "бар", "ресторан", "театр", "кофейня", "мечеть", "библиотека", "park",
-            "cafe", "museum", "детская площадка", "площадка", "рынок", "базар", "сад", "центр", "дом", "тц", "трц"}
+            "cafe", "museum", "детская площадка", "площадка", "рынок", "базар", "сад", "центр", "дом", "тц", "трц",
+            # common words that are also names of hotels/clinics in the team anchors ("Я турист" is not hotel "Турист")
+            "турист", "tourist", "университет", "university", "ночлег", "капитал", "capital", "отель", "hotel",
+            "хостел", "hostel", "гостиница", "больница", "поликлиника", "hospital", "акимат", "министерство"}
+# origin-only anchors (hotels, universities, clinics, offices) count as the start only with an explicit cue
+ANCHOR_KINDS = {"hotel", "university", "hospital", "government"}
 
 
 # where the user IS vs where they want TO GO (texts are folded: Kazakh letters -> Russian ones)
 _ORIGIN_BEFORE = re.compile(r"(?:\bя\s+)?(?:\bу|возле|около|рядом\s+с|рядом|недалеко\s+от|напротив|в\s+районе|\bнахожусь\s+(?:у|в|возле)|"
+                            r"\bживу\s+в|\bостановил\w*\s+в|\bя\s+в|\bв\s+(?:отеле|гостинице|хостеле)|staying\s+(?:at|in)|"
                             r"\bnear|\bat|\bby|i'?m\s+(?:at|near|by|in)|i\s+am\s+(?:at|near|by|in))\s*$")
 _ORIGIN_AFTER = re.compile(r"^\w*\s*(?:жанында|манында|касында|алдында)|^(?:да|де|та|те)\b")
 _DEST_BEFORE = re.compile(r"(?:хочу|хотим|хотел\w*|надо|нужно)\s+(?:в|на|до|к|попасть\s+(?:в|на|к))\s*$|(?:попасть|пойти|сходить|дойти|добраться|"
@@ -427,7 +433,7 @@ def split_mentions(text: str, gazetteer: list[dict]) -> tuple[dict | None, list[
     dests = [m["entry"] for m in ms if m["role"] == "dest"]
     origin = next((m["entry"] for m in ms if m["role"] == "origin"), None)
     if origin is None:
-        origin = next((m["entry"] for m in ms if m["role"] == "unknown"), None)
+        origin = next((m["entry"] for m in ms if m["role"] == "unknown" and m["entry"]["kind"] not in ANCHOR_KINDS), None)
     return origin, dests
 
 

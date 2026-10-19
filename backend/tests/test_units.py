@@ -235,3 +235,14 @@ def test_llm_text_keeps_explanations_but_drops_unconfirmed_amenities():
     text = "Уютное место у бульвара. Есть Wi-Fi и розетки для работы. Летом работает веранда."
     assert drop_unconfirmed_amenities(text, {"features": {}}) == "Уютное место у бульвара."
     assert "Wi-Fi" in drop_unconfirmed_amenities(text, {"features": {"wifi": True, "power_outlets": True}})
+
+
+def test_common_words_are_not_hotel_origins():
+    from app.query import split_mentions
+    gaz = [{"name": "Турист", "kind": "hotel", "keys": ["турист"], "lat": 51.1, "lon": 71.4},
+           {"name": "Hilton Astana", "kind": "hotel", "keys": ["hilton", "хилтон"], "lat": 51.09, "lon": 71.41},
+           {"name": "Байтерек", "kind": "landmark", "keys": ["байтерек"], "lat": 51.128, "lon": 71.43}]
+    assert split_mentions("Я турист, у меня 2 часа перед вылетом", gaz)[0] is None
+    assert split_mentions("живу в хилтоне, куда сходить?", gaz)[0]["name"] == "Hilton Astana"
+    assert split_mentions("хилтон рядом есть кофе?", gaz)[0] is None  # a bare hotel name is not the start
+    assert split_mentions("Байтерек, погулять час", gaz)[0]["name"] == "Байтерек"
