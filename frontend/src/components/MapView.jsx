@@ -3,6 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { smoothZoom } from '../mapWheel';
+import { LEG_COLORS, arrowPoints, legEnds } from '../routeLegs';
+import { formatDistance } from '../api';
 import { Plus, Minus, LocateFixed, Layers, Route } from 'lucide-react';
 
 const ASTANA = [51.128, 71.43];
@@ -83,13 +85,22 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
       L.marker([origin.lat, origin.lon], { icon: L.divIcon({ className: 'leaflet-you', html: `<span class="you-dot"></span><label>${esc(origin.label ? tr('Старт') + ': ' + origin.label : tr('Вы здесь'))}</label>`, iconSize: [18, 18], iconAnchor: [9, 9] }), keyboard: false }).addTo(g);
       L.circle([origin.lat, origin.lon], { radius: 100, color: '#397257', weight: 1, fillOpacity: .08 }).addTo(g);
     }
-    if (showRoute && route?.legs) for (const leg of route.legs) {
-      if (!leg.polyline?.length) continue;
-      const style = leg.geometry === 'network' ? { color: '#397257', weight: 5, opacity: .9 } : { color: '#397257', weight: 4, opacity: .8, dashArray: '8 10' };
-      L.polyline(leg.polyline, { color: '#fff', weight: style.weight + 5, opacity: .9 }).addTo(g);
-      L.polyline(leg.polyline, { ...style, className: 'animated-route-leaflet' }).addTo(g);
+    if (showRoute && route?.legs) route.legs.forEach((leg, n) => {
+      if (!leg.polyline?.length) return;
+      // each leg its own colour + direction arrows + a hover label, so out-and-back legs on one street stay readable
+      const color = LEG_COLORS[n % LEG_COLORS.length];
+      const style = leg.geometry === 'network' ? { color, weight: 5, opacity: .92 } : { color, weight: 4, opacity: .85, dashArray: '8 10' };
+      const casing = L.polyline(leg.polyline, { color: '#fff', weight: style.weight + 5, opacity: .9 }).addTo(g);
+      const line = L.polyline(leg.polyline, { ...style, className: 'animated-route-leaflet' }).addTo(g);
+      const [from, to] = legEnds(leg, places, origin?.label ? tr('Старт') : tr('Вы здесь'));
+      line.bindTooltip(`<span class="leg-dot" style="background:${color}"></span>${esc(from)} → ${esc(to)} · ${formatDistance(leg.distance_m)} · ${leg.travel_min} ${tr('мин')}`, { sticky: true, className: 'leg-tooltip' });
+      line.on('mouseover', () => { casing.bringToFront(); line.bringToFront().setStyle({ weight: style.weight + 2 }); })
+        .on('mouseout', () => line.setStyle({ weight: style.weight }));
+      for (const a of arrowPoints(leg.polyline)) {
+        L.marker(a.at, { icon: L.divIcon({ className: 'leg-arrow', html: `<span style="transform:rotate(${a.deg.toFixed(0)}deg);color:${color}"></span>`, iconSize: [16, 16], iconAnchor: [8, 8] }), interactive: false, keyboard: false }).addTo(g);
+      }
       leg.polyline.forEach(p => pts.push(p));
-    }
+    });
     places.forEach((p, i) => {
       if (p.lat == null) return;
       pts.push([p.lat, p.lon]);
