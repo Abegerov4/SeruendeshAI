@@ -22,12 +22,12 @@ from starlette.datastructures import UploadFile
 
 from app.paths import ROOT_DIR, GRAPH_FILE
 
-from app import insights, mcp_connector, photo
+from app import insights, mcp_connector, photo, telegram
 from app.auth import router as auth_router
 from app.categories import CATEGORIES
 from app.config import get_settings
 from app.db import db_kind, init_db
-from app.limiting import client_key, limiter
+from app.limiting import api_client_key, limiter
 from app.embedder import get_embedder
 from app.geo import load_graph
 from app.i18n import t
@@ -70,8 +70,11 @@ async def lifespan(app: FastAPI):
         asyncio.create_task(_warmup())  # first call with a new strict schema is slow; pay it at startup
     log.info("ready in %.1fs: %d POIs, graph=%s, dense=%s, llm=%s, db=%s", time.perf_counter() - t0, store.size,
              graph is not None, embedder is not None, llm_client() is not None, db_kind())
+    bot_task = asyncio.create_task(telegram.start(int(os.getenv("PORT", "8000"))))  # Telegram webhook, if configured
     async with mcp_connector.serve():  # MCP session manager lives as long as the app
         yield
+    bot_task.cancel()
+    await telegram.stop()
     await http.aclose()
 
 
@@ -109,9 +112,10 @@ app.add_middleware(
 )
 # MCP connector (streamable HTTP, stateless): registered before the SPA catch-all below
 app.add_route("/connector/mcp", mcp_connector.asgi, include_in_schema=False)
+app.include_router(telegram.router)
 
 def _rate_limited(request: Request) -> bool:
-    return not limiter.allow("recommend", client_key(request), settings.rate_limit_per_min, 60)
+    return not limiter.allow("recommend", api_client_key(request), settings.rate_limit_per_min, 60)
 
 
 @app.exception_handler(Exception)
@@ -169,7 +173,7 @@ _PHOTO_FORM = {"type": "object", "required": ["image"], "properties": {
 async def api_recommend_photo(request: Request):
     """The photo is decoded with a pixel cap, stripped of EXIF (GPS is never read), downscaled to 1024 px and
     re-encoded before the LLM picks a place from a closed list; nothing is stored."""
-    key = client_key(request)
+    key = api_client_key(request)
     if not limiter.allow("recommend", key, settings.rate_limit_per_min, 60) or \
             not limiter.allow("photo", key, settings.photo_rate_limit_per_min, 60):
         raise HTTPException(status_code=429, detail="Too many requests, try again in a minute")
@@ -200,6 +204,7 @@ async def api_recommend_photo(request: Request):
     lang = form.get("lang") or None
     if lang not in (None, "ru", "kk", "en"):
         return _photo_err(422, "invalid_lang")
+    channel = form.get("channel") if form.get("channel") in ("web", "telegram") else None
     if llm_client() is None:
         return _photo_err(503, "photo_unavailable")
     try:
@@ -217,7 +222,8 @@ async def api_recommend_photo(request: Request):
     hit = places.get(guess.place_id) if guess and guess.place_id else None
     recognized = bool(hit and guess.confidence in ("medium", "high"))
     start = hit["id"] if recognized else landmark
-    resp = await recommend(rt, RecommendRequest(query=query[:1000] if start else "", landmark=start, lang=lang or ui_lang))
+    resp = await recommend(rt, RecommendRequest(query=query[:1000] if start else "", landmark=start, lang=lang or ui_lang,
+                                                channel=channel))
     lang_out = resp["lang"]
     if recognized:
         resp["notes"] = [t("photo_recognized", lang_out, name=hit["name"])] + resp["notes"]
@@ -260,7 +266,7 @@ async def api_health():
           summary="Route from the user (rounded GPS or a landmark) to one recommended place",
           responses={404: {"description": "unknown poi_id"}, 422: {"description": "no usable start (GPS outside Astana and no landmark)"}})
 async def route_to_place(req: RouteRequest, request: Request):
-    if not await asyncio.to_thread(limiter.allow, "route", client_key(request), settings.rate_limit_per_min * 2, 60):
+    if not await asyncio.to_thread(limiter.allow, "route", api_client_key(request), settings.rate_limit_per_min * 2, 60):
         return JSONResponse({"detail": "Too many requests"}, status_code=429)
     rt = RT["rt"]
     st = rt.store

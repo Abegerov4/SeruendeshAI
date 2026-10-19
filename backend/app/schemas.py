@@ -9,6 +9,7 @@ from app.food import FoodRequirement
 API_VERSION = "1.0"
 
 Lang = Literal["ru", "kk", "en"]
+Channel = Literal["web", "telegram"]
 TravelMode = Literal["walk", "car", "transit"]
 ContractCategory = Literal["cafe", "restaurant", "bar", "nightlife", "museum", "gallery", "theatre", "cinema", "park",
                            "viewpoint", "monument", "attraction", "playground", "mall", "library", "coworking", "sport", "other"]
@@ -54,6 +55,7 @@ class RecommendRequest(BaseModel):
     def _truncate(cls, v):
         return v[:1000] if isinstance(v, str) else v
     lang: Lang | None = Field(None, description="UI language; null = detect from the query")
+    channel: Channel | None = Field(None, description="Client surface; `telegram` gets short chat-style texts. Facts and safety rules are the same")
     location: LatLon | None = Field(None, description="Approximate user position (rounded). Server rounds again.")
     landmark: str | None = Field(None, max_length=80, description="Landmark key or name from GET /api/meta instead of GPS")
     service_id: str | None = Field(None, max_length=120, description="Previous service context for a relevant follow-up; a new topic takes precedence")

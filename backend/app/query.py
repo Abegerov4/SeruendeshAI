@@ -409,6 +409,10 @@ _DEST_BEFORE = re.compile(r"(?:маршрут|путь|дорог\w*|проло�
                           r"доехать|пройти|проехать|едем|иду|идти)\s+(?:в|на|до|к)\s*$|как\s+(?:пройти|дойти|доехать|попасть|добраться)\s+(?:в|на|до|к)?\s*$|"
                           r"(?:подня\w*|залезть|взобраться|забраться|побывать|посетить|посмотреть)\s+(?:в|на|до|к)?\s*$|"
                           r"(?:go|get|walk|drive|head)\s+to\s*(?:the\s*)?$|\b(?:visit|climb|go\s+up)\s*(?:the\s*)?$")
+# inside a route request: «с/от/из X до/к/в/на Y», «from X to Y», «X-тен Y-ге»
+_TO_BEFORE = re.compile(r"(?:\bдо|\bк|\bко|\bв|\bво|\bна|\bto|\binto)\s*$")
+_FROM_BEFORE = re.compile(r"(?:\bс|\bсо|\bот|\bиз|\bfrom)\s*$")
+_FROM_AFTER = re.compile(r"^(?:нан|нен|дан|ден|тан|тен)\b")
 _DEST_AFTER = re.compile(r"^(?:га|ге|ка|ке)\b|^\w*\s*(?:баргым|баруга|барамын|бару)")
 
 
@@ -444,6 +448,7 @@ def landmark_mentions(text: str, gazetteer: list[dict]) -> list[dict]:
     """All gazetteer names mentioned in the text with their role: origin / dest / unknown."""
     s = " " + fold(text) + " "
     blocked = _ambiguous_spans(s, gazetteer)
+    route_cue = bool(NAV_INTENT.search(s))
     cands = []
     for g in gazetteer:
         for k in g["keys"]:
@@ -461,8 +466,13 @@ def landmark_mentions(text: str, gazetteer: list[dict]) -> list[dict]:
             continue  # overlaps a better mention of the same words
         taken.append((a, b))
         before, after = s[max(0, a - 32):a], s[b:b + 24]
-        role = ("dest" if _DEST_BEFORE.search(before) or _DEST_AFTER.search(after)
-                else "origin" if _ORIGIN_BEFORE.search(before) or _ORIGIN_AFTER.search(after) else "unknown")
+        if route_cue and (_TO_BEFORE.search(before) or _DEST_AFTER.search(after)):
+            role = "dest"  # «маршрут с AITU до ботсада»: the place after «до» is where to go
+        elif route_cue and (_FROM_BEFORE.search(before) or _FROM_AFTER.search(after)):
+            role = "origin"  # …and the place after «с / от» is the start
+        else:
+            role = ("dest" if _DEST_BEFORE.search(before) or _DEST_AFTER.search(after)
+                    else "origin" if _ORIGIN_BEFORE.search(before) or _ORIGIN_AFTER.search(after) else "unknown")
         out.append({"entry": g, "role": role, "pos": a})
     return sorted(out, key=lambda m: m["pos"])
 

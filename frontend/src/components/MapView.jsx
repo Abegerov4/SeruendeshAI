@@ -55,7 +55,7 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
     const pts = [];
     if (origin?.lat != null) {
       pts.push([origin.lat, origin.lon]);
-      L.marker([origin.lat, origin.lon], { icon: L.divIcon({ className: 'leaflet-you', html: `<span class="you-dot"></span><label>${esc(tr('Вы здесь'))}</label>`, iconSize: [18, 18], iconAnchor: [9, 9] }), keyboard: false }).addTo(g);
+      L.marker([origin.lat, origin.lon], { icon: L.divIcon({ className: 'leaflet-you', html: `<span class="you-dot"></span><label>${esc(origin.label ? tr('Старт') + ': ' + origin.label : tr('Вы здесь'))}</label>`, iconSize: [18, 18], iconAnchor: [9, 9] }), keyboard: false }).addTo(g);
       L.circle([origin.lat, origin.lon], { radius: 100, color: '#397257', weight: 1, fillOpacity: .08 }).addTo(g);
     }
     if (showRoute && route?.legs) for (const leg of route.legs) {
@@ -91,7 +91,7 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
     L.polyline(focusRoute.polyline, { color: '#fff', weight: 10, opacity: .95 }).addTo(g);
     L.polyline(focusRoute.polyline, { color: '#1d5c45', weight: 6, opacity: .95, dashArray: dashed ? '9 10' : null, className: 'focus-route' }).addTo(g);
     const start = focusRoute.polyline[0];
-    L.marker(start, { icon: L.divIcon({ className: 'leaflet-you', html: `<span class="you-dot"></span><label>${esc(tr('Вы здесь'))}</label>`, iconSize: [18, 18], iconAnchor: [9, 9] }), keyboard: false }).addTo(g);
+    L.marker(start, { icon: L.divIcon({ className: 'leaflet-you', html: `<span class="you-dot"></span><label>${esc(focusRoute.origin_label ? tr('Старт') + ': ' + focusRoute.origin_label : tr('Вы здесь'))}</label>`, iconSize: [18, 18], iconAnchor: [9, 9] }), keyboard: false }).addTo(g);
     focusLayer.current = g;
     bounds.current = L.latLngBounds(focusRoute.polyline);  // a hidden map tab re-fits to the route when shown
     const fitNow = () => { m.invalidateSize(); m.fitBounds(L.latLngBounds(focusRoute.polyline), { ...fitOpts(), maxZoom: 17 }); };

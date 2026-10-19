@@ -14,6 +14,7 @@ from sqlalchemy import delete
 from starlette.requests import Request
 
 from app import db
+from app.config import get_settings
 
 
 def _salt() -> bytes:
@@ -23,6 +24,16 @@ def _salt() -> bytes:
 
 def client_key(request: Request) -> str:
     return request.client.host if request.client else "unknown-peer"
+
+
+def api_client_key(request: Request) -> str:
+    """Recommendation budgets. Every Telegram user reaches the API from the bot's address, so a bot that proves
+    the shared BOT_API_KEY is limited per its opaque X-Seru-User hash instead of as one client."""
+    secret = get_settings().bot_api_key
+    user = request.headers.get("x-seru-user", "")[:64]
+    if secret and user and hmac.compare_digest(request.headers.get("x-seru-bot-key", "").encode(), secret.encode()):
+        return f"bot:{user}"
+    return client_key(request)
 
 
 class StorageLimiter:

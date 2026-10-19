@@ -28,6 +28,7 @@ dependencies = [
     "mcp>=2.3.0",
     "python-multipart>=0.0.32",
     "pillow>=12.3.0",
+    "python-telegram-bot>=21,<23",
 ]
 
 [dependency-groups]

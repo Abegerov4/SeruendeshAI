@@ -316,7 +316,7 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     model, gen_ms, cmap = None, 0, {}
     route_stops = route["stops"] if route else None
     if cands and llm_client() is not None:
-        out, model, gen_ms, cmap = await generate(cands, route_stops, ctx, plan, parsed, req.query or "", lang)
+        out, model, gen_ms, cmap = await generate(cands, route_stops, ctx, plan, parsed, req.query or "", lang, req.channel)
         gen = validate(out, cmap, route_stops, lang) if out else None
         if gen is None:
             model = None
@@ -432,6 +432,13 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
         nm = ", ".join(it["name"] for it in poi_items)
         summary = (route_out["summary"] if route_out else gen.summary if gen and gen.summary else
                    t("summary", lang, n=len(poi_items), places=t("place_1" if len(poi_items) == 1 else "place_2", lang), names=nm))
+        if navigate and poi_items[0]["poi_id"] in target_ids and origin_info.get("label"):
+            it = poi_items[0]  # «маршрут с AITU до ботсада»: say where from, where to and how far
+            dm = it.get("distance_m") or 0
+            d = f"{dm / 1000:.1f} км".replace(".", ",") if lang != "en" and dm >= 1000 else f"{dm / 1000:.1f} km" if dm >= 1000 else f"{dm} м" if lang != "en" else f"{dm} m"
+            summary = t("summary_nav", lang, a=origin_info["label"], b=it["name"], d=d, m=it.get("travel_min"),
+                        how=t("how_car" if mode == "car" else "how_walk", lang))
+            considered = []
     elif parsed.food_requirements:
         summary = t("summary_food_unverified", lang)
         notes.insert(0, summary)

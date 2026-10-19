@@ -241,3 +241,12 @@ def test_polluted_air_shortens_outdoor_time_and_says_why(client):
              weather={"temperature_c": 5.0, "feels_like_c": 3.0, "wind_ms": 2.0, "precipitation": False, "us_aqi": 172.0})
     assert d["used_context"]["weather"]["us_aqi"] == 172 and d["used_context"]["weather"]["max_outdoor_min"] <= 20
     assert any("AQI 172" in n for n in d["notes"])
+
+
+def test_route_from_a_named_start_to_a_named_destination(client):
+    d = post(client, query="так окей закинь мне маршрут с AITU до ботсада", landmark="baiterek")
+    names = [r["name"] for r in d["recommendations"]]
+    assert len(names) == 1 and "ботан" in names[0].lower(), names
+    assert d["used_context"]["location"]["label"].startswith("Astana IT University")  # the start from the text, not the UI landmark
+    assert d["navigate_to"] == d["recommendations"][0]["poi_id"]
+    assert "AITU" in d["summary"] and "Ботанический сад" in d["summary"]

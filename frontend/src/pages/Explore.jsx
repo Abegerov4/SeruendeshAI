@@ -123,9 +123,11 @@ export default function Explore({ saved, toggleSaved }) {
   // tap on a place (chat card, details): the route from the user to it, drawn on the map
   async function showRouteTo(p, c = ctx, current = plan) {
     setSelected(p.id); setRouteError('');
-    const gps = c.location === MY_LOCATION && c.coords && inAstana(c.coords) ? c.coords : null;
+    // a start named in the text («с AITU до ботсада») wins over GPS; otherwise the user's position, then the answer's origin
+    const textStart = current?.used?.location?.source === 'text_landmark' ? current.used.location : null;
+    const gps = !textStart && c.location === MY_LOCATION && c.coords && inAstana(c.coords) ? c.coords : null;
     const from = gps || (current?.used?.location ? { lat: current.used.location.lat, lon: current.used.location.lon } : null);
-    try { const r = await routeTo(p, c, from); setFocusRoute({ ...r, place: p, origin_source: gps ? r.origin_source : 'landmark' }); }
+    try { const r = await routeTo(p, c, from); setFocusRoute({ ...r, place: p, origin_source: gps ? r.origin_source : 'landmark', origin_label: gps ? null : (textStart?.label || current?.used?.location?.label || null) }); }
     catch { setRouteError('Не получилось построить маршрут. Попробуй ещё раз.'); }
     showTab('map', false);
   }
@@ -172,7 +174,7 @@ export default function Explore({ saved, toggleSaved }) {
   const { total } = planTotals(plan);
   const budget = plan?.used?.time_budget_min || ctx.time;
   const used = plan?.used;
-  const origin = used?.location ? { lat: used.location.lat, lon: used.location.lon } : null;
+  const origin = used?.location ? { lat: used.location.lat, lon: used.location.lon, label: used.location.source === 'gps_rounded' ? null : used.location.label } : null;
   const savedIds = saved.map(p => p.id);
   // preferences re-run the last request right away (no separate "apply" step)
   const update = patch => { const next = { ...ctx, ...patch }; setCtx(next); if (plan) applyContext(next); };
@@ -201,7 +203,7 @@ export default function Explore({ saved, toggleSaved }) {
         {!loading && plan && !real.length && <div className="empty-plan" role="status"><h3>{tr("Подходящих мест пока нет")}</h3><p>{plan.notes?.[0] || tr("Попробуй снять ограничения или увеличить время.")}</p><button onClick={() => { const next = { ...ctx, time: Math.max(120, ctx.time), indoor: false, noCoffee: false, accessible: false, closer: false, touched: { ...ctx.touched, time: true } }; setCtx(next); applyContext(next); }}>{tr("Расширить условия")}</button></div>}
         {loadError && !loading && !plan && <div className="empty-plan" role="alert"><h3>{tr('Не получилось загрузить подборку')}</h3><p>{tr(loadError)}</p><button onClick={() => requestPlan(lastQuery).catch(() => setLoadError('Сервер не ответил. Попробуй ещё раз.'))}>{tr('Повторить')}</button></div>}
         <section className="map-section" id="map-section" aria-label={tr("Карта прогулки")}>{(!phone || tab === 'map') && <CityMap places={places} origin={origin} route={plan?.route} showRoute={route} setRoute={setRoute} selected={selected} setSelected={id => { setSelected(id); setSheetOpen(false); }} hovered={hovered} resultVersion={resultVersion} focusRoute={focusRoute} />}
-          {focusRoute && <div className="focus-route-bar" role="status"><Navigation size={16} /><div><b>{focusRoute.place?.name || focusRoute.name}</b><span>{formatDistance(focusRoute.distance_m)} · {focusRoute.travel_min} {tr(focusRoute.mode === 'car' ? 'мин в пути' : 'мин пешком')}{focusRoute.origin_source === 'landmark' ? ' · ' + tr('от ориентира') : ' · ' + tr('от тебя')}{focusRoute.geometry === 'straight' ? ' · ' + tr('оценка') : ''}</span></div><a href={focusRoute.links['2gis']} target="_blank" rel="noreferrer">2GIS ↗</a><button aria-label={tr('Скрыть маршрут')} onClick={() => setFocusRoute(null)}><X size={16} /></button></div>}
+          {focusRoute && <div className="focus-route-bar" role="status"><Navigation size={16} /><div><b>{focusRoute.place?.name || focusRoute.name}</b><span>{formatDistance(focusRoute.distance_m)} · {focusRoute.travel_min} {tr(focusRoute.mode === 'car' ? 'мин в пути' : 'мин пешком')}{focusRoute.origin_source === 'landmark' ? ' · ' + (focusRoute.origin_label ? tr('от') + ' ' + focusRoute.origin_label : tr('от ориентира')) : ' · ' + tr('от тебя')}{focusRoute.geometry === 'straight' ? ' · ' + tr('оценка') : ''}</span></div><a href={focusRoute.links['2gis']} target="_blank" rel="noreferrer">2GIS ↗</a><button aria-label={tr('Скрыть маршрут')} onClick={() => setFocusRoute(null)}><X size={16} /></button></div>}
           {routeError && <div className="focus-route-bar error" role="alert">{tr(routeError)}</div>}
           {sel && <div className={"selected-map-place " + (sheetOpen ? "sheet-open" : "")}><PlaceVisual place={sel} illustrative /><div><span>{tr("ТВОЯ СЛЕДУЮЩАЯ ОСТАНОВКА")}</span><h3>{sel.name}</h3><p>{sel.mode === 'walk' ? <Footprints size={12} /> : <Car size={12} />}{sel.distance} · {sel.travel}{tr(sel.mode === 'walk' ? " мин пешком" : " мин в пути")}{sel.leaveBy ? ' · ' + tr('выйти до') + ' ' + sel.leaveBy : ''}</p></div><button className="map-sheet-toggle" aria-label={tr("Подробнее")} aria-expanded={sheetOpen} aria-controls="map-place-details" onClick={() => setSheetOpen(!sheetOpen)}><ChevronDown size={19} /></button><div className="map-sheet-details" id="map-place-details" hidden={!sheetOpen}><p>{sel.why}</p><p>{sel.action}</p><p>{externalMapLinks(sel).map(l => <a key={l.label} href={l.href} target="_blank" rel="noreferrer">{tr('Открыть в')} {l.label} ↗ </a>)}</p><button onClick={() => showTab('places')}>{tr("Посмотреть карточки мест")}<ArrowUpRight size={15} /></button></div></div>}
           <div className="route-strip"><span className="route-symbol"><Route size={18} /></span><div><strong>{plan?.route ? tr('Мини-маршрут') : tr('Небольшое приключение')}</strong><span>{plan?.route ? plan.route.summary : real.length + tr(' мест · ') + (total > budget ? tr('Дольше твоего плана — выбери часть мест') : tr('Можно идти без спешки'))}</span></div><span className="route-total"><Clock3 size={13} />≈ {total}{tr(" мин")}</span></div></section>
