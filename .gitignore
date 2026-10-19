@@ -73,3 +73,6 @@ brand/*.zip
 # local tooling / personal notes
 .playwright-mcp/
 docs/PROMPT_OPENING_HOURS.md
+
+# Local operator photo uploads (published explicitly with the photos tool).
+/photo-import/

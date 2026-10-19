@@ -65,6 +65,8 @@ curl -s localhost:8000/api/recommend -H 'content-type: application/json' -d '{
 
 Docker: `docker compose up --build` (из корня, использует `.env`): один контейнер отдаёт и API, и собранный фронт.
 
+Фото карточек в SeaweedFS/S3: [запуск, загрузка и резервное копирование](docs/CARD_PHOTOS.md).
+
 Хостинг: Railway (проект `seruendesh`) собирает корневой `Dockerfile` (`railway.json`, healthcheck `/api/health`); ветки `main` и `ayat` содержат одно и то же приложение. Деплой: `make deploy`.
 
 ### Команды

@@ -255,6 +255,8 @@ def load_store(embed_model: str | None = None) -> Store:
     facts_file = POIS_FILE.parent / "place_facts.json"  # pipeline.place_facts: researched, every fact with its source
     if not canonical and facts_file.exists():
         apply_facts(pois, json.loads(facts_file.read_text()))
+    from app.card_photos import apply_card_photos  # optional operator photos in S3 (docs/CARD_PHOTOS.md)
+    apply_card_photos(pois)
     keep = _dedupe([i for i, p in enumerate(pois) if not junk_place(p) and not p.get("closed_permanently")], pois, aliases)
     if len(keep) < len(pois):  # region names, addresses and the same venue mapped several times
         log.info("dropped %d junk/duplicate places", len(pois) - len(keep))

@@ -1,0 +1,7 @@
+# Add after compose.yaml and compose.photos.yaml, with a disposable project name.
+services:
+  photos:
+    volumes:
+      - ./infra/photos:/checks:ro
+      - ./backend/app:/app:ro
+    entrypoint: ["python", "/checks/smoke.py"]

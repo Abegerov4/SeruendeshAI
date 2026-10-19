@@ -1,0 +1,59 @@
+# docker compose -f compose.yaml -f compose.photos.yaml up --build -d
+services:
+  app:
+    environment:
+      CARD_PHOTOS_FILE: /srv/card-photos/photos.json
+      S3_PUBLIC_BASE_URL: ${S3_PUBLIC_BASE_URL:-http://localhost:9000/place-photos}
+    volumes:
+      - card-photo-manifest:/srv/card-photos:ro
+    depends_on:
+      photos-init:
+        condition: service_completed_successfully
+
+  seaweedfs:
+    image: chrislusf/seaweedfs:4.48
+    command: ["mini", "-dir=/data", "-s3.port=8333"]
+    environment:
+      AWS_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:?Set S3_ACCESS_KEY_ID in .env}
+      AWS_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:?Set S3_SECRET_ACCESS_KEY in .env}
+    ports:
+      - "127.0.0.1:9000:8333"
+    volumes:
+      - seaweedfs-data:/data
+    restart: unless-stopped
+
+  photos-init:
+    build:
+      context: .
+      dockerfile: infra/photos/Dockerfile
+    environment: &photo-environment
+      S3_ENDPOINT_URL: http://seaweedfs:8333
+      AWS_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:?Set S3_ACCESS_KEY_ID in .env}
+      AWS_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:?Set S3_SECRET_ACCESS_KEY in .env}
+      AWS_DEFAULT_REGION: us-east-1
+      S3_BUCKET: place-photos
+      CARD_PHOTOS_FILE: /state/photos.json
+    command: ["init"]
+    depends_on:
+      seaweedfs:
+        condition: service_started
+    volumes:
+      - card-photo-manifest:/state
+    restart: "no"
+
+  photos:
+    build:
+      context: .
+      dockerfile: infra/photos/Dockerfile
+    profiles: ["tools"]
+    environment: *photo-environment
+    volumes:
+      - card-photo-manifest:/state
+      - ./photo-import:/imports:ro
+    depends_on:
+      photos-init:
+        condition: service_completed_successfully
+
+volumes:
+  seaweedfs-data:
+  card-photo-manifest:
