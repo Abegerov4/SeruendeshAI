@@ -1,6 +1,6 @@
 /* Live data layer: Leaflet map, skeletons, trust blocks, context chips (matches the Seru palette) */
 .leaflet-canvas{isolation:isolate}
-.leaflet-box{position:absolute;inset:0;z-index:0;background:#e9ede2}
+.leaflet-box{position:absolute;inset:0;z-index:0;background:#f1ecdc}
 .leaflet-canvas .map-top,.leaflet-canvas .map-controls,.leaflet-canvas .map-bottom{z-index:500}
 .leaflet-container{font:inherit}
 .leaflet-control-attribution{font-size:9px!important;background:#fffef9cc!important}
@@ -52,7 +52,7 @@
 .summary-line{font-size:14px;color:#294d3d;margin:0 0 12px}
 
 .leaflet-container img.leaflet-tile{max-width:none!important;width:256px;height:256px}
-.osm-tiles{filter:saturate(.75) sepia(.12) brightness(1.03)}
+.leaflet-canvas .leaflet-tile-pane{opacity:.9}
 .leaflet-canvas .leaflet-pane img{max-width:none}
 
 /* language switcher (custom listbox) */
