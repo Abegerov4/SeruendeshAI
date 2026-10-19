@@ -471,6 +471,8 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
         "speed_kmh": round(m_per_min * 60 / 1000, 1) if mode == "walk" else (18.0 if out_mode == "transit" else 25.0),
         "party": "family_kids" if with_child else (parsed.party or ("tourist" if tourist else "solo")),
         "parsed_from_query": {"categories": parsed.categories, "preferences": parsed.soft_categories,
+                              "avoid": parsed.avoid, "avoid_labels": [label(c, lang) for c in parsed.avoid],
+                              "category_labels": [label(c, lang) for c in parsed.categories],
                               "needs": sorted(parsed.needs), "time_budget_min": parsed.time_budget_min,
                               "food_requirements": [r.model_dump() for r in parsed.food_requirements],
                               "deadline": parsed.deadline_kind, "deadline_in_min": dl, "flight_type": parsed.flight_type,

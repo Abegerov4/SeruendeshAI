@@ -201,6 +201,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
 
     food_soft = {"on": False}
     cheap_wish = any(r.kind == "price" for r in parsed.food_requirements)
+    style_wishes = [r for r in parsed.food_requirements if r.kind == "style"]
 
     def eligible(i: int, t_max: float, relaxed_needs: bool) -> tuple[bool, str | None, dict | None]:
         p = store.pois[i]
@@ -214,6 +215,8 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
             evidence = accepted_details(p, ctx.now.date())
             if evidence["menu_items"] or evidence["prices"]:
                 return False, t("rej_food_evidence", lang), None  # published menu/prices already said no
+            if style_wishes and not match_food(p, style_wishes, ctx.now.date(), check_kitchen=False).matched:
+                return False, None, None  # a dish is unconfirmed, but the cuisine must be (OSM cuisine tag)
         elif (parsed.food_requirements or c.group == "food" and plan.check_kitchen) and not match_food(
                 p, parsed.food_requirements, ctx.now.date(), benchmarks.get(price_comparison_group(p,ctx.now.date())),
                 arrive_at=now + dt.timedelta(minutes=float(mins[i])), check_kitchen=plan.check_kitchen).matched:
@@ -295,7 +298,9 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         req_cats, req_groups = [], set()
         pool, rejected2 = collect(t_max, False)
         rejected += rejected2
-    if not pool and parsed.food_requirements and {r.kind for r in parsed.food_requirements} <= {"price", "style"}:
+    kinds = {r.kind for r in parsed.food_requirements}
+    # soft only for a budget or a cuisine; a named dish only next to a cuisine the data confirms («грузинская, хинкали»)
+    if not pool and parsed.food_requirements and "diet" not in kinds and (kinds <= {"price", "style"} or "style" in kinds):
         # nothing confirms the dish or the price: show the closest places of the right kind and say so
         food_soft["on"] = plan.food_soft = True
         plan.food_requirements = []

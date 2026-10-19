@@ -18,7 +18,7 @@ from app.i18n import WHAT_TO_DO
 from app.guards import drop_unverified_open_claims, strip_links, wrap_untrusted
 from app.llm import parse
 from app.retrieval import Cand, Plan
-from app.textnorm import has_kazakh
+from app.textnorm import fold, has_kazakh
 
 CandId = Literal["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10"]
 LANG_NAME = {"ru": "Russian", "kk": "Kazakh (Cyrillic, literary)", "en": "English"}
@@ -311,7 +311,7 @@ def template_why(c: Cand, lang: str) -> str:
         reasons.append(_W["fits"][lang])
     s = bits[0] + ": " + ", ".join(reasons[:3]) + "."
     lead = re.split(r"(?<=[.!?])\s+", (p.get("description") or "").strip())[0]
-    if lead and 20 <= len(lead) <= 140 and (lang == "ru") == bool(re.search(r"[а-яё]", lead, re.IGNORECASE)) and lang != "kk":
+    if lead and fold(lead.rstrip(".")) not in fold(s) and 20 <= len(lead) <= 140 and (lang == "ru") == bool(re.search(r"[а-яё]", lead, re.IGNORECASE)) and lang != "kk":
         s += " " + lead.rstrip(".") + "."
     return s[0].upper() + s[1:]
 

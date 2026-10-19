@@ -50,6 +50,32 @@ function ChatPlaces({ places, onRoute, onDetails, routed }) {
   })}</div>;
 }
 
+// What Seru took into account and what it left out: the reasoning at a glance, the details on tap.
+function ChatReasoning({ used, considered = [], notes = [] }) {
+  const [open, setOpen] = useState(false);
+  if (!used) return null;
+  const q = used.parsed_from_query || {}, f = used.funnel || {};
+  const chips = [
+    used.location_label && '📍 ' + used.location_label,
+    used.time_budget_min && '⏱ ' + used.time_budget_min + ' ' + tr('мин') + ' ' + tr(used.mode === 'walk' ? 'пешком' : used.mode === 'transit' ? 'на транспорте' : 'на машине'),
+    used.local_time && (used.is_dark ? '🌙 ' : '☀️ ') + used.local_time,
+    used.weather && '🌡 ' + Math.round(used.weather.temperature_c) + '°C' + (used.weather.max_outdoor_min < 60 ? ' · ' + tr('холодно') : ''),
+    ...(used.filters || []).filter(x => !/^[А-ЯA-ZӘҒҚҢӨҰҮҺІ]/.test(x)).map(x => '✓ ' + x),
+    ...(q.avoid_labels || []).map(x => '✕ ' + x),
+  ].filter(Boolean);
+  const funnel = f.within_reach > 0 && f.after_filters != null ? tr('Проверил {n} мест рядом → {k} подходят под условия', { n: f.within_reach, k: f.after_filters }) : null;
+  const more = considered.length > 0 || notes.length > 0;
+  return <div className="chat-reasoning">
+    <span className="chat-reasoning-title">{tr('Что я учёл')}</span>
+    <div className="chat-chips">{chips.map(c => <span key={c}>{c}</span>)}</div>
+    {funnel && <p className="chat-funnel">{funnel}</p>}
+    {notes[0] && <p className="chat-funnel">💡 {notes[0]}</p>}
+    {more && <button className="chat-why-toggle" aria-expanded={open} onClick={() => setOpen(!open)}>{tr(open ? 'Скрыть детали' : 'Почему не другие?')}<ChevronDown size={13} /></button>}
+    {open && <div className="chat-why">{notes.slice(1).map(n => <p key={n}>• {n}</p>)}
+      {considered.length > 0 && <p><b>{tr('Не предложил')}:</b> {considered.map(c => c.name + ' — ' + c.reason).join('; ')}</p>}</div>}
+  </div>;
+}
+
 export default function Chat({ requestPlan, onMood, location, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false, onRoute, onDetails, routed, notice }) {
   const [messages, setMessages] = useState([welcome]),
     [query, setQuery] = useState(''),
@@ -94,7 +120,8 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
       if (active.signal.aborted) return;
       const real = plan.places.filter(p => !p.generated), g = plan.photoGuess;
       const seen = g?.recognized && g.name ? tr('Похоже, это «{name}».', { name: g.name }) + ' ' : '';
-      append([{ role: 'assistant', result: true, count: real.length, summary: seen + (plan.summary || ''), names: real.map(p => p.name), places: real.slice(0, 3), note: real.length ? null : plan.notes[0] }]);
+      append([{ role: 'assistant', result: true, count: real.length, summary: seen + (plan.summary || ''), names: real.map(p => p.name), places: real.slice(0, 3), note: real.length ? null : plan.notes[0],
+        used: plan.used, considered: plan.considered, notes: plan.notes }]);
       setQuery(current => current === text ? '' : current); setLoading(false); onMood?.(real.length ? 'happy' : 'idle');
     } catch (e) {
       if (active.signal.aborted) return;
@@ -133,6 +160,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
           {m.image && <img className="message-photo" src={m.image} alt={tr('Твоё фото')} />}
           <p>{m.role === 'user' ? m.text : m.result ? !m.count ? (m.note || tr('Подходящих мест пока нет')) : <>{m.summary} {tr('Нажми на место — построю маршрут от тебя.')}</> : tr(m.text)}</p>
           {m.result && m.places?.length > 0 && <ChatPlaces places={m.places} onRoute={p => { if (asSheet) close(); onRoute?.(p); }} onDetails={onDetails} routed={routed} />}
+          {m.result && m.count > 0 && <ChatReasoning used={m.used} considered={m.considered} notes={m.notes} />}
           {m.result && m.count > 0 && <button className="message-results" onClick={() => { if (asSheet) close(); onResult?.(); }}>{tr('Все места и карта')} · {m.count}<ArrowUpRight size={14} /></button>}
         </div>)}
         {loading && <div className="chat-typing" role="status"><span className="thinking-seru"><Mascot decorative mood="thinking" /></span><span className="typing-dots" aria-hidden="true"><i /><i /><i /></span>{tr("Собираю прогулку…")}</div>}
