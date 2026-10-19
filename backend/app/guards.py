@@ -1,5 +1,5 @@
 """Safety layers (ported from the team backend by Abegerov4, adapted): PII masking, prompt-injection
-sentence filter, untrusted-data wrapping, cleaning of LLM text before it is shown.
+sentence filter, untrusted-data wrapping, cleaning of LLM text before it is shown, rate limiting.
 
 The system prompt is not a security boundary, so everything critical is done in code.
 """
@@ -7,6 +7,28 @@ from __future__ import annotations
 
 import json
 import re
+import time
+from collections import defaultdict, deque
+
+
+class RateLimiter:
+    """Tiny in-memory sliding-window limiter per client key (kept in RAM for the window only, never logged)."""
+
+    def __init__(self, per_min: int, window_s: float = 60.0):
+        self.per_min, self.window_s = per_min, window_s
+        self._hits: dict[str, deque] = defaultdict(deque)
+
+    def limited(self, key: str) -> bool:
+        q, now = self._hits[key], time.time()
+        while q and now - q[0] > self.window_s:
+            q.popleft()
+        if len(q) >= self.per_min:
+            return True
+        q.append(now)
+        if len(self._hits) > 10000:  # bound memory: forget idle clients
+            for k in [k for k, v in self._hits.items() if not v or now - v[-1] > self.window_s]:
+                self._hits.pop(k, None)
+        return False
 
 PII_PATTERNS = {
     "EMAIL": r"[\w.+-]+@[\w-]+\.[\w.]+",

@@ -3,14 +3,15 @@
 Measured on our key (Oct 2026): gpt-6-luna with reasoning effort "none" ~2.5 s median
 (~1.7 s on the fast tier), fluent Kazakh, never returned an invalid candidate id.
 Every call: store=False, fixed schemas (no per-request enums), hard timeout, and the
-caller always has a non-LLM fallback.
+caller always has a non-LLM fallback. Token usage of every call is recorded for cost logging.
 """
 from __future__ import annotations
 
 import asyncio
 import logging
 import time
-from typing import TypeVar
+from contextvars import ContextVar
+from typing import Any, TypeVar
 
 import openai
 from openai import AsyncOpenAI
@@ -21,6 +22,7 @@ from app.config import get_settings
 log = logging.getLogger("app.llm")
 M = TypeVar("M", bound=BaseModel)
 _client: AsyncOpenAI | None = None
+_usage: ContextVar[list[dict] | None] = ContextVar("llm_usage", default=None)
 
 
 def client() -> AsyncOpenAI | None:
@@ -33,6 +35,45 @@ def client() -> AsyncOpenAI | None:
     return _client
 
 
+# --- usage / cost ---------------------------------------------------------------------------------
+
+def usage_begin() -> tuple[list[dict], int]:
+    """Per-request usage meter (context-local; tasks created afterwards share it). Returns (meter, mark):
+    the caller's own calls are meter[mark:]."""
+    acc = _usage.get()
+    if acc is None:
+        acc = []
+        _usage.set(acc)
+    return acc, len(acc)
+
+
+def _record(model: str, r: Any, tier: str | None) -> None:
+    acc, u = _usage.get(), getattr(r, "usage", None)
+    if acc is None or u is None:
+        return
+    acc.append({"model": model, "tier": getattr(r, "service_tier", None) or tier,
+                "input_tokens": int(getattr(u, "input_tokens", 0) or 0),
+                "output_tokens": int(getattr(u, "output_tokens", 0) or 0)})
+
+
+def cost_usd(model: str, tier: str | None, input_tokens: int, output_tokens: int) -> float | None:
+    prices = get_settings().llm_prices
+    p = prices.get(f"{model}@{tier}") if tier else None
+    p = p or prices.get(model)
+    if p is None:
+        return None
+    return (input_tokens * p[0] + output_tokens * p[1]) / 1e6
+
+
+def usage_summary(calls: list[dict]) -> dict:
+    """{input_tokens, output_tokens, cost_usd}; cost is null if any call used a model without a price."""
+    costs = [cost_usd(c["model"], c.get("tier"), c["input_tokens"], c["output_tokens"]) for c in calls]
+    return {"input_tokens": sum(c["input_tokens"] for c in calls), "output_tokens": sum(c["output_tokens"] for c in calls),
+            "cost_usd": None if any(x is None for x in costs) else round(sum(costs, 0.0), 6)}
+
+
+# --- calls ------------------------------------------------------------------------------------------
+
 def _model_kwargs(model: str, first: bool) -> dict:
     s = get_settings()
     kw: dict = {}
@@ -44,23 +85,25 @@ def _model_kwargs(model: str, first: bool) -> dict:
     return kw
 
 
-async def parse(schema: type[M], system: str, user: str, *, models: list[str], timeout_s: float,
+async def parse(schema: type[M], system: str, user: str | list[dict], *, models: list[str], timeout_s: float,
                 max_output_tokens: int = 1200) -> tuple[M | None, str | None, int]:
     """Try each model until one returns a completed, schema-valid object.
+    `user` is text or a list of Responses input parts (input_text / input_image).
     Returns (parsed | None, model | None, latency_ms)."""
     c = client()
     t0 = time.perf_counter()
     if c is None:
         return None, None, 0
     deadline = t0 + timeout_s
+    msgs = [{"role": "system", "content": system}, {"role": "user", "content": user}]
     for i, model in enumerate(models):
         left = deadline - time.perf_counter()
         if left < 0.8:
             break
+        kw = _model_kwargs(model, i == 0)
         try:
             r = await asyncio.wait_for(c.responses.parse(
-                model=model, input=[{"role": "system", "content": system}, {"role": "user", "content": user}],
-                text_format=schema, store=False, max_output_tokens=max_output_tokens, **_model_kwargs(model, i == 0)),
+                model=model, input=msgs, text_format=schema, store=False, max_output_tokens=max_output_tokens, **kw),
                 timeout=left)
         except (asyncio.TimeoutError, openai.APITimeoutError):
             log.warning("llm %s timed out", model)
@@ -68,10 +111,10 @@ async def parse(schema: type[M], system: str, user: str, *, models: list[str], t
         except openai.BadRequestError as e:
             # e.g. a tier/param not supported for this model: retry same model without extras once
             log.warning("llm %s bad request: %s", model, str(e)[:160])
+            kw = {}
             try:
                 r = await asyncio.wait_for(c.responses.parse(
-                    model=model, input=[{"role": "system", "content": system}, {"role": "user", "content": user}],
-                    text_format=schema, store=False, max_output_tokens=max_output_tokens),
+                    model=model, input=msgs, text_format=schema, store=False, max_output_tokens=max_output_tokens),
                     timeout=max(0.5, deadline - time.perf_counter()))
             except Exception as e2:
                 log.warning("llm %s retry failed: %s", model, type(e2).__name__)
@@ -80,6 +123,7 @@ async def parse(schema: type[M], system: str, user: str, *, models: list[str], t
                 openai.NotFoundError, openai.PermissionDeniedError, openai.AuthenticationError) as e:
             log.warning("llm %s failed: %s", model, type(e).__name__)
             continue
+        _record(model, r, kw.get("service_tier"))  # billed even if the answer is unusable
         if getattr(r, "status", "completed") != "completed" or r.output_parsed is None:
             log.warning("llm %s status=%s", model, getattr(r, "status", None))
             continue

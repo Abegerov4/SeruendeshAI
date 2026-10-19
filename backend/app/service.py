@@ -23,10 +23,11 @@ from app.geo import WalkGraph, hav_m, in_astana, round_coord
 from app.i18n import t, weekday
 from app.llm import client as llm_client
 from app.llm import parse as llm_parse
+from app.llm import usage_begin, usage_summary
 from app.planner import plan_route, route_wanted
 from app.guards import mask_pii, strip_injection
-from app.query import (PARSE_SYSTEM, LLMParsed, Parsed, deadline_minutes, merge_llm, parse_rules, resolve_landmark,
-                       split_mentions)
+from app.query import (PARSE_SYSTEM, LLMParsed, Parsed, deadline_minutes, is_off_topic, merge_llm, parse_rules,
+                       resolve_landmark, split_mentions)
 from app.retrieval import Cand, Plan, rank
 from app.schemas import RecommendRequest
 from app.store import Store
@@ -116,12 +117,15 @@ def _cache_key(req: RecommendRequest, now: dt.datetime) -> str:
 async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     s = get_settings()
     t0 = time.perf_counter()
+    meter, mark = usage_begin()  # tokens of every LLM call made below (parse + generation)
     now = parse_now(req.now)
     key = _cache_key(req, now)
     hit = rt.cache.get(key)
     if hit and time.time() - hit[0] < s.response_cache_ttl_s:
         out = json.loads(hit[1])
         out["request_id"] = uuid.uuid4().hex[:12]
+        out["llm"]["usage"] = usage_summary([])  # served from cache: nothing spent
+        log.info("recommend id=%s cached tokens_in=0 tokens_out=0 cost_usd=0", out["request_id"])
         return out
 
     raw_query = req.query or ""
@@ -163,6 +167,13 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     if had_injection:
         notes.append(t("note_injection", lang))
 
+    # not about going somewhere in the city ("напиши код", "кто президент США"): say what Seru does instead
+    place_signal = bool(rules.categories or rules.walk_intent or rules.wants_event or text_hit or dest_entries)
+    off_topic = (llm_parsed.off_topic and not place_signal) if llm_parsed is not None else is_off_topic(req.query, place_signal)
+    if off_topic:
+        return _empty_response(rt, req, parsed, now, lang, t0, notes, t("off_topic", lang), meter[mark:], parse_model,
+                               off_topic=True)
+
     origin, origin_info, hit = _resolve_origin(req, parsed, rt.store, notes, lang, text_hit)
     exclude_keys: set[str] = set()
     target_ids = _target_ids(rt.store, dest_entries)
@@ -192,7 +203,7 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
     airport = _landmark_by_key(rt.store, "airport")
     dl = deadline_minutes(parsed, now) if parsed.deadline_kind else None
     if origin is None:
-        return _no_location_response(rt, req, parsed, now, lang, t0, notes)
+        return _empty_response(rt, req, parsed, now, lang, t0, notes, t("ask_location", lang), meter[mark:], parse_model)
     if dl is not None and parsed.deadline_kind == "flight" and airport and \
             float(hav_m(origin[0], origin[1], airport["lat"], airport["lon"])) < 4000 and req_mode is None:
         mode = out_mode = "car"  # nothing is walkable from the terminal
@@ -379,15 +390,19 @@ async def recommend(rt: Runtime, req: RecommendRequest) -> dict:
         "api_version": "1.0", "request_id": uuid.uuid4().hex[:12], "lang": lang, "summary": summary,
         "recommendations": items, "ideas": ideas, "route": route_out, "used_context": used, "considered": considered[:4],
         "notes": list(dict.fromkeys(notes)), "disclaimer": t("disclaimer", lang), "ai_generated": True,
-        "llm": {"mode": "llm" if model else "template", "model": model, "latency_ms": int((time.perf_counter() - t0) * 1000)},
+        "llm": {"mode": "llm" if model else "template", "model": model, "latency_ms": int((time.perf_counter() - t0) * 1000),
+                "usage": usage_summary(meter[mark:])},
+        "off_topic": False,
     }
     if model or llm_client() is None:
         rt.cache[key] = (time.time(), json.dumps(resp, ensure_ascii=False))
     if len(rt.cache) > 500:
         for k in sorted(rt.cache, key=lambda k: rt.cache[k][0])[:100]:
             rt.cache.pop(k, None)
-    log.info("recommend id=%s lang=%s mode=%s budget=%s items=%d route=%s llm=%s %dms", resp["request_id"], lang, mode,
-             plan.budget, len(items), bool(route_out), model or "template", resp["llm"]["latency_ms"])
+    u = resp["llm"]["usage"]  # one line per request: no query text, no coordinates
+    log.info("recommend id=%s lang=%s mode=%s budget=%s items=%d route=%s llm=%s %dms tokens_in=%d tokens_out=%d cost_usd=%s",
+             resp["request_id"], lang, mode, plan.budget, len(items), bool(route_out), model or "template",
+             resp["llm"]["latency_ms"], u["input_tokens"], u["output_tokens"], u["cost_usd"])
     return resp
 
 
@@ -479,11 +494,13 @@ def _idea_item(idea, anchor: Cand, rank_i: int, plan: Plan, lang: str, out_mode:
     }
 
 
-def _no_location_response(rt: Runtime, req: RecommendRequest, parsed: Parsed, now: dt.datetime, lang: str,
-                          t0: float, notes: list[str]) -> dict:
-    """Team contract: no GPS and no recognisable landmark -> 200 with empty recommendations + a clear ask."""
-    return {
-        "api_version": "1.0", "request_id": uuid.uuid4().hex[:12], "lang": lang, "summary": t("ask_location", lang),
+def _empty_response(rt: Runtime, req: RecommendRequest, parsed: Parsed, now: dt.datetime, lang: str, t0: float,
+                    notes: list[str], message: str, calls: list[dict], parse_model: str | None,
+                    off_topic: bool = False) -> dict:
+    """200 with empty recommendations + a clear message: no GPS / landmark (team contract) or an off-topic query."""
+    usage = usage_summary(calls)
+    resp = {
+        "api_version": "1.0", "request_id": uuid.uuid4().hex[:12], "lang": lang, "summary": message,
         "recommendations": [], "route": None,
         "used_context": {
             "location_source": "none", "location_label": None, "radius_m": None,
@@ -493,9 +510,15 @@ def _no_location_response(rt: Runtime, req: RecommendRequest, parsed: Parsed, no
             "weekday": weekday(now.weekday(), lang), "is_holiday": None, "is_dark": False, "weather": None,
             "speed_kmh": 4.5, "party": parsed.party or "solo",
             "parsed_from_query": {"categories": parsed.categories, "preferences": parsed.soft_categories,
-                                  "needs": sorted(parsed.needs), "parser": parsed.source},
+                                  "needs": sorted(parsed.needs),
+                                  "parser": parsed.source + (f" ({parse_model})" if parse_model else "")},
             "relaxations": [], "funnel": {"total": rt.store.size}, "data_sources": [],
             "data_built_at": rt.store.manifest.get("built_at"), "privacy": t("privacy", lang)},
-        "ideas": [], "considered": [], "notes": list(dict.fromkeys(notes + [t("ask_location", lang)])), "disclaimer": t("disclaimer", lang), "ai_generated": True,
-        "llm": {"mode": "template", "model": None, "latency_ms": int((time.perf_counter() - t0) * 1000)},
+        "ideas": [], "considered": [], "notes": list(dict.fromkeys(notes + [message])), "disclaimer": t("disclaimer", lang),
+        "ai_generated": True,
+        "llm": {"mode": "template", "model": None, "latency_ms": int((time.perf_counter() - t0) * 1000), "usage": usage},
+        "off_topic": off_topic,
     }
+    log.info("recommend id=%s lang=%s empty=%s tokens_in=%d tokens_out=%d cost_usd=%s", resp["request_id"], lang,
+             "off_topic" if off_topic else "no_location", usage["input_tokens"], usage["output_tokens"], usage["cost_usd"])
+    return resp

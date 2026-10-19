@@ -41,6 +41,7 @@ class LLMParsed(BaseModel):
     surprise: bool = Field(description="User wants something unusual / hidden gem")
     search_text_ru: str = Field(description="The request rewritten as a short Russian search phrase")
     keywords_ru: list[str] = Field(description="3-8 Russian keywords describing desired places/activities")
+    off_topic: bool = Field(description="True only if the request is clearly NOT about going somewhere in the city")
 
 
 PARSE_SYSTEM = """You convert a city-walk request (Astana, Kazakhstan; Russian, Kazakh or English) into JSON.
@@ -55,7 +56,28 @@ Rules:
   A place the user wants to go to ("хочу в X", "как попасть в X", "X-қа барғым келеді") is NOT landmark_text: keep it in search_text_ru.
 - night=true for late-evening/night requests ("ночью", "түнде", "late night", "последние пару часов" at night).
 - search_text_ru and keywords_ru: always in Russian, even for Kazakh/English input.
-- lang: language of the user's text (kk if it contains Kazakh words/letters)."""
+- lang: language of the user's text (kk if it contains Kazakh words/letters).
+- off_topic=true ONLY when the text is clearly not about going out in the city: e.g. "напиши код", "реши уравнение",
+  "кто президент США", "translate this essay". Anything about places, food, coffee, walks, rest, kids, events, a landmark,
+  free time or "куда сходить" is NOT off-topic. When in doubt -> false."""
+
+
+# clear "not about going somewhere" requests (template mode; the LLM parse has its own off_topic flag)
+_OFF_TOPIC = re.compile(
+    r"(напиши|написать|пиши|сгенерируй|write|generate)\w*\s+(?:(?:мне|me|a|an|some|the)\s+){0,2}"
+    r"(код|программ|скрипт|функци|алгоритм|сочинени|эссе|реферат|стих|code|program|script|function|essay|poem)"
+    r"|\b(python|javascript|java|c\+\+|sql|html|css)\b.*\b(код|code|функци|function|скрипт|script)"
+    r"|(реши|решить|решите|посчитай|вычисли|solve|calculate)\w*\s+(\S+\s+)?(уравнени|задач|пример|интеграл|equation|problem|integral)"
+    r"|\d\s*[\^*/+]\s*\d.*=|\bx\s*[\^²]|уравнени|интеграл|производн|теорем|equation|integral|derivative"
+    r"|кто\s+(такой\s+|такая\s+|сейчас\s+)?(президент|премьер|канцлер|царь|король)|who\s+is\s+(the\s+)?(president|prime\s+minister|king)"
+    r"|президент\w*\s+(сша|америк|росси|франц|кита)|(код|есеп|теңдеу)\w*\s+(жаз|шығар|шеш)|президенті\s+кім"
+    r"|переведи\s+(текст|на\s+английский)|translate\s+(this|the)\s+text",
+    re.IGNORECASE)
+
+
+def is_off_topic(text: str, place_signal: bool = False) -> bool:
+    """Rules: an off-topic pattern and nothing about places / walks / landmarks in the text."""
+    return bool(text and not place_signal and _OFF_TOPIC.search(text))
 
 
 @dataclass
@@ -346,7 +368,7 @@ def resolve_landmark(name: str, gazetteer: list[dict]) -> dict | None:
     if not name:
         return None
     for g in gazetteer:
-        if g.get("landmark_key") == name:
+        if g.get("landmark_key") == name or g.get("poi_id") == name:  # landmark key or a POI id (photo mode, MCP)
             return g
     hit = find_landmark_in_text(name, gazetteer)
     if hit:

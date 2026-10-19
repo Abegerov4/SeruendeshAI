@@ -205,10 +205,17 @@ class UsedContext(_Out):
     privacy: str
 
 
+class LLMUsage(_Out):
+    input_tokens: int = 0
+    output_tokens: int = 0
+    cost_usd: float | None = Field(0.0, description="Estimated USD from the price table in config; null = unknown model price")
+
+
 class LLMInfo(_Out):
     mode: Literal["llm", "template"]
     model: str | None
     latency_ms: int
+    usage: LLMUsage = Field(default_factory=LLMUsage, description="Tokens and estimated cost of all LLM calls of this request")
 
 
 class RecommendResponse(_Out):
@@ -225,6 +232,20 @@ class RecommendResponse(_Out):
     disclaimer: str
     ai_generated: bool = True
     llm: LLMInfo
+    off_topic: bool = Field(False, description="The query is not about places/walks in Astana: no recommendations, see notes")
+
+
+class PhotoGuess(_Out):
+    recognized: bool = Field(description="True when a known place was identified confidently enough to search around it")
+    place_id: str | None = Field(description="Landmark key (GET /api/meta) or POI id the photo shows")
+    kind: Literal["landmark", "poi"] | None
+    name: str | None
+    confidence: Literal["low", "medium", "high"]
+    description: str = Field(description="Short description of the photo by the AI")
+
+
+class PhotoRecommendResponse(RecommendResponse):
+    photo_guess: PhotoGuess
 
 
 class LandmarkOut(_Out):
@@ -241,6 +262,12 @@ class CategoryOut(_Out):
     icon: str
 
 
+class MetaFeatures(_Out):
+    password_reset_email: bool = Field(False, description="SMTP is configured: password reset by email works")
+    photo: bool = Field(False, description="LLM is configured: POST /api/recommend/photo works")
+    mcp: bool = Field(True, description="MCP connector is served at /connector/mcp")
+
+
 class MetaResponse(_Out):
     api_version: str = API_VERSION
     landmarks: list[LandmarkOut]
@@ -248,6 +275,7 @@ class MetaResponse(_Out):
     data_built_at: str | None
     poi_count: int
     sources: dict[str, str]
+    features: MetaFeatures = Field(default_factory=MetaFeatures)
 
 
 class PoiBrief(_Out):

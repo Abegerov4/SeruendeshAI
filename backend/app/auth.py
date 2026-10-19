@@ -171,8 +171,17 @@ def logout(response: Response):
     response.delete_cookie(COOKIE, path="/")
 
 
-@router.get("/auth/me", response_model=UserOut, summary="Current user (401 if not logged in)")
-def me(user: CurrentUser):
+class GuestOut(BaseModel):
+    user: None = None
+
+
+@router.get("/auth/me", response_model=UserOut | GuestOut,
+            summary="Current user; guests get 200 {\"user\": null} (no 401 noise in the browser console)")
+def me(request: Request, db: DbSession):
+    try:
+        user = current_user(request, db)
+    except HTTPException:
+        return GuestOut()
     return _out(user)
 
 
