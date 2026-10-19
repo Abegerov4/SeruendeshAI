@@ -67,7 +67,7 @@
 
 Master SHA-256: `803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63`,14 006 POI/14 607 source ID. Активная версия: `4e9b6ecc5b4c455f9c0443714afb91b2`,17 hash-checked artifacts. Офлайн partial-пересборка была отклонена; исходные статусы сбора сохранены, свежий полный сбор не имитировался.
 
-[Проверенные места и источники](../data/review/2026-10-19/scenario-verification.md), [машиночитаемые факты/ограничения](../data/review/2026-10-19/scenario-verification.json), [опубликованный manifest](../eval/runs/2026-10-19-remediation/data-bundle.json).
+[Проверенные места и источники](../../data/review/2026-10-19/scenario-verification.md), [машиночитаемые факты/ограничения](../../data/review/2026-10-19/scenario-verification.json), [опубликованный manifest](../../eval/runs/2026-10-19-remediation/data-bundle.json).
 
 | Retrieval-only замер | Hit@5 | Число найденных positive IDs |
 |---|---:|---:|
@@ -80,15 +80,15 @@ Master SHA-256: `803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e6
 
 Для 14/20 Wilson95%:48,1–85,5%. Holdout опубликован до просмотра новых outputs и не подгонялся. В частично размеченных запросах неизвестные результаты не считаются доказанно нерелевантными; precision и общая полезность не измерены. Primary метрики используют реальную функцию text fusion и документы Ayat, но не заменяют оценку конечного ранжирования/маршрута. Данные/labels прежнего 35-набора не переписывались.
 
-Артефакты: [holdout](../eval/runs/2026-10-19-remediation/primary-holdout.json), [dev35](../eval/runs/2026-10-19-remediation/primary-dev35.json), [secondary](../eval/runs/2026-10-19-remediation/secondary-bm25/report.json).
+Артефакты: [holdout](../../eval/runs/2026-10-19-remediation/primary-holdout.json), [dev35](../../eval/runs/2026-10-19-remediation/primary-dev35.json), [secondary](../../eval/runs/2026-10-19-remediation/secondary-bm25/report.json).
 
 ## Итоговые проверки
 
 Свежая окончательная версия: **1 065 passed, 29 skipped, 12 subtests passed**; frontend **20 passed + build**; HTTP **15/15**. Обе Docker-сборки и restart smoke прошли. Настоящая `gpt-4.1-mini`: RU/KK/EN и браузер, общий расход **$0,0237488 / $0,10**, 22 API-вызова за все проверки. Другие модели default chain этим прогоном не проверялись.
 
-Сводка окончательной версии и точная стоимость находятся в [verification.json](../eval/runs/2026-10-19-remediation/verification.json). Полные тесты, frontend build, свежие Docker-образы обоих серверов, HTTP15 сценариев и restart smoke выполнены; отчёт сохраняет количество пропущенных opt-in проверок.
+Сводка окончательной версии и точная стоимость находятся в [verification.json](../../eval/runs/2026-10-19-remediation/verification.json). Полные тесты, frontend build, свежие Docker-образы обоих серверов, HTTP15 сценариев и restart smoke выполнены; отчёт сохраняет количество пропущенных opt-in проверок.
 
-[HTTP-сценарии](../eval/runs/2026-10-19-remediation/template-http/report.md), [live-модель](../eval/runs/2026-10-19-remediation/live-current/live-model.json), [ledger стоимости](../eval/runs/2026-10-19-remediation/provider-cost.json), [PostgreSQL/SMTP/weather](../eval/runs/2026-10-19-remediation/delivery-evidence.json).
+[HTTP-сценарии](../../eval/runs/2026-10-19-remediation/template-http/report.md), [live-модель](../../eval/runs/2026-10-19-remediation/live-current/live-model.json), [ledger стоимости](../../eval/runs/2026-10-19-remediation/provider-cost.json), [PostgreSQL/SMTP/weather](../../eval/runs/2026-10-19-remediation/delivery-evidence.json).
 
 Общий submission readiness может оставаться NOT READY при отсутствии `docs/submission.json`, slides PDF и YouTube demo: это отдельный gate материалов сдачи. Прохождение API tests не превращает его в READY и не подтверждает неизвестный production ingress.
 

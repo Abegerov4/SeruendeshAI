@@ -27,7 +27,7 @@
 - старые embeddings не подключаются к новому составу/порядку POI;
 - 60 событий безопасно сопоставлены каноническим местам; 80 без однозначной связи исключены из активного набора. Исходные события не изменены; прежний venue ID сохраняется в `source_poi_id`.
 
-Новые `data/quarantine.json` и `data/sources/team_bigdata.json` взяты из Ayat без изменения содержимого. Ни один из 48 существовавших Data-файлов не изменён. Подробности адаптации — [ayat-data-view.json](../eval/runs/2026-10-19-branch-integration/ayat-data-view.json).
+Новые `data/quarantine.json` и `data/sources/team_bigdata.json` взяты из Ayat без изменения содержимого. Ни один из 48 существовавших Data-файлов не изменён. Подробности адаптации — [ayat-data-view.json](../../eval/runs/2026-10-19-branch-integration/ayat-data-view.json).
 
 ## Исправления совместимости
 
@@ -66,7 +66,7 @@
 
 В браузерном прогоне внешние map tiles и Google Fonts ограничены allowlist локальных адресов: маркеры/контролы карты проверены, доступность внешней подложки этим прогоном не доказывается. Аккаунты и база только локальные; настоящий email не отправлялся.
 
-[Машинный отчёт и логи](../eval/runs/2026-10-19-branch-integration/integration-verification.json), [HTTP-ответы](../eval/runs/2026-10-19-branch-integration/http-smoke.json), [мобильный экран](../eval/runs/2026-10-19-branch-integration/screenshots/mobile-en.png).
+[Машинный отчёт и логи](../../eval/runs/2026-10-19-branch-integration/integration-verification.json), [HTTP-ответы](../../eval/runs/2026-10-19-branch-integration/http-smoke.json), [мобильный экран](../../eval/runs/2026-10-19-branch-integration/screenshots/mobile-en.png).
 
 ## Запуск для просмотра
 

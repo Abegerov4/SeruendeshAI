@@ -2,7 +2,7 @@
 
 Срез: **18 октября 2026**, после синхронизации `Aslan` с Backend. Подтверждённый общий прогон: **549 passed / 42 failed / 40 skipped**. Это 42 упавших кейса; несколько кейсов выявляют одну причину, поэтому число независимых дефектов отдельно не подсчитано.
 
-JUnit, журнал, результаты 64 golden-кейсов и параметры проверки сохраняются в [каталоге evidence](../eval/runs/2026-10-18-backend-local/). Backend, исходные данные и golden set при добавлении этих проверок не изменялись.
+JUnit, журнал, результаты 64 golden-кейсов и параметры проверки сохраняются в [каталоге evidence](../../eval/runs/2026-10-18-backend-local). Backend, исходные данные и golden set при добавлении этих проверок не изменялись.
 
 ## Область доказательства
 
@@ -46,11 +46,11 @@ Golden gate: **29 из 64 passed, 35 failed**; запросы и ожидани�
   tests/test_backend_safety_local.py tests/test_backend_languages_local.py -q
 ```
 
-Основания: [задачи QA](../team/04_qa_docs.md), [golden set](../eval/golden_set.json), [независимые валидаторы](../eval/validators.py), [golden-тесты](../tests/test_backend_golden_local.py), [safety-тесты](../tests/test_backend_safety_local.py), [языковые проверки](../tests/test_backend_languages_local.py). Ожидания не следует ослаблять ради зелёной сводки: сначала согласовать противоречивые политики и отделить ограничения фикстур от ошибок приложения.
+Основания: [задачи QA](../../team/04_qa_docs.md), [golden set](../../eval/golden_set.json), [независимые валидаторы](../../eval/validators.py), [golden-тесты](../../tests/test_backend_golden_local.py), [safety-тесты](../../tests/test_backend_safety_local.py), [языковые проверки](../../tests/test_backend_languages_local.py). Ожидания не следует ослаблять ради зелёной сводки: сначала согласовать противоречивые политики и отделить ограничения фикстур от ошибок приложения.
 
 ## Исторический снимок Data — 18 октября 2026, до синхронизации Backend
 
-Сохранён ранний результат параллельной разработки Data: **377 passed / 4 failed / 57 skipped**. Исходники Data во время того прогона не менялись. Это архивный срез, а не текущий список открытых дефектов; его журналы и JUnit находятся в [eval/evidence](../eval/evidence/).
+Сохранён ранний результат параллельной разработки Data: **377 passed / 4 failed / 57 skipped**. Исходники Data во время того прогона не менялись. Это архивный срез, а не текущий список открытых дефектов; его журналы и JUnit находятся в [eval/evidence](../../eval/evidence).
 
 | Исторический тест в `data/tests/test_web_sources.py` | Наблюдение того среза |
 |---|---|

@@ -20,9 +20,10 @@ COMPONENTS = {
     "frontend": "frontend/package.json", "dataset": "data/processed/pois.json",
 }
 AYAT_COMPONENTS = {**COMPONENTS, "backend": "backend/app/main.py", "rag": "backend/app/retrieval.py"}
+# the submission documents the README links (the early drafts now live in docs/archive/)
 DOCUMENTS = (
-    "docs/test_scenarios.md", "docs/product_concept.md", "docs/rag_approach.md",
-    "docs/ethics_privacy.md", "docs/demo_script.md",
+    "docs/TEST_SCENARIOS.md", "docs/CONCEPT.md", "docs/ARCHITECTURE.md",
+    "docs/ETHICS_PRIVACY.md", "docs/PRESENTATION.md",
 )
 NOT_VERIFIED = [
     "Privacy: real application logs, storage, consent and coordinate rounding require inspection.",

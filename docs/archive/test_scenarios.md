@@ -1,8 +1,8 @@
 # Тестовые сценарии и ограничения
 
-> **Обновление 19.10, после сведения веток в `main`:** продукт запущен на https://seruendesh.site. Работают реальные RAG, модель и интерфейс. Актуальные сценарии и результаты — [TEST_SCENARIOS.md](TEST_SCENARIOS.md) и [EVAL_RESULTS.md](EVAL_RESULTS.md). Презентация — [presentation/SeruendeshAI-presentation.pdf](presentation/SeruendeshAI-presentation.pdf). Ниже — исторический отчёт QA на раннем бэкенде.
+> **Обновление 19.10, после сведения веток в `main`:** продукт запущен на https://seruendesh.site. Работают реальные RAG, модель и интерфейс. Актуальные сценарии и результаты — [TEST_SCENARIOS.md](../TEST_SCENARIOS.md) и [EVAL_RESULTS.md](../EVAL_RESULTS.md). Презентация — [presentation/SeruendeshAI-presentation.pdf](../presentation/SeruendeshAI-presentation.pdf). Ниже — исторический отчёт QA на раннем бэкенде.
 
-Статус локального API: **64/64 golden-сценария исполнены, 29 PASS / 35 FAIL**. Проверен настоящий FastAPI с существующими 17 контролируемыми backend-POI и keyword/template fallback; внешние провайдеры отключены. Ни один запрос или ожидаемый результат golden set не изменён. Сводка полного прогона — [eval/results.md](../eval/results.md), доказательства — [локальный отчёт](../eval/runs/2026-10-18-backend-local/README.md). Настоящие RAG, модель и UI: **NOT RUN**.
+Статус локального API: **64/64 golden-сценария исполнены, 29 PASS / 35 FAIL**. Проверен настоящий FastAPI с существующими 17 контролируемыми backend-POI и keyword/template fallback; внешние провайдеры отключены. Ни один запрос или ожидаемый результат golden set не изменён. Сводка полного прогона — [eval/results.md](../../eval/results.md), доказательства — [локальный отчёт](../../eval/runs/2026-10-18-backend-local/README.md). Настоящие RAG, модель и UI: **NOT RUN**.
 
 ## Набор и правила
 
@@ -60,7 +60,7 @@
 
 ## Вход → ожидаемый ответ → фактический результат
 
-Полный JSON задаёт вход. «Факт» взят из [JUnit локального прогона](../eval/runs/2026-10-18-backend-local/junit.xml); детали по каждому ID — в [golden_results.json](../eval/runs/2026-10-18-backend-local/golden_results.json), диагнозы — в [qa_findings.md](qa_findings.md). LOCAL PASS означает прохождение сохранённых автоматических ожиданий на контролируемых POI. Языковое качество и реальная релевантность этим не подтверждены; LOCAL FAIL также включает документированные разногласия контрактов и ограничения фикстуры.
+Полный JSON задаёт вход. «Факт» взят из [JUnit локального прогона](../../eval/runs/2026-10-18-backend-local/junit.xml); детали по каждому ID — в [golden_results.json](../../eval/runs/2026-10-18-backend-local/golden_results.json), диагнозы — в [qa_findings.md](qa_findings.md). LOCAL PASS означает прохождение сохранённых автоматических ожиданий на контролируемых POI. Языковое качество и реальная релевантность этим не подтверждены; LOCAL FAIL также включает документированные разногласия контрактов и ограничения фикстуры.
 
 | ID | Вход / цель | Ожидаемый тип; HTTP; число мест | Факт |
 |---|---|---|---|

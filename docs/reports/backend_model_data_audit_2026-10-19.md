@@ -115,7 +115,7 @@
 
 ### B11. Фото может дать HTTP 500 и неконтролируемую нагрузку до resize — P2 · R/S
 
-**Доказательство:** [main.py](../backend/app/main.py), 77–80; [vision.py](../backend/app/vision.py), 45–58. Изображение читается целиком до проверки 8 МБ; `convert('RGB')` декодирует полный размер до thumbnail в async endpoint. PNG-заголовок **57 байт** с чрезмерными dimensions вызывает необработанный `DecompressionBombError` и HTTP **500**. Большое изображение для этого воспроизведения не выделялось.
+**Доказательство:** [main.py](../../backend/app/main.py), 77–80; [vision.py](../backend/app/vision.py), 45–58. Изображение читается целиком до проверки 8 МБ; `convert('RGB')` декодирует полный размер до thumbnail в async endpoint. PNG-заголовок **57 байт** с чрезмерными dimensions вызывает необработанный `DecompressionBombError` и HTTP **500**. Большое изображение для этого воспроизведения не выделялось.
 
 **Лучшее решение:** bounded read до `MAX_BYTES+1`, проверка dimensions/pixel count до decode, обработка bomb/ошибок PIL как 413/422, ограничение параллельных декодирований и вынос CPU-работы из event loop.
 
@@ -123,7 +123,7 @@
 
 ### B12. MCP-поиск обходит PII-маскирование перед embeddings — P1 для внешних embeddings · R/S
 
-**Доказательство:** [server.py](../backend/mcp_server/server.py), 132–154; [rag_adapter.py](../backend/app/rag_adapter.py), 47–51; [retriever.py](../rag/retriever.py), 39–49, 84–86; [embeddings.py](../rag/embeddings.py), 7–11. Spy на retrieval-границе MCP получил исходный query с синтетическим email. При OpenAI dense provider та же строка передаётся в `embeddings.create(input=...)`. Внешней отправки в аудите не было.
+**Доказательство:** [server.py](../backend/mcp_server/server.py), 132–154; [rag_adapter.py](../backend/app/rag_adapter.py), 47–51; [retriever.py](../../rag/retriever.py), 39–49, 84–86; [embeddings.py](../../rag/embeddings.py), 7–11. Spy на retrieval-границе MCP получил исходный query с синтетическим email. При OpenAI dense provider та же строка передаётся в `embeddings.create(input=...)`. Внешней отправки в аудите не было.
 
 **Лучшее решение:** одна sanitization-граница для HTTP/MCP/Telegram до retrieval и model calls, с ограничением длины и тестами provider arguments. Маскирование в HTTP recommendation не защищает соседний MCP tool.
 
@@ -141,7 +141,7 @@
 
 ### I01. Локальный UI и стандартный Docker запускают разные продукты/API — P1 · S
 
-**Доказательство:** [run_local_integration.sh](../scripts/run_local_integration.sh) запускает `ayat_backend.app.main`; [docker-compose.yml](../docker-compose.yml) — основной `backend.app.main` через [backend/Dockerfile](../backend/Dockerfile). UI вызывает auth/saved/meta и использует расширенные карточки/route legs в [api.js](../frontend/src/api.js) и [auth.js](../frontend/src/auth.js); основной сервер не реализует этот контракт. [Ayat README](../ayat_backend/README.md), строка 63, при этом советует root compose.
+**Доказательство:** [run_local_integration.sh](../../scripts/run_local_integration.sh) запускает `ayat_backend.app.main`; [docker-compose.yml](../docker-compose.yml) — основной `backend.app.main` через [backend/Dockerfile](../../backend/Dockerfile). UI вызывает auth/saved/meta и использует расширенные карточки/route legs в [api.js](../../frontend/src/api.js) и [auth.js](../../frontend/src/auth.js); основной сервер не реализует этот контракт. [Ayat README](../ayat_backend/README.md), строка 63, при этом советует root compose.
 
 **Лучшее решение:** явно выбрать поддерживаемый runtime UI и дать ему однозначные run/compose/health-команды. Для функций основного сервера оставить отдельный профиль/сервис с документированным контрактом. Немедленное полное переписывание двух backend не требуется: сначала общие детерминированные политики, затем последовательное сближение API.
 
@@ -157,7 +157,7 @@
 
 ### I03. Образ Ayat не содержит текущий frontend — P1 для единого UI-deploy · S
 
-**Доказательство:** [Dockerfile](../ayat_backend/Dockerfile), 5–10, не собирает и не копирует `frontend/dist`; [.dockerignore](../.dockerignore) исключает его. [main.py](../ayat_backend/app/main.py), 171–186, регистрирует SPA только при наличии `dist/assets`.
+**Доказательство:** [Dockerfile](../ayat_backend/Dockerfile), 5–10, не собирает и не копирует `frontend/dist`; [.dockerignore](../../.dockerignore) исключает его. [main.py](../ayat_backend/app/main.py), 171–186, регистрирует SPA только при наличии `dist/assets`.
 
 **Лучшее решение:** frontend build stage (`npm ci`, build) с копированием результата в образ либо явно отдельный frontend deployment с правильными API URL, cookies/CORS и собственным smoke-test.
 
@@ -165,7 +165,7 @@
 
 ### I04. Плановое обновление запускает pipeline по старому namespace — P1 · S
 
-**Доказательство:** [data-refresh.yml](../.github/workflows/data-refresh.yml), 15–24, работает из `ayat_backend` и вызывает `python -m pipeline.cli`; [cli.py](../ayat_backend/pipeline/cli.py), 13, импортирует `ayat_backend.app.paths`. Из этого cwd `find_spec('ayat_backend')` возвращает **None**; пакет не устанавливается (`tool.uv.package=false`). Локальный `--help` дополнительно остановился раньше на отсутствующем optional `typer`: полноценный прогон CI здесь не заявляется.
+**Доказательство:** [data-refresh.yml](../../.github/workflows/data-refresh.yml), 15–24, работает из `ayat_backend` и вызывает `python -m pipeline.cli`; [cli.py](../ayat_backend/pipeline/cli.py), 13, импортирует `ayat_backend.app.paths`. Из этого cwd `find_spec('ayat_backend')` возвращает **None**; пакет не устанавливается (`tool.uv.package=false`). Локальный `--help` дополнительно остановился раньше на отсутствующем optional `typer`: полноценный прогон CI здесь не заявляется.
 
 **Лучшее решение:** запускать из корня `uv run --project ayat_backend python -m ayat_backend.pipeline.cli ...` либо общий исправленный Makefile; отдельный smoke `--help` после установки pipeline group.
 
@@ -173,7 +173,7 @@
 
 ### I05. Даже исправленный refresh обновляет JSONL, который canonical runtime не использует — P1 · S
 
-**Доказательство:** [data-refresh.yml](../.github/workflows/data-refresh.yml), 20–30; [cli.py](../ayat_backend/pipeline/cli.py), 37–47; [build.py](../ayat_backend/pipeline/build.py), 427–455. Pipeline пишет `pois.jsonl` и legacy manifest; [store.py](../ayat_backend/app/store.py), 96–108, при наличии `pois.json` всегда выбирает canonical JSON. Пересборка legacy embeddings не обновляет canonical view.
+**Доказательство:** [data-refresh.yml](../../.github/workflows/data-refresh.yml), 20–30; [cli.py](../ayat_backend/pipeline/cli.py), 37–47; [build.py](../ayat_backend/pipeline/build.py), 427–455. Pipeline пишет `pois.jsonl` и legacy manifest; [store.py](../ayat_backend/app/store.py), 96–108, при наличии `pois.json` всегда выбирает canonical JSON. Пересборка legacy embeddings не обновляет canonical view.
 
 **Лучшее решение:** один owner канонического экспорта и одна команда refresh, производящая согласованный runtime bundle; legacy pipeline — явно отдельный эксперимент. PR обновления должен показывать diff активного ID set и используемую версию данных.
 
@@ -205,7 +205,7 @@
 
 ### I09. Provenance gate не учитывает код сервера текущего UI — P1 · R
 
-**Доказательство:** [run_eval.py](../eval/run_eval.py), 51–83, хеширует `backend`, `rag`, `frontend`, но не `ayat_backend`; [check_readiness.py](../eval/check_readiness.py), 19–22, считает основным компонентом `backend/app/main.py`. В изолированном дереве изменение `ayat_backend/app/service.py` оставило `source_fingerprint` неизменным. Сам gate полезен для своего исходного runtime, но не привязывает evidence к текущему UI-серверу.
+**Доказательство:** [run_eval.py](../../eval/run_eval.py), 51–83, хеширует `backend`, `rag`, `frontend`, но не `ayat_backend`; [check_readiness.py](../../eval/check_readiness.py), 19–22, считает основным компонентом `backend/app/main.py`. В изолированном дереве изменение `ayat_backend/app/service.py` оставило `source_fingerprint` неизменным. Сам gate полезен для своего исходного runtime, но не привязывает evidence к текущему UI-серверу.
 
 **Лучшее решение:** runtime-specific provenance: entrypoint, все его исходники/настройки, lockfile, модель/provider, data bundle/overrides/index hashes; проверять соответствие `runtime_id` на API и в report. Для уже dirty-tree изменение Ayat не должно проходить только за счёт неизменного булева `git_dirty`.
 
@@ -213,7 +213,7 @@
 
 ### I10. Health отмечает LLM как ok без доказательства работоспособности — P2 · S
 
-**Доказательство:** [main.py основного сервера](../backend/app/main.py), 37–48: `ok` зависит от `llm.is_enabled()`; [main.py Ayat](../ayat_backend/app/main.py), 138–148: от создания SDK client. Неверный ключ, отсутствие доступа к выбранной модели или несовместимые параметры этим не обнаруживаются. Ayat warmup best-effort и его результат не определяет readiness.
+**Доказательство:** [main.py основного сервера](../../backend/app/main.py), 37–48: `ok` зависит от `llm.is_enabled()`; [main.py Ayat](../ayat_backend/app/main.py), 138–148: от создания SDK client. Неверный ключ, отсутствие доступа к выбранной модели или несовместимые параметры этим не обнаруживаются. Ayat warmup best-effort и его результат не определяет readiness.
 
 **Лучшее решение:** разделить liveness, configured, last verified provider probe, degraded mode и readiness выбранного профиля. Локальный template-профиль может быть ready без LLM, но не должен служить доказательством LLM-readiness. Provider probe — редкий, с timeout/TTL и наблюдаемым результатом, а не платный вызов на каждый health request.
 
@@ -221,7 +221,7 @@
 
 ### I11. Основной backend может одновременно видеть два поколения данных — P2 · R
 
-**Доказательство:** [rag_adapter.py](../backend/app/rag_adapter.py), 91–113, постоянно кэширует список POI/имён, а [retriever.py](../rag/retriever.py), 65–67, перечитывает изменившийся файл по mtime/size. В изолированном снимке после добавления второго POI: `new_id_in_search=True`, `new_id_in_all_pois=False`. Триггер — замена файла во время жизни процесса; текущее автоматическое hot-reload deployment не утверждается.
+**Доказательство:** [rag_adapter.py](../backend/app/rag_adapter.py), 91–113, постоянно кэширует список POI/имён, а [retriever.py](../../rag/retriever.py), 65–67, перечитывает изменившийся файл по mtime/size. В изолированном снимке после добавления второго POI: `new_id_in_search=True`, `new_id_in_all_pois=False`. Триггер — замена файла во время жизни процесса; текущее автоматическое hot-reload deployment не утверждается.
 
 **Лучшее решение:** immutable versioned snapshot и один runtime handle для поиска, ID lookup, карты и aliases. Либо явно обязательный restart с проверкой bundle hash при каждом rollout; не смешивать file-watch retrieval и бессрочный cache.
 
@@ -229,7 +229,7 @@
 
 ### I12. Погода, SMTP, внешняя карта и production DB не прошли реальный прогон — P2 · N · известно частично
 
-**Доказательство:** [отчёт интеграции](branch_integration_2026-10-19.md) и [его verification](../eval/runs/2026-10-19-branch-integration/integration-verification.json): live-погода и SMTP отключены, browser allowlist блокирует map tiles/Google Fonts, аккаунты проверялись на локальной SQLite. Это отсутствие подтверждения, а не утверждение, что сервисы обязательно сломаны. Локальная проверка маркеров не доказывает загрузку внешней подложки.
+**Доказательство:** [отчёт интеграции](branch_integration_2026-10-19.md) и [его verification](../../eval/runs/2026-10-19-branch-integration/integration-verification.json): live-погода и SMTP отключены, browser allowlist блокирует map tiles/Google Fonts, аккаунты проверялись на локальной SQLite. Это отсутствие подтверждения, а не утверждение, что сервисы обязательно сломаны. Локальная проверка маркеров не доказывает загрузку внешней подложки.
 
 **Лучшее решение:** отдельный staging-прогон выбранной deploy-конфигурации: weather success/timeout/unknown, reset-email request→получение→confirm на тестовом адресе, HTTPS cookies/proxy, постоянство аккаунта/избранного после restart и работа выбранной production DB, загрузка map tiles с корректной атрибуцией. Проверки внешних отправок выполняются отдельно при настройке соответствующего сервиса; в этом read-only аудите письма не отправлялись.
 
@@ -239,7 +239,7 @@
 
 ### M01. Правильный POI ID не мешает выдавать выдуманные услуги как данные — P1 · R
 
-**Доказательство:** [generate.py основного backend](../backend/app/generate.py), 75–89; [generate.py Ayat](../ayat_backend/app/generate.py), 104–118, 184–220; [service.py](../ayat_backend/app/service.py), 438–453. Оба валидатора принимают синтетические тексты про бесплатный Wi-Fi, розетки, вход без ступеней и бесплатную выставку динозавров при отсутствии соответствующих фактов кандидата. Итоговая метка — `source=poi_data`. Ayat-проверка проходит через `service.recommend()` на реальной базе с явно fake generation.
+**Доказательство:** [generate.py основного backend](../../backend/app/generate.py), 75–89; [generate.py Ayat](../ayat_backend/app/generate.py), 104–118, 184–220; [service.py](../ayat_backend/app/service.py), 438–453. Оба валидатора принимают синтетические тексты про бесплатный Wi-Fi, розетки, вход без ступеней и бесплатную выставку динозавров при отсутствии соответствующих фактов кандидата. Итоговая метка — `source=poi_data`. Ayat-проверка проходит через `service.recommend()` на реальной базе с явно fake generation.
 
 **Причина:** проверяются ID, типы, ссылки, числа и некоторые запрещённые фразы, но не подтверждение утверждений полями источника. Основной backend ещё и доверяет модельному `source`; Ayat ставит `poi_data` для карточки независимо от истинности пояснения. Это доказательство слабости защиты, а не утверждение, что настоящая модель всегда пишет такой текст. Structured Outputs обеспечивают форму ответа, но допускают содержательные ошибки — это прямо отмечает [официальная документация OpenAI](https://developers.openai.com/api/docs/guides/structured-outputs).
 
@@ -279,7 +279,7 @@
 
 ### M05. Основной RAG возвращает все пять мест из дополнительного карантина — P1 · R
 
-**Доказательство:** [retriever.py](../rag/retriever.py), 65–76; [rag_adapter.py](../backend/app/rag_adapter.py), 47–58; исправный сравнительный путь [team_data.py](../ayat_backend/app/team_data.py), 157–185. BM25 по точному имени в радиусе 100 м ставит каждый из пяти canonical ID на **первое место**:
+**Доказательство:** [retriever.py](../../rag/retriever.py), 65–76; [rag_adapter.py](../backend/app/rag_adapter.py), 47–58; исправный сравнительный путь [team_data.py](../ayat_backend/app/team_data.py), 157–185. BM25 по точному имени в радиусе 100 м ставит каждый из пяти canonical ID на **первое место**:
 
 | Canonical ID | Название | Текущая категория |
 |---|---|---|
@@ -297,7 +297,7 @@
 
 ### M06. Основной backend игнорирует конфликт часов и выдаёт high confidence — P2 · R
 
-**Доказательство:** [pipeline.py](../backend/app/pipeline.py), 109–122; [hours.py](../rag/hours.py), 23–55. У реального «Мизам», `osm:node/4519246690`: primary `Mo-Su 08:00-23:00`, конфликтные версии `24/7` и `Mo-Su 11:00-00:00`. В понедельник 09:00 основной backend даёт **open/high**. В Ayat конфликт часов уже маскируется в [team_data.py](../ayat_backend/app/team_data.py), 95–113.
+**Доказательство:** [pipeline.py](../backend/app/pipeline.py), 109–122; [hours.py](../../rag/hours.py), 23–55. У реального «Мизам», `osm:node/4519246690`: primary `Mo-Su 08:00-23:00`, конфликтные версии `24/7` и `Mo-Su 11:00-00:00`. В понедельник 09:00 основной backend даёт **open/high**. В Ayat конфликт часов уже маскируется в [team_data.py](../ayat_backend/app/team_data.py), 95–113.
 
 **Причина:** parser получает одну строку без field conflicts и дат; успешность разбора принимается за достоверность факта.
 
@@ -317,7 +317,7 @@
 
 ### M08. Остаются retrieval-промахи, а набор качества слишком узок для общего вывода — P2 · R/S
 
-**Доказательство:** [размеченный набор из 35 запросов](../eval/datasets/astana_retrieval_v2.json), [предыдущий разбор результатов](data_quality_improvements_2026-10-19.md). Свежий BM25-замер этого аудита приведён в разделе 7. Набор до этого уже использовался для подбора aliases и Wi-Fi-нормализации, поэтому не является независимым holdout. Его Hit@5 не измеряет конечный UI-response Hit@3 и полезность текста.
+**Доказательство:** [размеченный набор из 35 запросов](../../eval/datasets/astana_retrieval_v2.json), [предыдущий разбор результатов](data_quality_improvements_2026-10-19.md). Свежий BM25-замер этого аудита приведён в разделе 7. Набор до этого уже использовался для подбора aliases и Wi-Fi-нормализации, поэтому не является независимым holdout. Его Hit@5 не измеряет конечный UI-response Hit@3 и полезность текста.
 
 **Открытые случаи:** «триумфальная арка Мангилик Ел», «монумент Казак Ели», «тихо почитать книги». Первые требуют доказанных языковых имён/алиасов; в третьем лексическое совпадение и категория библиотеки не доказывают тишину.
 
@@ -327,7 +327,7 @@
 
 ### M09. Настоящая модель и полная цепочка качества не проверены — P1 для LLM-демо · N · известно ранее
 
-**Доказательство:** [integration-verification.json](../eval/runs/2026-10-19-branch-integration/integration-verification.json) явно фиксирует отключённые провайдеры; свежие тесты этого аудита также выполнялись без них. Синтетические model responses показывают дефекты защиты, но не измеряют частоту галлюцинаций, качество RU/KK/EN, latency/cost и доступность конкретного model account.
+**Доказательство:** [integration-verification.json](../../eval/runs/2026-10-19-branch-integration/integration-verification.json) явно фиксирует отключённые провайдеры; свежие тесты этого аудита также выполнялись без них. Синтетические model responses показывают дефекты защиты, но не измеряют частоту галлюцинаций, качество RU/KK/EN, latency/cost и доступность конкретного model account.
 
 **Лучшее решение:** после устранения детерминированных P1 провести ограниченный реальный прогон выбранного runtime: fixed data/index/prompt/model/config, повторы, p50/p95, tokens/cost, fallback rate, human-калибровка faithfulness и языков. Доступ к моделям и параметрам проверять именно выбранным аккаунтом. Не менять модель вслепую по её названию.
 
@@ -337,7 +337,7 @@
 
 ### D01. Частичный сбор может заменить пригодный snapshot резко усечённым — P1 · R
 
-**Доказательство:** [run_pipeline.py](../data/run_pipeline.py), 199–214. В изолированной пересборке OSM вернул один POI, Overture — unavailable без кэша. Предыдущий набор **3** заменён набором **1**, итог `status=partial`. Исходные production-файлы не менялись.
+**Доказательство:** [run_pipeline.py](../../data/run_pipeline.py), 199–214. В изолированной пересборке OSM вернул один POI, Overture — unavailable без кэша. Предыдущий набор **3** заменён набором **1**, итог `status=partial`. Исходные production-файлы не менялись.
 
 **Причина:** публикация блокируется только при полностью пустом результате. Статус partial не проверяет обязательность источников, потерянные source ID или аномальное падение покрытия.
 
@@ -347,7 +347,7 @@
 
 ### D02. Несколько экспортов не образуют атомарный data bundle — P1 при обновлении действующего набора · R
 
-**Доказательство:** [run_pipeline.py](../data/run_pipeline.py), 30–34, 211–220. `write_json` атомарен для одного файла, но файлы меняются последовательно. Инъекция `OSError` на `pois_leisure.json` оставила **новый pois.json**, **старый manifest** и **старый leisure**.
+**Доказательство:** [run_pipeline.py](../../data/run_pipeline.py), 30–34, 211–220. `write_json` атомарен для одного файла, но файлы меняются последовательно. Инъекция `OSError` на `pois_leisure.json` оставила **новый pois.json**, **старый manifest** и **старый leisure**.
 
 **Лучшее решение:** immutable каталог версии с полным bundle и хешами; после всех проверок атомарно переключать один `current`/manifest pointer. Runtime загружает всю версию через него. Этот подход также упрощает D01 и I11.
 
@@ -367,7 +367,7 @@
 
 ### D04. Часы ошибочно атрибутированы OSM у 33 активных POI — P2 · R
 
-**Доказательство:** [hours.py](../ayat_backend/app/hours.py), 95; [i18n.py](../ayat_backend/app/i18n.py), 14; [team_data.py](../ayat_backend/app/team_data.py), 101, 116; [normalize.py](../data/collect/normalize.py), 221–226. У **380** активных POI с часами: 9 CityPass, 23 Dodo, 348 nominal OSM. Общий suffix всегда пишет «данные OSM»: прямых неверных атрибуций **32**. Например, `citypass:120` получает «Открыто до 18:00 (данные OSM)».
+**Доказательство:** [hours.py](../ayat_backend/app/hours.py), 95; [i18n.py](../ayat_backend/app/i18n.py), 14; [team_data.py](../ayat_backend/app/team_data.py), 101, 116; [normalize.py](../../data/collect/normalize.py), 221–226. У **380** активных POI с часами: 9 CityPass, 23 Dodo, 348 nominal OSM. Общий suffix всегда пишет «данные OSM»: прямых неверных атрибуций **32**. Например, `citypass:120` получает «Открыто до 18:00 (данные OSM)».
 
 Дополнительно Байтерек `osm:way/230401645` получил часы только из `citypass:57`, но адаптер ставит источником часов primary source сущности — OSM. Вместе **33** неверные атрибуции.
 
@@ -377,7 +377,7 @@
 
 ### D05. Подтверждённых содержательных фактов мало для обещанных сценариев — P2 · S · частично известно ранее
 
-Свежий пересчёт [canonical JSON](../data/processed/pois.json), [stats](../data/processed/stats.json) и активного Ayat view:
+Свежий пересчёт [canonical JSON](../../data/processed/pois.json), [stats](../../data/processed/stats.json) и активного Ayat view:
 
 | Показатель | Все canonical | Досуг canonical | Активный Ayat |
 |---|---:|---:|---:|
@@ -399,7 +399,7 @@
 
 ### D06. Непроверенная классификация остаётся в активных рекомендациях — P2 · S
 
-**Доказательство:** [overture.py](../data/collect/overture.py), 132–142; [team_data.py](../ayat_backend/app/team_data.py), 173–180. Из активных POI **1 788** имеют `source_classification_unverified`. Пример: `overture:f1816ce2-7a42-4046-94a4-92a431579c73`, «Северный Казахстан, Казахстан», категория park, остаётся активным. Специальное исключение реализовано только для трёх unverified playground.
+**Доказательство:** [overture.py](../../data/collect/overture.py), 132–142; [team_data.py](../ayat_backend/app/team_data.py), 173–180. Из активных POI **1 788** имеют `source_classification_unverified`. Пример: `overture:f1816ce2-7a42-4046-94a4-92a431579c73`, «Северный Казахстан, Казахстан», категория park, остаётся активным. Специальное исключение реализовано только для трёх unverified playground.
 
 **Лучшее решение:** review подозрительных имён/категорий и отдельная eligibility-политика для высокой неопределённости; classification-only признак не превращать в подтверждённую пригодность. Массово удалять все 1 788 записей без проверки нельзя: флаг означает отсутствие верификации, а не доказанную ошибку.
 
@@ -407,7 +407,7 @@
 
 ### D07. Даты экспорта не подтверждают актуальность работы и часов — P2 · S
 
-**Доказательство:** [normalize.py](../data/collect/normalize.py), 90–94, 115–116, 316; [source_manifest](../data/processed/source_manifest.json). У **6 086/14 607** source records нет `source_updated_at`; среди дат источников есть записи 2012–2018 годов. Top-level `updated_at/collected_at` обновляется днём нормализации, а реальные даты сохранены отдельно. Во всём canonical неизвестны часы **11 923** POI.
+**Доказательство:** [normalize.py](../../data/collect/normalize.py), 90–94, 115–116, 316; [source_manifest](../../data/processed/source_manifest.json). У **6 086/14 607** source records нет `source_updated_at`; среди дат источников есть записи 2012–2018 годов. Top-level `updated_at/collected_at` обновляется днём нормализации, а реальные даты сохранены отдельно. Во всём canonical неизвестны часы **11 923** POI.
 
 Все существующие **2 083** строки часов успешно разбираются установленным parser: это проблема покрытия/достоверности, не массовая синтаксическая ошибка. Дата сборки 19 октября не означает онлайн-проверку всех заведений.
 
@@ -417,7 +417,7 @@
 
 ### D08. У части текстов не установлены условия повторного использования — P2 · S/N
 
-**Доказательство:** в source records **69** значений `license=not_specified`; **18** активных исходных описаний получены с сайтов. [source_manifest](../data/processed/source_manifest.json) честно не заявляет общую открытую лицензию; [web_sources.py](../data/collect/web_sources.py), 736, сохраняет соответствующее ограничение.
+**Доказательство:** в source records **69** значений `license=not_specified`; **18** активных исходных описаний получены с сайтов. [source_manifest](../../data/processed/source_manifest.json) честно не заявляет общую открытую лицензию; [web_sources.py](../../data/collect/web_sources.py), 736, сохраняет соответствующее ограничение.
 
 Это установленный пробел в подтверждении provenance/условий использования, а не вывод о юридическом нарушении. Наличие source URL само по себе не устанавливает разрешение на любое копирование текста.
 
@@ -462,16 +462,16 @@
 
 ## 7. Свежие проверки и сохранённые доказательства
 
-Новые результаты сохранены в [каталоге этого аудита](../eval/runs/2026-10-19-system-audit/verification.json). Это read-only измерения и диагностические воспроизведения, не исправления продукта и не утверждение о полном security certification.
+Новые результаты сохранены в [каталоге этого аудита](../../eval/runs/2026-10-19-system-audit/verification.json). Это read-only измерения и диагностические воспроизведения, не исправления продукта и не утверждение о полном security certification.
 
 | Проверка | Свежий результат | Артефакт |
 |---|---|---|
-| Data + RAG + оба backend + QA, реальный canonical JSON, opt-in local backend/RAG | 781 passed, 23 skipped, 12 subtests; exit 0; 22,45 с | [pytest.log](../eval/runs/2026-10-19-system-audit/pytest.log) |
-| BM25 на текущих 35 запросах | Hit@5 32/35 = 91,43%; Macro Recall@5 75,36%; Micro Recall@5 68/324 = 20,99%; 0 errors/NOT_EVALUATED | [retrieval-report.json](../eval/runs/2026-10-19-system-audit/retrieval-report.json) |
-| Readiness без supplied live-evidence | NOT READY, exit 1: live evaluation и submission artifacts pending | [readiness.md](../eval/runs/2026-10-19-system-audit/readiness.md) |
-| Независимый повтор model-boundary reproductions | Closed-at-arrival, 5 quarantine rank1, fake ungrounded text, 127 мин при route90 | [model-boundary-reproductions.json](../eval/runs/2026-10-19-system-audit/model-boundary-reproductions.json) |
-| Независимый повтор SDK/дополнительных guards | Local mock ValidationError без fallback; photo57B→500; conflicting hours open/high; target rank0→1 | [model-additional-reproductions.json](../eval/runs/2026-10-19-system-audit/model-additional-reproductions.json) |
-| Загрузка canonical с/без review-файла; source fingerprint; смена snapshot | 2751/2756; Ayat-изменение не меняет старый fingerprint; новый search ID отсутствует в all_pois | [verification.json](../eval/runs/2026-10-19-system-audit/verification.json) |
+| Data + RAG + оба backend + QA, реальный canonical JSON, opt-in local backend/RAG | 781 passed, 23 skipped, 12 subtests; exit 0; 22,45 с | [pytest.log](../../eval/runs/2026-10-19-system-audit/pytest.log) |
+| BM25 на текущих 35 запросах | Hit@5 32/35 = 91,43%; Macro Recall@5 75,36%; Micro Recall@5 68/324 = 20,99%; 0 errors/NOT_EVALUATED | [retrieval-report.json](../../eval/runs/2026-10-19-system-audit/retrieval-report.json) |
+| Readiness без supplied live-evidence | NOT READY, exit 1: live evaluation и submission artifacts pending | [readiness.md](../../eval/runs/2026-10-19-system-audit/readiness.md) |
+| Независимый повтор model-boundary reproductions | Closed-at-arrival, 5 quarantine rank1, fake ungrounded text, 127 мин при route90 | [model-boundary-reproductions.json](../../eval/runs/2026-10-19-system-audit/model-boundary-reproductions.json) |
+| Независимый повтор SDK/дополнительных guards | Local mock ValidationError без fallback; photo57B→500; conflicting hours open/high; target rank0→1 | [model-additional-reproductions.json](../../eval/runs/2026-10-19-system-audit/model-additional-reproductions.json) |
+| Загрузка canonical с/без review-файла; source fingerprint; смена snapshot | 2751/2756; Ayat-изменение не меняет старый fingerprint; новый search ID отсутствует в all_pois | [verification.json](../../eval/runs/2026-10-19-system-audit/verification.json) |
 
 Три свежих BM25-промаха совпадают с M08. В language-разрезе всего **3 KK, 5 EN и 27 RU** запроса — это дополнительно ограничивает выводы о многоязычном качестве. Результат 3/3 KK не подтверждает весь казахский пользовательский сценарий. Micro Recall имеет большой nearby-знаменатель; его нельзя напрямую приравнивать к качеству финальной тройки рекомендаций.
 

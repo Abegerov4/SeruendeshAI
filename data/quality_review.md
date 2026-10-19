@@ -8,7 +8,7 @@
 
 Проверки выбранного runtime: 700 passed / 40 skipped и отдельно 17 passed при включённых реальных локальных RAG-проверках. Общий pytest имеет две существующие ошибки импорта в отдельном Ayat runtime; весь репозиторий не считается зелёным. Offline-пересборка воспроизводит SHA, 311 проверенных файлов исходного кэша не изменились. Рейтинги остаются неизвестными, все точки внутри границы.
 
-[Полный результат](../docs/data_quality_improvements_2026-10-19.md), [сравнение](../eval/runs/2026-10-19-data-quality/comparison.json), [текущая верификация](processed/verification.json), [53 пары кандидатов](../docs/audits/2026-10-19-data/duplicate_review.json). `review_sample.json` обновлён по тем же 20 ID текущего снимка; выборка не означает проверку работы заведений на месте.
+[Полный результат](../docs/reports/data_quality_improvements_2026-10-19.md), [сравнение](../eval/runs/2026-10-19-data-quality/comparison.json), [текущая верификация](processed/verification.json), [53 пары кандидатов](../docs/reports/audits/2026-10-19-data/duplicate_review.json). `review_sample.json` обновлён по тем же 20 ID текущего снимка; выборка не означает проверку работы заведений на месте.
 
 ## История: предыдущий снимок от 18 октября
 

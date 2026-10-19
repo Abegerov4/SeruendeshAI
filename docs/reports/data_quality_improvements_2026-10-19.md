@@ -70,6 +70,6 @@ RAG_SEARCH_MODE=bm25 python -m pytest tests/test_rag.py --pois data/processed/po
 
 Использован `/Users/muratovaslan/Desktop/hackaton/SeruendeshAI/.venv/bin/python`. Для offline-пересборки указать существующий `--raw-dir`; первичный кэш в основной папке остаётся только для чтения. Сначала экспортировать во временный `--output-dir` и проверять результат.
 
-Исходные 30 запросов не менялись. Версия 35 запросов проверена до baseline: удалены два нерелевантных положительных ID, старый MEGA ID сопоставлен через source_records, nearby ID заморожены, добавлены три Wi-Fi-запроса, площадка и кафе у аэропорта. Хеш golden одинаков в обоих запусках, evaluator не менялся между замерами. [Измерения](../eval/runs/2026-10-19-data-quality/), [comparison.json](../eval/runs/2026-10-19-data-quality/comparison.json), [verification.json](../data/processed/verification.json).
+Исходные 30 запросов не менялись. Версия 35 запросов проверена до baseline: удалены два нерелевантных положительных ID, старый MEGA ID сопоставлен через source_records, nearby ID заморожены, добавлены три Wi-Fi-запроса, площадка и кафе у аэропорта. Хеш golden одинаков в обоих запусках, evaluator не менялся между замерами. [Измерения](../../eval/runs/2026-10-19-data-quality), [comparison.json](../../eval/runs/2026-10-19-data-quality/comparison.json), [verification.json](../../data/processed/verification.json).
 
 Отдельные следующие задачи: три промаха, больше исходных описаний кафе, свежие часы и проверка спорных источников. Онлайн-обновление фактов и построение dense-индекса в этот проход не входили.

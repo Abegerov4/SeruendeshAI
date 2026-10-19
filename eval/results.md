@@ -11,7 +11,7 @@
 
 Внешние модель и tracing отключены, safety-ответы провайдера контролируются. Используется keyword/template fallback; качество настоящего RAG/модели, Recall, сетевая latency и UI не измерены. 40 пропусков: 17 внешнего HTTP API, 17 RAG, шесть UI. Продукт **NOT READY**.
 
-[Диагнозы и воспроизведение](../docs/qa_findings.md), [команды и evidence](runs/2026-10-18-backend-local/README.md), [JUnit](runs/2026-10-18-backend-local/junit.xml), [машинная проверка сохранности](runs/2026-10-18-backend-local/verification.json). Backend, все 367 сохранённых файлов Data и golden set не менялись. Этот срез получен до публикации коммита QA.
+[Диагнозы и воспроизведение](../docs/archive/qa_findings.md), [команды и evidence](runs/2026-10-18-backend-local/README.md), [JUnit](runs/2026-10-18-backend-local/junit.xml), [машинная проверка сохранности](runs/2026-10-18-backend-local/verification.json). Backend, все 367 сохранённых файлов Data и golden set не менялись. Этот срез получен до публикации коммита QA.
 
 При подготовке публикации отдельно проверена ветка `qa` без Backend и Data: **320 passed / 152 skipped**; интеграции явно пропускаются. `--live-backend` при отсутствующих исходниках приводит к ошибке, а не к ложному успеху.
 
@@ -30,7 +30,7 @@
 | `python -m pytest tests -q` | 320 | 0 | 57 | QA-инструменты, схемы, метрики, сценарии и обработка ошибок |
 | `python -m pytest -q` | 377 | 4 | 57 | Включая появившиеся тесты Data; конкретный срез параллельной разработки |
 
-57 skipped — это реальные API, guards Backend, RAG, POI и UI, которые ещё не включены и не проверены. Это не 57 успешных продуктовых тестов. Общий прогон не является зелёным при наличии failed. Дефекты/неисполненные ожидания Data: [qa_findings.md](../docs/qa_findings.md).
+57 skipped — это реальные API, guards Backend, RAG, POI и UI, которые ещё не включены и не проверены. Это не 57 успешных продуктовых тестов. Общий прогон не является зелёным при наличии failed. Дефекты/неисполненные ожидания Data: [qa_findings.md](../docs/archive/qa_findings.md).
 
 ## Что готово
 

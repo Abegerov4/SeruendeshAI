@@ -1,6 +1,6 @@
 # Демо: сценарий записи на 2–3 минуты
 
-> **Обновление 19.10, после сведения веток в `main`:** продукт запущен на https://seruendesh.site. Работают реальные RAG, модель и интерфейс. Актуальные сценарии и результаты — [TEST_SCENARIOS.md](TEST_SCENARIOS.md) и [EVAL_RESULTS.md](EVAL_RESULTS.md). Презентация — [presentation/SeruendeshAI-presentation.pdf](presentation/SeruendeshAI-presentation.pdf). Ниже — исторический отчёт QA на раннем бэкенде.
+> **Обновление 19.10, после сведения веток в `main`:** продукт запущен на https://seruendesh.site. Работают реальные RAG, модель и интерфейс. Актуальные сценарии и результаты — [TEST_SCENARIOS.md](../TEST_SCENARIOS.md) и [EVAL_RESULTS.md](../EVAL_RESULTS.md). Презентация — [presentation/SeruendeshAI-presentation.pdf](../presentation/SeruendeshAI-presentation.pdf). Ниже — исторический отчёт QA на раннем бэкенде.
 
 Статус: **сценарий подготовки; продукт NOT RUN**. Записи, работающего UI, измерений и ссылки YouTube пока нет. Не записывать моки как работающий продукт. Скриншоты и ответы ниже заменяются реальными после CP2; если часть не работает, обозначить её прямо в записи.
 

@@ -13,10 +13,10 @@
 | | |
 |---|---|
 | Демо | **https://seruendesh.site** (резерв: https://seruendesh-production.up.railway.app) |
-| Данные | **2307 мест Астаны**, собранных автоматически: OSM + Overture + Wikidata/Wikipedia; события Ticketon/Sxodim; погода Open-Meteo |
+| Данные | **2268 мест Астаны** (2307 собрано, дубли и мусор убраны при загрузке), собранных автоматически: OSM + Overture + Wikidata/Wikipedia; события Ticketon/Sxodim; погода Open-Meteo |
 | RAG | Сначала структурный поиск (граф улиц, часы работы, безопасность) → гибрид BM25 + e5 → LLM `gpt-6-luna` выбирает и объясняет → валидатор |
 | Языки | RU / KK / EN |
-| Качество | 15 сценариев × 12 автоматических проверок: **170/170**, ответ ~3.5 с ([EVAL_RESULTS](docs/EVAL_RESULTS.md)) |
+| Качество | 15 сценариев × 12 автоматических проверок: **170/170** ([EVAL_RESULTS](docs/EVAL_RESULTS.md)); медиана ответа 3,4 с в eval и 4,4 с на продакшене. Как тестируем — [QA.md](docs/QA.md) |
 | Приватность | Локация округляется до ~100 м, не хранится и не передаётся в LLM |
 
 ## Документы для жюри
@@ -26,7 +26,7 @@
 | 2. Демо / прототип | https://seruendesh.site — API + фронтенд в [`frontend/`](frontend/), удобно и с телефона (чат на весь экран, режим «где я?» по фото) |
 | 3. Описание RAG-подхода | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | 4. Тестовые сценарии и ограничения | [docs/TEST_SCENARIOS.md](docs/TEST_SCENARIOS.md), [docs/EVAL_RESULTS.md](docs/EVAL_RESULTS.md) |
-| 5. Презентация | [docs/presentation/SeruendeshAI-presentation.pdf](docs/presentation/SeruendeshAI-presentation.pdf) (12 слайдов), план и сценарий демо — [docs/PRESENTATION.md](docs/PRESENTATION.md) |
+| 5. Презентация | [docs/presentation/SeruendeshAI-presentation.pdf](docs/presentation/SeruendeshAI-presentation.pdf) (15 слайдов), план и сценарий демо — [docs/PRESENTATION.md](docs/PRESENTATION.md) |
 | Демо-видео (YouTube) | _ссылка будет добавлена после загрузки_ |
 | 6. Этика и приватность | [docs/ETHICS_PRIVACY.md](docs/ETHICS_PRIVACY.md) |
 | Сбор данных (автоматизирован) | [docs/DATA.md](docs/DATA.md) |

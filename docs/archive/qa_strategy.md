@@ -1,6 +1,6 @@
 # Стратегия QA и интеграции
 
-Проверены настоящий локальный backend и собранный экспорт Астаны. Полный прогон: **549 passed, 42 failed, 40 skipped**; результаты и область доказательства — в [eval/results.md](../eval/results.md). Локальный backend использует keyword/template fallback с отключёнными внешними провайдерами. Настоящие RAG, модель и UI: **NOT RUN**.
+Проверены настоящий локальный backend и собранный экспорт Астаны. Полный прогон: **549 passed, 42 failed, 40 skipped**; результаты и область доказательства — в [eval/results.md](../../eval/results.md). Локальный backend использует keyword/template fallback с отключёнными внешними провайдерами. Настоящие RAG, модель и UI: **NOT RUN**.
 
 ## Уровни доказательств
 
@@ -30,7 +30,7 @@ python -m pytest tests backend/tests data/tests --pois data/processed/pois.json 
 python -m pytest tests/test_backend_golden_local.py tests/test_backend_safety_local.py tests/test_backend_languages_local.py tests/test_backend_dataset_local.py tests/test_dataset.py --pois data/processed/pois.json -q
 ```
 
-Golden-прогон использует существующие 17 backend-фикстур; проверки данных отдельно загружают все 14 009 POI. Результаты не измеряют Recall, языковое качество, устойчивость реальной модели к injection или сетевую latency. PII/GPS проверяются в фактических аргументах провайдера и адаптера трассировки, без отправки во внешние сервисы. Проверки заведомо сохраняют найденные падения: [диагнозы](qa_findings.md), [журнал и JUnit](../eval/runs/2026-10-18-backend-local/README.md).
+Golden-прогон использует существующие 17 backend-фикстур; проверки данных отдельно загружают все 14 009 POI. Результаты не измеряют Recall, языковое качество, устойчивость реальной модели к injection или сетевую latency. PII/GPS проверяются в фактических аргументах провайдера и адаптера трассировки, без отправки во внешние сервисы. Проверки заведомо сохраняют найденные падения: [диагнозы](qa_findings.md), [журнал и JUnit](../../eval/runs/2026-10-18-backend-local/README.md).
 
 Внешние интеграции включаются отдельно. При явном включении отсутствующий компонент должен приводить к ошибке, а не к успешному пропуску:
 
