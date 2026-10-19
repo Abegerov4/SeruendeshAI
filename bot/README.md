@@ -7,6 +7,8 @@ pip install -r bot/requirements.txt
 TELEGRAM_BOT_TOKEN=... SERU_API=https://seruendesh.site python -m bot.telegram_bot
 ```
 
+Лимит API считается по IP, а у всех пользователей бота он один. Задайте одинаковый секрет `BOT_API_KEY` бэкенду и `SERU_BOT_KEY` боту — тогда лимит (30 запросов и 10 фото в минуту) считается на каждого пользователя Telegram отдельно; id пользователя уходит в API только как хеш с солью. Без ключа бот работает, но делит один лимит на всех.
+
 Или положите `TELEGRAM_BOT_TOKEN` (и при желании `SERU_API=http://localhost:8000`) в `.env` и запустите `make bot`. Один токен — один запущенный бот: вторая копия получит `Conflict: terminated by other getUpdates request`.
 
 Приватность:

@@ -27,7 +27,7 @@ from app.auth import router as auth_router
 from app.categories import CATEGORIES
 from app.config import get_settings
 from app.db import db_kind, init_db
-from app.limiting import client_key, limiter
+from app.limiting import api_client_key, limiter
 from app.embedder import get_embedder
 from app.geo import load_graph
 from app.i18n import t
@@ -111,7 +111,7 @@ app.add_middleware(
 app.add_route("/connector/mcp", mcp_connector.asgi, include_in_schema=False)
 
 def _rate_limited(request: Request) -> bool:
-    return not limiter.allow("recommend", client_key(request), settings.rate_limit_per_min, 60)
+    return not limiter.allow("recommend", api_client_key(request), settings.rate_limit_per_min, 60)
 
 
 @app.exception_handler(Exception)
@@ -162,7 +162,7 @@ _PHOTO_FORM = {"type": "object", "required": ["image"], "properties": {
 async def api_recommend_photo(request: Request):
     """The photo is decoded with a pixel cap, stripped of EXIF (GPS is never read), downscaled to 1024 px and
     re-encoded before the LLM picks a place from a closed list; nothing is stored."""
-    key = client_key(request)
+    key = api_client_key(request)
     if not limiter.allow("recommend", key, settings.rate_limit_per_min, 60) or \
             not limiter.allow("photo", key, settings.photo_rate_limit_per_min, 60):
         raise HTTPException(status_code=429, detail="Too many requests, try again in a minute")
@@ -255,7 +255,7 @@ async def api_health():
           summary="Route from the user (rounded GPS or a landmark) to one recommended place",
           responses={404: {"description": "unknown poi_id"}, 422: {"description": "no usable start (GPS outside Astana and no landmark)"}})
 async def route_to_place(req: RouteRequest, request: Request):
-    if not await asyncio.to_thread(limiter.allow, "route", client_key(request), settings.rate_limit_per_min * 2, 60):
+    if not await asyncio.to_thread(limiter.allow, "route", api_client_key(request), settings.rate_limit_per_min * 2, 60):
         return JSONResponse({"detail": "Too many requests"}, status_code=429)
     rt = RT["rt"]
     st = rt.store

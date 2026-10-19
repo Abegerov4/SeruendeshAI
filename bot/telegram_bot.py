@@ -9,13 +9,14 @@ coordinates or message text.
 Run:  TELEGRAM_BOT_TOKEN=... SERU_API=https://seruendesh.site python -m bot.telegram_bot
 """
 import asyncio
+import hashlib
 import logging
 import os
 import re
 import time
 
 import httpx
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup, Update
+from telegram import BotCommand, InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup, Update
 from telegram.constants import ChatAction, ParseMode
 from telegram.ext import Application, CallbackQueryHandler, CommandHandler, ContextTypes, MessageHandler, filters
 
@@ -26,6 +27,7 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 log = logging.getLogger("seru.telegram")
 
 API = os.getenv("SERU_API", "https://seruendesh.site").rstrip("/")
+BOT_KEY = os.getenv("SERU_BOT_KEY", "").strip()  # = BOT_API_KEY of the backend: per-user rate limits
 LOCATION_TTL_S = 30 * 60
 LOCATION_BUTTON = "📍 Отправить геолокацию"
 WELCOME = (
@@ -33,8 +35,12 @@ WELCOME = (
     "• Отправьте <b>геолокацию</b> и выберите, что хочется;\n"
     "• или напишите, например: <i>«я возле Байтерека, хочу кофе и посидеть с ноутбуком»</i>;\n"
     "• или пришлите <b>фото</b> того, что видите, и я узнаю место.\n\n"
+    "💻 На компьютере кнопка геолокации не работает — просто напишите, где вы.\n\n"
     "🔒 Локацию округляю до ~100 м, держу в памяти 30 минут и никуда не сохраняю. /forget стирает её сразу."
 )
+BUSY = "Сейчас слишком много запросов. Попробуйте через минуту."
+COMMANDS = [BotCommand("start", "Начать и отправить геолокацию"), BotCommand("help", "Что я умею"),
+            BotCommand("forget", "Забыть мою локацию")]
 _http = httpx.AsyncClient(timeout=40)
 
 
@@ -63,6 +69,17 @@ def _lang(update: Update, text: str = "") -> str:
     return detect_lang(text, code)
 
 
+def api_headers(user_id: int | None, bot_key: str = BOT_KEY) -> dict[str, str]:
+    """With the shared key the API limits every Telegram user separately; the id leaves only as a salted hash."""
+    if not bot_key or user_id is None:
+        return {}
+    return {"X-Seru-Bot-Key": bot_key, "X-Seru-User": hashlib.sha256(f"{bot_key}:{user_id}".encode()).hexdigest()[:32]}
+
+
+def _headers(update: Update) -> dict[str, str]:
+    return api_headers(update.effective_user.id if update.effective_user else None)
+
+
 def _saved_location(context: ContextTypes.DEFAULT_TYPE) -> dict | None:
     saved = context.chat_data.get("loc")
     if not saved or time.monotonic() - saved["ts"] > LOCATION_TTL_S:
@@ -81,7 +98,10 @@ async def _run(update: Update, context: ContextTypes.DEFAULT_TYPE, query: str) -
     body = {"query": query[:1000], "lang": _lang(update, query), "channel": "telegram"}
     if loc := _saved_location(context):
         body["location"] = loc
-    r = await _http.post(f"{API}/api/recommend", json=body)
+    r = await _http.post(f"{API}/api/recommend", json=body, headers=_headers(update))
+    if r.status_code == 429:
+        await update.effective_message.reply_text(BUSY)
+        return
     r.raise_for_status()
     resp = r.json()
     log.info("telegram recs=%d mode=%s", len(resp.get("recommendations", [])), (resp.get("llm") or {}).get("mode"))
@@ -133,7 +153,11 @@ async def on_photo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     form = {"lang": _lang(update, update.message.caption or ""), "channel": "telegram"}
     if update.message.caption:
         form["query"] = update.message.caption[:1000]
-    r = await _http.post(f"{API}/api/recommend/photo", data=form, files={"image": ("photo.jpg", data, "image/jpeg")})
+    r = await _http.post(f"{API}/api/recommend/photo", data=form, files={"image": ("photo.jpg", data, "image/jpeg")},
+                         headers=_headers(update))
+    if r.status_code == 429:
+        await update.message.reply_text(BUSY)
+        return
     if r.status_code == 503:
         await update.message.reply_text("Распознавание по фото сейчас недоступно. Напишите, где вы.")
         return
@@ -147,8 +171,12 @@ async def on_error(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
         await update.effective_message.reply_text("Что-то пошло не так, попробуйте ещё раз через минуту.")
 
 
+async def _set_commands(app: Application) -> None:
+    await app.bot.set_my_commands(COMMANDS)  # the "/" menu in every Telegram client
+
+
 def build_app(token: str) -> Application:
-    app = Application.builder().token(token).build()
+    app = Application.builder().token(token).post_init(_set_commands).build()
     app.add_handler(CommandHandler(["start", "help"], start))
     app.add_handler(CommandHandler("forget", forget))
     app.add_handler(MessageHandler(filters.LOCATION, on_location))
