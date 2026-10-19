@@ -38,6 +38,8 @@ pipeline = [
 dev = [
     "pytest>=9.0",
     "pyyaml>=6.0",
+    # The dual-app import smoke test registers the primary photo/form route.
+    "python-multipart>=0.0.20",
 ]
 
 [tool.uv]
