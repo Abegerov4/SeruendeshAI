@@ -78,7 +78,7 @@ sh scripts/run_local_integration.sh
 # http://127.0.0.1:8001
 ```
 
-Для установки с нуля: `uv venv --python 3.12 .venv`, `uv pip install --python .venv/bin/python -r requirements-integration.txt`, затем `cd frontend && npm ci --no-audit --no-fund && npm run build` и запуск скрипта из корня. Скрипт принудительно отключает LLM/embeddings/погоду/SMTP/tracing и использует локальную SQLite в игнорируемой `ayat_backend/.local/`.
+Для установки с нуля: `uv venv --python 3.12 .venv`, `uv pip install --python .venv/bin/python -r backend/pyproject.toml -r requirements-integration.txt`, затем `cd frontend && npm ci --no-audit --no-fund && npm run build` и запуск скрипта из корня. Скрипт принудительно отключает LLM/embeddings/погоду/SMTP/tracing и использует локальную SQLite в игнорируемой `ayat_backend/.local/`.
 
 Основной backend отдельно: `RAG_SEARCH_MODE=bm25 .venv/bin/python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8002` при очищенных ключах провайдеров. Порт 8002 использовался для проверки HTTP, затем тестовый процесс остановлен; UI использует совместимый API на 8001.
 

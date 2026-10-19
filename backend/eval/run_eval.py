@@ -180,7 +180,12 @@ def local_identity(root: Path) -> dict:
     if os.getenv("DATA_SNAPSHOT_MODE", "legacy") != "canonical":
         path = root / "data/processed/pois.jsonl"
         ids = {json.loads(line)["id"] for line in path.open(encoding="utf-8") if line.strip()}
-        return {"known_ids": ids, "canonical_path": path, "snapshot_version": "legacy"}
+        # the same version /api/health reports for this snapshot (app/main.py): manifest fields, else the POI hash
+        manifest_file = root / "data/processed/manifest.json"
+        manifest = json.loads(manifest_file.read_text()) if manifest_file.exists() else {}
+        version = (manifest.get("snapshot_version") or manifest.get("canonical_sha256")
+                   or ("pipeline-" + manifest["pois_sha"] if manifest.get("pois_sha") else "legacy"))
+        return {"known_ids": ids, "canonical_path": path, "snapshot_version": version}
     from data.snapshot import resolve_snapshot
     from app.team_data import load_team_snapshot
 
@@ -233,6 +238,7 @@ def main():
     except (OSError, ValueError, KeyError) as exc:
         known = None
         metadata["provenance_errors"].append("Local canonical identity unavailable: " + type(exc).__name__)
+    known_count = len(known) if known is not None else None
     if a.base_url:
         client = httpx.Client(base_url=endpoint_url(a.base_url), timeout=30)
         metadata.update(base_url=endpoint_url(a.base_url), execution_kind=(
@@ -246,7 +252,8 @@ def main():
         from app.main import RT, app
         ctx = TestClient(app)
         ctx.__enter__()
-        known = set(RT["rt"].store.by_id)
+        known = set(RT["rt"].store.by_id)  # includes the ids of merged duplicates (aliases)
+        known_count = RT["rt"].store.size  # what /api/health counts: places, not alias ids
         metadata.update(base_url=None, execution_kind="in_process")
         health_client = ctx
         post = lambda body: ctx.post("/api/recommend", json=body)  # noqa: E731
@@ -261,7 +268,7 @@ def main():
             if (health.get("runtime_id") != "ayat" or health.get("readiness_profile") != metadata["profile"]
                     or health.get("ready") is not True or health.get("status") != "ok"
                     or health.get("snapshot_version") != metadata.get("snapshot_version")
-                    or known is None or health.get("poi_count") != len(known)):
+                    or known is None or health.get("poi_count") != known_count):
                 metadata["provenance_errors"].append("Health runtime/profile/snapshot does not match local canonical identity")
             if metadata["profile"] == "llm" and (health.get("llm") != "ok" or not health.get("provider_verified_at")):
                 metadata["provenance_errors"].append("Health does not report verified LLM readiness")

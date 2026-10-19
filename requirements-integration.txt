@@ -1,5 +1,7 @@
 # Local integration of the product backend, the team catalogue and the QA suite.
--r backend/pyproject.toml
+# The backend's own dependencies come from backend/pyproject.toml, passed next to this file:
+#   uv pip install -r backend/pyproject.toml -r requirements-integration.txt
+# (a requirements file cannot include a pyproject.toml with -r, uv stops parsing at its first line)
 -r data/requirements.txt
 -r requirements-qa.txt
 pydantic-settings>=2.16
