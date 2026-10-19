@@ -220,6 +220,8 @@ def load_store(embed_model: str | None = None) -> Store:
         for p in pois:
             if not p.get("photo") and extra.get(p["id"]):
                 p["photo"] = extra[p["id"]]
+    from app.card_photos import apply_card_photos
+    apply_card_photos(pois)
     keep = _dedupe([i for i, p in enumerate(pois) if not junk_place(p)], pois, aliases)
     if len(keep) < len(pois):  # region names, addresses and the same venue mapped several times
         log.info("dropped %d junk/duplicate places", len(pois) - len(keep))

@@ -69,3 +69,6 @@ brand/*.zip
 
 # submission media (video/PDF) are uploaded separately
 /submission/
+
+# Local operator photo uploads (published explicitly with the photos tool).
+/photo-import/

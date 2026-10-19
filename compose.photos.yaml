@@ -1,0 +1,65 @@
+# docker compose -f compose.yaml -f compose.photos.yaml up --build -d
+services:
+  app:
+    environment:
+      CARD_PHOTOS_FILE: /srv/card-photos/photos.json
+      S3_PUBLIC_BASE_URL: ${S3_PUBLIC_BASE_URL:-http://localhost:9000/place-photos}
+    volumes:
+      - card-photo-manifest:/srv/card-photos:ro
+    depends_on:
+      photos-init:
+        condition: service_completed_successfully
+
+  minio:
+    build: ./infra/minio
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:?Set MINIO_ROOT_USER in .env}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?Set MINIO_ROOT_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:9000:9000"
+      - "127.0.0.1:9001:9001"
+    volumes:
+      - minio-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      start_period: 15s
+
+  photos-init:
+    build:
+      context: .
+      dockerfile: infra/photos/Dockerfile
+    environment: &photo-environment
+      S3_ENDPOINT_URL: http://minio:9000
+      AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:?Set MINIO_ROOT_USER in .env}
+      AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:?Set MINIO_ROOT_PASSWORD in .env}
+      AWS_DEFAULT_REGION: us-east-1
+      S3_BUCKET: place-photos
+      CARD_PHOTOS_FILE: /state/photos.json
+    command: ["init"]
+    depends_on:
+      minio:
+        condition: service_healthy
+    volumes:
+      - card-photo-manifest:/state
+    restart: "no"
+
+  photos:
+    build:
+      context: .
+      dockerfile: infra/photos/Dockerfile
+    profiles: ["tools"]
+    environment: *photo-environment
+    volumes:
+      - card-photo-manifest:/state
+      - ./photo-import:/imports:ro
+    depends_on:
+      photos-init:
+        condition: service_completed_successfully
+
+volumes:
+  minio-data:
+  card-photo-manifest:
