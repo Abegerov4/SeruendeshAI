@@ -13,10 +13,13 @@ npx openapi-typescript ../docs/api/openapi.json -o src/api/schema.d.ts   # TS-т
 | Метод | Путь | Назначение |
 |---|---|---|
 | POST | `/api/recommend` | 1–3 рекомендации + опционально мини-маршрут |
+| POST | `/api/recommend/photo` | то же, но старт определяется по фото известного места (multipart) |
 | GET | `/api/pois?lat=&lon=&radius_m=` | POI вокруг точки для карты (кратко) |
 | GET | `/api/health` | `{"status":"ok","pois":2307,"llm":"ok", …}` |
-| GET | `/api/meta` | ориентиры для «Я возле…», категории, версия данных |
+| GET | `/api/meta` | ориентиры для «Я возле…», категории, версия данных, `features` |
 | POST | `/api/feedback` | «место закрыто / часы неверны» (хранятся только счётчики) |
+| GET | `/api/auth/me` | текущий пользователь; гостю `200 {"user": null}` |
+| POST | `/connector/mcp` | MCP-коннектор (Streamable HTTP), см. [MCP.md](MCP.md) |
 
 CORS открыт для `localhost:5173`, `127.0.0.1:5173` и доменов `*.vercel.app`, `*.netlify.app`, `*.pages.dev`.
 
@@ -104,7 +107,9 @@ CORS открыт для `localhost:5173`, `127.0.0.1:5173` и доменов `*
   "notes": ["…"],
   "disclaimer": "Ответ сформирован ИИ на основе открытых данных…",
   "ai_generated": true,
-  "llm": {"mode": "llm", "model": "gpt-6-luna", "latency_ms": 3300}   // mode = template, если LLM недоступен
+  "llm": {"mode": "llm", "model": "gpt-6-luna", "latency_ms": 3300,   // mode = template, если LLM недоступен
+          "usage": {"input_tokens": 4203, "output_tokens": 261, "cost_usd": 0.0011}},  // cost_usd = null, если цены модели нет в config
+  "off_topic": false   // true: запрос не о местах/прогулках ("напиши код") -> recommendations = [], объяснение в summary и notes
 }
 ```
 
@@ -124,11 +129,30 @@ CORS открыт для `localhost:5173`, `127.0.0.1:5173` и доменов `*
 
 Если LLM недоступен, ответ всё равно `200`, с `llm.mode: "template"`.
 
+## POST /api/recommend/photo
+`multipart/form-data`: `image` (JPEG/PNG/WebP, до 8 МБ, обязательно), `query?`, `landmark?` (ключ ориентира, используется, если фото не узнано), `lang?` (`ru|kk|en`).
+Фото декодируется с лимитом пикселей, EXIF (включая GPS) удаляется и не читается, картинка уменьшается до 1024 px и пересжимается в JPEG. LLM выбирает место только из закрытого списка: ориентиры из `/api/meta` и ~40 самых популярных POI. Фото не сохраняется.
+
+Ответ: обычный ответ `/api/recommend` плюс поле `photo_guess`:
+
+```jsonc
+"photo_guess": {"recognized": true, "place_id": "nurzhol", "kind": "landmark",   // kind: landmark | poi | null
+                "name": "Бульвар Нуржол", "confidence": "high",                  // low | medium | high
+                "description": "Цветочная аллея и фонтаны на фоне высоток"}
+```
+
+Если место не узнано (или `confidence: low`) и `landmark` не передан, ответ `200` с `recommendations: []`, а в `summary`/`notes` просьба написать ориентир.
+Ошибки (тело `{"error": "<код>"}`): `413 photo_too_large`, `415 unsupported_media_type|unsupported_format`, `422 image_required|invalid_image|invalid_form|invalid_lang`, `429`, `503 photo_unavailable` (LLM не настроен; см. `features.photo` в `/api/meta`).
+
 ## GET /api/pois
 `?lat=51.128&lon=71.43&radius_m=1500&limit=300` возвращает `[{"id","name","category","category_detail","lat","lon"}]`, отсортировано по расстоянию.
 
 ## GET /api/meta
 Ориентиры (`key`, `name`, `lat`, `lon`) для выпадающего списка «Я возле…» плюс 33 детальные категории с подписями RU/KK/EN.
+Флаги возможностей: `"features": {"password_reset_email": false, "photo": true, "mcp": true}` (`password_reset_email`: настроен SMTP; `photo`: настроен LLM).
+
+## GET /api/auth/me
+Залогиненному пользователю: `200 {"id","email","name","lang","created_at"}`, как и раньше. Гостю (нет cookie или сессия истекла): `200 {"user": null}` вместо `401`.
 
 ## POST /api/feedback
 `{"poi_id": "osm:w123", "kind": "closed|wrong_hours|not_as_described|great|other"}` → `{"ok": true, "message": "…"}`.
