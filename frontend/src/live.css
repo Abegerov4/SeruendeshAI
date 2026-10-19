@@ -3,7 +3,7 @@
 .leaflet-box{position:absolute;inset:0;z-index:0;background:#f1ecdc}
 .leaflet-canvas .map-top,.leaflet-canvas .map-controls,.leaflet-canvas .map-bottom{z-index:500}
 .leaflet-container{font:inherit}
-.leaflet-control-attribution{font-size:9px!important;background:#fffef9cc!important}
+.leaflet-control-attribution{font-size:10.5px!important;background:#fffef9cc!important}
 .leaflet-stop{background:none;border:0}
 .leaflet-stop>span{width:29px;height:29px;background:#fcfff3;border:3px solid #fff;border-radius:50%;color:#53723d;font-size:12px;font-weight:650;display:grid;place-items:center;box-shadow:0 3px 8px #264c3035;transition:transform .2s,background .2s}
 .leaflet-stop.selected>span{background:#174432;color:#d3eb77;width:35px;height:35px;box-shadow:0 0 0 5px #c6e73055;transform:translate(-3px,-3px)}

@@ -50,3 +50,6 @@
   .focus-route-bar.error{top:76px}
   .map-first .chat-message{max-width:100%}
 }
+
+/* the illustration label sits under the card number, clear of the category chip */
+.place-image-wrap .concept-photo-label{top:48px;left:12px;right:auto;bottom:auto}

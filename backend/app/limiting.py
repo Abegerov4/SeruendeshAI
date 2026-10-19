@@ -7,12 +7,18 @@ on every attempt, keeping storage proportional to traffic within the longest TTL
 from __future__ import annotations
 
 import hashlib
+import hmac
 import time
 
 from sqlalchemy import delete
 from starlette.requests import Request
 
 from app import db
+
+
+def _salt() -> bytes:
+    from app.config import get_settings
+    return ("rate-limit\0" + (get_settings().secret_key or "")).encode()
 
 
 def client_key(request: Request) -> str:
@@ -24,7 +30,8 @@ class StorageLimiter:
         if db.SessionLocal is None:
             db.init_db()
         now = time.time() if now is None else now
-        digest = hashlib.sha256(f"{bucket}\0{key}".encode()).hexdigest()
+        # keyed hash: the stored key cannot be reversed to an IP by brute force over the IPv4 space
+        digest = hmac.new(_salt(), f"{bucket}\0{key}".encode(), hashlib.sha256).hexdigest()
         with db.SessionLocal.begin() as session:
             session.execute(delete(db.RateLimit).where(db.RateLimit.expires_at <= now))
             dialect = session.bind.dialect.name

@@ -15,7 +15,7 @@ export default function PlaceVisual({ place: p, credit = false, eager = false, i
   </span>;
   const group = p.cover || coverGroup(p.categoryKey);
   const art = {green:'/images/stories/walk.webp',coffee:'/images/stories/coffee.webp',food:'/images/stories/coffee.webp',culture:'/images/astana-hero.webp',landmark:'/images/astana-hero.webp'}[group];
-  if(illustrative && art && !p.generated) return <span className="place-visual concept-photo"><img src={art} alt={tr('AI-визуализация')} loading="lazy"/><span className="concept-photo-label">{tr('AI-визуализация')}</span></span>;
+  if(illustrative && art && !p.generated) return <span className="place-visual concept-photo"><img src={art} alt={tr('Иллюстрация, не фото места')} loading="lazy"/><span className="concept-photo-label">{tr('Иллюстрация, не фото места')}</span></span>;
   return <span className={'place-visual place-cover cover-' + (p.generated ? 'idea' : group)} role="img" aria-label={tr('Обложка категории')}>
     <svg className="cover-pattern" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <circle cx="330" cy="40" r="120" /><circle cx="330" cy="40" r="80" /><circle cx="330" cy="40" r="40" />

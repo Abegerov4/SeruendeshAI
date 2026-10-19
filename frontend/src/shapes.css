@@ -22,7 +22,7 @@
  .mobile-app-nav button[aria-current=page]{background:#174b3e;color:#fff;font-weight:600;box-shadow:0 2px 4px #183d3010}
  .mobile-app-nav button svg{width:20px;height:20px;stroke-width:1.8}
  .mobile-app-nav button span{font-size:10px;letter-spacing:0;text-transform:none;line-height:1.2}
- .mobile-app-nav i{border-radius:6px;min-width:15px;line-height:12px;padding:1px 3px;background:#e3edcf;color:#31513b;top:2px;left:calc(50% + 8px);font-size:8px}
+ .mobile-app-nav i{border-radius:6px;min-width:15px;line-height:12px;padding:1px 3px;background:#e3edcf;color:#31513b;top:2px;left:calc(50% + 8px);font-size:10px}
  .mobile-app-nav button[aria-current=page] i{background:#d6ea9c;color:#174b3e}
  .map-first .chat-composer{border-radius:18px!important}.map-first .send-button{min-height:42px;border-radius:12px!important}
  .map-first .photo-button{width:42px;min-height:42px;display:grid;place-items:center}

@@ -44,7 +44,7 @@ button:active{translate:0 1px}
 .mood-stories,.workspace-intro,.preferences,.saved-heading{animation:section-arrive .65s ease-out both}
 @keyframes section-arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:899px){.mood-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:10px}.mood-card{flex:0 0 65%;scroll-snap-align:start}.selected-map-place{box-shadow:0 12px 40px #123c3025;border-radius:17px}.place-image-wrap{height:235px}.selected-map-place.sheet-open{bottom:85px}.mood-card:active{transform:scale(.985)}}
-@media(max-width:580px){.hero-seru .seru-quip{display:block;font-size:8px;line-height:1.4;margin-top:4px}.hero-seru .seru-bubble{top:-24px}.mood-card{flex-basis:80%}.place-image-wrap{height:230px}.selected-map-place .map-sheet-details p{font-size:11px}.map-sheet-toggle{min-height:36px}.sheet-open{max-height:70%}}
+@media(max-width:580px){.hero-seru .seru-quip{display:block;font-size:10px;line-height:1.4;margin-top:4px}.hero-seru .seru-bubble{top:-24px}.mood-card{flex-basis:80%}.place-image-wrap{height:230px}.selected-map-place .map-sheet-details p{font-size:11px}.map-sheet-toggle{min-height:36px}.sheet-open{max-height:70%}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.animated-route{stroke-dashoffset:0}.place-card:hover .place-image-button img{transform:none}button:active{translate:none}}
 /* Keep the keyboard shortcut out of view until it receives focus. */
 .skip-link:not(:focus){clip-path:inset(50%);width:1px;height:1px;overflow:hidden;padding:0;white-space:nowrap}

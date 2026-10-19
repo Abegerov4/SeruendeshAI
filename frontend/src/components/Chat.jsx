@@ -37,7 +37,7 @@ function ChatPlaces({ places, onRoute, onDetails, routed }) {
     const Mode = p.mode === 'car' ? Car : Footprints;
     return <article key={p.id} className={'chat-place' + (routed === p.id ? ' routed' : '')}>
       <button className="chat-place-main" onClick={() => onRoute?.(p)} aria-label={tr('Маршрут до места') + ': ' + p.name}>
-        <span className="chat-place-thumb"><PlaceVisual place={p} illustrative /><i>{i + 1}</i></span>
+        <span className="chat-place-thumb"><PlaceVisual place={p} /><i>{i + 1}</i></span>
         <span className="chat-place-text"><b>{p.name}</b><small>{p.category}</small>
           <small className="chat-place-meta"><Mode size={12} />{p.distance} · {p.travel} {tr('мин')}<span className={'chat-hours ' + hoursTone(p)}>{shortHours(p)}</span></small></span>
       </button>
@@ -76,6 +76,18 @@ function ChatReasoning({ used, considered = [], notes = [] }) {
   </div>;
 }
 
+const STAGES = ['Понимаю запрос…', 'Ищу места рядом…', 'Проверяю часы работы и погоду…', 'Пишу, почему именно они…'];
+
+function useStage(loading) {
+  const [stage, setStage] = useState(0);
+  useEffect(() => {
+    setStage(0); if (!loading) return;
+    const id = setInterval(() => setStage(s => Math.min(s + 1, STAGES.length - 1)), 1300);
+    return () => clearInterval(id);
+  }, [loading]);
+  return STAGES[stage];
+}
+
 export default function Chat({ requestPlan, onMood, location, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false, onRoute, onDetails, routed, notice }) {
   const [messages, setMessages] = useState([welcome]),
     [query, setQuery] = useState(''),
@@ -84,6 +96,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
     [error, setError] = useState('');
   const controller = useRef(null), lastRequest = useRef(null), log = useRef(null), sequence = useRef(0), locationBox = useRef(null), input = useRef(null);
   const asSheet = sheet && open;
+  const stage = useStage(loading);
   const close = () => { if (history.state?.seruChat) history.back(); else onClose?.(); };
   useSheetViewport(asSheet, () => onClose?.());
   useEffect(() => () => controller.current?.abort(), []);
@@ -163,7 +176,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
           {m.result && m.count > 0 && <ChatReasoning used={m.used} considered={m.considered} notes={m.notes} />}
           {m.result && m.count > 0 && <button className="message-results" onClick={() => { if (asSheet) close(); onResult?.(); }}>{tr('Все места и карта')} · {m.count}<ArrowUpRight size={14} /></button>}
         </div>)}
-        {loading && <div className="chat-typing" role="status"><span className="thinking-seru"><Mascot decorative mood="thinking" /></span><span className="typing-dots" aria-hidden="true"><i /><i /><i /></span>{tr("Собираю прогулку…")}</div>}
+        {loading && <div className="chat-typing" role="status"><span className="thinking-seru"><Mascot decorative mood="thinking" /></span><span className="typing-dots" aria-hidden="true"><i /><i /><i /></span>{tr(stage)}</div>}
       </div>
       {(loading || error) && <div className="request-status" role="status">{loading ? <button onClick={cancel}>{tr('Отменить поиск')}</button> : <><p>{tr(error)}</p><button onClick={() => { const r = lastRequest.current; if (r) send(r.text, r.index, r.override, true, undefined, r.photo); }}>{tr('Повторить запрос')}</button></>}</div>}
       <div className="quick-scenarios"><span>{tr("ИЛИ НАЧНИ С НАСТРОЕНИЯ")}</span><div>{scenarios.map((s, i) => <button key={s.label} onClick={() => send(tr(s.query), i)}><s.icon size={14} />{tr(s.label)}</button>)}</div></div>
