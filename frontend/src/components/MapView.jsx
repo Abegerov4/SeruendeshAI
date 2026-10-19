@@ -5,6 +5,8 @@ import 'leaflet/dist/leaflet.css';
 import { Plus, Minus, LocateFixed, Layers, Route } from 'lucide-react';
 
 const ASTANA = [51.128, 71.43];
+// Astana only: the map cannot be panned or zoomed out to other cities (same box as the API's in_astana)
+export const ASTANA_BOUNDS = [[50.857, 71.217], [51.352, 71.786]];
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 
 // Real map (OpenStreetMap data, CARTO tiles): numbered stops, "you are here" (rounded) and the
@@ -16,7 +18,7 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
     : { paddingTopLeft: [40, 70], paddingBottomRight: [70, 150], maxZoom: 16 };
   const baseLayer = useRef(null);
   useEffect(() => {
-    const m = L.map(box.current, { zoomControl: false, attributionControl: true, scrollWheelZoom: true, zoomAnimation: false, markerZoomAnimation: false }).setView(ASTANA, 14);
+    const m = L.map(box.current, { maxBounds: ASTANA_BOUNDS, maxBoundsViscosity: 1, minZoom: 11, zoomControl: false, attributionControl: true, scrollWheelZoom: true, zoomAnimation: false, markerZoomAnimation: false }).setView(ASTANA, 14);
     // No CSS filter on the tile pane: iOS Safari may not paint filtered layers inside a rounded, clipped box
     // (the map stayed blank on iPhones). The warm look comes from slightly transparent tiles over a cream background.
     // OpenStreetMap tiles; if they fail (privacy browsers strip the Referer and OSM refuses), the OSM France mirror.
@@ -28,7 +30,7 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
     ];
     const useTiles = i => {
       const [url, opts] = providers[i];
-      const layer = L.tileLayer(url, { maxZoom: 19, ...opts }).addTo(m);
+      const layer = L.tileLayer(url, { maxZoom: 19, minZoom: 11, bounds: ASTANA_BOUNDS, ...opts }).addTo(m);
       baseLayer.current = layer;
       let failed = 0;
       layer.on('tileload', () => { failed = 0; });
@@ -55,7 +57,7 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
   useEffect(() => {  // a styled basemap (MapTiler) when the server has a key; OpenStreetMap stays if it fails
     const m = map.current;
     if (!m || !tiles?.url) return;
-    const styled = L.tileLayer(tiles.url, { maxZoom: 19, tileSize: 256, attribution: tiles.attribution });
+    const styled = L.tileLayer(tiles.url, { maxZoom: 19, minZoom: 11, tileSize: 256, bounds: ASTANA_BOUNDS, attribution: tiles.attribution });
     let failed = 0, ok = false;
     styled.on('tileload', () => { if (!ok) { ok = true; if (baseLayer.current && baseLayer.current !== styled) m.removeLayer(baseLayer.current); baseLayer.current = styled; } });
     styled.on('tileerror', () => { if (!ok && ++failed >= 3) m.removeLayer(styled); });

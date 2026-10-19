@@ -3,6 +3,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { ShieldCheck, Users, AlertTriangle, Target, Grid3x3, Download } from 'lucide-react';
 import { t as tr, useLocale } from '../i18n';
+import { ASTANA_BOUNDS } from '../components/MapView';
 
 // City Insights: what people look for in Astana, where and when, and where the city does not answer yet.
 // Only k-anonymous counters come from the API (≈1 km cell × 3-hour slot × intent); nothing personal.
@@ -11,12 +12,13 @@ const tone = share => share >= 0.5 ? '#c4532d' : share >= 0.25 ? '#d9a23a' : '#3
 function DemandMap({ cells }) {
   const box = useRef(null), map = useRef(null), layer = useRef(null);
   useEffect(() => {
-    const m = L.map(box.current, { zoomControl: true, scrollWheelZoom: false, attributionControl: true }).setView([51.128, 71.43], 12);
+    const m = L.map(box.current, { zoomControl: true, scrollWheelZoom: false, attributionControl: true, maxBounds: ASTANA_BOUNDS,
+      maxBoundsViscosity: 1, minZoom: 10 }).setView([51.128, 71.43], 12);  // Astana only
     const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(m);
+      maxZoom: 18, bounds: ASTANA_BOUNDS, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(m);
     fetch('/api/meta').then(r => r.json()).then(meta => {  // the calmer data style when the server has a map key
       if (!meta.map?.data_url) return;
-      const styled = L.tileLayer(meta.map.data_url, { maxZoom: 18, attribution: meta.map.attribution });
+      const styled = L.tileLayer(meta.map.data_url, { maxZoom: 18, bounds: ASTANA_BOUNDS, attribution: meta.map.attribution });
       styled.once('tileload', () => m.removeLayer(osm));
       styled.addTo(m);
     }).catch(() => {});

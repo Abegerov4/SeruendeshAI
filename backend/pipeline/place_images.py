@@ -40,6 +40,7 @@ GENERIC = {"парк", "сквер", "сад", "памятник", "монуме
 VIEW_FROM = re.compile(r"\bвид\s+(?:с|со|из)\b|\bот\s|\bview\s+from\b|\bfrom\s+the\b|\bpanorama\b|\binterior\b|\bвнутри\b|интерьер", re.I)
 SOCIAL = re.compile(r"instagram\.|facebook\.|vk\.com|wa\.me|t\.me|telegram|2gis\.|linktr\.ee|taplink|youtube\.|tiktok\.|"
                     r"google\.|yandex\.|whatsapp|ok\.ru|twitter\.|x\.com", re.I)
+LOCAL_SITE = re.compile(r"\.kz$|astana", re.I)
 BAD_IMAGE = re.compile(r"logo|favicon|icon|sprite|placeholder|default|blank|\.svg|\.ico|avatar|banner-?ad", re.I)
 
 _TR = str.maketrans({"а": "a", "б": "b", "в": "v", "г": "g", "д": "d", "е": "e", "ё": "e", "ж": "zh", "з": "z", "и": "i",
@@ -154,6 +155,12 @@ def site_image(p: dict) -> dict | None:
     return {**found, "author": domain, "license": "© " + domain, "page": site, "source": "website"}
 
 
+def _one_venue(points: list[tuple[float, float]]) -> bool:
+    """Records within ~300 m are one venue mapped twice; farther apart they are branches of a chain."""
+    lat0, lon0 = points[0]
+    return all(abs(lat - lat0) < 0.0027 and abs(lon - lon0) < 0.0043 for lat, lon in points)
+
+
 def collect(pois: list[dict]) -> dict[str, dict]:
     out: dict[str, dict] = {}
     sights = [p for p in pois if not p.get("photo") and not p.get("name_auto") and p["category"] in SIGHT_RADIUS]
@@ -174,13 +181,15 @@ def collect(pois: list[dict]) -> dict[str, dict]:
         for p, ph in zip(venues, pool.map(site_image, venues)):
             if ph:
                 out[p["id"]] = ph
-    # one picture for differently named places is a group/aggregator banner, not a photo of either place
-    names: dict[str, set] = {}
+    # Astana only, one place per picture: a picture used by several places is a chain or group banner that may
+    # come from another city; a site outside .kz (a foreign chain) cannot show an Astana branch either
+    users: dict[str, list] = {}
     for p in venues:
         if (ph := out.get(p["id"])) and ph["source"] == "website":
-            names.setdefault(ph["url"], set()).add(p["name"].strip().lower())
+            users.setdefault(ph["url"], []).append((p["lat"], p["lon"]))
     for p in venues:
-        if (ph := out.get(p["id"])) and ph["source"] == "website" and len(names[ph["url"]]) > 1:
+        if (ph := out.get(p["id"])) and ph["source"] == "website" and (
+                not _one_venue(users[ph["url"]]) or not LOCAL_SITE.search(urlparse(ph["page"]).netloc)):
             out.pop(p["id"])
     log.info("site preview images: %d of %d venues with a website", sum(1 for v in out.values() if v["source"] == "website"), len(venues))
     return out

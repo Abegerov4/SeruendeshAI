@@ -10,7 +10,7 @@ import time
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, ConfigDict, Field
 
-from app.context import parse_now
+from app.context import build_context, parse_now
 from app.geo import round_coord
 from app.limiting import api_client_key, limiter
 from app.schemas import HomePlace, Lang, LatLon, RecommendRequest
@@ -62,8 +62,8 @@ async def build_ideas(rt, req: IdeasRequest) -> list[dict]:
 
     lang = req.lang or "ru"
     now = parse_now(req.now)
-    evening = now.hour >= 17 or now.hour < 5
-    themes = [th for th in THEMES if (not th.get("evening") or evening) and (not th.get("day") or not evening or now.hour < 19)]
+    dark = build_context(now, None, False).is_dark  # the real sunset, not a fixed hour
+    themes = [th for th in THEMES if (not th.get("evening") or dark or now.hour >= 18) and (not th.get("day") or not dark)]
 
     async def one(th: dict) -> dict | None:
         r = RecommendRequest(query=th["query"], lang=lang, want_route=True, time_budget_min=th["budget"], location=req.location,

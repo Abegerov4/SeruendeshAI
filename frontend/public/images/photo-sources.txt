@@ -1,12 +1,4 @@
-nurzhol.jpg
-Real Nurzhol boulevard photograph from Advantour:
-https://www.advantour.com/img/kazakhstan/tours/millennium-axis-tour/nurzhol2.jpg
-Source page: https://www.advantour.com/kazakhstan/tours/millennium-axis-tour.htm
-Used in the local visual prototype. Image rights were not independently verified for public redistribution.
-
-coffee.jpg
-Atmospheric coffee illustration (photograph), not a named Astana establishment:
-https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1000&q=85&fit=crop
+Only Astana imagery ships with the site (19.10): the generic coffee photo and the unverified Nurzhol photo were removed.
 
 astana-hero.png
 AI-generated visualization based on an Astana architecture reference.

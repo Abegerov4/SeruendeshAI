@@ -70,6 +70,18 @@ def junk_place(p: dict) -> bool:
     return False
 
 
+# Astana only: an event whose title or venue names another city, or a trip out of town, is not shown
+# (the address is not checked: Astana has an «улица Алматы»)
+OUTSIDE_ASTANA = re.compile(r"алмат|almaty|шымкент|shymkent|караганд|karagand|актобе|aktobe|атырау|atyrau|павлодар|pavlodar|"
+                            r"костанай|kostanay|усть-?каменогорск|oskemen|өскемен|\bсемей\b|\bsemey\b|тараз|taraz|кокшетау|kokshetau|"
+                            r"петропавловск|petropavl|актау|aktau|уральск|кызылорд|kyzylord|талдыкорган|боровое|бурабай|burabay|borovoe|"
+                            r"щучинск|балхаш|туркестан[еау]?\s+(?:город|city)|москв|moscow|бишкек|bishkek|ташкент|tashkent", re.I)
+
+
+def outside_astana(event: dict) -> bool:
+    return bool(OUTSIDE_ASTANA.search(f"{event.get('title') or ''} {event.get('venue') or ''}"))
+
+
 # big indoor venues that open data leaves unflagged (a theme park category would read as outdoors at −25°C)
 INDOOR_NAMES = re.compile(r"ailand|айленд|думан|happylon|хэппилон|fame city|хан шатыр|khan shatyr", re.IGNORECASE)
 
@@ -217,7 +229,7 @@ def load_store(embed_model: str | None = None) -> Store:
         g["keys"] = [fold(k) for k in g["keys"]]
     events = []
     if events_file.exists():
-        events = [json.loads(line) for line in events_file.open(encoding="utf-8") if line.strip()]
+        events = [e for line in events_file.open(encoding="utf-8") if line.strip() and not outside_astana(e := json.loads(line))]
     if canonical:
         venue_owners: dict[str, set[str]] = {}
         for p in pois:
