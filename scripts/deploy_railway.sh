@@ -15,7 +15,8 @@ DEP=$(railway api "mutation { serviceInstanceDeployV2(serviceId: \"$SERVICE_ID\"
 [ -n "$DEP" ] || { echo "deploy request failed"; exit 1; }
 echo "  deployment $DEP"
 while :; do
-  ST=$(railway api "{ deployment(id: \"$DEP\") { status } }" 2>/dev/null | grep -o '"status": "[A-Z_]*"' | cut -d'"' -f4)
+  # a network blip while polling is not a failed deploy: retry on the next tick
+  ST=$(railway api "{ deployment(id: \"$DEP\") { status } }" 2>/dev/null | grep -o '"status": "[A-Z_]*"' | cut -d'"' -f4 || true)
   echo "  $(date +%T) $ST"
   case "$ST" in SUCCESS) break ;; FAILED|CRASHED|REMOVED) echo "  see: railway logs --build"; exit 1 ;; esac
   sleep 15
