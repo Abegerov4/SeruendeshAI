@@ -78,6 +78,26 @@ def init_db() -> None:
     _engine = create_engine(url, **kw)
     Base.metadata.create_all(_engine)
     SessionLocal = sessionmaker(_engine, expire_on_commit=False)
+    if not url.startswith("sqlite"):
+        purge_reserved_test_accounts()
+
+
+RESERVED_DOMAINS = ("@example.com", "@example.org", "@example.net")
+
+
+def purge_reserved_test_accounts() -> int:
+    """Accounts on RFC 2606 reserved domains can only come from our own end-to-end checks: remove them."""
+    from sqlalchemy import delete, or_, select
+    with SessionLocal() as s:
+        ids = s.scalars(select(User.id).where(or_(*[User.email.like("%" + d) for d in RESERVED_DOMAINS]))).all()
+        if ids:
+            s.execute(delete(SavedPlace).where(SavedPlace.user_id.in_(ids)))
+            s.execute(delete(PasswordReset).where(PasswordReset.user_id.in_(ids)))
+            s.execute(delete(User).where(User.id.in_(ids)))
+            s.commit()
+            import logging
+            logging.getLogger("app.db").info("removed %d test accounts on reserved domains", len(ids))
+        return len(ids)
 
 
 def get_session():

@@ -298,8 +298,24 @@ def _clean_extract(s: str) -> str:
     return s[:420].rsplit(" ", 1)[0] + "…" if len(s) > 420 else s
 
 
-def template_description(p: dict) -> str:
-    """Factual one-liner built only from tags (no invented details)."""
+ANCHOR_CATS = {"landmark", "museum", "theatre", "mall", "park", "garden", "event_venue", "zoo_aquarium",
+               "theme_park", "monument", "viewpoint"}
+
+
+def nearest_anchor(p: dict, anchors: Grid) -> tuple[float, dict] | None:
+    """A well-known place within 500 m (closer and more famous wins), to say where a small place is."""
+    best = None
+    for d, a in anchors.near(p["lat"], p["lon"], 500):
+        if a is p or fold(a["name"]) == fold(p["name"]) or (a["name"] in (p.get("name") or "")):
+            continue
+        score = d * (1.4 - a["popularity"])
+        if best is None or score < best[0]:
+            best = (score, d, a)
+    return best[1:] if best else None
+
+
+def template_description(p: dict, near: tuple[float, dict] | None = None) -> str:
+    """Factual text built only from tags and geometry (no invented details)."""
     parts = [label(p["category"], "ru")]
     cz = cuisine_ru(p.get("cuisine"))
     if cz:
@@ -309,6 +325,9 @@ def template_description(p: dict) -> str:
         parts.append("Удобства: " + ", ".join(fl))
     if p.get("wikidata_desc"):
         parts.append(p["wikidata_desc"][:1].upper() + p["wikidata_desc"][1:])
+    if near:
+        d, a = near
+        parts.append(f"Рядом с «{a['name']}»" if d < 80 else f"В {int(round(d / 50) * 50)} м от «{a['name']}»")
     if p.get("address"):
         parts.append("Адрес: " + p["address"])
     return ". ".join(parts) + "."
@@ -417,12 +436,19 @@ def build(osm_pois: dict, osm_context: dict, river: list, wd_items: list[dict], 
     from pipeline import team_data
     team = team_data.load()
     pois = merge_directory_layer(pois, team["directory"])
+    compute_popularity(pois)
+    anchors = Grid([p for p in pois if not p["name_auto"] and p["category"] in ANCHOR_CATS and p["popularity"] >= 0.2])
     for p in pois:
+        near = nearest_anchor(p, anchors)
+        if near:  # kept as data too, so the API can phrase it in kk/en
+            p["near"] = {"name": near[1]["name"], "m": int(round(near[0] / 50) * 50)}
         if not p.get("description"):
-            p["description"] = template_description(p)
+            p["description"] = template_description(p, near)
             p["description_source"] = "template"
         p.pop("osm_tags_count", None)
-    compute_popularity(pois)
+    from pipeline.photos import attach_photos
+    attach_photos(pois, {f"osm:{e['type'][0]}{e['id']}": e["tags"]["wikimedia_commons"]
+                         for e in osm_pois["elements"] if e.get("tags", {}).get("wikimedia_commons")})
     pois.sort(key=lambda p: p["id"])
     write_jsonl(POIS_FILE, pois)
     gaz = build_gazetteer(pois, osm_context["elements"] + (gaz_extra or []), overture,

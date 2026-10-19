@@ -85,6 +85,16 @@ class EventInfo(_Out):
     price_from: str | None
 
 
+class Photo(_Out):
+    url: str
+    width: int | None = None
+    height: int | None = None
+    author: str
+    license: str
+    page: str | None = Field(default=None, description="Commons file page (attribution link)")
+    source: str = "Wikimedia Commons"
+
+
 class Recommendation(_Out):
     # --- team contract §3.3 fields
     poi_id: str = Field(description="POI id (osm:w123 / wd:Q123 / ov:...) or idea-N for AI ideas")
@@ -123,6 +133,11 @@ class Recommendation(_Out):
     address: str | None
     description: str | None = Field(description="Short description (Wikipedia extract or facts from tags)")
     description_source: str | None = Field(description="wikipedia | osm | template | generated")
+    description_url: str | None = Field(default=None, description="Wikipedia article the description comes from")
+    phone: str | None = None
+    instagram: str | None = None
+    cuisine: list[str] | None = Field(default=None, description="Cuisine labels in Russian (OSM / Overture)")
+    photo: Photo | None = Field(default=None, description="Real photo from Wikimedia Commons; null -> category cover")
 
 
 class RouteLeg(_Out):

@@ -15,11 +15,14 @@ const ICONS = {trees: Trees, coffee: Coffee, baby: Baby, landmark: Landmark, mon
   book: BookOpen, sparkles: Sparkles, ticket: Ticket, activity: Activity, eye: Eye, waves: Waves, fish: Fish, laptop: Laptop,
   gift: Gift, store: Store, flower: Flower2, worship: Landmark, theatre: Ticket, cinema: Ticket, cake: Coffee, ferris: Sparkles, spa: Waves};
 
-// Photos are category illustrations (never presented as the real place)
-const IMAGES = {walk: '/images/stories/walk.webp', coffee: '/images/stories/coffee.webp', city: '/images/astana-hero.webp', boulevard: '/images/nurzhol.jpg'};
-const IMAGE_BY_CATEGORY = {cafe: 'coffee', sweets: 'coffee', restaurant: 'coffee', fast_food: 'coffee', coworking: 'coffee', library: 'coffee',
-  park: 'walk', garden: 'walk', playground: 'walk', theme_park: 'walk', viewpoint: 'boulevard', landmark: 'boulevard',
-  monument: 'boulevard', artwork: 'boulevard'};
+// Cards show a real Wikimedia Commons photo when the place has one, otherwise a designed category cover
+// (never a photo of some other place).
+const COVER_GROUP = {park: 'green', garden: 'green', playground: 'kids', theme_park: 'kids', kids_indoor: 'kids', viewpoint: 'sights',
+  landmark: 'sights', monument: 'sights', artwork: 'sights', worship: 'sights', museum: 'culture', gallery: 'culture', theatre: 'culture',
+  cinema: 'culture', arts_centre: 'culture', event_venue: 'culture', library: 'culture', cafe: 'coffee', sweets: 'coffee', coworking: 'coffee',
+  restaurant: 'food', fast_food: 'food', market: 'food', bar: 'night', nightclub: 'night', karaoke: 'night', hookah: 'night',
+  mall: 'shop', souvenir: 'shop', active: 'active', spa: 'active', water_park: 'active', zoo_aquarium: 'kids'};
+export const coverGroup = key => COVER_GROUP[key] || 'sights';
 
 export const BADGE_LABELS = {indoor: 'В помещении', outdoor: 'На свежем воздухе', kids: 'Можно с детьми', popular: 'Знаковое место',
   hidden_gem: 'Скрытая жемчужина', event: 'Сегодня событие', night: 'Вечерний вариант', free: 'Бесплатно', ai_idea: 'Идея ИИ'};
@@ -35,7 +38,6 @@ const CONFIDENCE_TEXT = {high: 'Часы взяты из данных OSM', low:
 
 export function toPlace(r) {
   const generated = r.source === 'generated';
-  const imageKey = IMAGE_BY_CATEGORY[r.category_detail] || 'city';
   return {
     id: r.poi_id, name: r.name, category: r.category_label, categoryKey: r.category_detail,
     icon: ICONS[r.icon] || Sparkles,
@@ -48,8 +50,10 @@ export function toPlace(r) {
     confidence: CONFIDENCE_TEXT[r.open_confidence] || '', openingRaw: r.opening?.raw,
     features: r.features || [], badges: r.badges || [], leaveBy: r.leave_by, event: r.event,
     description: r.description, descriptionSource: r.description_source, dataSources: r.data_sources || [],
-    accessibility: r.accessibility, address: r.address,
-    image: IMAGES[imageKey], imageGenerated: true, imageNote: 'Иллюстрация категории, не фото этого места',
+    accessibility: r.accessibility, address: r.address, descriptionUrl: r.description_url || null,
+    phone: r.phone || null, instagram: r.instagram || null, cuisine: r.cuisine || [],
+    photo: r.photo || null, image: r.photo?.url || null, cover: coverGroup(r.category_detail),
+    imageNote: r.photo ? `Фото: ${r.photo.author}, ${r.photo.license}` : 'Обложка категории, не фото этого места',
   };
 }
 
@@ -99,6 +103,24 @@ export function diffPlans(prev, next) {
     removed: prev.places.filter(p => !after.has(p.id) && !p.generated).map(p => p.name),
     before: planTotals(prev).total, after: planTotals(next).total,
   };
+}
+
+export function instagramUrl(handle) {
+  if (!handle) return null;
+  if (/^https?:/.test(handle)) return handle;
+  return 'https://instagram.com/' + handle.replace(/^@/, '').replace(/^(www\.)?instagram\.com\//, '');
+}
+
+export function telUrl(phone) {
+  const first = (phone || '').split(/[;,]/)[0].replace(/[^+\d]/g, '');
+  return first.length >= 6 ? 'tel:' + first : null;
+}
+
+// 2GIS opens a route on phones; OSM is the open fallback
+export function routeUrl(p, from) {
+  if (p.lat == null) return null;
+  const to = `${p.lon}%2C${p.lat}`;
+  return from ? `https://2gis.kz/astana/directions/points/${from.lon}%2C${from.lat}%7C${to}` : `https://2gis.kz/astana/geo/${to}`;
 }
 
 export function externalMapLinks(p) {

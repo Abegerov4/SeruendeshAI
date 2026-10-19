@@ -31,6 +31,11 @@ test('API recommendation maps to a card with honest labels', () => {
   assert.equal(p.source, 'Данные POI');
   assert.equal(p.distance, '650 м');
   assert.match(p.imageNote, /не фото/);
+  assert.equal(p.image, null);
+  assert.equal(p.cover, 'green');
+  const withPhoto = toPlace(rec('osm:3', {photo: {url: 'https://upload.wikimedia.org/x.jpg', author: 'A', license: 'CC BY-SA 4.0'}}));
+  assert.equal(withPhoto.image, 'https://upload.wikimedia.org/x.jpg');
+  assert.match(withPhoto.imageNote, /CC BY-SA/);
   assert.equal(toPlace(rec('idea-2', {source: 'generated'})).source, 'Идея ИИ');
   assert.equal(toPlace(rec('osm:2', {opening: {status: 'always', label: 'x'}, website: 'https://a.kz'})).openingKind, 'always');
   assert.equal(formatDistance(1530), '1,5 км');

@@ -17,7 +17,7 @@ from app.categories import CATEGORIES, CONTRACT_CATEGORY, label
 from app.config import get_settings
 from app.context import Context, build_context, fetch_weather, parse_now, weather_out
 from app.embedder import Embedder
-from app.features import feature_labels
+from app.features import cuisine_labels, describe, feature_labels
 from app.generate import GenOut, generate, template_todo, template_why, validate
 from app.geo import WalkGraph, hav_m, in_astana, round_coord
 from app.i18n import t, weekday
@@ -452,8 +452,10 @@ def _item(c: Cand, why: str, todo: str, visit: int, rank_i: int, plan: Plan, lan
         "features": feature_labels(p.get("features", {}), lang),
         "accessibility": w if w in ("yes", "limited", "no") else "unknown", "badges": _badges(c, plan),
         "event": ({k: c.event[k] for k in ("title", "starts_at", "url", "source", "price_from")} if c.event else None),
-        "address": p.get("address"), "description": (p.get("description") or "")[:300] or None,
-        "description_source": p.get("description_source"),
+        "address": p.get("address"), "description": (describe(p, lang) or "")[:400] or None,
+        "description_source": p.get("description_source"), "description_url": p.get("description_url"),
+        "phone": p.get("phone"), "instagram": p.get("instagram"), "cuisine": cuisine_labels(p.get("cuisine"), lang) or None,
+        "photo": p.get("photo"),  # Wikimedia Commons photo with author and licence, or null (UI shows a category cover)
     }
 
 

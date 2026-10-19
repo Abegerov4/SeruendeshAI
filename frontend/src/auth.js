@@ -17,7 +17,7 @@ async function call(path, {method = 'GET', body} = {}) {
 }
 
 export async function loadMe() {
-  try { emit({user: await call('/api/auth/me'), ready: true}); }
+  try { const d = await call('/api/auth/me'); emit({user: d && 'user' in d ? d.user : d, ready: true}); }  // guests: 200 {user: null}
   catch { emit({user: null, ready: true}); }
 }
 export async function register(name, email, password, lang) { const user = await call('/api/auth/register', {method: 'POST', body: {name, email, password, lang}}); emit({user}); return user; }

@@ -117,3 +117,22 @@ def test_team_anchor_keys_cover_russian_spelling():
     from pipeline.team_data import anchor_keys
     keys = anchor_keys(["Hilton Astana"])
     assert "hilton" in keys and "хилтон" in keys
+
+
+def test_fact_descriptions_follow_the_reply_language():
+    from app.features import describe
+    p = {"category": "cafe", "cuisine": "coffee_shop", "features": {}, "address": "Нұржол 1",
+         "near": {"name": "Бәйтерек", "m": 250}, "description": "Кофейня / кафе.", "description_source": "template"}
+    assert describe(p, "ru") == "Кофейня / кафе."
+    en = describe(p, "en")
+    assert "250 m from Бәйтерек" in en and "Cuisine: coffee shop" in en
+    assert "Бәйтерек" in describe(p, "kk") and "Мекенжайы" in describe(p, "kk")
+    assert describe({**p, "description_source": "wikipedia", "description": "X"}, "en") == "X"
+
+
+def test_photo_filter_rejects_people_and_stamps():
+    from pipeline.photos import NOT_A_PLACE, _file_name
+    assert _file_name("http://commons.wikimedia.org/wiki/Special:FilePath/Kazakh%20Eli.jpg") == "Kazakh Eli.jpg"
+    assert _file_name("File:Map.svg") is None
+    assert NOT_A_PLACE.search("Stamps_of_Kazakhstan,_2012-32.jpg") and NOT_A_PLACE.search("Dmitry_Medvedev_in_Kazakhstan.jpg")
+    assert not NOT_A_PLACE.search("Presidential_Park_01.jpg")

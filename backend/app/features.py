@@ -109,3 +109,27 @@ def cuisine_ru(cuisine: str | None) -> list[str]:
     if not cuisine:
         return []
     return [CUISINE_RU.get(c.strip(), c.strip().replace("_", " ")) for c in cuisine.split(";") if c.strip()][:4]
+
+
+def cuisine_labels(cuisine: str | None, lang: str) -> list[str]:
+    if lang != "en":
+        return cuisine_ru(cuisine)
+    return [c.strip().replace("_", " ") for c in (cuisine or "").split(";") if c.strip()][:4]
+
+
+def describe(p: dict, lang: str) -> str | None:
+    """Description in the reply language: source texts as they are, fact-based ones rebuilt per language."""
+    if p.get("description_source") != "template" or lang == "ru":
+        return p.get("description")
+    from app.categories import label
+    from app.i18n import t
+    parts = [label(p["category"], lang)]
+    if cz := cuisine_labels(p.get("cuisine"), lang):
+        parts.append(t("desc_cuisine", lang, v=", ".join(cz)))
+    if fl := feature_labels(p.get("features", {}), lang):
+        parts.append(t("desc_features", lang, v=", ".join(fl)))
+    if near := p.get("near"):
+        parts.append(t("desc_near" if near["m"] < 80 else "desc_near_m", lang, name=near["name"], m=near["m"]))
+    if p.get("address"):
+        parts.append(t("desc_address", lang, v=p["address"]))
+    return ". ".join(parts) + "."

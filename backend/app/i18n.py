@@ -71,6 +71,11 @@ T: dict[str, dict[str, str]] = {
                  "kk": "дүйсенбі,сейсенбі,сәрсенбі,бейсенбі,жұма,сенбі,жексенбі",
                  "en": "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday"},
     # considered reasons
+    "desc_cuisine": {"ru": "Кухня: {v}", "kk": "Ас мәзірі: {v}", "en": "Cuisine: {v}"},
+    "desc_features": {"ru": "Удобства: {v}", "kk": "Ыңғайлылықтар: {v}", "en": "Amenities: {v}"},
+    "desc_near": {"ru": "Рядом с «{name}»", "kk": "«{name}» жанында", "en": "Next to {name}"},
+    "desc_near_m": {"ru": "В {m} м от «{name}»", "kk": "«{name}» нысанынан {m} м жерде", "en": "{m} m from {name}"},
+    "desc_address": {"ru": "Адрес: {v}", "kk": "Мекенжайы: {v}", "en": "Address: {v}"},
     "rej_unreachable": {"ru": "не помещается в это время и маршрут", "kk": "бұл уақыт пен бағытқа сыймайды", "en": "does not fit this time and route"},
     "note_target_missing": {"ru": "{name}: {reason}, поэтому показываю, что подходит сейчас.", "kk": "{name}: {reason}, сондықтан қазір лайық орындарды көрсетемін.", "en": "{name}: {reason}, so here is what works right now."},
     "rej_closed": {"ru": "закрыто к моменту прихода", "kk": "барған кезде жабық", "en": "closed by the time you arrive"},

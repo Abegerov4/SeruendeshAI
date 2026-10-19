@@ -14,6 +14,7 @@ import './details.css';
 import './scrollbars.css';
 import './planner.css';
 import './live.css';
+import './polish.css';
 
 function App() {
   const language = useLocale();
