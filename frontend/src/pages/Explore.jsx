@@ -143,7 +143,7 @@ export default function Explore({ saved, toggleSaved }) {
     const gps = !textStart && c.location === MY_LOCATION && c.coords && inAstana(c.coords) ? c.coords : null;
     const from = gps || (current?.used?.location ? { lat: current.used.location.lat, lon: current.used.location.lon } : null);
     try { const r = await routeTo(p, c, from); setFocusRoute({ ...r, place: p, origin_source: gps ? r.origin_source : 'landmark', origin_label: gps ? null : (textStart?.label || current?.used?.location?.label || null) }); }
-    catch { setRouteError('Не получилось построить маршрут. Попробуй ещё раз.'); }
+    catch (e) { setRouteError(e.message === 'no-path' ? 'Не нашёл пути по улицам до этого места — прямой линией через реку или здания не рисую. Открой его в 2GIS.' : 'Не получилось построить маршрут. Попробуй ещё раз.'); }
     showTab('map', false);
   }
   async function requestPlan(text, override, signal, photo) {

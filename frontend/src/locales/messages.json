@@ -2486,5 +2486,9 @@
  "Геолокация не включена": {
   "kk": "Геолокация қосылмаған",
   "en": "Location is off"
+ },
+ "Не нашёл пути по улицам до этого места — прямой линией через реку или здания не рисую. Открой его в 2GIS.": {
+  "kk": "Бұл орынға көшелер бойынша жол таппадым — өзен не ғимарат арқылы түзу сызық салмаймын. Оны 2GIS-те аш.",
+  "en": "I couldn't find a street path to this place — I don't draw a straight line across the river or through buildings. Open it in 2GIS."
  }
 }

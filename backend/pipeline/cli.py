@@ -48,10 +48,11 @@ def build(overture: bool = True):
 
 
 @app.command()
-def graph(from_pickle: str = typer.Option(None, help="Use an existing osmnx graph pickle instead of Overpass")):
-    """Build the walking graph (osmnx, one-off) and export numpy arrays."""
+def graph(from_pickle: str = typer.Option(None, help="Use an existing osmnx graph pickle instead of Overpass"),
+          network: str = typer.Option("walk", help="walk or drive")):
+    """Build the walking or driving graph (osmnx, one-off) and export numpy arrays."""
     from pipeline.graph import build_graph
-    typer.echo(build_graph(from_pickle))
+    typer.echo(build_graph(from_pickle, network))
 
 
 @app.command()
@@ -73,7 +74,8 @@ def run_all(model: str = "e5-large", overture: bool = True, with_graph: bool = T
     fetch(overture=overture)
     build(overture=overture)
     if with_graph:
-        graph()
+        graph(network="walk")
+        graph(network="drive")
     embed(model=model)
     if with_events:
         events()

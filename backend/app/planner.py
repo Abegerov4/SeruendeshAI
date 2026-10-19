@@ -14,7 +14,7 @@ import numpy as np
 from app.categories import CATEGORIES
 from app.context import Context
 from app.config import get_settings
-from app.geo import WalkGraph, car_minutes, fallback_walk_m, hav_m
+from app.geo import WalkGraph, approach_ok, car_minutes, car_road_minutes, fallback_walk_m, hav_m
 from app.hours import opening_status
 from app.retrieval import Cand, Plan
 from app.evidence import match_food, price_comparison_group
@@ -27,11 +27,14 @@ def _matrix(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | None
     T = np.zeros((n, n))
     Dm = np.zeros((n, n))
     preds: dict[int, tuple] = {}
-    use_graph = plan.mode == "walk" and graph is not None and all(graph.covers(*p) for p in pts)
+    # walk: the walking graph; car: the drive graph (one-way streets) — the caller passes the one for the mode
+    use_graph = plan.mode in ("walk", "car") and graph is not None and all(graph.covers(*p) for p in pts)
     if use_graph:
+        car = plan.mode == "car"
         snaps, idx = graph.snap(np.array([p[0] for p in pts]), np.array([p[1] for p in pts]))
         max_snap = getattr(get_settings(), "route_max_snap_m", 500)
-        limit = plan.budget * plan.m_per_min + max_snap
+        limit = 40000 if car else plan.budget * plan.m_per_min + max_snap
+        linked = [snaps[k] <= max_snap and approach_ok(graph, river, *pts[k], int(idx[k])) for k in range(n)]
         for a in range(n):
             D, P, src = graph.from_source(pts[a][0], pts[a][1], limit)
             network_destinations = set()
@@ -39,13 +42,14 @@ def _matrix(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | None
             for b in range(n):
                 if a != b:
                     d = D[int(idx[b])] + snaps[b]  # from_source already includes the source approach
-                    if not np.isfinite(d) or snaps[a] > max_snap or snaps[b] > max_snap:
-                        d = fallback_walk_m(river, *pts[a], *pts[b])
-                        plan.outside_graph = True
-                    else:
-                        network_destinations.add(b)
+                    if not np.isfinite(d) or not linked[a] or not linked[b]:
+                        # no path on the graph: the leg is impossible, never a straight line across the river
+                        Dm[a, b] = T[a, b] = np.inf
+                        continue
+                    network_destinations.add(b)
                     Dm[a, b] = d
-                    T[a, b] = np.ceil(d / plan.m_per_min)
+                    T[a, b] = (car_road_minutes(float(d), ctx.now.hour, ctx.snowing, plan.transit)[1] if car
+                               else np.ceil(d / plan.m_per_min))
         return T, Dm, preds, idx, True
     for a in range(n):
         for b in range(n):
@@ -66,6 +70,8 @@ def plan_route(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | N
     if len(pool) < 2:
         return None
     T, Dm, preds, idx, on_graph = _matrix(pool, plan, ctx, graph, river)
+    if graph is not None and not on_graph:
+        return None  # a stop outside the graph area: no honest street route to draw
     budget = plan.budget
     if plan.deadline_min is not None:
         budget = min(budget, plan.deadline_min - plan.deadline_buffer)
@@ -92,6 +98,9 @@ def plan_route(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | N
             for i in perm:
                 c = pool[i - 1]
                 t_acc += T[prev, i]
+                if not np.isfinite(t_acc):  # no street path for this leg
+                    ok = False
+                    break
                 if plan.mode == "walk" and ctx.max_outdoor_min < 60 and T[prev, i] > ctx.max_outdoor_min + 5:
                     ok = False
                     break

@@ -12,6 +12,7 @@ GAZETTEER_FILE = PROCESSED_DIR / "gazetteer.json"
 MANIFEST_FILE = PROCESSED_DIR / "manifest.json"
 EMBEDDINGS_FILE = PROCESSED_DIR / "embeddings.npy"
 GRAPH_FILE = PROCESSED_DIR / "walk_graph.npz"
+DRIVE_GRAPH_FILE = PROCESSED_DIR / "drive_graph.npz"  # car legs follow roads, one-way streets included
 RIVER_FILE = PROCESSED_DIR / "river.json"
 EVENTS_FILE = PROCESSED_DIR / "events.jsonl"
 BOUNDARY_FILE = PROCESSED_DIR / "astana_boundary.geojson"

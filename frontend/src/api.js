@@ -147,6 +147,7 @@ export async function routeTo(place, ctx, from) {
   if (from) body.location = {lat: roundCoord(from.lat), lon: roundCoord(from.lon)};
   else if (LANDMARK_KEYS[ctx.location]) body.landmark = LANDMARK_KEYS[ctx.location];  // no GPS and no chosen start: the API asks where the user is
   const res = await fetch(`${API_BASE}/api/route`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+  if (res.status === 422 && (await res.clone().json().catch(() => ({}))).error === 'route_unavailable') throw Error('no-path');
   if (!res.ok) throw Error('route-' + res.status);
   return res.json();
 }

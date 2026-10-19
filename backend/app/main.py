@@ -20,7 +20,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.datastructures import UploadFile
 
-from app.paths import ROOT_DIR, GRAPH_FILE
+from app.paths import ROOT_DIR, DRIVE_GRAPH_FILE, GRAPH_FILE
 
 from app import bot_api, geocode, insights, mcp_connector, photo, route_ideas, telegram
 from app.auth import router as auth_router
@@ -34,7 +34,7 @@ from app.i18n import t
 from app.llm import client as llm_client, provider_status
 from app.llm import usage_begin, usage_summary
 from app.categories import CONTRACT_CATEGORY
-from app.geo import car_minutes, fallback_walk_m, hav_m, in_astana, round_coord
+from app.geo import approach_ok, car_minutes, car_road_minutes, fallback_walk_m, hav_m, in_astana, round_coord
 from app.query import detect_lang, resolve_landmark
 from app.schemas import (RouteRequest, RouteToPlace, CategoryOut, FeedbackRequest, FeedbackResponse, HealthResponse, LandmarkOut, MetaFeatures,
                          MapTiles, MetaResponse, PhotoRecommendResponse, PoiBrief, RecommendRequest, RecommendResponse)
@@ -58,6 +58,8 @@ async def lifespan(app: FastAPI):
     store = load_store(settings.embed_model)
     snapshot_path = store.manifest.get("snapshot_path")
     graph = load_graph(Path(snapshot_path) / GRAPH_FILE.name if snapshot_path else None)
+    drive_path = Path(snapshot_path) / DRIVE_GRAPH_FILE.name if snapshot_path else None
+    drive_graph = load_graph(drive_path if drive_path and drive_path.exists() else DRIVE_GRAPH_FILE)
     nodes, snap = snap_pois(store, graph)
     embedder = None
     if store.emb is not None:
@@ -66,7 +68,8 @@ async def lifespan(app: FastAPI):
             store.emb = None
     http = httpx.AsyncClient(headers={"User-Agent": "SeruendeshAI/0.1"})
     geocode.RT = route_ideas.RT = RT  # address search and route ideas reuse the runtime
-    RT["rt"] = Runtime(store=store, graph=graph, poi_nodes=nodes, poi_snap=snap, embedder=embedder, http=http, cache={})
+    RT["rt"] = Runtime(store=store, graph=graph, poi_nodes=nodes, poi_snap=snap, embedder=embedder, http=http, cache={},
+                       drive_graph=drive_graph)
     if settings.llm_warmup_enabled and llm_client() is not None:
         asyncio.create_task(_warmup())  # first call with a new strict schema is slow; pay it at startup
     log.info("ready in %.1fs: %d POIs, graph=%s, dense=%s, llm=%s, db=%s", time.perf_counter() - t0, store.size,
@@ -294,18 +297,24 @@ async def route_to_place(req: RouteRequest, request: Request):
     dest = (p["lat"], p["lon"])
     straight = float(hav_m(origin[0], origin[1], dest[0], dest[1]))
     poly, geometry, dist = [origin, dest], "straight", None
-    graph = rt.graph
+    car = req.mode == "car"
+    graph = (rt.drive_graph or rt.graph) if car else rt.graph
     if graph is not None and graph.covers(*origin) and graph.covers(*dest) and straight < 15000:
-        D, P, src = await asyncio.to_thread(graph.from_source, origin[0], origin[1], 20000)
+        D, P, src = await asyncio.to_thread(graph.from_source, origin[0], origin[1], 40000 if car else 20000)
         d_dst, i_dst = graph.snap(dest[0], dest[1])
         reach = float(D[int(i_dst[0])])
-        if reach < float("inf") and float(d_dst[0]) < 400:
+        if (reach < float("inf") and float(d_dst[0]) < 400 and approach_ok(graph, st.river, *dest, int(i_dst[0]))
+                and approach_ok(graph, st.river, *origin, src)):
             dist = reach + float(d_dst[0])
             poly, geometry = [origin, *graph.path_polyline(P, src, int(i_dst[0])), dest], "network"
+    if geometry != "network" and graph is not None:
+        # never draw a straight line across the river or through buildings: no path on the graph, no route
+        return JSONResponse({"error": "route_unavailable"}, status_code=422)
     if dist is None:
         dist = fallback_walk_m(st.river, origin[0], origin[1], dest[0], dest[1])
-    if req.mode == "car":
-        dist, minutes = car_minutes(straight, parse_now(None).hour)
+    if car:
+        dist, minutes = (car_road_minutes(dist, parse_now(None).hour) if rt.drive_graph is not None and geometry == "network"
+                         else car_minutes(straight, parse_now(None).hour))
     else:
         minutes = int(math.ceil(dist / 75.0))  # 4.5 km/h, rounded up like the recommendation cards
     o_lat, o_lon = origin

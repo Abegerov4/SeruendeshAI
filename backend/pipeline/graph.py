@@ -1,4 +1,4 @@
-"""Build the Astana walking graph once (osmnx) and export it as plain numpy arrays.
+"""Build the Astana walking and driving graphs once (osmnx) and export them as plain numpy arrays.
 
 The API never imports osmnx/networkx: it loads CSR arrays and runs scipy Dijkstra
 (~3 ms per route, ~250 MB RSS in total).
@@ -9,7 +9,7 @@ import logging
 
 import numpy as np
 
-from app.paths import GRAPH_FILE, RAW_DIR
+from app.paths import DRIVE_GRAPH_FILE, GRAPH_FILE, RAW_DIR
 
 log = logging.getLogger("pipeline.graph")
 
@@ -18,8 +18,9 @@ log = logging.getLogger("pipeline.graph")
 BBOX = (71.33, 51.05, 71.57, 51.22)  # (west, south, east, north)
 
 
-def build_graph(from_pickle: str | None = None) -> dict:
-    """Download the walk network with osmnx (Overpass), or load a previously built osmnx graph pickle."""
+def build_graph(from_pickle: str | None = None, network: str = "walk") -> dict:
+    """Download the walk or drive network with osmnx (Overpass), or load a previously built osmnx graph pickle.
+    drive: directed (one-way streets), reduced to the strongly connected part so every node can reach every other."""
     if from_pickle:
         import pickle
         with open(from_pickle, "rb") as f:
@@ -32,13 +33,17 @@ def build_graph(from_pickle: str | None = None) -> dict:
         ox.settings.cache_folder = str(RAW_DIR / "osmnx_cache")
         ox.settings.requests_timeout = 300
         ox.settings.http_user_agent = "SeruendeshAI/0.1 (hackathon; https://github.com/Abegerov4/SeruendeshAI)"
-        G = ox.graph_from_bbox(BBOX, network_type="walk", simplify=True, retain_all=False)
+        # drive_service adds service roads and parking aisles: places in parks get a road within a short walk
+        G = ox.graph_from_bbox(BBOX, network_type="drive_service" if network == "drive" else network, simplify=True,
+                               retain_all=False)
+        if network == "drive":
+            G = ox.truncate.largest_component(G, strongly=True)
         bbox = BBOX
-    log.info("walk graph: %d nodes, %d edges", G.number_of_nodes(), G.number_of_edges())
-    return export(G, bbox)
+    log.info("%s graph: %d nodes, %d edges", network, G.number_of_nodes(), G.number_of_edges())
+    return export(G, bbox, DRIVE_GRAPH_FILE if network == "drive" else GRAPH_FILE, directed=network == "drive")
 
 
-def export(G, bbox) -> dict:
+def export(G, bbox, path=GRAPH_FILE, directed: bool = False) -> dict:
 
     nodes = list(G.nodes)
     ix = {n: i for i, n in enumerate(nodes)}
@@ -54,9 +59,9 @@ def export(G, bbox) -> dict:
             if geom and (abs(geom[0][0] - lon[k[0]]) + abs(geom[0][1] - lat[k[0]])) > 1e-7:
                 geom = geom[::-1]  # orient from u to v
             best[k] = (length, geom[1:-1])  # interior points only
-    # undirected walking: make sure both directions exist
+    # undirected walking: make sure both directions exist (a drive graph keeps one-way streets one-way)
     for (u, v), (length, geom) in list(best.items()):
-        if (v, u) not in best:
+        if not directed and (v, u) not in best:
             best[(v, u)] = (length, geom[::-1])
 
     keys = sorted(best)
@@ -74,8 +79,8 @@ def export(G, bbox) -> dict:
         glon.extend(p[0] for p in pts)
         glat.extend(p[1] for p in pts)
     np.savez_compressed(
-        GRAPH_FILE, lat=lat, lon=lon, indptr=indptr, indices=cols, weights=w, gptr=gptr,
+        path, lat=lat, lon=lon, indptr=indptr, indices=cols, weights=w, gptr=gptr,
         glat=np.array(glat, dtype=np.float32), glon=np.array(glon, dtype=np.float32), bbox=np.array(bbox))
-    info = {"nodes": len(nodes), "edges": len(keys), "file_mb": round(GRAPH_FILE.stat().st_size / 1e6, 1)}
-    log.info("saved %s: %s", GRAPH_FILE.name, info)
+    info = {"nodes": len(nodes), "edges": len(keys), "file_mb": round(path.stat().st_size / 1e6, 1)}
+    log.info("saved %s: %s", path.name, info)
     return info

@@ -51,6 +51,7 @@ class Runtime:
     embedder: Embedder | None
     http: httpx.AsyncClient
     cache: dict
+    drive_graph: WalkGraph | None = None  # roads for car legs (one-way streets), None: car legs are estimates
 
 
 def snap_pois(store: Store, graph: WalkGraph | None):
@@ -323,7 +324,8 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
     route = None
     if not navigate and not (view_decks and req.want_route is None) and route_wanted(parsed, req.want_route, plan, len(cands)):
         returns = parsed.walk_intent and mode == "walk" and dl is None
-        route = plan_route(cands, plan, ctx, rt.graph, rt.store.river, lang, returns=returns)
+        route = plan_route(cands, plan, ctx, rt.drive_graph if plan.mode == "car" else rt.graph, rt.store.river, lang,
+                           returns=returns)
 
     # --- generation (LLM) with validation, else templates
     gen: GenOut | None = None

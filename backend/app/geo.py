@@ -62,6 +62,11 @@ def crosses_river(river: list, lat1: float, lon1: float, lat2: float, lon2: floa
     return False
 
 
+def approach_ok(graph, river: list, lat: float, lon: float, node: int) -> bool:
+    """The short straight link between a point and its nearest graph node must not cross the river."""
+    return not river or not crosses_river(river, lat, lon, float(graph.lat[node]), float(graph.lon[node]))
+
+
 def fallback_walk_m(river: list, lat1, lon1, lat2, lon2) -> float:
     d = float(hav_m(lat1, lon1, lat2, lon2))
     f = DETOUR_WALK
@@ -73,7 +78,11 @@ def fallback_walk_m(river: list, lat1, lon1, lat2, lon2) -> float:
 def car_minutes(straight_m: float, hour: int, snowing: bool = False, transit: bool = False) -> tuple[int, int]:
     """(road distance m, minutes incl. parking) — heuristic, no live traffic.
     transit=True: public transport estimate (~18 km/h door-to-door speed + 10 min walking/waiting)."""
-    road = straight_m * DETOUR_CAR
+    return car_road_minutes(straight_m * DETOUR_CAR, hour, snowing, transit)
+
+
+def car_road_minutes(road: float, hour: int, snowing: bool = False, transit: bool = False) -> tuple[int, int]:
+    """The same estimate from a distance measured along the drive graph."""
     if transit:
         return int(road), int(math.ceil(road / 1000 / 18 * 60 * (1.2 if snowing else 1.0) + 10))
     peak = 8 <= hour < 10 or 17 <= hour < 20
@@ -99,7 +108,7 @@ class WalkGraph:
         n = len(self.lat)
         self.A = csr_matrix((self.w, self.indices, self.indptr), shape=(n, n))
         self.tree = cKDTree(np.c_[self.lon * KX, self.lat * KY])
-        log.info("walk graph: %d nodes, %d edges", n, len(self.w))
+        log.info("%s: %d nodes, %d edges", Path(path).stem, n, len(self.w))
 
     def covers(self, lat: float, lon: float) -> bool:
         s, w, n, e = self.bbox

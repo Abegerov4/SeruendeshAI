@@ -74,7 +74,7 @@ def test_route_opening_cache_respects_exact_arrival(monkeypatch):
     assert out is not None and [c.poi["id"] for c in out["stops"]] == ["p2", "p3"]
 
 
-def test_graph_matrix_includes_destination_approach_and_fallback_label():
+def test_graph_matrix_includes_destination_approach_and_never_a_straight_leg():
     class Graph:
         def covers(self, *args): return True
         def snap(self, lat, lon): return np.array([100., 200., 600.]), np.array([0, 1, 2])
@@ -86,7 +86,9 @@ def test_graph_matrix_includes_destination_approach_and_fallback_label():
     out = planner.plan_route([cand(1, visit=5), cand(2, visit=5)], p, ctx(), Graph(), [], "en", returns=False)
     _, distances, _, _, _ = planner._matrix([cand(1, visit=5), cand(2, visit=5)], p, ctx(), Graph(), [])
     assert distances[0, 1] == 1200
-    assert any(leg["geometry"] == "straight" for leg in out["legs"])
+    # the second stop is 600 m from the graph: no path, so no leg to it (never a straight line across the river)
+    assert np.isinf(distances[0, 2]) and np.isinf(distances[1, 2])
+    assert out is None
 
 
 @pytest.mark.parametrize("condition", ["accessibility", "dark", "cold", "indoor", "kids"])
