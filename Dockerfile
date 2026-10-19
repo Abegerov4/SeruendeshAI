@@ -19,6 +19,7 @@ RUN uv sync --frozen --no-dev --no-group pipeline --no-install-project
 COPY backend/app ./app
 # small pure-Python helpers of the team catalogue (data/), imported by app.evidence and the opt-in canonical mode
 COPY data/__init__.py data/meal_cost.py data/eligibility.py data/snapshot.py data/city_services.py data/place_details.py /srv/data/
+COPY runtime_support /srv/runtime_support
 # only the snapshot the API reads (the team's research catalogue in data/ stays out of the image)
 COPY data/processed/pois.jsonl data/processed/gazetteer.json data/processed/manifest.json data/processed/embeddings.npy \
      data/processed/walk_graph.npz data/processed/events.jsonl data/processed/river.json \
