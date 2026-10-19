@@ -32,6 +32,7 @@
 | Сбор данных (автоматизирован) | [docs/DATA.md](docs/DATA.md) |
 | Как выбирали стек (исследование) | [docs/RESEARCH.md](docs/RESEARCH.md) |
 | API-контракт для фронтенда | [docs/API.md](docs/API.md), [docs/api/openapi.json](docs/api/openapi.json), [примеры](docs/api/examples/) |
+| Для города: City Insights (спрос и пробелы, k-анонимно) | https://seruendesh.site/insights, открытые агрегаты `GET /api/insights` — что ищут, где и когда, где город не отвечает; только счётчики (ячейка ≈1 км × 3 часа × тип запроса), значения от 5 запросов |
 | MCP-коннектор (Claude Desktop и другие ИИ-клиенты) | [docs/MCP.md](docs/MCP.md), эндпоинт `https://seruendesh.site/connector/mcp` |
 
 ## Быстрый старт
@@ -99,7 +100,7 @@ backend/          продукт: FastAPI (API, MCP-коннектор, режи
   app/            поиск, ранжирование, маршруты, LLM, валидатор, защиты
   pipeline/       сбор снимка, который отдаёт API (OSM, Overture, Wikidata, Wikipedia, CityPass, фото, граф, эмбеддинги)
   eval/           15 сценариев и харнесс оценки (проверки + LLM-as-judge)
-  tests/          453 теста: контракт, безопасность аккаунтов, время, фото, MCP, исправления аудита
+  tests/          463 теста: контракт, безопасность аккаунтов, время, фото, MCP, исправления аудита
 frontend/         интерфейс (React + Vite, маскот Серу)
 bot/              Telegram-бот — тонкий клиент API
 data/processed/   снимок API (pois.jsonl, газеттир, граф, эмбеддинги, манифест) и каталог команды (pois.json, ревью)

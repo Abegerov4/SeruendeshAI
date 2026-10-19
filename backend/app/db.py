@@ -2,6 +2,7 @@
 
 What is stored about a user — and nothing else: email, display name, argon2 password hash,
 UI language, saved places (POI id + a small card snapshot), timestamps. No locations, no queries.
+City Insights keeps only anonymous counters (≈1 km cell × 3-hour slot × intent), never text or a person.
 """
 from __future__ import annotations
 
@@ -65,6 +66,19 @@ class RateLimit(Base):
     key: Mapped[str] = mapped_column(String(64), primary_key=True)
     hits: Mapped[int] = mapped_column(Integer)
     expires_at: Mapped[float] = mapped_column(Float, index=True)
+
+
+class DemandCount(Base):
+    """City Insights counter: no text, no person, no exact place — a ~1 km cell, a 3-hour slot and an intent."""
+    __tablename__ = "demand_counts"
+    key: Mapped[str] = mapped_column(String(96), primary_key=True)
+    day: Mapped[str] = mapped_column(String(10), index=True)
+    cell_lat: Mapped[float] = mapped_column(Float)
+    cell_lon: Mapped[float] = mapped_column(Float)
+    slot: Mapped[int] = mapped_column(Integer)
+    intent: Mapped[str] = mapped_column(String(32))
+    unmet: Mapped[int] = mapped_column(Integer)
+    hits: Mapped[int] = mapped_column(Integer)
 
 
 def _url() -> str:

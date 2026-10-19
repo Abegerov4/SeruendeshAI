@@ -22,7 +22,7 @@ from starlette.datastructures import UploadFile
 
 from app.paths import ROOT_DIR, GRAPH_FILE
 
-from app import mcp_connector, photo
+from app import insights, mcp_connector, photo
 from app.auth import router as auth_router
 from app.categories import CATEGORIES
 from app.config import get_settings
@@ -125,7 +125,14 @@ async def unhandled(request: Request, exc: Exception):
 async def api_recommend(req: RecommendRequest, request: Request):
     if await asyncio.to_thread(_rate_limited, request):
         raise HTTPException(status_code=429, detail="Too many requests, try again in a minute")
-    return await recommend(RT["rt"], req)
+    resp = await recommend(RT["rt"], req)
+    await asyncio.to_thread(insights.record, resp)  # anonymous counters only (see app/insights.py)
+    return resp
+
+
+@app.get("/api/insights", tags=["meta"], summary="City Insights: k-anonymous demand by ~1 km cell, intent and time")
+async def api_insights(days: int = 30, lang: str = "ru"):
+    return await asyncio.to_thread(insights.summary, max(1, min(days, 90)), lang if lang in ("ru", "kk", "en") else "ru")
 
 
 @app.get("/api/meta", response_model=MetaResponse, tags=["meta"], summary="Landmarks, categories, data version")
