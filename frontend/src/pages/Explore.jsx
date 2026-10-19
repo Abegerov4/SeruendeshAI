@@ -11,7 +11,7 @@ import PlaceCard, { SkeletonCard } from '../components/PlaceCard';
 import PlaceVisual from '../components/PlaceVisual';
 import {PocketButton} from '../components/PwaExperience';
 import { RouteTimeline } from '../components/PlanPanel';
-import { initialContext } from '../planner';
+import { initialContext, forTypedMessage } from '../planner';
 import { recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY_LOCATION, routeTo, inAstana, formatDistance, LANDMARK_KEYS, routeIdeas, toPlan } from '../api';
 import { scenarios } from '../data';
 
@@ -179,13 +179,18 @@ export default function Explore({ saved, toggleSaved }) {
   async function requestPlan(text, override, signal, photo) {
     setLoading(true); setLoadError('');
     try {
-      const c = photo ? (override || ctx) : await withCoords(override || ctx);
+      // a typed message (no override) wins over the settings for the time / transport it states itself
+      const base = override || forTypedMessage(ctx, text);
+      const c = photo ? base : await withCoords(base);
       setCtx(c);
       const next = photo ? await recommendPhoto(photo, text, c, getLanguage(), { signal }) : await recommend(text, c, getLanguage(), { signal });
       if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
       if (next.offTopic || (photo && !next.places.length)) return next;  // keep the current picks; the chat explains
       setPrevious(plan); setPlan(next); setResultVersion(n => n + 1); setHovered(null); setSheetOpen(false); setFocusRoute(null);
-      setAppliedKey(prefKey(c));
+      // the settings now show what this result used («на час» -> 60), and the next message carries them
+      const u = next.used, shown = { ...c, ...(u?.time_budget_min ? { time: u.time_budget_min } : {}),
+        ...(u?.mode === 'walk' || u?.mode === 'car' ? { transport: u.mode } : {}), touched: { ...c.touched, time: true, transport: true } };
+      setCtx(shown); setAppliedKey(prefKey(shown));
       if (next.navigateTo) { const p = next.places.find(x => x.id === next.navigateTo); if (p) showRouteTo(p, c, next); }  // «маршрут до …»
       setSelected(next.places.find(p => !p.generated)?.id ?? null);
       return next;

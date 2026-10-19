@@ -108,6 +108,7 @@ class Parsed:
     surprise: bool = False
     stroller: bool = False  # a baby stroller: kids and a flat walk, not a wheelchair profile
     walk_intent: bool = False
+    walk_mix: bool = False  # «кофе и прогулка»: one food stop + places to walk
     wants_event: bool = False
     soft_categories: list[str] = field(default_factory=list)  # LLM-inferred preferences (boost, not filter)
     search_text: str = ""
@@ -330,6 +331,17 @@ def parse_rules(text: str) -> Parsed:
     m = re.search(r"\b(нас|we are|біз)\s*(\d+)", s)
     if m:
         p.group_size = int(m.group(2))
+    return with_walk_stops(p)
+
+
+WALK_STOPS = ["park", "garden", "landmark", "viewpoint"]
+
+
+def with_walk_stops(p: Parsed) -> Parsed:
+    """«кофе и прогулка»: a food stop plus places to walk, not three cafés in a row.
+    The food categories stay the search; the walking stops are ranked separately (text relevance would bury them)."""
+    p.walk_mix = bool(p.walk_intent and p.categories
+                      and all(CATEGORIES[c].group == "food" for c in p.categories if c in CATEGORIES))
     return p
 
 
@@ -374,7 +386,7 @@ def merge_llm(rules: Parsed, llm: LLMParsed | None) -> Parsed:
     p.keywords = llm.keywords_ru
     if "kids" in p.needs and not p.party:
         p.party = "family_kids"
-    return p
+    return with_walk_stops(p)
 
 
 def deadline_minutes(p: Parsed, now: dt.datetime) -> int | None:

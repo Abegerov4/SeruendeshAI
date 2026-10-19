@@ -53,6 +53,7 @@ class Plan:
     accessibility: bool = False
     tourist: bool = False
     relaxations: list[str] = field(default_factory=list)
+    max_food_stops: int | None = None  # «кофе и прогулка»: one café on the route, the rest is the walk
     filters: list[str] = field(default_factory=list)
     funnel: dict[str, int] = field(default_factory=dict)
     graph_used: bool = False

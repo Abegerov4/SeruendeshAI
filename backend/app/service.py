@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import asyncio
+import copy
+import dataclasses
 import datetime as dt
 import hashlib
 import json
@@ -30,7 +32,7 @@ from app.llm import usage_begin, usage_summary
 from app.planner import plan_route, route_wanted
 from app.guards import mask_pii, strip_injection
 from app.query import (HOME_CUE, NAV_INTENT, PARSE_SYSTEM, LLMParsed, Parsed, deadline_minutes, is_off_topic, merge_llm, parse_rules,
-                       resolve_landmark, split_mentions)
+                       resolve_landmark, split_mentions, WALK_STOPS)
 from app.retrieval import Cand, Plan, rank
 from app.schemas import RecommendRequest
 from app.service_answers import select_services, answer_services
@@ -324,8 +326,20 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
             plan.budget = max(plan.budget, 240)  # the trip itself is the goal; distance is shown, not used to filter
             plan.t_max = max(plan.t_max, 120)  # the street search reaches 2 × t_max: the whole city on foot
             plan.directions = True
+        walk_cands = []
+        if parsed.walk_mix and not navigate:
+            # «кофе и прогулка»: places to walk, ranked on their own (a copy of the plan: ranking writes into it)
+            walk_q = dataclasses.replace(parsed, categories=list(WALK_STOPS), soft_categories=[], food_requirements=[],
+                                         meal_intent=False, search_text="прогулка парк сквер набережная вид", keywords=[])
+            walk_cands, _ = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, walk_q, copy.deepcopy(plan), ctx, lang,
+                                 None, k=6, exclude_keys=exclude_keys)
         cands, considered = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, parsed, plan, ctx, lang, qvec,
                                  exclude_keys=exclude_keys, target_ids=target_ids)
+        if walk_cands:
+            food = [c for c in cands if CATEGORIES[c.poi["category"]].group == "food"]
+            seen = {c.poi["id"] for c in food}
+            cands = food[:2] + [c for c in walk_cands if c.poi["id"] not in seen] + food[2:]
+            plan.max_food_stops = 1
         if navigate:
             cands = [c for c in cands if c.poi["id"] in target_ids][:1] or cands
         elif dest_entries and target_ids and not any(c.poi["id"] in target_ids for c in cands):
