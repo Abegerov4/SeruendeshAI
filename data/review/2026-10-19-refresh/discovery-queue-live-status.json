@@ -1,16 +1,39 @@
 {
-  "observed_at": "2026-10-19T00:01:53.966658+00:00",
-  "session_id": 60592,
-  "status": "running",
-  "total_rows_at_launch": 1091,
-  "rows_started": 330,
-  "actual_requests": 660,
-  "outcomes": {
-    "candidates_found": 392,
-    "skipped_provider_block": 330,
-    "incomplete_source_error": 90,
-    "search_returned_no_candidates": 178
+  "frozen_at": "2026-10-19T06:08:55.948882+00:00",
+  "pass_status": "bounded_discovery_pass_finished",
+  "finished_at": "2026-10-19T00:52:42.566963+00:00",
+  "launch_rows": 1091,
+  "rows_with_bounded_2gis_bing_outcomes": 1091,
+  "events": 3273,
+  "actual_requests": 2182,
+  "event_outcomes": {
+    "candidates_found": 1364,
+    "skipped_provider_block": 1091,
+    "incomplete_source_error": 230,
+    "search_returned_no_candidates": 588
   },
+  "provider_outcomes": {
+    "2gis": {
+      "candidates_found": 847,
+      "incomplete_source_error": 230,
+      "search_returned_no_candidates": 14
+    },
+    "bing": {
+      "candidates_found": 517,
+      "search_returned_no_candidates": 574
+    },
+    "yandex_maps": {
+      "skipped_provider_block": 1091
+    }
+  },
+  "live_ledger_sha256": "61d79e2ca20a3b6b26823c032e0cd924eedddceb53b7b60db8114ef926e2fa1f",
+  "branch_fact_verification_complete": false,
   "no_information_confirmed": 0,
-  "exhaustive_search_completed": 0
+  "completed_exhaustive_searches": 0,
+  "limitations": [
+    "A bounded two-provider pass is not independent verification of every branch.",
+    "Yandex remained blocked after 429; Google 429 and DuckDuckGo human challenge were not bypassed.",
+    "Source errors and empty searches never establish closure or absence of information.",
+    "Candidates require separate exact-branch and field-specific review before publication."
+  ]
 }

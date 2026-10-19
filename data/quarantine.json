@@ -92,5 +92,56 @@
     "evidence_urls": [
       "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim"
     ]
+  },
+  {
+    "id": "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e",
+    "reason": "Public 2GIS exact branch card explicitly states branch closed; distinctive name and full street/house match canonical. Source errors or empty search were not used as closure proof.",
+    "reason_code": "confirmed_permanent_closure",
+    "exclude_from_origins": true,
+    "reviewed_on": "2026-10-19",
+    "reviewed_by": "catalog-discovery-followup-source-review",
+    "evidence_urls": [
+      "https://2gis.kz/astana/search/Sunday",
+      "https://2gis.kz/astana/firm/70000001077487856"
+    ],
+    "source_name": "Sunday",
+    "source_address": "улица Динмухамед Конаев, 12/2",
+    "evidence_excerpt": "Sunday Кафе Улица Динмухамед Конаев, 12/2, Астана Филиал закрылся",
+    "response_sha256": "537fc31a5b28620c9dbe7e6e97392ee854e41cbbcf0c7656f80ee83785093eb2",
+    "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/537fc31a5b28620c9dbe7e6e97392ee854e41cbbcf0c7656f80ee83785093eb2.html"
+  },
+  {
+    "id": "overture:dc97b064-be10-46d8-9168-76343e2e115d",
+    "reason": "Public 2GIS exact branch card explicitly states branch closed; distinctive name and full street/house match canonical. Source errors or empty search were not used as closure proof.",
+    "reason_code": "confirmed_permanent_closure",
+    "exclude_from_origins": true,
+    "reviewed_on": "2026-10-19",
+    "reviewed_by": "catalog-discovery-followup-source-review",
+    "evidence_urls": [
+      "https://2gis.kz/astana/search/Chechil.sarayshyq",
+      "https://2gis.kz/astana/firm/70000001102999537"
+    ],
+    "source_name": "Chechil",
+    "source_address": "улица Сарайшык, 5г",
+    "evidence_excerpt": "Chechil Лаундж-бар Улица Сарайшык, 5г, Астана Филиал закрылся",
+    "response_sha256": "4597984b99ccb7d5a824fd10bb5fecfc185d2e1fca58e8a8f4fcb7814d961f37",
+    "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/4597984b99ccb7d5a824fd10bb5fecfc185d2e1fca58e8a8f4fcb7814d961f37.html"
+  },
+  {
+    "id": "osm:node/13448013130",
+    "reason": "Matched current public 2GIS firm is classified solely as a lottery club, conflicting with canonical cafe classification. Exclude ordinary recommendations until food use is verified; preserve canonical and origin because no closure or geometry issue is established.",
+    "reason_code": "source_classification_conflict",
+    "exclude_from_origins": false,
+    "reviewed_on": "2026-10-19",
+    "reviewed_by": "catalog-discovery-followup-source-review",
+    "evidence_urls": [
+      "https://2gis.kz/astana/search/Loft%20Park",
+      "https://2gis.kz/astana/firm/70000001044455602"
+    ],
+    "source_name": "Loft park",
+    "source_address": "проспект Туран, 33а",
+    "evidence_excerpt": "Loft park; проспект Туран, 33а; sole primary rubric: Лотерейные клубы; no food rubric in exact firm object.",
+    "response_sha256": "42b6a3471d79a06e1edefac35ed691d9d2a1bffadbc840a3dd26dd8d69713ed6",
+    "archive_path": "data/review/2026-10-19-refresh/discovery-queue-cache/42b6a3471d79a06e1edefac35ed691d9d2a1bffadbc840a3dd26dd8d69713ed6.html"
   }
 ]

@@ -1,0 +1,528 @@
+{
+  "reviewed_at": "2026-10-19T06:23:50.242753+00:00",
+  "scope": "Bounded post-fix snapshot hashes/counts and exact e5-small index review. Prior lifecycle/geometry checks are carried forward after policy inputs were confirmed byte-identical and active-export fields other than the two removed place_details were confirmed unchanged.",
+  "snapshot_version": "c0d3e2f710f64d399c01c97b853ca05d",
+  "snapshot_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/processed/.snapshots/c0d3e2f710f64d399c01c97b853ca05d",
+  "canonical_master_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "canonical_records": 14006,
+  "snapshot_manifest_sha256": "34fc251d504367f6131210d648cc51425522498bff19634b438d16ec67377dc3",
+  "place_details_sha256": "1026e9ffdcdea06e78fd4412fde0644894d73fc08b5c8add7edcafd1980c5504",
+  "checks": {
+    "snapshot_version": {
+      "passed": true,
+      "detail": {
+        "expected": "c0d3e2f710f64d399c01c97b853ca05d",
+        "actual": "c0d3e2f710f64d399c01c97b853ca05d"
+      }
+    },
+    "all_bundle_artifact_hashes": {
+      "passed": true,
+      "detail": {
+        "verified_by": "resolve_snapshot",
+        "artifacts": 19
+      }
+    },
+    "canonical_master_unchanged": {
+      "passed": true,
+      "detail": {
+        "master_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+        "bundle_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63"
+      }
+    },
+    "rich_counts": {
+      "passed": true,
+      "detail": {
+        "records_raw": 376,
+        "records_loaded": 376,
+        "facts_raw": 2984,
+        "facts_loaded": 2984,
+        "menus_raw": 3673,
+        "menus_loaded": 3673,
+        "average_checks_raw": 183,
+        "average_checks_loaded": 183
+      }
+    },
+    "runtime_counts": {
+      "passed": true,
+      "detail": {
+        "recommendation_pois": 2742,
+        "origin_gazetteer": 13999,
+        "archived_canonical": 7
+      }
+    },
+    "service_count": {
+      "passed": true,
+      "detail": {
+        "services": 10
+      }
+    },
+    "exact_e5_small_index_view": {
+      "passed": true,
+      "detail": {
+        "shape": [
+          2742,
+          384
+        ],
+        "ordered_ids_exact": true,
+        "documents_sha256": "2cada18a4a53c55a5ab7b73f6adef85323a9ac3f0bf760ab6eefbe4609f6def7",
+        "policy_hashes": {
+          "quarantine": "93a5f9fcb764df2d5ba344adfd93e2043a7e42d6918a521f3c0022f929e64f0a",
+          "field_evidence": "3ae539eb1f4ae7b6da475d2e3139fdfff56cb479a8e2722e84c8fc9303fe2663",
+          "fact_reviews": "01ff2c2890bdde2794c09a738a582863c4b6774afdfdc6f9c7c9a015ee420830",
+          "eligibility_code": "13b1237005eac16eeaadcf0628404d5d833771e2aefc17840977f5a0e3692b3a",
+          "document_code": "77079d641b80650a567b988467b69639cd0cc824395c85566c2039c34338a69f",
+          "place_details": "1026e9ffdcdea06e78fd4412fde0644894d73fc08b5c8add7edcafd1980c5504",
+          "place_details_code": "d0b54c49702676a76d340467a7621db8d151fc4d2cf3bbd244a58256367b77c4"
+        },
+        "artifact_sha256": "27761ca9144752f401c8aae95e29642d845a0e8f000891df627e35ccc306a708",
+        "verified_by": "load_index validates exact ordered IDs, recomputed documents, model, policy hashes, artifact hash, dimensions and finite values"
+      }
+    },
+    "four_confirmed_closures_archived": {
+      "passed": true,
+      "detail": [
+        {
+          "id": "overture:5a405c91-d5d6-47ee-9b9b-546134f0505d",
+          "source_name": "Tary Astana",
+          "master_retained": true,
+          "recommendation_absent": true,
+          "origin_absent": true
+        },
+        {
+          "id": "overture:3105494a-8102-4450-9d78-12ca652ce768",
+          "source_name": "Joule27",
+          "master_retained": true,
+          "recommendation_absent": true,
+          "origin_absent": true
+        },
+        {
+          "id": "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e",
+          "source_name": "Sunday",
+          "master_retained": true,
+          "recommendation_absent": true,
+          "origin_absent": true
+        },
+        {
+          "id": "overture:dc97b064-be10-46d8-9168-76343e2e115d",
+          "source_name": "Chechil",
+          "master_retained": true,
+          "recommendation_absent": true,
+          "origin_absent": true
+        }
+      ]
+    },
+    "legacy_service_offers_separated": {
+      "passed": true,
+      "detail": [
+        {
+          "id": "citypass:119",
+          "master_retained": true,
+          "recommendation_absent": true,
+          "origin_absent": true,
+          "reason_code": "service_catalog_only",
+          "redirect_service_id": "service:redbus-astana",
+          "redirect_exists": true
+        },
+        {
+          "id": "citypass:142",
+          "master_retained": true,
+          "recommendation_absent": true,
+          "origin_absent": true,
+          "reason_code": "service_catalog_only",
+          "redirect_service_id": "service:citypass-astana-opera-tour",
+          "redirect_exists": true
+        },
+        {
+          "id": "citypass:94",
+          "master_retained": true,
+          "recommendation_absent": true,
+          "origin_absent": true,
+          "reason_code": "service_catalog_only",
+          "redirect_service_id": "service:citypass-ishim-river-cruise",
+          "redirect_exists": true
+        }
+      ]
+    },
+    "loft_park_type_conflict_not_closure": {
+      "passed": true,
+      "detail": {
+        "id": "osm:node/13448013130",
+        "master_retained": true,
+        "recommendation_absent": true,
+        "origin_retained": true,
+        "rich_absent": true,
+        "origin_only": true
+      }
+    },
+    "physical_astana_opera_preserved": {
+      "passed": true,
+      "detail": {
+        "id": "osm:way/917478479",
+        "master": true,
+        "recommendation": true,
+        "origin": true,
+        "name": "Астана Опера"
+      }
+    },
+    "coordinate_64_atomic_review_pair": {
+      "passed": true,
+      "detail": {
+        "canonical_id": "citypass:64",
+        "original_master_pair": [
+          51.1351,
+          71.4001
+        ],
+        "reviewed_pair": [
+          51.147356,
+          71.414465
+        ],
+        "runtime_pair": [
+          51.147356,
+          71.414465
+        ],
+        "origin_pair": [
+          51.147356,
+          71.414465
+        ],
+        "active_export_pair": [
+          51.147356,
+          71.414465
+        ]
+      }
+    },
+    "services_and_closures_absent_active_export": {
+      "passed": true,
+      "detail": {
+        "active_export_count": 2742
+      }
+    },
+    "postfix_source_provenance_duplicates_resolved": {
+      "passed": true,
+      "detail": {
+        "scope": "Bounded duplicate-removal, shared-record equality and loader/count revalidation only; original157 field checks and32 hours probes were not repeated.",
+        "prior_snapshot_version": "95972c2d4cf34fdf975b1af9b4b4efda",
+        "snapshot_version": "c0d3e2f710f64d399c01c97b853ca05d",
+        "removed_discovery_canonical_ids": [
+          "osm:node/6404769885",
+          "overture:55289b63-c24f-4524-9d96-5d7a0d612ea0"
+        ],
+        "retained_immutable_main_canonical_ids": [
+          "osm:node/11290690869",
+          "overture:00442c70-6f40-40c8-96c1-d1233e6362a1"
+        ],
+        "all_376_shared_published_records_unchanged": true,
+        "main_101_records_unchanged": true,
+        "all_accepted_source_provenance_firm_ids_unique": true,
+        "source_record_counts": {
+          "data/sources/place_details_2026-10-19.json": 101,
+          "data/sources/place_details_discovery_2026-10-19.json": 274,
+          "data/review/2026-10-19-refresh/discovery-gasteria.json": 1
+        },
+        "rich_counts": {
+          "records_raw": 376,
+          "records_loaded": 376,
+          "facts_raw": 2984,
+          "facts_loaded": 2984,
+          "menus_raw": 3673,
+          "menus_loaded": 3673,
+          "average_checks_raw": 183,
+          "average_checks_loaded": 183
+        },
+        "all_original_new157_records_retained_unchanged": true,
+        "raw_extra_records": 274,
+        "raw_extra_facts": 2524,
+        "raw_extra_averages": 163,
+        "sidecar_sha256": "1afa1b34e9456b504b0b3a24707853ffd7e91ba6305b0be3d1ccc0852ac47d4e",
+        "builder_sha256": "26f3ad7102f69d8e4992c5cbc8b8ab7ce63d7588bd093323c99edb74a6efa2b3"
+      }
+    },
+    "prior_lifecycle_geometry_inputs_preserved": {
+      "passed": true,
+      "detail": {
+        "pois.json": true,
+        "quarantine.json": true,
+        "fact_reviews.json": true,
+        "field_evidence.json": true,
+        "quality_overrides.json": true,
+        "city_services.json": true,
+        "pois_leisure_lifecycle_geometry_and_all_non_details_fields_unchanged": true
+      }
+    }
+  },
+  "findings": [],
+  "remaining_important_critical_index_findings": [],
+  "source_review_open_findings": [],
+  "status": "passed",
+  "coverage_limitations": [
+    "Exact index verification uses the actual derived recommendation rows and current local policy code; no embedding calls or model execution.",
+    "Four confirmed closure exclusions and three legacy-service redirects are distinct reasons; preserved canonical records are not deleted.",
+    "No full UI/conversation regression run in this independent index review.",
+    "No repeat of original field/hour/lifecycle probes: shared records and unchanged lifecycle/geometry input artifacts were checked for byte/value equality before carrying prior results forward."
+  ],
+  "prior_review_evidence": [
+    {
+      "snapshot_version": "95972c2d4cf34fdf975b1af9b4b4efda",
+      "snapshot_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/processed/.snapshots/95972c2d4cf34fdf975b1af9b4b4efda",
+      "place_details_sha256": "6a69515efa8f09f64d33be5c01ca51c48c41c4ed23bef11dddd2e4b0cda743f7",
+      "checks": {
+        "snapshot_version": {
+          "passed": true,
+          "detail": {
+            "expected": "c0d3e2f710f64d399c01c97b853ca05d",
+            "actual": "c0d3e2f710f64d399c01c97b853ca05d"
+          }
+        },
+        "all_bundle_artifact_hashes": {
+          "passed": true,
+          "detail": {
+            "verified_by": "resolve_snapshot",
+            "artifacts": 19
+          }
+        },
+        "canonical_master_unchanged": {
+          "passed": true,
+          "detail": {
+            "master_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+            "bundle_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63"
+          }
+        },
+        "rich_counts": {
+          "passed": true,
+          "detail": {
+            "records_raw": 376,
+            "records_loaded": 376,
+            "facts_raw": 2984,
+            "facts_loaded": 2984,
+            "menus_raw": 3673,
+            "menus_loaded": 3673,
+            "average_checks_raw": 183,
+            "average_checks_loaded": 183
+          }
+        },
+        "runtime_counts": {
+          "passed": true,
+          "detail": {
+            "recommendation_pois": 2742,
+            "origin_gazetteer": 13999,
+            "archived_canonical": 7
+          }
+        },
+        "service_count": {
+          "passed": true,
+          "detail": {
+            "services": 10
+          }
+        },
+        "exact_e5_small_index_view": {
+          "passed": true,
+          "detail": {
+            "shape": [
+              2742,
+              384
+            ],
+            "ordered_ids_exact": true,
+            "documents_sha256": "2cada18a4a53c55a5ab7b73f6adef85323a9ac3f0bf760ab6eefbe4609f6def7",
+            "policy_hashes": {
+              "quarantine": "93a5f9fcb764df2d5ba344adfd93e2043a7e42d6918a521f3c0022f929e64f0a",
+              "field_evidence": "3ae539eb1f4ae7b6da475d2e3139fdfff56cb479a8e2722e84c8fc9303fe2663",
+              "fact_reviews": "01ff2c2890bdde2794c09a738a582863c4b6774afdfdc6f9c7c9a015ee420830",
+              "eligibility_code": "13b1237005eac16eeaadcf0628404d5d833771e2aefc17840977f5a0e3692b3a",
+              "document_code": "77079d641b80650a567b988467b69639cd0cc824395c85566c2039c34338a69f",
+              "place_details": "1026e9ffdcdea06e78fd4412fde0644894d73fc08b5c8add7edcafd1980c5504",
+              "place_details_code": "d0b54c49702676a76d340467a7621db8d151fc4d2cf3bbd244a58256367b77c4"
+            },
+            "artifact_sha256": "27761ca9144752f401c8aae95e29642d845a0e8f000891df627e35ccc306a708",
+            "verified_by": "load_index validates exact ordered IDs, recomputed documents, model, policy hashes, artifact hash, dimensions and finite values"
+          }
+        },
+        "four_confirmed_closures_archived": {
+          "passed": true,
+          "detail": [
+            {
+              "id": "overture:5a405c91-d5d6-47ee-9b9b-546134f0505d",
+              "source_name": "Tary Astana",
+              "master_retained": true,
+              "recommendation_absent": true,
+              "origin_absent": true
+            },
+            {
+              "id": "overture:3105494a-8102-4450-9d78-12ca652ce768",
+              "source_name": "Joule27",
+              "master_retained": true,
+              "recommendation_absent": true,
+              "origin_absent": true
+            },
+            {
+              "id": "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e",
+              "source_name": "Sunday",
+              "master_retained": true,
+              "recommendation_absent": true,
+              "origin_absent": true
+            },
+            {
+              "id": "overture:dc97b064-be10-46d8-9168-76343e2e115d",
+              "source_name": "Chechil",
+              "master_retained": true,
+              "recommendation_absent": true,
+              "origin_absent": true
+            }
+          ]
+        },
+        "legacy_service_offers_separated": {
+          "passed": true,
+          "detail": [
+            {
+              "id": "citypass:119",
+              "master_retained": true,
+              "recommendation_absent": true,
+              "origin_absent": true,
+              "reason_code": "service_catalog_only",
+              "redirect_service_id": "service:redbus-astana",
+              "redirect_exists": true
+            },
+            {
+              "id": "citypass:142",
+              "master_retained": true,
+              "recommendation_absent": true,
+              "origin_absent": true,
+              "reason_code": "service_catalog_only",
+              "redirect_service_id": "service:citypass-astana-opera-tour",
+              "redirect_exists": true
+            },
+            {
+              "id": "citypass:94",
+              "master_retained": true,
+              "recommendation_absent": true,
+              "origin_absent": true,
+              "reason_code": "service_catalog_only",
+              "redirect_service_id": "service:citypass-ishim-river-cruise",
+              "redirect_exists": true
+            }
+          ]
+        },
+        "loft_park_type_conflict_not_closure": {
+          "passed": true,
+          "detail": {
+            "id": "osm:node/13448013130",
+            "master_retained": true,
+            "recommendation_absent": true,
+            "origin_retained": true,
+            "rich_absent": true,
+            "origin_only": true
+          }
+        },
+        "physical_astana_opera_preserved": {
+          "passed": true,
+          "detail": {
+            "id": "osm:way/917478479",
+            "master": true,
+            "recommendation": true,
+            "origin": true,
+            "name": "Астана Опера"
+          }
+        },
+        "coordinate_64_atomic_review_pair": {
+          "passed": true,
+          "detail": {
+            "canonical_id": "citypass:64",
+            "original_master_pair": [
+              51.1351,
+              71.4001
+            ],
+            "reviewed_pair": [
+              51.147356,
+              71.414465
+            ],
+            "runtime_pair": [
+              51.147356,
+              71.414465
+            ],
+            "origin_pair": [
+              51.147356,
+              71.414465
+            ],
+            "active_export_pair": [
+              51.147356,
+              71.414465
+            ]
+          }
+        },
+        "services_and_closures_absent_active_export": {
+          "passed": true,
+          "detail": {
+            "active_export_count": 2742
+          }
+        },
+        "postfix_source_provenance_duplicates_resolved": {
+          "passed": true,
+          "detail": {
+            "scope": "Bounded duplicate-removal, shared-record equality and loader/count revalidation only; original157 field checks and32 hours probes were not repeated.",
+            "prior_snapshot_version": "95972c2d4cf34fdf975b1af9b4b4efda",
+            "snapshot_version": "c0d3e2f710f64d399c01c97b853ca05d",
+            "removed_discovery_canonical_ids": [
+              "osm:node/6404769885",
+              "overture:55289b63-c24f-4524-9d96-5d7a0d612ea0"
+            ],
+            "retained_immutable_main_canonical_ids": [
+              "osm:node/11290690869",
+              "overture:00442c70-6f40-40c8-96c1-d1233e6362a1"
+            ],
+            "all_376_shared_published_records_unchanged": true,
+            "main_101_records_unchanged": true,
+            "all_accepted_source_provenance_firm_ids_unique": true,
+            "source_record_counts": {
+              "data/sources/place_details_2026-10-19.json": 101,
+              "data/sources/place_details_discovery_2026-10-19.json": 274,
+              "data/review/2026-10-19-refresh/discovery-gasteria.json": 1
+            },
+            "rich_counts": {
+              "records_raw": 376,
+              "records_loaded": 376,
+              "facts_raw": 2984,
+              "facts_loaded": 2984,
+              "menus_raw": 3673,
+              "menus_loaded": 3673,
+              "average_checks_raw": 183,
+              "average_checks_loaded": 183
+            },
+            "all_original_new157_records_retained_unchanged": true,
+            "raw_extra_records": 274,
+            "raw_extra_facts": 2524,
+            "raw_extra_averages": 163,
+            "sidecar_sha256": "1afa1b34e9456b504b0b3a24707853ffd7e91ba6305b0be3d1ccc0852ac47d4e",
+            "builder_sha256": "26f3ad7102f69d8e4992c5cbc8b8ab7ce63d7588bd093323c99edb74a6efa2b3"
+          }
+        },
+        "prior_lifecycle_geometry_inputs_byte_identical": {
+          "passed": true,
+          "detail": {
+            "pois.json": true,
+            "quarantine.json": true,
+            "fact_reviews.json": true,
+            "field_evidence.json": true,
+            "quality_overrides.json": true,
+            "city_services.json": true,
+            "pois_leisure_lifecycle_geometry_and_all_non_details_fields_unchanged": true
+          }
+        }
+      },
+      "source_review_open_findings": [
+        {
+          "severity": "Important",
+          "field": "duplicates",
+          "message": "Accepted physical firm IDs attached to multiple canonical rows",
+          "duplicates": {
+            "70000001028263064": [
+              "osm:node/6404769885",
+              "overture:00442c70-6f40-40c8-96c1-d1233e6362a1"
+            ],
+            "70000001045449144": [
+              "osm:node/11290690869",
+              "overture:55289b63-c24f-4524-9d96-5d7a0d612ea0"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

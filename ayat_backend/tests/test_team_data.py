@@ -194,14 +194,19 @@ def test_real_master_is_preserved_and_all_source_ids_remain_available():
     pois, gazetteer, manifest = load_team_snapshot(path, quarantine_path=root / "data/quarantine.json")
     assert manifest["canonical_count"] == 14006
     assert manifest["raw_source_ids_count"] == manifest["preserved_source_ids_count"] == 14607
-    assert manifest["adapted_count"] == len(pois) == 2745
-    assert len(gazetteer) == 14001
+    assert manifest["adapted_count"] == len(pois) == 2742
+    assert len(gazetteer) == 13999
     assert manifest["archived_canonical_ids"] == ["citypass:119","citypass:142","citypass:94",
-        "overture:3105494a-8102-4450-9d78-12ca652ce768", "overture:5a405c91-d5d6-47ee-9b9b-546134f0505d"]
+        "overture:3105494a-8102-4450-9d78-12ca652ce768", "overture:5a405c91-d5d6-47ee-9b9b-546134f0505d",
+        "overture:a4de9304-82bf-4d82-b811-1a18cc29a44e", "overture:dc97b064-be10-46d8-9168-76343e2e115d"]
     assert manifest["excluded_by_reason"] == {
-        "origin_only_category": 11246, "quarantine": 11, "unverified_playground": 3, "suspicious_classification": 1,
+        "origin_only_category": 11246, "quarantine": 14, "unverified_playground": 3, "suspicious_classification": 1,
     }
     assert manifest["quarantine_unmatched_ids"] == []
+    # The current directory classifies Loft Park as a lottery club. Its name
+    # remains a usable origin, while food recommendations must withhold it.
+    assert "osm:node/13448013130" not in {p["id"] for p in pois}
+    assert "osm:node/13448013130" in {p["id"] for p in gazetteer}
     assert hashlib.sha256(path.read_bytes()).hexdigest() == before
 
 

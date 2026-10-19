@@ -44,6 +44,7 @@ def main():
     quarantine=read(handle.path/"quarantine.json",[])
     closed={r["id"] for r in quarantine if r.get("reason_code")=="confirmed_permanent_closure"}
     moved={r["id"] for r in quarantine if r.get("reason_code")=="service_catalog_only"}
+    classification_held={r["id"] for r in quarantine if r.get("reason_code")=="source_classification_conflict"}
     gaps, counts, denominators, food_counts = [],Counter(),Counter(),Counter()
     reviewed_prior={r["canonical_id"] for r in reviews.get("reviews",[]) if r.get("status")=="accepted"}
     for row in rows:
@@ -77,12 +78,18 @@ def main():
             "has_prior_accepted_review":row["id"] in reviewed_prior})
     audit=read(RUN/"source-audit/summary.json",{})
     services=read(handle.path/"city_services.json",{})
-    new_reviewed=set(details)|closed|moved
+    new_reviewed=set(details)|closed|moved|classification_held
     all_reviewed=new_reviewed|reviewed_prior
     queue_events=[]
-    for line in (OUT/"discovery-queue-events.jsonl").read_text().splitlines() if (OUT/"discovery-queue-events.jsonl").exists() else []:
+    event_path=OUT/"discovery-checkpoint-events.jsonl"
+    if not event_path.exists():
+        event_path=OUT/"discovery-queue-events.jsonl"
+    for line in event_path.read_text().splitlines() if event_path.exists() else []:
         try:queue_events.append(json.loads(line))
         except ValueError:pass
+    discovery=read(OUT/"discovery-checkpoint-summary.json",{})
+    branch_reviews=read(OUT/"discovery-followup-branch-reviews.json",{})
+    followup=read(OUT/"discovery-followup-extraction.json",{})
     summary={"generated_at":datetime.now(ZoneInfo("Asia/Almaty")).isoformat(),"snapshot_version":handle.version,
         "canonical_sha256":digest,"canonical_records":len(rows),"preserved_source_ids":view["preserved_source_ids_count"],
         "active_recommendation_records":len(pois),"active_origin_records":len(gaz),
@@ -93,6 +100,7 @@ def main():
         "no_data_after_completed_search":0,"completed_exhaustive_searches":0,
         "new_confirmed_closed_exclusions":len(closed),"new_rich_branches":len(details),
         "service_offers_moved_to_service_catalog":len(moved),
+        "source_classification_conflict_exclusions":len(classification_held),
         "without_address_phone_website_hours":sum(r["missing_basic_visit_data"] for r in gaps),
         "rich_counts":{k:sum(len(r[k]) for r in details.values()) for k in ("facts","menu_items","prices")},
         "menu_price_channels":dict(Counter((m.get("price") or {}).get("channel","unknown_full_price") for r in details.values() for m in r["menu_items"])),
@@ -104,14 +112,23 @@ def main():
         "source_audit":{k:audit.get(k) for k in ("network_pass_status","target_urls","known_url_targets_with_bounded_outcomes",
             "deferred_retry_count","fetch_statuses","fresh_exact_branch_identity_rows","incomplete_branch_checks_rows",
             "fetched_sources_without_branch_match_rows","listed_website_rows")},
-        "discovery_queue":{"events":len(queue_events),"actual_requests":sum(e.get("actual_request",False) for e in queue_events),
-            "outcomes":dict(Counter(e["outcome"] for e in queue_events)),"rows_with_events":len({e["canonical_id"] for e in queue_events})},
+        "discovery_queue":{"pass_status":discovery.get("pass_status","in_progress"),
+            "launch_rows":discovery.get("rows"),"events":len(queue_events),
+            "actual_requests":sum(e.get("actual_request",False) for e in queue_events),
+            "outcomes":dict(Counter(e["outcome"] for e in queue_events)),"rows_with_events":len({e["canonical_id"] for e in queue_events}),
+            "branch_fact_verification_complete":False,
+            "reviewed_nearby_candidates":len(branch_reviews.get("decisions",[])),
+            "accepted_followup_branches":followup.get("accepted_additive_records",0)},
         "validation":read(RUN/"verification.json",{"status":"final verification pending"})}
     (OUT/"refresh-summary.json").write_text(encode(summary))
     with (OUT/"record-gaps.jsonl").open("w") as f:
         for row in gaps:f.write(json.dumps(row,ensure_ascii=False)+"\n")
     field_table="\n".join(f"| {k} | {counts[k]:,} | {denominators[k]:,} |" for k in sorted(denominators))
     price_table="\n".join(f"| {k} | {v['n']} | {v['mean']:g} | {v['median']:g} | {v['q25']:g} |" for k,v in summary["price_benchmarks_expo"].items())
+    closure_table="\n".join(f"| {r.get('source_name',r['id'])} | {r.get('source_address','')} | [источник]({r['evidence_urls'][0]}) — {r.get('evidence_excerpt','явное сообщение о закрытии')} |"
+        for r in quarantine if r.get("reason_code")=="confirmed_permanent_closure")
+    queue_state=("завершён ограниченный проход поиска" if discovery.get("pass_status")=="bounded_discovery_pass_finished"
+                 else "запущена отдельная очередь поиска")
     body=f"""# Обновление базы Smart City: результат и оставшиеся проблемы
 
 Дата отчёта: {summary['generated_at']}. Локальная версия: `{handle.version}`.
@@ -136,6 +153,7 @@ def main():
 | Доказанно «нет информации после завершённого полного поиска» | 0 |
 | Завершён полный поиск по всем источникам для филиала | 0 |
 | Новые исключения по явному сообщению о постоянном закрытии | {len(closed)} |
+| Исключено из рекомендаций из-за подтверждённого конфликта категории, без закрытия | {len(classification_held)} |
 
 «Неполная» запись может содержать правильные название, адрес и телефон, но не иметь подтверждения доступности или меню. Это не означает, что о ней ничего не известно. Число «нет информации» нельзя подменять количеством непроверенных записей. В текущей выдаче {len(pois):,} мест; остальные записи полного каталога преимущественно относятся к типам, не используемым для досуга.
 
@@ -147,16 +165,19 @@ def main():
 
 Автоматический обход нашёл {audit.get('fresh_exact_branch_identity_rows')} точных совпадений идентичности; {audit.get('fetched_sources_without_branch_match_rows')} записей имеют загруженные источники без точного совпадения; {audit.get('incomplete_branch_checks_rows')} проверок филиалов остались незавершёнными. После отдельной проверки 65 из 67 совпадений приняты, два удержаны: Eltaim с неполным адресом, Tehnoinvest с недостаточно подтверждёнными сведениями только в JSON-LD. Эти числа относятся к автоматическому обходу; дополнительные 2ГИС, меню и ручные проверки учтены в обогащении отдельно.
 
-Текущий публичный OSM API не удалось получить для 5 807 исходных объектов: ошибки источников сохранены. Исторический PBF от 17 октября не считается новой проверкой работы предприятий. Для 1 091 заведений питания без сайта запущена отдельная очередь поиска 2ГИС/Bing; Яндекс/Google возвращали 429, DuckDuckGo — проверку человека. Ошибки не обходятся через скрытые API или аккаунты. Контрольная точка очереди и фактические попытки для репозитория: [discovery-checkpoint-summary.json](../data/review/2026-10-19-refresh/discovery-checkpoint-summary.json), [discovery-checkpoint-events.jsonl](../data/review/2026-10-19-refresh/discovery-checkpoint-events.jsonl). Живой журнал и сырые HTTP-кэши продолжают храниться локально; они исключены из Git. Найденные кандидаты не становятся фактами без отдельной проверки.
+Текущий публичный OSM API не удалось получить для 5 807 исходных объектов: ошибки источников сохранены. Исторический PBF от 17 октября не считается новой проверкой работы предприятий. Для {discovery.get('rows',1091)} заведений питания без сайта {queue_state} 2ГИС/Bing: {summary['discovery_queue']['actual_requests']} фактических запросов, {summary['discovery_queue']['outcomes'].get('incomplete_source_error',0)} ошибок источников. Яндекс/Google возвращали 429, DuckDuckGo — проверку человека; блокировки не обходились. Проход двух источников не является полной независимой проверкой филиала: все записи сохраняют незавершённый статус по политике третьего источника, а число доказанных случаев «информации нет» остаётся нулевым. Отдельно рассмотрены {summary['discovery_queue']['reviewed_nearby_candidates']} близких кандидатов; принято {summary['discovery_queue']['accepted_followup_branches']} дополнительных уникальных филиалов. Контрольная точка и фактические попытки: [discovery-checkpoint-summary.json](../data/review/2026-10-19-refresh/discovery-checkpoint-summary.json), [discovery-checkpoint-events.jsonl](../data/review/2026-10-19-refresh/discovery-checkpoint-events.jsonl). Исходный журнал и сырые HTTP-кэши хранятся локально и исключены из Git. Найденные кандидаты не становятся фактами без отдельной проверки.
 
 Полная методика, результаты по категориям и доказательства: [audit-report.md](../data/review/2026-10-19-refresh/audit-report.md), [audit-method.md](../data/review/2026-10-19-refresh/audit-method.md).
 
 ## Закрытые филиалы
 
-1. **Tary, Сыганак 17ф**: [2ГИС](https://2gis.kz/astana/search/Tary) явно помечает этот адрес как закрытый. Ответ 410 карточки сам по себе не использован как доказательство закрытия.
-2. **Joule 27, Мангилик Ел 57А**: [Яндекс Карты](https://yandex.kz/maps/ru/org/joule_27/127662901008/) сообщают о прекращении работы; совпали название, адрес и телефон.
+| Филиал | Адрес | Прямое свидетельство |
+|---|---|---|
+{closure_table}
 
-Оба исключены из активных рекомендаций, карты, индекса и определения текущего местоположения по названию. Исходные записи и причины сохранены: [closed-branches.json](../data/review/2026-10-19-refresh/closed-branches.json). Неполные данные сами по себе не использованы как основание закрытия или удаления.
+Все {len(closed)} филиала исключены из активных рекомендаций, карты, индекса и определения текущего местоположения по названию. Исходные записи и причины сохранены: [closed-branches.json](../data/review/2026-10-19-refresh/closed-branches.json). Неполные данные сами по себе не использованы как основание закрытия или удаления.
+
+Loft Park удержан из рекомендаций из-за отдельного конфликта категории: точная карточка 2ГИС относит его только к лотерейным клубам, а исходный каталог — к кафе. Это не закрытие; исходная запись и возможность использовать место как ориентир сохранены. Решения и доказательства: [discovery-followup-dispositions.json](../data/review/2026-10-19-refresh/discovery-followup-dispositions.json).
 
 Ещё три записи услуг (RedBus, общая экскурсия Астана Опера и теплоходная прогулка CityPass) перенесены из обычных POI в каталог услуг. Они не считаются закрытыми и больше не предлагаются как 15-минутные остановки для фотографии. Здание театра сохранено отдельно; два различных театральных продукта и разные речные программы не объединены.
 
@@ -208,7 +229,7 @@ def main():
 
 ## Проверки и запуск
 
-Итоговые результаты тестов и реальной проверки модели: [verification.json](../eval/runs/2026-10-19-catalog-refresh/verification.json). Бюджет LLM/embeddings общий $0,10; локальный e5 не вызывает платный API. Учёт реальных вызовов: [provider-cost.json](../eval/runs/2026-10-19-remediation/provider-cost.json). Внешняя почта отключена.
+Итоговые результаты тестов и проверок: [verification.json](../eval/runs/2026-10-19-catalog-refresh/verification.json). Четыре реальные проверки внешней модели относятся к предыдущей версии `b479f2445492454782a09e8d95495ae7`; они не переименованы в проверку нового снимка. Последующее обновление проверяется локально с отключёнными провайдерами. Бюджет LLM/embeddings общий $0,10; локальный e5 не вызывает платный API. Учёт реальных вызовов: [provider-cost.json](../eval/runs/2026-10-19-remediation/provider-cost.json). Внешняя почта отключена.
 
 Локальный запуск: `scripts/run_local_integration.sh`, адрес `http://127.0.0.1:8001`. Этот профиль использует реальные данные и серверные шаблоны; оплачиваемая модель проверяется отдельным ограниченным прогоном.
 

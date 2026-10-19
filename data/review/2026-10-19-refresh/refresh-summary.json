@@ -1,25 +1,26 @@
 {
-  "generated_at": "2026-10-19T05:04:13.728077+05:00",
-  "snapshot_version": "b479f2445492454782a09e8d95495ae7",
+  "generated_at": "2026-10-19T11:47:23.849127+05:00",
+  "snapshot_version": "c0d3e2f710f64d399c01c97b853ca05d",
   "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
   "canonical_records": 14006,
   "preserved_source_ids": 14607,
-  "active_recommendation_records": 2745,
-  "active_origin_records": 14001,
+  "active_recommendation_records": 2742,
+  "active_origin_records": 13999,
   "records_missing_any_applicable_field": 14006,
-  "without_new_reviewed_rich_facts": 13900,
-  "without_reviewed_confirmation_this_refresh": 13898,
-  "without_any_curated_review_including_prior": 13876,
+  "without_new_reviewed_rich_facts": 13630,
+  "without_reviewed_confirmation_this_refresh": 13625,
+  "without_any_curated_review_including_prior": 13603,
   "no_data_after_completed_search": 0,
   "completed_exhaustive_searches": 0,
-  "new_confirmed_closed_exclusions": 2,
-  "new_rich_branches": 106,
+  "new_confirmed_closed_exclusions": 4,
+  "new_rich_branches": 376,
   "service_offers_moved_to_service_catalog": 3,
-  "without_address_phone_website_hours": 3415,
+  "source_classification_conflict_exclusions": 1,
+  "without_address_phone_website_hours": 3297,
   "rich_counts": {
-    "facts": 493,
+    "facts": 2984,
     "menu_items": 3673,
-    "prices": 20
+    "prices": 183
   },
   "menu_price_channels": {
     "delivery": 3267,
@@ -29,27 +30,27 @@
   "menu_branches": 32,
   "food_coverage": {
     "branches": 2105,
-    "branches_with_menu_items": 32,
-    "branches_with_average_check": 20
+    "branches_with_average_check": 183,
+    "branches_with_menu_items": 32
   },
   "services": 10,
   "operators": 6,
   "dated_departures": 0,
   "price_benchmarks_expo": {
-    "restaurant": {
-      "n": 8,
-      "mean": 11812.5,
-      "median": 9000.0,
-      "q25": 7000.0,
+    "cafe": {
+      "n": 36,
+      "mean": 4077.78,
+      "median": 3700.0,
+      "q25": 3000.0,
       "radius_m": 5000,
       "basis": "reported_average_check",
       "currency": "KZT"
     },
-    "cafe": {
-      "n": 11,
-      "mean": 3772.73,
-      "median": 3000.0,
-      "q25": 2500.0,
+    "restaurant": {
+      "n": 24,
+      "mean": 10729.17,
+      "median": 10000.0,
+      "q25": 7000.0,
       "radius_m": 5000,
       "basis": "reported_average_check",
       "currency": "KZT"
@@ -57,16 +58,16 @@
   },
   "field_missing_counts": {
     "kid_friendly": 14000,
-    "opening_hours": 11792,
+    "opening_hours": 11578,
     "website": 8219,
     "wheelchair": 13702,
-    "address": 5563,
+    "address": 5408,
     "description": 48,
     "phone": 6120,
     "source_description": 13737,
     "menu_url": 2064,
-    "price_range": 2069,
-    "cuisine": 1823
+    "price_range": 1906,
+    "cuisine": 1709
   },
   "field_applicable_denominators": {
     "address": 14006,
@@ -107,29 +108,39 @@
     "listed_website_rows": 5896
   },
   "discovery_queue": {
-    "events": 1098,
-    "actual_requests": 732,
+    "pass_status": "bounded_discovery_pass_finished",
+    "launch_rows": 1091,
+    "events": 3273,
+    "actual_requests": 2182,
     "outcomes": {
-      "candidates_found": 440,
-      "skipped_provider_block": 366,
-      "incomplete_source_error": 97,
-      "search_returned_no_candidates": 195
+      "candidates_found": 1364,
+      "skipped_provider_block": 1091,
+      "incomplete_source_error": 230,
+      "search_returned_no_candidates": 588
     },
-    "rows_with_events": 366
+    "rows_with_events": 1091,
+    "branch_fact_verification_complete": false,
+    "reviewed_nearby_candidates": 411,
+    "accepted_followup_branches": 270
   },
   "validation": {
-    "checked_at": "2026-10-19T05:03:33.575425+05:00",
-    "snapshot_version": "b479f2445492454782a09e8d95495ae7",
+    "checked_at": "2026-10-19T06:47:10.545095+00:00",
+    "snapshot_version": "c0d3e2f710f64d399c01c97b853ca05d",
     "python": {
       "passed": 1303,
       "skipped": 29,
       "subtests_passed": 12,
-      "log": "final-pytest.log"
+      "seconds": 74.81,
+      "log": "followup-pytest.log",
+      "command": "RAG_SEARCH_MODE=bm25 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 LLM_ENABLED=false EMBED_MODEL=off python -m pytest -q tests data/tests rag/tests backend/tests ayat_backend/tests scripts --pois data/processed/pois.json --live-backend --live-rag"
     },
     "frontend": {
       "passed": 45,
       "build": "passed",
-      "chunk_advisory_kb": 554.84
+      "chunk_advisory_kb": 554.84,
+      "snapshot_version": "b479f2445492454782a09e8d95495ae7",
+      "unchanged_in_owned_followup": true,
+      "rerun_for_followup": false
     },
     "live_model": {
       "passed": true,
@@ -137,18 +148,59 @@
       "execution_kind": "live_http_external_provider",
       "actual_usd_total": 0.031522400000000006,
       "reserved_usd_total": 0.031522400000000006,
-      "cap_usd": 0.1
+      "cap_usd": 0.1,
+      "snapshot_version": "b479f2445492454782a09e8d95495ae7",
+      "rerun_for_followup": false
     },
     "native_edge_ui": {
       "source_meal_query": "honest unknown, EXPO preserved, no cafes falsely matched",
       "redbus": "fares, boarding point, both route names and unconfirmed-current-schedule warning visible",
-      "automation": "CUA accessibility observations on actual local UI; separate mobile route card checks saved by service agent"
+      "automation": "CUA accessibility observations on actual local UI; separate mobile route card checks saved by service agent",
+      "snapshot_version": "b479f2445492454782a09e8d95495ae7",
+      "rerun_for_followup": false
     },
-    "independent_review": "data/review/2026-10-19-refresh/discovery-final-review.json",
+    "independent_review": "data/review/2026-10-19-refresh/discovery-followup-final-index-review.json",
     "limitations": [
-      "29 optional integration/UI checks skipped by pytest profile; recorded native UI and live-model checks are separate.",
-      "Whole catalog structurally audited; most branches not independently verified from all possible sources.",
-      "1091-row source-discovery queue remains active locally; candidates require review before publication."
-    ]
+      "29 optional PostgreSQL/external HTTP/UI checks skipped;7 actual local HTTP provider-off cases recorded separately.",
+      "Whole catalog structurally audited; bounded two-provider discovery finished for1091rows, not independent full verification of every branch.",
+      "Public-source errors230 remain incomplete; Yandex429 prevented third successful source. Zero exhaustive/no-information conclusions.",
+      "Historical4paid-model cases and nativeUI evidence remain labeledb479; no paid model calls repeated for this follow-up.",
+      "Frontend code unchanged in this owned follow-up;45tests/build evidence is historicalb479."
+    ],
+    "discovery_policy_tests": {
+      "passed": 15,
+      "log": "followup-policy-tests.log",
+      "red_green_cases": [
+        "Varying overnight source schedules remain open after midnight",
+        "Physical firm ID in fact/price provenance is found when identity URL is Wolt"
+      ]
+    },
+    "provider_off_runtime": {
+      "passed": true,
+      "cases": 7,
+      "execution_kind": "local_http_all_external_providers_off",
+      "snapshot_version": "c0d3e2f710f64d399c01c97b853ca05d",
+      "external_paid_calls": 0,
+      "report": "followup-offline-runtime.json"
+    },
+    "independent_source_review": "data/review/2026-10-19-refresh/discovery-followup-final-source-review.json",
+    "verification_context": {
+      "strategy": "Export of only staged owned changes over initial pushed baseline; excludes concurrent next-package edits in shared workspace",
+      "base_commit": "24d9a1be3c6496f7093ccbd8b2405f2ba83f66b7",
+      "tested_tree_before_final_reports": "161e279465361b2a9eabdd51faa335f05ac43fe2",
+      "source_hashes": {
+        "data/place_details.py": "d0b54c49702676a76d340467a7621db8d151fc4d2cf3bbd244a58256367b77c4",
+        "data/eligibility.py": "13b1237005eac16eeaadcf0628404d5d833771e2aefc17840977f5a0e3692b3a",
+        "ayat_backend/app/store.py": "77079d641b80650a567b988467b69639cd0cc824395c85566c2039c34338a69f",
+        "ayat_backend/app/evidence.py": "448363ee230903135c508648eb5371e0049883619ad18bf4bcade55d630d1832",
+        "ayat_backend/app/retrieval.py": "bd4114b69fa619d0c36fe36fbb40ba7dcc2075a69a67f771d91c59e7bb858bc6"
+      }
+    },
+    "initial_trial_failure": {
+      "test": "test_search_respects_radius_categories_and_real_ids",
+      "reason": "An initial opt-in trial used the legacy RAG default hybrid mode without its ignored Chroma artifact. The explicit offline profile requires RAG_SEARCH_MODE=bm25.",
+      "resolved_by": "Final full isolated run uses explicit BM25 mode and passed all1303 tests; canonical e5 index separately validated.",
+      "log": "followup-dataset-guards.log"
+    }
   }
 }

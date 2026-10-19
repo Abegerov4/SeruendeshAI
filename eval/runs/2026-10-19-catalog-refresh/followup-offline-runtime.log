@@ -1,0 +1,18 @@
+2026-10-19 11:24:11,720 INFO app.store: store: 2742 POIs, 14022 gazetteer entries, dense=False, events=60
+2026-10-19 11:24:16,086 INFO app.store: store: 2742 POIs, 14022 gazetteer entries, dense=False, events=60
+2026-10-19 11:24:16,252 INFO app.geo: walk graph: 42455 nodes, 122036 edges
+2026-10-19 11:24:16,276 INFO app: ready in 4.5s: 2742 POIs, graph=True, dense=False, llm=False, db=sqlite
+2026-10-19 11:24:16,391 INFO httpx: HTTP Request: GET http://127.0.0.1:59601/api/health "HTTP/1.1 200 OK"
+2026-10-19 11:24:16,556 INFO app.service: recommend id=88491c2de459 lang=ru mode=walk budget=60 items=0 route=False llm=template 161ms
+2026-10-19 11:24:16,556 INFO httpx: HTTP Request: POST http://127.0.0.1:59601/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 11:24:16,634 INFO app.service: recommend id=39b69d554a80 lang=ru mode=walk budget=60 items=0 route=False llm=template 75ms
+2026-10-19 11:24:16,634 INFO httpx: HTTP Request: POST http://127.0.0.1:59601/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 11:24:16,682 INFO app.service: recommend id=4a3bb7a59d04 lang=ru mode=walk budget=60 items=3 route=False llm=template 45ms
+2026-10-19 11:24:16,682 INFO httpx: HTTP Request: POST http://127.0.0.1:59601/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 11:24:16,759 INFO app.service: recommend id=c94d9f704b34 lang=ru mode=walk budget=60 items=1 route=False llm=template 74ms
+2026-10-19 11:24:16,759 INFO httpx: HTTP Request: POST http://127.0.0.1:59601/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 11:24:16,766 INFO httpx: HTTP Request: POST http://127.0.0.1:59601/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 11:24:16,771 INFO httpx: HTTP Request: POST http://127.0.0.1:59601/api/recommend "HTTP/1.1 200 OK"
+2026-10-19 11:24:16,874 INFO app.service: recommend id=8c6dbe1a24cd lang=ru mode=walk budget=60 items=3 route=False llm=template 101ms
+2026-10-19 11:24:16,875 INFO httpx: HTTP Request: POST http://127.0.0.1:59601/api/recommend "HTTP/1.1 200 OK"
+{"passed": true, "cases": 7, "snapshot_version": "c0d3e2f710f64d399c01c97b853ca05d", "failed": []}
