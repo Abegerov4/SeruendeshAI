@@ -1,0 +1,16 @@
+{
+  "observed_at": "2026-10-19T00:01:53.966658+00:00",
+  "session_id": 60592,
+  "status": "running",
+  "total_rows_at_launch": 1091,
+  "rows_started": 330,
+  "actual_requests": 660,
+  "outcomes": {
+    "candidates_found": 392,
+    "skipped_provider_block": 330,
+    "incomplete_source_error": 90,
+    "search_returned_no_candidates": 178
+  },
+  "no_information_confirmed": 0,
+  "exhaustive_search_completed": 0
+}

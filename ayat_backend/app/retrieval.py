@@ -16,14 +16,16 @@ from dataclasses import dataclass, field
 import numpy as np
 from rapidfuzz import fuzz
 
-from app.categories import CATEGORIES, label
-from app.context import Context
-from app.geo import (SLOW_WALK_M_PER_MIN, WALK_M_PER_MIN, WalkGraph, car_minutes, fallback_walk_m, hav_m)
-from app.hours import opening_status
-from app.i18n import t
-from app.query import Parsed
-from app.store import Store, stem_tokens
-from app.textnorm import fold
+from ayat_backend.app.categories import CATEGORIES, label
+from ayat_backend.app.context import Context
+from ayat_backend.app.config import get_settings
+from ayat_backend.app.geo import (SLOW_WALK_M_PER_MIN, WALK_M_PER_MIN, WalkGraph, car_minutes, fallback_walk_m, hav_m)
+from ayat_backend.app.hours import opening_status
+from ayat_backend.app.i18n import t
+from ayat_backend.app.query import Parsed
+from ayat_backend.app.evidence import match_food, price_benchmarks, price_comparison_group
+from ayat_backend.app.store import Store, stem_tokens
+from ayat_backend.app.textnorm import fold
 
 # default pool when the user did not ask for specific place types
 DEFAULT_GROUPS = {"sight", "culture", "nature", "food", "shopping", "quiet", "entertainment"}
@@ -54,6 +56,7 @@ class Plan:
     graph_used: bool = False
     outside_graph: bool = False
     transit: bool = False
+    evidence_date: dt.date | None = None
 
 
 @dataclass
@@ -128,13 +131,16 @@ def compute_reach(store: Store, graph: WalkGraph | None, poi_nodes: np.ndarray |
     limit_m = limit_min * plan.m_per_min
     dist = np.full(store.size, np.inf)
     cand = straight <= limit_m * 1.05
-    if graph is not None and graph.covers(lat0, lon0) and poi_nodes is not None:
-        D, _, _ = graph.from_source(lat0, lon0, limit_m + 200)
+    max_snap = getattr(get_settings(), "route_max_snap_m", 500)
+    origin_snap = float(graph.snap(np.array([lat0]), np.array([lon0]))[0][0]) if graph is not None else float("inf")
+    if graph is not None and graph.covers(lat0, lon0) and poi_nodes is not None and origin_snap <= max_snap:
+        D, _, _ = graph.from_source(lat0, lon0, limit_m + max_snap)
         d = D[poi_nodes] + poi_snap
-        dist = np.where(cand & np.isfinite(d), d, np.inf)
-        plan.graph_used = True
-        # POIs outside the graph area (or on disconnected bits) fall back to the estimate
-        miss = cand & ~np.isfinite(dist) & (poi_snap > 150)
+        network = cand & np.isfinite(d) & (poi_snap <= max_snap)
+        dist = np.where(network, d, np.inf)
+        plan.graph_used = bool(np.any(network))
+        miss = cand & ~network
+        plan.outside_graph = bool(np.any(miss))
     else:
         miss = cand
         plan.outside_graph = True
@@ -144,8 +150,21 @@ def compute_reach(store: Store, graph: WalkGraph | None, poi_nodes: np.ndarray |
     return dist, mins
 
 
+def text_relevance(store: Store, qtext: str, qvec=None):
+    """The same lexical/dense fusion used by runtime and retrieval-only evaluation."""
+    bm = np.asarray(store.bm25.get_scores(stem_tokens(qtext)), dtype=np.float64) if qtext.strip() else np.zeros(store.size)
+    rrf = np.zeros(store.size)
+    for scores in ([bm] + ([store.emb @ qvec] if (store.emb is not None and qvec is not None) else [])):
+        order = np.argsort(-scores)
+        ranks = np.empty(store.size)
+        ranks[order] = np.arange(store.size)
+        rrf += 1.0 / (60 + ranks + 1)
+    return bm, rrf
+
+
 def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Parsed, plan: Plan, ctx: Context,
-         lang: str, qvec: np.ndarray | None, k: int = 10, exclude_keys: set[str] | None = None) -> tuple[list[Cand], list[dict]]:
+         lang: str, qvec: np.ndarray | None, k: int = 10, exclude_keys: set[str] | None = None,
+         target_ids: set[str] | None = None) -> tuple[list[Cand], list[dict]]:
     """Return (top-k candidate cards, considered/rejected list)."""
     req_cats = [c for c in parsed.categories if c in CATEGORIES]
     req_groups = {CATEGORIES[c].group for c in req_cats}
@@ -157,23 +176,39 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
 
     # --- text relevance (BM25 + dense, fused with RRF) over the whole store, cheap at this size
     qtext = " ".join([parsed.search_text, *parsed.keywords])
-    bm = np.asarray(store.bm25.get_scores(stem_tokens(qtext)), dtype=np.float64) if qtext.strip() else np.zeros(store.size)
-    rrf = np.zeros(store.size)
-    for scores in ([bm] + ([store.emb @ qvec] if (store.emb is not None and qvec is not None) else [])):
-        order = np.argsort(-scores)
-        ranks = np.empty(store.size)
-        ranks[order] = np.arange(store.size)
-        rrf += 1.0 / (60 + ranks + 1)
+    bm, rrf = text_relevance(store, qtext, qvec)
 
     exclude_keys = exclude_keys or set()
+    target_ids = target_ids or set()
+    target_idx = {store.by_id[t_] for t_ in target_ids if t_ in store.by_id}
     exact_cnt = {"n": 0}
     ev_by_poi = _events_by_poi(store, ctx, plan)
+    benchmarks = price_benchmarks(store.pois, plan.origin, ctx.now.date()) if any(r.kind == "price" for r in parsed.food_requirements) else {}
 
     def eligible(i: int, t_max: float, relaxed_needs: bool) -> tuple[bool, str | None, dict | None]:
         p = store.pois[i]
         c = CATEGORIES[p["category"]]
-        if not np.isfinite(mins[i]) or mins[i] > t_max:
+        if parsed.food_requirements and not match_food(p, parsed.food_requirements, ctx.now.date(), benchmarks.get(price_comparison_group(p,ctx.now.date()))).matched:
+            return False, t("rej_food_evidence", lang), None
+        is_target = i in target_idx
+        if not np.isfinite(mins[i]) or mins[i] > (plan.budget if is_target else t_max):
             return False, None, None
+        if plan.with_child and c.adult_only:
+            return False, t("rej_kids", lang), None
+        if plan.accessibility and p.get("features", {}).get("wheelchair") == "no":
+            return False, t("rej_access", lang), None
+        if ctx.is_dark and p["category"] in ("park", "garden", "playground") and p.get("features", {}).get("lit") is not True:
+            return False, t("rej_dark", lang), None
+        if ctx.max_outdoor_min == 0 and _is_outdoor(p):
+            return False, t("rej_cold", lang), None
+        if "indoor_only" in plan.filters and _is_outdoor(p):
+            return False, t("rej_indoor", lang), None
+        if plan.mode == "walk" and ctx.max_outdoor_min < 60 and mins[i] > ctx.max_outdoor_min + 5:
+            return False, t("rej_cold", lang), None
+        if is_target:  # the place the user named as a destination: only hours/safety rules apply
+            v, vr = visit_minutes(p["category"], plan.budget, plan.mode)
+            op = opening_status(p, now + dt.timedelta(minutes=float(mins[i])), v, lang, ctx.holiday)
+            return (True, None, op) if op["ok"] else (False, t("rej_closed", lang), op)
         if parsed.avoid and p["category"] in parsed.avoid:
             return False, None, None
         if exclude_keys and mins[i] <= 8 and _is_origin(p["name"], exclude_keys):
@@ -197,16 +232,8 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
                 return False, None, None
             if p["category"] == "restaurant" and not (parsed.night or plan.budget >= 90):
                 return False, None, None
-        if plan.with_child and c.adult_only:
-            return False, t("rej_kids", lang), None
-        if plan.accessibility and p.get("features", {}).get("wheelchair") == "no":
-            return False, t("rej_access", lang), None
-        if ctx.is_dark and p["category"] in ("park", "garden", "playground") and p.get("features", {}).get("lit") is not True:
-            return False, t("rej_dark", lang), None
-        if ctx.max_outdoor_min == 0 and _is_outdoor(p):
-            return False, t("rej_cold", lang), None
-        if plan.mode == "walk" and ctx.max_outdoor_min < 60 and mins[i] > ctx.max_outdoor_min + 5 and not relaxed_needs:
-            return False, t("rej_cold", lang), None
+            if parsed.walk_intent and c.group == "food" and ctx.max_outdoor_min >= 60 and plan.budget < 120:
+                return False, None, None  # "a walk" means walking places, not a café (unless it's cold or long)
         v, vr = visit_minutes(p["category"], plan.budget, plan.mode)
         arrive = now + dt.timedelta(minutes=float(mins[i]))
         op = opening_status(p, arrive, v, lang, ctx.holiday)
@@ -223,7 +250,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         out, rej = [], []
         within = np.isfinite(mins) & (mins <= t_max)
         exact_cnt["n"] = int(np.sum(within & np.isin(store.cats, req_cats))) if req_cats else 0
-        for i in np.nonzero(np.isfinite(mins) & (mins <= t_max))[0]:
+        for i in sorted(set(np.nonzero(np.isfinite(mins) & (mins <= t_max))[0].tolist()) | target_idx):
             ok, why, op = eligible(int(i), t_max, relaxed)
             if ok:
                 out.append((int(i), op))
@@ -233,7 +260,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
 
     t_max = plan.t_max
     pool, rejected = collect(t_max, False)
-    if not pool and req_cats:
+    if not pool and req_cats and not parsed.food_requirements:
         # nothing of the requested type is available now: say so and show what is open instead
         closed_n = sum(1 for i, why in rejected if store.pois[i]["category"] in req_cats)
         plan.relaxations.append(t("note_requested_closed", lang, what=label(req_cats[0], lang), n=closed_n))
@@ -242,7 +269,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         pool, rejected2 = collect(t_max, False)
         rejected += rejected2
     plan.funnel["within_reach"] = int(np.sum(np.isfinite(mins) & (mins <= t_max)))
-    if len(pool) < 3:
+    if len(pool) < 3 and not parsed.food_requirements:
         for factor in (1.5, 2.0):
             t2 = min(plan.t_max * factor, plan.budget * 0.6 if not plan.deadline_min else plan.t_max * factor)
             if t2 <= t_max:
@@ -259,7 +286,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
             plan.filters.append("wheelchair_confirmed")
     plan.funnel["after_filters"] = len(pool)
     plan.t_max = int(t_max)
-    plan.radius_m = int(t_max * plan.m_per_min / (1.28 if plan.mode == "walk" else 1.35))
+    plan.radius_m = int(t_max * plan.m_per_min / 1.28) if plan.mode == "walk" else int(max(t_max - 5, 3) * 41000 / 60 / 1.3 / 1.35)
 
     # --- deadline (flight/train): the place must leave enough time to get back
     cands: list[Cand] = []
@@ -267,19 +294,36 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         p = store.pois[i]
         v, vr = visit_minutes(p["category"], plan.budget, plan.mode)
         c = Cand(idx=i, poi=p, distance_m=int(dist[i]), travel_min=int(mins[i]), visit_min=v, visit_range=vr, opening=op)
+        if plan.deadline_min is None:
+            room = plan.budget - c.travel_min
+            if room < max(5, min(vr[0], 10)) and room < vr[0]:
+                rejected.append((i, t("rej_far", lang, m=c.travel_min)))
+                continue
+            if room < c.visit_min:
+                c.visit_min = int(max(5, room))
+            c.visit_range = (min(vr[0], max(5, room)), min(vr[1], max(5, room)))
         if plan.deadline_min is not None and plan.deadline_back_target is not None:
             back_straight = float(hav_m(p["lat"], p["lon"], *plan.deadline_back_target))
             back = car_minutes(back_straight, ctx.now.hour, ctx.snowing)[1]
-            free = plan.deadline_min - plan.deadline_buffer
+            # The explicit outing budget includes outbound travel, the visit
+            # and the airport/station return, even when the departure is later.
+            free = min(plan.budget, plan.deadline_min - plan.deadline_buffer)
             if c.travel_min + c.visit_min + back > free:
                 if c.travel_min + vr[0] + back <= free:
                     c.visit_min = vr[0]
                 else:
                     rejected.append((i, t("rej_far", lang, m=c.travel_min + back)))
                     continue
+            room = free - c.travel_min - back
+            c.visit_range = (min(vr[0], room), min(vr[1], room))
             c.return_min = back
             leave = ctx.now + dt.timedelta(minutes=free - back)
             c.leave_by = leave.strftime("%H:%M")
+        final_opening = opening_status(p, now + dt.timedelta(minutes=c.travel_min), c.visit_min, lang, ctx.holiday)
+        if not final_opening["ok"]:
+            rejected.append((i, t("rej_closed", lang)))
+            continue
+        c.opening = final_opening
         cands.append(c)
 
     if req_cats:
@@ -287,7 +331,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         if closed_req and not any(c.poi["category"] in req_cats for c in cands) and not plan.relaxations:
             plan.relaxations.append(t("note_requested_closed", lang, what=label(req_cats[0], lang), n=len(closed_req)))
     if not cands:
-        for i, why in rejected[:4]:
+        for i, why in sorted(rejected, key=lambda x: x[0] not in target_idx)[:4]:
             considered.append({"name": store.pois[i]["name"], "reason": why})
         return [], considered
 
@@ -315,6 +359,8 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
                     tag *= 0.8
         if parsed.wants_event and p["id"] in ev_by_poi:
             tag = 1.0
+        if c.idx in target_idx:
+            tag, rt = 1.0, 1.0
         rel = 0.5 * tag + 0.5 * float(rt)
         if p.get("name_auto") and p["category"] != "playground":
             rel *= 0.6  # unnamed squares are fine fillers but rarely the answer
@@ -358,14 +404,16 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         if plan.tourist:
             w["pop"], w["dist"] = 0.25, 0.15
         if plan.accessibility:
-            w["attr"] = 0.3  # first-time visitors: iconic places matter more than the nearest ones
+            w["attr"] = 0.3
+        if plan.t_max <= 12:
+            w["dist"] = max(w["dist"], 0.3)  # "closer" refinement / tiny budgets  # first-time visitors: iconic places matter more than the nearest ones
         c.score = sum(w[k] * parts[k] for k in parts) / sum(w.values())
         parts["cold"] = ctx.max_outdoor_min < 60
         c.parts, c.need_state = parts, ns
 
     cands.sort(key=lambda c: -c.score)
     chosen = _mmr(cands, k, single_cat=len(set(req_cats)) == 1)
-    for i, why in sorted(rejected, key=lambda x: -rrf[x[0]])[:4]:
+    for i, why in sorted(rejected, key=lambda x: (x[0] not in target_idx, -rrf[x[0]]))[:4]:  # requested places first
         considered.append({"name": store.pois[i]["name"], "reason": why})
     plan.funnel["shown"] = 0
     return chosen, considered

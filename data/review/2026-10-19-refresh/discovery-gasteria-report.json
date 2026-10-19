@@ -1,0 +1,21 @@
+{
+  "canonical_id": "osm:node/13173517356",
+  "source_branch": {
+    "canonical_name": "Gasteria",
+    "canonical_address": "ТРЦ MEGA Silk Way, Кабанбай батыр проспект, 62",
+    "source_name": "Gasteria Mega Silk Way",
+    "source_address": "Астана, пр. Кабанбай батыра 62",
+    "source_url": "https://gasteria-mega-silk-way.kamiqr.com/menu/at-place",
+    "branch_confirmed": true,
+    "match_basis": "name_address"
+  },
+  "checked_at": "2026-10-19",
+  "source_updated_at": "2026-04-14T10:57:28.55844505+05:00",
+  "menu_version": 136,
+  "published_items_in_payload": 223,
+  "accepted_current_visible_main_menu_items": 97,
+  "accepted_fields": 6,
+  "held_items": [],
+  "price_channel": "dine_in",
+  "note": "This is the currently served public onsite menu; source update date is retained and no claim of an October menu update is made. No ingredients, dietary labels or serving weights inferred. No combined cutlet/puree meal invented."
+}

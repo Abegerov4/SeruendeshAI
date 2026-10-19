@@ -57,7 +57,7 @@ def make_key(masked_query: str, location: tuple[float, float] | None, now: datet
     raw = json.dumps({
         "q": " ".join(masked_query.lower().split()),
         "loc": [round(location[0], 3), round(location[1], 3)] if location else None,
-        "hour": now.strftime("%Y-%m-%dT%H"),  # часы работы меняются по времени — кэш не дольше часа-слота
+        "now": now.isoformat(),  # exact temporal context; never reuse opening/deadline buckets
         **params,
     }, ensure_ascii=False, sort_keys=True)
     return hashlib.sha256(raw.encode()).hexdigest()

@@ -1,0 +1,59 @@
+{
+  "reason": "source priority answer pending or existing conflict requires explicit resolution",
+  "facts": [
+    {
+      "canonical_id": "osm:node/10295608316",
+      "field": "opening_hours",
+      "value": "Mo-Su 08:00-23:00",
+      "status": "accepted",
+      "fact_status": "source_reported",
+      "source": "operator_self_published",
+      "source_id": "coffeeboom:na-zhes",
+      "source_url": "https://coffeeboom.kz/ru/cf/coffeeshops/na-zhes/",
+      "source_title": "Coffee Boom — пр. Жеңіс, 28",
+      "checked_at": "2026-10-19",
+      "reviewed_by": "codex_primary_source_review",
+      "evidence_excerpt": "The page publishes this schedule.",
+      "evidence_kind": "paraphrase",
+      "scope": "venue",
+      "license": "all_rights_reserved",
+      "reuse_permission": "not_established"
+    },
+    {
+      "canonical_id": "citypass:63",
+      "field": "opening_hours",
+      "value": "Mo-Su 10:00-21:00",
+      "status": "accepted",
+      "fact_status": "source_reported",
+      "source": "venue_self_published",
+      "source_id": "ailand:schedule",
+      "source_url": "https://ailand.kz/ru/schedule-ru/",
+      "source_title": "График работы — Ailand",
+      "checked_at": "2026-10-19",
+      "reviewed_by": "codex_primary_source_review",
+      "evidence_excerpt": "Owner schedule explicitly identifies oceanarium hours.",
+      "evidence_kind": "paraphrase",
+      "scope": "oceanarium_only",
+      "license": "all_rights_reserved",
+      "reuse_permission": "not_established"
+    },
+    {
+      "canonical_id": "osm:node/12293708057",
+      "field": "opening_hours",
+      "value": "Mo-Su 09:00-22:00",
+      "status": "accepted",
+      "fact_status": "source_reported",
+      "source": "mall_host_self_published",
+      "source_id": "mega:restaurants",
+      "source_url": "https://restaurants.mega.kz/ru/?sm=2",
+      "source_title": "MEGA Silk Way — Mega Restaurants",
+      "checked_at": "2026-10-19",
+      "reviewed_by": "codex_primary_source_review",
+      "evidence_excerpt": "The page publishes this schedule.",
+      "evidence_kind": "paraphrase",
+      "scope": "venue",
+      "license": "not_specified",
+      "reuse_permission": "not_established"
+    }
+  ]
+}

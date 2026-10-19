@@ -1,21 +1,14 @@
 name: ayat-backend
-on:
-  push:
-  pull_request:
+on: [push, pull_request]
 jobs:
   backend:
     runs-on: ubuntu-latest
+    env: {LLM_ENABLED: "false", EMBED_MODEL: "off", WEATHER_ENABLED: "false"}
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
-      - name: Install
-        working-directory: ayat_backend
-        run: uv sync --group dev --no-group pipeline
-      - name: Tests (template mode, no secrets needed)
-        working-directory: ayat_backend
-        env: {LLM_ENABLED: "false", EMBED_MODEL: "off", WEATHER_ENABLED: "false"}
-        run: uv run pytest -q
-      - name: Scenario eval (template mode)
-        working-directory: ayat_backend
-        env: {LLM_ENABLED: "false", EMBED_MODEL: "off"}
-        run: uv run python eval/run_eval.py --no-llm --out /tmp/eval.md
+      - run: uv sync --project ayat_backend --group dev --no-group pipeline
+      - run: uv run --project ayat_backend python -m pytest -c pytest.ini ayat_backend/tests -q
+      - name: Scenario evaluation (a semantic failure fails the job)
+        env: {DATABASE_URL: "sqlite:////tmp/ayat-scenario.db"}
+        run: uv run --project ayat_backend python -m ayat_backend.eval.run_eval --no-llm --out /tmp/eval.md

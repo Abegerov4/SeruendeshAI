@@ -1,0 +1,150 @@
+{
+  "input_count": 15226,
+  "output_count": 14006,
+  "merged_count": 601,
+  "rejected_count": 619,
+  "rejections": {
+    "outside_city_boundary": 619
+  },
+  "boundary_mode": "administrative_polygon",
+  "categories": {
+    "attraction": 140,
+    "bar": 308,
+    "cafe": 657,
+    "cinema": 24,
+    "coworking": 1,
+    "gallery": 14,
+    "library": 19,
+    "mall": 116,
+    "monument": 53,
+    "museum": 33,
+    "nightlife": 18,
+    "other": 11247,
+    "park": 78,
+    "playground": 4,
+    "restaurant": 1122,
+    "sport": 163,
+    "theatre": 9
+  },
+  "primary_sources": {
+    "citypass": 16,
+    "dodo": 23,
+    "geonames": 30,
+    "khanshatyr": 2,
+    "marwin": 8,
+    "osm": 5592,
+    "overture": 8158,
+    "sxodim": 12,
+    "wikipedia": 165
+  },
+  "source_description_count": 269,
+  "template_description_count": 13737,
+  "unknown_opening_hours": 11923,
+  "collected_at": "2026-10-19",
+  "quarantine_count": 1,
+  "applied_overrides": [
+    {
+      "id": "osm:node/4361681890",
+      "action": "suppress_cuisine_text"
+    },
+    {
+      "id": "osm:node/4916060859",
+      "action": "suppress_wikimedia"
+    },
+    {
+      "id": "overture:46573c6a-5595-469a-bc39-b28953af231a",
+      "action": "verified_same_place"
+    },
+    {
+      "id": "overture:ed179237-7b99-4c2b-a230-a39ac348a5a8",
+      "action": "quarantine"
+    },
+    {
+      "id": "overture:d7cf8227-6a5d-4079-a09e-bf874cd9e267",
+      "action": "verified_same_place"
+    },
+    {
+      "id": "wikipedia:en:7148733",
+      "action": "verified_same_place"
+    },
+    {
+      "id": "citypass:57",
+      "action": "verified_same_place"
+    }
+  ],
+  "field_counts": {
+    "description": 14006,
+    "opening_hours": 2083,
+    "rating": 0,
+    "wheelchair": 305,
+    "address": 8485,
+    "phone": 7916,
+    "website": 5896,
+    "name_en": 898,
+    "name_kk": 709
+  },
+  "field_coverage_percent": {
+    "description": 100.0,
+    "opening_hours": 14.87,
+    "rating": 0.0,
+    "wheelchair": 2.18,
+    "address": 60.58,
+    "phone": 56.52,
+    "website": 42.1,
+    "name_en": 6.41,
+    "name_kk": 5.06
+  },
+  "source_participation": {
+    "citypass": 17,
+    "dodo": 23,
+    "geonames": 41,
+    "khanshatyr": 4,
+    "marwin": 8,
+    "mega_silkway": 3,
+    "osm": 5592,
+    "overture": 8473,
+    "sxodim": 13,
+    "wikipedia": 188
+  },
+  "leisure_count": 2759,
+  "source_status": {
+    "osm": "ok",
+    "overture": "ok",
+    "wikimedia": "partial",
+    "web": "partial",
+    "geonames": "ok",
+    "directory_join": "ok",
+    "wikimedia_enrichment": "partial",
+    "cached_descriptions": "ok"
+  },
+  "derived_refresh": {
+    "checked_at": "2026-10-19",
+    "published_at": "2026-10-19T04:40:24.602388+05:00",
+    "scope": "Bounded public-source enrichment; whole catalog audited, not every branch independently verified",
+    "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+    "canonical_records": 14006,
+    "active_recommendation_records": 2748,
+    "gazetteer_records": 14004,
+    "preserved_source_ids": 14607,
+    "accepted_detail_branches": 105,
+    "detail_counts": {
+      "facts": 487,
+      "menu_items": 155,
+      "prices": 20
+    },
+    "services": 8,
+    "source_hashes": {
+      "data/sources/place_details_2026-10-19.json": "e678d5897147e948fad17fb6d9d25a429f34cae940257dac3a5d53f99ac2dee8",
+      "data/sources/place_details_discovery_2026-10-19.json": "de51480f568cea39fc061aae20535a59ff2271c824dce84d9f10d9fac7f1c039",
+      "data/sources/city_services_2026-10-19.json": "dba3081029ba6af00b2ce696263f1dc4527f36535239b722832dd320cdae6a28"
+    },
+    "discovery_overlap_held": [],
+    "archived_canonical_ids": [
+      "overture:3105494a-8102-4450-9d78-12ca652ce768",
+      "overture:5a405c91-d5d6-47ee-9b9b-546134f0505d"
+    ],
+    "dense_index_rows": 2748,
+    "dense_index_model": "e5-small",
+    "source_audit": "eval/runs/2026-10-19-catalog-refresh/source-audit/summary.json"
+  }
+}

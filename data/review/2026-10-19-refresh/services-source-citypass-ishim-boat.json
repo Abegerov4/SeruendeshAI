@@ -1,0 +1,94 @@
+{
+  "key": "citypass-ishim-boat",
+  "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+  "checked_at": "2026-10-18T23:55:15.802776+00:00",
+  "status": 200,
+  "final_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+  "response_sha256": "5b52f898015b5f9b2a4a2dfc101f8e76a17638b90241bb0f380d0fe78f495436",
+  "title": "Водные прогулки на теплоходах по реке Ишим — CITYPASS Астана | CITYPASS",
+  "text": "Водные прогулки на теплоходах по реке Ишим — CITYPASS Астана | CITYPASS Астана Главная О городе Достопримечательности Пункты продаж Персональные гиды FAQ Создать мою поездку Рус Рус Создать мою поездку Рус Главная Достопримечательности CityPass Пункты продаж FAQ Правила оплаты Возврат покупок Проверка карты Персональные гиды О городе Новости Документы туристам Личный кабинет ID-PASS Публичная оферта Политика конфиденциальности Астана Алматы ChinaPass Достопримечательности CityPass Пункты продаж FAQ Правила оплаты Возврат покупок Проверка карты Персональные гиды О городе Новости Документы туристам Личный кабинет ID-PASS Публичная оферта Политика конфиденциальности Главная Список объектов Водные прогулки на теплоходах по реке Ишим Водные прогулки на теплоходах по реке Ишим На набережной перед Дворцом Школьников Показать на карте 1 / 9 Водные прогулки на теплоходах по реке Ишим были запущены в 2008 году и до каждый год церемонию открытия ждут и взрослые и дети. Это очень удачное место для признаний в любви – и не только своей половинке, но и маме, Родине, всему человечеству. Рядом расположен Центральный парк, где можно покататься на аттракционах с детьми, устроить велопрогулку или просто отдохнуть на свежем воздухе. Благодаря CityPASS, Вы можете посетить незабываемый тур по г.Астана с прогулкой на речном трамвае по реке Ишим. Вы ознакомитесь с главными достопримечательностями столицы и насладитесь панорамным видом города с рек Ишим. Во время речной прогулки с теплохода открываются отличные виды на столичную набережную. Прогулочный маршрут составляет 18,8 километра, которая длится около 45 минут и проходит по самым живописным местам города - от автомобильного моста на проспекте Сары-Арка до моста возле гипермаркета \"Рамстор \". Пассажирский маршрут насчитывает 6 остановок: Центральный парк, микрорайон Чубары, сквер \"Времена года\", микрорайон \"Самал\", памятник Кенесары и отель \"Radisson\". Вам понравится # Достопримечательность # Семейный # Сегодня доступно # Astana Pass # Nomad Pass # Музей # Astana Museum Pass free with CityPass Монумент «Астана-Байтерек» Бульвар Нуржол, 14 Показать на карте Узнать больше # Музей # Развлечения # Astana Pass # Astana Museum Pass # Nomad Pass # Сегодня доступно free with CityPass Международный центр искусственного интеллекта Alem.AI Проспект Мәңгілік Ел, 55/1 Узнать больше # Экскурсии # Сегодня доступно # Astana Pass # Nomad Pass # Семейный free with CityPass Экскурсия на двухэтажном автобусе Red Bus площадь Монумента Байтерек Показать на карте Узнать больше # Развлечения # Семейный # Сегодня доступно # Astana Pass # Nomad Pass free with CityPass 5000.00 без CityPass Океанариум «Ailand» Шоссе Коргалжын, 2 Показать на карте Узнать больше Достопримечательности CityPass Пункты продаж FAQ Правила оплаты Возврат покупок Проверка карты Персональные гиды О городе Новости Документы туристам Личный кабинет ID-PASS Публичная оферта Политика конфиденциальности info@citypass.kz +7 777 555 75 75 Достопримечательности CityPass Пункты продаж FAQ Правила оплаты Возврат покупок Проверка карты Персональные гиды О городе Новости Документы туристам Личный кабинет ID-PASS Публичная оферта Политика конфиденциальности info@citypass.kz +7 777 555 75 75 ©2026 CityPass. Все права защищены",
+  "json_ld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CITYPASS Kazakhstan",
+      "url": "https://astana.citypass.kz",
+      "logo": "https://astana.citypass.kz/images/icons/logo.svg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-777-555-75-75",
+        "email": "info@citypass.kz",
+        "contactType": "customer service",
+        "availableLanguage": [
+          "Russian",
+          "Kazakh",
+          "English"
+        ]
+      },
+      "sameAs": [
+        "https://instagram.com/citypasskz",
+        "https://facebook.com/citypasskz",
+        "https://youtube.com/citypasskz"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "пр. Республика, 34А, оф. 602",
+        "addressLocality": "Астана",
+        "addressCountry": "KZ"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "CITYPASS Kazakhstan",
+      "url": "https://astana.citypass.kz/ru",
+      "inLanguage": "ru",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://astana.citypass.kz/ru/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristAttraction",
+      "name": "Водные прогулки на теплоходах по реке Ишим",
+      "description": "Водные прогулки на теплоходах по реке Ишим были запущены в 2008 году и до каждый год церемонию открытия ждут и взрослые и дети.Это очень удачное место для признаний в любви – и не только своей половинке, но и маме, Родине, всему человечеству.Рядом расположен Центральный парк, где можно покататься на",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "На набережной перед Дворцом Школьников",
+        "addressLocality": "Астана",
+        "addressCountry": "KZ"
+      },
+      "image": "https://ais.citypass.kz/media/attractions/esil.jpg",
+      "url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://astana.citypass.kz/ru/kupit-citypass"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Список объектов",
+          "item": "https://astana.citypass.kz/ru/attractions"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Водные прогулки на теплоходах по реке Ишим",
+          "item": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim"
+        }
+      ]
+    }
+  ]
+}

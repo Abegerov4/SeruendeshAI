@@ -1,0 +1,7 @@
+.place-food-facts{margin:15px 0 5px;border-top:1px solid var(--line,#e0e6d8);padding-top:12px;font-size:12px;line-height:1.5}
+.food-check{margin:0 0 13px}.food-check>div:first-child,.food-menu li>div:first-child{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.food-check strong{font-size:12px;font-weight:550}.food-price{font-size:13px;font-weight:600;white-space:nowrap}.food-price small{display:block;text-align:right;font-size:10px;font-weight:400;color:#5a6b5f}
+.food-source{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;font-size:10px;color:#5a6b5f;margin-top:4px}.food-source a{text-decoration:underline;text-underline-offset:2px}.food-source time{color:#788474}
+.place-food-facts h4{font-size:12px;font-weight:550;margin:10px 0 7px}.food-menu{list-style:none;margin:0;padding:0}.food-menu li{padding:8px 0;border-top:1px solid #e8ecdf}.food-menu li>div:first-child>span:first-child{max-width:70%}
+.food-menu-note{color:#788474;font-size:10px;line-height:1.5;margin:8px 0 12px}
+.food-venue-facts{border-top:1px solid var(--line,#e0e6d8);padding-top:10px}.food-venue-facts summary{font-size:11px;cursor:pointer}.food-venue-facts summary:focus-visible{outline:3px solid #9cbf45;outline-offset:4px}.food-venue-facts dl{margin:10px 0}.food-venue-facts dl>div{margin-bottom:10px}.food-venue-facts dt{color:#788474;font-size:11px}.food-venue-facts dd{margin:2px 0 0;font-size:12px}

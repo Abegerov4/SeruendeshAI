@@ -1,6 +1,6 @@
 # Автосбор POI Астаны
 
-Данные роли `02_data_rag`. Количество записей не ограничено. Скрипты собирают именованные места, сохраняют исходные идентификаторы и ссылки, фильтруют по административной границе Астаны и объединяют дубли. Основной runtime — `backend/ + rag/`; BM25 проверен на актуальном наборе, dense/hybrid требует отдельного построения и проверки. [Результат прохода 19 октября](../docs/data_quality_improvements_2026-10-19.md).
+Данные роли `02_data_rag`. Основной UI-runtime — `ayat_backend/`, дополнительный — `backend/ + rag/`. Оба применяют единые quarantine и fact reviews. Master содержит 14 006 записей и 14 607 source ID; безопасный набор рекомендаций — 2 750 мест. Исходный master сохранён без изменения байтов. [Результаты устранения аудита](../docs/audit_remediation_2026-10-19.md).
 
 Рекомендуется Python 3.12. В текущей рабочей папке среда `.venv` уже подготовлена. Установка с нуля через доступный `uv`:
 
@@ -58,3 +58,162 @@ GeoNames дополняет ориентиры и названия физиче�
 ```
 
 Сборка и проверки не выполняют коммитов и пушей.
+
+### Versioned publication and offline review
+
+`python -m data.run_pipeline --offline --raw-dir PATH --output-dir PATH`
+now builds a complete immutable bundle under `OUTPUT/.snapshots/VERSION`, checks
+source-ID preservation, 90% count/category retention and required source health,
+and atomically replaces `OUTPUT/current` only after all checks. Rejections retain
+a `*.rejected.json` explanation and staged evidence. A partial bootstrap is labelled
+partial; a partial required source cannot replace an existing usable snapshot.
+Existing fixed exports remain available for explicit legacy consumers. On a new
+output directory, compatibility file symlinks follow `current`; runtime readers
+must still bind a version to avoid separate reads straddling a promotion.
+
+Python APIs:
+
+- `data.snapshot.publish_snapshot(processed_dir, artifacts, required_sources=(), approved_removed_ids=(), approved_removed_sidecars=None, fault=None)`
+  returns `SnapshotHandle(path, version, manifest)`. `artifacts` maps flat filenames
+  to JSON values, UTF-8 strings or bytes. POIs, leisure, source manifest and stats
+  are mandatory. Source removal requires an explicit reviewed ID list; deliberate
+  large category/count changes require a separately reviewed new baseline.
+- `data.snapshot.resolve_snapshot(processed_dir, legacy=False)` resolves once and
+  verifies all file hashes. No current pointer means legacy fixed exports;
+  a corrupt active bundle fails rather than falling back silently.
+- `rag.retriever.catalog()` binds the process's search, map/ID and origin catalog
+  to one version. The full `pois` catalog retains origin-only records; `eligible`
+  is a separate index set. Restart the process to adopt a promoted version.
+- `ayat_backend.app.store.load_store()` freezes POIs, reviews, gazetteer, river
+  and events from the selected version; `manifest.snapshot_path` identifies the
+  same graph/dense sidecars for runtime startup. `DATA_SNAPSHOT_MODE=legacy`
+  explicitly selects fixed files. Never mutate a published version in place.
+
+Both runtimes use `data.eligibility` for normalized review IDs, origin-only /
+suspicious classification policy and conflict masking. The canonical files and
+all source IDs remain unchanged. Unlicensed source narrative is withheld from
+derived publication until its specific reuse terms and attribution are reviewed.
+Hours evidence contains source ID/URL, acquisition, source revision and check
+dates separately; normalization dates do not establish checked freshness.
+
+Generate review queues without network calls:
+
+```sh
+python -m data.review --as-of 2026-10-19 --output-dir data/review/2026-10-19
+```
+
+An optional `--raw-dir` reads original cached candidates to recover legacy field
+provenance. The command emits reproducible `quality_review.json` and
+`field_evidence.json`: five scenario curator samples, true/false/unknown/conflicting
+field states, freshness work, license holds, classification reviews, explicit
+keep/merge/unresolved duplicate decisions and graph coverage/component diagnostics.
+`confirmed` means an attributed source assertion; it does not imply a recent
+human check. `data/duplicate_decisions.json` records evidence-backed decisions.
+These diagnostics do not prove an entrance, accessible crossing, bridge or venue
+is usable today. Pending source and field checks remain pending.
+
+### Curator accepted-fact overlay (no canonical rewrite)
+
+`fact_reviews.json` beside `pois.json` is an optional, version-bound overlay. Both
+runtimes call `data.eligibility.apply_fact_reviews(rows, payload,
+canonical_sha256=SHA256_OF_ORIGINAL_POIS_BYTES)`. The publisher validates this
+schema/hash before pointer replacement. A stale overlay fails closed. Publish a
+new bundle containing the unchanged POI bytes, all existing sidecars, and the
+review overlay; restart consumers. Never edit a published bundle in place.
+
+```json
+{
+  "schema_version": 1,
+  "canonical_sha256": "exact SHA256 of unchanged pois.json bytes",
+  "reviews": [{
+    "canonical_id": "osm:way/230401645",
+    "field": "opening_hours",
+    "value": "source-backed literal schedule",
+    "status": "accepted",
+    "source": "official_venue",
+    "source_id": "official:stable-page-identifier",
+    "source_url": "https://venue.example/hours",
+    "checked_at": "2026-10-19",
+    "acquired_at": "2026-10-19T12:00:00+05:00",
+    "source_updated_at": null,
+    "reviewed_by": "curator identity",
+    "evidence_excerpt": "short exact supporting source excerpt"
+  }]
+}
+```
+
+The example is a schema template, **not an accepted fact**. `status` can be
+`accepted`, `pending`, or `rejected`; only accepted records change the derived
+view. Accepted facts require source/source ID, HTTP(S) URL, ISO check date,
+reviewer and supporting excerpt. One accepted decision per canonical ID/field is
+allowed. All identifiers must exist. Supported fields: `opening_hours`,
+`wheelchair` (`yes`/`limited`/`no`), `kid_friendly` (boolean), `category`, `name`,
+`aliases`, `name_en`, `name_kk`,
+`internet_access`, `power_supply`, `socket`, `charging_station`, `indoor`,
+`entrance`, `kids_area`, `lit`. False facts are literal `false` or `no`, never
+inferred from missing evidence. Pending unknowns remain unknown.
+
+Existing disputes remain masked unless the accepted decision also includes
+`"resolves_conflicts": true`, a `resolution_reason`, and `resolved_source_ids`
+covering **every** disputed source ID for that field. Original values/disputes
+remain under `canonical_*`; source_records and IDs are preserved. Review metadata
+and accepted field evidence remain attached. The overlay does not authorize
+publishing unlicensed narrative or establish route/entrance accessibility.
+
+
+Publication must preserve any prior `quarantine.json`, `quality_overrides.json`,
+`field_evidence.json` and `fact_reviews.json`; omitting one rejects the new version
+and leaves the current pointer unchanged. To deliberately retire a sidecar, pass
+`approved_removed_sidecars={"filename.json": {"reason": "review rationale",
+"reviewed_by": "curator", "reviewed_on": "YYYY-MM-DD",
+"evidence_urls": ["https://supporting.example/review"]}}`. The approval is
+recorded verbatim in the bundle manifest. Do not drop a hash-bound overlay during
+refresh without a reviewed retirement or an explicitly rebound replacement.
+
+Accepted `category` values must belong to `data.collect.normalize.CATEGORIES`.
+Accepted `name`, `name_en` and `name_kk` are literal nonempty names of at most 300
+characters, without markup/control characters or surrounding whitespace.
+`aliases` is a list of 1–50 such names, unique ignoring case. Their original
+values remain under `canonical_category`, `canonical_name`, `canonical_aliases`;
+source records/IDs and master bytes are retained. These identity changes require
+the same accepted source, URL, check date, reviewer and excerpt as every fact.
+
+A Wi-Fi conflict can originate from `amenity_facts` plus
+`conflicting_internet_access`, even without a `field_conflicts` entry. Explicit
+resolution must list every prior internet-access source ID as well as any field
+conflict IDs. Only a valid accepted resolution clears that one effective conflict
+flag; original quality flags and amenity assertions remain auditable under
+`canonical_quality_flags` and `canonical_amenity_facts`. Unrelated flags survive.
+
+### Source checks and canonical dense index (2026-10-19)
+
+`review/2026-10-19/scenario-verification.json` records30 source-reported places
+(six each for walk, cafe/work, child, tourist, evening), source URLs and limits.
+`processed/fact_reviews.json` contains62 accepted runtime fields and4 unresolved
+schedule reviews (`status: disputed` with attributed `reports`, date/reviewer/reason).
+Disputed fields are withheld by both runtimes. Six exact CoffeeBoom branches have
+reported WLAN; sockets and quietness remain unknown. Published descriptions/images
+were not copied from these rights-reserved sources. Source checks are not onsite
+verification. The remaining catalog has not been manually verified.
+
+The accepted baseline is published through `processed/current` as an immutable,
+hash-checked bundle. `source_manifest.json` retains its original collection status;
+this is not a claim that all sources were freshly recollected. A rejected offline
+partial rebuild was not promoted. Runtimes bind POIs, reviews, events and graph to
+one version on startup; restart to adopt a newly published bundle.
+
+Primary e5-small index:2750x384, local ONNX embeddings, no paid embedding calls.
+`canonical_index_manifest.json` binds ordered IDs, document hash, model/dimension,
+policy hashes and vector artifact hash. Stale/corrupt indexes fall back to BM25.
+To stage a new index for an active bundle:
+
+```bash
+python -m ayat_backend.pipeline.canonical_embed --model e5-small --output-dir /tmp/canonical-index-stage
+```
+
+Do not edit an active bundle. Publish its new reviewed artifacts plus staged
+`manifest.json` renamed to `canonical_index_manifest.json` and its vector artifact
+through `data.snapshot.publish_snapshot`; normal refreshes without a rebuilt
+matching index use BM25. Historical fixed files remain available in explicit
+`DATA_SNAPSHOT_MODE=legacy` mode. A missing sidecar cannot silently erase a prior
+quarantine/fact-review policy.

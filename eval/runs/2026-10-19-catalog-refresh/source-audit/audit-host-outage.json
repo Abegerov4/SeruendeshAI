@@ -1,0 +1,887 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-18T23:38:16.260320+00:00",
+  "network_pass_status": "partial_host_outage",
+  "stop_reason": "Parent explicitly requested stopping redundant same-host retry tail after repeated wa.me timeouts; graceful SIGINT completed, all earlier observations retained.",
+  "retry_cutoff": "2026-10-18T23:15:00+00:00",
+  "deferred_retry_count": 35,
+  "deferred_domains": {
+    "wa.me": 35
+  },
+  "latest_host_failures": [
+    {
+      "url": "http://wa.me/77018035111",
+      "started_at": "2026-10-18T23:28:24.119151+00:00",
+      "cache_hit": false,
+      "robots": {
+        "url": "https://api.whatsapp.com/robots.txt",
+        "http_status": 200,
+        "checked_at": "2026-10-18T23:32:01.681293+00:00",
+        "crawl_delay": null,
+        "status": "blocked_robots"
+      },
+      "status": "blocked_robots",
+      "redirect_chain": [
+        {
+          "url": "http://wa.me/77018035111",
+          "http_status": 301,
+          "resolved_ip": "57.144.113.32",
+          "content_type": "text/plain",
+          "headers": {
+            "location": "https://wa.me/77018035111",
+            "content-type": "text/plain",
+            "content-length": "0"
+          }
+        },
+        {
+          "url": "https://wa.me/77018035111",
+          "http_status": 302,
+          "resolved_ip": "57.144.113.32",
+          "content_type": "text/html; charset=\"utf-8\"",
+          "headers": {
+            "location": "https://api.whatsapp.com/send/?phone=77018035111&text&type=phone_number&app_absent=0",
+            "content-type": "text/html; charset=\"utf-8\"",
+            "content-length": "0"
+          }
+        }
+      ],
+      "final_url": "https://api.whatsapp.com/send/?phone=77018035111&text&type=phone_number&app_absent=0",
+      "fetched_at": "2026-10-18T23:37:42.083173+00:00"
+    },
+    {
+      "url": "http://wa.me/77012130333",
+      "started_at": "2026-10-18T23:28:24.119123+00:00",
+      "cache_hit": false,
+      "robots": {
+        "url": "https://api.whatsapp.com/robots.txt",
+        "http_status": 200,
+        "checked_at": "2026-10-18T23:32:01.681293+00:00",
+        "crawl_delay": null,
+        "status": "blocked_robots"
+      },
+      "status": "blocked_robots",
+      "redirect_chain": [
+        {
+          "url": "http://wa.me/77012130333",
+          "http_status": 301,
+          "resolved_ip": "57.144.113.32",
+          "content_type": "text/plain",
+          "headers": {
+            "location": "https://wa.me/77012130333",
+            "content-type": "text/plain",
+            "content-length": "0"
+          }
+        },
+        {
+          "url": "https://wa.me/77012130333",
+          "http_status": 302,
+          "resolved_ip": "57.144.113.32",
+          "content_type": "text/html; charset=\"utf-8\"",
+          "headers": {
+            "location": "https://api.whatsapp.com/send/?phone=77012130333&text&type=phone_number&app_absent=0",
+            "content-type": "text/html; charset=\"utf-8\"",
+            "content-length": "0"
+          }
+        }
+      ],
+      "final_url": "https://api.whatsapp.com/send/?phone=77012130333&text&type=phone_number&app_absent=0",
+      "fetched_at": "2026-10-18T23:37:43.132978+00:00"
+    },
+    {
+      "url": "http://wa.me/77025545683",
+      "started_at": "2026-10-18T23:28:24.119233+00:00",
+      "cache_hit": false,
+      "robots": {
+        "url": "https://api.whatsapp.com/robots.txt",
+        "http_status": 200,
+        "checked_at": "2026-10-18T23:32:01.681293+00:00",
+        "crawl_delay": null,
+        "status": "blocked_robots"
+      },
+      "status": "blocked_robots",
+      "redirect_chain": [
+        {
+          "url": "http://wa.me/77025545683",
+          "http_status": 301,
+          "resolved_ip": "57.144.113.32",
+          "content_type": "text/plain",
+          "headers": {
+            "location": "https://wa.me/77025545683",
+            "content-type": "text/plain",
+            "content-length": "0"
+          }
+        },
+        {
+          "url": "https://wa.me/77025545683",
+          "http_status": 302,
+          "resolved_ip": "57.144.113.32",
+          "content_type": "text/html; charset=\"utf-8\"",
+          "headers": {
+            "location": "https://api.whatsapp.com/send/?phone=77025545683&text&type=phone_number&app_absent=0",
+            "content-type": "text/html; charset=\"utf-8\"",
+            "content-length": "0"
+          }
+        }
+      ],
+      "final_url": "https://api.whatsapp.com/send/?phone=77025545683&text&type=phone_number&app_absent=0",
+      "fetched_at": "2026-10-18T23:37:44.167448+00:00"
+    },
+    {
+      "url": "http://wa.me/77057543223?countryName=KZ&countryCode=7&phoneNumber=7057543223",
+      "started_at": "2026-10-18T23:28:24.119346+00:00",
+      "cache_hit": false,
+      "robots": {
+        "url": "https://api.whatsapp.com/robots.txt",
+        "http_status": 200,
+        "checked_at": "2026-10-18T23:32:01.681293+00:00",
+        "crawl_delay": null,
+        "status": "blocked_robots"
+      },
+      "status": "blocked_robots",
+      "redirect_chain": [
+        {
+          "url": "http://wa.me/77057543223?countryName=KZ&countryCode=7&phoneNumber=7057543223",
+          "http_status": 301,
+          "resolved_ip": "57.144.113.32",
+          "content_type": "text/plain",
+          "headers": {
+            "location": "https://wa.me/77057543223?countryName=KZ&countryCode=7&phoneNumber=7057543223",
+            "content-type": "text/plain",
+            "content-length": "0"
+          }
+        },
+        {
+          "url": "https://wa.me/77057543223?countryName=KZ&countryCode=7&phoneNumber=7057543223",
+          "http_status": 302,
+          "resolved_ip": "57.144.113.32",
+          "content_type": "text/html; charset=\"utf-8\"",
+          "headers": {
+            "location": "https://api.whatsapp.com/send/?phone=77057543223&text&type=phone_number&app_absent=0",
+            "content-type": "text/html; charset=\"utf-8\"",
+            "content-length": "0"
+          }
+        }
+      ],
+      "final_url": "https://api.whatsapp.com/send/?phone=77057543223&text&type=phone_number&app_absent=0",
+      "fetched_at": "2026-10-18T23:37:45.218686+00:00"
+    },
+    {
+      "url": "http://wa.me/77026287488",
+      "started_at": "2026-10-18T23:28:24.119261+00:00",
+      "cache_hit": false,
+      "robots": {
+        "url": "http://wa.me/robots.txt",
+        "http_status": 200,
+        "checked_at": "2026-10-18T23:29:54.379416+00:00",
+        "crawl_delay": null,
+        "status": "allowed"
+      },
+      "status": "network_error",
+      "error": "TimeoutError",
+      "error_detail": "",
+      "fetched_at": "2026-10-18T23:37:56.024202+00:00"
+    }
+  ],
+  "deferred": [
+    {
+      "url": "http://wa.me/77025555490",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.115098+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77025555490",
+        "started_at": "2026-10-18T23:14:02.748808+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.115098+00:00",
+        "requested_url": "http://wa.me/77025555490"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77027023715/",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.116330+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77027023715/",
+        "started_at": "2026-10-18T23:14:02.748834+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.116330+00:00",
+        "requested_url": "http://wa.me/77027023715/"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77053364969",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.117216+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77053364969",
+        "started_at": "2026-10-18T23:14:02.748847+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.117216+00:00",
+        "requested_url": "http://wa.me/77053364969"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77055154433",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.118094+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77055154433",
+        "started_at": "2026-10-18T23:14:02.748860+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.118094+00:00",
+        "requested_url": "http://wa.me/77055154433"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77055705036",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.118670+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77055705036",
+        "started_at": "2026-10-18T23:14:02.748873+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.118670+00:00",
+        "requested_url": "http://wa.me/77055705036"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77057100047",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.119214+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77057100047",
+        "started_at": "2026-10-18T23:14:02.748886+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.119214+00:00",
+        "requested_url": "http://wa.me/77057100047"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77073508390",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.120574+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77073508390",
+        "started_at": "2026-10-18T23:14:02.748920+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.120574+00:00",
+        "requested_url": "http://wa.me/77073508390"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77075441071",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.121225+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77075441071",
+        "started_at": "2026-10-18T23:14:02.748933+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.121225+00:00",
+        "requested_url": "http://wa.me/77075441071"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77075504024",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.121859+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77075504024",
+        "started_at": "2026-10-18T23:14:02.748947+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.121859+00:00",
+        "requested_url": "http://wa.me/77075504024"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77076007071",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.122585+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77076007071",
+        "started_at": "2026-10-18T23:14:02.748960+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.122585+00:00",
+        "requested_url": "http://wa.me/77076007071"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77076060495",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.123615+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77076060495",
+        "started_at": "2026-10-18T23:14:02.748974+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.123615+00:00",
+        "requested_url": "http://wa.me/77076060495"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77085056154/",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.124347+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77085056154/",
+        "started_at": "2026-10-18T23:14:02.748988+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.124347+00:00",
+        "requested_url": "http://wa.me/77085056154/"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77085711921",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.125023+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77085711921",
+        "started_at": "2026-10-18T23:14:02.749003+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.125023+00:00",
+        "requested_url": "http://wa.me/77085711921"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77472221716",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.125654+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77472221716",
+        "started_at": "2026-10-18T23:14:02.749016+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.125654+00:00",
+        "requested_url": "http://wa.me/77472221716"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77475141914",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.127504+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77475141914",
+        "started_at": "2026-10-18T23:14:02.749045+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.127504+00:00",
+        "requested_url": "http://wa.me/77475141914"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77475650195",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.128126+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77475650195",
+        "started_at": "2026-10-18T23:14:02.749059+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.128126+00:00",
+        "requested_url": "http://wa.me/77475650195"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77477157715",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.128797+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77477157715",
+        "started_at": "2026-10-18T23:14:02.749072+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.128797+00:00",
+        "requested_url": "http://wa.me/77477157715"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77710353817",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.129455+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77710353817",
+        "started_at": "2026-10-18T23:14:02.749085+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.129455+00:00",
+        "requested_url": "http://wa.me/77710353817"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77716836379",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.131014+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77716836379",
+        "started_at": "2026-10-18T23:14:02.749112+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.131014+00:00",
+        "requested_url": "http://wa.me/77716836379"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77750789346",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.132028+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77750789346",
+        "started_at": "2026-10-18T23:14:02.749138+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.132028+00:00",
+        "requested_url": "http://wa.me/77750789346"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77752277747",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.132691+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77752277747",
+        "started_at": "2026-10-18T23:14:02.749151+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.132691+00:00",
+        "requested_url": "http://wa.me/77752277747"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77752596263",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.133170+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77752596263",
+        "started_at": "2026-10-18T23:14:02.749165+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.133170+00:00",
+        "requested_url": "http://wa.me/77752596263"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77756591088",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.133680+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77756591088",
+        "started_at": "2026-10-18T23:14:02.749178+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.133680+00:00",
+        "requested_url": "http://wa.me/77756591088"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77758988496",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.134158+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77758988496",
+        "started_at": "2026-10-18T23:14:02.749191+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.134158+00:00",
+        "requested_url": "http://wa.me/77758988496"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77759486569",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.134517+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77759486569",
+        "started_at": "2026-10-18T23:14:02.749206+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.134517+00:00",
+        "requested_url": "http://wa.me/77759486569"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77767482821",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.497009+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77767482821",
+        "started_at": "2026-10-18T23:14:02.749253+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.497009+00:00",
+        "requested_url": "http://wa.me/77767482821"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77769774783",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.507785+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77769774783",
+        "started_at": "2026-10-18T23:14:02.749269+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.507785+00:00",
+        "requested_url": "http://wa.me/77769774783"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77775950575",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.516455+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77775950575",
+        "started_at": "2026-10-18T23:14:02.749283+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.516455+00:00",
+        "requested_url": "http://wa.me/77775950575"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77777777777",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.523259+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77777777777",
+        "started_at": "2026-10-18T23:14:02.749296+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.523259+00:00",
+        "requested_url": "http://wa.me/77777777777"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/77780565252",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.529170+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/77780565252",
+        "started_at": "2026-10-18T23:14:02.749326+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.529170+00:00",
+        "requested_url": "http://wa.me/77780565252"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/87002886943",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.531299+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/87002886943",
+        "started_at": "2026-10-18T23:14:02.749355+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.531299+00:00",
+        "requested_url": "http://wa.me/87002886943"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/87004201895",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.531702+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/87004201895",
+        "started_at": "2026-10-18T23:14:02.749368+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.531702+00:00",
+        "requested_url": "http://wa.me/87004201895"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/87075938793",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.533279+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/87075938793",
+        "started_at": "2026-10-18T23:14:02.749395+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.533279+00:00",
+        "requested_url": "http://wa.me/87075938793"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/87479158086",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.533987+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/87479158086",
+        "started_at": "2026-10-18T23:14:02.749409+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.533987+00:00",
+        "requested_url": "http://wa.me/87479158086"
+      },
+      "status": "retry_not_completed_host_outage"
+    },
+    {
+      "url": "http://wa.me/87781118355",
+      "previous_status": "incomplete_robots_unavailable",
+      "previous_fetched_at": "2026-10-18T23:14:17.535430+00:00",
+      "previous_observation": {
+        "url": "http://wa.me/87781118355",
+        "started_at": "2026-10-18T23:14:02.749422+00:00",
+        "cache_hit": false,
+        "robots": {
+          "url": "http://wa.me/robots.txt",
+          "checked_at": "2026-10-18T23:14:13.906217+00:00",
+          "status": "incomplete_robots_unavailable",
+          "error": "TimeoutError"
+        },
+        "status": "incomplete_robots_unavailable",
+        "fetched_at": "2026-10-18T23:14:17.535430+00:00",
+        "requested_url": "http://wa.me/87781118355"
+      },
+      "status": "retry_not_completed_host_outage"
+    }
+  ]
+}

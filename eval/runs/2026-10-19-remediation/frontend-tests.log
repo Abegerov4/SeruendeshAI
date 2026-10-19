@@ -1,0 +1,33 @@
+
+> seruendesh-web@0.1.0 test
+> node --test tests/*.test.js
+
+WebSocket server error: Port 24678 is already in use
+✔ real trust panel links the actual article and license beside the excerpt attribution (103.408459ms)
+✔ missing metadata defaults to an empty attribution list and publishes no source link (0.398708ms)
+✔ an older response without attribution does not publish a Wikipedia excerpt (0.085333ms)
+✔ wheelchair yes is labelled without inventing steps or an OSM field source (0.28025ms)
+✔ wheelchair limited is labelled without inventing steps or an OSM field source (0.240125ms)
+✔ wheelchair no is labelled without inventing steps or an OSM field source (0.200792ms)
+✔ coordinates are rounded to ~100 m before sending (1.868666ms)
+✔ untouched UI defaults do not override the text; refinements are sent (0.214833ms)
+✔ API recommendation maps to a card with honest labels (0.510542ms)
+✔ plan diff and totals use route when present, alternatives otherwise (0.319291ms)
+✔ guest favourites join the first account without duplicating server favourites (1.135792ms)
+✔ logout clears account favourites before a different account logs in (0.509333ms)
+✔ switching accounts hides the previous list while the new list is loading (0.125542ms)
+✔ a delayed saved response from the previous account cannot mix lists or upload cards (0.1035ms)
+✔ a saved request completed after logout cannot replace new guest favourites (0.087458ms)
+✔ local additions and removals survive an older response for the same account (0.11075ms)
+✔ failed loading keeps the current account edits and remains isolated after logout (0.103542ms)
+✔ a server-restored saved place renders the real card with its category icon (94.795541ms)
+✔ older saved snapshots render with a fallback icon and safe empty amenities (1.611167ms)
+✔ real auth transitions update the rendered saved page without transferring the previous account cards (7.558208ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 280.611167

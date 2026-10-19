@@ -138,6 +138,10 @@ def _normalize_one(raw, collected_at):
         poi["amenity_facts"] = facts
     poi["raw_tags"] = deepcopy(raw.get("raw_tags") or {})
     poi["source_records"] = deepcopy(raw.get("source_records") or [_record({**raw, "source": source})])
+    from data.provenance import source_field_evidence
+    evidence = source_field_evidence(raw)
+    if evidence:
+        poi["field_evidence"] = evidence
     for key in ("wikidata_ids", "wikidata_descriptions", "description_attribution", "source_refs", "aliases", "raw_taxonomy",
                 "wikipedia_attribution", "description_url", "description_license", "coordinate_source_id", "coordinate_source_url"):
         if raw.get(key):
@@ -242,7 +246,7 @@ def _merge(primary, secondary):
     names = [*primary.get("_merged_names", []), *secondary.get("_merged_names", [])]
     names += [p[k] for p in (primary, secondary) for k in ("name", "name_en", "name_kk") if p.get(k)]
     primary["_merged_names"] = sorted(set(names))
-    for field in ("amenity_facts", "held_descriptions"):
+    for field in ("amenity_facts", "held_descriptions", "field_evidence"):
         for fact in secondary.get(field, []):
             if fact not in primary.setdefault(field, []):
                 primary[field].append(deepcopy(fact))
@@ -330,7 +334,7 @@ def normalize_candidates(candidates: list[dict], boundary: dict | None = None,
         normalized.append(poi)
     normalized.sort(key=lambda p: (-SOURCE_PRIORITY.get(p["source"], 70),
                                   -sum(v is not None for k, v in p.items()
-                                       if k not in {"amenity_facts", "held_descriptions", "description_lang"}),
+                                       if k not in {"amenity_facts", "held_descriptions", "description_lang", "field_evidence"}),
                                   p["id"], json.dumps(p, ensure_ascii=False, sort_keys=True)))
     results, grid, identities = [], defaultdict(list), {}
     merged = 0

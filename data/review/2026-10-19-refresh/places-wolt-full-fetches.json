@@ -1,0 +1,870 @@
+[
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/luckee-yu-mega-silk-way",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/luckee-yu-mega-silk-way",
+    "started_at": "2026-10-18T23:46:28.936237+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/luckee-yu-mega-silk-way",
+    "bytes_retained": 2013422,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:46:34.779397+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/60357c0401e2a3afbb04ac3691ff2dac86ccb79b080ce46df59e89582857c20d-3f6fc3691dd001c270c07c3cfd4de8f347347864ec6e18152c2204b4e943fa4c.body",
+    "raw_sha256": "3f6fc3691dd001c270c07c3cfd4de8f347347864ec6e18152c2204b4e943fa4c",
+    "canonical_id": "overture:cf63d9e5-9ee7-4c6a-b37e-d50a27245de5"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/ocean-basket-mega-silk-way",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/ocean-basket-mega-silk-way",
+    "started_at": "2026-10-18T23:46:28.936304+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/ocean-basket-mega-silk-way",
+    "bytes_retained": 2221740,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:46:39.187828+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/0dbc2757801546a5f17808f78fb6713bc00938a29092d03c6dd75231265ddd88-f4e7a195153d2d1cc36802d1aa606d0a63f0a669e208f4e9a127502af6bc1b00.body",
+    "raw_sha256": "f4e7a195153d2d1cc36802d1aa606d0a63f0a669e208f4e9a127502af6bc1b00",
+    "canonical_id": "overture:00442c70-6f40-40c8-96c1-d1233e6362a1"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/coco-mega-silk-way12",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/coco-mega-silk-way12",
+    "started_at": "2026-10-18T23:46:28.936277+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/coco-mega-silk-way12",
+    "bytes_retained": 1755439,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:46:42.994224+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/71d31d7ebb7728be19b7afa9e61388511d4c80f79df2223e2505d87729c9b303-90a890d1f244df090fce0bbc896841b3e4b5cf40cc544dbbb066c5295dfaaa7d.body",
+    "raw_sha256": "90a890d1f244df090fce0bbc896841b3e4b5cf40cc544dbbb066c5295dfaaa7d",
+    "canonical_id": "osm:node/13397061028"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/rumi-megasilkway",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/rumi-megasilkway",
+    "started_at": "2026-10-18T23:46:28.935294+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/rumi-megasilkway",
+    "bytes_retained": 1665914,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:46:46.621294+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/55bf2e6a86e70277ab4527b99b4c5be33c173af2af7743b4b5065f110dfa4881-80ac6bb5a81b6218a4380c03df1f745a76c00d545a15ff99389e35893201e728.body",
+    "raw_sha256": "80ac6bb5a81b6218a4380c03df1f745a76c00d545a15ff99389e35893201e728",
+    "canonical_id": "overture:38122d40-1d49-4e81-8427-0c49b65114cf"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/hardees-expo-mall-01",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/hardees-expo-mall-01",
+    "started_at": "2026-10-18T23:46:28.936328+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/hardees-expo-mall-01",
+    "bytes_retained": 2227698,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:46:50.924954+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/b174960806562008600d8ca11630619946cbd1a878f68f8ca99bc9f43b706874-b03c683f6eef70bba70c02f754279263f0b68e4ed3e5b871f81ff2dea56c24a3.body",
+    "raw_sha256": "b03c683f6eef70bba70c02f754279263f0b68e4ed3e5b871f81ff2dea56c24a3",
+    "canonical_id": "overture:5a97a4a2-0118-4f8e-9ad6-9557bcb16665"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/daredzhani-mega-silk-way",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/daredzhani-mega-silk-way",
+    "started_at": "2026-10-18T23:46:28.936348+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/daredzhani-mega-silk-way",
+    "bytes_retained": 1807355,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:46:54.296459+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/e5b7013505d1adafca560387025e89b53e7e9d036245a5d66c37fa807770b453-8cb73095cb2b46b313808c04fc1c1393941bc28130e305b4cd398aa50bbd7582.body",
+    "raw_sha256": "8cb73095cb2b46b313808c04fc1c1393941bc28130e305b4cd398aa50bbd7582",
+    "canonical_id": "osm:node/12093489321"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/saladbar",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/saladbar",
+    "started_at": "2026-10-18T23:46:28.936367+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/saladbar",
+    "bytes_retained": 1435979,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:46:58.207658+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/6b38d4bbfbaecddfca80990dadaedb05071b86fa7fe6d36889be50763b593fab-a6182259fab69432d98d658a0dc2962b2b0ea73fe477bd0f9e5664babb2d8d7c.body",
+    "raw_sha256": "a6182259fab69432d98d658a0dc2962b2b0ea73fe477bd0f9e5664babb2d8d7c",
+    "canonical_id": "overture:3dc1ffcd-bab2-4735-bf5e-e2a7c614a292"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/wallstreet-restaurantbar",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/wallstreet-restaurantbar",
+    "started_at": "2026-10-18T23:46:28.936403+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/wallstreet-restaurantbar",
+    "bytes_retained": 1819276,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:02.338503+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/d5109ad53a11975e36030cb4ba0e93a43ddf35789b7776540b3621390b33dff4-58177a018da37853f2ddd72614916fb61f6902ff0d119df73cecf2cac69ca7e0.body",
+    "raw_sha256": "58177a018da37853f2ddd72614916fb61f6902ff0d119df73cecf2cac69ca7e0",
+    "canonical_id": "overture:17c01d0f-b2ba-4b19-bc52-00162d5daaca"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/home-macaron",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/home-macaron",
+    "started_at": "2026-10-18T23:46:28.936424+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/home-macaron",
+    "bytes_retained": 1680607,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:06.078636+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/6b140933f3a57cf44fa9bb904accf811511a1197fc3ce8330fac99520ea4588e-f60f0857b7618f44618673aab5e28ce0f6e8d375c714c9878482edcd83eb6aab.body",
+    "raw_sha256": "f60f0857b7618f44618673aab5e28ce0f6e8d375c714c9878482edcd83eb6aab",
+    "canonical_id": "overture:19a2719f-3e04-43e1-a045-77ebcaf6bd6c"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/tanuki-nur-sultan",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/tanuki-nur-sultan",
+    "started_at": "2026-10-18T23:46:28.936441+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/tanuki-nur-sultan",
+    "bytes_retained": 2989813,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:09.997136+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/b3ae7782a990ebd6f3c574122e399bc52e692d6a88c66e04abd9d86528c49e9a-592e29c4108c2509ced071f0bf0348c52c720f4e9f55df6e67db8d4e0b56aee4.body",
+    "raw_sha256": "592e29c4108c2509ced071f0bf0348c52c720f4e9f55df6e67db8d4e0b56aee4",
+    "canonical_id": "osm:node/10211901020"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/okadzaki-mangilik-el",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/okadzaki-mangilik-el",
+    "started_at": "2026-10-18T23:46:28.936478+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/okadzaki-mangilik-el",
+    "bytes_retained": 2591201,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:13.898877+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/29d1b42bc33fa0ca2ab2a1e10ebf5372c997a1549497449c50878058f4ccae15-a1599ee57d3b0ad1366dc63fc2d0be24c6ab5d475a8f0ba2c6ae3b958682d2bf.body",
+    "raw_sha256": "a1599ee57d3b0ad1366dc63fc2d0be24c6ab5d475a8f0ba2c6ae3b958682d2bf",
+    "canonical_id": "overture:b2a982e2-540f-4f2a-9910-1e17cd26d931"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/meatbeer",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/meatbeer",
+    "started_at": "2026-10-18T23:46:28.936458+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/meatbeer",
+    "bytes_retained": 2404623,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:18.601376+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/0b9106779c91196c130d7efbd323720dbf19a6c44d2eff3c3d7e9dba4ba8ce40-93cbe476341639f59aaaf28a5ed15d84b40e1055b5eaf320803bdd248b2fe9c7.body",
+    "raw_sha256": "93cbe476341639f59aaaf28a5ed15d84b40e1055b5eaf320803bdd248b2fe9c7",
+    "canonical_id": "overture:59cea02e-7e38-4fb2-ad1c-ff9b1bd3c5d6"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/doner-20",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/doner-20",
+    "started_at": "2026-10-18T23:46:28.936496+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/doner-20",
+    "bytes_retained": 1604571,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:22.570445+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/bdf83bb0553fbd6a6a7f2ea52ee8469514daf0f527dba2c987138b8d23ad7d02-e9559b587af19be26de2f29c20659865426547e18c9d3bc644e6ba9dfc4438f9.body",
+    "raw_sha256": "e9559b587af19be26de2f29c20659865426547e18c9d3bc644e6ba9dfc4438f9",
+    "canonical_id": "overture:28829958-7ed6-453d-86d4-9c09d890775e"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/discovery-coffee-mangilik-el",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/discovery-coffee-mangilik-el",
+    "started_at": "2026-10-18T23:46:28.936512+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/discovery-coffee-mangilik-el",
+    "bytes_retained": 1450104,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:26.554885+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/a99d92a2026f719d33e2b92c9633f8b925a9ae971e431c8e4ffa55a61ae03b23-3175c9d24572f136f928c1ed00149d00539b3d816484a452e6926a058ae12daa.body",
+    "raw_sha256": "3175c9d24572f136f928c1ed00149d00539b3d816484a452e6926a058ae12daa",
+    "canonical_id": "osm:node/12990081501"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/sushiman-tse",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/sushiman-tse",
+    "started_at": "2026-10-18T23:46:28.936530+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/sushiman-tse",
+    "bytes_retained": 3471785,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:31.128303+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/18ad51ed720cd3aa2fdc2fa848d40219ae058f51abcb4b89a211dc7c48c1a469-6ebc2a17fc6aede6bde97f382bd5d9e2236be8e6535cf522250e47670a08acae.body",
+    "raw_sha256": "6ebc2a17fc6aede6bde97f382bd5d9e2236be8e6535cf522250e47670a08acae",
+    "canonical_id": "overture:a75bc1c1-1527-487f-871b-bb0a4c3512d7"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/farsh-burger-mega-silk-way",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/farsh-burger-mega-silk-way",
+    "started_at": "2026-10-18T23:46:28.936385+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/farsh-burger-mega-silk-way",
+    "bytes_retained": 1674420,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:35.054837+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/af9f740c2da5841bd2fc27f2e972ae8fa369e51fef81e90f69b478940fc6a53b-3db99d99c7649e7f79a318173e506b09917e8528d2987dfbdfd96580fba5f7a4.body",
+    "raw_sha256": "3db99d99c7649e7f79a318173e506b09917e8528d2987dfbdfd96580fba5f7a4",
+    "canonical_id": "osm:node/9490539961"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/veggie-house-green-mall",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/veggie-house-green-mall",
+    "started_at": "2026-10-18T23:46:28.936567+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/veggie-house-green-mall",
+    "bytes_retained": 2083044,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:39.428194+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/7ea2a2e4fdc43ab7646d4b489667262ac31f92fca342cd3c4b3af1e22a579a6b-8dd51045afdbb8c52a9e2017f41cdd51aedd9b4883cf3cb4709bbfcf9d7b3204.body",
+    "raw_sha256": "8dd51045afdbb8c52a9e2017f41cdd51aedd9b4883cf3cb4709bbfcf9d7b3204",
+    "canonical_id": "osm:node/10861996205"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/espresso-bar-expo",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/espresso-bar-expo",
+    "started_at": "2026-10-18T23:46:28.936549+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/espresso-bar-expo",
+    "bytes_retained": 1614825,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:43.106504+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/70633541129f7795b91f145ee8214a02d2546b1372cd2fee7c349d1e3cae1065-8ed1ee0f652e3207cfb163a0ccb69d81607192f2a3fe9acd5d8c132091010beb.body",
+    "raw_sha256": "8ed1ee0f652e3207cfb163a0ccb69d81607192f2a3fe9acd5d8c132091010beb",
+    "canonical_id": "overture:b0d26f91-135b-4ee0-bb0e-1de57b965856"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/leto-cafe-mangilik-el",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/leto-cafe-mangilik-el",
+    "started_at": "2026-10-18T23:46:28.936650+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/leto-cafe-mangilik-el",
+    "bytes_retained": 1858437,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:47.131139+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/f132a6babadb4ee1275105a81456573ee924b613e2a77b0565bf3c54255397ff-73dfaba818c51ae75ce2df7a82ad9245a2a075befa1f733586f1773570360364.body",
+    "raw_sha256": "73dfaba818c51ae75ce2df7a82ad9245a2a075befa1f733586f1773570360364",
+    "canonical_id": "osm:node/13681674667"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/friends-breakfast",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/friends-breakfast",
+    "started_at": "2026-10-18T23:46:28.936585+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/friends-breakfast",
+    "bytes_retained": 1931543,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:52.823458+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/a75abaa87225503be1164d3481e8e13b7b89418a80bc57e3282674589702e62d-8cd8089a060fc8202733a1c7312e2b531ba577efa8a66885b354bb3e76678da8.body",
+    "raw_sha256": "8cd8089a060fc8202733a1c7312e2b531ba577efa8a66885b354bb3e76678da8",
+    "canonical_id": "overture:110cdef1-c975-47af-958e-bc74d2b25473"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/meatpoint",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/meatpoint",
+    "started_at": "2026-10-18T23:46:28.936671+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/meatpoint",
+    "bytes_retained": 2005031,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:47:56.687102+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/bbe182f91dd45dc0c2f3b8b77af8a622f72e22e32f87018833416f96084b4c96-5acbdf75da6fc09614ccd4daa2974f50abc78fea4640fa80bc014718bf36a866.body",
+    "raw_sha256": "5acbdf75da6fc09614ccd4daa2974f50abc78fea4640fa80bc014718bf36a866",
+    "canonical_id": "overture:a6363e48-45b6-426d-97e3-3771483c92c3"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/tlp-coffee",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/tlp-coffee",
+    "started_at": "2026-10-18T23:46:28.936688+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/tlp-coffee",
+    "bytes_retained": 1472955,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:48:00.259675+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/606091452792b8223abcd246191bfe55e8bcf307f6b2deaf47c8816e6ac90c2f-43d391af5e5cd48f798c6a32842892b5fe6a9eae406cc8b916454d70551bf6e6.body",
+    "raw_sha256": "43d391af5e5cd48f798c6a32842892b5fe6a9eae406cc8b916454d70551bf6e6",
+    "canonical_id": "osm:node/11290690869"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/hardees-sauran",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/hardees-sauran",
+    "started_at": "2026-10-18T23:46:28.936707+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/hardees-sauran",
+    "bytes_retained": 2234686,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:48:04.614239+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/f1ef0da858c53bcd613c26c75e73a23c8eebd7ffc2439c4e109ae82b715c7294-747bb67e4a55fcaa6f12fe57eaf61bb2d4511521a21f4655a46ea71f6ab42687.body",
+    "raw_sha256": "747bb67e4a55fcaa6f12fe57eaf61bb2d4511521a21f4655a46ea71f6ab42687",
+    "canonical_id": "overture:60482543-0503-4b83-a5a0-9e7e0afd4979"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/delishnsu",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/delishnsu",
+    "started_at": "2026-10-18T23:46:28.936725+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/delishnsu",
+    "bytes_retained": 2541850,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:48:08.809513+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/de1423f45b3d84b324d74bc7a1bd7757d52cc2e3a8a9a04e0c16c54b15cd2c3b-e07e15a9d61f0f692b72b93bbd6f5db5d1aa68482cd0b8a674fce22ca008e459.body",
+    "raw_sha256": "e07e15a9d61f0f692b72b93bbd6f5db5d1aa68482cd0b8a674fce22ca008e459",
+    "canonical_id": "osm:node/10248180510"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/butchers-street-mangilik-el",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/butchers-street-mangilik-el",
+    "started_at": "2026-10-18T23:46:28.936759+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/butchers-street-mangilik-el",
+    "bytes_retained": 1559208,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:48:12.607443+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/a7c1daa20c797a12f41c022c306e4891ffa00ed89422817fb1686d4905b0fd69-7211081ac445a136211e386a0eec8ca726fa5c91fd42c1cc52ac623b583f5a08.body",
+    "raw_sha256": "7211081ac445a136211e386a0eec8ca726fa5c91fd42c1cc52ac623b583f5a08",
+    "canonical_id": "osm:node/6680302780"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/noble-cafe",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/noble-cafe",
+    "started_at": "2026-10-18T23:46:28.936741+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/noble-cafe",
+    "bytes_retained": 1458824,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:48:16.183090+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/bdc362b28604edc7264baa464fdcf45421ad43d26b1c481e9e867b0ed3a57c7c-033988886ebbb163f501cf44d6cad79164d7baba295784fcf247df014270065a.body",
+    "raw_sha256": "033988886ebbb163f501cf44d6cad79164d7baba295784fcf247df014270065a",
+    "canonical_id": "osm:node/14104582301"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/koktem",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/koktem",
+    "started_at": "2026-10-18T23:46:28.936799+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/koktem",
+    "bytes_retained": 2145515,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:48:20.376613+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/4b1e738bcebb9b8af8bd8594924b43c1b0f8f2f2f673e688281c37752ef5483b-f065e8a9e7e5a300bf0dac401132263fc1f59db2e179a3abaf84ea241607f02f.body",
+    "raw_sha256": "f065e8a9e7e5a300bf0dac401132263fc1f59db2e179a3abaf84ea241607f02f",
+    "canonical_id": "overture:22ad98d6-faf7-4c60-b761-82371ea7424d"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/bookish-cafe",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/bookish-cafe",
+    "started_at": "2026-10-18T23:46:28.936779+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/bookish-cafe",
+    "bytes_retained": 1900468,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:48:24.191685+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/9d419219ac4b30d220487d3c99074161a944dd4a5d7e5898f5f29b156d653dcd-07af471b54892777ff72a8df7947aff623b239fa2fa8fc7e2a5fd985cd7a3448.body",
+    "raw_sha256": "07af471b54892777ff72a8df7947aff623b239fa2fa8fc7e2a5fd985cd7a3448",
+    "canonical_id": "overture:b106bd1c-dce7-4194-8960-930132cd8dde"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/aura-verdant-mangilik",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/aura-verdant-mangilik",
+    "started_at": "2026-10-18T23:46:28.936833+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/aura-verdant-mangilik",
+    "bytes_retained": 2842459,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:48:28.351827+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/a47817fe1ec53818f83097b6fefe601efeb8f5fb6463f45bd6bd88e141bc7863-bb0ba3cb29f5820fc632994c0fcdd9f7ef38d54132a132ec68c8972f8bfb5067.body",
+    "raw_sha256": "bb0ba3cb29f5820fc632994c0fcdd9f7ef38d54132a132ec68c8972f8bfb5067",
+    "canonical_id": "overture:a923ce3d-a6ff-4321-ba5c-7364f9a4065a"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/qaganat-dostyk-ast",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/qaganat-dostyk-ast",
+    "started_at": "2026-10-18T23:46:28.936851+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/qaganat-dostyk-ast",
+    "bytes_retained": 2011770,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:48:31.973372+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/0979c3354c5162f70f15e595c5e7c58d3dd12c89c651e738aea7eec7ac358af1-1cbb9347641756389a02aac3594a1c91c0aaa946bbf854448c0fdea6ee4d6d46.body",
+    "raw_sha256": "1cbb9347641756389a02aac3594a1c91c0aaa946bbf854448c0fdea6ee4d6d46",
+    "canonical_id": "osm:node/14089471172"
+  },
+  {
+    "url": "https://wolt.com/en/kaz/nur-sultan/restaurant/turandot-kerey-zhanibek",
+    "requested_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/turandot-kerey-zhanibek",
+    "started_at": "2026-10-18T23:46:28.936816+00:00",
+    "cache_hit": false,
+    "robots": {
+      "url": "https://wolt.com/robots.txt",
+      "http_status": 200,
+      "checked_at": "2026-10-18T23:46:30.424149+00:00",
+      "crawl_delay": null,
+      "status": "allowed"
+    },
+    "http_status": 200,
+    "resolved_ip": "13.225.103.127",
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    },
+    "status": "successful_fetch",
+    "redirect_chain": [],
+    "final_url": "https://wolt.com/en/kaz/nur-sultan/restaurant/turandot-kerey-zhanibek",
+    "bytes_retained": 2099874,
+    "body_complete": true,
+    "fetched_at": "2026-10-18T23:48:35.860720+00:00",
+    "raw_cache": "data/review/2026-10-19-refresh/places-wolt-full-cache/4ee8c3a6551220413778d62cdd88f294dac043e343a62ede1b6fbda553c97426-a66df9cb899c51fa7a91858a7bbdf16dc9ce54a0c8e36d4e5208da0913da7a03.body",
+    "raw_sha256": "a66df9cb899c51fa7a91858a7bbdf16dc9ce54a0c8e36d4e5208da0913da7a03",
+    "canonical_id": "osm:node/11898122971"
+  }
+]

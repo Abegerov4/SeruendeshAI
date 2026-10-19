@@ -1,0 +1,154 @@
+{
+  "generated_at": "2026-10-19T05:04:13.728077+05:00",
+  "snapshot_version": "b479f2445492454782a09e8d95495ae7",
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "canonical_records": 14006,
+  "preserved_source_ids": 14607,
+  "active_recommendation_records": 2745,
+  "active_origin_records": 14001,
+  "records_missing_any_applicable_field": 14006,
+  "without_new_reviewed_rich_facts": 13900,
+  "without_reviewed_confirmation_this_refresh": 13898,
+  "without_any_curated_review_including_prior": 13876,
+  "no_data_after_completed_search": 0,
+  "completed_exhaustive_searches": 0,
+  "new_confirmed_closed_exclusions": 2,
+  "new_rich_branches": 106,
+  "service_offers_moved_to_service_catalog": 3,
+  "without_address_phone_website_hours": 3415,
+  "rich_counts": {
+    "facts": 493,
+    "menu_items": 3673,
+    "prices": 20
+  },
+  "menu_price_channels": {
+    "delivery": 3267,
+    "unknown_full_price": 309,
+    "dine_in": 97
+  },
+  "menu_branches": 32,
+  "food_coverage": {
+    "branches": 2105,
+    "branches_with_menu_items": 32,
+    "branches_with_average_check": 20
+  },
+  "services": 10,
+  "operators": 6,
+  "dated_departures": 0,
+  "price_benchmarks_expo": {
+    "restaurant": {
+      "n": 8,
+      "mean": 11812.5,
+      "median": 9000.0,
+      "q25": 7000.0,
+      "radius_m": 5000,
+      "basis": "reported_average_check",
+      "currency": "KZT"
+    },
+    "cafe": {
+      "n": 11,
+      "mean": 3772.73,
+      "median": 3000.0,
+      "q25": 2500.0,
+      "radius_m": 5000,
+      "basis": "reported_average_check",
+      "currency": "KZT"
+    }
+  },
+  "field_missing_counts": {
+    "kid_friendly": 14000,
+    "opening_hours": 11792,
+    "website": 8219,
+    "wheelchair": 13702,
+    "address": 5563,
+    "description": 48,
+    "phone": 6120,
+    "source_description": 13737,
+    "menu_url": 2064,
+    "price_range": 2069,
+    "cuisine": 1823
+  },
+  "field_applicable_denominators": {
+    "address": 14006,
+    "category": 14006,
+    "description": 14006,
+    "kid_friendly": 14006,
+    "lat": 14006,
+    "lon": 14006,
+    "name": 14006,
+    "opening_hours": 13871,
+    "phone": 13871,
+    "source_description": 14006,
+    "website": 14006,
+    "wheelchair": 14006,
+    "cuisine": 2105,
+    "menu_url": 2105,
+    "price_range": 2105
+  },
+  "source_audit": {
+    "network_pass_status": "partial_host_outage",
+    "target_urls": 4553,
+    "known_url_targets_with_bounded_outcomes": 4518,
+    "deferred_retry_count": 35,
+    "fetch_statuses": {
+      "incomplete_robots_unavailable": 1331,
+      "blocked_robots": 981,
+      "successful_fetch": 1912,
+      "http_error": 207,
+      "network_error": 64,
+      "incomplete_body_limit": 15,
+      "blocked_unsafe_url": 5,
+      "incomplete_redirect_limit": 3,
+      "retry_not_completed_host_outage": 35
+    },
+    "fresh_exact_branch_identity_rows": 67,
+    "incomplete_branch_checks_rows": 11196,
+    "fetched_sources_without_branch_match_rows": 2743,
+    "listed_website_rows": 5896
+  },
+  "discovery_queue": {
+    "events": 1098,
+    "actual_requests": 732,
+    "outcomes": {
+      "candidates_found": 440,
+      "skipped_provider_block": 366,
+      "incomplete_source_error": 97,
+      "search_returned_no_candidates": 195
+    },
+    "rows_with_events": 366
+  },
+  "validation": {
+    "checked_at": "2026-10-19T05:03:33.575425+05:00",
+    "snapshot_version": "b479f2445492454782a09e8d95495ae7",
+    "python": {
+      "passed": 1303,
+      "skipped": 29,
+      "subtests_passed": 12,
+      "log": "final-pytest.log"
+    },
+    "frontend": {
+      "passed": 45,
+      "build": "passed",
+      "chunk_advisory_kb": 554.84
+    },
+    "live_model": {
+      "passed": true,
+      "cases": 4,
+      "execution_kind": "live_http_external_provider",
+      "actual_usd_total": 0.031522400000000006,
+      "reserved_usd_total": 0.031522400000000006,
+      "cap_usd": 0.1
+    },
+    "native_edge_ui": {
+      "source_meal_query": "honest unknown, EXPO preserved, no cafes falsely matched",
+      "redbus": "fares, boarding point, both route names and unconfirmed-current-schedule warning visible",
+      "automation": "CUA accessibility observations on actual local UI; separate mobile route card checks saved by service agent"
+    },
+    "independent_review": "data/review/2026-10-19-refresh/discovery-final-review.json",
+    "limitations": [
+      "29 optional integration/UI checks skipped by pytest profile; recorded native UI and live-model checks are separate.",
+      "Whole catalog structurally audited; most branches not independently verified from all possible sources.",
+      "1091-row source-discovery queue remains active locally; candidates require review before publication."
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-10-18T23:54:40.014797+00:00",
+  "scope": "Only canonical offers corresponding or related to eight published city services; no physical venue exclusions",
+  "service_offer_candidates": [
+    {
+      "id": "citypass:119",
+      "name": "Экскурсия на двухэтажном автобусе Red Bus",
+      "category": "attraction",
+      "address": "площадь Монумента Байтерек",
+      "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-na-krasnyih-avtobusah",
+      "description": "Время экскурсии просим заранее уточнять по номеру: 8 777 555 75 75 или на сайте redbus.kz Экскурсии по городу Астана на двухэтажных автобусах Red Bus. Обзорная экскурсия проходит по самому сердцу города.",
+      "source_ids": [
+        "citypass:119"
+      ],
+      "reason_code": "service_catalog_only",
+      "closure": false
+    },
+    {
+      "id": "citypass:142",
+      "name": "Экскурсия в театре «Астана Опера»",
+      "category": "attraction",
+      "address": "Улица Динмухамед Конаев, 1",
+      "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-v-teatre-astana-opera",
+      "description": "Экскурсия проводиться от 5 человек. Контакты: +7 7172 709 612, +7 7172 709 600(номер кассы) «АСТАНА ОПЕРА» – это самый большой храм искусства в Центральной Азии.",
+      "source_ids": [
+        "citypass:142"
+      ],
+      "reason_code": "service_catalog_only",
+      "closure": false
+    },
+    {
+      "id": "citypass:94",
+      "name": "Водные прогулки на теплоходах по реке Ишим",
+      "category": "attraction",
+      "address": "На набережной перед Дворцом Школьников",
+      "source_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
+      "description": "Водные прогулки на теплоходах по реке Ишим были запущены в 2008 году и до каждый год церемонию открытия ждут и взрослые и дети. Это очень удачное место для признаний в любви – и не только своей половинке, но и маме, Родине, всему человечеству.",
+      "source_ids": [
+        "citypass:94"
+      ],
+      "reason_code": "service_catalog_only",
+      "closure": false
+    }
+  ],
+  "preserve_physical_venues": [
+    "osm:way/917478479"
+  ],
+  "product_identity_caveats": {
+    "citypass:142": "Generic opera tour for groups of five is not proven identical to the published theatrical lesson for groups of ten.",
+    "citypass:94": "Operator/product identity is not proven equal to either published river tour package."
+  },
+  "other_published_service_offer_records_found": [],
+  "canonical_rows_scanned": 14006,
+  "no_mutations_performed": true
+}

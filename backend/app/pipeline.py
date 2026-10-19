@@ -3,15 +3,15 @@ import logging
 import re
 import time
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from . import cache, llm, tracing
 from . import rag_adapter as rag
-from .config import ASTANA_BBOX, ASTANA_TZ
+from .config import ASTANA_BBOX, ASTANA_TZ, get_settings
 from .generate import _lang as gen_lang, llm_generate, template_generate, template_texts
 from .guards import drop_unverified_open_claims, looks_like_injection, mask_pii
 from .intent import Intent, parse_intent
-from .routing import MAX_RADIUS, build_route, search_radius_m, travel_min
+from .routing import MAX_RADIUS, build_route, default_visit, search_radius_m, travel_min, visit_open_status
 from .schemas import QUERY_MAX_CHARS, RecommendRequest, RecommendResponse
 
 log = logging.getLogger("backend.pipeline")
@@ -107,7 +107,23 @@ def _filter_candidates(hits: list[dict], intent: Intent, now: datetime) -> tuple
     out, had_closed = [], False
     c = intent.constraints
     for h in hits:
-        status, conf = rag.open_status(h.get("opening_hours"), now)
+        tmin = travel_min(h.get("distance_m"), intent.mode)
+        available = intent.time_budget_min - (tmin or 0)
+        if available < MIN_VISIT_MIN:
+            continue
+        minimum = min(default_visit(h["category"], intent.time_budget_min)[0], available)
+        arrival = now + timedelta(minutes=tmin or 0)
+        status, conf = visit_open_status(h.get("opening_hours"), arrival, minimum)
+        if status == "open":
+            try:
+                checked = datetime.fromisoformat(str(h.get("check_date") or "")[:10]).date()
+                age = (now.date() - checked).days
+                recent_evidence = (h.get("hours_source") and h.get("hours_source_url")
+                                   and 0 <= age <= getattr(get_settings(), "hours_max_age_days", 180))
+            except ValueError:
+                recent_evidence = False
+            if not recent_evidence:
+                conf = "low"
         if status == "closed":
             had_closed = True
             continue
@@ -120,6 +136,7 @@ def _filter_candidates(hits: list[dict], intent: Intent, now: datetime) -> tuple
         if available < MIN_VISIT_MIN:  # дорога съедает почти весь бюджет — не предлагаем
             continue
         h = {**h, "open_status": status, "open_confidence": conf, "travel_min": tmin, "max_visit_min": available}
+        h["arrival"] = arrival
         bonus = 0.0
         if c.kids and h.get("kid_friendly"):
             bonus += 0.5
@@ -276,6 +293,10 @@ def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str
         lo, hi = p["visit_min"]
         lo = max(5, min(lo, avail))
         p["visit_min"] = [lo, max(lo, min(hi, avail))]
+        if visit_open_status(c.get("opening_hours"), c["arrival"], p["visit_min"][1])[0] == "closed":
+            # Model duration cannot extend a validated visit beyond closing.
+            minimum = min(default_visit(c["category"], intent.time_budget_min)[0], avail)
+            p["visit_min"] = [minimum, minimum]
         if c["open_status"] != "open":  # модель не может «подтвердить» часы, которых нет в данных
             p["why"] = drop_unverified_open_claims(p["why"])
             p["what_to_do"] = drop_unverified_open_claims(p["what_to_do"])
@@ -293,7 +314,14 @@ def _recommend(req: RecommendRequest, request_id: str, now: datetime, query: str
     if unknown:
         notes.append(_t(lang, "unknown_hours", names=", ".join(f"«{n}»" for n in unknown)))
 
-    route = build_route((lat, lon) if lat is not None else None, recs, intent.time_budget_min, intent.mode)
+    route_recs = [{**r, "opening_hours": by_id[r["poi_id"]].get("opening_hours")} for r in recs]
+    route = build_route((lat, lon) if lat is not None else None, route_recs, intent.time_budget_min, intent.mode, now=now)
+    if route:
+        # A routed card advertises the duration actually counted by the route.
+        order = route["order"]
+        recs = sorted((r for r in recs if r["poi_id"] in order), key=lambda r: order.index(r["poi_id"]))
+        for r in recs:
+            r["visit_min"] = [r["visit_min"][0]] * 2
 
     log.debug("request_id=%s candidates=%d intent_llm=%s", request_id, len(candidates), used_llm)
     return RecommendResponse(

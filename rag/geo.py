@@ -28,19 +28,19 @@ def resolve_landmark(text: str) -> dict | None:
     text = re.sub(r'\s+', ' ', text.casefold()).strip()
     if not text:
         return None
-    path = ROOT / 'data/processed/pois.json'
+    from .retriever import catalog
     best, best_score = None, 0
-    if path.exists():
-        for poi in json.loads(path.read_text(encoding='utf-8')):
-            for name in (poi['name'], poi.get('name_en'), poi.get('name_kk')):
-                if not name:
-                    continue
-                name = name.casefold()
-                score = 1 if name == text else SequenceMatcher(None, name, text).ratio()
-                if len(name) >= 5 and re.search(r'(?<!\w)' + re.escape(name) + r'(?!\w)', text):
-                    score = max(score, .95)
-                if score > best_score:
-                    best, best_score = poi, score
+    # Origin lookup retains every canonical record but shares search's version.
+    for poi in catalog()["pois"]:
+        for name in (poi['name'], poi.get('name_en'), poi.get('name_kk')):
+            if not name:
+                continue
+            name = name.casefold()
+            score = 1 if name == text else SequenceMatcher(None, name, text).ratio()
+            if len(name) >= 5 and re.search(r'(?<!\w)' + re.escape(name) + r'(?!\w)', text):
+                score = max(score, .95)
+            if score > best_score:
+                best, best_score = poi, score
     if best_score >= .86:
         return {'lat': best['lat'], 'lon': best['lon'], 'label': best['name']}
     for aliases, lat, lon, label in LANDMARKS:

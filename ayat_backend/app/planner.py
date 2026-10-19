@@ -11,11 +11,12 @@ from itertools import permutations
 
 import numpy as np
 
-from app.categories import CATEGORIES
-from app.context import Context
-from app.geo import WalkGraph, car_minutes, fallback_walk_m, hav_m
-from app.hours import opening_status
-from app.retrieval import Cand, Plan
+from ayat_backend.app.categories import CATEGORIES
+from ayat_backend.app.context import Context
+from ayat_backend.app.config import get_settings
+from ayat_backend.app.geo import WalkGraph, car_minutes, fallback_walk_m, hav_m
+from ayat_backend.app.hours import opening_status
+from ayat_backend.app.retrieval import Cand, Plan
 
 
 def _matrix(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | None, river: list):
@@ -27,16 +28,21 @@ def _matrix(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | None
     preds: dict[int, tuple] = {}
     use_graph = plan.mode == "walk" and graph is not None and all(graph.covers(*p) for p in pts)
     if use_graph:
-        _, idx = graph.snap(np.array([p[0] for p in pts]), np.array([p[1] for p in pts]))
-        limit = plan.budget * plan.m_per_min + 500
+        snaps, idx = graph.snap(np.array([p[0] for p in pts]), np.array([p[1] for p in pts]))
+        max_snap = getattr(get_settings(), "route_max_snap_m", 500)
+        limit = plan.budget * plan.m_per_min + max_snap
         for a in range(n):
             D, P, src = graph.from_source(pts[a][0], pts[a][1], limit)
-            preds[a] = (P, src)
+            network_destinations = set()
+            preds[a] = (P, src, network_destinations)
             for b in range(n):
                 if a != b:
-                    d = D[int(idx[b])]
-                    if not np.isfinite(d):
+                    d = D[int(idx[b])] + snaps[b]  # from_source already includes the source approach
+                    if not np.isfinite(d) or snaps[a] > max_snap or snaps[b] > max_snap:
                         d = fallback_walk_m(river, *pts[a], *pts[b])
+                        plan.outside_graph = True
+                    else:
+                        network_destinations.add(b)
                     Dm[a, b] = d
                     T[a, b] = np.ceil(d / plan.m_per_min)
         return T, Dm, preds, idx, True
@@ -63,10 +69,10 @@ def plan_route(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | N
     if plan.deadline_min is not None:
         budget = min(budget, plan.deadline_min - plan.deadline_buffer)
     now = ctx.local_naive
-    cache: dict[tuple[int, int], bool] = {}
+    cache: dict[tuple[int, float, int], bool] = {}
 
     def open_ok(i: int, arrive_min: float, visit: int) -> bool:
-        key = (i, int(arrive_min // 10))
+        key = (i, float(arrive_min), visit)
         if key not in cache:
             c = pool[i - 1]
             cache[key] = opening_status(c.poi, now + dt.timedelta(minutes=arrive_min), visit, lang, ctx.holiday)["ok"]
@@ -110,8 +116,8 @@ def plan_route(cands: list[Cand], plan: Plan, ctx: Context, graph: WalkGraph | N
     legs, prev = [], 0
     seq = list(perm) + ([0] if returns else [])
     for i in seq:
-        if on_graph and prev in preds:
-            P, src = preds[prev]
+        if on_graph and prev in preds and i in preds[prev][2]:
+            P, src, _ = preds[prev]
             poly = graph.path_polyline(P, src, int(idx[i]))
             pts = [(plan.origin if prev == 0 else (pool[prev - 1].poi["lat"], pool[prev - 1].poi["lon"]))]
             poly = [tuple(map(float, pts[0]))] + poly + [tuple(map(float, plan.origin if i == 0 else (pool[i - 1].poi["lat"], pool[i - 1].poi["lon"])))]

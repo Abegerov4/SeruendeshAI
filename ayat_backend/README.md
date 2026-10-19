@@ -1,5 +1,7 @@
 # SeruendeshAI: ИИ-помощник по прогулкам в Астане
 
+> Основной UI-сервер. Запуск из корня: `docker compose up --build`, http://127.0.0.1:8001; либо `sh scripts/run_local_integration.sh` после сборки frontend. Старые показатели ниже относятся к прежнему снимку. Текущие результаты: [устранение аудита](../docs/audit_remediation_2026-10-19.md).
+
 > Хакатон **Build with AI**, задача 1 от **НИЦ Smart City**: RAG-система, которая в реальном времени подсказывает, куда сходить и что сделать рядом, с учётом локации, времени, погоды и предпочтений.
 
 **«Я возле Mega Silk Way, у меня час. Куда?»** Система отвечает 1–3 конкретными местами. Для каждого:
@@ -12,8 +14,8 @@
 
 | | |
 |---|---|
-| Данные | **2307 мест Астаны**, собранных автоматически: OSM + Overture + Wikidata/Wikipedia; события Ticketon/Sxodim; погода Open-Meteo |
-| RAG | Сначала структурный поиск (граф улиц, часы работы, безопасность) → гибрид BM25 + e5 → LLM `gpt-6-luna` выбирает и объясняет → валидатор |
+| Данные | Полный командный снимок `data/processed/pois.json`; места для прогулок используются в поиске, остальные адреса — как ориентиры. Исходный снимок Ayat в `pois.jsonl` сохранён для совместимости. |
+| RAG | Структурные фильтры → BM25 и опциональный согласованный e5 → модель выбирает ID → сервер формирует фактические тексты и расписание |
 | Языки | RU / KK / EN |
 | Качество | 15 сценариев × 12 автоматических проверок: **170/170**, ответ ~3.5 с ([EVAL_RESULTS](docs/EVAL_RESULTS.md)) |
 | Приватность | Локация округляется до ~100 м, не хранится и не передаётся в LLM |
@@ -22,7 +24,7 @@
 | Требование задачи | Документ |
 |---|---|
 | 1. Концепция продукта, аудитория, сценарии, бизнес, риски, план | [docs/CONCEPT.md](docs/CONCEPT.md) |
-| 2. Демо / прототип | API (этот репозиторий) + фронтенд в [`frontend/`](frontend/) |
+| 2. Демо / прототип | API (этот репозиторий) + фронтенд в [`../frontend/`](../frontend/) |
 | 3. Описание RAG-подхода | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | 4. Тестовые сценарии и ограничения | [docs/TEST_SCENARIOS.md](docs/TEST_SCENARIOS.md), [docs/EVAL_RESULTS.md](docs/EVAL_RESULTS.md) |
 | 5. Презентация | [docs/PRESENTATION.md](docs/PRESENTATION.md) (план слайдов и сценарий демо) |
@@ -36,15 +38,16 @@
 Нужны Python ≥ 3.12 и [uv](https://docs.astral.sh/uv/). Ключ OpenAI необязателен: без него работает шаблонный режим.
 
 ```bash
-cp .env.example .env            # вписать OPENAI_API_KEY
-cd ayat_backend
-uv sync                         # зависимости рантайма + dev
-uv run uvicorn app.main:app --port 8000
+cp ayat_backend/.env.example ayat_backend/.env
+uv sync --project ayat_backend
+LLM_ENABLED=false EMBED_MODEL=off WEATHER_ENABLED=false \
+  uv run --project ayat_backend uvicorn ayat_backend.app.main:app --port 8000
 ```
 
 - Swagger: http://localhost:8000/docs
 - Проверка: `curl localhost:8000/api/health`
-- Первый запуск один раз скачивает модель эмбеддингов (~560 МБ). Режим без неё: `EMBED_MODEL=off`, тогда поиск только по BM25 и ~0.3 ГБ RAM.
+- Команда выше работает локально: BM25, шаблонные ответы и часы работы; запросы к ИИ и погодному сервису отключены, модель эмбеддингов не скачивается.
+- Аккаунты и случайные сессии хранятся в SQLite (`ayat_backend/.local/app.db`), если `DATABASE_URL` не задан; Docker использует постоянный volume. Logout отзывает текущую сессию, reset — все сессии. `SECRET_KEY` больше не подписывает cookie; при переходе старые подписанные cookie потребуют повторного входа.
 
 Пример запроса:
 
@@ -55,18 +58,18 @@ curl -s localhost:8000/api/recommend -H 'content-type: application/json' -d '{
 }' | python -m json.tool
 ```
 
-Фронтенд (React + Vite) лежит в `frontend/`, инструкции в [frontend/README.md](frontend/README.md). Укажите `VITE_API_URL=http://localhost:8000`.
+Фронтенд (React + Vite) лежит в `frontend/`, инструкции в [../frontend/README.md](../frontend/README.md). Укажите `VITE_API_URL=http://localhost:8000`.
 
-Docker: `docker compose up --build` (из корня, использует `.env`).
+Docker: `docker compose up --build` из корня; `.env` необязателен. По умолчанию LLM/погода/dense/SMTP отключены. Для платной проверки используйте отдельный явный запуск с лимитом, например `python -m scripts.live_model_probe --key-file /path/to/key --out eval/runs/live`; общий ledger не зависит от каталога вывода.
 
 ### Команды
 
 ```bash
-make test        # unit + контрактные тесты (без ключа)
-make eval        # 15 сценариев в шаблонном режиме
-make eval-llm    # те же сценарии с LLM + LLM-as-judge
-make data        # полный автоматический сбор данных: fetch → build → graph → embed → events
-make contract    # выгрузить OpenAPI и примеры ответов для фронтенда
+make -C ayat_backend test        # unit + контрактные тесты, временная SQLite, без провайдеров
+make -C ayat_backend eval        # 15 сценариев в шаблонном режиме
+make -C ayat_backend eval-llm    # те же сценарии с LLM + LLM-as-judge
+make -C ayat_backend data        # полный автоматический сбор данных: fetch → build → graph → embed → events
+make -C ayat_backend contract    # выгрузить OpenAPI и примеры ответов для фронтенда
 ```
 
 ## Как это работает (кратко)
@@ -82,7 +85,7 @@ make contract    # выгрузить OpenAPI и примеры ответов �
 → жёсткие фильтры в коде: часы при прибытии, дети, доступность, темнота, мороз, дедлайн рейса
 → скоринг: категория + BM25/e5 (RRF), близость, нужды, часы, контекст, популярность → MMR
 → мини-маршрут: перебор порядков 2–3 точек с проверкой часов
-→ LLM выбирает 1–3 из карточек c1..c10 и пишет «почему» / «что делать»
+→ LLM выбирает 1–3 из карточек c1..c10; код формирует «почему» / «что делать», часы и фактическую длительность
 → валидатор: только известные id; числа, часы и «открыто сейчас» вырезаются; иначе шаблон
 ```
 
@@ -90,7 +93,7 @@ make contract    # выгрузить OpenAPI и примеры ответов �
 
 ## Структура репозитория
 ```
-backend/
+ayat_backend/
   app/            FastAPI-приложение: схемы (контракт), поиск, ранжирование, маршруты, LLM, валидатор
   pipeline/       автоматический сбор данных (Overpass, Overture, Wikidata, Wikipedia, Ticketon/Sxodim, граф, эмбеддинги)
   tests/          unit + контрактные тесты

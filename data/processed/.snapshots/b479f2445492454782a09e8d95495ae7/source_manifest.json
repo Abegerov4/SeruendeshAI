@@ -1,0 +1,2609 @@
+{
+  "status": "partial",
+  "generated_at": "2026-10-18T20:24:54.948842+00:00",
+  "city": "Astana",
+  "record_limit": null,
+  "offline": true,
+  "boundary": {
+    "mode": "administrative_polygon",
+    "source_url": "https://www.openstreetmap.org/relation/3087155",
+    "license": "ODbL-1.0",
+    "bbox": [
+      50.8576076,
+      71.2179735,
+      51.3511101,
+      71.7851913
+    ]
+  },
+  "sources": {
+    "osm": {
+      "source": "osm",
+      "status": "ok",
+      "count": 6065,
+      "collection_method": "regional_osm_extract",
+      "extract_file": "kazakhstan-latest.osm.pbf",
+      "raw_count": 6122,
+      "rejected": {
+        "closed_or_inactive": 57,
+        "incomplete_local_geometry_countrywide": 12
+      },
+      "categories": {
+        "attraction": 37,
+        "bar": 106,
+        "cafe": 364,
+        "cinema": 10,
+        "coworking": 1,
+        "gallery": 2,
+        "library": 10,
+        "mall": 76,
+        "monument": 42,
+        "museum": 8,
+        "nightlife": 3,
+        "other": 4990,
+        "park": 42,
+        "playground": 1,
+        "restaurant": 303,
+        "sport": 61,
+        "theatre": 9
+      },
+      "bbox": [
+        50.8576076,
+        71.2179735,
+        51.3511101,
+        71.7851913
+      ],
+      "bbox_order": "south,west,north,east",
+      "boundary_available": true,
+      "boundary_wikidata": "Q1520",
+      "boundary_source_urls": [
+        "https://www.openstreetmap.org/relation/3087155"
+      ],
+      "source_urls": [
+        "https://download.geofabrik.de/asia/kazakhstan-261017.osm.pbf"
+      ],
+      "source_license": "ODbL-1.0",
+      "attribution": "© OpenStreetMap contributors",
+      "license_url": "https://www.openstreetmap.org/copyright",
+      "cached": {
+        "pois": false,
+        "boundary": false
+      },
+      "stale_cache": false,
+      "collected_at": "2026-10-18T17:33:47.211954+00:00",
+      "source_retrieved_at": "2026-10-18T17:20:13.694132+00:00",
+      "elapsed_seconds": 18.875,
+      "errors": [],
+      "notes": [
+        "Complete regional OSM extract used after public Overpass instances were unavailable.",
+        "Named nodes, ways and relations, uncapped, within the actual city boundary envelope.",
+        "Ways and relation coordinates use their geographic envelope center; normalization clips to the boundary.",
+        "No invented descriptions or ratings; earlier endpoint failures are retained in initial_unavailable_report.json."
+      ],
+      "extract_metadata": {
+        "source_url": "https://download.geofabrik.de/asia/kazakhstan-261017.osm.pbf",
+        "requested_url": "https://download.geofabrik.de/asia/kazakhstan-latest.osm.pbf",
+        "retrieved_at": "2026-10-18T17:20:13.694132+00:00",
+        "last_modified": "Sat, 17 Oct 2026 23:00:15 GMT",
+        "bytes": 224551064,
+        "sha256": "bf2aa3c1887acd4ddbc88f9ceec5cd3b3c944f84b602e4f76c69ac2665edc2d7",
+        "md5": "62e971d0632a9d97a6ba00bd58cee322",
+        "publisher_md5_verified": true,
+        "source_license": "ODbL-1.0",
+        "download_method": "cached prefix and four static HTTP byte ranges; no concurrent Overpass requests"
+      },
+      "pipeline_used_cache": true,
+      "extract_snapshot": {
+        "source_url": "https://download.geofabrik.de/asia/kazakhstan-261017.osm.pbf",
+        "requested_url": "https://download.geofabrik.de/asia/kazakhstan-latest.osm.pbf",
+        "retrieved_at": "2026-10-18T17:20:13.694132+00:00",
+        "last_modified": "Sat, 17 Oct 2026 23:00:15 GMT",
+        "bytes": 224551064,
+        "sha256": "bf2aa3c1887acd4ddbc88f9ceec5cd3b3c944f84b602e4f76c69ac2665edc2d7",
+        "md5": "62e971d0632a9d97a6ba00bd58cee322",
+        "publisher_md5_verified": true,
+        "source_license": "ODbL-1.0",
+        "download_method": "cached prefix and four static HTTP byte ranges; no concurrent Overpass requests"
+      }
+    },
+    "overture": {
+      "status": "ok",
+      "bbox": [
+        50.8576076,
+        71.2179735,
+        51.3511101,
+        71.7851913
+      ],
+      "bbox_order": "south,west,north,east",
+      "collected_at": "2026-10-18T17:17:59.182870+00:00",
+      "normalized_at": "2026-10-18T17:22:23.546110+00:00",
+      "normalization_version": 3,
+      "normalization_rebuilt_from_cache": true,
+      "release": "2026-09-23.1",
+      "source_urls": [
+        "https://stac.overturemaps.org/catalog.json",
+        "https://stac.overturemaps.org/2026-09-23.1/places/place/collection.json",
+        "https://stac.overturemaps.org/2026-09-23.1/collections.parquet",
+        "https://overturemaps-us-west-2.s3.us-west-2.amazonaws.com/release/2026-09-23.1/theme=places/type=place/*.parquet",
+        "https://docs.overturemaps.org/attribution/"
+      ],
+      "release_license": "other",
+      "source_licenses": {
+        "meta": "CDLA-Permissive-2.0",
+        "microsoft": "CDLA-Permissive-2.0",
+        "pinmeto": "CDLA-Permissive-2.0",
+        "krick": "CDLA-Permissive-2.0",
+        "renderseo": "CDLA-Permissive-2.0",
+        "dac": "CDLA-Permissive-2.0",
+        "brightquery": "CDLA-Permissive-2.0",
+        "foursquare": "Apache-2.0",
+        "alltheplaces": "CC0-1.0"
+      },
+      "downloaded_rows": 8802,
+      "metadata_cache_used": false,
+      "metadata_snapshot_at": "2026-10-18T17:17:49.676006+00:00",
+      "metadata_errors": [],
+      "download_method": "overturemaps.record_batch_reader(stac=True, bbox=...)",
+      "counts": {
+        "downloaded_rows": 8802,
+        "closed_excluded": 0,
+        "unnamed_excluded": 0,
+        "invalid_excluded": 0,
+        "outside_bbox_excluded": 0,
+        "candidates": 8802,
+        "original_descriptions": 0,
+        "upstream_category_conflicts": 83
+      },
+      "category_counts": {
+        "restaurant": 867,
+        "other": 6980,
+        "sport": 112,
+        "bar": 213,
+        "attraction": 98,
+        "cafe": 359,
+        "park": 40,
+        "museum": 18,
+        "cinema": 15,
+        "playground": 3,
+        "mall": 49,
+        "library": 11,
+        "gallery": 12,
+        "monument": 12,
+        "nightlife": 13
+      },
+      "source_counts": {
+        "meta": 8326,
+        "Overture": 8802,
+        "AllThePlaces": 237,
+        "Foursquare": 152,
+        "Microsoft": 86,
+        "PinMeTo": 1
+      },
+      "operating_status_counts": {
+        "unknown": 8801,
+        "open": 1
+      },
+      "license_counts": {
+        "CDLA-Permissive-2.0": 8413,
+        "CC0-1.0 AND CDLA-Permissive-2.0": 237,
+        "Apache-2.0 AND CDLA-Permissive-2.0": 152
+      },
+      "errors": [],
+      "record_cap": null,
+      "city_boundary_clip": "performed by parent collection pipeline",
+      "pipeline_used_cache": true
+    },
+    "wikimedia": {
+      "source": "wikimedia",
+      "bbox": [
+        50.8576076,
+        71.2179735,
+        51.3511101,
+        71.7851913
+      ],
+      "started_at": "2026-10-18T17:42:25.309092+00:00",
+      "complete": false,
+      "method": "wikidata_sparql",
+      "licenses": {
+        "wikidata_entities": "CC0-1.0",
+        "wikipedia_articles": "CC-BY-SA-4.0"
+      },
+      "limit": null,
+      "discovery_error": "Client error '429 Aggressively rate-limiting to 1 req / min - this rule was created during active wdqs outage (797a132)' for url 'https://query.wikidata.org/sparql?query=SELECT+DISTINCT+%3Fitem+%3Fcoord+%3Fkind+WHERE+%7B%0A++SERVICE+wikibase%3Abox+%7B+%3Fitem+wdt%3AP625+%3Fcoord+.%0A++++bd%3AserviceParam+wikibase%3AcornerWest+%22Point%2871.2179735+50.8576076%29%22%5E%5Egeo%3AwktLiteral+.%0A++++bd%3AserviceParam+wikibase%3AcornerEast+%22Point%2871.7851913+51.3511101%29%22%5E%5Egeo%3AwktLiteral+.+%7D%0A++VALUES+%3Fkind+%7B+wd%3AQ33506+wd%3AQ1007870+wd%3AQ24354+wd%3AQ41253+wd%3AQ22698+wd%3AQ4989906+wd%3AQ570116+wd%3AQ9259+wd%3AQ16970+wd%3AQ12280+wd%3AQ483110+wd%3AQ7075+wd%3AQ11315+wd%3AQ182832+wd%3AQ41176+%7D%0A++%3Fitem+wdt%3AP31%2Fwdt%3AP279%2A+%3Fkind+.%0A%7D+ORDER+BY+%3Fitem+%3Fkind+%3Fcoord+LIMIT+250+OFFSET+0&format=json'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "fallback": "tiled_wikipedia_geosearch_ru_kk_en",
+      "coverage_note": "Incomplete: Wikipedia GeoSearch finds only articles with coordinates, not all Wikidata cultural entities. Full SPARQL discovery unavailable.",
+      "astana_osm_relation_ids": [],
+      "http_requests": 24,
+      "cache_hits": 38,
+      "semantic_entity_hits": 0,
+      "semantic_article_hits": 0,
+      "indexed_entities": 237,
+      "indexed_article_keys": 277,
+      "errors": [
+        {
+          "url": "https://query.wikidata.org/sparql",
+          "params": {
+            "query": "SELECT DISTINCT ?item ?coord ?kind WHERE {\n  SERVICE wikibase:box { ?item wdt:P625 ?coord .\n    bd:serviceParam wikibase:cornerWest \"Point(71.2179735 50.8576076)\"^^geo:wktLiteral .\n    bd:serviceParam wikibase:cornerEast \"Point(71.7851913 51.3511101)\"^^geo:wktLiteral . }\n  VALUES ?kind { wd:Q33506 wd:Q1007870 wd:Q24354 wd:Q41253 wd:Q22698 wd:Q4989906 wd:Q570116 wd:Q9259 wd:Q16970 wd:Q12280 wd:Q483110 wd:Q7075 wd:Q11315 wd:Q182832 wd:Q41176 }\n  ?item wdt:P31/wdt:P279* ?kind .\n} ORDER BY ?item ?kind ?coord LIMIT 250 OFFSET 0",
+            "format": "json"
+          },
+          "error": "Client error '429 Aggressively rate-limiting to 1 req / min - this rule was created during active wdqs outage (797a132)' for url 'https://query.wikidata.org/sparql?query=SELECT+DISTINCT+%3Fitem+%3Fcoord+%3Fkind+WHERE+%7B%0A++SERVICE+wikibase%3Abox+%7B+%3Fitem+wdt%3AP625+%3Fcoord+.%0A++++bd%3AserviceParam+wikibase%3AcornerWest+%22Point%2871.2179735+50.8576076%29%22%5E%5Egeo%3AwktLiteral+.%0A++++bd%3AserviceParam+wikibase%3AcornerEast+%22Point%2871.7851913+51.3511101%29%22%5E%5Egeo%3AwktLiteral+.+%7D%0A++VALUES+%3Fkind+%7B+wd%3AQ33506+wd%3AQ1007870+wd%3AQ24354+wd%3AQ41253+wd%3AQ22698+wd%3AQ4989906+wd%3AQ570116+wd%3AQ9259+wd%3AQ16970+wd%3AQ12280+wd%3AQ483110+wd%3AQ7075+wd%3AQ11315+wd%3AQ182832+wd%3AQ41176+%7D%0A++%3Fitem+wdt%3AP31%2Fwdt%3AP279%2A+%3Fkind+.%0A%7D+ORDER+BY+%3Fitem+%3Fkind+%3Fcoord+LIMIT+250+OFFSET+0&format=json'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.3017598|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Client error '429 Too Many Requests' for url 'https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gscoord=51.3017598%7C71.5724846&gsradius=10000&gslimit=500&gsnamespace=0&format=json&formatversion=2&maxlag=5'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php",
+          "params": {
+            "action": "wbgetentities",
+            "sites": "ruwiki",
+            "titles": "Air Astana|MEGA Silk-way|Qazaqstan (телеканал)|Samruk-Kazyna Ondeu|Talan Towers|Абиш ата Назарбай|Абу Насыра аль-Фараби (мечеть)|Абу-Даби Плаза|Аганас|Аккайын (Целиноградский район)|Акорда (резиденция)|Алау (ледовый дворец)|Алматинский район|Альжан ана (мечеть)|Аманат (партия)|Астана|Астана (концертный зал)|Астана (международный финансовый центр)|Астана (станция)|Астана Арена|Астана Нурлы Жол|Астана Опера|Астанинский ботанический сад|Астанинский цирк|Байконурский район|Байтерек (монумент)|Барыс Арена|Библиотечная ассоциация Республики Казахстан|Бозок (городище)|Больница купца Степана Кубрина|Большой Талдыколь (озеро, Астана)|Бульвар Нуржол|Верховный суд Казахстана|Военный колледж имени Сагадата Нурмагамбетова|Госплемстанция (Акмолинская область)|Государственный музей золота и драгоценных металлов|Дворец Независимости (Астана)|Дворец мира и согласия|Дом П. Г. Моисеева|Дом купца Василия Кубрина|Дом купца Д. В. Егорова|Дом купца Силина|Евразийский национальный университет|Есильский район (Астана)|Жастар рухы|Жасыл Ел|Жетысу (парк)|Жибек Жолы (Акмолинская область)|Жилой дом доктора Ф. И. Благовещенского|Здание бывшей мусульманской школы (Астана)",
+            "props": "info",
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Client error '429 Too Many Requests' for url 'https://www.wikidata.org/w/api.php?action=wbgetentities&sites=ruwiki&titles=Air+Astana%7CMEGA+Silk-way%7CQazaqstan+%28%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%29%7CSamruk-Kazyna+Ondeu%7CTalan+Towers%7C%D0%90%D0%B1%D0%B8%D1%88+%D0%B0%D1%82%D0%B0+%D0%9D%D0%B0%D0%B7%D0%B0%D1%80%D0%B1%D0%B0%D0%B9%7C%D0%90%D0%B1%D1%83+%D0%9D%D0%B0%D1%81%D1%8B%D1%80%D0%B0+%D0%B0%D0%BB%D1%8C-%D0%A4%D0%B0%D1%80%D0%B0%D0%B1%D0%B8+%28%D0%BC%D0%B5%D1%87%D0%B5%D1%82%D1%8C%29%7C%D0%90%D0%B1%D1%83-%D0%94%D0%B0%D0%B1%D0%B8+%D0%9F%D0%BB%D0%B0%D0%B7%D0%B0%7C%D0%90%D0%B3%D0%B0%D0%BD%D0%B0%D1%81%7C%D0%90%D0%BA%D0%BA%D0%B0%D0%B9%D1%8B%D0%BD+%28%D0%A6%D0%B5%D0%BB%D0%B8%D0%BD%D0%BE%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B8%D0%B9+%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%29%7C%D0%90%D0%BA%D0%BE%D1%80%D0%B4%D0%B0+%28%D1%80%D0%B5%D0%B7%D0%B8%D0%B4%D0%B5%D0%BD%D1%86%D0%B8%D1%8F%29%7C%D0%90%D0%BB%D0%B0%D1%83+%28%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D1%8B%D0%B9+%D0%B4%D0%B2%D0%BE%D1%80%D0%B5%D1%86%29%7C%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9+%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%7C%D0%90%D0%BB%D1%8C%D0%B6%D0%B0%D0%BD+%D0%B0%D0%BD%D0%B0+%28%D0%BC%D0%B5%D1%87%D0%B5%D1%82%D1%8C%29%7C%D0%90%D0%BC%D0%B0%D0%BD%D0%B0%D1%82+%28%D0%BF%D0%B0%D1%80%D1%82%D0%B8%D1%8F%29%7C%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0%7C%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0+%28%D0%BA%D0%BE%D0%BD%D1%86%D0%B5%D1%80%D1%82%D0%BD%D1%8B%D0%B9+%D0%B7%D0%B0%D0%BB%29%7C%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0+%28%D0%BC%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9+%D1%84%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2%D1%8B%D0%B9+%D1%86%D0%B5%D0%BD%D1%82%D1%80%29%7C%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0+%28%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F%29%7C%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0+%D0%90%D1%80%D0%B5%D0%BD%D0%B0%7C%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0+%D0%9D%D1%83%D1%80%D0%BB%D1%8B+%D0%96%D0%BE%D0%BB%7C%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0+%D0%9E%D0%BF%D0%B5%D1%80%D0%B0%7C%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9+%D0%B1%D0%BE%D1%82%D0%B0%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9+%D1%81%D0%B0%D0%B4%7C%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9+%D1%86%D0%B8%D1%80%D0%BA%7C%D0%91%D0%B0%D0%B9%D0%BA%D0%BE%D0%BD%D1%83%D1%80%D1%81%D0%BA%D0%B8%D0%B9+%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%7C%D0%91%D0%B0%D0%B9%D1%82%D0%B5%D1%80%D0%B5%D0%BA+%28%D0%BC%D0%BE%D0%BD%D1%83%D0%BC%D0%B5%D0%BD%D1%82%29%7C%D0%91%D0%B0%D1%80%D1%8B%D1%81+%D0%90%D1%80%D0%B5%D0%BD%D0%B0%7C%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D1%87%D0%BD%D0%B0%D1%8F+%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D1%8F+%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B8+%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD%7C%D0%91%D0%BE%D0%B7%D0%BE%D0%BA+%28%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B8%D1%89%D0%B5%29%7C%D0%91%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D1%86%D0%B0+%D0%BA%D1%83%D0%BF%D1%86%D0%B0+%D0%A1%D1%82%D0%B5%D0%BF%D0%B0%D0%BD%D0%B0+%D0%9A%D1%83%D0%B1%D1%80%D0%B8%D0%BD%D0%B0%7C%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B9+%D0%A2%D0%B0%D0%BB%D0%B4%D1%8B%D0%BA%D0%BE%D0%BB%D1%8C+%28%D0%BE%D0%B7%D0%B5%D1%80%D0%BE%2C+%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0%29%7C%D0%91%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80+%D0%9D%D1%83%D1%80%D0%B6%D0%BE%D0%BB%7C%D0%92%D0%B5%D1%80%D1%85%D0%BE%D0%B2%D0%BD%D1%8B%D0%B9+%D1%81%D1%83%D0%B4+%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD%D0%B0%7C%D0%92%D0%BE%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9+%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%B4%D0%B6+%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8+%D0%A1%D0%B0%D0%B3%D0%B0%D0%B4%D0%B0%D1%82%D0%B0+%D0%9D%D1%83%D1%80%D0%BC%D0%B0%D0%B3%D0%B0%D0%BC%D0%B1%D0%B5%D1%82%D0%BE%D0%B2%D0%B0%7C%D0%93%D0%BE%D1%81%D0%BF%D0%BB%D0%B5%D0%BC%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F+%28%D0%90%D0%BA%D0%BC%D0%BE%D0%BB%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%29%7C%D0%93%D0%BE%D1%81%D1%83%D0%B4%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9+%D0%BC%D1%83%D0%B7%D0%B5%D0%B9+%D0%B7%D0%BE%D0%BB%D0%BE%D1%82%D0%B0+%D0%B8+%D0%B4%D1%80%D0%B0%D0%B3%D0%BE%D1%86%D0%B5%D0%BD%D0%BD%D1%8B%D1%85+%D0%BC%D0%B5%D1%82%D0%B0%D0%BB%D0%BB%D0%BE%D0%B2%7C%D0%94%D0%B2%D0%BE%D1%80%D0%B5%D1%86+%D0%9D%D0%B5%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8+%28%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0%29%7C%D0%94%D0%B2%D0%BE%D1%80%D0%B5%D1%86+%D0%BC%D0%B8%D1%80%D0%B0+%D0%B8+%D1%81%D0%BE%D0%B3%D0%BB%D0%B0%D1%81%D0%B8%D1%8F%7C%D0%94%D0%BE%D0%BC+%D0%9F.+%D0%93.+%D0%9C%D0%BE%D0%B8%D1%81%D0%B5%D0%B5%D0%B2%D0%B0%7C%D0%94%D0%BE%D0%BC+%D0%BA%D1%83%D0%BF%D1%86%D0%B0+%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D1%8F+%D0%9A%D1%83%D0%B1%D1%80%D0%B8%D0%BD%D0%B0%7C%D0%94%D0%BE%D0%BC+%D0%BA%D1%83%D0%BF%D1%86%D0%B0+%D0%94.+%D0%92.+%D0%95%D0%B3%D0%BE%D1%80%D0%BE%D0%B2%D0%B0%7C%D0%94%D0%BE%D0%BC+%D0%BA%D1%83%D0%BF%D1%86%D0%B0+%D0%A1%D0%B8%D0%BB%D0%B8%D0%BD%D0%B0%7C%D0%95%D0%B2%D1%80%D0%B0%D0%B7%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9+%D0%BD%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9+%D1%83%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82%7C%D0%95%D1%81%D0%B8%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9+%D1%80%D0%B0%D0%B9%D0%BE%D0%BD+%28%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0%29%7C%D0%96%D0%B0%D1%81%D1%82%D0%B0%D1%80+%D1%80%D1%83%D1%85%D1%8B%7C%D0%96%D0%B0%D1%81%D1%8B%D0%BB+%D0%95%D0%BB%7C%D0%96%D0%B5%D1%82%D1%8B%D1%81%D1%83+%28%D0%BF%D0%B0%D1%80%D0%BA%29%7C%D0%96%D0%B8%D0%B1%D0%B5%D0%BA+%D0%96%D0%BE%D0%BB%D1%8B+%28%D0%90%D0%BA%D0%BC%D0%BE%D0%BB%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%29%7C%D0%96%D0%B8%D0%BB%D0%BE%D0%B9+%D0%B4%D0%BE%D0%BC+%D0%B4%D0%BE%D0%BA%D1%82%D0%BE%D1%80%D0%B0+%D0%A4.+%D0%98.+%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%7C%D0%97%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5+%D0%B1%D1%8B%D0%B2%D1%88%D0%B5%D0%B9+%D0%BC%D1%83%D1%81%D1%83%D0%BB%D1%8C%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%BE%D0%B9+%D1%88%D0%BA%D0%BE%D0%BB%D1%8B+%28%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0%29&props=info&format=json&formatversion=2&maxlag=5'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php",
+          "params": {
+            "action": "wbgetentities",
+            "sites": "enwiki",
+            "titles": "Abu Dhabi Plaza|Agency for Strategic Planning and Reforms (Kazakhstan)|Agency of the Republic of Kazakhstan for Atomic Energy|Airport (Astana LRT)|Alau Ice Palace|Almaty District|Aqorda Residence|Astana|Astana Botanical Garden|Astana International Financial Centre|Astana Medical University|Astana Opera|Astana Triathlon Park|Astana-1 station|Astana-Nurly Zhol station|Astana-Saparjai-1 Bus Station|Baiterek (monument)|Barys Arena|Beit Rachel Synagogue, Astana|Daulet National Tennis Centre|Demalys Promenade|Döñgelek Square|Embassy of the United States, Astana|Emerald Towers|Esil District, Astana|Financial Monitoring Agency|Grand Alatau|Haileybury Astana|Hazrat Sultan Mosque|Independence Square, Astana|Jetisu Park|Kazakhstan Central Concert Hall|Kazakhstan Sports Palace|Kazhymukan Munaitpasov Stadium (Astana)|Khan Shatyr Entertainment Center|L. N. Gumilev Eurasian National University|List of ambassadors of China to Kazakhstan|Lovers' Park (Astana)|Ministry of Education (Kazakhstan)|Ministry of Industry and Construction|Ministry of Science and Higher Education (Kazakhstan)|Ministry of Transport (Kazakhstan)|Miras International School Astana|Mäjılıs|Mäñgılık El Triumphal Arch|National Academic Library of the Republic of Kazakhstan|National Defense University (Kazakhstan)|National Military-Patriotic Center of the Armed Forces of Kazakhstan|National Pantheon of Kazakhstan|Nazarbayev Center",
+            "props": "info",
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider www.wikidata.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "50.9069578|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/238e2fa92038ee14b6eeb23ddd2b64ce3d58f9b965555bc8cd5e8e0cba642100.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "50.9069578|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/989b943e63426bee0e5b482163389ce84c50cdfb948aaa51a9c92f19d76d3e40.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "50.9069578|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/aff9dff29b7f145ad33a9154f30caf202509d7f24382980304d83220df67a58a.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "50.9069578|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/b00a1967169fc3a9958640e64d01c1342cc882f4c0f77d9681af0133cde54706.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.0056584|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/75ce5d0e14f5ef3c021853a30821cd3e27fff242e14e540ef805cdbbf2e990a6.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.0056584|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/1c01549ac676cec94b8e65fc9000f2e0c08a88101dc823fb3ac0f35d7b5d56f3.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.0056584|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/79ffa2c756ca487e476cd7bfbc3a166bd7f215b8e855c3005e9565d142cc4f3a.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.0056584|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/390a79f2eabdefe1239ef67db6361a06d856cdc10e4674867ad3696feb97275f.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.1043588|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/544e99c422e9bca4b05205dd11c7c367e1d763eb76dc044fe8b854c7fe57cd8f.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.1043588|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/ea7a2b2c4e398b5d73a9fddd470325b1cb9ba06ef36c82f20f9ebfac56388f90.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.1043588|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/ee8b1db34a36cf351efddf04ee985b49c861e309e44d7cb2bba31e72c98402bc.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.1043588|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/46e09d4e3bc474444958aaa7f2ae83280fd014cd0f0e56aeefc6b0b1f0c404d8.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.2030594|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/971c49715c8de46e5082764e5a2288da9ab230c0cac822ae20eb81f825401bef.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.2030594|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/bdebc43f73acccee85eaa27f938414032ad094ad22be60c63dd237c5c67a5f4a.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.2030594|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/6d0225c062b381654fa6c373b64ba7a045befb56c8c93957fece311d4cbeee28.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.2030594|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/ea73cd4c482d9fa53f4e505623f4271d0bc89f5c60091b0ceba2c7a19aa009b0.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.3017598|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/b8b05b920382db49b437a27714e68161567ec0b88d0a20e63961da2d4ac06b02.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.3017598|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/e2311552b9ce8e4e1b900bb8e7f50b96c0d73432e2bdbe8a0fd90803733329a5.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.3017598|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/8356dbabec3a5fe2135ea8b93be01b3e2fd4f30b5ec9ddb7fd2a82c13a98deac.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.3017598|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/6f3607328962c1aed44705f8ddb2f9d5c1b05858c7d03ddeb038eda2a4cb1fbf.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "50.9069578|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/044a608b6a0898c268fbf4b872d50fa7e408d24f58f3cdd1480179aae7f7e9c5.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "50.9069578|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/eb0bfa4c7b2a6e9c03a642a5af987d1c855b837b65a29523c0a20ee97efbfc45.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "50.9069578|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/3559d04106fbe85d6d16af4f339439282d31f604557b5ddaa9fcf1acdfdd2ca0.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "50.9069578|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/5ae60fa011db79d24f2ae9bd1486b546ab150e163b076c4d7c708fd22ff41929.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.0056584|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/6917da60ddb4c9b33b3b94377c69b1e2275c8ea914e0031795dd681a98673363.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.0056584|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/2d9cc6c494e497cbe883de7dec9b21478f4dd61fb20a21aa7a2b339b80b62f7d.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.0056584|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/9c61b3d1b5afa92911169e8037069ef51342a0bb45f687ae16b4409d290ffb8f.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.0056584|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/8c6a3c4ded421258942e4eede80046d9da1a038a2f0b3ced720bae6adfee0340.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.1043588|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/a72100521d9a73436132da85278779e90ce8e3bab0e97e5e51c56633a6d3c45b.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.1043588|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/4184ecc191f4d06a36c0e7ab2fb7a07559c8676b775e6687e7a979ede665dcd1.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.1043588|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/c7c2860f66af9f4ef6db9178a282c87c9dc3510047d8241f67a5f92c1e385825.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.1043588|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/97419ac58c1d56886722b9ac4bdcaae9e7e544d9f259ef57d7776014e66046d0.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.2030594|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/285b25b90f97ebabeaf6ca3c6d215b6bdfcc3686f6276bb7a8b1929631437e3d.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.2030594|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/b947f6d87f608a4bd17207f515e647f9e370f8820db904270a414015f434dcd4.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.2030594|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/24a2206abfb67ceca533291427b5df68e6a0ebc36a2a7f88293bd0a07cdb4242.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.2030594|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/bcccc05d91f300ac744b470c86f24051d2fefff0a69b03281d876f131637347a.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.3017598|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/7fcbf543d46034805665d4aabcaaafb13530bd79b09987958bd9da2d6dfb0410.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.3017598|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/4014a123b58c9fd0d7e634124ff49823cf451a57fc93c774694ff9d0ba270871.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.3017598|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/f93dec5611b5d5530d2e2d4a66d0d7addeb62160c7adb413270f0f7fccaaa099.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.3017598|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/3ff35ddb0c5269cbc6ff7c57f86d7d23403168c1c6442e5027251efd51a28344.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "50.9069578|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/36ad3ce2b64c7e9d6f891254623817a36c8297881a9d60f76c2170b21a651433.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "50.9069578|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/e512705d1287f743855cf93102986cbb916fe4c04d645a77bef330389596a66f.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "50.9069578|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/bf40dd8659a87673c4d980ab7d0816ab97edb279e28e68962c90d1d8a7e5d091.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "50.9069578|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/5731a0f9942a17c4d6b2c3e460c6bb78025216d9f0f32ad2c421221abb0901b7.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.0056584|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/3cee83b1268a2e3a223a4309537994e2153a936fb5aa5b674831d6f67cf8bd46.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.0056584|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/9290bd887dbd505b0384526b929966bda4899b5f3c295edce95be285e79dd94f.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.0056584|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/3b8f55d99d5fc4bac1e3b84f8ba7f9df97db13a29642d025869aa0d4bc96e92b.json",
+          "cache_hit": true
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.0056584|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/875c8dc25829c3066547e6d428a0c027f95cf4be0a2b292831dbc95dce92f4a7.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.1043588|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/4a259cfeed8548ce0c1d2b589c0bc2a617d8c1d9ca5f8692455635dd814028e1.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.1043588|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/719567d7a1332e6fd673acf063e45fa782d507cc0d72ffb97fe27a4b67f6f839.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.1043588|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/c4dc093039f239904753cc3d1ef2999688d6bdeeff651030a248c804acbf6eaa.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.1043588|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/4423965ac995ddc301ce0e5214dcad8b59f88c770e8f208c6d38d75a3099246b.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.2030594|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/e4043917ffbe127c153ead0e7c8ed60155e564abc6ef6e327c36b687ecad067e.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.2030594|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/c7b7ab6992615b170c06bd10304bb0a5a3aafd9c2ce1af82da73e7f45b4b7c33.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.2030594|71.5724846",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/d56a731ae873ecd0a8791868ee4357929eea2c9679a175f144bcfe2ebe050af2.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.2030594|71.7142891",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/57353d7146ce0d6a7ea81c848e66a32b518b8940b5c3accf20c2b99a0075e091.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.3017598|71.2888757",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/9b3abaa75d91ea3e4d13dcfa4ec113ae0ae422e7db8c8d3d049d11602641669d.json",
+          "cache_hit": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "list": "geosearch",
+            "gscoord": "51.3017598|71.4306802",
+            "gsradius": 10000,
+            "gslimit": 500,
+            "gsnamespace": 0,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "cache": "cache/1add6fb24558e3550e077cf524e2c3a47cca89e5e9905400e967bd3dadc3eb3d.json",
+          "cache_hit": false
+        }
+      ],
+      "discovered_entities": 0,
+      "fetched_entities": 0,
+      "fallback_article_candidates": 226,
+      "candidate_count": 241,
+      "finished_at": "2026-10-18T17:43:11.637356+00:00",
+      "retained_previous_candidates": 15,
+      "pipeline_used_cache": true
+    },
+    "web": {
+      "status": "partial",
+      "candidate_count": 49,
+      "unlocated_fact_count": 1225,
+      "errors": [
+        {
+          "source": "astana_library",
+          "url": "https://astana-library.kz/",
+          "error": "RuntimeError: Disallowed by robots.txt"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://www.marwin.kz/shops/",
+          "status": "cached",
+          "cache": "c9cd2e0918b315d68bfd1093c5c7757783bcbb4269c1ca1a2fc0f41a96c189d7.txt"
+        },
+        {
+          "url": "https://publicapi.dodois.io/KZ/api/v1/unitinfo/all",
+          "status": "cached",
+          "cache": "22668d64b98c2152f04f34b78304dc12e8a5f5533336c8c9b52234758319dfcf.txt"
+        },
+        {
+          "url": "https://restaurants.mega.kz/ru/?sm=2",
+          "status": "cached",
+          "cache": "37cb119dcae5c70926109b0b725c2f80c00a47866a006cfd3e26d6adb23273ec.txt"
+        },
+        {
+          "url": "https://khanshatyr.com/ru/food-court/kafe-restorany-i-kofeyni",
+          "status": "cached",
+          "cache": "a0d4792aba4a17d2085c61890039be718d5b708e9f6bfb28ae8c034307e450f1.txt"
+        },
+        {
+          "url": "https://greenmall.kz/ru/brands",
+          "status": "cached",
+          "cache": "910cb53420476e993ee63f30f7d76b72d12b38d3642cf7e5f8b04b695fe27195.txt"
+        },
+        {
+          "url": "https://astana.citypass.kz/en/attractions",
+          "status": "cached",
+          "cache": "68eff04957b762ba3106102ec64d7c43c93b708974bb6d0583e1d35af8295ae6.txt"
+        },
+        {
+          "url": "https://astana.citypass.kz/ru/attractions",
+          "status": "cached",
+          "cache": "251abf414342917fc99883438fc9750333a710d4090ac4f583c0dd32c0621114.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kofejni",
+          "status": "cached",
+          "cache": "c1f88a35539989f5dd0a719bd9089d9fc3bdc4f7bf7f1fc834d9e32ed9b41305.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kofejni",
+          "status": "cached",
+          "cache": "c1f88a35539989f5dd0a719bd9089d9fc3bdc4f7bf7f1fc834d9e32ed9b41305.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kofejni?page=2",
+          "status": "cached",
+          "cache": "76b68ae870054e27f62f39b749b69be4e8bd57df4b3b4590e758ee7de656c1dd.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kofejni?page=3",
+          "status": "cached",
+          "cache": "abad858ff7629bbaef8256c582f8d25f38133763d436527a6b91ec702e8fc0f3.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kofejni?page=7",
+          "status": "cached",
+          "cache": "c0a13410d88419eda23606efc09bb26f0c83738f0761e4b4460f0b9c6853d7c1.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kofejni?page=1",
+          "status": "cached",
+          "cache": "39a84b38d842391dc0a275b9a41b35e898f2af4e254d991d11c2c2e19fa96c2f.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kofejni?page=4",
+          "status": "cached",
+          "cache": "53659960fa3c598227aea5e8a6f9afa7e3b0df6bf803e11030b2c313e687b13c.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kofejni?page=5",
+          "status": "cached",
+          "cache": "e1e772b372801f9a85e5be796f90f94afc8462337207d838d25ecb8f30dc6a8a.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kofejni?page=6",
+          "status": "cached",
+          "cache": "f9fd89eb1659d3c008b7c585d3cb6f1eaf8af9d97aa9d7e4f47b51532837221e.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe",
+          "status": "cached",
+          "cache": "c888a5b71d84cca350295803daef75c57fba88bde6a7fd0bbc5ef38caac707c2.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=2",
+          "status": "cached",
+          "cache": "251e582dced4335b8ff5456e851b5d0eb5e913698f95b58a2ae4996f6c93233c.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=3",
+          "status": "cached",
+          "cache": "a644f3493f680d327a2960a560e7e3f65726f02c5ecfd133e2b5a1853fb889af.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=50",
+          "status": "cached",
+          "cache": "f8366aa9f5aea0036ecef85ea5197a122988f83368bcc79f6a6de22e5c22ec63.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=1",
+          "status": "cached",
+          "cache": "77b784bdc56aa80901cb39380c68d8950ace1d33a55922b710ac9dd7cfd10026.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=4",
+          "status": "cached",
+          "cache": "adcda3cac41a4a2527f9386c81423c58f4829ce8c665d63785bef59575ec8493.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=5",
+          "status": "cached",
+          "cache": "1f98a50eacea2cacbdd85d2eab00b30391dc394763d3f4b9acfe8bdd8178531f.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=49",
+          "status": "cached",
+          "cache": "89dafc44d2857f009e339e6e8b5a8027b32208946c69b6e146343e78802d6984.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=48",
+          "status": "cached",
+          "cache": "c64f0c4104c790346e71be73f36a972ebf84e115f5e86f159782228fab3d4cc4.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=6",
+          "status": "cached",
+          "cache": "55c78c11a531439aad04b022df1bb93d244159e8ad653052fa9af6a83461a636.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=7",
+          "status": "cached",
+          "cache": "b070ea479314afdf976370a6ef345b2025d126221bb98bf513880274a17b22c6.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=47",
+          "status": "cached",
+          "cache": "5773814108a2777f2ca55f4a4beb3c635d775dd84bb89ddbf057d3f726314aa7.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=46",
+          "status": "cached",
+          "cache": "883b2ac8613722e6e0ed7c42af262cf6221698ab8dc1858f6d099854cf871f2b.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=8",
+          "status": "cached",
+          "cache": "d9bb9d25c2fb70454423493cd5a4d8e6ba0a827343679fed5c2117283e5e8ff8.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=9",
+          "status": "cached",
+          "cache": "bf0e541d5a7f5a0c8bd3f166b6bd841df1a13bf9670ab63c7b9c39ccaa0a35ab.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=45",
+          "status": "cached",
+          "cache": "21786ef09d98a76e6627f23fb064c7441d9a4c30ae22bbe2efafc301b18e1575.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=44",
+          "status": "cached",
+          "cache": "e99ac54f53b229755374ca4a4a3b74881f2447a4c7c864fb53f666f43fdbba3b.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=10",
+          "status": "cached",
+          "cache": "e7208c0e3f9ab2e9137de97da5c2b897592c3e47a9e91663425e1e8fc9f4abeb.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=11",
+          "status": "cached",
+          "cache": "7894b5d773e10328419a93868d27e12d1a8a67c98223ba455ce1029431db3ea1.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=43",
+          "status": "cached",
+          "cache": "8ff88bea9daaaa85b640e61fab08a2135c8eedf777863d01de0c83cdad818e69.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=42",
+          "status": "cached",
+          "cache": "64cf154606aec986fd84a2bc74e73cc7a849fe04d4928bad1117fea30d460091.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=12",
+          "status": "cached",
+          "cache": "c9aacff9e511c69453cf932c9c1db22fd91d80f11e41be03a309343fba95913c.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=13",
+          "status": "cached",
+          "cache": "ea57e1ad09a975e3f674df144d5a5aba344672f73b78148b217db66dc6a15193.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=41",
+          "status": "cached",
+          "cache": "581557e3ef74570d32f1311a205fb8e9159c1e1db080d9eb9a82a6e53e2a4596.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=40",
+          "status": "cached",
+          "cache": "2d7d8ee5113d0cdf6580bcba9ddef0d83fc4634f4b9cdc375b1158af129c6d04.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=14",
+          "status": "cached",
+          "cache": "aab2657cfc9dd1b0feb6ab44bc87d694cefd4343321c4e4aeca4b36540a24311.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=15",
+          "status": "cached",
+          "cache": "8fbc9b08dd2741aaaa43fc7eaeab95195d8d9c494c420c8dd03df81cf9eadcb7.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=39",
+          "status": "cached",
+          "cache": "812d179ef5807f0b608e89d22e25098828e433b6122b797f86ab86a95220627f.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=38",
+          "status": "cached",
+          "cache": "035cab197a1843bb54efa850d4d4c2c09d160d98c1ea6a19942fbcca8d4d4b26.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=16",
+          "status": "cached",
+          "cache": "2bc2de53647e2c793371a439048f52d4897f838153efccf12803c230f2e437e3.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=17",
+          "status": "cached",
+          "cache": "d7219098f8257edf2612d9876e7ea988815191bd32e16c1944d343d667504257.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=37",
+          "status": "cached",
+          "cache": "7019c433f765fb998837dff32ae6437a235ae54566e605f4af2326ca19ee81d0.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=36",
+          "status": "cached",
+          "cache": "35cf92bc6bf4bfa7ae361dad9ce9af4a82a26d709af26b59f6a93b7b0e84033d.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=18",
+          "status": "cached",
+          "cache": "472b9b673cbe613b5a421719e843bdda8507f0ee5c67b0d4bdd8f39a096d7916.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=19",
+          "status": "cached",
+          "cache": "d9e1b2ae10da1dc66ea9215c1a18dd05340d345648aaff5e9df5e53d122c469d.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=35",
+          "status": "cached",
+          "cache": "541ec02f6f882e10f5a2742264939fab7c2fc14021cb8847cbf25f161f4e312c.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=34",
+          "status": "cached",
+          "cache": "21bdf5639ba268e85db4870d270d051c8171076108ab26674eb2848f9106d0ed.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=20",
+          "status": "cached",
+          "cache": "a1d619374cd941242aeb96d157b77d3f5bdec6d12923756c4b7bd8e052400c31.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=21",
+          "status": "cached",
+          "cache": "6bc2ccdb38ec74f2c5c72d37bb8d41ad4364d57c2a14c4e3eed00d179688dcfd.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=33",
+          "status": "cached",
+          "cache": "87713782a771eca65a75fd67244e6783bec9c7c4e3c85f626a8aa9269938e54a.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=32",
+          "status": "cached",
+          "cache": "8c3e5e004e9eb169b54146e8897e8d9c17d79c8f5148f44276881fd5f111f2ea.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=22",
+          "status": "cached",
+          "cache": "d1d06fcf7ff77a7716cd3b3cc02b724a2c50ebe0337e5704a1ae7d8bf28ed27c.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=23",
+          "status": "cached",
+          "cache": "30f88a37e10e0990021a3d40493d908c6184906b95c67817e2a6e78036b48f6b.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=31",
+          "status": "cached",
+          "cache": "fa0ad788a17f73471c4d1cbd82278fd7a4604df0cc00fbfc01db0ea81817b066.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=30",
+          "status": "cached",
+          "cache": "0ace55452e0023776ee6f8b00731eaf9f3a4150362c3678bfa4ce5c180081e0e.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=24",
+          "status": "cached",
+          "cache": "72a7bfc80d929f3ad49de0ed1a7d477c4235363b56c7a0bce6c4617e9def2ca4.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=25",
+          "status": "cached",
+          "cache": "fab75470bb88612926e29b9d86f1e779c4afbc1153862fa98f6a6727b2cd8c67.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=29",
+          "status": "cached",
+          "cache": "faf3d42b2603c4fc26ca32e7e84600fe978d99852502a32492db4d92bd9a3dfd.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=28",
+          "status": "cached",
+          "cache": "b0805449f8613ad45a8c2b422004b5460d63b97ee8befdec9815573070c8f96e.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=26",
+          "status": "cached",
+          "cache": "d53bf1a14e05f7a54d9cb54f91bbae792e324027275de0ea800adde09ab3ee67.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe?page=27",
+          "status": "cached",
+          "cache": "19871f2688f2d7c805c1002144f640722acbed586349e50eb874339c74a1f3d5.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/akvaparki",
+          "status": "cached",
+          "cache": "95c63f54589b7bb9e45c7bab10ad91fdfd42443d0d12e33892ab7d48798c70f5.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/aktivnyi-otdyh",
+          "status": "cached",
+          "cache": "c942dafcd209536f0f43049e0421290b0cf45e23376546456848a97248ea193c.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/aktivnyi-otdyh?page=2",
+          "status": "cached",
+          "cache": "7f8d02701acd5cb13f01d577d6f3a15a5e72e47dfbc5a5ff121e15eb1622b660.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/aktivnyi-otdyh?page=1",
+          "status": "cached",
+          "cache": "149781139b5230d2c77ec41bc7037802b830d795c58aa1f872c6b39aff4fb17a.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/biblioteki",
+          "status": "cached",
+          "cache": "535e8f4a79f0c89db6eba222af9b035e6a59c1842bbe2b80e77490cc38906b6c.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/biblioteki?page=2",
+          "status": "cached",
+          "cache": "50372357b5678197904c2530074a0e60d51883e835e0756c72403ddea72c3333.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/biblioteki?page=1",
+          "status": "cached",
+          "cache": "fc9f0815e0268b122850a2750ee222ed31a4a71ee2d58c41472a8316049ff63e.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/dostoprimechatelnosti",
+          "status": "cached",
+          "cache": "06f31ca54fb58c756c947f6386e323cfa0f1abc73ed9daeb4098fff28d9b6fe1.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual",
+          "status": "cached",
+          "cache": "d0fce5b8254a8c04fe7be93768f0094bdf977916932781ac1f0da1e5a6ea6b4f.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=2",
+          "status": "cached",
+          "cache": "0cbfa3ecf04dc401b29c5027023386ccb8968ed506ae8ea211c65a762a47e346.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=3",
+          "status": "cached",
+          "cache": "707d7821801065c1295b841bcde78b1b11f2b6847ece78e17d27271cc9cbfcd3.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=23",
+          "status": "cached",
+          "cache": "391760a6af940722afb8d942e6937fa4e75d07be1870351da8f2e7a5177a833f.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=1",
+          "status": "cached",
+          "cache": "44d7c5df56945298e4bd71f8d690f6e62944f402a01147aaaf96948057b59af2.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=4",
+          "status": "cached",
+          "cache": "7f523101c3c129cddfca584917ef18593efd7095788cf01d0963330973500961.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=5",
+          "status": "cached",
+          "cache": "6dced0529066fef17b1bb853491e1df101470603bcb240fa5978602884d9dcdf.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=22",
+          "status": "cached",
+          "cache": "056b46531f604c8b715d818dec889dfd71669a323d3e24a4db59d4697986620b.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=21",
+          "status": "cached",
+          "cache": "833e7a7597d34cdd6e9cdc9baea57842b8a66b16e2b6de4815328516e88ecc69.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=6",
+          "status": "cached",
+          "cache": "061fa55853cf15478a15da04e0a24b6b23ede0019b262d4dd231c45ee5082b2d.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=7",
+          "status": "cached",
+          "cache": "fbca9c7626166b854e8ba320eaf82616ba079cd04a9f20fc803d88b2460b9fdd.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=20",
+          "status": "cached",
+          "cache": "7449b21d0e910721dc9b4070f66264b6c03f67f4dabad5787bd189144b3042de.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=19",
+          "status": "cached",
+          "cache": "472df1983dc3e0bf348b9d68b143d9a2e8d0ff720c7fdcbd2ff2568861bb2899.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=8",
+          "status": "cached",
+          "cache": "5e4bee6f6d84990b887b317e566d3b40ce10b974d31b3633a3ef8d8aca795a63.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=9",
+          "status": "cached",
+          "cache": "5ef425c48c27c56573d2f61acef02f60a2f9288d263997f4c64e82681846dbe2.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=18",
+          "status": "cached",
+          "cache": "b9f8983a3953e48832cce5042dbd48f2d710638f1f46743087419b7ef8d1fdfb.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=17",
+          "status": "cached",
+          "cache": "c3fb6306fa03f44313e22b25f0f7495fb0771925717e3655b30c1bfbef673df0.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=10",
+          "status": "cached",
+          "cache": "64b6f29ce84066deaf402faa6c83a8398b5a12761ebe3e72616212a963d066cf.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=11",
+          "status": "cached",
+          "cache": "6e9a988c876970e9c81d8d2f2473102e8c67e05b1694b93eedc7f61656344e45.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=16",
+          "status": "cached",
+          "cache": "93485a7e32a1f77c0bd597c20570c12f63a17b3f01e6e6d2a936c1273b112973.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=15",
+          "status": "cached",
+          "cache": "1c7bb4ba8370a63f2ca7987d40b98a13ce1fd0e14583c81336c5a3e1e13d8a8e.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=12",
+          "status": "cached",
+          "cache": "100bdbc2697b9b0ee818392c468fa5f0ca44dbc84467bb3393fbf3411b93b271.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=13",
+          "status": "cached",
+          "cache": "3d39390d6545434a1ae77fc752bd6340d158f10d52d8d592ea3676f6c2a1b8e6.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/intellectual?page=14",
+          "status": "cached",
+          "cache": "66d20c33903ce5731b499d9fc1196145d3930c64e0c57b949c1d9489ffbc4e0a.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/cinemas",
+          "status": "cached",
+          "cache": "60160fd8b010ea73f1e4f517552ec9332baca7a39dd16ec67a99cfbc60d3c527.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/cinemas?page=2",
+          "status": "cached",
+          "cache": "c5e2daf97fc70488949c1b956c6fdd5c2a5c7d93d9acb27659442bde12b1699f.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/cinemas?page=1",
+          "status": "cached",
+          "cache": "ae9bab85cad6b8e117223ba13349abfeacebece68e458dadc64ba9af7e936e3b.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/concert-halls",
+          "status": "cached",
+          "cache": "4bdabed5f02b20f80589bef3f23d076e5dd565c2d1f2f92267f12b8a0b9ec178.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/concert-halls?page=2",
+          "status": "cached",
+          "cache": "aa7194d6ad0a967ab72956a60c0a5c63ad3cbd4ae71604752d9fa347fb55e0de.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/concert-halls?page=1",
+          "status": "cached",
+          "cache": "2895eb12e44982b797cf3a6b6ef4999104dd7dfefd517bd9580d8706d35c9341.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/muzei",
+          "status": "cached",
+          "cache": "89520cf4fc523cd834afff53aa269112591d554015fd596d607dd19d41ca4fb4.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/muzei?page=2",
+          "status": "cached",
+          "cache": "41c81b036ff9452ba3edadeddeb702c1f6abb0a9103354055f6b2950369b02f2.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/muzei?page=1",
+          "status": "cached",
+          "cache": "88ed375709baf1b37bac76ca7acdc149c53968a50f8a76b414e3175c283ec6d5.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/parki-skvery-i-allei",
+          "status": "cached",
+          "cache": "66b66cc4d85f437c4b7a03eff9535a4221b7a243a6735ed2185b0ba9325314a2.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/parki-skvery-i-allei?page=2",
+          "status": "cached",
+          "cache": "ad1ef8f784abb9f34fd25d3ef0714999626e16e28c924125cf816e0afe3e27fe.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/parki-skvery-i-allei?page=3",
+          "status": "cached",
+          "cache": "0afbf1546ba8d555f901f1f967098f37f7bd770837a646a7fbc69d69fca81bf5.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/parki-skvery-i-allei?page=1",
+          "status": "cached",
+          "cache": "ad519a55f28dd30aa89277fb9216cd52b05e3787ffa50025f189716b399a4b1c.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/sportzaly",
+          "status": "cached",
+          "cache": "f5571a2a6bb58cc0fb98ee1089f24055bb0e2dd8876a0ed45440b8d939f73cb7.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/sportzaly?page=2",
+          "status": "cached",
+          "cache": "b2acb84d74030aacb5d9e130de761455666a9a713cf717c13c4dd688f47b8296.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/sportzaly?page=3",
+          "status": "cached",
+          "cache": "8cf6ef3efa882d4917597084f9851f8866ec228d1f0afab4433e92951a195828.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/sportzaly?page=6",
+          "status": "cached",
+          "cache": "18c907016b7657f6cd827967d47f6e79694c6dffbeeefe27ae74d0044295867a.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/sportzaly?page=1",
+          "status": "cached",
+          "cache": "abe497a426dfbd58f2c0eafebb47b197ebbf0127d45606d42164f78b05032b83.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/sportzaly?page=4",
+          "status": "cached",
+          "cache": "79284e7cc170060af1376f57232ced4a1838a08fef2d62a7604708a239e66001.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/sportzaly?page=5",
+          "status": "cached",
+          "cache": "e80b2d900aacee0a5b2931e0ee109e63e810eb475514dfb3ff52447b8fd5c4fb.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/torgovye-centry",
+          "status": "cached",
+          "cache": "b717f392ca8f5534d7b07d902fbd351dd577929bdeeb42fec321e92b2f878d77.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/banketnye-zaly",
+          "status": "cached",
+          "cache": "7785085a0b2104b0c2330be27f16d3e03185921fa4a78bfd71b232d1fb4ca8e1.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/kafe-1",
+          "status": "cached",
+          "cache": "1ccbda8a8b0322ff43e0bbf68c3d59fb3663c5da2e39c98c14351325a15ccd68.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/nochnye-kluby",
+          "status": "cached",
+          "cache": "798bb332d2f08105b050a814b6842f18e19a7ee22d54bfd888a9ed7d35b8ee63.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/konditerskie",
+          "status": "cached",
+          "cache": "a210d1d529bd16af5881b65c247d972663358cb1fce1753b96bc5e008fad70d3.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/konditerskie?page=2",
+          "status": "cached",
+          "cache": "5fb36dfdabee597367f81dcf6b68a60f73693b7e342fd3106c7bd4de6ff4d446.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/konditerskie?page=1",
+          "status": "cached",
+          "cache": "2b6464a6ea2316e3966bd471ae9b0d6ce948079fd0c0e47111429421bc312cde.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/anticafe",
+          "status": "cached",
+          "cache": "97287fb3b3aa93ccdf45121c94f0ba920963efd0413efa64cd18174325349d00.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/karaoke",
+          "status": "cached",
+          "cache": "c215b51440170cea8a12f67050c7ee25296f128ec75f7e4183200e8de818b984.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/fastfud",
+          "status": "cached",
+          "cache": "62d966537de87cb71270c13046c1ae2f2fabf9b869b1d2f13e95a7ef85331b53.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/fastfud?page=2",
+          "status": "cached",
+          "cache": "db05cf0586451eb697c28d54493bee853d9a0461a28133a88e127b83cbee066b.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/fastfud?page=3",
+          "status": "cached",
+          "cache": "a563b21f4be04297d0d0f70f91d8880cf2dd4c4962b9309c1b48c57321d7aabd.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/fastfud?page=5",
+          "status": "cached",
+          "cache": "6a4f8c2d987a1bc73076a8b6ab30c1b823a6b7af76037205c844e419c3f9658b.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/fastfud?page=1",
+          "status": "cached",
+          "cache": "1f04f4fd24589fb6613816b0e7c617a68acc085bf6739fb37c516482e5faa783.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/fastfud?page=4",
+          "status": "cached",
+          "cache": "c9be60bbc3958ae1ea860e6871f0ef8db1781433637bd35e8a7bade3243998f8.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/bary",
+          "status": "cached",
+          "cache": "9f18b83d50a579413da20ad7f07996a71154d4b6031b18aa9d9c30714dd51f38.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/bary?page=2",
+          "status": "cached",
+          "cache": "d775e066db3289c3a3347e99ad5b4fc0769958f3162d984df623182c57e4b614.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/bary?page=3",
+          "status": "cached",
+          "cache": "b7a03320a863d647ff7b3476e581c01d7bdf866bdcca53b8eb721139d3aea79c.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/bary?page=10",
+          "status": "cached",
+          "cache": "8ce1fff6e057c7994ba247852339c8245017fd9d876e32bc6ef72b1245579455.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/bary?page=1",
+          "status": "cached",
+          "cache": "2a17abb365b472001a6146b58d93b1518bd5053aeb4eebc0cbff9418e7e4668a.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/bary?page=4",
+          "status": "cached",
+          "cache": "7b367919ba01f03675bbecb63f52c6372397f911e5b8420d579fa187749d8b24.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/bary?page=5",
+          "status": "cached",
+          "cache": "46d3a0474b92ac22b8a3417d80633ba489ebb843df328e56c1c62c79184d8710.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/bary?page=9",
+          "status": "cached",
+          "cache": "963b1424c4b8f15fbffc2c2daf60136ab162777b4d0b6908428c061a20292726.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/bary?page=8",
+          "status": "cached",
+          "cache": "1dccd3749b27af2f68059d4dcf7a35967b58885075146f5808833a3be97679c3.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/bary?page=6",
+          "status": "cached",
+          "cache": "359019d6bb36f442116a326049210043c825ae46f59285fcf68ee26951a31702.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/bary?page=7",
+          "status": "cached",
+          "cache": "e7685becffe8c267b5deb7d643121f0328d07639576b1bacc09a0b31a5ed28f0.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany",
+          "status": "cached",
+          "cache": "8b2404d818b21cbd164ef528b1a943f74f30f7ded1fc7d4ac132b3079e0fca2a.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=2",
+          "status": "cached",
+          "cache": "6ca5ae70e8b81cb344012a027b3ba55838a17e1de7dc050031b5079b47d2d17b.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=3",
+          "status": "cached",
+          "cache": "77b3daba6200a5bbd64a721801337291d2135a8407e6ce83ea6c9312d21d86c8.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=15",
+          "status": "cached",
+          "cache": "9ea7d22c258b4b81e65fdcba2b31ad19ad878b5288c6d9fb11c54b51eeddd846.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=1",
+          "status": "cached",
+          "cache": "a5fd8f4fa3d2a294f4675f1014214ad23b53a7e5a97843f3d37bc19d6aae580a.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=4",
+          "status": "cached",
+          "cache": "2a9cb8f0b62f229e24a0efa0b7c254a13fb7b3b2dcbfaa8c3acb9ce6786777de.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=5",
+          "status": "cached",
+          "cache": "f6762c34ef469cdeab143f66e4c466a3936b71ce13e074e79efd34ab842bace2.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=14",
+          "status": "cached",
+          "cache": "65a3c3d83dca99ea25baa8b2bbe4c2195ad35ed19a67189334920c7d7b5f7ae8.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=13",
+          "status": "cached",
+          "cache": "3e9e163655d33286afabd1d85ad2536800d7b2009a484986411b76cb47d73ab8.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=6",
+          "status": "cached",
+          "cache": "345609c454584b4427a25ada66f69b52ae1725f8474108d285658821eb1871f3.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=7",
+          "status": "cached",
+          "cache": "2db4f76a99130f76b364b20d1c39bb1a18a1602e0748027ea427d6f8641822ef.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=12",
+          "status": "cached",
+          "cache": "0c1b5cdf85cba51c386de21c81a34cbd479be1e00a471fa030b59510beae84b3.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=11",
+          "status": "cached",
+          "cache": "da0363ae0458ec6cd9446e43d12709e3e4a2677db56afa43f9d0e044a6d438e8.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=8",
+          "status": "cached",
+          "cache": "cfdba5963a3f4d56acd0f8cdfee759faca9002cea98eee7fc14a3ede2e040758.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=9",
+          "status": "cached",
+          "cache": "2f973ebd58fbdcfbb0aaa3485dcd852dd04bb07c52e30a956015ba2469141949.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/restorany?page=10",
+          "status": "cached",
+          "cache": "dc97c8260162b962c41cbe152927c5c04f17b73f6eb211ca4bee770ae59b427b.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/prirodnye-mesta",
+          "status": "cached",
+          "cache": "6a818630240bd9b56afe6049e6ee3b9b1fe16d861ba23acfcf40c28d70c84109.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/prirodnye-mesta?page=2",
+          "status": "cached",
+          "cache": "30cf48ed0944100c68eded99a4c7f897ba43bb697d5c0c64bed2084bdbec1cc1.txt"
+        },
+        {
+          "url": "https://sxodim.com/astana/places/prirodnye-mesta?page=1",
+          "status": "cached",
+          "cache": "5522b6d8ae769eed3cc6aeabc4a1ef6d2346481f0455352e6ad4f9b33fa1d914.txt"
+        }
+      ],
+      "providers": {
+        "marwin": {
+          "pages": 1,
+          "records": 8
+        },
+        "dodo": {
+          "pages": 1,
+          "records": 24
+        },
+        "mega_silkway": {
+          "pages": 1,
+          "records": 17
+        },
+        "khanshatyr": {
+          "pages": 1,
+          "records": 8
+        },
+        "greenmall": {
+          "pages": 1,
+          "records": 69
+        },
+        "citypass": {
+          "pages": 2,
+          "records": 34
+        },
+        "sxodim": {
+          "pages": 156,
+          "records": 1115,
+          "categories": 23
+        }
+      },
+      "retained_stale_by_provider": {},
+      "with_opening_hours": 49,
+      "with_address": 1184,
+      "record_limit": null,
+      "licensing": "Public access is not an open-data licence. Only factual fields retained; no general redistribution licence established for these sites.",
+      "coordinate_policy": "Source-provided coordinates only; unlocated facts require a unique exact-name base match later.",
+      "pipeline_used_cache": true
+    },
+    "geonames": {
+      "source": "geonames",
+      "status": "ok",
+      "count": 49,
+      "raw_count": 68875,
+      "bbox_candidate_count": 121,
+      "rejected": {
+        "outside_bbox": 68754,
+        "nonfacility_or_abandoned": 72
+      },
+      "bbox": [
+        50.8576076,
+        71.2179735,
+        51.3511101,
+        71.7851913
+      ],
+      "bbox_order": "south,west,north,east",
+      "categories": {
+        "attraction": 2,
+        "other": 47
+      },
+      "source_urls": [
+        "https://download.geonames.org/export/dump/KZ.zip",
+        "https://download.geonames.org/export/dump/readme.txt"
+      ],
+      "source_license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "GeoNames (https://www.geonames.org/)",
+      "collection_method": "full_country_dump",
+      "record_limit": null,
+      "cached": true,
+      "stale_cache": false,
+      "errors": [],
+      "download": {
+        "source_url": "https://download.geonames.org/export/dump/KZ.zip",
+        "http_status": 200,
+        "last_modified": "Sun, 18 Oct 2026 02:37:36 GMT",
+        "etag": "\"298793-65e1447c0b424\"",
+        "retrieved_at": "2026-10-18T17:38:38.009544+00:00",
+        "bytes": 2721683,
+        "sha256": "bcc52bca3b28cf339f4ca85b11033afad4a2abc6e1335a099410aec1b654f64d",
+        "license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "schema_url": "https://download.geonames.org/export/dump/readme.txt",
+        "license_evidence": "readme.txt lines4-5, cached from official GeoNames export server"
+      },
+      "collected_at": "2026-10-18T17:38:38.009544+00:00",
+      "elapsed_seconds": 0.108,
+      "notes": [
+        "All country rows inspected; only named class-S facilities and explicit parks/nature reserves retained.",
+        "Administrative areas, settlements, roads and generic water features excluded. Root normalization clips the actual administrative polygon.",
+        "ASCII and alternate names are aliases; their language is unknown in the country table.",
+        "GeoNames is supplied as-is; historic names, facility status and point positions may be stale. No descriptions, opening hours or ratings invented."
+      ],
+      "pipeline_used_cache": true
+    },
+    "directory_join": {
+      "attached": 21,
+      "unresolved": 1204,
+      "rule": "unique exact name, compatible category, and verified street/house or mall scope; no guessed coordinates"
+    },
+    "wikimedia_enrichment": {
+      "source": "wikimedia_enrichment",
+      "started_at": "2026-10-18T17:43:23.882031+00:00",
+      "input_count": 15226,
+      "language_priority": [
+        "ru",
+        "kk",
+        "en"
+      ],
+      "entity_description_note": "CC0 Wikidata short descriptions remain separate from Wikipedia article text; they are not attributed to Wikipedia.",
+      "http_requests": 2,
+      "cache_hits": 0,
+      "semantic_entity_hits": 237,
+      "semantic_article_hits": 277,
+      "indexed_entities": 237,
+      "indexed_article_keys": 277,
+      "errors": [
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Agency for Strategic Planning and Reforms (Kazakhstan)|Agency of the Republic of Kazakhstan for Atomic Energy|Airport (Astana LRT)|Alau Ice Palace|Almaty District|Aqorda Residence|Astana|Astana Botanical Garden|Astana International Financial Centre|Astana Medical University|Astana Triathlon Park|Astana-1 station|Astana-Nurly Zhol station|Astana-Saparjai-1 Bus Station|Baiterek (monument)|Barys Arena|Beit Rachel Synagogue, Astana|Daulet National Tennis Centre|Demalys Promenade|Döñgelek Square",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider en.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Embassy of the United States, Astana|Emerald Towers|Esil District, Astana|Financial Monitoring Agency|Grand Alatau|Haileybury Astana|Hazrat Sultan Mosque|Independence Square, Astana|Jetisu Park|Kazakhstan Central Concert Hall|Kazhymukan Munaitpasov Stadium (Astana)|L. N. Gumilev Eurasian National University|List of ambassadors of China to Kazakhstan|Lovers' Park (Astana)|Ministry of Education (Kazakhstan)|Ministry of Industry and Construction|Ministry of Science and Higher Education (Kazakhstan)|Ministry of Transport (Kazakhstan)|Miras International School Astana|Mäjılıs",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider en.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "National Academic Library of the Republic of Kazakhstan|National Defense University (Kazakhstan)|National Military-Patriotic Center of the Armed Forces of Kazakhstan|Nazarbayev Center|Nazarbayev University|Nur-Astana Mosque|Nursultan Mosque|Nursultan Nazarbayev International Airport|Otan Qorgaushylar Monument|Our Mother of Perpetual Help Cathedral, Astana|Presidential Park|QSI International School of Astana|Qaraötkel Bridge|Qosshy|Rixos President Astana|Roman Catholic Archdiocese of Mary Most Holy in Astana|Saryarka Velodrome|Saryarqa District|Senate of Kazakhstan|Supreme Judicial Council of Kazakhstan",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider en.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Talan Towers|The Museum of the First President of the Republic of Kazakhstan|Tselinograd District",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider en.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Кызылжар (Акмолинская область)|Национальный пантеон Казахстана|Преображенка (Целиноградский район)",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Client error '429 Too Many Requests' for url 'https://ru.wikipedia.org/w/api.php?action=query&prop=extracts%7Cpageprops%7Cinfo&titles=%D0%9A%D1%8B%D0%B7%D1%8B%D0%BB%D0%B6%D0%B0%D1%80+%28%D0%90%D0%BA%D0%BC%D0%BE%D0%BB%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%29%7C%D0%9D%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9+%D0%BF%D0%B0%D0%BD%D1%82%D0%B5%D0%BE%D0%BD+%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD%D0%B0%7C%D0%9F%D1%80%D0%B5%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BA%D0%B0+%28%D0%A6%D0%B5%D0%BB%D0%B8%D0%BD%D0%BE%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B8%D0%B9+%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%29&exintro=1&explaintext=1&exlimit=max&inprop=url&redirects=1&format=json&formatversion=2&maxlag=5'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Agency for Strategic Planning and Reforms (Kazakhstan)|Agency of the Republic of Kazakhstan for Atomic Energy|Air Astana|Airport (Astana LRT)|Alau Ice Palace|Almaty District|Amanat (political party)|Apostolic Nunciature to Kazakhstan|Aqorda Residence|Astana|Astana Arena|Astana Botanical Garden|Astana International Financial Centre|Astana Medical University|Astana Triathlon Park|Astana-1 station|Astana-Nurly Zhol station|Astana-Saparjai-1 Bus Station|Baiterek (monument)|Barys Arena",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider en.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Beit Rachel Synagogue, Astana|Conference on Interaction and Confidence-Building Measures in Asia|Constitutional Court of Kazakhstan|Daulet National Tennis Centre|Demalys Promenade|Döñgelek Square|Embassy of India, Nur-Sultan|Embassy of the United States, Astana|Emerald Towers|Esil District, Astana|Expo 2017|Financial Monitoring Agency|Government of Kazakhstan|Grand Alatau|Haileybury Astana|Hazrat Sultan Mosque|Independence Square, Astana|JSC Lokomotiv|Jastar Ruhy|Jetisu Park",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider en.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "KazMunayGas|KazTransOil|Kazakhstan Central Concert Hall|Kazakhstan Institute for Strategic Studies|Kazakhstan Temir Joly|Kazakhtelecom|Kazatomprom|Kazhymukan Munaitpasov Stadium (Astana)|Kazpost|L. N. Gumilev Eurasian National University|List of ambassadors of China to Kazakhstan|Lovers' Park (Astana)|Magnum Cash & Carry|Ministry of Culture and Information (Kazakhstan)|Ministry of Defense (Kazakhstan)|Ministry of Ecology and Natural Resources (Kazakhstan)|Ministry of Education (Kazakhstan)|Ministry of Emergency Situations (Kazakhstan)|Ministry of Finance (Kazakhstan)|Ministry of Foreign Affairs (Kazakhstan)",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider en.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Ministry of Healthcare (Kazakhstan)|Ministry of Industry and Construction|Ministry of Internal Affairs (Kazakhstan)|Ministry of Justice (Kazakhstan)|Ministry of Labour and Social Protection of the Population (Kazakhstan)|Ministry of National Economy (Kazakhstan)|Ministry of Science and Higher Education (Kazakhstan)|Ministry of Tourism and Sports (Kazakhstan)|Ministry of Trade and Integration (Kazakhstan)|Ministry of Transport (Kazakhstan)|Ministry of Transport and Communications (Kazakhstan)|Ministry of Water Resources and Irrigation (Kazakhstan)|Miras International School Astana|Mäjılıs|National Academic Library of the Republic of Kazakhstan|National Defense University (Kazakhstan)|National Military-Patriotic Center of the Armed Forces of Kazakhstan|National Museum of the Republic of Kazakhstan|Nazarbayev Center|Nazarbayev University",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider en.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Nur-Astana Mosque|Nurjol Boulevard|Nursultan Mosque|Nursultan Nazarbayev International Airport|Otan Qorgaushylar Monument|Our Mother of Perpetual Help Cathedral, Astana|Palace of Peace and Reconciliation|Presidential Park|QSI International School of Astana|Qaraötkel Bridge|Qazaqstan (TV channel)|Qosshy|Rixos President Astana|Roman Catholic Archdiocese of Mary Most Holy in Astana|Samruk-Kazyna|Saryarka Velodrome|Saryarqa District|Senate of Kazakhstan|Supreme Court of Kazakhstan|Supreme Judicial Council of Kazakhstan",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider en.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://en.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Talan Towers|The Museum of the First President of the Republic of Kazakhstan|Tselinograd District|Turkic Academy|United Chemical Company",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider en.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Сарайшық ауданы|Сарыарқа ауданы|Сейфуллин мұражайы|Сәдуақас қажы Ғылмани мешіті|Тайтөбе|Талапкер (Ақмола облысы)|Тельман (Целиноград ауданы)|Тәуелсіздік алаңы (Астана)|Тәуелсіздік сарайы (Астана)|Халықаралық түркі академиясы|Хан Шатыр|Целиноград ауданы|Шнет|Шұбар (Ақмола облысы)|Ыбырай Алтынсарин атындағы Ұлттық білім академиясы|Ынтымақ (Целиноград ауданы)|Ғашықтар саябағы|Қабанбай батыр даңғылы (Астана)|Қажымұқан (Ақмола облысы)|Қажымұқан Мұңайтпасов (стадион, Астана)",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Client error '429 Too Many Requests' for url 'https://kk.wikipedia.org/w/api.php?action=query&prop=extracts%7Cpageprops%7Cinfo&titles=%D0%A1%D0%B0%D1%80%D0%B0%D0%B9%D1%88%D1%8B%D2%9B+%D0%B0%D1%83%D0%B4%D0%B0%D0%BD%D1%8B%7C%D0%A1%D0%B0%D1%80%D1%8B%D0%B0%D1%80%D2%9B%D0%B0+%D0%B0%D1%83%D0%B4%D0%B0%D0%BD%D1%8B%7C%D0%A1%D0%B5%D0%B9%D1%84%D1%83%D0%BB%D0%BB%D0%B8%D0%BD+%D0%BC%D2%B1%D1%80%D0%B0%D0%B6%D0%B0%D0%B9%D1%8B%7C%D0%A1%D3%99%D0%B4%D1%83%D0%B0%D2%9B%D0%B0%D1%81+%D2%9B%D0%B0%D0%B6%D1%8B+%D2%92%D1%8B%D0%BB%D0%BC%D0%B0%D0%BD%D0%B8+%D0%BC%D0%B5%D1%88%D1%96%D1%82%D1%96%7C%D0%A2%D0%B0%D0%B9%D1%82%D3%A9%D0%B1%D0%B5%7C%D0%A2%D0%B0%D0%BB%D0%B0%D0%BF%D0%BA%D0%B5%D1%80+%28%D0%90%D2%9B%D0%BC%D0%BE%D0%BB%D0%B0+%D0%BE%D0%B1%D0%BB%D1%8B%D1%81%D1%8B%29%7C%D0%A2%D0%B5%D0%BB%D1%8C%D0%BC%D0%B0%D0%BD+%28%D0%A6%D0%B5%D0%BB%D0%B8%D0%BD%D0%BE%D0%B3%D1%80%D0%B0%D0%B4+%D0%B0%D1%83%D0%B4%D0%B0%D0%BD%D1%8B%29%7C%D0%A2%D3%99%D1%83%D0%B5%D0%BB%D1%81%D1%96%D0%B7%D0%B4%D1%96%D0%BA+%D0%B0%D0%BB%D0%B0%D2%A3%D1%8B+%28%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0%29%7C%D0%A2%D3%99%D1%83%D0%B5%D0%BB%D1%81%D1%96%D0%B7%D0%B4%D1%96%D0%BA+%D1%81%D0%B0%D1%80%D0%B0%D0%B9%D1%8B+%28%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0%29%7C%D0%A5%D0%B0%D0%BB%D1%8B%D2%9B%D0%B0%D1%80%D0%B0%D0%BB%D1%8B%D2%9B+%D1%82%D2%AF%D1%80%D0%BA%D1%96+%D0%B0%D0%BA%D0%B0%D0%B4%D0%B5%D0%BC%D0%B8%D1%8F%D1%81%D1%8B%7C%D0%A5%D0%B0%D0%BD+%D0%A8%D0%B0%D1%82%D1%8B%D1%80%7C%D0%A6%D0%B5%D0%BB%D0%B8%D0%BD%D0%BE%D0%B3%D1%80%D0%B0%D0%B4+%D0%B0%D1%83%D0%B4%D0%B0%D0%BD%D1%8B%7C%D0%A8%D0%BD%D0%B5%D1%82%7C%D0%A8%D2%B1%D0%B1%D0%B0%D1%80+%28%D0%90%D2%9B%D0%BC%D0%BE%D0%BB%D0%B0+%D0%BE%D0%B1%D0%BB%D1%8B%D1%81%D1%8B%29%7C%D0%AB%D0%B1%D1%8B%D1%80%D0%B0%D0%B9+%D0%90%D0%BB%D1%82%D1%8B%D0%BD%D1%81%D0%B0%D1%80%D0%B8%D0%BD+%D0%B0%D1%82%D1%8B%D0%BD%D0%B4%D0%B0%D2%93%D1%8B+%D2%B0%D0%BB%D1%82%D1%82%D1%8B%D2%9B+%D0%B1%D1%96%D0%BB%D1%96%D0%BC+%D0%B0%D0%BA%D0%B0%D0%B4%D0%B5%D0%BC%D0%B8%D1%8F%D1%81%D1%8B%7C%D0%AB%D0%BD%D1%82%D1%8B%D0%BC%D0%B0%D2%9B+%28%D0%A6%D0%B5%D0%BB%D0%B8%D0%BD%D0%BE%D0%B3%D1%80%D0%B0%D0%B4+%D0%B0%D1%83%D0%B4%D0%B0%D0%BD%D1%8B%29%7C%D2%92%D0%B0%D1%88%D1%8B%D2%9B%D1%82%D0%B0%D1%80+%D1%81%D0%B0%D1%8F%D0%B1%D0%B0%D2%93%D1%8B%7C%D2%9A%D0%B0%D0%B1%D0%B0%D0%BD%D0%B1%D0%B0%D0%B9+%D0%B1%D0%B0%D1%82%D1%8B%D1%80+%D0%B4%D0%B0%D2%A3%D2%93%D1%8B%D0%BB%D1%8B+%28%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0%29%7C%D2%9A%D0%B0%D0%B6%D1%8B%D0%BC%D2%B1%D2%9B%D0%B0%D0%BD+%28%D0%90%D2%9B%D0%BC%D0%BE%D0%BB%D0%B0+%D0%BE%D0%B1%D0%BB%D1%8B%D1%81%D1%8B%29%7C%D2%9A%D0%B0%D0%B6%D1%8B%D0%BC%D2%B1%D2%9B%D0%B0%D0%BD+%D0%9C%D2%B1%D2%A3%D0%B0%D0%B9%D1%82%D0%BF%D0%B0%D1%81%D0%BE%D0%B2+%28%D1%81%D1%82%D0%B0%D0%B4%D0%B8%D0%BE%D0%BD%2C+%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0%29&exintro=1&explaintext=1&exlimit=max&inprop=url&redirects=1&format=json&formatversion=2&maxlag=5'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "ҚазАвтоЖол|ҚазМұнайГаз|ҚазТрансОйл|Қазатомөнеркәсіп|Қазақ агротехникалық зерттеу университеті|Қазақ гуманитарлық заң университеті|Қазақ елі (монумент)|Қазақ ұлттық өнер университеті|Қазақстан Республикасы Ішкі істер министрлігі|Қазақстан Республикасы Көлік және коммуникациялар министрлігі|Қазақстан Республикасы Президентінің телерадиокешені|Қазақстан Республикасы Сыртқы істер министрлігі|Қазақстан Республикасы Қорғаныс министрлігі|Қазақстан Республикасының Бірінші Президентінің мұражайы|Қазақстан Республикасының алтын және бағалы металдар мемлекеттік мұражайы|Қазақстан Республикасының Ұлттық академиялық кітапханасы|Қазақстан Республикасының Ұлттық музейі|Қазақстан Республикасының Ұлттық паралимпиада комитеті|Қазақстан Республикасының ұлттық мұрағаттары|Қазақстан спорт сарайы",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider kk.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://kk.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Қазақстан стратегиялық зерттеулер институты|Қазақстан темір жолы|Қазақтелеком|Қазпошта|Қалибек Қуанышбаев атындағы Қазақ ұлттық музыкалық драма театры|Қараөткел (Ақмола облысы)|Қасиетті Успен кафедралды шіркеуі|Қостомар (Ақмола облысы)|Қосшы|Қосшығұлов мектебі|Қызылсуат|Ұлттық пантеон|Ұлттық қорғаныс университеті|Әбу Насыр Әл-Фараби мешіті|Әзірет Сұлтан мешіті|№102-темір жол айрығы (Ақмола облысы)|№42-темір жол айрығы (Ақмола облысы)",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider kk.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Апостольская нунциатура в Казахстане|Архив президента Казахстана|Высшая аудиторская палата Казахстана|Конституционный суд Республики Казахстан|Кызылжар (Акмолинская область)|Мажилис Казахстана|Министерство внутренних дел Казахстана|Министерство водных ресурсов и ирригации Казахстана|Министерство здравоохранения Казахстана|Министерство иностранных дел Казахстана|Министерство культуры и информации Казахстана|Министерство науки и высшего образования Казахстана|Министерство национальной экономики Казахстана|Министерство обороны Казахстана|Министерство по чрезвычайным ситуациям Казахстана|Министерство просвещения Казахстана|Министерство сельского хозяйства Казахстана|Министерство торговли и интеграции Казахстана|Министерство труда и социальной защиты населения Казахстана|Министерство туризма и спорта Казахстана",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider ru.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        },
+        {
+          "url": "https://ru.wikipedia.org/w/api.php",
+          "params": {
+            "action": "query",
+            "prop": "extracts|pageprops|info",
+            "titles": "Министерство финансов Казахстана|Министерство экологии и природных ресурсов Казахстана|Министерство юстиции Казахстана|Национальный пантеон Казахстана|Посольство России в Казахстане|Посольство Турции в Казахстане|Посольство Франции в Казахстане|Правительство Казахстана|Преображенка (Целиноградский район)|Сенат Казахстана",
+            "exintro": 1,
+            "explaintext": 1,
+            "exlimit": "max",
+            "inprop": "url",
+            "redirects": 1,
+            "format": "json",
+            "formatversion": 2,
+            "maxlag": 5
+          },
+          "error": "Provider ru.wikipedia.org Retry-After window is still active; live request skipped",
+          "stale_cache_used": false
+        }
+      ],
+      "requests": [],
+      "complete": false,
+      "linked_entity_count": 237,
+      "article_linked_pois": 277,
+      "descriptions_added": 275,
+      "output_count": 15226,
+      "finished_at": "2026-10-18T17:43:24.829486+00:00"
+    },
+    "cached_descriptions": {
+      "status": "ok",
+      "candidate_count": 34,
+      "source_description_count": 33,
+      "held_description_count": 1,
+      "by_source": {
+        "citypass": 17,
+        "mega_silkway": 17
+      },
+      "cache_reads": [
+        {
+          "url": "https://astana.citypass.kz/en/attractions",
+          "raw_cache": "68eff04957b762ba3106102ec64d7c43c93b708974bb6d0583e1d35af8295ae6.txt",
+          "sha256": "203ef8e419278d1cfb6dc8cfd882336a59c1fd407345a36a563a24f8aed3e6e4",
+          "record_count": 34
+        },
+        {
+          "url": "https://astana.citypass.kz/ru/attractions",
+          "raw_cache": "251abf414342917fc99883438fc9750333a710d4090ac4f583c0dd32c0621114.txt",
+          "sha256": "2420934da4e992c6dde8883b2ea8eb61cc3323614df10fd89a5d145b72f16a43",
+          "record_count": 34
+        },
+        {
+          "url": "https://restaurants.mega.kz/ru/?sm=2",
+          "raw_cache": "37cb119dcae5c70926109b0b725c2f80c00a47866a006cfd3e26d6adb23273ec.txt",
+          "sha256": "108449f3f845a231c3428c3a63370786f627bae6003a128febc5fefc40eb2327",
+          "record_count": 17
+        }
+      ],
+      "missing_caches": [],
+      "errors": [],
+      "coordinate_policy": "existing source IDs only; no coordinates returned",
+      "applied_source_ids": [
+        "citypass:119",
+        "citypass:120",
+        "citypass:121",
+        "citypass:122",
+        "citypass:142",
+        "citypass:157",
+        "citypass:57",
+        "citypass:63",
+        "citypass:64",
+        "citypass:65",
+        "citypass:81",
+        "citypass:84",
+        "citypass:88",
+        "citypass:89",
+        "citypass:94",
+        "citypass:97",
+        "citypass:98",
+        "mega_silkway:8b7d434c817aed75",
+        "mega_silkway:8c61bf3ecd65602e",
+        "mega_silkway:fc3fbb7bcb8ebff2"
+      ],
+      "unmatched_source_ids": [
+        "mega_silkway:0415e3f7e3e6f77c",
+        "mega_silkway:165a2d8a869c22dd",
+        "mega_silkway:29529879fb36c79c",
+        "mega_silkway:4400ad9c9276732e",
+        "mega_silkway:4fef00f19e668373",
+        "mega_silkway:50a2d578e5659f0d",
+        "mega_silkway:544e00673c3d5a7b",
+        "mega_silkway:57f13a7d87a2cc59",
+        "mega_silkway:6b1fec2b468292c6",
+        "mega_silkway:76707a5d2ced3fb9",
+        "mega_silkway:ac9d0a6a802ac582",
+        "mega_silkway:c0e5eb088f978bbd",
+        "mega_silkway:da580b67af42da02",
+        "mega_silkway:e77182b875999e48"
+      ]
+    }
+  },
+  "quality": {
+    "input_count": 15226,
+    "output_count": 14006,
+    "merged_count": 601,
+    "rejected_count": 619,
+    "rejections": {
+      "outside_city_boundary": 619
+    },
+    "boundary_mode": "administrative_polygon",
+    "categories": {
+      "attraction": 140,
+      "bar": 308,
+      "cafe": 657,
+      "cinema": 24,
+      "coworking": 1,
+      "gallery": 14,
+      "library": 19,
+      "mall": 116,
+      "monument": 53,
+      "museum": 33,
+      "nightlife": 18,
+      "other": 11247,
+      "park": 78,
+      "playground": 4,
+      "restaurant": 1122,
+      "sport": 163,
+      "theatre": 9
+    },
+    "primary_sources": {
+      "citypass": 16,
+      "dodo": 23,
+      "geonames": 30,
+      "khanshatyr": 2,
+      "marwin": 8,
+      "osm": 5592,
+      "overture": 8158,
+      "sxodim": 12,
+      "wikipedia": 165
+    },
+    "source_description_count": 269,
+    "template_description_count": 13737,
+    "unknown_opening_hours": 11923,
+    "collected_at": "2026-10-19",
+    "quarantine_count": 1,
+    "applied_overrides": [
+      {
+        "id": "osm:node/4361681890",
+        "action": "suppress_cuisine_text"
+      },
+      {
+        "id": "osm:node/4916060859",
+        "action": "suppress_wikimedia"
+      },
+      {
+        "id": "overture:46573c6a-5595-469a-bc39-b28953af231a",
+        "action": "verified_same_place"
+      },
+      {
+        "id": "overture:ed179237-7b99-4c2b-a230-a39ac348a5a8",
+        "action": "quarantine"
+      },
+      {
+        "id": "overture:d7cf8227-6a5d-4079-a09e-bf874cd9e267",
+        "action": "verified_same_place"
+      },
+      {
+        "id": "wikipedia:en:7148733",
+        "action": "verified_same_place"
+      },
+      {
+        "id": "citypass:57",
+        "action": "verified_same_place"
+      }
+    ]
+  },
+  "licensing_note": "Mixed-source database: retain record-level attribution and upstream obligations; no blanket open licence asserted."
+}

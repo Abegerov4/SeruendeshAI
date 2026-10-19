@@ -18,9 +18,9 @@ import urllib.request
 
 from rapidfuzz import fuzz
 
-from app.paths import EVENTS_FILE, POIS_FILE, RAW_DIR
-from app.textnorm import match_key
-from pipeline.common import USER_AGENT, write_jsonl
+from ayat_backend.app.paths import EVENTS_FILE, POIS_FILE, RAW_DIR
+from ayat_backend.app.textnorm import match_key
+from ayat_backend.pipeline.common import USER_AGENT, write_jsonl
 
 log = logging.getLogger("pipeline.events")
 DL = RAW_DIR / "events_html"
@@ -142,31 +142,63 @@ def collect_sxodim(pages: int = 6) -> list[dict]:
     return recs
 
 
-def collect_events() -> dict:
-    from pipeline.build import Grid
+def match_event_venue(event: dict, pois: list[dict]) -> dict:
+    """Resolve only a unique branch; retain source values and ranked evidence."""
+    from rag.geo import haversine_m
+    result = dict(event)
+    for key in ("venue", "lat", "lon", "address"):
+        result.setdefault("source_" + key, event.get(key))
+    result["matcher_version"] = "venue-identity-v2"
+    result.pop("poi_id", None)
+    key = match_key(event.get("venue") or "")
+    address = match_key(event.get("address") or "")
+    located = event.get("lat") is not None and event.get("lon") is not None
+    candidates = []
+    for poi in pois:
+        distance = haversine_m(event["lat"], event["lon"], poi["lat"], poi["lon"]) if located else None
+        if distance is not None and distance > 400:
+            continue
+        score = fuzz.token_set_ratio(key, match_key(poi["name"])) if key else 0
+        if score < 88:
+            continue
+        same_address = bool(address and address == match_key(poi.get("address") or ""))
+        candidates.append({"id": poi["id"], "score": score, "distance_m": distance,
+                           "address_match": same_address, "name": poi["name"],
+                           "address": poi.get("address")})
+    candidates.sort(key=lambda p: (-p["address_match"], -p["score"], p["id"]))
+    result["match_candidates"] = candidates
+    best = candidates[0] if candidates else None
+    address_winners = [p for p in candidates if p["address_match"]]
+    if len(address_winners) == 1:
+        best = address_winners[0]
+        method = "name_and_exact_address"
+    elif best and (len(candidates) == 1 or best["score"] - candidates[1]["score"] >= 8):
+        method = "unique_name_near_coordinates" if located else "unique_name"
+    else:
+        result.update(match_status="ambiguous" if candidates else "unmatched", match_method=None)
+        return result
+    poi = next(p for p in pois if p["id"] == best["id"])
+    result.update(poi_id=poi["id"], lat=poi["lat"], lon=poi["lon"], venue=poi["name"],
+                  match_status="matched", match_method=method)
+    return result
 
+
+def collect_events() -> dict:
     pois = [json.loads(line) for line in POIS_FILE.open(encoding="utf-8")]
     named = [p for p in pois if not p["name_auto"]]
-    keys = [(match_key(p["name"]), p) for p in named]
-    grid = Grid(named)
     events = collect_ticketon() + collect_sxodim()
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=5)))
-    out, seen = [], set()
+    out, unresolved, seen = [], [], set()
     for e in events:
         if not e["title"]:
             continue
+        for key in ("venue", "lat", "lon", "address"):
+            e.setdefault("source_" + key, e.get(key))
         if e["lat"] is not None and (round(e["lat"], 6), round(e["lon"], 6)) == PLACEHOLDER:
             e["lat"] = e["lon"] = None
-        vk = match_key(e["venue"])
-        poi = None
-        if vk:
-            cand = grid.near(e["lat"], e["lon"], 400) if e["lat"] is not None else ((0, p) for _, p in keys)
-            best = max(((fuzz.token_set_ratio(vk, match_key(p["name"])), p) for _, p in cand), default=(0, None),
-                       key=lambda x: x[0])
-            if best[0] >= 88:
-                poi = best[1]
-        if poi:
-            e["poi_id"], e["lat"], e["lon"], e["venue"] = poi["id"], poi["lat"], poi["lon"], poi["name"]
+        e = match_event_venue(e, named)
+        if e["match_status"] != "matched":
+            unresolved.append(e)
         if e["lat"] is None or not (50.85 < e["lat"] < 51.36 and 71.2 < e["lon"] < 71.8):
             continue
         end = e.get("end") or (e["sessions"][-1] if e["sessions"] else e.get("start"))
@@ -183,6 +215,8 @@ def collect_events() -> dict:
         e["fetched_at"] = now.isoformat(timespec="minutes")
         out.append(e)
     write_jsonl(EVENTS_FILE, out)
+    review_path = EVENTS_FILE.with_name("events_unresolved.json")
+    review_path.write_text(json.dumps(unresolved, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     info = {"events": len(out), "matched_to_poi": sum(1 for e in out if e.get("poi_id"))}
     log.info("events saved: %s", info)
     return info

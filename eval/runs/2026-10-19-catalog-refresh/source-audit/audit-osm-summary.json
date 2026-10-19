@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-10-18T23:19:21.934432+00:00",
+  "source_objects": 5807,
+  "batches": 59,
+  "api_policy_url": "https://wiki.openstreetmap.org/wiki/Overpass_API#Public_Overpass_API_instances",
+  "api_policy_rationale": "One-off documented read-only API consumer retrieval; sequential bounded source-ID batches, no indexing/API credential use; stop endpoints after three repeated overload failures.",
+  "statuses": {
+    "incomplete": 5807
+  },
+  "canonical_rows_with_checks": 5592,
+  "canonical_identity_matches": 0,
+  "lifecycle_review_observations": 0,
+  "limitations": [
+    "Current OSM objects are crowdsourced identity/source observations, not proof of active business operation.",
+    "Missing objects and source failures never establish closure.",
+    "All current fields remain candidates requiring review."
+  ]
+}

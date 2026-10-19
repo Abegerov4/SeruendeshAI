@@ -1,0 +1,62 @@
+✖ a server-restored saved place renders the real card with its category icon (80.506667ms)
+✖ older saved snapshots render with a fallback icon and safe empty amenities (0.811167ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 236.58475
+
+✖ failing tests:
+
+test at ../../../../../tests/saved.test.js:36:1
+✖ a server-restored saved place renders the real card with its category icon (80.506667ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted exception.
+  Actual message: "Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports."
+      at TestContext.<anonymous> (file:///Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/tests/saved.test.js:40:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+        at renderElement (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6446:15)
+        at retryNode (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6772:31)
+        at renderNodeDestructive (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6717:11)
+        at renderNode (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:7268:18)
+        at renderChildrenArray (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:7029:11)
+        at retryNode (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6796:13)
+        at renderNodeDestructive (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6717:11)
+        at renderNode (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:7268:18)
+        at renderElement (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:5917:18)
+        at retryNode (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6772:31),
+    expected: undefined,
+    operator: 'doesNotThrow',
+    diff: 'simple'
+  }
+
+test at ../../../../../tests/saved.test.js:46:1
+✖ older saved snapshots render with a fallback icon and safe empty amenities (0.811167ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted exception.
+  Actual message: "Cannot read properties of null (reading 'filter')"
+      at TestContext.<anonymous> (file:///Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/tests/saved.test.js:51:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: Cannot read properties of null (reading 'filter')
+        at PlaceCard (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/.cache/seruendesh-qa/upstream/frontend/src/components/PlaceCard.jsx:25:25)
+        at Object.react_stack_bottom_frame (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:10371:18)
+        at renderWithHooks (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:5361:19)
+        at renderElement (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:5796:23)
+        at retryNode (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6772:31)
+        at renderNodeDestructive (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6717:11)
+        at renderNode (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:7268:18)
+        at renderChildrenArray (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:7029:11)
+        at retryNode (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6796:13)
+        at renderNodeDestructive (/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6717:11),
+    expected: undefined,
+    operator: 'doesNotThrow',
+    diff: 'simple'
+  }

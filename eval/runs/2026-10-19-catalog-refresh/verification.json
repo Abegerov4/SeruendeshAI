@@ -1,0 +1,34 @@
+{
+  "checked_at": "2026-10-19T05:03:33.575425+05:00",
+  "snapshot_version": "b479f2445492454782a09e8d95495ae7",
+  "python": {
+    "passed": 1303,
+    "skipped": 29,
+    "subtests_passed": 12,
+    "log": "final-pytest.log"
+  },
+  "frontend": {
+    "passed": 45,
+    "build": "passed",
+    "chunk_advisory_kb": 554.84
+  },
+  "live_model": {
+    "passed": true,
+    "cases": 4,
+    "execution_kind": "live_http_external_provider",
+    "actual_usd_total": 0.031522400000000006,
+    "reserved_usd_total": 0.031522400000000006,
+    "cap_usd": 0.1
+  },
+  "native_edge_ui": {
+    "source_meal_query": "honest unknown, EXPO preserved, no cafes falsely matched",
+    "redbus": "fares, boarding point, both route names and unconfirmed-current-schedule warning visible",
+    "automation": "CUA accessibility observations on actual local UI; separate mobile route card checks saved by service agent"
+  },
+  "independent_review": "data/review/2026-10-19-refresh/discovery-final-review.json",
+  "limitations": [
+    "29 optional integration/UI checks skipped by pytest profile; recorded native UI and live-model checks are separate.",
+    "Whole catalog structurally audited; most branches not independently verified from all possible sources.",
+    "1091-row source-discovery queue remains active locally; candidates require review before publication."
+  ]
+}

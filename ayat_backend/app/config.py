@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 from functools import lru_cache
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from app.paths import BACKEND_DIR, ROOT_DIR
+from ayat_backend.app.paths import BACKEND_DIR, ROOT_DIR
 
 
 class Settings(BaseSettings):
@@ -18,6 +19,7 @@ class Settings(BaseSettings):
     llm_timeout_s: float = 8.0
     parse_timeout_s: float = 3.0
     llm_enabled: bool = True
+    llm_warmup_enabled: bool = False  # opt in: startup probes incur provider charges
 
     embed_model: str = "e5-large"  # e5-large | e5-base | e5-small | off
     weather_enabled: bool = True
@@ -25,6 +27,23 @@ class Settings(BaseSettings):
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173"
     cors_origin_regex: str = r"https://.*\.(vercel\.app|netlify\.app|pages\.dev)"
     response_cache_ttl_s: int = 600
+    flight_domestic_buffer_min: int = 120
+    flight_international_buffer_min: int = 180
+    flight_unknown_buffer_min: int = 180
+    deadline_road_uncertainty_min: int = 15
+    route_max_snap_m: int = 500
+    hours_max_age_days: int = 180
+    readiness_profile: Literal["template", "llm"] = "template"
+    provider_probe_ttl_s: int = 300
+    # accounts
+    database_url: str = ""          # Railway Postgres DATABASE_URL; empty -> local SQLite (backend/.local/app.db)
+    secret_key: str = ""            # legacy setting; sessions now use random DB-backed tokens
+    public_url: str = ""            # e.g. https://seruendesh.site (links in emails)
+    smtp_host: str = ""
+    smtp_port: int = 587
+    smtp_user: str = ""
+    smtp_password: str = ""
+    smtp_from: str = ""
     rate_limit_per_min: int = 30
     log_level: str = "INFO"
 

@@ -1,31 +1,39 @@
 """SeruendeshAI API — FastAPI app.
 
-    uv run uvicorn app.main:app --port 8000
+    uv run --project ayat_backend uvicorn ayat_backend.app.main:app --port 8000
 """
 from __future__ import annotations
 
 import asyncio
 import logging
+import os
 import time
-from collections import defaultdict, deque
+from pathlib import Path
+from collections import defaultdict
 from contextlib import asynccontextmanager
 
 import httpx
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
-from app.categories import CATEGORIES
-from app.config import get_settings
-from app.embedder import get_embedder
-from app.geo import load_graph
-from app.llm import client as llm_client
-from app.categories import CONTRACT_CATEGORY
-from app.geo import hav_m
-from app.schemas import (CategoryOut, FeedbackRequest, FeedbackResponse, HealthResponse, LandmarkOut, MetaResponse,
+from ayat_backend.app.paths import ROOT_DIR, GRAPH_FILE
+
+from ayat_backend.app.auth import router as auth_router
+from ayat_backend.app.categories import CATEGORIES
+from ayat_backend.app.config import get_settings
+from ayat_backend.app.db import db_kind, init_db
+from ayat_backend.app.limiting import client_key, limiter
+from ayat_backend.app.embedder import get_embedder
+from ayat_backend.app.geo import load_graph
+from ayat_backend.app.llm import client as llm_client, provider_status
+from ayat_backend.app.categories import CONTRACT_CATEGORY
+from ayat_backend.app.geo import hav_m
+from ayat_backend.app.schemas import (CategoryOut, FeedbackRequest, FeedbackResponse, HealthResponse, LandmarkOut, MetaResponse,
                          PoiBrief, RecommendRequest, RecommendResponse)
-from app.service import Runtime, recommend, snap_pois
-from app.store import load_store
+from ayat_backend.app.service import Runtime, recommend, snap_pois
+from ayat_backend.app.store import load_store
 
 settings = get_settings()
 logging.basicConfig(level=settings.log_level, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -37,8 +45,10 @@ FEEDBACK: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))  # a
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     t0 = time.perf_counter()
+    init_db()
     store = load_store(settings.embed_model)
-    graph = load_graph()
+    snapshot_path = store.manifest.get("snapshot_path")
+    graph = load_graph(Path(snapshot_path) / GRAPH_FILE.name if snapshot_path else None)
     nodes, snap = snap_pois(store, graph)
     embedder = None
     if store.emb is not None:
@@ -47,18 +57,18 @@ async def lifespan(app: FastAPI):
             store.emb = None
     http = httpx.AsyncClient(headers={"User-Agent": "SeruendeshAI/0.1"})
     RT["rt"] = Runtime(store=store, graph=graph, poi_nodes=nodes, poi_snap=snap, embedder=embedder, http=http, cache={})
-    if llm_client() is not None:
+    if settings.llm_warmup_enabled and llm_client() is not None:
         asyncio.create_task(_warmup())  # first call with a new strict schema is slow; pay it at startup
-    log.info("ready in %.1fs: %d POIs, graph=%s, dense=%s, llm=%s", time.perf_counter() - t0, store.size,
-             graph is not None, embedder is not None, llm_client() is not None)
+    log.info("ready in %.1fs: %d POIs, graph=%s, dense=%s, llm=%s, db=%s", time.perf_counter() - t0, store.size,
+             graph is not None, embedder is not None, llm_client() is not None, db_kind())
     yield
     await http.aclose()
 
 
 async def _warmup():
-    from app.generate import SYSTEM, GenOut
-    from app.llm import parse
-    from app.query import PARSE_SYSTEM, LLMParsed
+    from ayat_backend.app.generate import SYSTEM, GenOut
+    from ayat_backend.app.llm import parse
+    from ayat_backend.app.query import PARSE_SYSTEM, LLMParsed
     try:
         await asyncio.gather(
             parse(LLMParsed, PARSE_SYSTEM, "Хочу кофе рядом", models=[settings.llm_parse_model], timeout_s=20, max_output_tokens=300),
@@ -76,27 +86,18 @@ app = FastAPI(
                 "opening-hours confidence, honest source labels and an optional mini-route.",
     lifespan=lifespan,
 )
+app.include_router(auth_router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[o.strip() for o in settings.cors_origins.split(",") if o.strip()],
     allow_origin_regex=settings.cors_origin_regex or None,
-    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_credentials=True,
     allow_headers=["*"],
 )
 
-_hits: dict[str, deque] = defaultdict(deque)
-
-
 def _rate_limited(request: Request) -> bool:
-    """Tiny in-memory per-client limiter (IP kept in RAM for 60 s only, never logged)."""
-    key = request.headers.get("x-forwarded-for", request.client.host if request.client else "?").split(",")[0]
-    q, now = _hits[key], time.time()
-    while q and now - q[0] > 60:
-        q.popleft()
-    if len(q) >= settings.rate_limit_per_min:
-        return True
-    q.append(now)
-    return False
+    return not limiter.allow("recommend", client_key(request), settings.rate_limit_per_min, 60)
 
 
 @app.exception_handler(Exception)
@@ -108,7 +109,7 @@ async def unhandled(request: Request, exc: Exception):
 @app.post("/api/recommend", response_model=RecommendResponse, tags=["recommend"],
           summary="Get 1–3 nearby recommendations (+ optional mini-route)")
 async def api_recommend(req: RecommendRequest, request: Request):
-    if _rate_limited(request):
+    if await asyncio.to_thread(_rate_limited, request):
         raise HTTPException(status_code=429, detail="Too many requests, try again in a minute")
     return await recommend(RT["rt"], req)
 
@@ -131,10 +132,15 @@ async def api_health():
         return HealthResponse(status="degraded", pois=0, llm="off", poi_count=0, events=0, dense_retrieval=False,
                               walk_graph=False, llm_configured=False, data_built_at=None)
     ok = rt.store.size > 0
-    return HealthResponse(status="ok" if ok else "degraded", pois=rt.store.size, llm="ok" if llm_client() else "off",
+    provider = provider_status()
+    ready = ok and (settings.readiness_profile == "template" or provider["status"] == "ok")
+    return HealthResponse(status="ok" if ready else "degraded", pois=rt.store.size, llm=provider["status"],
                           poi_count=rt.store.size, events=len(rt.store.events),
                           dense_retrieval=rt.store.emb is not None, walk_graph=rt.graph is not None,
-                          llm_configured=llm_client() is not None, data_built_at=rt.store.manifest.get("built_at"))
+                          llm_configured=llm_client() is not None, data_built_at=rt.store.manifest.get("built_at"),
+                          runtime_id="ayat", readiness_profile=settings.readiness_profile, ready=ready,
+                          snapshot_version=rt.store.manifest.get("snapshot_version") or rt.store.manifest.get("canonical_sha256"),
+                          provider_verified_at=provider["verified_at"])
 
 
 @app.get("/api/pois", response_model=list[PoiBrief], tags=["meta"], summary="POIs around a point for the map (brief)")
@@ -155,3 +161,21 @@ async def api_feedback(fb: FeedbackRequest):
     FEEDBACK[fb.poi_id][fb.kind] += 1
     log.info("feedback poi=%s kind=%s", fb.poi_id, fb.kind)
     return FeedbackResponse(ok=True, message="Спасибо! Учтём при следующем обновлении данных.")
+
+
+# --- the built frontend (React/Vite) is served by the same service: one domain, no CORS -------------
+DIST = os.environ.get("FRONTEND_DIST") or str(ROOT_DIR / "frontend" / "dist")
+if os.path.isdir(os.path.join(DIST, "assets")):
+    from pathlib import Path
+
+    _dist = Path(DIST).resolve()
+    app.mount("/assets", StaticFiles(directory=_dist / "assets"), name="assets")
+
+    @app.get("/{path:path}", include_in_schema=False)
+    async def spa(path: str):
+        if path.startswith("api/"):
+            raise HTTPException(status_code=404, detail="Not found")
+        f = (_dist / path).resolve()
+        if path and f.is_file() and _dist in f.parents:
+            return FileResponse(f)
+        return FileResponse(_dist / "index.html", headers={"Cache-Control": "no-cache"})

@@ -1,0 +1,155 @@
+
+> seruendesh-web@0.1.0 test
+> node --test tests/*.test.js
+
+✔ coordinates are rounded to ~100 m before sending (1.102125ms)
+✔ untouched UI defaults do not override the text; refinements are sent (0.071583ms)
+✔ API recommendation maps to a card with honest labels (0.215958ms)
+✔ plan diff and totals use route when present, alternatives otherwise (0.1885ms)
+✔ guest favourites join the first account without duplicating server favourites (0.918667ms)
+✖ logout clears account favourites before a different account logs in (1.001ms)
+✖ switching accounts hides the previous list while the new list is loading (0.657875ms)
+✖ a delayed saved response from the previous account cannot mix lists or upload cards (0.55225ms)
+✖ a saved request completed after logout cannot replace new guest favourites (0.237625ms)
+✖ local additions and removals survive an older response for the same account (0.197708ms)
+✖ failed loading keeps the current account edits and remains isolated after logout (0.208917ms)
+✔ a server-restored saved place renders the real card with its category icon (91.045708ms)
+✔ older saved snapshots render with a fallback icon and safe empty amenities (2.075334ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 7
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 247.618583
+
+✖ failing tests:
+
+test at tests/saved-session.test.js:25:1
+✖ logout clears account favourites before a different account logs in (1.001ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'only-a'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/tests/saved-session.test.js:30:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'only-a' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/saved-session.test.js:39:1
+✖ switching accounts hides the previous list while the new list is loading (0.657875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'only-a'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/tests/saved-session.test.js:45:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'only-a' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/saved-session.test.js:51:1
+✖ a delayed saved response from the previous account cannot mix lists or upload cards (0.55225ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'only-a',
+      'only-b',
+  +   'guest-for-a'
+    ]
+  
+      at TestContext.<anonymous> (file:///Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/tests/saved-session.test.js:63:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'only-a', 'only-b', 'guest-for-a' ],
+    expected: [ 'only-b' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/saved-session.test.js:67:1
+✖ a saved request completed after logout cannot replace new guest favourites (0.237625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'only-a',
+      'guest-after-logout'
+    ]
+  
+      at TestContext.<anonymous> (file:///Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/tests/saved-session.test.js:75:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'only-a', 'guest-after-logout' ],
+    expected: [ 'guest-after-logout' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/saved-session.test.js:79:1
+✖ local additions and removals survive an older response for the same account (0.197708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'remove-me',
+      'server-a',
+      'new-place'
+    ]
+  
+      at TestContext.<anonymous> (file:///Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/tests/saved-session.test.js:88:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'remove-me', 'server-a', 'new-place' ],
+    expected: [ 'server-a', 'new-place' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/saved-session.test.js:92:1
+✖ failed loading keeps the current account edits and remains isolated after logout (0.208917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'local-a'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/frontend/tests/saved-session.test.js:101:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'local-a' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

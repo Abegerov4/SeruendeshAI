@@ -1,0 +1,817 @@
+{
+  "schema_version": 1,
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "as_of": "2026-10-19",
+  "records": [
+    {
+      "canonical_id": "overture:d4ef832f-506f-47f4-933c-77a55e4c2d06",
+      "identity": {
+        "canonical_name": "DAMI CAFE",
+        "canonical_address": "Turkistan Street 34",
+        "canonical_lat": 51.09547336,
+        "canonical_lon": 71.42138373,
+        "source_name": "Dami",
+        "source_address": "улица Туркестан, 34",
+        "source_lat": 51.095689,
+        "source_lon": 71.421062,
+        "source_url": "https://2gis.kz/astana/firm/70000001032715428",
+        "branch_confirmed": true,
+        "match_basis": "name_coordinates"
+      },
+      "facts": [
+        {
+          "field": "address",
+          "value": "улица Туркестан, 34",
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428",
+            "excerpt": "улица Туркестан, 34",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-d8cc33168f4f95c9.html",
+            "response_sha256": "d8cc33168f4f95c953b5da9f3bea2a1d30f5e545c81d8afeef6cd7781ca35563",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "format",
+          "value": "Халяльное кафе",
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428/tab/info",
+            "excerpt": "Халяльное кафе",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-2174e8fd72ff022a.html",
+            "response_sha256": "2174e8fd72ff022a699a18a63c8847dc80a641bf5a081e4a0d78a15ef270a5c4",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "halal",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428/tab/info",
+            "excerpt": "Халяльная кухня",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-2174e8fd72ff022a.html",
+            "response_sha256": "2174e8fd72ff022a699a18a63c8847dc80a641bf5a081e4a0d78a15ef270a5c4",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "wifi",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428/tab/info",
+            "excerpt": "Wi-Fi для клиентов",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-2174e8fd72ff022a.html",
+            "response_sha256": "2174e8fd72ff022a699a18a63c8847dc80a641bf5a081e4a0d78a15ef270a5c4",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "terrace",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428/tab/info",
+            "excerpt": "Летняя веранда",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-2174e8fd72ff022a.html",
+            "response_sha256": "2174e8fd72ff022a699a18a63c8847dc80a641bf5a081e4a0d78a15ef270a5c4",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "kids_area",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428/tab/info",
+            "excerpt": "Детский уголок",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-2174e8fd72ff022a.html",
+            "response_sha256": "2174e8fd72ff022a699a18a63c8847dc80a641bf5a081e4a0d78a15ef270a5c4",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "reservations",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428/tab/info",
+            "excerpt": "Заказ столиков",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-2174e8fd72ff022a.html",
+            "response_sha256": "2174e8fd72ff022a699a18a63c8847dc80a641bf5a081e4a0d78a15ef270a5c4",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "takeaway",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428/tab/info",
+            "excerpt": "Заказ навынос",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-2174e8fd72ff022a.html",
+            "response_sha256": "2174e8fd72ff022a699a18a63c8847dc80a641bf5a081e4a0d78a15ef270a5c4",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "delivery",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428/tab/info",
+            "excerpt": "Услуги Доставка",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-2174e8fd72ff022a.html",
+            "response_sha256": "2174e8fd72ff022a699a18a63c8847dc80a641bf5a081e4a0d78a15ef270a5c4",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "seating_capacity_max",
+          "value": 80,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428/tab/info",
+            "excerpt": "До 80 мест",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-2174e8fd72ff022a.html",
+            "response_sha256": "2174e8fd72ff022a699a18a63c8847dc80a641bf5a081e4a0d78a15ef270a5c4",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "wheelchair_accessible",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428/tab/info",
+            "excerpt": "Доступный вход для людей с инвалидностью",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-2174e8fd72ff022a.html",
+            "response_sha256": "2174e8fd72ff022a699a18a63c8847dc80a641bf5a081e4a0d78a15ef270a5c4",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "phone",
+          "value": "+77779444747",
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428",
+            "excerpt": "+7‒777‒944‒47‒47",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-d8cc33168f4f95c9.html",
+            "response_sha256": "d8cc33168f4f95c953b5da9f3bea2a1d30f5e545c81d8afeef6cd7781ca35563",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "menu_url",
+          "value": "https://2gis.kz/astana/firm/70000001032715428/tab/prices",
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Dami",
+            "source_address": "улица Туркестан, 34"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001032715428",
+            "excerpt": "Меню",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-d8cc33168f4f95c9.html",
+            "response_sha256": "d8cc33168f4f95c953b5da9f3bea2a1d30f5e545c81d8afeef6cd7781ca35563",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        }
+      ],
+      "menu_items": [],
+      "prices": []
+    },
+    {
+      "canonical_id": "overture:5860a341-98e7-480a-b56d-63c21d14e410",
+      "identity": {
+        "canonical_name": "Тáп Тáттi",
+        "canonical_address": "Мәңгілік Ел даңғылы 51",
+        "canonical_lat": 51.095165,
+        "canonical_lon": 71.42617,
+        "source_name": "Тәп-Тәтті",
+        "source_address": "проспект Мангилик Ел, 51",
+        "source_lat": 51.095022,
+        "source_lon": 71.425761,
+        "source_url": "https://2gis.kz/astana/firm/70000001030630928",
+        "branch_confirmed": true,
+        "match_basis": "name_coordinates"
+      },
+      "facts": [
+        {
+          "field": "address",
+          "value": "проспект Мангилик Ел, 51",
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Тәп-Тәтті",
+            "source_address": "проспект Мангилик Ел, 51"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001030630928",
+            "excerpt": "проспект Мангилик Ел, 51",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-4de1e9c667e55932.html",
+            "response_sha256": "4de1e9c667e5593244af28026aa6e541c2953941275e96c77fb541b958946a8b",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "format",
+          "value": "Кондитерская",
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Тәп-Тәтті",
+            "source_address": "проспект Мангилик Ел, 51"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001030630928/tab/info",
+            "excerpt": "Кондитерская",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-ebee7000395b30a9.html",
+            "response_sha256": "ebee7000395b30a9077613d88f3021cfc348b90d33fb1e3a1a6057ed00f3da8f",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "takeaway",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Тәп-Тәтті",
+            "source_address": "проспект Мангилик Ел, 51"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001030630928/tab/info",
+            "excerpt": "отдел самовывоза",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-ebee7000395b30a9.html",
+            "response_sha256": "ebee7000395b30a9077613d88f3021cfc348b90d33fb1e3a1a6057ed00f3da8f",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "delivery",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Тәп-Тәтті",
+            "source_address": "проспект Мангилик Ел, 51"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001030630928/tab/info",
+            "excerpt": "Услуги Доставка",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-ebee7000395b30a9.html",
+            "response_sha256": "ebee7000395b30a9077613d88f3021cfc348b90d33fb1e3a1a6057ed00f3da8f",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "wheelchair_accessible",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Тәп-Тәтті",
+            "source_address": "проспект Мангилик Ел, 51"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001030630928/tab/info",
+            "excerpt": "Доступный вход для людей с инвалидностью",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-ebee7000395b30a9.html",
+            "response_sha256": "ebee7000395b30a9077613d88f3021cfc348b90d33fb1e3a1a6057ed00f3da8f",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "opening_hours",
+          "value": "Mo-Su 08:00-22:00",
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "Тәп-Тәтті",
+            "source_address": "проспект Мангилик Ел, 51"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001030630928",
+            "excerpt": "Matched firm public schedule: Mon–Sun 08:00–22:00",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-4de1e9c667e55932.html",
+            "response_sha256": "4de1e9c667e5593244af28026aa6e541c2953941275e96c77fb541b958946a8b",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        }
+      ],
+      "menu_items": [],
+      "prices": []
+    },
+    {
+      "canonical_id": "overture:bef6bdd9-2299-4414-a89f-baa4ee08272a",
+      "identity": {
+        "canonical_name": "Додо Пицца",
+        "canonical_address": "58 проспект Мангилик Ел",
+        "canonical_lat": 51.087914,
+        "canonical_lon": 71.425021,
+        "source_name": "dodo pizza",
+        "source_address": "проспект Мангилик Ел, 58",
+        "source_lat": 51.087845,
+        "source_lon": 71.424891,
+        "source_url": "https://2gis.kz/astana/firm/70000001091370531",
+        "branch_confirmed": true,
+        "match_basis": "name_coordinates"
+      },
+      "facts": [
+        {
+          "field": "address",
+          "value": "проспект Мангилик Ел, 58",
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 58"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001091370531",
+            "excerpt": "проспект Мангилик Ел, 58",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-ecca5e8a66839510.html",
+            "response_sha256": "ecca5e8a66839510e7e5b5a01a72316617d5561b11850deb016bd26bac5fd1c3",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "format",
+          "value": "Служба доставки / пиццерия",
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 58"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001091370531/tab/info",
+            "excerpt": "Служба доставки; В справочнике Пиццерии",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-26c361ab1426dd81.html",
+            "response_sha256": "26c361ab1426dd81765426528825d75ba58557e5b77fbf96243f24dd09c7c262",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "cuisines",
+          "value": [
+            "Итальянская"
+          ],
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 58"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001091370531/tab/info",
+            "excerpt": "Итальянская кухня",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-26c361ab1426dd81.html",
+            "response_sha256": "26c361ab1426dd81765426528825d75ba58557e5b77fbf96243f24dd09c7c262",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "wifi",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 58"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001091370531/tab/info",
+            "excerpt": "Wi-Fi для клиентов",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-26c361ab1426dd81.html",
+            "response_sha256": "26c361ab1426dd81765426528825d75ba58557e5b77fbf96243f24dd09c7c262",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "takeaway",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 58"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001091370531/tab/info",
+            "excerpt": "Заказ навынос",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-26c361ab1426dd81.html",
+            "response_sha256": "26c361ab1426dd81765426528825d75ba58557e5b77fbf96243f24dd09c7c262",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "delivery",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 58"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001091370531/tab/info",
+            "excerpt": "Услуги Доставка",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-26c361ab1426dd81.html",
+            "response_sha256": "26c361ab1426dd81765426528825d75ba58557e5b77fbf96243f24dd09c7c262",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        }
+      ],
+      "menu_items": [],
+      "prices": []
+    },
+    {
+      "canonical_id": "overture:6491834d-d8e1-4104-a7f2-bf13b2e90f89",
+      "identity": {
+        "canonical_name": "Додо Пицца",
+        "canonical_address": "47блокF проспект Мангилик Ел",
+        "canonical_lat": 51.098561,
+        "canonical_lon": 71.427087,
+        "source_name": "dodo pizza",
+        "source_address": "проспект Мангилик Ел, 47",
+        "source_lat": 51.098805,
+        "source_lon": 71.427253,
+        "source_url": "https://2gis.kz/astana/firm/70000001048362608",
+        "branch_confirmed": true,
+        "match_basis": "name_coordinates"
+      },
+      "facts": [
+        {
+          "field": "address",
+          "value": "проспект Мангилик Ел, 47",
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 47"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001048362608",
+            "excerpt": "проспект Мангилик Ел, 47",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-4b4a200b11a51254.html",
+            "response_sha256": "4b4a200b11a512541da54d8558da7ea5915623ff3c4939996d3756111efa72f8",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "format",
+          "value": "Служба доставки / пиццерия",
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 47"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001048362608/tab/info",
+            "excerpt": "Служба доставки; В справочнике Пиццерии",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-03a4c64a2ff8f0d7.html",
+            "response_sha256": "03a4c64a2ff8f0d7baa0a68e605c1d1373056e948b196f35ea1278d5b73e1436",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "cuisines",
+          "value": [
+            "Итальянская"
+          ],
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 47"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001048362608/tab/info",
+            "excerpt": "Итальянская кухня",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-03a4c64a2ff8f0d7.html",
+            "response_sha256": "03a4c64a2ff8f0d7baa0a68e605c1d1373056e948b196f35ea1278d5b73e1436",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "wifi",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 47"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001048362608/tab/info",
+            "excerpt": "Wi-Fi для клиентов",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-03a4c64a2ff8f0d7.html",
+            "response_sha256": "03a4c64a2ff8f0d7baa0a68e605c1d1373056e948b196f35ea1278d5b73e1436",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "takeaway",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 47"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001048362608/tab/info",
+            "excerpt": "Заказ навынос",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-03a4c64a2ff8f0d7.html",
+            "response_sha256": "03a4c64a2ff8f0d7baa0a68e605c1d1373056e948b196f35ea1278d5b73e1436",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "delivery",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 47"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001048362608/tab/info",
+            "excerpt": "Услуги Доставка",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-03a4c64a2ff8f0d7.html",
+            "response_sha256": "03a4c64a2ff8f0d7baa0a68e605c1d1373056e948b196f35ea1278d5b73e1436",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "kids_area",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 47"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001048362608/tab/info",
+            "excerpt": "Детский уголок",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-03a4c64a2ff8f0d7.html",
+            "response_sha256": "03a4c64a2ff8f0d7baa0a68e605c1d1373056e948b196f35ea1278d5b73e1436",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        },
+        {
+          "field": "wheelchair_accessible",
+          "value": true,
+          "status": "accepted",
+          "conflict_status": "none",
+          "branch_scope": "exact",
+          "branch_confirmation": {
+            "source_name": "dodo pizza",
+            "source_address": "проспект Мангилик Ел, 47"
+          },
+          "source": {
+            "url": "https://2gis.kz/astana/firm/70000001048362608/tab/info",
+            "excerpt": "Доступный вход для людей с инвалидностью",
+            "checked_at": "2026-10-19",
+            "channel": "onsite",
+            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/data/review/2026-10-19-refresh/discovery-cache/card-03a4c64a2ff8f0d7.html",
+            "response_sha256": "03a4c64a2ff8f0d7baa0a68e605c1d1373056e948b196f35ea1278d5b73e1436",
+            "extraction": "reviewed public 2GIS exact branch Contacts/Info"
+          },
+          "valid_from": null,
+          "valid_to": null
+        }
+      ],
+      "menu_items": [],
+      "prices": []
+    }
+  ]
+}

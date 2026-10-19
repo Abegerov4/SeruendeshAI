@@ -163,3 +163,15 @@ def test_missing_boundary_requires_explicit_fallback(tmp_path):
         run_pipeline(raw, out, sources=("osm",), offline=True)
     result = run_pipeline(raw, out, sources=("osm",), offline=True, allow_bbox=True)
     assert result["quality"]["boundary_mode"] == "broad_bbox_only"
+
+
+def test_partial_three_to_one_cannot_publish_over_previous_usable_snapshot(tmp_path):
+    raw, out = tmp_path / "raw", tmp_path / "out"
+    seed(raw, "osm", [row("osm:node/1", "One"), row("osm:node/2", "Two"), row("osm:node/3", "Three")])
+    (raw / "osm/boundary.geojson").write_text(json.dumps(BOUNDARY))
+    run_pipeline(raw, out, sources=("osm",), offline=True)
+    before = (out / "pois.json").read_bytes()
+    seed(raw, "osm", [row("osm:node/1", "One")])
+    with pytest.raises(RuntimeError, match="lost_source_ids"):
+        run_pipeline(raw, out, sources=("osm", "overture"), offline=True)
+    assert (out / "pois.json").read_bytes() == before

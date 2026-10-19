@@ -83,6 +83,57 @@ def _fingerprint(candidates):
     return hashlib.sha256(json.dumps(candidates, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
 
+def _refresh_fact_reviews(prior, pois, canonical_bytes):
+    """Carry manual decisions only for the identical full canonical record.
+
+    A changed record retains its old confirmation as pending, with the original
+    decision and hash in history. Disputes remain active until manually resolved.
+    The new binding hashes the exact bytes handed to the atomic publisher.
+    """
+    from data.eligibility import apply_fact_reviews
+    previous_bytes = (prior.path / "pois.json").read_bytes()
+    previous_sha = hashlib.sha256(previous_bytes).hexdigest()
+    previous = json.loads(previous_bytes)
+    payload = read_json(prior.path / "fact_reviews.json")
+    # Never repair a corrupt or stale binding merely by replacing its hash.
+    apply_fact_reviews(previous, payload, canonical_sha256=previous_sha)
+    old_by_id = {row["id"]: row for row in previous}
+    new_by_id = {row["id"]: row for row in pois}
+    refreshed = deepcopy(payload)
+    for review in refreshed["reviews"]:
+        ident = review["canonical_id"]
+        if review["status"] == "accepted" and old_by_id.get(ident) != new_by_id.get(ident):
+            original = deepcopy(review)
+            review.setdefault("review_history", []).append({"canonical_sha256": previous_sha, "review": original})
+            review["status"] = "pending"
+            review["reason"] = "Canonical record changed during refresh; manual confirmation required."
+    refreshed["canonical_sha256"] = hashlib.sha256(canonical_bytes).hexdigest()
+    return refreshed
+
+
+def _refresh_place_details(prior, pois, canonical_bytes):
+    """Carry rich evidence only for identical source rows; archive changed bindings."""
+    from data.place_details import load_place_details
+    previous_bytes = (prior.path / "pois.json").read_bytes()
+    previous_sha = hashlib.sha256(previous_bytes).hexdigest()
+    payload = read_json(prior.path / "place_details.json")
+    load_place_details(prior.path / "place_details.json",canonical_sha256=previous_sha)
+    previous = {row["id"]:row for row in json.loads(previous_bytes)}
+    current = {row["id"]:row for row in pois}
+    refreshed = deepcopy(payload)
+    retained = []
+    for record in refreshed["records"]:
+        ident = record["canonical_id"]
+        if previous.get(ident) == current.get(ident) and ident in current:
+            retained.append(record)
+        else:
+            refreshed.setdefault("pending_records",[]).append({"canonical_sha256":previous_sha,"record":record,
+                "reason":"Canonical record changed or disappeared; branch facts need re-verification."})
+    refreshed["records"] = retained
+    refreshed["canonical_sha256"] = hashlib.sha256(canonical_bytes).hexdigest()
+    return refreshed
+
+
 def _apply_description_patches(candidates, patches):
     """Update source text only; a listing cache cannot create or relocate a POI."""
     fields = {"description", "description_source", "description_kind", "description_source_detail",
@@ -208,15 +259,47 @@ def run_pipeline(raw_dir=ROOT / "data/raw", processed_dir=ROOT / "data/processed
                              "license": "ODbL-1.0" if boundary else None, "bbox": _bbox(boundary)},
                 "sources": reports, "quality": quality,
                 "licensing_note": "Mixed-source database: retain record-level attribution and upstream obligations; no blanket open licence asserted."}
-    # All acquisition, normalization and nonempty checks finish before replacing usable exports.
-    write_json(processed_dir / "pois.json", pois)
-    write_json(processed_dir / "pois_leisure.json", [p for p in pois if p["category"] != "other"])
-    write_json(processed_dir / "source_manifest.json", manifest)
-    write_json(processed_dir / "unlocated_facts.json", unresolved)
-    write_json(processed_dir / "quarantined_pois.json", quarantined)
-    write_json(processed_dir / "stats.json", stats)
+    from data.snapshot import publish_snapshot, resolve_snapshot
+    artifacts = {"pois.json": pois, "pois_leisure.json": [p for p in pois if p["category"] != "other"],
+                 "source_manifest.json": manifest, "unlocated_facts.json": unresolved,
+                 "quarantined_pois.json": quarantined, "stats.json": stats, "stats.md": stats_markdown(stats)}
     if boundary:
-        write_json(processed_dir / "boundary.geojson", boundary)
+        artifacts["boundary.geojson"] = boundary
+    # Freeze all runtime sidecars and review decisions with the same selected POIs.
+    prior = resolve_snapshot(processed_dir)
+    for name in ("events.jsonl", "gazetteer.json", "river.json", "walk_graph.npz", "astana_boundary.geojson", "field_evidence.json"):
+        path = prior.path / name
+        if path.exists():
+            artifacts[name] = path.read_bytes()
+    for name in ("quarantine.json", "quality_overrides.json"):
+        previous = prior.path / name
+        path = ROOT / "data" / name
+        if name == "quarantine.json" and previous.exists():
+            # Empty/missing local files cannot implicitly revoke an exclusion.
+            retained = read_json(previous)
+            for decision in read_json(path, []):
+                if decision not in retained:
+                    retained.append(decision)
+            artifacts[name] = retained
+        elif path.exists():
+            artifacts[name] = path.read_bytes()
+        elif previous.exists():
+            artifacts[name] = previous.read_bytes()
+    if (prior.path / "fact_reviews.json").exists():
+        canonical_bytes = (json.dumps(pois, ensure_ascii=False, indent=2, allow_nan=False) + "\n").encode()
+        artifacts["pois.json"] = canonical_bytes
+        artifacts["fact_reviews.json"] = _refresh_fact_reviews(prior, pois, canonical_bytes)
+    if (prior.path / "place_details.json").exists():
+        canonical_bytes = artifacts.get("pois.json")
+        if not isinstance(canonical_bytes,bytes):
+            canonical_bytes = (json.dumps(pois,ensure_ascii=False,indent=2,allow_nan=False)+"\n").encode()
+            artifacts["pois.json"] = canonical_bytes
+        artifacts["place_details.json"] = _refresh_place_details(prior,pois,canonical_bytes)
+    if (prior.path / "city_services.json").exists():
+        artifacts["city_services.json"] = (prior.path / "city_services.json").read_bytes()
+    published = publish_snapshot(processed_dir, artifacts, required_sources=sources)
+    manifest["snapshot_version"] = published.version
+    # Human-readable compatibility report is not used by runtime snapshot readers.
     (processed_dir.parent / "stats.md").write_text(stats_markdown(stats), encoding="utf-8")
     print(f"Exported {len(pois)} POIs; {stats['leisure_count']} in leisure categories; status={manifest['status']}", flush=True)
     return manifest

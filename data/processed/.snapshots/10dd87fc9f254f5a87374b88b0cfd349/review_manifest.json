@@ -1,0 +1,37 @@
+{
+  "checked_at": "2026-10-19",
+  "scenario_places": 30,
+  "scope": "Source-reported bounded review, not onsite verification or fresh complete collection",
+  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+  "source_refresh_status": "Existing canonical baseline retained; source_manifest statuses preserved, no incomplete rebuild promoted.",
+  "catalog_refresh": {
+    "checked_at": "2026-10-19",
+    "published_at": "2026-10-19T04:40:24.602388+05:00",
+    "scope": "Bounded public-source enrichment; whole catalog audited, not every branch independently verified",
+    "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+    "canonical_records": 14006,
+    "active_recommendation_records": 2748,
+    "gazetteer_records": 14004,
+    "preserved_source_ids": 14607,
+    "accepted_detail_branches": 105,
+    "detail_counts": {
+      "facts": 487,
+      "menu_items": 155,
+      "prices": 20
+    },
+    "services": 8,
+    "source_hashes": {
+      "data/sources/place_details_2026-10-19.json": "e678d5897147e948fad17fb6d9d25a429f34cae940257dac3a5d53f99ac2dee8",
+      "data/sources/place_details_discovery_2026-10-19.json": "de51480f568cea39fc061aae20535a59ff2271c824dce84d9f10d9fac7f1c039",
+      "data/sources/city_services_2026-10-19.json": "dba3081029ba6af00b2ce696263f1dc4527f36535239b722832dd320cdae6a28"
+    },
+    "discovery_overlap_held": [],
+    "archived_canonical_ids": [
+      "overture:3105494a-8102-4450-9d78-12ca652ce768",
+      "overture:5a405c91-d5d6-47ee-9b9b-546134f0505d"
+    ],
+    "dense_index_rows": 2748,
+    "dense_index_model": "e5-small",
+    "source_audit": "eval/runs/2026-10-19-catalog-refresh/source-audit/summary.json"
+  }
+}

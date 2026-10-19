@@ -1,0 +1,6918 @@
+{
+  "source_url": "https://restaurant-api.wolt.com/v1/pages/restaurants?lat=51.09&lon=71.415",
+  "checked_at": "2026-10-19",
+  "venues": [
+    {
+      "name": "KFC N-City",
+      "slug": "kfc-n-city",
+      "location": [
+        71.39950568,
+        51.11646534
+      ],
+      "address": "Проспект Туран, 53в"
+    },
+    {
+      "name": "Burger King Gaz Energy Velotrek",
+      "slug": "burger-king-gaz-energy-velotrek",
+      "location": [
+        71.40872099,
+        51.11145821
+      ],
+      "address": "​проспект Қабанбай батыр, 45в"
+    },
+    {
+      "name": "Okadzaki Mangilik El",
+      "slug": "okadzaki-mangilik-el",
+      "location": [
+        71.42502712,
+        51.08838327
+      ],
+      "address": "пр. Мангилик Ел 56"
+    },
+    {
+      "name": "DURUM Magnum",
+      "slug": "durum-turan567",
+      "location": [
+        71.3981899,
+        51.1140675
+      ],
+      "address": "Туран 55"
+    },
+    {
+      "name": "IZMIR Doner and Lagman House",
+      "slug": "izmir-astana",
+      "location": [
+        71.42892545,
+        51.08631382
+      ],
+      "address": "ул.Бокейхана, 25А, НП-10"
+    },
+    {
+      "name": "Mangal Doner Turan",
+      "slug": "mangal-doner-turan",
+      "location": [
+        71.39855901,
+        51.11415485
+      ],
+      "address": "ул Туран 55Е"
+    },
+    {
+      "name": "LAVASH Food Promenade",
+      "slug": "lavash-food-mangilik-el-52",
+      "location": [
+        71.42658375,
+        51.09313801
+      ],
+      "address": "Мангилик Ел 52 блок B2 ЖК S Club"
+    },
+    {
+      "name": "The Doner na Uglyah Turkistan",
+      "slug": "the-doner-na-uglyah-turkistan",
+      "location": [
+        71.42032452,
+        51.09427712
+      ],
+      "address": "ул. Туркистан 34Б"
+    },
+    {
+      "name": "Doner Club Aray",
+      "slug": "doner-club-astana",
+      "location": [
+        71.43156065,
+        51.14311494
+      ],
+      "address": "ул Арай 1а"
+    },
+    {
+      "name": "SF Shaurma Food Aliyev",
+      "slug": "sf-shaurma-food-sauran",
+      "location": [
+        71.41305245,
+        51.10088785
+      ],
+      "address": "улица Гейдара Алиева, 2"
+    },
+    {
+      "name": "KaRima Orynbor Towers",
+      "slug": "karima-orynbor-towers",
+      "location": [
+        71.42514889,
+        51.08956318
+      ],
+      "address": "пр. Мангилик Ел 54"
+    },
+    {
+      "name": "Bauyrdaq Syganak",
+      "slug": "bauyrdaq-syganak",
+      "location": [
+        71.43005664,
+        51.12224296
+      ],
+      "address": "ул. Сыганак 62/3"
+    },
+    {
+      "name": "Coffee BOOM Green Mall",
+      "slug": "coffee-boom-green-mall",
+      "location": [
+        71.39223830549784,
+        51.13055821365967
+      ],
+      "address": "ул.Сығанак, д.17 б"
+    },
+    {
+      "name": "Meat Point",
+      "slug": "meatpoint",
+      "location": [
+        71.42120602,
+        51.09683196
+      ],
+      "address": "Проспект Улы Дала, 45"
+    },
+    {
+      "name": "Nauryz",
+      "slug": "samarkand-astana",
+      "location": [
+        71.40278936510714,
+        51.1003397797958
+      ],
+      "address": "ул. Улы Дала, 35"
+    },
+    {
+      "name": "ASA DONER",
+      "slug": "ata-doner-astana",
+      "location": [
+        71.42727077,
+        51.1446044
+      ],
+      "address": "ул Елубай Тайбеков 13"
+    },
+    {
+      "name": "Dop Doner",
+      "slug": "dp-dner",
+      "location": [
+        71.39066953082389,
+        51.13154927069584
+      ],
+      "address": "Syganak 17"
+    },
+    {
+      "name": "EGG POINT",
+      "slug": "egg-point",
+      "location": [
+        71.43313352,
+        51.12447181
+      ],
+      "address": "улица Достык 16в"
+    },
+    {
+      "name": "Miko Mangilik Yel",
+      "slug": "miko-mangilik-yel",
+      "location": [
+        71.4350525,
+        51.1159441
+      ],
+      "address": "пр.Мангилик ел 22"
+    },
+    {
+      "name": "Qaganat Dostyk Astana",
+      "slug": "qaganat-dostyk-ast",
+      "location": [
+        71.42276679,
+        51.1278482
+      ],
+      "address": "пр. Достык, 5"
+    },
+    {
+      "name": "The Pizza Turkestan",
+      "slug": "the-pizza-turkestan",
+      "location": [
+        71.42042558,
+        51.09426542
+      ],
+      "address": "ул.Туркестан 34б"
+    },
+    {
+      "name": "Capitol",
+      "slug": "capitol",
+      "location": [
+        71.43074609,
+        51.12201703
+      ],
+      "address": "Syganak st, 62/3"
+    },
+    {
+      "name": "Hot Spot Doner Shop Momyshuly",
+      "slug": "hot-spot-doner-shop1",
+      "location": [
+        71.45938483,
+        51.13150925
+      ],
+      "address": "ул Бауржан Момышулы 2а"
+    },
+    {
+      "name": "Bomo's Kebab",
+      "slug": "bomos-kebab",
+      "location": [
+        71.38009046,
+        51.12432104
+      ],
+      "address": "Улица Мухаммед Али Джинна 16,"
+    },
+    {
+      "name": "Makebab Mukhamedkhanov",
+      "slug": "makebab-1",
+      "location": [
+        71.36651803,
+        51.1427632
+      ],
+      "address": " Мухамедханова 20  НП -11"
+    },
+    {
+      "name": "Delish Turkestan",
+      "slug": "delishnsu",
+      "location": [
+        71.42299546,
+        51.10105579
+      ],
+      "address": "Түркистан, 28а"
+    },
+    {
+      "name": "Arzu Chaihana",
+      "slug": "arzu-chaihana",
+      "location": [
+        71.42070226,
+        51.13727737
+      ],
+      "address": "Тайбекова 86"
+    },
+    {
+      "name": "Pizza UNO Bokeikhan",
+      "slug": "pizza-uno-bokeikhan",
+      "location": [
+        71.43075162,
+        51.10013846
+      ],
+      "address": "ул. Бокейхана 24"
+    },
+    {
+      "name": "HAN.exe",
+      "slug": "hanexe12",
+      "location": [
+        71.41152567,
+        51.09941255
+      ],
+      "address": "Гейдар Алиева д3 н.п2"
+    },
+    {
+      "name": "Yes Food Turan",
+      "slug": "yes-food-turan",
+      "location": [
+        71.40079715,
+        51.12172724
+      ],
+      "address": "ул.Туран 47, 9J3H4CC2+HC"
+    },
+    {
+      "name": "SF Shaurma Food Uly Dala",
+      "slug": "shaurma-food-uly-dala",
+      "location": [
+        71.44194667,
+        51.09387379
+      ],
+      "address": "Ул. Улы Дала 65"
+    },
+    {
+      "name": "Durum Sarayshyk",
+      "slug": "durum-sarayshyk",
+      "location": [
+        71.42000156,
+        51.13519274
+      ],
+      "address": "ул.Сарайшык 4"
+    },
+    {
+      "name": "Okadzaki  Turan",
+      "slug": "okadzaki-turan",
+      "location": [
+        71.39834228,
+        51.11228484
+      ],
+      "address": "пр Туран 55"
+    },
+    {
+      "name": "Bauyrdaq Syganak 17",
+      "slug": "bauyrdaq-syg01",
+      "location": [
+        71.38731162,
+        51.13110993
+      ],
+      "address": "ул.Сығанақ 17П"
+    },
+    {
+      "name": "IZMIR Doner & Kitchen",
+      "slug": "izmir-cafe",
+      "location": [
+        71.38357907,
+        51.13008903
+      ],
+      "address": "ул. Сыганак 15"
+    },
+    {
+      "name": "SF Shaurma Food Turkestan",
+      "slug": "sf-shaurma-food-turkistan",
+      "location": [
+        71.42597677,
+        51.11049951
+      ],
+      "address": "ул. Туркестан 10"
+    },
+    {
+      "name": "IZMIR",
+      "slug": "the-doner-na-uglyah-kunaev",
+      "location": [
+        71.42893869,
+        51.13017221
+      ],
+      "address": "Динмухамед Конаев 12/1"
+    },
+    {
+      "name": "KaRima Dostyk",
+      "slug": "karima-dostyk",
+      "location": [
+        71.42715618,
+        51.12566685
+      ],
+      "address": "Dostyk 12/1"
+    },
+    {
+      "name": "Okadzaki Temirkazyk",
+      "slug": "okadzaki",
+      "location": [
+        71.42591728,
+        51.13652681
+      ],
+      "address": "Temirkazyk, 65"
+    },
+    {
+      "name": "SF Shaurma Food Nazhimedenova",
+      "slug": "shaurma-food-nazhimedenova",
+      "location": [
+        71.50187512,
+        51.11502947
+      ],
+      "address": "Нажимеденова 7"
+    },
+    {
+      "name": "Coffee BOOM Qabanbay Batyr",
+      "slug": "coffee-boom-qabanbay-batyr",
+      "location": [
+        71.41826565,
+        51.14626558
+      ],
+      "address": "Qabanbay Batyr ave., 5B"
+    },
+    {
+      "name": "Okadzaki Kunayev",
+      "slug": "okadzaki-kunayev",
+      "location": [
+        71.43325542,
+        51.12930627
+      ],
+      "address": "Kunayev st, 14B"
+    },
+    {
+      "name": "SF Shaurma Food Mukhamedkhanov",
+      "slug": "sf-shaurma-food-mukhamedkhanov",
+      "location": [
+        71.38369985,
+        51.14146227
+      ],
+      "address": "ул. Мухамедханова 19А"
+    },
+    {
+      "name": "Okadzaki Syganak",
+      "slug": "okadzaki-syganak",
+      "location": [
+        71.38311855,
+        51.13014723
+      ],
+      "address": "ул.Сыганак, 15"
+    },
+    {
+      "name": "LAVASH Food NCity",
+      "slug": "lavash-food-ncity",
+      "location": [
+        71.39886322,
+        51.11639135
+      ],
+      "address": "Туран 53в"
+    },
+    {
+      "name": "SF Shaurma Food Millenium",
+      "slug": "sf-shaurma-food-millenium",
+      "location": [
+        71.47396765,
+        51.11940207
+      ],
+      "address": "ул. Аманжолова 26"
+    },
+    {
+      "name": "SF Shaurma Food Saraishyk",
+      "slug": "shaurma-food-saraishyk",
+      "location": [
+        71.42151443,
+        51.13605413
+      ],
+      "address": "Сарайшык 5"
+    },
+    {
+      "name": "SF Shaurma Food Momyshuly",
+      "slug": "sf-shaurma-food-momyshuly",
+      "location": [
+        71.47523829,
+        51.13885317
+      ],
+      "address": "ул. Бауыржан Момышулы 10, ТЦ Рахмет"
+    },
+    {
+      "name": "SF Shaurma Food Nomad",
+      "slug": "sf-shaurma-food-nomad",
+      "location": [
+        71.42163103,
+        51.12306294
+      ],
+      "address": "ул. Сагынак, 54"
+    },
+    {
+      "name": "SF Shaurma Food Koshkarbayev",
+      "slug": "sf-shaurma-food-koshkarbayev",
+      "location": [
+        71.48359073,
+        51.12513913
+      ],
+      "address": "пр. Рахымжана Кошкарбаева 34"
+    },
+    {
+      "name": "Wok Lagman Uly Dala",
+      "slug": "wok-lagman-uly-dala",
+      "location": [
+        71.45258718,
+        51.09131854
+      ],
+      "address": "​проспект Улы Дала, 84"
+    },
+    {
+      "name": "Et-Et",
+      "slug": "et-et-mangilikel",
+      "location": [
+        71.43361957889493,
+        51.11628233891591
+      ],
+      "address": "ул. Мангилик ел 17"
+    },
+    {
+      "name": "Papa John's Mangilik el",
+      "slug": "papa-johns-mangilik-el45678",
+      "location": [
+        71.43079341,
+        51.1032561
+      ],
+      "address": "ул.Мангилик ел 40"
+    },
+    {
+      "name": "Pivdos",
+      "slug": "pivdos",
+      "location": [
+        71.39165723,
+        51.11399967
+      ],
+      "address": "ул.Туран 55/13 н.п.12"
+    },
+    {
+      "name": "Meat&Beer",
+      "slug": "meatbeer",
+      "location": [
+        71.42509577,
+        51.08929355
+      ],
+      "address": "Mangilik El Ave, 54"
+    },
+    {
+      "name": "Bronze Burger",
+      "slug": "bronze-burger",
+      "location": [
+        71.4467169,
+        51.09762987
+      ],
+      "address": "Бухар жырау 33/1"
+    },
+    {
+      "name": "Broadway Burger Mega Silk Way Astana",
+      "slug": "broadway-burger-mega-silk-way-astana",
+      "location": [
+        71.4097487,
+        51.08845432
+      ],
+      "address": "Кабанбай Батыр проспект 62, 9J3H3CQ4+P5"
+    },
+    {
+      "name": "НУТ Kaldayakov",
+      "slug": "nut-kaldayakov",
+      "location": [
+        71.47702304,
+        51.11606369
+      ],
+      "address": "ул. Шәмші Қалдаяқов, 17"
+    },
+    {
+      "name": "Sushiman Expo",
+      "slug": "sushiman-tse",
+      "location": [
+        71.40783398,
+        51.09536841
+      ],
+      "address": "Kabanbay Batyr 58Б, корпус 1, Expo-Boulevard 3"
+    },
+    {
+      "name": "CTR Chicken Uly Dala",
+      "slug": "ctr-chicken-uly-dala",
+      "location": [
+        71.44958228,
+        51.08961502
+      ],
+      "address": "пр. Аль-Фараби 32"
+    },
+    {
+      "name": "Saya Sushi Bokeihanа",
+      "slug": "saya-sushi-beibitshilik",
+      "location": [
+        71.42805513,
+        51.0866781
+      ],
+      "address": "Улица Алихан Бокейхан, 25а"
+    },
+    {
+      "name": "YUMMY MAKI Kaldayakov",
+      "slug": "yummy-maki-kaldayakov",
+      "location": [
+        71.45869156,
+        51.11886573
+      ],
+      "address": "Шамши Калдаяков, 3"
+    },
+    {
+      "name": "Angime Bar",
+      "slug": "angime-bar",
+      "location": [
+        71.40706237,
+        51.12774258
+      ],
+      "address": "Достык 4, нп4"
+    },
+    {
+      "name": "La Mia Piazza",
+      "slug": "la-mia-piazza",
+      "location": [
+        71.41022505,
+        51.13951181
+      ],
+      "address": "пр. Туран 22/1"
+    },
+    {
+      "name": "Friends Breakfast",
+      "slug": "friends-breakfast",
+      "location": [
+        71.4269367,
+        51.09164837
+      ],
+      "address": "Mangilik El ave, 52, B1"
+    },
+    {
+      "name": "KEKS",
+      "slug": "keks",
+      "location": [
+        71.41357028,
+        51.10155053
+      ],
+      "address": "​Ул,Гейдара Алиева, 2"
+    },
+    {
+      "name": "Chi Chi Nashville Hot Chicken Kaldayakov",
+      "slug": "chi-chi-korean-street-food-kaldayakov",
+      "location": [
+        71.47700239,
+        51.11606042
+      ],
+      "address": "ул. Шәмші Қалдаяқов, 17"
+    },
+    {
+      "name": "Roll&Yum",
+      "slug": "roll-yum-1",
+      "location": [
+        71.38126593536981,
+        51.13337333059863
+      ],
+      "address": "Асфендиярова 5, 9J3H49MJ+8F"
+    },
+    {
+      "name": "Shaurma House Asfendiyarov",
+      "slug": "shaurma-house-asfendiyarov",
+      "location": [
+        71.38047599827229,
+        51.13569285038187
+      ],
+      "address": "ул.Асфендиярова 9"
+    },
+    {
+      "name": "Cafe Sät",
+      "slug": "cafe-sat",
+      "location": [
+        71.42581892889575,
+        51.094781823815794
+      ],
+      "address": "проспект Мангилик Ел, д.51"
+    },
+    {
+      "name": "Peek-a-boo",
+      "slug": "peek-a-boo",
+      "location": [
+        71.42819002,
+        51.12952954
+      ],
+      "address": "Кунаева 12/1, ВП6"
+    },
+    {
+      "name": "Starbucks® Mega Silk Way",
+      "slug": "starbucks-mega-silk-way",
+      "location": [
+        71.40455617,
+        51.08967711
+      ],
+      "address": "​ТРЦ \"MEGA Silk Way\"​проспект Қабанбай батыр, 62​, правое крыло; 1 этаж"
+    },
+    {
+      "name": "Uide Bar Tap-Room",
+      "slug": "uide-bar-tap-room",
+      "location": [
+        71.43359255,
+        51.12846294
+      ],
+      "address": "ул. Кунаева 14"
+    },
+    {
+      "name": "Safa Damkhana Astana",
+      "slug": "safa-damkhana-astana",
+      "location": [
+        71.42190352609464,
+        51.09428753110231
+      ],
+      "address": "Мангилик ел 51/5"
+    },
+    {
+      "name": "Jan Sushi Expo Boulevard",
+      "slug": "jan-sushi-expo-boulevard",
+      "location": [
+        71.40737156,
+        51.09478176
+      ],
+      "address": "ул. Кабанбай батыра 58Б корпус 3"
+    },
+    {
+      "name": "La Tartine MEGA Silk Way",
+      "slug": "la-tartine-mega-silk-way",
+      "location": [
+        71.4056151,
+        51.0894155
+      ],
+      "address": "Кабанбай батыр проспект, 62. Входа Е,1 этаж"
+    },
+    {
+      "name": "Tamsan Food",
+      "slug": "doner-kebab-dukenuly",
+      "location": [
+        71.43418820346312,
+        51.098422386204334
+      ],
+      "address": "Бухар жырау 34/2"
+    },
+    {
+      "name": "Chia Mangilik El",
+      "slug": "chia-mangilik-el",
+      "location": [
+        71.42547236643338,
+        51.09375326550665
+      ],
+      "address": "Мангелик ел, 53"
+    },
+    {
+      "name": "Shashlyk Pub",
+      "slug": "doner-20",
+      "location": [
+        71.42535153,
+        51.09224316
+      ],
+      "address": "проспект Мангилик Ел. 53"
+    },
+    {
+      "name": "Amore Pizza",
+      "slug": "amore-pizza-1",
+      "location": [
+        71.40074905,
+        51.10393449
+      ],
+      "address": "Туран 52/5, нп 3"
+    },
+    {
+      "name": "La Creme Koshkarbayev",
+      "slug": "la-creme-koshkarbayev",
+      "location": [
+        71.46368484,
+        51.12915447
+      ],
+      "address": "Кошкарбаев 1"
+    },
+    {
+      "name": "Nasha Pizza Mangilik El",
+      "slug": "nasha-pizza-mangilik-el",
+      "location": [
+        71.42674721,
+        51.09288704
+      ],
+      "address": "пр.Мангилик Ел 52"
+    },
+    {
+      "name": "NESIBE Uly Dala",
+      "slug": "nesibe",
+      "location": [
+        71.41672489,
+        51.09793459
+      ],
+      "address": "Улы дала 41в"
+    },
+    {
+      "name": "Wall Street Restaurant & Bar",
+      "slug": "wallstreet-restaurantbar",
+      "location": [
+        71.40712022,
+        51.09013732
+      ],
+      "address": "Qabanbay batyr avenue, 60/20"
+    },
+    {
+      "name": "SYROVARNYA Astana",
+      "slug": "syrovarnya-astana",
+      "location": [
+        71.40976562,
+        51.0886879
+      ],
+      "address": "пр-т Кабанбай батыра 62"
+    },
+    {
+      "name": "ALL OFF BURGER GreenLine Aqua",
+      "slug": "alloff-burger-greenline-aqua",
+      "location": [
+        71.38665436,
+        51.13178187
+      ],
+      "address": "ул. Е 899 1/1"
+    },
+    {
+      "name": "Tagam Turkestan",
+      "slug": "tagam-turkestan-1",
+      "location": [
+        71.4249747,
+        51.107043
+      ],
+      "address": "Туркестан 16, НП - 8а"
+    },
+    {
+      "name": "Ethno Coffee",
+      "slug": "ethno-coffee",
+      "location": [
+        71.39528656,
+        51.12752152
+      ],
+      "address": "ул. Сыганак 32"
+    },
+    {
+      "name": "Whoopie Cakes Uly Dala",
+      "slug": "whoopie-cakes-uly-dala",
+      "location": [
+        71.41742483,
+        51.0999643
+      ],
+      "address": "проспект Улы Дала 41/2"
+    },
+    {
+      "name": "Fire Rice Kaldayakov",
+      "slug": "fire-rice-kaldayakov",
+      "location": [
+        71.47701823,
+        51.11604652
+      ],
+      "address": "ул. Шәмші Қалдаяқов, 17"
+    },
+    {
+      "name": "Sunny Days Coffee",
+      "slug": "raf-coffee",
+      "location": [
+        71.45260086,
+        51.10215734
+      ],
+      "address": "пр.Аль-Фараби 1, офис 2"
+    },
+    {
+      "name": "Hochu Khinkali",
+      "slug": "hochu-khinkali",
+      "location": [
+        71.44844141,
+        51.09739554
+      ],
+      "address": "ул. Аль-Фараби,11\\1 . НП 7"
+    },
+    {
+      "name": "WeDrink Bravo",
+      "slug": "wedrink-bravo",
+      "location": [
+        71.48990938,
+        51.11442243
+      ],
+      "address": "Калдаякова, дом 23/2, НП 2"
+    },
+    {
+      "name": "Rabiya Highvill",
+      "slug": "rabiya-highvill",
+      "location": [
+        71.46358896,
+        51.12651218
+      ],
+      "address": "Baitursynuly St, 5"
+    },
+    {
+      "name": "Rramen Kabanbay Batyr",
+      "slug": "rramen-kabanbay-batyr",
+      "location": [
+        71.41739919611504,
+        51.14097045803078
+      ],
+      "address": "Кабанбай Батыра 9/2 "
+    },
+    {
+      "name": "Marani Cafe",
+      "slug": "marani-cafe",
+      "location": [
+        71.42021464,
+        51.13523188
+      ],
+      "address": "улица Сарайшык 6"
+    },
+    {
+      "name": "Eda Goroda TC Sauran",
+      "slug": "eda-goroda-tc-sauran",
+      "location": [
+        71.41569542,
+        51.11816173
+      ],
+      "address": "ул. Алматы 3"
+    },
+    {
+      "name": "Stumari Restaurant",
+      "slug": "stumari-restaurant",
+      "location": [
+        71.42531091,
+        51.11381855
+      ],
+      "address": "улица Керей Жанибек 18"
+    },
+    {
+      "name": "Soul Fried Chicken",
+      "slug": "soul-fried-chicken",
+      "location": [
+        71.39775049,
+        51.11097918
+      ],
+      "address": "Туран 55/5"
+    },
+    {
+      "name": "Galleria",
+      "slug": "galleria",
+      "location": [
+        71.42526908,
+        51.12734676
+      ],
+      "address": "ул. Достык 9"
+    },
+    {
+      "name": "Bookish Cafe",
+      "slug": "bookish-cafe",
+      "location": [
+        71.42732132,
+        51.10510314
+      ],
+      "address": "ул.Мангилик ел 35/1"
+    },
+    {
+      "name": "Rafe Cafe Coffee & Food Kunayev",
+      "slug": "rafe-cafe-kunayeva",
+      "location": [
+        71.43751195,
+        51.12790871
+      ],
+      "address": "Dinmukhamed Qonayev St 14"
+    },
+    {
+      "name": "La Bottega",
+      "slug": "labottega",
+      "location": [
+        71.42540067,
+        51.12804764
+      ],
+      "address": "ул. Достык 9"
+    },
+    {
+      "name": "Hachapuri",
+      "slug": "homepatio",
+      "location": [
+        71.42980896,
+        51.10588268
+      ],
+      "address": "ул. Мангилик Ел 35"
+    },
+    {
+      "name": "Pokestar",
+      "slug": "pokestar-koshkarbayev",
+      "location": [
+        71.384652,
+        51.1009444
+      ],
+      "address": "Казыбек би 37 "
+    },
+    {
+      "name": "Korean Home Food",
+      "slug": "korean-food-ast",
+      "location": [
+        71.40770146,
+        51.12837258
+      ],
+      "address": "ул. Достык 4"
+    },
+    {
+      "name": "TURANDOT Turkistan",
+      "slug": "turandot-turkistan",
+      "location": [
+        71.42068967,
+        51.09543057
+      ],
+      "address": "ул. Түркістан, д. 34, н.п. 1"
+    },
+    {
+      "name": "OG SUSHI",
+      "slug": "og-sushi-ainakol",
+      "location": [
+        71.38253055,
+        51.14411701
+      ],
+      "address": "Улица Айтеке Би, 15"
+    },
+    {
+      "name": "Yasuda Sushi x Mega Silkway",
+      "slug": "yasuda-sushi-x-mega-silkway",
+      "location": [
+        71.4093183,
+        51.08924025
+      ],
+      "address": "Кабанбай Батыра, 62"
+    },
+    {
+      "name": "SHIFU",
+      "slug": "shifu-1",
+      "location": [
+        71.39241082,
+        51.13063535
+      ],
+      "address": "Сыганак 17б"
+    },
+    {
+      "name": "COCO Mega Silk Way",
+      "slug": "coco-mega-silk-way12",
+      "location": [
+        71.40895209,
+        51.08876558
+      ],
+      "address": "ул. Кабанбай батыра 62 Mega Silk Way"
+    },
+    {
+      "name": "Lepim & Varim Keruen",
+      "slug": "lepim-varim-keruen",
+      "location": [
+        71.42514471,
+        51.1279329
+      ],
+      "address": "Достык 9 ТРЦ Керуен"
+    },
+    {
+      "name": "Top Doner Al-Farabi",
+      "slug": "top-doner-al-farabi",
+      "location": [
+        71.45215989,
+        51.08794846
+      ],
+      "address": "Аль Фараби 36/2"
+    },
+    {
+      "name": "DIO Grand Cafe",
+      "slug": "dio-grand-cafe",
+      "location": [
+        71.43360292,
+        51.13319873
+      ],
+      "address": "ул.Сарайшык 34 В"
+    },
+    {
+      "name": "Jasyl Coffee Mangilik El",
+      "slug": "jasyl-coffee-mangilik-el",
+      "location": [
+        71.43255523,
+        51.10576019
+      ],
+      "address": "Мангилик ел 36/1"
+    },
+    {
+      "name": "Degirmen GreenLine.Silva",
+      "slug": "degirmen-greenline-silva",
+      "location": [
+        71.38794678,
+        51.13807949
+      ],
+      "address": "Е899, 5/3 "
+    },
+    {
+      "name": "#FARSH Burger MEGA Silk Way",
+      "slug": "farsh-burger-mega-silk-way",
+      "location": [
+        71.40717637,
+        51.08944562
+      ],
+      "address": "проспект Кабанбай батыр, 62"
+    },
+    {
+      "name": "NANA Cuisine of the Caucasus",
+      "slug": "nana-cuisine-of-the-caucasus",
+      "location": [
+        71.45852512,
+        51.12814077
+      ],
+      "address": "HighVill, A-1, Block, A"
+    },
+    {
+      "name": "Chill&Grill",
+      "slug": "chillgrillnsu",
+      "location": [
+        71.42564223,
+        51.10432932
+      ],
+      "address": "ул.Туркестан 18/1"
+    },
+    {
+      "name": "Ocean Basket Mega Silk Way",
+      "slug": "ocean-basket-mega-silk-way",
+      "location": [
+        71.40844323,
+        51.08895425
+      ],
+      "address": "Kabanbay Batyr 62"
+    },
+    {
+      "name": "Сhicks",
+      "slug": "kessaku-sushi",
+      "location": [
+        71.42693885,
+        51.09156513
+      ],
+      "address": "Проспект Мангилик Ел, 52 блок B1"
+    },
+    {
+      "name": "Mari (ex.Marcello)",
+      "slug": "marcello-restaurant",
+      "location": [
+        71.42272343,
+        51.10135685
+      ],
+      "address": "ул.Туркестан 28А"
+    },
+    {
+      "name": "Trattoria.kz Turkestan",
+      "slug": "trattoriakz-turkistan",
+      "location": [
+        71.43019555,
+        51.11857198
+      ],
+      "address": "ул. Туркестан 2, блок 1"
+    },
+    {
+      "name": "Yakuza Pan Asian Kitchen",
+      "slug": "tom-yum-house",
+      "location": [
+        71.40077949,
+        51.13852383
+      ],
+      "address": "Mukhamedkhanov St 9"
+    },
+    {
+      "name": "Ramen Mart",
+      "slug": "ramen-mart",
+      "location": [
+        71.37993735,
+        51.14072231
+      ],
+      "address": "Улица Кайым Мухамедханов, 12"
+    },
+    {
+      "name": "Origummy",
+      "slug": "origummy11",
+      "location": [
+        71.43841729,
+        51.09913963
+      ],
+      "address": "ул. Бухар жырау 27"
+    },
+    {
+      "name": "Bon DiOr",
+      "slug": "bon-dior",
+      "location": [
+        71.45267311,
+        51.1041941
+      ],
+      "address": "Керей Жанибек хандар 50/1"
+    },
+    {
+      "name": "TokpokkiGo Al-Farabi",
+      "slug": "tokpokkigo-al-farabi",
+      "location": [
+        71.44725943946648,
+        51.09446844374065
+      ],
+      "address": "​Аль-Фараби 17/1"
+    },
+    {
+      "name": "OM Akbulak",
+      "slug": "om-akbulak",
+      "location": [
+        71.45473237,
+        51.14165658
+      ],
+      "address": "Токпановa, 29"
+    },
+    {
+      "name": "Uno Dos Tacos Mega Silk Way",
+      "slug": "uno-dos-tacos-mega-silk-way",
+      "location": [
+        71.40924779,
+        51.08883767
+      ],
+      "address": "проспект Кабанбай батыр 62, ТРЦ MEGA Silk Way 2 этаж"
+    },
+    {
+      "name": "Skazki iz kastryuli Kaldayakov",
+      "slug": "skazki-iz-kastriuli-kaldayakov",
+      "location": [
+        71.47709709,
+        51.11614543
+      ],
+      "address": "ул. Шәмші Қалдаяқов, 17"
+    },
+    {
+      "name": "Leto Cafe",
+      "slug": "leto-cafe",
+      "location": [
+        71.42204874,
+        51.12683011
+      ],
+      "address": "улица Достык, 8Б"
+    },
+    {
+      "name": "SUSHIFOX  Kerey Zhanibek khandar",
+      "slug": "sushifox-kerey-zhanibek",
+      "location": [
+        71.42053395,
+        51.11436477
+      ],
+      "address": "улица Керей Жанибек Хандар 16"
+    },
+    {
+      "name": "Myasoyed",
+      "slug": "myasoyed12",
+      "location": [
+        71.4051545,
+        51.1026995
+      ],
+      "address": "ул Кабанбай батыра дом 49"
+    },
+    {
+      "name": "Aula Kabanbay Batyr",
+      "slug": "aula-kabanbay-batyr",
+      "location": [
+        71.40817465,
+        51.10174587
+      ],
+      "address": "ул. Кабанбай батыр, 56"
+    },
+    {
+      "name": "Koktem",
+      "slug": "koktem",
+      "location": [
+        71.42847185,
+        51.12958811
+      ],
+      "address": "Kunayev 12/1"
+    },
+    {
+      "name": "Zavod Plova «ALTYN PALAU»",
+      "slug": "zavod-plova-altyn-palau",
+      "location": [
+        71.42685382,
+        51.14528718
+      ],
+      "address": "м-он Чубары, ул.Космонавтов, 54"
+    },
+    {
+      "name": "Aralas",
+      "slug": "aralas",
+      "location": [
+        71.44801528,
+        51.08555802
+      ],
+      "address": "пр. Аль-Фараби  46Р"
+    },
+    {
+      "name": "Sushi Time Saraishyk",
+      "slug": "sushi-time-saraishyk",
+      "location": [
+        71.41822912,
+        51.13470301
+      ],
+      "address": "Сарайшык 4"
+    },
+    {
+      "name": "Kebab Pub",
+      "slug": "kebab-pubast",
+      "location": [
+        71.41438877,
+        51.12066033
+      ],
+      "address": "пр. Кабанбай Батыра, д.40, НП7"
+    },
+    {
+      "name": "LAPSHA China Town",
+      "slug": "lapsha-china-town",
+      "location": [
+        71.45819948,
+        51.12031988
+      ],
+      "address": "Jumeken Najimedenov Street 4"
+    },
+    {
+      "name": "Daredzhani Mega Silk Way",
+      "slug": "daredzhani-mega-silk-way",
+      "location": [
+        71.40767903,
+        51.08869316
+      ],
+      "address": "ТРЦ Mega silk way "
+    },
+    {
+      "name": "Nesibe Tole Bi",
+      "slug": "nesibe-tole-bi578",
+      "location": [
+        71.39801113897579,
+        51.13274716008954
+      ],
+      "address": "Төле би, 50"
+    },
+    {
+      "name": "Marinad na Chubarah Turan",
+      "slug": "marinad-na-chubarah",
+      "location": [
+        71.39848474,
+        51.11399731
+      ],
+      "address": "ул.Туран 55/9"
+    },
+    {
+      "name": "The Breakfast",
+      "slug": "the-breakfast-1",
+      "location": [
+        71.45269185,
+        51.1024311
+      ],
+      "address": "пр. Аль-Фараби, д. 1, нп 4"
+    },
+    {
+      "name": "SIX Coffee+Wine Astana",
+      "slug": "six-coffeewine-astana",
+      "location": [
+        71.42482118,
+        51.12090826
+      ],
+      "address": "ул. Акмешит 1, ЖК “Europe city”"
+    },
+    {
+      "name": "Mandarin",
+      "slug": "mandarin2",
+      "location": [
+        71.45978318,
+        51.11873139
+      ],
+      "address": "Улица Шамши Калдаяков, 3, блок 2"
+    },
+    {
+      "name": "Fish Fried Astana",
+      "slug": "fish-fried589",
+      "location": [
+        71.4269306,
+        51.11128312
+      ],
+      "address": "This is a virtual venue"
+    },
+    {
+      "name": "SUNDUK",
+      "slug": "sunduk",
+      "location": [
+        71.4183409,
+        51.11487509
+      ],
+      "address": "​Керей, Жәнібек хандар, 14/2"
+    },
+    {
+      "name": "CrepeCafe Mangilik El",
+      "slug": "crepecafe-mangilik-yel",
+      "location": [
+        71.4338957,
+        51.11668523
+      ],
+      "address": "Prospekt Mangilik Yel. 17"
+    },
+    {
+      "name": "Uzbechka #1 Bukhar Zhyrau",
+      "slug": "uzbechka-1-bukhar-zhyrau",
+      "location": [
+        71.43634151,
+        51.09678992
+      ],
+      "address": "ул.Бухар жырау 36 г"
+    },
+    {
+      "name": "The Chef Restaurant",
+      "slug": "the-chef-1",
+      "location": [
+        71.46853892011194,
+        51.12695378966677
+      ],
+      "address": "ул Кошкарбаева 10/1"
+    },
+    {
+      "name": "Chaihana Hadiya",
+      "slug": "cajhana-hadia",
+      "location": [
+        71.46198285,
+        51.14258841
+      ],
+      "address": "ул. Тауелсиздик 25"
+    },
+    {
+      "name": "Kitchen House Sushi",
+      "slug": "kitchen-house-sushi",
+      "location": [
+        71.39304266,
+        51.11717334
+      ],
+      "address": " ул. Роза Багланова 3/1 9J3H499V+23"
+    },
+    {
+      "name": "OB SUSHI Mega Silk Way",
+      "slug": "ob-sushi-mega-silk-way",
+      "location": [
+        71.40670103,
+        51.08904706
+      ],
+      "address": "Проспект Қабанбай Батыр, здание 62"
+    },
+    {
+      "name": "GOLD IN BASKET Al-Farabi",
+      "slug": "gold-in-basket-kabanbay",
+      "location": [
+        71.44959462,
+        51.09386562
+      ],
+      "address": "Аль-Фараби 17, ЖК Арнау-6"
+    },
+    {
+      "name": "Qant Ashana Jelisi",
+      "slug": "qant-ashana-jelisi",
+      "location": [
+        71.43112232,
+        51.11530392
+      ],
+      "address": "проспект Мангилик Ел. 19/2"
+    },
+    {
+      "name": "Family Food Astana",
+      "slug": "family-food-ast",
+      "location": [
+        71.42677263,
+        51.14727142
+      ],
+      "address": "Шубартау 17"
+    },
+    {
+      "name": "Damdi Chicken E54",
+      "slug": "damdi-chicken-2",
+      "location": [
+        71.39055933,
+        51.09697584
+      ],
+      "address": "Е54 көшесі, 5"
+    },
+    {
+      "name": "Habi Mifen Saraishyk",
+      "slug": "habi-mifen-sarajsyk",
+      "location": [
+        71.42946356,
+        51.13215632
+      ],
+      "address": "Сарайшық көшесі 34,"
+    },
+    {
+      "name": "Doro",
+      "slug": "doro",
+      "location": [
+        71.40351109,
+        51.10302052
+      ],
+      "address": "Бухар Жырау 20Б"
+    },
+    {
+      "name": "Guliani Syganak",
+      "slug": "guliani-syganak",
+      "location": [
+        71.4280281,
+        51.1223857
+      ],
+      "address": "Сыганак, 60/5"
+    },
+    {
+      "name": "Caifui",
+      "slug": "caifui",
+      "location": [
+        71.41169424,
+        51.12813132
+      ],
+      "address": "Кабанбай батыра 21, 9J3H4CH6+7J"
+    },
+    {
+      "name": "Korean Street Food Kunayev",
+      "slug": "korean-street-food-kunayev",
+      "location": [
+        71.42520472,
+        51.13012561
+      ],
+      "address": "ул.Кунаева 12/2"
+    },
+    {
+      "name": "Pasta La Vista Astana",
+      "slug": "pasta-la-vista-astana",
+      "location": [
+        71.42449503,
+        51.12085357
+      ],
+      "address": "ул. Акмешит 1"
+    },
+    {
+      "name": "AqBas Doner Turan",
+      "slug": "aqbas-doner1212",
+      "location": [
+        71.40155823,
+        51.12426917
+      ],
+      "address": "ул.Туран 43/1"
+    },
+    {
+      "name": "TaiTea Syganak",
+      "slug": "taitea-syganak",
+      "location": [
+        71.36681313,
+        51.13250958
+      ],
+      "address": "ул. Сыганак 1Б"
+    },
+    {
+      "name": "Pikapika Astana",
+      "slug": "pikapika1212",
+      "location": [
+        71.39556417,
+        51.11623722
+      ],
+      "address": "Розы Баглановой, 2"
+    },
+    {
+      "name": "NEW YORK PIZZA Botanichesky",
+      "slug": "new-york-pizza-zhansugurov",
+      "location": [
+        71.416678,
+        51.09999026
+      ],
+      "address": "Улы дала 41/2"
+    },
+    {
+      "name": "Del Papa Mega Silk Way",
+      "slug": "del-papa-mega-silk-way",
+      "location": [
+        71.40746623,
+        51.08866447
+      ],
+      "address": "ТРЦ Mega silk way "
+    },
+    {
+      "name": "NAVAT Keruen City",
+      "slug": "navat-keruen",
+      "location": [
+        71.4138949,
+        51.14539936
+      ],
+      "address": "Астана, район Нұра, Шоссе Коргалжын, здание 1"
+    },
+    {
+      "name": "SushiYo",
+      "slug": "sushi-yo",
+      "location": [
+        71.42827892,
+        51.12951732
+      ],
+      "address": "This is a virtual venue"
+    },
+    {
+      "name": "Lagmanchik",
+      "slug": "lagmanchik",
+      "location": [
+        71.41758187,
+        51.11833197
+      ],
+      "address": "ул. Сауран 7Г"
+    },
+    {
+      "name": "Ogonek Kerey Zhanibek Khandar",
+      "slug": "ogonek-kerey-zhanibek-khandar",
+      "location": [
+        71.4152262,
+        51.1150893
+      ],
+      "address": "ул.Керей Жанибек хандар 12б"
+    },
+    {
+      "name": "YouMe Sushi Mangilik El",
+      "slug": "youme-sushi-mangilik-el",
+      "location": [
+        71.43347877,
+        51.11619837
+      ],
+      "address": "Мангилик Ел 17"
+    },
+    {
+      "name": "Pivovaroff Turan",
+      "slug": "pivovaroff-turan",
+      "location": [
+        71.408502,
+        51.1396238
+      ],
+      "address": "Turan 31"
+    },
+    {
+      "name": "Tash",
+      "slug": "tash5467",
+      "location": [
+        71.4234204,
+        51.1209993
+      ],
+      "address": "Акмешит 1 блок 7"
+    },
+    {
+      "name": "BOTANIKA",
+      "slug": "feelka",
+      "location": [
+        71.42198278,
+        51.11206487
+      ],
+      "address": "This is a virtual venue"
+    },
+    {
+      "name": "Khachapuri Tetushki Mariko Astana",
+      "slug": "hachapuru-tetushki-mariko",
+      "location": [
+        71.4899722,
+        51.12757903
+      ],
+      "address": "ул.Кошкарбаева 27 н.п. 7"
+    },
+    {
+      "name": "Bella Ciao Astana",
+      "slug": "restaurant-bella-ciao-astana",
+      "location": [
+        71.398496,
+        51.11670055
+      ],
+      "address": "РК, г. Астана, ул. Туран 53В"
+    },
+    {
+      "name": "Fit Nutrition",
+      "slug": "fit-nutrition",
+      "location": [
+        71.41943188,
+        51.15186191
+      ],
+      "address": "Туран 6/1б,"
+    },
+    {
+      "name": "Shaden Coffee",
+      "slug": "shaden-coffee",
+      "location": [
+        71.41615022661745,
+        51.118372486938256
+      ],
+      "address": " Алматы 3 "
+    },
+    {
+      "name": "Monte Bianco Kunayev",
+      "slug": "monte-bianco-kunayev",
+      "location": [
+        71.43794551,
+        51.12777542
+      ],
+      "address": "ул. Кунаева, 14"
+    },
+    {
+      "name": "Eva Wine Cafe",
+      "slug": "eva-wine-cafe",
+      "location": [
+        71.45890349,
+        51.12779692
+      ],
+      "address": "ул. Байтұрсынұлы, дом 3, ВП-1."
+    },
+    {
+      "name": "Cafestar",
+      "slug": "cafestar54",
+      "location": [
+        71.43514252,
+        51.12678051
+      ],
+      "address": "ул. Достык 13, н.п. 2А"
+    },
+    {
+      "name": "Home macaron Expo",
+      "slug": "home-macaron",
+      "location": [
+        71.40967803,
+        51.09448192
+      ],
+      "address": "пр. Кабанбай Батыра 58Б, корпус 7, офис 16"
+    },
+    {
+      "name": "Buddies",
+      "slug": "buddies67",
+      "location": [
+        71.39819165701283,
+        51.128807305673945
+      ],
+      "address": " ул. Бектурова 3/1"
+    },
+    {
+      "name": "Rubai Restaurant",
+      "slug": "rubai-restaurant",
+      "location": [
+        71.40911102,
+        51.14022401
+      ],
+      "address": "пр. Туран, 29"
+    },
+    {
+      "name": "ProVino Austria",
+      "slug": "provino-austria",
+      "location": [
+        71.46408517,
+        51.11334992
+      ],
+      "address": "ул.Тыныбаева.д.18,н.п.8"
+    },
+    {
+      "name": "Safa Green Line",
+      "slug": "safa-green-line",
+      "location": [
+        71.38069815018619,
+        51.13568063174884
+      ],
+      "address": "Асфендиярова 9"
+    },
+    {
+      "name": "Han Sofrasi",
+      "slug": "han-sofrasi",
+      "location": [
+        71.41837609,
+        51.13936304
+      ],
+      "address": "Кабанбая батыра, 20 "
+    },
+    {
+      "name": "Roots",
+      "slug": "roots56",
+      "location": [
+        71.40901023,
+        51.10212334
+      ],
+      "address": "пр-т. Кабанбай батыра 56"
+    },
+    {
+      "name": "Пицца Блюз улица Керей и Жанибека",
+      "slug": "pizza-blues-kerey-zhanibek-khandar",
+      "location": [
+        71.42767431,
+        51.11358101
+      ],
+      "address": "ул. Керей-Жанибек хандар, 22"
+    },
+    {
+      "name": "Gastrobar \"Bourbon Street\"",
+      "slug": "gastobar-bourbon-street",
+      "location": [
+        71.48067408,
+        51.12315266
+      ],
+      "address": "ул. Байтурсынова 23, блок Б"
+    },
+    {
+      "name": "Milk Bar Tole Bi",
+      "slug": "milk-bar-tole-bi",
+      "location": [
+        71.3986066,
+        51.1328652
+      ],
+      "address": "ул.Толе би 50"
+    },
+    {
+      "name": "\"Na Krishe\" Restaurant",
+      "slug": "na-krishe",
+      "location": [
+        71.44646366,
+        51.1412892
+      ],
+      "address": "Zhalayiri St, 2"
+    },
+    {
+      "name": "Toigan Food",
+      "slug": "toigan-food",
+      "location": [
+        71.44408414,
+        51.10846986
+      ],
+      "address": " Керей Жанибек хандар 40"
+    },
+    {
+      "name": "For You Bakery",
+      "slug": "for-you-bakery",
+      "location": [
+        71.41319326,
+        51.14015155
+      ],
+      "address": "пр.Кабанбай батыр, 11/5"
+    },
+    {
+      "name": "Letus Coffee",
+      "slug": "letus-coffee",
+      "location": [
+        71.41465458,
+        51.14207823
+      ],
+      "address": "пр. Кабанбай батыра 11/2"
+    },
+    {
+      "name": "ELLAS",
+      "slug": "ellas1",
+      "location": [
+        71.43790675,
+        51.11142905
+      ],
+      "address": "ул. Керей Жанибек хан 30"
+    },
+    {
+      "name": "Kofeynya Kokos i Bazilik",
+      "slug": "kofeynya-kokos-i-bazilik12",
+      "location": [
+        71.39839076427683,
+        51.13005443603876
+      ],
+      "address": "Бектурова 1/1"
+    },
+    {
+      "name": "Big Apple Coffee Shop Dostyk",
+      "slug": "big-apple-dostyk",
+      "location": [
+        71.41842184,
+        51.12965269
+      ],
+      "address": "улица Достык 1"
+    },
+    {
+      "name": "ONESHOTT COFFEE Nexpo Union",
+      "slug": "oneshott-coffee-nexpo-union",
+      "location": [
+        71.42133006,
+        51.08579869
+      ],
+      "address": "Мангилик Ел 59"
+    },
+    {
+      "name": "ATEA Mega Silkway",
+      "slug": "atea-mega-silkway",
+      "location": [
+        71.40870285,
+        51.08860817
+      ],
+      "address": "Кабанбай батыр проспект, 62"
+    },
+    {
+      "name": "Slon Coffee",
+      "slug": "slon-coffee",
+      "location": [
+        71.41390696,
+        51.15278318
+      ],
+      "address": "пр. Туран 5/1с"
+    },
+    {
+      "name": "Trattoria Highvill",
+      "slug": "trattoria-hajvill",
+      "location": [
+        71.4635696,
+        51.12666757
+      ],
+      "address": "улица Ахмета Байтурсынова 5"
+    },
+    {
+      "name": "Discovery Coffee Mangilik El",
+      "slug": "discovery-coffee-mangilik-el",
+      "location": [
+        71.4261322,
+        51.09065882
+      ],
+      "address": "пр. Мангилик ел, дом 54"
+    },
+    {
+      "name": "Shafran Kerey and Zhanibek",
+      "slug": "shafran-kerey-and-zhanibek",
+      "location": [
+        71.41536303,
+        51.11518862
+      ],
+      "address": "ул. Керей, Жәнібек хандар, здание 12Б"
+    },
+    {
+      "name": "O'petit",
+      "slug": "o-petit",
+      "location": [
+        71.47668845,
+        51.11801093
+      ],
+      "address": "ул. Нажимеденова 16Б"
+    },
+    {
+      "name": "Perchini",
+      "slug": "perchini",
+      "location": [
+        71.41125428,
+        51.14125666
+      ],
+      "address": "Turan Ave, 20"
+    },
+    {
+      "name": "NUDU Syganak",
+      "slug": "nudu-syganak",
+      "location": [
+        71.4167282,
+        51.12370915
+      ],
+      "address": "Сыганак д. 52/1"
+    },
+    {
+      "name": "Bakerist Astana",
+      "slug": "bakerist-astana",
+      "location": [
+        71.43505422,
+        51.11519671
+      ],
+      "address": "пр.Мангилик ел 22"
+    },
+    {
+      "name": "RUMI Mega Silk Way",
+      "slug": "rumi-megasilkway",
+      "location": [
+        71.40966977,
+        51.08877641
+      ],
+      "address": "Qabanbay batyr avenue, 62"
+    },
+    {
+      "name": "SQ PLOV Uly Dala",
+      "slug": "sq-plovcenter-uly-dala",
+      "location": [
+        71.41389315,
+        51.09604794
+      ],
+      "address": "ул. Улы дала 58"
+    },
+    {
+      "name": "Wokipasta Omarov",
+      "slug": "wokipasta-omarova",
+      "location": [
+        71.36889905254472,
+        51.1322148579294
+      ],
+      "address": "Ильяс Омаров 2"
+    },
+    {
+      "name": "MIAN",
+      "slug": "mian-1",
+      "location": [
+        71.40929965452358,
+        51.09496494835432
+      ],
+      "address": "Кабанбай батыра 58б корпус 5"
+    },
+    {
+      "name": "Doner Food",
+      "slug": "donerfood",
+      "location": [
+        71.36646652,
+        51.14274597
+      ],
+      "address": "ул. К. Мухамедханов, 20, НП-8., Кафе \"Doner Food\""
+    },
+    {
+      "name": "Gruzin Kuzin Expo",
+      "slug": "gruzin-expo",
+      "location": [
+        71.40649176,
+        51.09524311
+      ],
+      "address": "пр. Кабанбай батыр 58Б"
+    },
+    {
+      "name": "Ryba Pila",
+      "slug": "ryba-pila",
+      "location": [
+        71.41075423,
+        51.14094015
+      ],
+      "address": "проспект Туран, 22"
+    },
+    {
+      "name": "Tangiers Lounge Akmeshit",
+      "slug": "tangiers-lounge-akmeshit",
+      "location": [
+        71.42484283,
+        51.12110806
+      ],
+      "address": "ул. Акмешит 1, ЖК “Europe city”"
+    },
+    {
+      "name": "Luckee Yu Mega Silk Way",
+      "slug": "luckee-yu-mega-silk-way",
+      "location": [
+        71.40989015,
+        51.08874525
+      ],
+      "address": "Кабанбай батыра 62"
+    },
+    {
+      "name": "RAVAT Taibekov",
+      "slug": "ravat-taibekov",
+      "location": [
+        71.42720344,
+        51.14458963
+      ],
+      "address": "Елубай Тайбеков к-сі, 13"
+    },
+    {
+      "name": "Doner na Highvill’e",
+      "slug": "doner-na-highville",
+      "location": [
+        71.46830753,
+        51.12594707
+      ],
+      "address": "ул.Кошкарбаева 10"
+    },
+    {
+      "name": "Bizou",
+      "slug": "bizou",
+      "location": [
+        71.43254907,
+        51.13234856
+      ],
+      "address": "Сарайшық 34/5"
+    },
+    {
+      "name": "YobiDoyobi",
+      "slug": "yobidoyobi-imanov",
+      "location": [
+        71.41434678,
+        51.11642217
+      ],
+      "address": "улица Керей и Жанибек хандар, 9"
+    },
+    {
+      "name": "Soul Kitchen",
+      "slug": "soul-kitchen-nsu",
+      "location": [
+        71.4661936,
+        51.12584076
+      ],
+      "address": "​Ахмет Байтурсынулы, 9 блок F1, НП-13"
+    },
+    {
+      "name": "ARQA",
+      "slug": "arqa",
+      "location": [
+        71.41450754,
+        51.10129296
+      ],
+      "address": "Гейдара Алиева, 2"
+    },
+    {
+      "name": "Shoreditch+",
+      "slug": "the-shoreditch-qabanbay",
+      "location": [
+        71.41808572,
+        51.14169362
+      ],
+      "address": "7 Kabanbay B. Ave"
+    },
+    {
+      "name": "Elite Sushi Syganak",
+      "slug": "elite-sushi-syganak",
+      "location": [
+        71.37837643,
+        51.13167445
+      ],
+      "address": "ул. Сыганак 11"
+    },
+    {
+      "name": "Shaurma Shop",
+      "slug": "shaurma-shop",
+      "location": [
+        71.45061,
+        51.101066
+      ],
+      "address": "Аль-Фараби 7/3, нп 15"
+    },
+    {
+      "name": "Boba",
+      "slug": "boba",
+      "location": [
+        71.42688977,
+        51.10542106
+      ],
+      "address": "Туркестан 16/5, офис 4"
+    },
+    {
+      "name": "Chicken Balapan Kabanbay Batyr",
+      "slug": "chicken-balapan-kabanbay-batyr",
+      "location": [
+        71.41214,
+        51.1280539
+      ],
+      "address": "Кабанбай батыр проспект, 21"
+    },
+    {
+      "name": "Brutal Pub",
+      "slug": "brutal-pub",
+      "location": [
+        71.37508284,
+        51.14003817
+      ],
+      "address": "Култегин 23"
+    },
+    {
+      "name": "Gastro coffee & bakery Turkestan",
+      "slug": "gastro-coffee-bakery000",
+      "location": [
+        71.42984348,
+        51.11688932
+      ],
+      "address": "ул. Туркестана 4/1"
+    },
+    {
+      "name": "Mandi Center",
+      "slug": "mandi-center",
+      "location": [
+        71.38335648,
+        51.14369774
+      ],
+      "address": "ул Нарикбаева, 5, НП 53"
+    },
+    {
+      "name": "ChickenOK",
+      "slug": "chickenok",
+      "location": [
+        71.40392095,
+        51.11322889
+      ],
+      "address": "ул. Туран, 44/2 н.п. 12"
+    },
+    {
+      "name": "Myata Lounge Kabanbay Batyr",
+      "slug": "myata-lounge-kabanbay-batyr",
+      "location": [
+        71.4177722,
+        51.1420302
+      ],
+      "address": "ул. Кабанбай батыра, дом 7"
+    },
+    {
+      "name": "Le Pain Quotidien Astana",
+      "slug": "le-pain-quotidien-1",
+      "location": [
+        71.4027341,
+        51.1325263
+      ],
+      "address": "пр. Туран 37"
+    },
+    {
+      "name": "Aral Fish",
+      "slug": "aral-fish",
+      "location": [
+        71.48352256,
+        51.1283747
+      ],
+      "address": "Айнакол, 159"
+    },
+    {
+      "name": "Ai Coffee and Bakery",
+      "slug": "ai-coffee-and-bakery",
+      "location": [
+        71.4403434,
+        51.0941168
+      ],
+      "address": "проспект Улы Дала 63"
+    },
+    {
+      "name": "Shashlykboom",
+      "slug": "shashlykboom",
+      "location": [
+        71.43580374899173,
+        51.13428701001084
+      ],
+      "address": "Сарайшык 13/4"
+    },
+    {
+      "name": "Nomad Burger Samal Park",
+      "slug": "nomad-burger-1",
+      "location": [
+        71.44444562,
+        51.10290911
+      ],
+      "address": "Жошы хан, 14/2а"
+    },
+    {
+      "name": "Chicken на Аль-Фараби",
+      "slug": "chico-food-1",
+      "location": [
+        71.45233475,
+        51.09638415
+      ],
+      "address": "Аль-Фараби проспект, 16"
+    },
+    {
+      "name": "ZIRA",
+      "slug": "zira-1",
+      "location": [
+        71.43821575,
+        51.10491421
+      ],
+      "address": "РК, Астана, Жидели 9Б"
+    },
+    {
+      "name": "Darna Cafe",
+      "slug": "darna-cafe",
+      "location": [
+        71.3898659211992,
+        51.13922378971449
+      ],
+      "address": "ул. Мухамедханова 6А, НП 4"
+    },
+    {
+      "name": "Pizza Chef",
+      "slug": "pizza-chef",
+      "location": [
+        71.46716852,
+        51.13860728
+      ],
+      "address": "ул Тәуелсіздік 34/2"
+    },
+    {
+      "name": "BIRCOS",
+      "slug": "bircos",
+      "location": [
+        71.42314135,
+        51.09427755
+      ],
+      "address": "Мангилик ел 51/5"
+    },
+    {
+      "name": "Sreda Cafe",
+      "slug": "kofejna-sreda",
+      "location": [
+        71.41158543,
+        51.10180111
+      ],
+      "address": "РК, г. Астана, ул. Бухар жырау 26/1"
+    },
+    {
+      "name": "Wok Point Kabanbay Batyr",
+      "slug": "wok-point-kabanbay-batyr",
+      "location": [
+        71.40953827,
+        51.08879264
+      ],
+      "address": "​проспект Кабанбай батыр, 62"
+    },
+    {
+      "name": "Lanzhou MEGA Silk Way",
+      "slug": "lanzhou-mega-silk-way",
+      "location": [
+        71.41074260472692,
+        51.08865996496246
+      ],
+      "address": " ул Кабанбай батыра 62 помещение 2-32"
+    },
+    {
+      "name": "Шаурма Shop",
+      "slug": "shop589",
+      "location": [
+        71.37022967,
+        51.14040497
+      ],
+      "address": "ул. Ильяс Омарова 25"
+    },
+    {
+      "name": "Food Lab",
+      "slug": "food-lab-1",
+      "location": [
+        71.43465133,
+        51.13628692
+      ],
+      "address": "ул. Арай д. 50"
+    },
+    {
+      "name": "Infinito Italia",
+      "slug": "infinito-italia",
+      "location": [
+        71.42920665,
+        51.13368148
+      ],
+      "address": "Сарайшык 34"
+    },
+    {
+      "name": "Mazza",
+      "slug": "mazza-2",
+      "location": [
+        71.43761662,
+        51.09602672
+      ],
+      "address": "Жошы хан 6"
+    },
+    {
+      "name": "DO$$",
+      "slug": "bull-beer",
+      "location": [
+        71.38106406,
+        51.13643323
+      ],
+      "address": "Асфендиярова 10"
+    },
+    {
+      "name": "Location",
+      "slug": "lokacia",
+      "location": [
+        71.4211173,
+        51.143798
+      ],
+      "address": "Кабанбай батыра 10, 4 этаж"
+    },
+    {
+      "name": "Crispy Asfendiyarov",
+      "slug": "crispy-asfendiyarov",
+      "location": [
+        71.38200454,
+        51.13523654
+      ],
+      "address": "С.Асфендиярова 9, НП 12."
+    },
+    {
+      "name": "Grace",
+      "slug": "grace-1",
+      "location": [
+        71.4253555,
+        51.1281274
+      ],
+      "address": "Достык 9"
+    },
+    {
+      "name": "Sunbula",
+      "slug": "sunbula",
+      "location": [
+        71.40888009,
+        51.09729851
+      ],
+      "address": "ул. Улы дала 56"
+    },
+    {
+      "name": "Pkhali & Khinkali",
+      "slug": "pkhali-khinkali",
+      "location": [
+        71.42577087,
+        51.12806999
+      ],
+      "address": "ул. Достык 9, этаж 3"
+    },
+    {
+      "name": "Guryev",
+      "slug": "guriev-astana",
+      "location": [
+        71.40915257,
+        51.09730309
+      ],
+      "address": " проспект Улы дала, 56, нп 8"
+    },
+    {
+      "name": "RIBAMBELLE",
+      "slug": "ribambelle",
+      "location": [
+        71.43283523,
+        51.12448593
+      ],
+      "address": "Dostyk Ave, 16"
+    },
+    {
+      "name": "Kashgar",
+      "slug": "kashgar",
+      "location": [
+        71.4179811,
+        51.1347856
+      ],
+      "address": "ул. Сарайшык 4"
+    },
+    {
+      "name": "Gasteria Riviera",
+      "slug": "gasteria-riviera",
+      "location": [
+        71.44431929,
+        51.14694491
+      ],
+      "address": "улица Амман 21А, н.п 2"
+    },
+    {
+      "name": "Pro.Хинкали",
+      "slug": "pro-hinkali",
+      "location": [
+        71.42451194884512,
+        51.1299206738731
+      ],
+      "address": "Динмухамеда Кунаева, 8/1"
+    },
+    {
+      "name": "Galata",
+      "slug": "galata567",
+      "location": [
+        71.47639751680939,
+        51.12066840523923
+      ],
+      "address": "Калибек Куанышбаев 11а"
+    },
+    {
+      "name": "Coffee BOOM Roasters and Bakery Turkestan",
+      "slug": "coffee-boom-turkestan",
+      "location": [
+        71.42455044637572,
+        51.10598552886702
+      ],
+      "address": "ул. Туркестан 16/3, Н.П. 6"
+    },
+    {
+      "name": "UDONER",
+      "slug": "udoner",
+      "location": [
+        71.3907839,
+        51.1205385
+      ],
+      "address": "ул. Казыбек би 7/1"
+    },
+    {
+      "name": "DONER NA TURANE",
+      "slug": "donerfood-turan",
+      "location": [
+        71.4037597,
+        51.11322281
+      ],
+      "address": "Пр. туран 44/2, н.п. 12"
+    },
+    {
+      "name": "BonAtri",
+      "slug": "bonatri",
+      "location": [
+        71.41245724349335,
+        51.094191220224445
+      ],
+      "address": "улица Гейдара Алиева 10"
+    },
+    {
+      "name": "Самарканд",
+      "slug": "samarkand6879",
+      "location": [
+        71.46995418,
+        51.13407956
+      ],
+      "address": "проспект Тауелсиздик 40"
+    },
+    {
+      "name": "Qazan Mangal",
+      "slug": "qazan-mangal",
+      "location": [
+        71.4906853,
+        51.12798688
+      ],
+      "address": "пр. Кошкарбаева 29"
+    },
+    {
+      "name": "Italio",
+      "slug": "italio",
+      "location": [
+        71.46030851,
+        51.12024238
+      ],
+      "address": "Жұмекен Нажімеденова, дом 4/1, блок D 2-1"
+    },
+    {
+      "name": "KAL'BI meat house",
+      "slug": "dalagrill",
+      "location": [
+        71.40281677,
+        51.13602829
+      ],
+      "address": "ЖК greenline.tokiyo"
+    },
+    {
+      "name": "A-STORIA",
+      "slug": "a-storia",
+      "location": [
+        71.46504377,
+        51.13026278
+      ],
+      "address": "ул Акыртас 1/1"
+    },
+    {
+      "name": "Sakura Sushi Cafe",
+      "slug": "sakura-sushi-cafe-1",
+      "location": [
+        71.48194814,
+        51.11842372
+      ],
+      "address": "ул. Сагадат Нурмагамбетов, 27/1, НП-14"
+    },
+    {
+      "name": "Pizza City Khan Shatyr",
+      "slug": "pizza-city-khan-shatyr-01",
+      "location": [
+        71.4038365,
+        51.13259481
+      ],
+      "address": "ул. Туран 37"
+    },
+    {
+      "name": "ABOKADO Sushi",
+      "slug": "abokado-astana",
+      "location": [
+        71.43133240357167,
+        51.09988888099389
+      ],
+      "address": "Улица Алихан Бокейхан, 24 (ЖК Gloria вход со стороны Бұқар Жырау) "
+    },
+    {
+      "name": "Code Da Vinci",
+      "slug": "code-da-vinci",
+      "location": [
+        71.40991164,
+        51.0989471
+      ],
+      "address": "ул. Улы Дала 39"
+    },
+    {
+      "name": "Baoli Highvill",
+      "slug": "baoli-highvill",
+      "location": [
+        71.46709698692123,
+        51.12560112837093
+      ],
+      "address": "Байтурсынова 9"
+    },
+    {
+      "name": "PIZZA HOUSE",
+      "slug": "pizza-house-ast",
+      "location": [
+        71.4212864,
+        51.12253371
+      ],
+      "address": "ул. Сауран 3/1, н.п. 15"
+    },
+    {
+      "name": "MUDDES",
+      "slug": "muddes",
+      "location": [
+        71.44377236,
+        51.10433473
+      ],
+      "address": "Жошы хана 16/1"
+    },
+    {
+      "name": "Prosto Bar",
+      "slug": "prosto-bar",
+      "location": [
+        71.4247976,
+        51.0941053
+      ],
+      "address": "проспект Мангилик Ел, д.53, блок C"
+    },
+    {
+      "name": "ProLavka Kabanbay Batyr",
+      "slug": "prolavka-kabanbay-batyr",
+      "location": [
+        71.40634534,
+        51.09530888
+      ],
+      "address": "Кабанбай батыра 58б"
+    },
+    {
+      "name": "Leprechaun Pub",
+      "slug": "leprechaun-pub",
+      "location": [
+        71.40573851,
+        51.0947547
+      ],
+      "address": "Kabanbay batyr ave, 58B / 2"
+    },
+    {
+      "name": "«Rixos President Astana» Hotel",
+      "slug": "rixos-president-astana-hotel",
+      "location": [
+        71.42052799,
+        51.13336466
+      ],
+      "address": "Kunayev st, 7"
+    },
+    {
+      "name": "More More",
+      "slug": "more-more",
+      "location": [
+        71.45929294,
+        51.12029097
+      ],
+      "address": "улица Жұмекен Нажімеденова, дом 4, блок D 1"
+    },
+    {
+      "name": "GINZA",
+      "slug": "ginza-astana",
+      "location": [
+        71.41174981,
+        51.14748407
+      ],
+      "address": "проспект Туран 15"
+    },
+    {
+      "name": "Dala",
+      "slug": "alycha-ast",
+      "location": [
+        71.47761828,
+        51.11816422
+      ],
+      "address": "Жұмекен Нәжімеденов, 16Б"
+    },
+    {
+      "name": "Izumi Sushi Kabanbay Batyr",
+      "slug": "izumi-kabanbay-batyr",
+      "location": [
+        71.40543288,
+        51.10046761
+      ],
+      "address": "Кабанбай Батыра 49а, НП-4"
+    },
+    {
+      "name": "Two Hands",
+      "slug": "two-hands",
+      "location": [
+        71.41029245,
+        51.14024989
+      ],
+      "address": "пр-т Туран 22/1, НП-1"
+    },
+    {
+      "name": "METIS",
+      "slug": "metisrestaurant",
+      "location": [
+        71.41859203,
+        51.14341288
+      ],
+      "address": "Проспект Кабанбай батыр, 5/3"
+    },
+    {
+      "name": "Tary Europe city",
+      "slug": "tary-europe-city",
+      "location": [
+        71.4242627836247,
+        51.12101823613253
+      ],
+      "address": "Акмешит 1 блок 4"
+    },
+    {
+      "name": "Urumchi Hogo",
+      "slug": "urumchi-hogo",
+      "location": [
+        71.43986138,
+        51.11677085
+      ],
+      "address": "ул А.Бокейхан 6"
+    },
+    {
+      "name": "Wine Street",
+      "slug": "wine-street",
+      "location": [
+        71.42455014,
+        51.10466454
+      ],
+      "address": "ул. Туркестан 18"
+    },
+    {
+      "name": "Sazan Zaysan",
+      "slug": "sazan-fish",
+      "location": [
+        71.4322454,
+        51.12213509999999
+      ],
+      "address": "Улица сыганак 64/1"
+    },
+    {
+      "name": "Golden Birds",
+      "slug": "golden-birds",
+      "location": [
+        71.42488646,
+        51.12054271
+      ],
+      "address": "ул. Акмешит 1 блок 3"
+    },
+    {
+      "name": "Laliko",
+      "slug": "laliko-ast",
+      "location": [
+        71.394513,
+        51.13299759
+      ],
+      "address": "​Улица Е 900, 4​НП: 9"
+    },
+    {
+      "name": "Shio Izakaya",
+      "slug": "shio-izakaya12",
+      "location": [
+        71.42154654,
+        51.12680376
+      ],
+      "address": "Достык 8"
+    },
+    {
+      "name": "Pizza Richi",
+      "slug": "pizza-richi-ast",
+      "location": [
+        71.3707766,
+        51.1394745
+      ],
+      "address": "ул. Ильяса Омарова 12В"
+    },
+    {
+      "name": "Olive",
+      "slug": "olive-df4c93",
+      "location": [
+        71.40495978,
+        51.09955619
+      ],
+      "address": "Кабанбай батыр 51"
+    },
+    {
+      "name": "Unai Pizza & Pasta Bokeikhana",
+      "slug": "unai-pizza-pasta-bokeikhana",
+      "location": [
+        71.43348253,
+        51.10664443
+      ],
+      "address": "Бокейхана, 16/1"
+    },
+    {
+      "name": "am:pm Coffee & Wine",
+      "slug": "ampm-coffee-wine6798",
+      "location": [
+        71.42226368,
+        51.08517946
+      ],
+      "address": "Мангилик Ел 59"
+    },
+    {
+      "name": "AURA Verdant",
+      "slug": "aura-verdant",
+      "location": [
+        71.43421429,
+        51.1381744
+      ],
+      "address": "Aray St 29a"
+    },
+    {
+      "name": "Cafe de Ghouli",
+      "slug": "le-chocolat-astana",
+      "location": [
+        71.42764582,
+        51.10493096
+      ],
+      "address": "Мангилик Ел 35/1"
+    },
+    {
+      "name": "Cafeteria Mega Silk Way",
+      "slug": "cafeteria-mega-silk-way",
+      "location": [
+        71.40950212,
+        51.08874502
+      ],
+      "address": "Кабанбай батыр проспект, 62"
+    },
+    {
+      "name": "The Ferma",
+      "slug": "the-ferma",
+      "location": [
+        71.44538438,
+        51.14330091
+      ],
+      "address": "ул.Амман 4 "
+    },
+    {
+      "name": "Sezam",
+      "slug": "sezam",
+      "location": [
+        71.44822391,
+        51.09313261
+      ],
+      "address": "проспект Улы Дала, 71"
+    },
+    {
+      "name": "BUONISSIMO",
+      "slug": "la-famiglia-ast",
+      "location": [
+        71.38116705,
+        51.13232653
+      ],
+      "address": "ул. Асфендиярова 4"
+    },
+    {
+      "name": "Marrone Rosso Turan",
+      "slug": "marrone-rosso-turan",
+      "location": [
+        71.40027972,
+        51.11841001
+      ],
+      "address": "Туран 53а"
+    },
+    {
+      "name": "Кафе Antrekot",
+      "slug": "kenori-astana",
+      "location": [
+        71.40101956,
+        51.10384011
+      ],
+      "address": "Туран 52/5"
+    },
+    {
+      "name": "Family Chef",
+      "slug": "family-chef",
+      "location": [
+        71.46642685,
+        51.1382308
+      ],
+      "address": "Тәуелсіздік 34/2, 18 офис"
+    },
+    {
+      "name": "Тао Тао Паназиатская Кухня",
+      "slug": "street-food1212",
+      "location": [
+        71.41009076,
+        51.09609464
+      ],
+      "address": "Улы дала 56/2 "
+    },
+    {
+      "name": "Maro Tauelsizdik",
+      "slug": "maro-tauelsizdik",
+      "location": [
+        71.46819867306874,
+        51.11647521127409
+      ],
+      "address": "ул.Тауелсиздик 56/2"
+    },
+    {
+      "name": "Aiala Coffee Wine",
+      "slug": "aiala-coffee-wine789",
+      "location": [
+        71.48344559,
+        51.11898235
+      ],
+      "address": "Сағадат Нұрмағамбетов 25"
+    },
+    {
+      "name": "Arabica City Cafe",
+      "slug": "arabica-city-cafe",
+      "location": [
+        71.37291763,
+        51.12730833
+      ],
+      "address": "ул. Култегин 4а"
+    },
+    {
+      "name": "Sesame Coffee and Food",
+      "slug": "sesame-coffee-and-food",
+      "location": [
+        71.40665817,
+        51.08931479
+      ],
+      "address": "проспект Кабанбай Батыра 62, ТРЦ MEGA Silk Way"
+    },
+    {
+      "name": "Tiger Food Keruen",
+      "slug": "tiger-food-keruen",
+      "location": [
+        71.42575561,
+        51.12780197
+      ],
+      "address": "ул. Достык 9 ТРЦ Керуен"
+    },
+    {
+      "name": "Grill Bar",
+      "slug": "grill-bar-saryarka",
+      "location": [
+        71.41060600149126,
+        51.138089338373646
+      ],
+      "address": "Туран 24"
+    },
+    {
+      "name": "Sovremennaya Chaikhana \"Kazbek\"",
+      "slug": "kazbek",
+      "location": [
+        71.4396719,
+        51.11608677
+      ],
+      "address": "Бокейхана 6"
+    },
+    {
+      "name": "Picasso pizza&gelateria",
+      "slug": "picasso-astana",
+      "location": [
+        71.47649795,
+        51.12134478
+      ],
+      "address": "ул. Куанышбаева 11б, НП 5"
+    },
+    {
+      "name": "My Doner",
+      "slug": "my-doner1",
+      "location": [
+        71.47653103,
+        51.11742115
+      ],
+      "address": "Улица Жумекен Нажимеденов, 16а"
+    },
+    {
+      "name": "Food Park",
+      "slug": "food-park-astana",
+      "location": [
+        71.41009413,
+        51.08914866
+      ],
+      "address": "Кабанбай батыра 62, 2 этаж"
+    },
+    {
+      "name": "Nanmai Nazhimedenov",
+      "slug": "le-dessert589",
+      "location": [
+        71.45759126,
+        51.1196961
+      ],
+      "address": "ул.Нажимеденова, 4"
+    },
+    {
+      "name": "Hani.brunch Turkestan",
+      "slug": "hanibrunch-turkestan",
+      "location": [
+        71.42321363,
+        51.10198531
+      ],
+      "address": "​Улица Туркестан, 28"
+    },
+    {
+      "name": "Caffé Morris",
+      "slug": "caff-morris",
+      "location": [
+        71.39949026,
+        51.13460894
+      ],
+      "address": "Толе Би 54"
+    },
+    {
+      "name": "RAMEN Bar",
+      "slug": "korean-street-food-by-ellina-tyan",
+      "location": [
+        71.41070581,
+        51.13802804
+      ],
+      "address": "ТЦ САРЫАРКА"
+    },
+    {
+      "name": "OZGESHE Astana",
+      "slug": "ozgeshe-astana",
+      "location": [
+        71.40627124,
+        51.12244801
+      ],
+      "address": "проспект Туран 34Б, 14 офис"
+    },
+    {
+      "name": "MONRO",
+      "slug": "monro1212",
+      "location": [
+        71.43229357133279,
+        51.13321099650278
+      ],
+      "address": "ул Сарайшык, дом 34а"
+    },
+    {
+      "name": "La Maro Dostyk",
+      "slug": "la-maro-dostyk",
+      "location": [
+        71.41862488,
+        51.12963104
+      ],
+      "address": "ул. Достык 1, н.п. 10"
+    },
+    {
+      "name": "Coffee Nova Amman",
+      "slug": "coffee-nova",
+      "location": [
+        71.44670891,
+        51.1419634
+      ],
+      "address": "ул. Амман-2"
+    },
+    {
+      "name": "BLOOM ROOM",
+      "slug": "bloom-room",
+      "location": [
+        71.39741644,
+        51.10550277
+      ],
+      "address": "ул. Туран52"
+    },
+    {
+      "name": "Fuddi Kabanbay Batyr",
+      "slug": "fuddi-kabanbay-batyr",
+      "location": [
+        71.4097724,
+        51.0951366
+      ],
+      "address": "Кабанбай батыра 58 Б к1"
+    },
+    {
+      "name": "ALL CHICKEN",
+      "slug": "all-chicken",
+      "location": [
+        71.38782739,
+        51.13227284
+      ],
+      "address": "ул.Е 899 1/1"
+    },
+    {
+      "name": "Khan Doner Astana",
+      "slug": "khan-doner-astana",
+      "location": [
+        71.48187318,
+        51.11823137
+      ],
+      "address": "ул Сагадата Нурмагамбетова 23/1"
+    },
+    {
+      "name": "CRISPY Astana",
+      "slug": "crispy-astana",
+      "location": [
+        71.39880261818135,
+        51.089853537957566
+      ],
+      "address": "проспект Кабанбай Батыра 53 4 блок  "
+    },
+    {
+      "name": "konil",
+      "slug": "konil",
+      "location": [
+        71.4206362,
+        51.1143952
+      ],
+      "address": "ул. Керей Жанибек хандар 16 "
+    },
+    {
+      "name": "Royalty Coffee Syganak",
+      "slug": "royalty-coffee-syganak",
+      "location": [
+        71.37142509,
+        51.13191824
+      ],
+      "address": "РК, г. Астана, ​улица Сыганак, 3"
+    },
+    {
+      "name": "Chickenfood Aynakol",
+      "slug": "chicken-food-1",
+      "location": [
+        71.4909538,
+        51.1304461
+      ],
+      "address": "Улица Айнакол, 117а"
+    },
+    {
+      "name": "Ozhau",
+      "slug": "ozhau-1",
+      "location": [
+        71.38043085,
+        51.13444308
+      ],
+      "address": "Асфендиярова 8"
+    },
+    {
+      "name": "DonKapi",
+      "slug": "ak-dastarhan",
+      "location": [
+        71.3995299116946,
+        51.124452437980494
+      ],
+      "address": "Туран, 43/3"
+    },
+    {
+      "name": "Cup Qara Coffee",
+      "slug": "cup-qara-coffee",
+      "location": [
+        71.4231346,
+        51.09422624
+      ],
+      "address": "Мангилик ел 51/5"
+    },
+    {
+      "name": "Yellow Doner Astana",
+      "slug": "yellow-doner",
+      "location": [
+        71.41561395,
+        51.12416589
+      ],
+      "address": "Сыганак 52/1"
+    },
+    {
+      "name": "OINA",
+      "slug": "oina-1",
+      "location": [
+        71.4603409,
+        51.1445626
+      ],
+      "address": "Проспект Тауелсиздик, 23"
+    },
+    {
+      "name": "NY Donuts",
+      "slug": "ny-donuts1",
+      "location": [
+        71.40578676123576,
+        51.08887638873142
+      ],
+      "address": "Кабанбай Батыра 62"
+    },
+    {
+      "name": "Бату Сауран",
+      "slug": "batu456",
+      "location": [
+        71.4161184,
+        51.1183553
+      ],
+      "address": "Алматы 3 "
+    },
+    {
+      "name": "Ornek coffee",
+      "slug": "ornek-coffee",
+      "location": [
+        71.40267911,
+        51.135488
+      ],
+      "address": "Мухамедханов 4/3"
+    },
+    {
+      "name": "Guryev Uly Dala",
+      "slug": "guriev-63",
+      "location": [
+        71.4403434,
+        51.0941168
+      ],
+      "address": "Улы дала 63"
+    },
+    {
+      "name": "Lionfish",
+      "slug": "lionfish",
+      "location": [
+        71.4282098,
+        51.1420728
+      ],
+      "address": "ул.Темирказык 24"
+    },
+    {
+      "name": "26/69 Кофе и Встречи Astana",
+      "slug": "2669-astana",
+      "location": [
+        71.4620559,
+        51.1175109
+      ],
+      "address": "Шамши Калдаякова 8"
+    },
+    {
+      "name": "Pims Astana",
+      "slug": "pims-astana",
+      "location": [
+        71.40829305,
+        51.08909622
+      ],
+      "address": "ТРЦ MEGA Silk Way, Кабанбай батыр проспект, 62 2 этаж"
+    },
+    {
+      "name": "MarmeLatte",
+      "slug": "marmelatte678",
+      "location": [
+        71.44921301,
+        51.09841989
+      ],
+      "address": " Аль-фариби 9/2"
+    },
+    {
+      "name": "Ai-Cha Kabanbay Batyr",
+      "slug": "ai-cha-kabanbay-batyr",
+      "location": [
+        71.4153236,
+        51.1220182
+      ],
+      "address": "проспект Кабанбай батыра 40, вп 27"
+    },
+    {
+      "name": "WOW SUSHI",
+      "slug": "wow-sushi",
+      "location": [
+        71.42964648,
+        51.1127424
+      ],
+      "address": "Мангилик ел 21 нп 49"
+    },
+    {
+      "name": "Tuysqan Tole Bi",
+      "slug": "tuysqan-tole-bi456",
+      "location": [
+        71.39869002,
+        51.13470612
+      ],
+      "address": "Толе би 54"
+    },
+    {
+      "name": "Moon Wise",
+      "slug": "moon-wise567",
+      "location": [
+        71.36736392,
+        51.12626335
+      ],
+      "address": "Жубан Молдагалиев, 5"
+    },
+    {
+      "name": "CHA",
+      "slug": "cha-4815af",
+      "location": [
+        71.39125895,
+        51.13086171
+      ],
+      "address": "Сыганак 17Б "
+    },
+    {
+      "name": "True Food",
+      "slug": "true-food",
+      "location": [
+        71.46511841,
+        51.1293869
+      ],
+      "address": "​Кошкарбаев проспект, 1/5"
+    },
+    {
+      "name": "Niet Pizza Uly Dala",
+      "slug": "amigo-pizza-uly-dala",
+      "location": [
+        71.44141393,
+        51.0961955
+      ],
+      "address": "ул. Улы Дала, дом 65/2"
+    },
+    {
+      "name": "Taksim Cafe",
+      "slug": "taksim-cafe",
+      "location": [
+        71.40866736,
+        51.08884754
+      ],
+      "address": "пр. Кабанбай батыра 62, ТРЦ «Mega Silk Way», 2 этаж"
+    },
+    {
+      "name": "Kobe Kitchen",
+      "slug": "kobe-kitchen",
+      "location": [
+        71.40143585,
+        51.13727951
+      ],
+      "address": "​Қайым Мұхамедханов, 4 блок B"
+    },
+    {
+      "name": "Pie Pie",
+      "slug": "my-coffee-shop",
+      "location": [
+        71.38619198,
+        51.14325471
+      ],
+      "address": "ул. Нарикбаева 12"
+    },
+    {
+      "name": "Restobar \"Turk Kz\"",
+      "slug": "restobar-turk-kz",
+      "location": [
+        71.47834285,
+        51.13129528
+      ],
+      "address": "ул. Арганаты, 13"
+    },
+    {
+      "name": "Ted",
+      "slug": "ted",
+      "location": [
+        71.4086903,
+        51.0985971
+      ],
+      "address": "Улы Дала, дом 39, кв/офис 4"
+    },
+    {
+      "name": "DonerChiki Bekturov",
+      "slug": "chiki-chiki-astana",
+      "location": [
+        71.3985598,
+        51.12849124
+      ],
+      "address": "ул. Бектурова 3"
+    },
+    {
+      "name": "Lazzat Canteen",
+      "slug": "lyazzat-canteen",
+      "location": [
+        71.3823789,
+        51.13506533
+      ],
+      "address": "ул. Санжара Асфендиярова 9"
+    },
+    {
+      "name": "Noble Cafe",
+      "slug": "noble-cafe",
+      "location": [
+        71.42293549,
+        51.07863617
+      ],
+      "address": "ул.Хусейн бен Талал 28"
+    },
+    {
+      "name": "Sushi Vkus",
+      "slug": "sushivkus",
+      "location": [
+        71.40193985,
+        51.10556886
+      ],
+      "address": "ул. Туран 50/5"
+    },
+    {
+      "name": "Saba",
+      "slug": "saba678",
+      "location": [
+        71.3744563256871,
+        51.13276036747348
+      ],
+      "address": "ул. Култегин 10 нп 19"
+    },
+    {
+      "name": "Birdies EXPO",
+      "slug": "birdies",
+      "location": [
+        71.40626487,
+        51.0954115
+      ],
+      "address": "Кабанбай батыра 58б 9J3H3CW4+5J"
+    },
+    {
+      "name": "Shipa Palau",
+      "slug": "shipa-palau",
+      "location": [
+        71.42841687,
+        51.08654664
+      ],
+      "address": "Алихан Бокейхан, 25a"
+    },
+    {
+      "name": "Өnergy Kitchen",
+      "slug": "onergy",
+      "location": [
+        71.40040893766974,
+        51.09345549558728
+      ],
+      "address": "Кабанбай батыр проспект, 53 блок 32"
+    },
+    {
+      "name": "Rotana Lounge",
+      "slug": "rotana-lounge",
+      "location": [
+        71.42974627,
+        51.10131957
+      ],
+      "address": "Мәнгілік ел 40/2"
+    },
+    {
+      "name": "Exclusive",
+      "slug": "exclusive-1",
+      "location": [
+        71.39821128,
+        51.10663021
+      ],
+      "address": "проспект Туран 50"
+    },
+    {
+      "name": "SHEKERBURA",
+      "slug": "shekerbura",
+      "location": [
+        71.37133628917792,
+        51.124787183287054
+      ],
+      "address": "Улица Култегин, 2"
+    },
+    {
+      "name": "Papapizza",
+      "slug": "papapizza",
+      "location": [
+        71.476817,
+        51.1320906
+      ],
+      "address": "Балкантау 102"
+    },
+    {
+      "name": "Alaqai",
+      "slug": "alaqai",
+      "location": [
+        71.4642932,
+        51.141472
+      ],
+      "address": "Тауелсиздик 32"
+    },
+    {
+      "name": "Cafe Zhagalau",
+      "slug": "zhagalau56",
+      "location": [
+        71.3645842,
+        51.1309695
+      ],
+      "address": "ул. Сыганак, 2"
+    },
+    {
+      "name": "Dear Box liyas Omarov",
+      "slug": "dear-box-2",
+      "location": [
+        71.36920526043468,
+        51.138250902267885
+      ],
+      "address": "Улица Илияс Омаров, 21"
+    },
+    {
+      "name": "InstaCafe Balkantau",
+      "slug": "instacafe-balkantau",
+      "location": [
+        71.47868622,
+        51.13169517
+      ],
+      "address": "Балқантау 92"
+    },
+    {
+      "name": "SQ Plov Mangilik El",
+      "slug": "sq-plov-mangilik-el",
+      "location": [
+        71.42709725,
+        51.09375896
+      ],
+      "address": "Мангилик ел 52"
+    },
+    {
+      "name": "Durum Мangilik El",
+      "slug": "durum-56",
+      "location": [
+        71.42509427,
+        51.08876777
+      ],
+      "address": "ул.Мангилик ел, 56"
+    },
+    {
+      "name": "YUMMY MAKI",
+      "slug": "yummy-makki",
+      "location": [
+        71.39682881,
+        51.13036488
+      ],
+      "address": "ул. Бектурова 1/2"
+    },
+    {
+      "name": "Mangal Doner Sat City",
+      "slug": "mangal-doner-sat-city",
+      "location": [
+        71.37891029,
+        51.13412548
+      ],
+      "address": "ул. Асфендиярова 7"
+    },
+    {
+      "name": "Coffee BOOM Promenade Expo",
+      "slug": "coffee-boom-mangilik-el",
+      "location": [
+        71.42593186,
+        51.09347101
+      ],
+      "address": "ул. Мангилик Ел 53"
+    },
+    {
+      "name": "Uzbechka #1",
+      "slug": "uzbechka-1",
+      "location": [
+        71.43910522,
+        51.11447184
+      ],
+      "address": "ул. А. Бокейханова, 10"
+    },
+    {
+      "name": "Elite Sushi Momyshuly",
+      "slug": "elite-sushi-momyshuly",
+      "location": [
+        71.45960451,
+        51.1312511
+      ],
+      "address": "Момышулы 2а"
+    },
+    {
+      "name": "Wok Lagman Tole Bi",
+      "slug": "wok-lagman-tole-bi",
+      "location": [
+        71.39473984,
+        51.12345278
+      ],
+      "address": "ул. Толе би, д. 46"
+    },
+    {
+      "name": "DURUM Omarov",
+      "slug": "durum-omarov",
+      "location": [
+        71.37072281,
+        51.13956996
+      ],
+      "address": "РК, г.Астана, ул.Омарова, 12В"
+    },
+    {
+      "name": "Mangal Doner Tauelsizdik",
+      "slug": "mangal-doner-tauelsizdik",
+      "location": [
+        71.46572832890521,
+        51.14125587722475
+      ],
+      "address": "Проспект Тауелсиздик 34/1д"
+    },
+    {
+      "name": "Zina",
+      "slug": "zina",
+      "location": [
+        71.46456816,
+        51.13018858
+      ],
+      "address": "Akyrtas, 1/1"
+    },
+    {
+      "name": "Okadzaki Uly Dala",
+      "slug": "okadzaki-uli-dala",
+      "location": [
+        71.41444561,
+        51.09777064
+      ],
+      "address": "РК, г. Астана, ул. Улы Дала 41А"
+    },
+    {
+      "name": "The Doner na Uglyah Anet baba",
+      "slug": "the-doner-na-uglyah",
+      "location": [
+        71.38645211,
+        51.13861972
+      ],
+      "address": "ул. Анет баба 12, нп 8"
+    },
+    {
+      "name": "Discovery Coffee Uly Dala",
+      "slug": "discovery-coffee-uly-dala",
+      "location": [
+        71.42234657,
+        51.09547684
+      ],
+      "address": "пр-т Мангилик Ел, 51/1"
+    },
+    {
+      "name": "DURUM Damu Mall",
+      "slug": "durum-nazhimidenov",
+      "location": [
+        71.49215789,
+        51.11568045
+      ],
+      "address": "Нажимеденов, 26"
+    },
+    {
+      "name": "SYROVARNYA Konaev",
+      "slug": "syrovarnya-konaev",
+      "location": [
+        71.42436651,
+        51.12996073
+      ],
+      "address": "Кунаева 8/1"
+    },
+    {
+      "name": "Coffee BOOM Dream City",
+      "slug": "coffee-boom-dream-city",
+      "location": [
+        71.42700274,
+        51.09769668
+      ],
+      "address": "Mangilik Yel ave., 47, Block E"
+    },
+    {
+      "name": "Durum Dostyk",
+      "slug": "durum-dostyk",
+      "location": [
+        71.42710672,
+        51.12595626
+      ],
+      "address": "Достык 12"
+    },
+    {
+      "name": "Chia",
+      "slug": "chia",
+      "location": [
+        71.42551415138223,
+        51.13003686243613
+      ],
+      "address": "ул. Кунаева 12/2"
+    },
+    {
+      "name": "KEKS Turkestan",
+      "slug": "keks-turkestan",
+      "location": [
+        71.42457963,
+        51.10613206
+      ],
+      "address": "Туркестан 16/3"
+    },
+    {
+      "name": "Chia Kaldayakov",
+      "slug": "chia-kaldayakov",
+      "location": [
+        71.46035951,
+        51.11862234
+      ],
+      "address": "​Улица Шамши Калдаяков, 3"
+    },
+    {
+      "name": "Meat&Beer Al-Farabi",
+      "slug": "meatbeer-al-farabi",
+      "location": [
+        71.44789876,
+        51.08584834
+      ],
+      "address": "пр.Аль Фараби 46 Р, нп2"
+    },
+    {
+      "name": "Okadzaki Al-Farabi",
+      "slug": "okadzaki-kerey-zhanibek-khandar",
+      "location": [
+        71.45372566,
+        51.10358562
+      ],
+      "address": "Аль-Фараби 1 "
+    },
+    {
+      "name": "Coffee BOOM Bukhar Zhyrau",
+      "slug": "coffee-boom-bukhar-zhyrau",
+      "location": [
+        71.41545524,
+        51.10129063
+      ],
+      "address": "ул. Бухар Жырау 28"
+    },
+    {
+      "name": "Okadzaki La Vie",
+      "slug": "okadzaki-la-vie",
+      "location": [
+        71.46309383530442,
+        51.12924580842153
+      ],
+      "address": "Кошкарбаева 1 "
+    },
+    {
+      "name": "Sushiman Panasia",
+      "slug": "sushiman-dosmukhametuly",
+      "location": [
+        71.42108448,
+        51.13901363
+      ],
+      "address": "ул. Халел Досмухаметулы 57"
+    },
+    {
+      "name": "The Doner na Uglyah Crocus City",
+      "slug": "the-doner-na-uglyah-crocus-city",
+      "location": [
+        71.40813476395238,
+        51.10101105101057
+      ],
+      "address": "ул. Кабанбай батыр, дом 56a, НП 37"
+    },
+    {
+      "name": "Coffee BOOM Turan",
+      "slug": "coffee-boom-turan",
+      "location": [
+        71.41060402,
+        51.1401987
+      ],
+      "address": "Turan 22"
+    },
+    {
+      "name": "Coffee BOOM Akbulak Riviera",
+      "slug": "coffeeboom-akbulak-riviera",
+      "location": [
+        71.44418824,
+        51.14784908
+      ],
+      "address": "Амман 21"
+    },
+    {
+      "name": "TURANDOT Kerey Zhanibek khandar",
+      "slug": "turandot-kerey-zhanibek",
+      "location": [
+        71.42522959,
+        51.11371039
+      ],
+      "address": "ул. Керей, Жәнібек хандар, здание 18, н.п.1"
+    },
+    {
+      "name": "Coffee BOOM Bokeikhan",
+      "slug": "coffee-boom-bokeikhan",
+      "location": [
+        71.4276507,
+        51.08650064
+      ],
+      "address": "Алихан Бокейхана 25А , Н.П 134"
+    },
+    {
+      "name": "Gruzin Kuzin Mangilik El",
+      "slug": "gruzin-mangilik-el",
+      "location": [
+        71.42763257,
+        51.09390821
+      ],
+      "address": "ул. Мангилик ел 50"
+    },
+    {
+      "name": "TaiTea Mukhamedkhanov",
+      "slug": "taite",
+      "location": [
+        71.38316298,
+        51.14175295
+      ],
+      "address": "ул Кайым Мухамедханов, 19а"
+    },
+    {
+      "name": "TokpokkiGo Asfendiyarov",
+      "slug": "tokpokkigo-asfendiyarov",
+      "location": [
+        71.38003631,
+        51.13255735
+      ],
+      "address": "ул.Асфендиярова 4"
+    },
+    {
+      "name": "#FARSH Burger Abu Dhabi Plaza",
+      "slug": "farsh-burger-abu-dhabi-plaza",
+      "location": [
+        71.42735161934274,
+        51.12182382885243
+      ],
+      "address": "ул. Сыганак 60/3"
+    },
+    {
+      "name": "Papa John's Asia Park",
+      "slug": "papa-johns-asia-park",
+      "location": [
+        71.41224928,
+        51.12787545
+      ],
+      "address": "пр. Кабанбай батыра 21"
+    },
+    {
+      "name": "Coffee BOOM Baglanova",
+      "slug": "coffee-boom-baglanova",
+      "location": [
+        71.3981899,
+        51.1140675
+      ],
+      "address": "Туран 55з"
+    },
+    {
+      "name": "Coffee Boom Expo",
+      "slug": "coffee-boom-expo",
+      "location": [
+        71.41542956157446,
+        51.08861751356949
+      ],
+      "address": "Мангилик ел 55 В2.4"
+    },
+    {
+      "name": "Okadzaki Omarov",
+      "slug": "okadzaki-omarov",
+      "location": [
+        71.36832028,
+        51.1321943
+      ],
+      "address": "ул. Омарова 2"
+    },
+    {
+      "name": "Okadzaki Kaldayakov",
+      "slug": "okadzaki-kaldayakov",
+      "location": [
+        71.48413714,
+        51.11528085
+      ],
+      "address": "ул. Калдаякова, 23"
+    },
+    {
+      "name": "Gruzin Kuzin Kunayev",
+      "slug": "gruzin-kunayev",
+      "location": [
+        71.43564693,
+        51.1280516
+      ],
+      "address": "пр Кунаева 14"
+    },
+    {
+      "name": "Coffee BOOM Orynbor",
+      "slug": "coffee-boom-orynbor",
+      "location": [
+        71.40652345,
+        51.11221737
+      ],
+      "address": "ул. Орынбор 12"
+    },
+    {
+      "name": "Coffee BOOM Tole bi",
+      "slug": "coffee-boom-tole-bi",
+      "location": [
+        71.39909316,
+        51.13260468
+      ],
+      "address": "ул. Толе би 50"
+    },
+    {
+      "name": "Coffee Boom Grand Turan Avenue",
+      "slug": "coffee-boom-grand-turan-avenue",
+      "location": [
+        71.40236152,
+        51.12304819
+      ],
+      "address": "Туран 43в"
+    },
+    {
+      "name": "Meat&Beer Sauran",
+      "slug": "meatbeer-sauran",
+      "location": [
+        71.42060978,
+        51.11982469
+      ],
+      "address": "ул. Сауран, 10в"
+    },
+    {
+      "name": "DURUM Turan",
+      "slug": "durum-turan",
+      "location": [
+        71.40286305,
+        51.12475217
+      ],
+      "address": "Туран 43а"
+    },
+    {
+      "name": "CTR Chicken Tole Bi",
+      "slug": "ctr-chicken-tole-bi",
+      "location": [
+        71.39481066,
+        51.12479928
+      ],
+      "address": "Толе би 46"
+    },
+    {
+      "name": "Lepim & Varim Khan Shatyr",
+      "slug": "lepim-varim-khan-shatyr",
+      "location": [
+        71.40380455,
+        51.13243968
+      ],
+      "address": "пр.Туран 37, 3 этаж"
+    },
+    {
+      "name": "YouMe Sushi",
+      "slug": "youme-sushi",
+      "location": [
+        71.42803903,
+        51.12928031
+      ],
+      "address": "This is a virtual venue"
+    },
+    {
+      "name": "LAPSHA Tokyo",
+      "slug": "l-tokyo",
+      "location": [
+        71.46511431,
+        51.12757791
+      ],
+      "address": "Кошкарбаева, 8"
+    },
+    {
+      "name": "Trattoria.kz Tauelsizdik",
+      "slug": "trattoriakz-kudaiberdyuly",
+      "location": [
+        71.45951505589662,
+        51.14531593622266
+      ],
+      "address": " Проспект Тауелсиздик, 21/2"
+    },
+    {
+      "name": "Shashlyk Pub Amanzholov",
+      "slug": "shashlyk-pub-amanzholov",
+      "location": [
+        71.47341844,
+        51.11769774
+      ],
+      "address": "ул. Касым Аманжолов 24"
+    },
+    {
+      "name": "ONESHOTT COFFEE Nura Esil",
+      "slug": "oneshott-coffee-nura-esil",
+      "location": [
+        71.44620603576209,
+        51.08510988333569
+      ],
+      "address": "Пр. Аль Фараби 33, нп 11"
+    },
+    {
+      "name": "Lanzhou Damu Mall",
+      "slug": "lanzhou-damu-mall",
+      "location": [
+        71.49221422,
+        51.11567729
+      ],
+      "address": "Нажимеденова 26"
+    },
+    {
+      "name": "Jasyl Coffee",
+      "slug": "jasyl-coffee-kunayeva",
+      "location": [
+        71.43570649,
+        51.12680531
+      ],
+      "address": "достык 13"
+    },
+    {
+      "name": "Coffee BOOM Mukhamedkhanov",
+      "slug": "coffee-boom-zhoshi-khan",
+      "location": [
+        71.39412638,
+        51.13950865
+      ],
+      "address": "ул. Мухамедханова 11/3"
+    },
+    {
+      "name": "KuZina",
+      "slug": "kuzinaastana",
+      "location": [
+        71.4172716,
+        51.14035228
+      ],
+      "address": "Qabanbay batyr ave, 9/2, NP 9"
+    },
+    {
+      "name": "Coffee BOOM Abu Dhabi Plaza",
+      "slug": "coffee-boom-abu-dhabi-plaza-1",
+      "location": [
+        71.42800338,
+        51.12143207
+      ],
+      "address": "ул. Сыганак, 60/5"
+    },
+    {
+      "name": "Coffee BOOM Anet Baba",
+      "slug": "coffee-boom-anet-baba",
+      "location": [
+        71.38418146,
+        51.13502517
+      ],
+      "address": "улица Анет баба 7/2"
+    },
+    {
+      "name": "Маринад на чубарах",
+      "slug": "marinadchubari",
+      "location": [
+        71.4263971,
+        51.145471
+      ],
+      "address": "ул.Космонавтов 54В"
+    },
+    {
+      "name": "Nasha Pizza Syganak Green Quarter",
+      "slug": "nasha-pizza-syganak",
+      "location": [
+        71.39118159,
+        51.13026984
+      ],
+      "address": "ул. Сыганак 17г"
+    },
+    {
+      "name": "Wahaha Chicken",
+      "slug": "wahaha-chicken",
+      "location": [
+        71.45231624,
+        51.09653642
+      ],
+      "address": "Аль-Фараби 16"
+    },
+    {
+      "name": "Sushi Time Astana",
+      "slug": "sushi-time-astana",
+      "location": [
+        71.39909737,
+        51.13513415
+      ],
+      "address": "Толе би 54"
+    },
+    {
+      "name": "Bomo's Kebab Bukhar Zhyrau",
+      "slug": "bomos-kebab-bukhar-zhyrau",
+      "location": [
+        71.44738612,
+        51.09757627
+      ],
+      "address": " улица Бухар Жырау 33/1"
+    },
+    {
+      "name": "Coffee BOOM Kaldayakov",
+      "slug": "coffeeboom-kaldayakov",
+      "location": [
+        71.45826783,
+        51.11893208
+      ],
+      "address": "Шәмші Қалдаяқов д 3 НП 110"
+    },
+    {
+      "name": "TaiTea Astana Mall",
+      "slug": "taitea",
+      "location": [
+        71.46608433,
+        51.1403739
+      ],
+      "address": "ул Тауелсиздик 34, трц Astana mall"
+    },
+    {
+      "name": "Coffee BOOM Zhurgenov",
+      "slug": "coffee-boom-zhurgenov",
+      "location": [
+        71.50339333,
+        51.11405808
+      ],
+      "address": "ул. Жургенова 18/2"
+    },
+    {
+      "name": "Discovery Coffee Kunayev",
+      "slug": "discovery-coffee-kunayev",
+      "location": [
+        71.42612049,
+        51.13089136
+      ],
+      "address": "Kunayev St, 12"
+    },
+    {
+      "name": "Jan Sushi Narikbayeva",
+      "slug": "jan-sushi-narikbayeva",
+      "location": [
+        71.38679567,
+        51.14272915
+      ],
+      "address": "ул. Нарикбаева 10"
+    },
+    {
+      "name": "Circus Koktem",
+      "slug": "circus-koktem",
+      "location": [
+        71.4192504,
+        51.14630808
+      ],
+      "address": "Кабанбай батыр 5/11"
+    },
+    {
+      "name": "Wok Lagman Asia Park",
+      "slug": "woklagman-kabanbay-batyr",
+      "location": [
+        71.41232569,
+        51.1280164
+      ],
+      "address": "пр. Кабанбай батыра 21"
+    },
+    {
+      "name": "Discovery Coffee Asfendiyarov",
+      "slug": "discovery-coffee-asfendiyarova",
+      "location": [
+        71.38062173,
+        51.13163954
+      ],
+      "address": "ул. Асфендиярова 4"
+    },
+    {
+      "name": "Okadzaki  Mukhamedkhanov",
+      "slug": "okadzaki-mukhamedkhanov",
+      "location": [
+        71.39127957,
+        51.13909821
+      ],
+      "address": "ул. Кайыма Мухамедханова 6 Б"
+    },
+    {
+      "name": "Nasha Pizza Turan",
+      "slug": "nasha-pizza-champion",
+      "location": [
+        71.40103906,
+        51.11010806
+      ],
+      "address": "проспект Туран 46Б/1, НП-10. ЖК Champion"
+    },
+    {
+      "name": "TokpokkiGo Turan",
+      "slug": "tokpokkigo-turan",
+      "location": [
+        71.39972452,
+        51.11031564
+      ],
+      "address": "Туран 46Б"
+    },
+    {
+      "name": "Coffee BOOM RC Murager",
+      "slug": "coffee-boom-murager",
+      "location": [
+        71.45944893,
+        51.14460025
+      ],
+      "address": "проспект Tауелсиздик 23"
+    },
+    {
+      "name": "Coffee BOOM Al-Farabi",
+      "slug": "coffee-boom-al-farabi1",
+      "location": [
+        71.45113504,
+        51.09830376
+      ],
+      "address": "Аль-Фараби проспект, 9"
+    },
+    {
+      "name": "Coffee Boom Tumar",
+      "slug": "coffee-boom-tumar",
+      "location": [
+        71.36652527,
+        51.13250494
+      ],
+      "address": "Сыганак 1Б"
+    },
+    {
+      "name": "Wok Lagman Kunayev",
+      "slug": "wok-lagman-kunayev",
+      "location": [
+        71.43868522,
+        51.13041401
+      ],
+      "address": "Kunayeva 35/1"
+    },
+    {
+      "name": "Ogonek Балкантау",
+      "slug": "ogonek-ermekov",
+      "location": [
+        71.4846305,
+        51.13170119999999
+      ],
+      "address": "балкантау 143"
+    },
+    {
+      "name": "ATEA Turan",
+      "slug": "atea-turan",
+      "location": [
+        71.41035845,
+        51.13977218
+      ],
+      "address": "ул. Туран 22/1"
+    },
+    {
+      "name": "ATEA Dostyk Astana",
+      "slug": "atea-dostyk-astana",
+      "location": [
+        71.43693817,
+        51.12661326
+      ],
+      "address": "ул. Достык, 13"
+    },
+    {
+      "name": "CrepeCafe E-899",
+      "slug": "crepecafe-899",
+      "location": [
+        71.38730149,
+        51.13182755
+      ],
+      "address": "ул. Е-899, 1/1"
+    },
+    {
+      "name": "Meat&Beer Syganak",
+      "slug": "meat-and-beer-syganak",
+      "location": [
+        71.3839908,
+        51.13007507
+      ],
+      "address": "ул. Сыганак 15"
+    },
+    {
+      "name": "Coffee BOOM Mangilik El",
+      "slug": "coffee-boom-magilik-el",
+      "location": [
+        71.43265931,
+        51.10984586
+      ],
+      "address": "Mangilik El 28"
+    },
+    {
+      "name": "Okadzaki Aisanam de luxe",
+      "slug": "okadzaki-aisanam-de-luxe",
+      "location": [
+        71.43205851,
+        51.1114048
+      ],
+      "address": "Мангилик ел 21"
+    },
+    {
+      "name": "CrepeCafe Kunayev",
+      "slug": "crepecafe-kunayeva",
+      "location": [
+        71.42766417,
+        51.12933108
+      ],
+      "address": "Kunayeva 12/1"
+    },
+    {
+      "name": "Meat&Beer Mangilik El",
+      "slug": "meatbeer-mangilik-el",
+      "location": [
+        71.42685514,
+        51.09755446
+      ],
+      "address": "ул.Мангилик Ел 47"
+    },
+    {
+      "name": "Uzbechka #1 Nazhimedenov",
+      "slug": "uzbechka-1-nazhimedenov",
+      "location": [
+        71.49167322,
+        51.115879
+      ],
+      "address": "Ж.Нажимеденова, 26"
+    },
+    {
+      "name": "Habi Mifen Momyshuly",
+      "slug": "habi-mifen-momysuly",
+      "location": [
+        71.47701410028708,
+        51.13882545814835
+      ],
+      "address": "Бауыржан Момышулы 10/2,  4FQG+FVM "
+    },
+    {
+      "name": "Birdies Mangilik El",
+      "slug": "birdies-manlik-el",
+      "location": [
+        71.42764499,
+        51.09410935
+      ],
+      "address": "Манлик Ел 50 "
+    },
+    {
+      "name": "Birdies Koshkarbayev",
+      "slug": "birdies-koskarbaeva",
+      "location": [
+        71.46522816,
+        51.12739725
+      ],
+      "address": "Кошкарбаева 8 9J3H4FH8+2G"
+    },
+    {
+      "name": "The Doner na Uglyah Kabanbay",
+      "slug": "the-doner-na-uglyah-kabanbay",
+      "location": [
+        71.41074982,
+        51.12450943
+      ],
+      "address": "пр. Кабанбай батыра 29/2"
+    },
+    {
+      "name": "The Doner na Uglyah Mangilik El",
+      "slug": "the-doner-na-uglyah-mangilik-el",
+      "location": [
+        71.42713534,
+        51.10423291
+      ],
+      "address": "Мангилик Ел 37/1"
+    },
+    {
+      "name": "Gruzin Kuzin Highvill",
+      "slug": "gruzin-highvill",
+      "location": [
+        71.46503654,
+        51.12727165
+      ],
+      "address": "Нур-Султан, проспект Рақымжан Қошқарбаев, 8"
+    },
+    {
+      "name": "Gruzin Kuzin Charles de Gaulle",
+      "slug": "gruzin-charles-de-gaulle",
+      "location": [
+        71.44830437,
+        51.14196081
+      ],
+      "address": "ул. Шарль де Голль 1а"
+    },
+    {
+      "name": "Gruzin Kuzin Kabanbay Batyr",
+      "slug": "sandi-ast",
+      "location": [
+        71.41433659,
+        51.13017806
+      ],
+      "address": "пр. Кабанбай Батыра 34"
+    },
+    {
+      "name": "Gruzin Kuzin Mukhamedkhanov",
+      "slug": "georgian-kuzin-mukhamedkhanova",
+      "location": [
+        71.40464568,
+        51.13796241
+      ],
+      "address": "Мухамедханова 5"
+    },
+    {
+      "name": "Eda Goroda Kultegin",
+      "slug": "eda-goroda-kultegin",
+      "location": [
+        71.37486811,
+        51.13656767
+      ],
+      "address": "ул.Култегин 14"
+    },
+    {
+      "name": "Lanzhou Asia Park Astana",
+      "slug": "lanzhou-asia-park-new",
+      "location": [
+        71.4126055,
+        51.1276814
+      ],
+      "address": "проспект Кабанбай батыра 21"
+    },
+    {
+      "name": "OB Sushi Lazurnyi",
+      "slug": "ob-sushi-astana",
+      "location": [
+        71.42643165,
+        51.1352617
+      ],
+      "address": "Сарайшык 7"
+    },
+    {
+      "name": "Korean Street Food Damu Mall",
+      "slug": "korean-street-food-damu-mall",
+      "location": [
+        71.49149043,
+        51.11574413
+      ],
+      "address": "Нажимеденова 26"
+    },
+    {
+      "name": "CrepeCafe Syganak",
+      "slug": "crepecafe-syganak",
+      "location": [
+        71.41630533,
+        51.12355255
+      ],
+      "address": "Сыганак 52/1 "
+    },
+    {
+      "name": "The Doner na Uglyah Green Mall",
+      "slug": "the-doner-green-mall",
+      "location": [
+        71.39240144,
+        51.13063031
+      ],
+      "address": "Сыганак, 17Б"
+    },
+    {
+      "name": "Shafran Zu-Zu",
+      "slug": "shafran-zu-zu",
+      "location": [
+        71.47942375,
+        51.08753552
+      ],
+      "address": "Есиль, улица Е669,9а"
+    },
+    {
+      "name": "Box Cafe Kultegin",
+      "slug": "box-cafe-kultegin",
+      "location": [
+        71.37498945,
+        51.13592389
+      ],
+      "address": "ул.Култегин 14"
+    },
+    {
+      "name": "NEW YORK PIZZA Chubary",
+      "slug": "new-york-pizza-saraishyk",
+      "location": [
+        71.42848260735431,
+        51.13638273330173
+      ],
+      "address": "ул. Сарайшык 7/1"
+    },
+    {
+      "name": "Nanmai Tokpanova",
+      "slug": "le-dessert-tokpanov",
+      "location": [
+        71.45580104,
+        51.14194964
+      ],
+      "address": "ул.Токпанова, 20 НП-4"
+    },
+    {
+      "name": "FOR YOU bakery & food Tokpanov",
+      "slug": "for-you-bakery-food-ast",
+      "location": [
+        71.45519055,
+        51.14108704
+      ],
+      "address": "Аскар Токпанов 27"
+    },
+    {
+      "name": "La Tartine Dostyk",
+      "slug": "la-tartine-forte-bank",
+      "location": [
+        71.41845673,
+        51.12630141
+      ],
+      "address": " Достык 8/1 "
+    },
+    {
+      "name": "Nanmai Baitursynova",
+      "slug": "nanmai-baitursynova",
+      "location": [
+        71.459861950619,
+        51.12746143230399
+      ],
+      "address": "Байтурсынова 3"
+    },
+    {
+      "name": "KEKS Aura",
+      "slug": "keks-aura",
+      "location": [
+        71.39301589,
+        51.13192772
+      ],
+      "address": "ул Е 900, 2"
+    },
+    {
+      "name": "CTR Chicken Koshkarbayev",
+      "slug": "ctr-chicken-koshkarbayev",
+      "location": [
+        71.49104894,
+        51.12802395
+      ],
+      "address": "пр. Кошкарбаева 29"
+    },
+    {
+      "name": "Coffee BOOM Momyshuly",
+      "slug": "coffee-boom-momyshuly",
+      "location": [
+        71.47637974263097,
+        51.13909451913324
+      ],
+      "address": "Бауыржан Момышұлы 10"
+    },
+    {
+      "name": "KEKS Mangilik El",
+      "slug": "keks-mangilik-el",
+      "location": [
+        71.43146165,
+        51.10661812
+      ],
+      "address": "Проспект Мангилик Ел, 36, НП: 17"
+    },
+    {
+      "name": "TURANDOT Muhamedhanov",
+      "slug": "turandot-muhamedhanov",
+      "location": [
+        71.40610157165298,
+        51.13797687526042
+      ],
+      "address": "ул. Кайым Мухамедханов, здание 5, н.п. 45"
+    },
+    {
+      "name": "Coffee BOOM Nursaya",
+      "slug": "coffee-boom-nursaya",
+      "location": [
+        71.43761644,
+        51.12640013
+      ],
+      "address": "Dostyq str. 13, Nursaya -2, entrance 16"
+    },
+    {
+      "name": "Coffee BOOM Keruen",
+      "slug": "coffee-boom-keruen",
+      "location": [
+        71.42586742,
+        51.12806012
+      ],
+      "address": "ул. Достык 9 , ТРЦ Керуен, 3 этаж"
+    },
+    {
+      "name": "ONESHOTT COFFEE Tole Bi",
+      "slug": "oneshott",
+      "location": [
+        71.38792926,
+        51.09999471
+      ],
+      "address": "ул.Толе би 16"
+    },
+    {
+      "name": "Starbucks® Keruen",
+      "slug": "starbucks-keruen",
+      "location": [
+        71.42593549,
+        51.12787333
+      ],
+      "address": "Достык 9"
+    },
+    {
+      "name": "#FARSH Burger Astana",
+      "slug": "farsh-burger-narkibayev",
+      "location": [
+        71.38661579,
+        51.13180175
+      ],
+      "address": "Улица Е-899, 1/1"
+    },
+    {
+      "name": "Starbucks® Green Mall",
+      "slug": "starbucks-green-mall",
+      "location": [
+        71.39018751,
+        51.13030346
+      ],
+      "address": "​улица Сығанақ, 17п"
+    },
+    {
+      "name": "Starbucks® N-city",
+      "slug": "starbucks-n-city",
+      "location": [
+        71.39846598,
+        51.11669376
+      ],
+      "address": "N-city"
+    },
+    {
+      "name": "CTR Chicken Mukhamedkhanov",
+      "slug": "ctr-chicken-mukhamedkhanov",
+      "location": [
+        71.38399075,
+        51.14112276
+      ],
+      "address": "​Қайым Мұхамедханов, 19"
+    },
+    {
+      "name": "Coffee BOOM KeruenCity",
+      "slug": "coffee-boom-keruencity",
+      "location": [
+        71.4134929,
+        51.1453003
+      ],
+      "address": "Коргалджинское шоссе 1 ТРЦ Керуен сити 4 этаж"
+    },
+    {
+      "name": "Pikapika Koshkarbayev",
+      "slug": "pikapika-koshkarbayev46738",
+      "location": [
+        71.48873467,
+        51.12733683
+      ],
+      "address": "Ракымжан Кошкарбаев, 25"
+    },
+    {
+      "name": "Ocean Basket Keruen",
+      "slug": "ocean-basket-keruen",
+      "location": [
+        71.4253555,
+        51.1281274
+      ],
+      "address": "улица Достык, 9"
+    },
+    {
+      "name": "Boba Syganak",
+      "slug": "boba-turan",
+      "location": [
+        71.42802568633437,
+        51.12189271286081
+      ],
+      "address": "Сыганак 60/5, Абу Даби Плаза"
+    },
+    {
+      "name": "ASA DONER Damu Mall",
+      "slug": "asa-doner-damu-mall",
+      "location": [
+        71.4923175,
+        51.1156375
+      ],
+      "address": "Нажимеденова 26"
+    },
+    {
+      "name": "Coffee BOOM Asia Park",
+      "slug": "coffee-boom-asia-park",
+      "location": [
+        71.41237829,
+        51.12809352
+      ],
+      "address": "пр. Кабанбай батыра 21, 3 этаж"
+    },
+    {
+      "name": "Meat&Beer Kulager-2",
+      "slug": "meatbeer-kulager-2",
+      "location": [
+        71.36821759,
+        51.13096239
+      ],
+      "address": "г.Астана ул.Сыганак д.4"
+    },
+    {
+      "name": "Book cafe",
+      "slug": "book-cafe",
+      "location": [
+        71.38290891,
+        51.14695855
+      ],
+      "address": "ул.Нарикбаева 22"
+    },
+    {
+      "name": "Del Papa Kabanbay Batyr",
+      "slug": "del-papa-kabanbay-batyr-ast",
+      "location": [
+        71.41511888,
+        51.13035173
+      ],
+      "address": "пр. Кабанбай батыра, 34"
+    },
+    {
+      "name": "Izumi Nurmagambetov",
+      "slug": "izumi-nurmagambetov",
+      "location": [
+        71.4842,
+        51.1187
+      ],
+      "address": "ул. Нурмагамбетова 25"
+    },
+    {
+      "name": "Hani.brunch Qoshqarbaev",
+      "slug": "hanibrunch-qoshqarbaev",
+      "location": [
+        71.46896086,
+        51.12708913
+      ],
+      "address": "ул.Кошкарбаева 10/1"
+    },
+    {
+      "name": "Saya Sushi Bukhar Zhyrau",
+      "slug": "saya-sushi-bukhar-zhyrau",
+      "location": [
+        71.44306686,
+        51.09795011
+      ],
+      "address": "ул. Бухар жырау 36, 5 под, офис 9"
+    },
+    {
+      "name": "ONESHOTT COFFEE Kunayev",
+      "slug": "oneshott-coffee-kunayev",
+      "location": [
+        71.41743568,
+        51.13208982
+      ],
+      "address": "Кунаева 2а"
+    },
+    {
+      "name": "Discovery Coffee Turkistan",
+      "slug": "discovery-coffee-turkistan",
+      "location": [
+        71.42968236,
+        51.11567579
+      ],
+      "address": "Turkistan st, 8/2"
+    },
+    {
+      "name": "LAVASH Food Moldagaliyev",
+      "slug": "lavash-food-1",
+      "location": [
+        71.37730012,
+        51.1244694
+      ],
+      "address": "Жубан Молдагалиев 13"
+    },
+    {
+      "name": "Coffee BOOM RC Atlant",
+      "slug": "coffee-boom-atlant",
+      "location": [
+        71.41952182,
+        51.1351491
+      ],
+      "address": "ул. Сарайшык 6"
+    },
+    {
+      "name": "Tagam Nursaya",
+      "slug": "tagam-nursaya-1",
+      "location": [
+        71.43770405,
+        51.12793017
+      ],
+      "address": "Конаев 14"
+    },
+    {
+      "name": "Boba Tea Samal Park",
+      "slug": "boba-tea-1",
+      "location": [
+        71.44459896,
+        51.10169142
+      ],
+      "address": "​Керей, Жанибек хандар улица, 50ю"
+    },
+    {
+      "name": "Tagam Kunaev Astana",
+      "slug": "tagam-kunaev",
+      "location": [
+        71.4184673,
+        51.1312691
+      ],
+      "address": "Кунаева 2"
+    },
+    {
+      "name": "OB Sushi Green Mall",
+      "slug": "ob-sushi-green-mall",
+      "location": [
+        71.3899715,
+        51.13064
+      ],
+      "address": "Green Mall, Сыганак 17п "
+    },
+    {
+      "name": "TokpokkiGo Dostyk",
+      "slug": "tokpokkigo-dostyk",
+      "location": [
+        71.4364324,
+        51.1265714
+      ],
+      "address": "Достык 13"
+    },
+    {
+      "name": "Keks To Go",
+      "slug": "to-go4567",
+      "location": [
+        71.45132860158782,
+        51.09864595388677
+      ],
+      "address": "Аль Фараби 9"
+    },
+    {
+      "name": "ONESHOTT COFFEE Asylym Prime",
+      "slug": "oneshott-coffee-asylym-prime",
+      "location": [
+        71.43410744731403,
+        51.1079120861682
+      ],
+      "address": "Алихан Бокейхана 16"
+    },
+    {
+      "name": "Бату Сатпаева",
+      "slug": "batu789",
+      "location": [
+        71.4780945,
+        51.137038
+      ],
+      "address": "Сатпаева 33"
+    },
+    {
+      "name": "ONESHOTT COFFEE Al-Farabi",
+      "slug": "oneshott-coffee-al-farabi",
+      "location": [
+        71.44931701,
+        51.09886599
+      ],
+      "address": "Аль Фараби 9/1"
+    },
+    {
+      "name": "Saya Sushi Kaldayakov",
+      "slug": "saya-sushi-kaldayakov",
+      "location": [
+        71.4856304,
+        51.11694627
+      ],
+      "address": "Калдаякова 23а"
+    },
+    {
+      "name": "Shashlyk Pub Sarayshik",
+      "slug": "rabiya",
+      "location": [
+        71.43117346,
+        51.13550542
+      ],
+      "address": "Sarayshik 11/1"
+    },
+    {
+      "name": "Saya Sushi Zhagalau",
+      "slug": "saya-sushi-zhagalau",
+      "location": [
+        71.37881703,
+        51.13073131
+      ],
+      "address": "ул. Е-10, дом 11, (НП-10)"
+    },
+    {
+      "name": "GOLD IN BASKET Turan",
+      "slug": "gold-in-basket-burgers",
+      "location": [
+        71.41071633,
+        51.13816694
+      ],
+      "address": "пр. Туран 24, ТРЦ Сарыарка"
+    },
+    {
+      "name": "Atyrau",
+      "slug": "atyrau-turkestan5678",
+      "location": [
+        71.42310795,
+        51.10184675
+      ],
+      "address": "ул.Туркистан, д.28, н.п.2."
+    },
+    {
+      "name": "ProLavka Bokeikhan",
+      "slug": "prolavka-bokeikhan",
+      "location": [
+        71.43949316,
+        51.1149656
+      ],
+      "address": "Бокейхана 8"
+    },
+    {
+      "name": "ProLavka Mangilik El",
+      "slug": "prolavka-mangilik",
+      "location": [
+        71.42757898,
+        51.09407125
+      ],
+      "address": "Мангилик ел 50"
+    },
+    {
+      "name": "Unai Pizza & Pasta Kazybek Bi",
+      "slug": "unai-pizza-pasta-kazybek-bi",
+      "location": [
+        71.39274887,
+        51.12063401
+      ],
+      "address": "ул. Казыбек би 7/1"
+    },
+    {
+      "name": "La Maro Bekturov",
+      "slug": "lamaro-bekturov",
+      "location": [
+        71.39789581,
+        51.12833023
+      ],
+      "address": "улица Бектурова 3/2"
+    },
+    {
+      "name": "Unai Pizza & Pasta",
+      "slug": "unai-pizza-pasta",
+      "location": [
+        71.37291602447857,
+        51.128941052323796
+      ],
+      "address": "ул. Култегин 4"
+    },
+    {
+      "name": "The Pizza Mangilik El",
+      "slug": "the-pizza-mangilik-el",
+      "location": [
+        71.42677557,
+        51.10415506
+      ],
+      "address": "ул.Мангилик Ел 37/1"
+    },
+    {
+      "name": "Sushi Mania",
+      "slug": "sushi-mania",
+      "location": [
+        71.45235001,
+        51.09663618
+      ],
+      "address": "Аль-Фараби 16"
+    },
+    {
+      "name": "Ethno Coffee Kultegin",
+      "slug": "ethno-coffee-kultegin",
+      "location": [
+        71.37510925,
+        51.14010316
+      ],
+      "address": "Култегин 23"
+    },
+    {
+      "name": "The Pizza Green Mall",
+      "slug": "the-pizza-green-mall",
+      "location": [
+        71.39119544,
+        51.13057861
+      ],
+      "address": "ул.Сыганак 17Б"
+    },
+    {
+      "name": "Tiger Food Sary-Arka",
+      "slug": "tiger-food-sary-arka",
+      "location": [
+        71.41023429,
+        51.13847209
+      ],
+      "address": "проспект Туран, 24 "
+    },
+    {
+      "name": "Tiger Food Keruen City Kinopark",
+      "slug": "tiger-food-keruen-city",
+      "location": [
+        71.41508738,
+        51.14560445
+      ],
+      "address": "Шоссе Коргалжын 1"
+    },
+    {
+      "name": "The Pizza Kabanbay Batyr",
+      "slug": "the-pizza-kabanbay-batyr",
+      "location": [
+        71.41027777,
+        51.12450463
+      ],
+      "address": "ул.Кабанбай батыр 29/2"
+    },
+    {
+      "name": "Ethno Coffee Nurmagambetov",
+      "slug": "ethno-coffee-nurmagambetov",
+      "location": [
+        71.48513643,
+        51.12153048
+      ],
+      "address": "Нурмагамбетов 29"
+    },
+    {
+      "name": "La Maro",
+      "slug": "la-maro",
+      "location": [
+        71.41180262,
+        51.13993533
+      ],
+      "address": "пр. Туран, д. 22/1"
+    },
+    {
+      "name": "Ethno Coffee Anet Baba",
+      "slug": "ethno-coffee-anet-baba",
+      "location": [
+        71.38295119,
+        51.13754858
+      ],
+      "address": "Ул. Анет баба 9/3"
+    },
+    {
+      "name": "ONESHOTT COFFEE Bokeikhan",
+      "slug": "oneshott-coffee-bokeikhan",
+      "location": [
+        71.42822199,
+        51.08430016
+      ],
+      "address": "қ.,Әлихан Бөкейхан көшесі, 27/4"
+    },
+    {
+      "name": "LAVASH Food Nazhimedenov",
+      "slug": "lavash-food-nazhimedenov",
+      "location": [
+        71.49128176,
+        51.11579095
+      ],
+      "address": "Нажимеденов 26,"
+    },
+    {
+      "name": "ONESHOTT COFFEE Victoria",
+      "slug": "oneshott-grand-victoria",
+      "location": [
+        71.48204664,
+        51.11821088
+      ],
+      "address": "РК., г.Астана ул.Нурмагамбетова 23/1"
+    },
+    {
+      "name": "Miko Aitmatova",
+      "slug": "miko-aitmatova",
+      "location": [
+        71.36455293,
+        51.13698751
+      ],
+      "address": "ул.Чингиз Айтматова 36"
+    },
+    {
+      "name": "CTR Chicken Syganak",
+      "slug": "ctr-chicken-syganak",
+      "location": [
+        71.37820585,
+        51.13099008
+      ],
+      "address": "улица Сыганак, дом 11, н.п. 8"
+    },
+    {
+      "name": "CTR Chicken Damu Mall",
+      "slug": "ctr-chicken-damu-mall",
+      "location": [
+        71.49150489,
+        51.11574569
+      ],
+      "address": "ул.Нажимеденова 26"
+    },
+    {
+      "name": "ONESHOTT COFFEE Turkestan",
+      "slug": "oneshott-coffee567",
+      "location": [
+        71.42462241489682,
+        51.10605714599467
+      ],
+      "address": "Туркестан 16/3"
+    },
+    {
+      "name": "ONESHOTT COFFEE Respublika",
+      "slug": "oneshott-respublika",
+      "location": [
+        71.38160133,
+        51.12468461
+      ],
+      "address": "ул. Е 36,2"
+    },
+    {
+      "name": "Miko Balkantau 129",
+      "slug": "miko-balkantau-129",
+      "location": [
+        71.48708889,
+        51.13222286
+      ],
+      "address": "ул. Балкантау 129"
+    },
+    {
+      "name": "ProLavka Koshkarbayev",
+      "slug": "prolavka",
+      "location": [
+        71.46519185,
+        51.12739553
+      ],
+      "address": "ул.Кошкарбаев 8"
+    },
+    {
+      "name": "Royalty Coffee Mechta",
+      "slug": "royalty-coffee-mecta",
+      "location": [
+        71.445594,
+        51.148939
+      ],
+      "address": "РК, г. Астана, улица Амман, 14"
+    },
+    {
+      "name": "ProLavka Qonayev",
+      "slug": "prolavka-kunayeva",
+      "location": [
+        71.43558288,
+        51.12836151
+      ],
+      "address": "Кунаева 14"
+    },
+    {
+      "name": "ProLavka Sharl de Gol",
+      "slug": "prolavka-charles-de-gaulle",
+      "location": [
+        71.44825675,
+        51.14196133
+      ],
+      "address": "Шарль де Голль 1а"
+    },
+    {
+      "name": "ONESHOTT COFFEE Bekturov",
+      "slug": "oneshott-coffee-bekturov",
+      "location": [
+        71.4001346,
+        51.128866
+      ],
+      "address": "Бектурова 3"
+    },
+    {
+      "name": "Box Cafe",
+      "slug": "box-cafe-ast",
+      "location": [
+        71.4757052,
+        51.1331524
+      ],
+      "address": "Балкантау, 187"
+    },
+    {
+      "name": "ProLavka Mukhamedkhanov",
+      "slug": "prolavka-mukhamedkhanov",
+      "location": [
+        71.40455357,
+        51.13804843
+      ],
+      "address": "Мухамедханова 5"
+    },
+    {
+      "name": "ONESHOTT COFFEE Atlant",
+      "slug": "oneshott-atlant",
+      "location": [
+        71.4210595,
+        51.1351164
+      ],
+      "address": "г.Астана ул.Сарайшык 8"
+    },
+    {
+      "name": "ONESHOTT COFFEE Syganak",
+      "slug": "oneshott-coffee-syganak",
+      "location": [
+        71.418114,
+        51.1241987
+      ],
+      "address": "Сыганак 54а"
+    },
+    {
+      "name": "Fuddi Tole Bi",
+      "slug": "fuddi",
+      "location": [
+        71.3983207,
+        51.1349493
+      ],
+      "address": "Толе би 52 "
+    },
+    {
+      "name": "NY Donuts Keruen",
+      "slug": "ny-donuts-keruen",
+      "location": [
+        71.425431,
+        51.12815
+      ],
+      "address": "Достык 9 ТРЦ Керуен"
+    },
+    {
+      "name": "ONESHOTT COFFEE Esil Plaza",
+      "slug": "oneshott-esil-plaza",
+      "location": [
+        71.4059722,
+        51.10257869
+      ],
+      "address": "пр. Кабанбай батыра, 49"
+    },
+    {
+      "name": "The Doner Na Uglyah Satpayev Astana",
+      "slug": "the-doner-na-uglyah-satpayev",
+      "location": [
+        71.47994955,
+        51.13599039
+      ],
+      "address": "ул. Сатпаева 26/5"
+    },
+    {
+      "name": "Coffee Boom Khan Shatyr",
+      "slug": "coffee-boom-khan-shatyr",
+      "location": [
+        71.4027341,
+        51.1325263
+      ],
+      "address": "Туран 37"
+    },
+    {
+      "name": "Birdies Kabanbay Batyr",
+      "slug": "birdies-1",
+      "location": [
+        71.41424746,
+        51.1301499
+      ],
+      "address": "Кабанбай Батыра 34"
+    },
+    {
+      "name": "Birdies Qonayev",
+      "slug": "birdies-kunaeva",
+      "location": [
+        71.43562433,
+        51.12837838
+      ],
+      "address": "Кунаева 14 "
+    },
+    {
+      "name": "Coffee Boom GreenLine Sakura",
+      "slug": "coffee-boom-greenline-sakura",
+      "location": [
+        71.39578334,
+        51.1360582
+      ],
+      "address": "ул. Е-900, д.8, НП 4"
+    },
+    {
+      "name": "Birdies Mukhamedkhanov",
+      "slug": "birdies-muhamedhanova",
+      "location": [
+        71.40457937,
+        51.13810562
+      ],
+      "address": "Мухамедханова 5 9J3H4CQ4+72"
+    },
+    {
+      "name": "Birdies Sharl de Gol",
+      "slug": "birdies-sarl-de-gol",
+      "location": [
+        71.44831457,
+        51.14200149
+      ],
+      "address": "Шарль Де Голь 1а"
+    },
+    {
+      "name": "Frito Al Farabi",
+      "slug": "frito-al-farabi",
+      "location": [
+        71.45000007,
+        51.09641187
+      ],
+      "address": "Аль фараби 13"
+    },
+    {
+      "name": "Popeyes Keruen",
+      "slug": "popeyeskeruen",
+      "location": [
+        71.4253555,
+        51.1281274
+      ],
+      "address": "ул. Достык 9"
+    },
+    {
+      "name": "Lampa",
+      "slug": "lampa-astana",
+      "location": [
+        71.42929563,
+        51.08651524
+      ],
+      "address": "ул. Алихана Бокейхана 25А"
+    },
+    {
+      "name": "SANA DONER",
+      "slug": "sana-doner",
+      "location": [
+        71.36820435,
+        51.1326258
+      ],
+      "address": "ул.Омарова 2"
+    },
+    {
+      "name": "Hardee's EXPO Mall",
+      "slug": "hardees-expo-mall-01",
+      "location": [
+        71.40869926,
+        51.08900729
+      ],
+      "address": " Кабанбай батыра 62"
+    },
+    {
+      "name": "TANUKI ASTANA",
+      "slug": "tanuki-nur-sultan",
+      "location": [
+        71.42406512,
+        51.09045722
+      ],
+      "address": "пр-т Мангилик Ел 55 А"
+    },
+    {
+      "name": "Nami Sushi",
+      "slug": "nami-sushi567",
+      "location": [
+        71.42068227,
+        51.094821
+      ],
+      "address": "Туркестан 34а"
+    },
+    {
+      "name": "Blck Lounge Bar",
+      "slug": "blck-lounge-bar",
+      "location": [
+        71.45522492770314,
+        51.12001620160194
+      ],
+      "address": "Калдаякова 1"
+    },
+    {
+      "name": "Pate Bukhar Zhyrau",
+      "slug": "pate-bukhar-zhyrau",
+      "location": [
+        71.41768081,
+        51.10088661
+      ],
+      "address": "Бухар Жырау 28б"
+    },
+    {
+      "name": "Kakao Dak Expo",
+      "slug": "kakao-dak-expo",
+      "location": [
+        71.41528777,
+        51.0889351
+      ],
+      "address": "пр. Мангелик Ел 55/3, В 2.4, территория Экспо"
+    },
+    {
+      "name": "Kiki's Chiken",
+      "slug": "kikis-chiken",
+      "location": [
+        71.40872927,
+        51.08900635
+      ],
+      "address": "Кабанбай батыра 62"
+    },
+    {
+      "name": "KETCHUP Astana",
+      "slug": "ketchup-astana",
+      "location": [
+        71.39049184,
+        51.13147851
+      ],
+      "address": "ул.Сыганак 17ф"
+    },
+    {
+      "name": "Veggie House Green Mall",
+      "slug": "veggie-house-green-mall",
+      "location": [
+        71.40901466,
+        51.09669185
+      ],
+      "address": "улы дала 56/1"
+    },
+    {
+      "name": "Take Eat Easy Highvill",
+      "slug": "take-eat-easy",
+      "location": [
+        71.4604395,
+        51.1272669
+      ],
+      "address": "Baitursynuly 3, block B, 8"
+    },
+    {
+      "name": "TomYumBar Astana",
+      "slug": "tomyumbar-astana",
+      "location": [
+        71.41108171,
+        51.14175766
+      ],
+      "address": "проспект Туран 20"
+    },
+    {
+      "name": "Kurinye Krylya from Korean House",
+      "slug": "kurinye-krylya",
+      "location": [
+        71.40984734,
+        51.14181942
+      ],
+      "address": "ул.Туран 23"
+    },
+    {
+      "name": "Butcher's Street Mangilik El",
+      "slug": "butchers-street-mangilik-el",
+      "location": [
+        71.42906534,
+        51.10356235
+      ],
+      "address": "Mangilik El 37"
+    },
+    {
+      "name": "Korean House Turan",
+      "slug": "korean-house-turan",
+      "location": [
+        71.40995027,
+        51.14183139
+      ],
+      "address": "Туран 23"
+    },
+    {
+      "name": "AL SHAWARMA",
+      "slug": "al-shawarma",
+      "location": [
+        71.39787602,
+        51.13144032
+      ],
+      "address": "ул.Толе Би 48"
+    },
+    {
+      "name": "Plan B Astana",
+      "slug": "plan-b-astana589",
+      "location": [
+        71.4215308,
+        51.11105741
+      ],
+      "address": "ул. Акмешит 13/2"
+    },
+    {
+      "name": "saladbar",
+      "slug": "saladbar",
+      "location": [
+        71.41110243851767,
+        51.09403672187955
+      ],
+      "address": "Алиева 10"
+    },
+    {
+      "name": "Ozyurt Asia Park",
+      "slug": "ozyurt-asia-park",
+      "location": [
+        71.4126055,
+        51.1276814
+      ],
+      "address": "Кабанбай Батыра 21"
+    },
+    {
+      "name": "TLP COFFEE",
+      "slug": "tlp-coffee",
+      "location": [
+        71.41222127,
+        51.1006581
+      ],
+      "address": " улица Гейдара Алиева 1"
+    },
+    {
+      "name": "Chekhov Tole Bi",
+      "slug": "chekhov-tole-bi",
+      "location": [
+        71.39777298,
+        51.13403479
+      ],
+      "address": " ул. Толе би 61"
+    },
+    {
+      "name": "Sushi#1",
+      "slug": "sushi1-ast",
+      "location": [
+        71.48727003636577,
+        51.12228679421679
+      ],
+      "address": "Байтурсынова 29А"
+    },
+    {
+      "name": "Vkusnyi Dom Kultegin",
+      "slug": "vkusnyi-dom-kultegin",
+      "location": [
+        71.37448903,
+        51.13625886
+      ],
+      "address": "ул.Култегин 14, ЖК Sat city L"
+    },
+    {
+      "name": "PAUL Mega Silk Way",
+      "slug": "paul-mega-silk-way",
+      "location": [
+        71.40895708,
+        51.08874961
+      ],
+      "address": "проспект Кабанбай батыра, 62"
+    },
+    {
+      "name": "Green Kitchen Cafe",
+      "slug": "green-kitchen-cafe",
+      "location": [
+        71.42658997,
+        51.13264847
+      ],
+      "address": "Saraishyk St, 27/3"
+    },
+    {
+      "name": "Jolly cafe & bakery",
+      "slug": "jolly-cafe-bakery",
+      "location": [
+        71.42913444,
+        51.1311866
+      ],
+      "address": "ул. Конаева 29 гостиница Дипломат"
+    },
+    {
+      "name": "URBO COFFEE KEREY",
+      "slug": "urbo-coffee-kerey",
+      "location": [
+        71.41459156,
+        51.11536713
+      ],
+      "address": "ул Керей, Жанибек хандар 12а"
+    },
+    {
+      "name": "MADO",
+      "slug": "mado-kunayev",
+      "location": [
+        71.43533662,
+        51.12829507
+      ],
+      "address": "​Динмухамеда Кунаева, 14"
+    },
+    {
+      "name": "Praline pancakes",
+      "slug": "qatty-tatty-qabanbay-batyr",
+      "location": [
+        71.40829153,
+        51.10198236
+      ],
+      "address": "Кабанбай батыр 56"
+    },
+    {
+      "name": "Bambino Cafe",
+      "slug": "bambino-cafe",
+      "location": [
+        71.40264172,
+        51.12405603
+      ],
+      "address": "пр. Туран 43Б"
+    },
+    {
+      "name": "Aliye Parusa Kabanbay Batyr",
+      "slug": "alye-parusa",
+      "location": [
+        71.40951906,
+        51.08886814
+      ],
+      "address": "Kabanbay batyr Ave, 62"
+    },
+    {
+      "name": "Basilic Express",
+      "slug": "territoriya-vkusnoy-edy-basilic-express",
+      "location": [
+        71.43469255,
+        51.12471244
+      ],
+      "address": "ул. Достык 18"
+    },
+    {
+      "name": "Le Reve",
+      "slug": "le-reve",
+      "location": [
+        71.3952848,
+        51.13181884
+      ],
+      "address": "г.Астана, ул.Толе Би 57"
+    },
+    {
+      "name": "Afsona Abu Dhabi Plaza",
+      "slug": "afsona-abu-dhabi-plaza",
+      "location": [
+        71.42718758,
+        51.12172131
+      ],
+      "address": "ул. Сыганак, д. 60/5, Абу-Даби Плаза, 1 этаж"
+    },
+    {
+      "name": "Бистро Второй",
+      "slug": "bistro-2-bar",
+      "location": [
+        71.4334964,
+        51.1289052
+      ],
+      "address": "улица Динмухамеда Кунаева, дом 14"
+    },
+    {
+      "name": "Panda Food Sauran",
+      "slug": "panda-food-sauran",
+      "location": [
+        71.4161184,
+        51.1183553
+      ],
+      "address": "Алматы 3"
+    },
+    {
+      "name": "Kishlak Nur-Sultan",
+      "slug": "kishlak-nur-sultan",
+      "location": [
+        71.41347852789761,
+        51.130402668977325
+      ],
+      "address": "пр.Кабанбай батыра, 19/1"
+    },
+    {
+      "name": "Yakitoriya Abu Dhabi Plaza",
+      "slug": "yakitoriya-abu-dhabi-plaza",
+      "location": [
+        71.42695907,
+        51.12138054
+      ],
+      "address": "ул. Сыганак 16/5, ТРЦ Абу-Даби Плаза"
+    },
+    {
+      "name": "Khoroshiy Den'",
+      "slug": "khoroshiy-den",
+      "location": [
+        71.46012023,
+        51.11815611
+      ],
+      "address": "ул.Шамши Калдякова 6"
+    },
+    {
+      "name": "WASABI SUSHI",
+      "slug": "roll-yum",
+      "location": [
+        71.42180892,
+        51.09548167
+      ],
+      "address": "ул.Туркестан 34"
+    },
+    {
+      "name": "Di Napoli",
+      "slug": "di-napoli-astana",
+      "location": [
+        71.39049297,
+        51.13071767
+      ],
+      "address": "улица Сыганак 17 д"
+    },
+    {
+      "name": "Хорошая Девочка",
+      "slug": "horoshaya5678",
+      "location": [
+        71.39279343542952,
+        51.11725172140555
+      ],
+      "address": " Роза Баглановой 3/1"
+    },
+    {
+      "name": "Sazan Fish Al Farabi",
+      "slug": "sazan-fish-al-farabi",
+      "location": [
+        71.45343737,
+        51.1033419
+      ],
+      "address": "Альфараби, 1 НП 12"
+    },
+    {
+      "name": "Medina Food",
+      "slug": "medina-food-ast",
+      "location": [
+        71.42597498,
+        51.14591299
+      ],
+      "address": "Космонавтов 58а"
+    },
+    {
+      "name": "Pinta Aqmeshit",
+      "slug": "pinta-aqmeshit",
+      "location": [
+        71.42283422,
+        51.11435103
+      ],
+      "address": "Aqmeshit St 9/1"
+    },
+    {
+      "name": "SADU Keruen",
+      "slug": "kanoha-sushi",
+      "location": [
+        71.42605488,
+        51.1283978
+      ],
+      "address": "This is a virtual venue"
+    },
+    {
+      "name": "BBQ HOUSE",
+      "slug": "ramen-chicken",
+      "location": [
+        71.41464214,
+        51.12148371
+      ],
+      "address": "пр. Кабанбай батыра 40"
+    },
+    {
+      "name": "Ken's Lounge Bar",
+      "slug": "kens-lounge-bar",
+      "location": [
+        71.39146454,
+        51.11914028
+      ],
+      "address": "улица Казыбек би 9/3"
+    },
+    {
+      "name": "Shishka Alpamys",
+      "slug": "shishka-alpamys",
+      "location": [
+        71.39821165,
+        51.10084889
+      ],
+      "address": "Проспект Улы Дала, 31"
+    },
+    {
+      "name": "Sladkaya Zhizn'",
+      "slug": "sladkaya-zhizn",
+      "location": [
+        71.42103767,
+        51.13516136
+      ],
+      "address": "ул. Сарайшык 8"
+    },
+    {
+      "name": "p.s.XOXO",
+      "slug": "psxoxo",
+      "location": [
+        71.3805542,
+        51.13502982
+      ],
+      "address": "ул.Асфендиярова 8, НП.2 возле 1 подьезда"
+    },
+    {
+      "name": "BAO Noodles*Sushi*Bar Mega Silk Way",
+      "slug": "bao-noodlessushibar-mega-silk-way",
+      "location": [
+        71.40453654,
+        51.0893844
+      ],
+      "address": "пр-т. Кабанбай Батыра 62"
+    },
+    {
+      "name": "Pasta Lab",
+      "slug": "pastalab-ast",
+      "location": [
+        71.4017461340004,
+        51.13581504204356
+      ],
+      "address": "Мухамедханова 4/2"
+    },
+    {
+      "name": "Mantbat",
+      "slug": "mantbat5678",
+      "location": [
+        71.45072946,
+        51.09722005
+      ],
+      "address": "Аль Фараби 11"
+    },
+    {
+      "name": "Hookah Place",
+      "slug": "myata-platinum",
+      "location": [
+        71.41111778,
+        51.14154894
+      ],
+      "address": "Туран 20"
+    },
+    {
+      "name": "Chico Food",
+      "slug": "chico-food",
+      "location": [
+        71.45232536,
+        51.09657399
+      ],
+      "address": "ул. 38, 16"
+    },
+    {
+      "name": "Marmelade",
+      "slug": "marmelade",
+      "location": [
+        71.42732885,
+        51.12157835
+      ],
+      "address": "ул. Сыганак 60/5, ТРЦ \"Abu Dhabi Plaza\", 1 этаж"
+    },
+    {
+      "name": "Espresso Bar EXPO",
+      "slug": "espresso-bar-expo",
+      "location": [
+        71.40578088,
+        51.09492705
+      ],
+      "address": "пр. Кабанбай батыра 58б корпус 2"
+    },
+    {
+      "name": "CULT",
+      "slug": "cult-coffee-shop",
+      "location": [
+        71.40473336,
+        51.09053335
+      ],
+      "address": "ул. Кабанбай батыра 60/3"
+    },
+    {
+      "name": "Na Vostoke, Na Vostoke Turan",
+      "slug": "na-vostoke-na-vostoke-turan",
+      "location": [
+        71.40305525,
+        51.11290573
+      ],
+      "address": "ул. Туран 44/2"
+    },
+    {
+      "name": "Lagman and Plov Center",
+      "slug": "dara",
+      "location": [
+        71.42781554,
+        51.12940813
+      ],
+      "address": "ул. Кунаева, 12/1"
+    },
+    {
+      "name": "SREDA",
+      "slug": "sreda",
+      "location": [
+        71.37959758363513,
+        51.13695874141274
+      ],
+      "address": "ул. Санжара Асфендиярова 11"
+    },
+    {
+      "name": "PIRO",
+      "slug": "piro",
+      "location": [
+        71.43103027,
+        51.13281059
+      ],
+      "address": "ул. Сарайшык 34/7"
+    },
+    {
+      "name": "As-Qazan Tauelsizdik",
+      "slug": "as-qazan-tauelsizdik",
+      "location": [
+        71.46413803,
+        51.14150524
+      ],
+      "address": "ул. Тауелсиздик, 32"
+    },
+    {
+      "name": "Halal Guys",
+      "slug": "halal-guys678",
+      "location": [
+        71.38778895,
+        51.13235126
+      ],
+      "address": "E 899 1/1"
+    },
+    {
+      "name": "Xan Kebab",
+      "slug": "xan-kebab",
+      "location": [
+        71.4316875,
+        51.1001678
+      ],
+      "address": "Улица Алихан Бокейхан, 24"
+    },
+    {
+      "name": "Coffee Esthete",
+      "slug": "coffee-esthete",
+      "location": [
+        71.37018091,
+        51.14083784
+      ],
+      "address": "район Нұра, улица ІЛИЯС ОМАРОВ, дом 25, н.п. 9"
+    },
+    {
+      "name": "LOYO",
+      "slug": "loyo-ast",
+      "location": [
+        71.42002122,
+        51.13547015
+      ],
+      "address": "Сарайшык, 4"
+    },
+    {
+      "name": "New Day Astana",
+      "slug": "new-day-astana",
+      "location": [
+        71.42713581,
+        51.09388368
+      ],
+      "address": "ул Мангилик ел 52, блок Б3"
+    },
+    {
+      "name": "JADI Doner",
+      "slug": "jadi-doner",
+      "location": [
+        71.38815562,
+        51.09906168
+      ],
+      "address": "Толе Би 14"
+    },
+    {
+      "name": "QAZAQ BESH",
+      "slug": "qazaq-besh",
+      "location": [
+        71.36014252,
+        51.13018314
+      ],
+      "address": "Айтматова 29а "
+    },
+    {
+      "name": "Coffee Inn",
+      "slug": "coffee-inn",
+      "location": [
+        71.47625662,
+        51.12507023
+      ],
+      "address": "Kasym Amanzholov st, 32/1"
+    },
+    {
+      "name": "MANNA",
+      "slug": "manna",
+      "location": [
+        71.42718342,
+        51.09785906
+      ],
+      "address": "Mangilik El 47, block E"
+    },
+    {
+      "name": "Khoshan Cafe",
+      "slug": "khoshan-cafe",
+      "location": [
+        71.4174864,
+        51.11309593
+      ],
+      "address": "ул. Сауран 18/1"
+    },
+    {
+      "name": "Costa Coffee TOR’RE Apart",
+      "slug": "costa-coffee-yes-apart",
+      "location": [
+        71.42494563,
+        51.1070231
+      ],
+      "address": "Turkistan 16/1"
+    },
+    {
+      "name": "BUNO Coffee & Bar",
+      "slug": "buno-coffee-bar",
+      "location": [
+        71.41887123,
+        51.11492832
+      ],
+      "address": "​Керей, Жәнібек хандар, 14/2"
+    },
+    {
+      "name": "Kaspiana",
+      "slug": "kaspiana-1",
+      "location": [
+        71.48866526,
+        51.12703832
+      ],
+      "address": "ул. Кошкарбаева д. 25 НП 7"
+    },
+    {
+      "name": "Bol Bol Food Asfendiyarov",
+      "slug": "bol-bol-food-asfendiyarov",
+      "location": [
+        71.37843795,
+        51.13557986
+      ],
+      "address": "ул. Асфендиярова 12"
+    },
+    {
+      "name": "Shukri Cafe",
+      "slug": "shukri-cafe",
+      "location": [
+        71.43750401,
+        51.09580606
+      ],
+      "address": "ул. Жоши Хан 6"
+    },
+    {
+      "name": "Family Restaurant A8 Otbasy",
+      "slug": "family-restaurant-a8-otbasy",
+      "location": [
+        71.46505711,
+        51.12859338
+      ],
+      "address": "проспект Ракымжан Кошкарбаев, 1/1"
+    },
+    {
+      "name": "KITCHEN & Delivery",
+      "slug": "kitchen-delivery",
+      "location": [
+        71.3804,
+        51.131
+      ],
+      "address": "ул. Сыганак 11, офис 21"
+    },
+    {
+      "name": "CEVICHE",
+      "slug": "ceviche-viennese",
+      "location": [
+        71.430838,
+        51.10347628
+      ],
+      "address": "Проспект Мангилик Ел, 40"
+    },
+    {
+      "name": "Burger House Astana",
+      "slug": "burger-house-astana",
+      "location": [
+        71.36847009,
+        51.13597234
+      ],
+      "address": "ул.Ілияс Омаров 13"
+    },
+    {
+      "name": "King Grill",
+      "slug": "king-grill555",
+      "location": [
+        71.42680614688683,
+        51.13182579658425
+      ],
+      "address": "Конаева 29"
+    },
+    {
+      "name": "Steak&Brew",
+      "slug": "steakbrew",
+      "location": [
+        71.37981468,
+        51.13561834
+      ],
+      "address": "ул. С. Асфендиярова 8а, н.п.4"
+    },
+    {
+      "name": "Nanduk Sarayshyk",
+      "slug": "nanduk-sarayshyk",
+      "location": [
+        71.41861251,
+        51.13553481
+      ],
+      "address": "Сарайшык 4"
+    },
+    {
+      "name": "Doner Jet",
+      "slug": "donerjet",
+      "location": [
+        71.41930745,
+        51.11090916
+      ],
+      "address": "ул. Орынбор 1б"
+    },
+    {
+      "name": "Friday Halal Food Gate",
+      "slug": "friday-halal-food-gate",
+      "location": [
+        71.4089,
+        51.0885
+      ],
+      "address": "пр. Кабанбай батыра 62"
+    },
+    {
+      "name": "Eldorado Lounge",
+      "slug": "eldorado-lounge",
+      "location": [
+        71.423756,
+        51.0897903
+      ],
+      "address": "РК, Астана, ул.Мангилик ел 57А"
+    },
+    {
+      "name": "Akita Sushi",
+      "slug": "akita-sushi",
+      "location": [
+        71.41648644,
+        51.09945213
+      ],
+      "address": "Ұлы Дала 41/2"
+    },
+    {
+      "name": "BalQaimaq Al-Farabi",
+      "slug": "balqaimaq-al-farabi",
+      "location": [
+        71.45213904,
+        51.08799996
+      ],
+      "address": "РК, г. Астана, Аль Фараби 36/2"
+    },
+    {
+      "name": "Король Кур",
+      "slug": "dyadya1s",
+      "location": [
+        71.44643804,
+        51.14480962
+      ],
+      "address": "Сарыкенгир 1/1а"
+    },
+    {
+      "name": "Eda Goroda Uly Dala",
+      "slug": "eda-goroda-uly-dala",
+      "location": [
+        71.44426154,
+        51.0935044
+      ],
+      "address": "Улы дала 67"
+    },
+    {
+      "name": "Coffee BOOM Dara",
+      "slug": "coffee-boom-dara",
+      "location": [
+        71.43145905,
+        51.13335304
+      ],
+      "address": "ул. Сарайшык 34/1"
+    },
+    {
+      "name": "Hardee’s Sauran",
+      "slug": "hardees-sauran",
+      "location": [
+        71.41277883,
+        51.09842427
+      ],
+      "address": "ул. Сауран 38"
+    },
+    {
+      "name": "Burger King Mega Silk Way",
+      "slug": "burger-king-mega-silk-way",
+      "location": [
+        71.40989058,
+        51.0888219
+      ],
+      "address": "​ТРЦ \"MEGA Silk Way\"​проспект Қабанбай батыр, 62 ​2 этаж"
+    },
+    {
+      "name": "Frito Syganak",
+      "slug": "frito-syganak",
+      "location": [
+        71.3789933,
+        51.13066476
+      ],
+      "address": "ул. Сыганак 11"
+    },
+    {
+      "name": "Hardee's NCity",
+      "slug": "hardees-ncity",
+      "location": [
+        71.39949413,
+        51.11635747
+      ],
+      "address": " пр.Туран 53В , ТРЦ N City"
+    },
+    {
+      "name": "Durum Bukhar Zhyrau",
+      "slug": "durum-bukhar-zhyrau",
+      "location": [
+        71.4425251,
+        51.0982269
+      ],
+      "address": "ул.Бухар Жырау 31"
+    },
+    {
+      "name": "LAVASH Food Uly Dala",
+      "slug": "lavash-food",
+      "location": [
+        71.41594727,
+        51.09753474
+      ],
+      "address": "проспект Ұлы Дала, 41Б"
+    },
+    {
+      "name": "Frito Koshkarbayev",
+      "slug": "frito-koshkarbayev",
+      "location": [
+        71.48598613,
+        51.12527139
+      ],
+      "address": "Кошкарбаева 36"
+    },
+    {
+      "name": "Wok Lagman Mangilik El",
+      "slug": "wok-lagman-mangilik",
+      "location": [
+        71.4322708,
+        51.11536209
+      ],
+      "address": "Prospekt Mangilik Yel 19"
+    },
+    {
+      "name": "Hardee's Agip",
+      "slug": "hardees-ajib",
+      "location": [
+        71.42223021,
+        51.14601344
+      ],
+      "address": "Кабанбай батыр, 6"
+    },
+    {
+      "name": "Baoli",
+      "slug": "baoli",
+      "location": [
+        71.42474341,
+        51.1068421
+      ],
+      "address": "ул. Туркестана 16/1"
+    },
+    {
+      "name": "Jan Sushi Bukhar Zhyrau",
+      "slug": "jan-sushi-bukhar-zhyrau",
+      "location": [
+        71.44210522,
+        51.09741775
+      ],
+      "address": "Бухар жырау 36"
+    },
+    {
+      "name": "Yakuza Pan Asian Kitchen Turkestan",
+      "slug": "yakuzasushi1",
+      "location": [
+        71.42430587,
+        51.10084854
+      ],
+      "address": "Туркестана 28/2"
+    },
+    {
+      "name": "Top Doner Turan",
+      "slug": "top-doner-turan",
+      "location": [
+        71.39919359079843,
+        51.11821314292993
+      ],
+      "address": "проспект Туран 55А"
+    },
+    {
+      "name": "Lepim & Varim Mega Silk Way",
+      "slug": "lepimvarim-megasilkway",
+      "location": [
+        71.4088323,
+        51.08900422
+      ],
+      "address": "Qabanbay Batyr, 62"
+    },
+    {
+      "name": "La Creme Mangilik El",
+      "slug": "la-creme",
+      "location": [
+        71.4257358,
+        51.09362435
+      ],
+      "address": "Mangilik El ave, 53"
+    },
+    {
+      "name": "Stumari Bistro",
+      "slug": "stumari-ast",
+      "location": [
+        71.4642932,
+        51.141472
+      ],
+      "address": "Проспект Тауелсиздик, 32 "
+    },
+    {
+      "name": "Gruzin Kuzin Bokeikhan",
+      "slug": "vkusno",
+      "location": [
+        71.43942649,
+        51.11507842
+      ],
+      "address": "Bokeikhan St, 8"
+    },
+    {
+      "name": "Shashlyk Pub Mukhamedkhanov",
+      "slug": "shashlyk-pub-mukhamedkhanov",
+      "location": [
+        71.40307989,
+        51.13733564
+      ],
+      "address": "улица Кайым Мухамедханов, 4а"
+    },
+    {
+      "name": "NAVAT Mangilik El",
+      "slug": "chaikhana-navat-mangilik-el",
+      "location": [
+        71.43125952,
+        51.1098548
+      ],
+      "address": "ул. Мангилик Ел 27"
+    },
+    {
+      "name": "NAVAT Turan",
+      "slug": "navat-turan",
+      "location": [
+        71.4044644,
+        51.12831593
+      ],
+      "address": "пр.Туран 39А, н.п.2"
+    },
+    {
+      "name": "DURUM Astana",
+      "slug": "durum-astana",
+      "location": [
+        71.48939984,
+        51.12737635
+      ],
+      "address": "проспект Кошкарбаева 27"
+    },
+    {
+      "name": "Pate Kaldayakov",
+      "slug": "pate-kaldayakov",
+      "location": [
+        71.45775414,
+        51.11901957
+      ],
+      "address": "ул. Шамши Калдаякова 3"
+    },
+    {
+      "name": "OM na levOM",
+      "slug": "omastana",
+      "location": [
+        71.4171900990732,
+        51.09882438661563
+      ],
+      "address": "ул. Улы Дала 41/3 НП16"
+    },
+    {
+      "name": "Hani.brunch Tauelsizdik",
+      "slug": "hanibrunch-tauelsizdik",
+      "location": [
+        71.46638202,
+        51.13622123
+      ],
+      "address": "​Проспект Тауелсиздик, 39"
+    },
+    {
+      "name": "Coffee BOOM Highvill",
+      "slug": "coffeeboom-highvill",
+      "location": [
+        71.46936855,
+        51.12688162
+      ],
+      "address": "Koshkarbayev st., 10/1"
+    },
+    {
+      "name": "La Creme Dostyk Avenue",
+      "slug": "la-creme-dostyk-avenue",
+      "location": [
+        71.41919707,
+        51.12812406
+      ],
+      "address": "ул. Достык 1а"
+    },
+    {
+      "name": "Pate",
+      "slug": "pate",
+      "location": [
+        71.41063479,
+        51.13917224
+      ],
+      "address": "пр.Тұран 22/1, н.п. 8"
+    },
+    {
+      "name": "Kakao Dak Highvill",
+      "slug": "kakao-dak-highvill",
+      "location": [
+        71.4604746,
+        51.12001931
+      ],
+      "address": "ул. Нажимеденова 4/1, подъезд  D2-1"
+    },
+    {
+      "name": "Gasteria Turan",
+      "slug": "gasteria-turan",
+      "location": [
+        71.41005681,
+        51.13928552
+      ],
+      "address": "Пр. Туран 22/1, ЖК Grand Opera"
+    },
+    {
+      "name": "Uzbechka #1 Konaeva",
+      "slug": "z-1",
+      "location": [
+        71.4385727,
+        51.12881236
+      ],
+      "address": "Д. Конаева, 14г"
+    },
+    {
+      "name": "Pate Tole Bi",
+      "slug": "pate-tole-bi",
+      "location": [
+        71.39762686,
+        51.13150564
+      ],
+      "address": "ул. Толе би 48"
+    },
+    {
+      "name": "NAVAT Sarayshyk",
+      "slug": "navat-sarayshyk",
+      "location": [
+        71.43167847,
+        51.13326873
+      ],
+      "address": "ул. Сарайшық 34Б, н.п. 1"
+    },
+    {
+      "name": "NAVAT Dostyq",
+      "slug": "navat-dostyq",
+      "location": [
+        71.43604788,
+        51.12685519
+      ],
+      "address": "Dostyk St, 13"
+    },
+    {
+      "name": "Hardee's Asia Park",
+      "slug": "hardees-asia-park",
+      "location": [
+        71.41177773,
+        51.12810444
+      ],
+      "address": " Кабанбай батыра 21"
+    },
+    {
+      "name": "Lanzhou Sarayshyk",
+      "slug": "lanzhou-sarayshyk",
+      "location": [
+        71.42378183,
+        51.13564283
+      ],
+      "address": "Сарайшык 5"
+    },
+    {
+      "name": "Soul Kitchen Green Line Aura",
+      "slug": "soul-kitchenc",
+      "location": [
+        71.39368657,
+        51.13202395
+      ],
+      "address": "ул. Е 900, 2"
+    },
+    {
+      "name": "Lanzhou Keruen",
+      "slug": "lanzhou-keruen",
+      "location": [
+        71.42568135,
+        51.12777528
+      ],
+      "address": "улица Достык 9, ТРЦ Керуен"
+    },
+    {
+      "name": "Karima Omarov",
+      "slug": "karima-omarov589",
+      "location": [
+        71.36822387,
+        51.13647648
+      ],
+      "address": "ул. Илияс Омарова 17/1"
+    },
+    {
+      "name": "Lanzhou Mangilik El",
+      "slug": "lanzhou-mangilik-el",
+      "location": [
+        71.4338396,
+        51.11692322
+      ],
+      "address": "Мангилик ел 17"
+    },
+    {
+      "name": "Wedrink BI City Seoul",
+      "slug": "wedrink-1",
+      "location": [
+        71.39676048,
+        51.12855617
+      ],
+      "address": "ул. Абикен Бектурова 3/3, Н. П. 5"
+    },
+    {
+      "name": "Aliye Parusa Keruen",
+      "slug": "aliye-parusa-keruen",
+      "location": [
+        71.42574948,
+        51.12785452
+      ],
+      "address": "улица Достык, 9"
+    },
+    {
+      "name": "Discovery Coffee Nazhimedenov",
+      "slug": "discovery-coffee-nazhimedenov",
+      "location": [
+        71.48021877,
+        51.11787632
+      ],
+      "address": "​Улица Жумекен Нажимеденов, 16"
+    },
+    {
+      "name": "BAO Noodles*Sushi*Bar Turan",
+      "slug": "bao-noodlessushibar-turan",
+      "location": [
+        71.41170705,
+        51.14072673
+      ],
+      "address": "проспект Туран 22/1"
+    },
+    {
+      "name": "ATEA Mangilik el",
+      "slug": "atea-dostyk",
+      "location": [
+        71.43182538,
+        51.10731484
+      ],
+      "address": "Мангилик ел 36"
+    },
+    {
+      "name": "TaiTea Damu Mall",
+      "slug": "taitea-damu-mall",
+      "location": [
+        71.49216881,
+        51.11563234
+      ],
+      "address": "Нажимеденов, 26"
+    },
+    {
+      "name": "ONESHOTT COFFEE Uly Dala",
+      "slug": "oneshott-coffee-uly-dala",
+      "location": [
+        71.40806176,
+        51.0968531
+      ],
+      "address": "проспект Улы Дала, 54"
+    },
+    {
+      "name": "NAVAT Qabanbay Batyr",
+      "slug": "navat-qabanbay-batyr",
+      "location": [
+        71.41261082,
+        51.12811773
+      ],
+      "address": "​проспект Қабанбай батыр, 21"
+    },
+    {
+      "name": "Espresso Bar Tole Bi",
+      "slug": "espresso-bar-tole-bi",
+      "location": [
+        71.39614834,
+        51.13325237
+      ],
+      "address": "ул. Толе би 59"
+    },
+    {
+      "name": "La Creme Akbulak",
+      "slug": "la-creme-akbulak",
+      "location": [
+        71.44438262,
+        51.14831065
+      ],
+      "address": "ул. Амман 21, НП-17"
+    },
+    {
+      "name": "La Creme Green Mall",
+      "slug": "la-creme-green-mall",
+      "location": [
+        71.39039892,
+        51.13077594
+      ],
+      "address": "ул. Сыганак 17л"
+    },
+    {
+      "name": "Costa Coffee Asia Park",
+      "slug": "costa-coffee-asia-park5",
+      "location": [
+        71.41255256,
+        51.12802513
+      ],
+      "address": "Кабанбай Батыра 21"
+    },
+    {
+      "name": "Delish Mukhamedkhanov",
+      "slug": "delish-mukhamedkhanov",
+      "location": [
+        71.39634488,
+        51.13915133
+      ],
+      "address": "ул.Мухамедханова 11/1"
+    },
+    {
+      "name": "Nanduk Damu",
+      "slug": "nanduk-turkestan",
+      "location": [
+        71.49205364,
+        51.11569789
+      ],
+      "address": "Улица Жумекен Нажимеденов, 26"
+    },
+    {
+      "name": "Chicken Balapan",
+      "slug": "chicken-balapan",
+      "location": [
+        71.38374023,
+        51.13735655
+      ],
+      "address": "РК, г. Астана, Анет баба 9/2"
+    },
+    {
+      "name": "BAO Noodles*Sushi*Bar Astana",
+      "slug": "bao-noodlessushi",
+      "location": [
+        71.43407678,
+        51.12504818
+      ],
+      "address": "ул. Достык 18, БЦ Москва, 1 этаж"
+    },
+    {
+      "name": "Delish Nazhimedenov",
+      "slug": "delish-nazhimedenov",
+      "location": [
+        71.45616535,
+        51.12034372
+      ],
+      "address": "ул. Жумекен Нажимеденов 2, блок В, нп 101"
+    },
+    {
+      "name": "LETO Cafe Mangilik El",
+      "slug": "leto-cafe-mangilik-el",
+      "location": [
+        71.42659909999999,
+        51.097067
+      ],
+      "address": "Мәнгілік Ел, 49"
+    },
+    {
+      "name": "Cheesesteaker",
+      "slug": "cheesesteaker",
+      "location": [
+        71.39675643,
+        51.1355482
+      ],
+      "address": "Толе би 63"
+    },
+    {
+      "name": "Pate Dostyq",
+      "slug": "pate-dostyq",
+      "location": [
+        71.42054909,
+        51.12694507
+      ],
+      "address": "ул. Достык 8"
+    },
+    {
+      "name": "Na Vostoke Na Vostoke Asfendiyarov",
+      "slug": "uzbeksky-dvor-8-asfendiyarov",
+      "location": [
+        71.38039251,
+        51.1364005
+      ],
+      "address": "ул. Асфендиярова 10"
+    },
+    {
+      "name": "Saya Sushi Aliyev",
+      "slug": "saya-sushi-kz",
+      "location": [
+        71.41107219,
+        51.09421278
+      ],
+      "address": "проспект Алиева 10"
+    },
+    {
+      "name": "Lanzhou Keruen City",
+      "slug": "lanzhou-keruen-city",
+      "location": [
+        71.4142455,
+        51.14534566
+      ],
+      "address": "Шоссе Коргалжын, 1"
+    },
+    {
+      "name": "Marrone Rosso Saryarka",
+      "slug": "marrone-rosso-saryarka",
+      "location": [
+        71.41061122,
+        51.13813393
+      ],
+      "address": "Turan Ave, 24"
+    },
+    {
+      "name": "Pinta Round Square",
+      "slug": "pinta-round-square",
+      "location": [
+        71.41367569,
+        51.13039475
+      ],
+      "address": "Qabanbay batyr 19/1"
+    },
+    {
+      "name": "GASTERIA Kunaev",
+      "slug": "gasteria-kunaev",
+      "location": [
+        71.42413718,
+        51.12986333
+      ],
+      "address": "ул.Кунаева 8/1"
+    },
+    {
+      "name": "Pinta Keruen City",
+      "slug": "pinta-keruen-city",
+      "location": [
+        71.41403198,
+        51.14558114
+      ],
+      "address": "Qorghalzhyn Hwy 1"
+    },
+    {
+      "name": "Pinta Bar Moskva",
+      "slug": "pinta-bar-moskva",
+      "location": [
+        71.4342898,
+        51.1247448
+      ],
+      "address": "ул. Достык 18"
+    },
+    {
+      "name": "Aura Verdant Mangilik",
+      "slug": "aura-verdant-mangilik",
+      "location": [
+        71.43095414,
+        51.10797476
+      ],
+      "address": "проспект Мәңгілік ел, дом 29"
+    },
+    {
+      "name": "Saya Sushi Chubary",
+      "slug": "saya-sushi-chubary",
+      "location": [
+        71.4324806,
+        51.12719702
+      ],
+      "address": "This is a virtual venue"
+    },
+    {
+      "name": "The Doner Na Uglyah Mega Silk Way",
+      "slug": "the-doner-na-uglyah-mega-silk-way",
+      "location": [
+        71.4056151,
+        51.0894155
+      ],
+      "address": "ул.Кабанбай батыр проспект 62"
+    },
+    {
+      "name": "Dala Uly Dala",
+      "slug": "dala5678",
+      "location": [
+        71.4167288,
+        51.09787014
+      ],
+      "address": "Ұлы Дала 41в"
+    },
+    {
+      "name": "Na Vostoke Na Vostoke Edem",
+      "slug": "uzbekskiy-dvor",
+      "location": [
+        71.40771964,
+        51.14484061
+      ],
+      "address": "Edem Tk, Turan Ave 19/1, Nur-Sultan"
+    },
+    {
+      "name": "Pinta Dostyk",
+      "slug": "pinta-megasilkway",
+      "location": [
+        71.42315901,
+        51.12824468
+      ],
+      "address": "Достык 5"
+    },
+    {
+      "name": "Myata Kabanbay Batyr",
+      "slug": "myata",
+      "location": [
+        71.41292087,
+        51.11561809
+      ],
+      "address": "пр. Кабанбай батыра 46"
+    },
+    {
+      "name": "Pivovaroff Syganak",
+      "slug": "pivovaroff-syganak",
+      "location": [
+        71.4280281,
+        51.1223857
+      ],
+      "address": "Сыганак 60/5"
+    },
+    {
+      "name": "SF Shaurma Food Jetisu Park",
+      "slug": "sf-shaurma-food-jetisu-park",
+      "location": [
+        71.43623352,
+        51.13403511
+      ],
+      "address": "ул. Сарайшык 13Б/1"
+    },
+    {
+      "name": "PAUL Keruen",
+      "slug": "paul-keruen",
+      "location": [
+        71.42554968,
+        51.12831093
+      ],
+      "address": "ТРЦ Keruen"
+    },
+    {
+      "name": "Costa Coffee Keruen City",
+      "slug": "costa-coffee-keruen-city",
+      "location": [
+        71.41419643,
+        51.14565345
+      ],
+      "address": "Korgalzhyn Highway"
+    },
+    {
+      "name": "Delish Asyl Tau",
+      "slug": "delish-mega-silk-way",
+      "location": [
+        71.42950577,
+        51.11760053
+      ],
+      "address": "Туркестана 4b"
+    },
+    {
+      "name": "Delish Koshkarbayev",
+      "slug": "delish-koshkarbayeva",
+      "location": [
+        71.46592739,
+        51.12771878
+      ],
+      "address": "ул. Кошкарбаева, 8"
+    },
+    {
+      "name": "Delish Kunayev",
+      "slug": "delish-kunayev",
+      "location": [
+        71.41930075,
+        51.13288719
+      ],
+      "address": "Динмухамед Конаев 5стр"
+    },
+    {
+      "name": "Chickenfood Nurtas Ondasynov",
+      "slug": "chicken-food-2",
+      "location": [
+        71.42463129,
+        51.13670325
+      ],
+      "address": "Нуртас Ондасынов, 91а"
+    },
+    {
+      "name": "IZMIR Bakery&Coffee House Khrapaty",
+      "slug": "izmir-bakery-and-coffee-house-khrapaty",
+      "location": [
+        71.4626631,
+        51.11110849
+      ],
+      "address": "ул. Храпатого, 21, НП-3"
+    },
+    {
+      "name": "La Mia Piazza Turkestan",
+      "slug": "la-mia-piazza-turkestan",
+      "location": [
+        71.42448207,
+        51.10596462
+      ],
+      "address": "Түркістан 16/3"
+    },
+    {
+      "name": "NUDU Asfendiyarova",
+      "slug": "nudu-asfendiyarova",
+      "location": [
+        71.3815443,
+        51.13640283
+      ],
+      "address": "Асфендиярова 10, н.п. №11"
+    },
+    {
+      "name": "Costa Coffee Keruen",
+      "slug": "costa-coffee-keruen",
+      "location": [
+        71.42559597,
+        51.12770325
+      ],
+      "address": "Dostyk Ave. 9"
+    },
+    {
+      "name": "Ozyurt Khan Shatyr",
+      "slug": "ozyurt-khan-shatyr",
+      "location": [
+        71.40313223,
+        51.13287251
+      ],
+      "address": "ТРЦ Хан шатыр, 3 этаж"
+    },
+    {
+      "name": "Bol Bol Food Kosmonavtov",
+      "slug": "bol-bol-doner",
+      "location": [
+        71.42668751,
+        51.14556569
+      ],
+      "address": "ул Космонавтов 54"
+    },
+    {
+      "name": "Aliye Parusa Khan Shatyr",
+      "slug": "aliye-parusa-khan-shatyr",
+      "location": [
+        71.40377045,
+        51.13259888
+      ],
+      "address": "Проспект Туран, 37"
+    },
+    {
+      "name": "NUDU Tauelsizdik",
+      "slug": "nudu-tauelsizdik",
+      "location": [
+        71.46473774,
+        51.14083778
+      ],
+      "address": "улица Тауелсиздик 34/5"
+    },
+    {
+      "name": "Gastro coffee & bakery",
+      "slug": "gastro-coffee-bakery-kabanbay-batyr",
+      "location": [
+        71.4236561,
+        51.1308914
+      ],
+      "address": "Кунаева 10 "
+    },
+    {
+      "name": "Makebab Al-Farabi",
+      "slug": "makebab-al-farabi",
+      "location": [
+        71.44767452,
+        51.08877458
+      ],
+      "address": "Аль-Фараби к-сі, 27"
+    },
+    {
+      "name": "ONESHOTT COFFEE Tauelsizdik",
+      "slug": "oneshott-coffee",
+      "location": [
+        71.46040709,
+        51.14468095
+      ],
+      "address": "пр. Тауельсиздик 23"
+    },
+    {
+      "name": "Eda Goroda Balkantau",
+      "slug": "eda-goroda-frozen-food",
+      "location": [
+        71.47565798,
+        51.13309331
+      ],
+      "address": "ул. Балкантау 187"
+    }
+  ]
+}

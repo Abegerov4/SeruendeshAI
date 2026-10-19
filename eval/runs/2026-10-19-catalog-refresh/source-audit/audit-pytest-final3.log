@@ -1,0 +1,84 @@
+........................................................................ [  5%]
+........................................................................ [ 11%]
+........................................................................ [ 16%]
+........................................................................ [ 22%]
+....................F................................................... [ 27%]
+........................................................................ [ 33%]
+........................................................................ [ 39%]
+........................................................................ [ 44%]
+........................................................................ [ 50%]
+........................................................................ [ 55%]
+............................................................ [ 60%]
+................ssssssssssssss.......................................... [ 65%]
+........................sssssssssss.......................ssssssssssss.. [ 71%]
+........................................................................ [ 77%]
+........................................................................ [ 82%]
+.................ssssss......sssssssssssssssss.......................... [ 88%]
+..................................sssssssssssss......................... [ 93%]
+........................................................................ [ 99%]
+........                                                                 [100%]
+=================================== FAILURES ===================================
+_______ test_current_baiterek_and_all_directory_hours_have_field_source ________
+
+    def test_current_baiterek_and_all_directory_hours_have_field_source():
+        from ayat_backend.app.team_data import load_team_snapshot
+        root = Path(__file__).resolve().parents[2]
+        pois, _, _ = load_team_snapshot(root / "data/processed/pois.json", quarantine_path=root / "data/quarantine.json")
+        baiterek = next(p for p in pois if p["id"] == "osm:way/230401645")
+        assert baiterek["hours_source"] == "citypass"
+        assert baiterek["hours_source_id"] == "citypass:57"
+        assert baiterek["hours_source_url"] == "https://astana.citypass.kz/ru/attractions/bayterek"
+        assert baiterek["check_date"] is None  # cache acquisition is not a source check
+        known = [p for p in pois if p.get("opening_hours") and p.get("source") in {"citypass", "dodo"}]
+>       assert len(known) == 29  # unresolved reports withheld; three dated owner/tourism reviews applied
+        ^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 30 == 29
+E        +  where 30 = len([{'id': 'citypass:120', 'name': 'Дом-музей Берика Алибая', 'lat': 51.133096, 'lon': 71.504882, ...}, {'id': 'citypass:..., ...}, {'id': 'citypass:84', 'name': 'Триумфальная арка «Мәңгілік Ел»', 'lat': 51.104324, 'lon': 71.430069, ...}, ...])
+
+ayat_backend/tests/test_team_data.py:242: AssertionError
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_api_contract.py:14: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:23: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:31: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [6] tests/test_api_contract.py:39: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_api_contract.py:50: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_backend_dataset_local.py:13: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [2] tests/test_backend_dataset_local.py:23: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_backend_dataset_local.py:57: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [6] tests/test_backend_guards.py:10: Actual backend guards NOT TESTED: enable --live-backend to run
+SKIPPED [4] tests/test_backend_guards.py:28: Actual backend guards NOT TESTED: enable --live-backend to run
+SKIPPED [1] tests/test_backend_guards.py:39: Actual backend guards NOT TESTED: enable --live-backend to run
+SKIPPED [1] tests/test_dataset.py:13: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:17: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:21: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:26: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:32: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:39: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:63: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:78: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:100: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:128: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:143: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_dataset.py:155: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_postgres_delivery.py:59: Disposable PostgreSQL not requested; run scripts/test_delivery_postgres.py
+SKIPPED [1] tests/test_postgres_delivery.py:79: Disposable PostgreSQL not requested; run scripts/test_delivery_postgres.py
+SKIPPED [1] tests/test_postgres_delivery.py:100: Disposable PostgreSQL not requested; run scripts/test_delivery_postgres.py
+SKIPPED [1] tests/test_postgres_delivery.py:114: Disposable PostgreSQL not requested; run scripts/test_delivery_postgres.py
+SKIPPED [1] tests/test_postgres_delivery.py:127: Disposable PostgreSQL not requested; run scripts/test_delivery_postgres.py
+SKIPPED [1] tests/test_postgres_runner.py:15: Set DELIVERY_DOCKER_VERIFY=1 for the disposable Docker PostgreSQL run
+SKIPPED [12] tests/test_rag.py:12: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [3] tests/test_rag.py:32: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_rag.py:41: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [1] tests/test_rag.py:56: Real POI dataset NOT TESTED: pass --pois to run
+SKIPPED [4] tests/test_safety.py:13: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_safety.py:28: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_safety.py:41: Product backend NOT TESTED: enable --live-api to run
+SKIPPED [1] tests/test_ui.py:26: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:40: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:49: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:61: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:73: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:96: Frontend NOT TESTED: enable --live-ui and install Playwright
+SKIPPED [1] tests/test_ui.py:106: Product backend NOT TESTED: enable --live-api to run
+FAILED ayat_backend/tests/test_team_data.py::test_current_baiterek_and_all_directory_hours_have_field_source
+1 failed, 1218 passed, 73 skipped, 12 subtests passed in 49.77s

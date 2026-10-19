@@ -7,6 +7,8 @@
 import base64
 import io
 import logging
+import threading
+import warnings
 from pathlib import Path
 
 from PIL import Image, UnidentifiedImageError
@@ -21,6 +23,8 @@ PROMPT = (Path(__file__).parent / "prompts" / "photo_landmark.md").read_text(enc
 ALLOWED_TYPES = {"image/jpeg", "image/png", "image/webp"}
 MAX_BYTES = 8 * 1024 * 1024
 MAX_SIDE = 1024
+MAX_PIXELS = 16_000_000
+_decode_slots = threading.BoundedSemaphore(2)
 
 # Крупные ориентиры Астаны — узнаваемы на фото, даже если их нет в POI-базе
 KNOWN_LANDMARKS = [
@@ -36,6 +40,37 @@ class PhotoError(ValueError):
     pass
 
 
+class PhotoUploadLimitMiddleware:
+    """Cap photo multipart bodies before FastAPI buffers/spools their contents."""
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] != "http" or scope.get("path") != "/api/recommend/photo":
+            return await self.app(scope, receive, send)
+        from starlette.exceptions import HTTPException
+        from starlette.responses import JSONResponse
+        limit = MAX_BYTES + 64 * 1024  # bounded multipart headers and form fields
+        headers = dict(scope.get("headers", []))
+        try:
+            length = int(headers.get(b"content-length", b"0"))
+        except ValueError:
+            return await JSONResponse({"detail": "Invalid Content-Length"}, status_code=400)(scope, receive, send)
+        if length > limit:
+            return await JSONResponse({"detail": "Фото больше 8 МБ"}, status_code=413)(scope, receive, send)
+        consumed = 0
+
+        async def bounded_receive():
+            nonlocal consumed
+            message = await receive()
+            consumed += len(message.get("body", b""))
+            if consumed > limit:
+                raise HTTPException(status_code=413, detail="Фото больше 8 МБ")
+            return message
+
+        return await self.app(scope, bounded_receive, send)
+
+
 class PhotoGuess(BaseModel):
     landmark: str | None = None
     confidence: str = "low"
@@ -48,14 +83,27 @@ def prepare_image(data: bytes, content_type: str | None) -> str:
         raise PhotoError("Поддерживаются JPEG, PNG, WEBP")
     if len(data) > MAX_BYTES:
         raise PhotoError("Фото больше 8 МБ")
-    try:
-        img = Image.open(io.BytesIO(data))
-        img = img.convert("RGB")  # новый объект без EXIF/метаданных
-    except (UnidentifiedImageError, OSError) as e:
-        raise PhotoError("Не удалось прочитать изображение") from e
-    img.thumbnail((MAX_SIDE, MAX_SIDE))
-    buf = io.BytesIO()
-    img.save(buf, format="JPEG", quality=85)
+    # Called in a worker by transports. Bound expensive simultaneous decodes,
+    # inspect dimensions before convert/load, and treat Pillow bombs as input errors.
+    with _decode_slots, warnings.catch_warnings():
+        warnings.simplefilter("error", Image.DecompressionBombWarning)
+        try:
+            with Image.open(io.BytesIO(data)) as original:
+                width, height = original.size
+                if width <= 0 or height <= 0 or width * height > MAX_PIXELS:
+                    raise PhotoError("Слишком большое разрешение фото")
+                if original.format not in {"JPEG", "PNG", "WEBP"}:
+                    raise PhotoError("Поддерживаются JPEG, PNG, WEBP")
+                original.thumbnail((MAX_SIDE, MAX_SIDE))
+                img = original.convert("RGB")  # new pixels; output JPEG has no EXIF
+                try:
+                    buf = io.BytesIO()
+                    img.save(buf, format="JPEG", quality=85)
+                finally:
+                    img.close()
+        except (UnidentifiedImageError, OSError, ValueError, Image.DecompressionBombError,
+                Image.DecompressionBombWarning) as e:
+            raise PhotoError("Не удалось прочитать изображение или превышен размер фото") from e
     return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
 
 

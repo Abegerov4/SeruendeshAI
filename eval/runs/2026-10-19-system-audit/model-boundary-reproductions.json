@@ -1,0 +1,158 @@
+{
+  "notice": "All injected model outputs below are synthetic fake responses, not measurements of actual LLM behavior.",
+  "backend_closed_at_arrival": {
+    "candidates": 1,
+    "reported_status": "open",
+    "travel_min": 16,
+    "actual_status_at_arrival": "closed",
+    "now": "2026-10-19T17:55:00+05:00",
+    "arrival": "2026-10-19T18:11:00+05:00"
+  },
+  "backend_fake_ungrounded_output": [
+    [
+      {
+        "poi_id": "audit-museum",
+        "why": "Есть бесплатный Wi-Fi, розетки и доступный вход без ступеней.",
+        "visit_min": [
+          5,
+          10
+        ],
+        "what_to_do": "Посетите бесплатную выставку динозавров.",
+        "source": "poi_data"
+      }
+    ],
+    []
+  ],
+  "main_retrieval_quarantine": [
+    {
+      "quarantine_id": "osm:w230409020",
+      "canonical_id": "osm:way/230409020",
+      "name": "проспект Мәңгілік Ел",
+      "category": "restaurant",
+      "rank": 1
+    },
+    {
+      "quarantine_id": "osm:n4529345494",
+      "canonical_id": "osm:node/4529345494",
+      "name": "Студия 1337",
+      "category": "attraction",
+      "rank": 1
+    },
+    {
+      "quarantine_id": "ov:3dda9f68-24a5-40",
+      "canonical_id": "overture:3dda9f68-24a5-4047-a0a0-101ce0a047fc",
+      "name": "Nurlyzhol_vokzaly",
+      "category": "bar",
+      "rank": 1
+    },
+    {
+      "quarantine_id": "ov:5b26880c-5614-4d",
+      "canonical_id": "overture:5b26880c-5614-4d74-a83d-06d45ed76b94",
+      "name": "ул.Абылай хана 5/2",
+      "category": "cafe",
+      "rank": 1
+    },
+    {
+      "quarantine_id": "ov:67740c18-c915-4b",
+      "canonical_id": "overture:67740c18-c915-4b60-871a-3199c23aebe8",
+      "name": "Divan meiramxanasy",
+      "category": "restaurant",
+      "rank": 1
+    }
+  ],
+  "ayat_fake_route": {
+    "model_is_fake": true,
+    "budget": 90,
+    "route": {
+      "order": [
+        "citypass:119",
+        "overture:5a524721-3c6f-45f9-a6f0-9610c03104e5"
+      ],
+      "legs": [
+        {
+          "from_id": "start",
+          "to_id": "citypass:119",
+          "distance_m": 12,
+          "travel_min": 1,
+          "polyline": [
+            [
+              51.128288,
+              71.430455
+            ],
+            [
+              51.128197,
+              71.430444
+            ]
+          ],
+          "geometry": "straight"
+        },
+        {
+          "from_id": "citypass:119",
+          "to_id": "overture:5a524721-3c6f-45f9-a6f0-9610c03104e5",
+          "distance_m": 454,
+          "travel_min": 7,
+          "polyline": [
+            [
+              51.128197,
+              71.430444
+            ],
+            [
+              51.128123,
+              71.425353
+            ]
+          ],
+          "geometry": "straight"
+        },
+        {
+          "from_id": "overture:5a524721-3c6f-45f9-a6f0-9610c03104e5",
+          "to_id": "start",
+          "distance_m": 456,
+          "travel_min": 7,
+          "polyline": [
+            [
+              51.128123,
+              71.425353
+            ],
+            [
+              51.128288,
+              71.430455
+            ]
+          ],
+          "geometry": "straight"
+        }
+      ],
+      "total_min": 90,
+      "fits_budget": true,
+      "returns_to_start": true,
+      "summary": "Мини-маршрут: Экскурсия на двухэтажном автобусе Red Bus → Picture Day. Всего ≈ 90 мин (15 мин в пути + 75 мин на местах). С возвращением к старту."
+    },
+    "items": [
+      {
+        "poi_id": "citypass:119",
+        "name": "Экскурсия на двухэтажном автобусе Red Bus",
+        "travel_min": 1,
+        "visit_min": [
+          15,
+          45
+        ],
+        "visit_suggested_min": 45,
+        "why": "Есть Wi-Fi и розетки, вход без ступеней.",
+        "what_to_do": "Посетите бесплатную выставку динозавров.",
+        "source": "poi_data"
+      },
+      {
+        "poi_id": "overture:5a524721-3c6f-45f9-a6f0-9610c03104e5",
+        "name": "Picture Day",
+        "travel_min": 7,
+        "visit_min": [
+          30,
+          67
+        ],
+        "visit_suggested_min": 67,
+        "why": "Есть Wi-Fi и розетки, вход без ступеней.",
+        "what_to_do": "Посетите бесплатную выставку динозавров.",
+        "source": "poi_data"
+      }
+    ]
+  }
+}

@@ -12,7 +12,7 @@ import httpx
 from astral import LocationInfo
 from astral.sun import sun
 
-from app.i18n import t
+from ayat_backend.app.i18n import t
 
 log = logging.getLogger("app.context")
 TZ = ZoneInfo("Asia/Almaty")  # Astana is UTC+5 since 2024-03-01 (tzdata >= 2024a)

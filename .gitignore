@@ -33,6 +33,24 @@ data/cache/
 rag/chroma/
 models/
 .cache/
+ayat_backend/.local/
+.planning/
+data/processed/.publish.lock
+eval/runs/**/*.db
+
+# Disposable collection bodies and agent scratch copies stay local.
+.superpowers/
+data/review/**/*-cache/
+eval/runs/**/cache/
+eval/runs/**/*-cache/
+# Source discovery writes a live ledger; the checked report/checkpoint is versioned.
+data/review/**/discovery-queue-events.jsonl
+data/review/**/discovery-queue-summary.json
+data/review/**/discovery-queue-host-state.json
+# Exact duplicate of the immutable master, retained locally by the audit.
+eval/runs/**/source-audit/input-pois.json
+# Raw supplement pages have parsed records, evidence and hashes beside them.
+data/review/**/directories/*.txt
 
 # OS / IDE
 .DS_Store

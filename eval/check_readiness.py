@@ -19,6 +19,7 @@ COMPONENTS = {
     "backend": "backend/app/main.py", "rag": "rag/retriever.py",
     "frontend": "frontend/package.json", "dataset": "data/processed/pois.json",
 }
+AYAT_COMPONENTS = {**COMPONENTS, "backend": "ayat_backend/app/main.py", "rag": "ayat_backend/app/retrieval.py"}
 DOCUMENTS = (
     "docs/test_scenarios.md", "docs/product_concept.md", "docs/rag_approach.md",
     "docs/ethics_privacy.md", "docs/demo_script.md",
@@ -166,16 +167,134 @@ def _fixture_poi(item: object) -> bool:
         return True
 
 
+def _ayat_evidence_errors(path: Path, root: Path, pois: Path, cases: Path, profile: str) -> list[str]:
+    """Validate primary evidence independently of the secondary report contract."""
+    import yaml
+    from ayat_backend.eval.run_eval import local_identity, run_checks
+    from ayat_backend.app.schemas import HealthResponse
+
+    try:
+        report = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, ValueError, RecursionError):
+        return ["Ayat evidence is missing or invalid JSON"]
+    if not isinstance(report, dict):
+        return ["Ayat evidence must be a report object"]
+    metadata, summary = report.get("metadata"), report.get("summary")
+    if not isinstance(metadata, dict) or not isinstance(summary, dict):
+        return ["Ayat evidence lacks metadata/summary"]
+    errors = []
+    if (report.get("report_format") != "ayat_evaluation" or report.get("response_schema") != "ayat.RecommendResponse"
+            or metadata.get("runtime_id") != "ayat"):
+        errors.append("Evidence is not the primary Ayat runtime/schema report")
+    if metadata.get("execution_kind") != "live_http":
+        errors.append("Ayat readiness requires actual live HTTP; in-process/fixture evidence is diagnostic only")
+    try:
+        endpoint_url(metadata.get("base_url", ""))
+    except (ValueError, TypeError, AttributeError):
+        errors.append("Missing valid Ayat endpoint provenance")
+    if metadata.get("profile") != profile:
+        errors.append("Requested readiness profile does not match evaluated profile")
+    try:
+        health = metadata.get("health")
+        if not isinstance(health, dict) or health.get("runtime_id") != "ayat":
+            raise ValueError
+        HealthResponse.model_validate(health)
+        if (health.get("status") != "ok" or health.get("ready") is not True
+                or health.get("readiness_profile") != profile):
+            raise ValueError
+        if profile == "llm" and (health.get("llm") != "ok" or not health.get("provider_verified_at")):
+            raise ValueError
+    except (ValueError, TypeError):
+        errors.append("Health identity/readiness/provider verification does not establish the requested Ayat profile")
+    try:
+        identity = local_identity(root)
+        known = identity["known_ids"]
+        expected_sha = file_sha256(identity["canonical_path"])
+        if (metadata.get("canonical_data_sha256") != expected_sha or metadata.get("dataset_sha256") != expected_sha
+                or file_sha256(pois) != expected_sha):
+            errors.append("Canonical data SHA does not match the current selected Ayat snapshot")
+        if (not identity["snapshot_version"] or metadata.get("snapshot_version") != identity["snapshot_version"]
+                or not isinstance(metadata.get("health"), dict)
+                or metadata["health"].get("snapshot_version") != identity["snapshot_version"]):
+            errors.append("Health/evidence snapshot identity does not match the current selected snapshot")
+        if isinstance(metadata.get("health"), dict) and metadata["health"].get("poi_count") != len(known):
+            errors.append("Health POI count does not match the selected eligible canonical view")
+    except (OSError, ValueError, KeyError):
+        known = None
+        errors.append("Current eligible canonical identity cannot be verified offline")
+    try:
+        if metadata.get("scenario_sha256") != file_sha256(cases):
+            errors.append("scenario_sha256 does not match current Ayat scenarios")
+        if metadata.get("source_sha256") != source_fingerprint(root):
+            errors.append("Source fingerprint is missing or stale, including uncommitted Ayat changes")
+    except OSError:
+        errors.append("Current Ayat provenance files cannot be read")
+    state = git_state(root)
+    if (not state["git_head"] or metadata.get("git_head") != state["git_head"]
+            or type(metadata.get("git_dirty")) is not bool or metadata["git_dirty"] != state["git_dirty"]):
+        errors.append("Git HEAD/dirty provenance is missing or changed")
+    if metadata.get("provenance_errors") or report.get("input_errors"):
+        errors.append("Evaluation recorded provenance/input errors")
+    try:
+        scenarios = yaml.safe_load(cases.read_text(encoding="utf-8"))
+        if (not isinstance(scenarios, list) or not scenarios
+                or any(not isinstance(s, dict) or not isinstance(s.get("id"), str)
+                       or not isinstance(s.get("request"), dict) or not isinstance(s.get("expect", {}), dict)
+                       for s in scenarios)):
+            raise ValueError
+        expected_ids = [s["id"] for s in scenarios]
+        if len(set(expected_ids)) != len(expected_ids):
+            raise ValueError
+    except (OSError, UnicodeError, ValueError, yaml.YAMLError):
+        return errors + ["Current Ayat scenarios are missing or malformed"]
+    count = len(scenarios)
+    if (any(type(summary.get(k)) is not int for k in ("planned", "attempted", "passed", "failed", "unexecuted"))
+            or summary != {"planned": count, "attempted": count, "passed": count, "failed": 0, "unexecuted": 0}
+            or report.get("passed") is not True):
+        errors.append("Not every planned Ayat scenario executed and passed")
+    rows = report.get("results")
+    if (not isinstance(rows, list) or len(rows) != count
+            or any(not isinstance(r, dict) or not isinstance(r.get("id"), str) for r in rows)
+            or sorted(str(r.get("id")) for r in rows) != sorted(expected_ids)):
+        return errors + ["Primary per-scenario execution evidence is incomplete"]
+    by_id = {s["id"]: s for s in scenarios}
+    for row in rows:
+        label = str(row.get("id"))
+        if (row.get("executed") is not True or row.get("passed") is not True or row.get("error")
+                or type(row.get("http_status")) is not int or row["http_status"] != 200
+                or not finite_number(row.get("ms")) or row["ms"] < 0):
+            errors.append(f"{label}: primary HTTP attempt failed or is incomplete")
+            continue
+        response = row.get("response")
+        if not isinstance(response, dict):
+            errors.append(f"{label}: primary response schema evidence absent")
+            continue
+        checks = run_checks(by_id[row["id"]], response, row["ms"], known)
+        if (row.get("checks") != checks or checks.get("C3 grounded ids") is not True
+                or any(value is False for value in checks.values())):
+            errors.append(f"{label}: primary schema/semantic/grounding checks missing, inconsistent or failed")
+        if (row.get("mode") != profile or not isinstance(response.get("llm"), dict)
+                or response["llm"].get("mode") != profile):
+            errors.append(f"{label}: actual response mode does not match requested profile")
+        elif (row.get("model") != response["llm"].get("model")
+                or profile == "llm" and (not isinstance(row.get("model"), str) or not row["model"].strip())):
+            errors.append(f"{label}: actual model provenance is missing or inconsistent")
+    return errors
+
+
 def check_readiness(root: Path, *, evidence: Path | None = None,
                     pois: Path | None = None, cases: Path | None = None,
-                    submission_manifest: Path | None = None) -> dict:
+                    submission_manifest: Path | None = None, runtime: str = "secondary", profile: str = "template") -> dict:
     root = Path(root).resolve()
+    if runtime not in {"secondary", "ayat"} or profile not in {"template", "llm"}:
+        raise ValueError("Unsupported runtime/profile")
+    components = AYAT_COMPONENTS if runtime == "ayat" else COMPONENTS
     pois = _resolve(root, pois or COMPONENTS["dataset"])
-    cases = _resolve(root, cases or "eval/golden_set.json")
+    cases = _resolve(root, cases or ("ayat_backend/eval/scenarios.yaml" if runtime == "ayat" else "eval/golden_set.json"))
     checks = []
     def check(name, status, scope, detail):
         checks.append({"name": name, "status": status, "scope": scope, "detail": detail})
-    for name, relative in COMPONENTS.items():
+    for name, relative in components.items():
         path = pois if name == "dataset" else root / relative
         present = path.is_file()
         check(name, "present" if present else "missing", "presence_only",
@@ -198,7 +317,8 @@ def check_readiness(root: Path, *, evidence: Path | None = None,
     if evidence is None:
         check("live_evaluation", "pending", "measured_execution", "No --evidence report supplied; offline fixture tests establish QA-tool correctness only")
     else:
-        errors = _evidence_errors(_resolve(root, evidence), root, pois, cases)
+        errors = (_ayat_evidence_errors(_resolve(root, evidence), root, pois, cases, profile) if runtime == "ayat"
+                  else _evidence_errors(_resolve(root, evidence), root, pois, cases))
         check("live_evaluation", "failed" if errors else "passed", "measured_execution",
               "; ".join(errors) if errors else "All current scenarios executed/passed with matching dataset/scenario/source/Git provenance; operator must verify real runtime configuration")
     missing_docs = [path for path in DOCUMENTS if not (root / path).is_file()]
@@ -224,7 +344,8 @@ def check_readiness(root: Path, *, evidence: Path | None = None,
     except (OSError, UnicodeError, json.JSONDecodeError, ValueError, TypeError, RecursionError):
         check("submission_artifacts", "pending", "references_only",
               "No valid docs/submission.json; supply slides_path and demo_url after the working demo exists")
-    return {"report_version": 1, "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+    return {"report_version": 1, "timestamp_utc": datetime.now(timezone.utc).isoformat(), "runtime_id": runtime,
+            "profile": profile if runtime == "ayat" else None,
             "ready": all(item["status"] in {"present", "passed"} for item in checks),
             "scope": "File, dataset-contract, recorded live-eval and submission-reference readiness; not a product/privacy certification",
             "checks": checks, "not_verified": NOT_VERIFIED}
@@ -242,6 +363,8 @@ def render_markdown(report: dict) -> str:
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path.cwd())
+    parser.add_argument("--runtime", choices=("secondary", "ayat"), default="secondary", help="Explicitly select primary Ayat; default evidence remains secondary-only")
+    parser.add_argument("--profile", choices=("template", "llm"), default="template")
     parser.add_argument("--output", type=Path, default=Path("eval/readiness.md"), help="Markdown destination; JSON companion uses same stem")
     parser.add_argument("--evidence", type=Path, help="Explicit run_eval report.json from real application execution")
     parser.add_argument("--pois", type=Path, help="Dataset relative to root or absolute")
@@ -250,7 +373,7 @@ def main(argv=None) -> int:
     args = parser.parse_args(argv)
     try:
         report = check_readiness(args.root, evidence=args.evidence, pois=args.pois, cases=args.cases,
-                                 submission_manifest=args.submission_manifest)
+                                 submission_manifest=args.submission_manifest, runtime=args.runtime, profile=args.profile)
         output = _resolve(args.root.resolve(), args.output)
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(render_markdown(report), encoding="utf-8")

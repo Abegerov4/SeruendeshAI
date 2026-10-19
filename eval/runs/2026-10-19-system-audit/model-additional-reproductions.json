@@ -1,0 +1,59 @@
+{
+  "photo_huge_dimensions": {
+    "bytes": 57,
+    "error": "DecompressionBombError",
+    "is_handled_PhotoError": false
+  },
+  "photo_http": {
+    "status_code": 500
+  },
+  "ayat_sdk_invalid_output": {
+    "exception": "ValidationError",
+    "mock_http_calls": 1,
+    "fallback_attempted": false
+  },
+  "hours_conflict": {
+    "id": "osm:node/4519246690",
+    "name": "Мизам",
+    "primary": "Mo-Su 08:00-23:00",
+    "conflicts": [
+      {
+        "field": "opening_hours",
+        "value": "24/7",
+        "source_id": "osm:node/4519247291"
+      },
+      {
+        "field": "opening_hours",
+        "value": "Mo-Su 11:00-00:00",
+        "source_id": "osm:node/4519260589"
+      }
+    ],
+    "main_open": [
+      [
+        "open",
+        "high"
+      ]
+    ]
+  },
+  "ayat_target_bypasses_safety": {
+    "normal_candidates": 0,
+    "target_candidates": 1,
+    "is_dark": true,
+    "max_outdoor_min": 0,
+    "wheelchair": "no",
+    "lit": false
+  },
+  "ayat_closing_soon_accepts_full_visit": {
+    "arrive": "17:40",
+    "visit_min": 30,
+    "result": {
+      "status": "closing_soon",
+      "confidence": "medium",
+      "label": "Закроется в 18:00 — на месте будет ~20 мин (данные OSM)",
+      "raw": "Mo-Su 09:00-18:00",
+      "next_change": "18:00",
+      "ok": true,
+      "minutes_left": 20
+    }
+  }
+}

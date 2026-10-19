@@ -196,3 +196,20 @@ def test_preserved_search_names_do_not_expand_identity_matching_mid_pass():
     pois, _ = run([base, translated, possible_namesake])
     assert {p["id"] for p in pois} == {base["id"], "overture:1"}
     assert "Beta" in next(p for p in pois if p["id"] == base["id"])["aliases"]
+
+
+def test_hours_field_provenance_survives_merge_without_rebuild_freshening():
+    from data.collect.normalize import normalize_candidates
+    rows = [dict(id="osm:way/101", name="Tower", category="monument", lat=51.12, lon=71.43,
+                 source="osm", source_url="https://example.org/osm", raw_tags={}, opening_hours=None),
+            dict(id="citypass:57", name="Tower", category="monument", lat=51.12001, lon=71.43,
+                 source="citypass", source_url="https://example.org/citypass", raw_tags={"check_date:opening_hours": "2020-01-01"},
+                 collected_at="2021-02-01", source_updated_at="2019-12-01", opening_hours="Mo-Su 09:00-21:00")]
+    pois, _ = normalize_candidates(rows, collected_at="2026-10-19")
+    assert len(pois) == 1
+    evidence = [e for e in pois[0].get("field_evidence", []) if e["field"] == "opening_hours"]
+    assert evidence, "Merged hours need their field source and dates"
+    assert evidence[0]["source_id"] == "citypass:57"
+    assert evidence[0]["acquired_at"] == "2021-02-01"
+    assert evidence[0]["checked_at"] == "2020-01-01"
+    assert evidence[0]["source_updated_at"] == "2019-12-01"

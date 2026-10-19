@@ -24,6 +24,7 @@ from pydantic import BaseModel, Field
 from backend.app import rag_adapter as rag
 from backend.app.config import ASTANA_TZ
 from backend.app.generate import human_tags
+from backend.app.guards import mask_pii
 from backend.app.pipeline import recommend_with_stats
 from backend.app.routing import build_route, default_visit, travel_min
 from backend.app.schemas import Location, Profile, RecommendRequest, RecommendResponse
@@ -149,6 +150,10 @@ def search_pois(
     viewpoint, monument, attraction, playground, mall, library, coworking, sport.
     Возвращает до top_k мест с расстоянием, временем в пути и статусом «открыто сейчас».
     """
+    if not 1 <= len(query) <= 1000 or (landmark and len(landmark) > 300):
+        raise ValueError("Query or landmark too long")
+    query = mask_pii(query)
+    landmark = mask_pii(landmark) if landmark else None
     olat, olon, label = _origin(landmark, lat, lon)
     radius_m = max(200, min(radius_m, 10_000))
     hits = rag.search(query, olat, olon, radius_m=radius_m, categories=categories or None, top_k=max(1, min(top_k, 15)))
@@ -180,6 +185,8 @@ def recommend_places(
     Ориентир можно передать в landmark или прямо в тексте query («я возле Хан Шатыра»).
     Ответ уже проверен: места только из базы, расстояния посчитаны кодом, неизвестные часы помечены.
     """
+    query = mask_pii(query)
+    landmark = mask_pii(landmark) if landmark else None
     if landmark and landmark.lower() not in query.lower():
         query = f"{query} (я возле {landmark})"
     req = RecommendRequest(

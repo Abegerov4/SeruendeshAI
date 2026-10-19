@@ -1,0 +1,31 @@
+[
+  {
+    "id": "osm:w230409020",
+    "reason": "restaurant whose name is a street address (проспект Мәңгілік Ел)"
+  },
+  {
+    "id": "osm:n4529345494",
+    "reason": "«Студия 1337» tagged as a 24/7 landmark"
+  },
+  {
+    "id": "ov:3dda9f68-24a5-40",
+    "reason": "Nurly Zhol railway station typed as a bar (Overture)"
+  },
+  {
+    "id": "ov:5b26880c-5614-4d",
+    "reason": "café whose name is an address (ул. Абылай хана 5/2)"
+  },
+  {
+    "id": "ov:67740c18-c915-4b",
+    "reason": "Overture re-adds a restaurant OSM marks as closed (osm:n13467930244, 65 m)"
+  },
+  {
+    "id": "citypass:81",
+    "reason": "CityPass Alem.ai coordinates are about6.5km from the matching owner location; use separately verified osm:way/454857501 museum view. Original source row retained.",
+    "reviewed_on": "2026-10-19",
+    "evidence_urls": [
+      "https://astana.citypass.kz/ru/attractions/muzei-energii-budushchego-nur-alem",
+      "https://alem.ai/en/"
+    ]
+  }
+]

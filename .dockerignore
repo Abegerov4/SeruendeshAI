@@ -11,6 +11,11 @@ frontend/dist
 data/raw
 rag/chroma
 .cache
+.superpowers
+.planning
+models
+eval/runs
+**/.local
 *.pdf
 /rag.md
 /mcp.md

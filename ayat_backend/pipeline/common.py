@@ -10,7 +10,7 @@ from typing import Any
 
 import requests
 
-from app.paths import RAW_DIR
+from ayat_backend.app.paths import RAW_DIR
 
 log = logging.getLogger("pipeline")
 

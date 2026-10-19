@@ -1,0 +1,63 @@
+{
+  "report_version": 1,
+  "timestamp_utc": "2026-10-18T21:24:01.453830+00:00",
+  "ready": false,
+  "scope": "File, dataset-contract, recorded live-eval and submission-reference readiness; not a product/privacy certification",
+  "checks": [
+    {
+      "name": "backend",
+      "status": "present",
+      "scope": "presence_only",
+      "detail": "backend/app/main.py: present; behavior not verified by file presence"
+    },
+    {
+      "name": "rag",
+      "status": "present",
+      "scope": "presence_only",
+      "detail": "rag/retriever.py: present; behavior not verified by file presence"
+    },
+    {
+      "name": "frontend",
+      "status": "present",
+      "scope": "presence_only",
+      "detail": "frontend/package.json: present; behavior not verified by file presence"
+    },
+    {
+      "name": "dataset",
+      "status": "present",
+      "scope": "presence_only",
+      "detail": "data/processed/pois.json: present; behavior not verified by file presence"
+    },
+    {
+      "name": "dataset_contract",
+      "status": "passed",
+      "scope": "offline_contract",
+      "detail": "14006 POIs; schema checked, sources not independently audited"
+    },
+    {
+      "name": "live_evaluation",
+      "status": "pending",
+      "scope": "measured_execution",
+      "detail": "No --evidence report supplied; offline fixture tests establish QA-tool correctness only"
+    },
+    {
+      "name": "submission_documents",
+      "status": "present",
+      "scope": "presence_only",
+      "detail": "Required preparation documents present; factual review still required"
+    },
+    {
+      "name": "submission_artifacts",
+      "status": "pending",
+      "scope": "references_only",
+      "detail": "No valid docs/submission.json; supply slides_path and demo_url after the working demo exists"
+    }
+  ],
+  "not_verified": [
+    "Privacy: real application logs, storage, consent and coordinate rounding require inspection.",
+    "Frontend UX, map interactions, race conditions and live demo behavior require execution.",
+    "POI source accuracy, pedestrian access and current opening hours require source/human review.",
+    "Faithfulness, explanation quality and RU/KK/EN fluency require calibrated human/judge review.",
+    "A local report is operator-provided evidence; this gate cannot authenticate its author or detect an undisclosed mock server."
+  ]
+}

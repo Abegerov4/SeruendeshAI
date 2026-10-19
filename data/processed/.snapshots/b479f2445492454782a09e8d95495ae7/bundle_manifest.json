@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "version": "b479f2445492454782a09e8d95495ae7",
+  "files": {
+    "pois.json": {
+      "sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
+      "bytes": 55223666
+    },
+    "pois_leisure.json": {
+      "sha256": "4710be3c37e4005696516adb1313a0a1f7ee63a72c3fd978e2f36afd09086e99",
+      "bytes": 17454460
+    },
+    "source_manifest.json": {
+      "sha256": "4ee22a20c31205dd78b5f470eb70aa1643c99a3aec5d883d34b90cb8b58a8019",
+      "bytes": 118759
+    },
+    "stats.json": {
+      "sha256": "5c71051755f762b4b8863260b609897481d395545e709fd96c26a40a61c8c658",
+      "bytes": 4349
+    },
+    "field_evidence.json": {
+      "sha256": "3ae539eb1f4ae7b6da475d2e3139fdfff56cb479a8e2722e84c8fc9303fe2663",
+      "bytes": 1475490
+    },
+    "fact_reviews.json": {
+      "sha256": "01ff2c2890bdde2794c09a738a582863c4b6774afdfdc6f9c7c9a015ee420830",
+      "bytes": 53473
+    },
+    "gazetteer.json": {
+      "sha256": "9d7fa5e05f0d7f0c5658a4b36db83732bd2be7490d992048165e2d7ade9719ef",
+      "bytes": 371646
+    },
+    "events.jsonl": {
+      "sha256": "063a631760f561f2608bc4e7dd6cee0d9ed06c4385f3fbbbdf95540d62616676",
+      "bytes": 86085
+    },
+    "river.json": {
+      "sha256": "737cdf5940e52265750ab0bf81eb2791f7e8e93c4c363d10725d8c64733e73aa",
+      "bytes": 29969
+    },
+    "walk_graph.npz": {
+      "sha256": "7d4f873ef7b1812328fb63348e5cc884958913c5c86439d7d707bdc025084ce5",
+      "bytes": 1719412
+    },
+    "astana_boundary.geojson": {
+      "sha256": "c73395da04da48993c54a94b94e42f3a6a67f015db275e51a0d409141374431c",
+      "bytes": 19480
+    },
+    "boundary.geojson": {
+      "sha256": "dba5bbeb077d295eae398a7e609143ca6981bdfac4ba93857c9b335129c3597a",
+      "bytes": 48056
+    },
+    "quarantine.json": {
+      "sha256": "766375cef9993eae38aa4a43856e2728e3c109f8c59b0ae1e0f46cfaadb3fdf3",
+      "bytes": 4194
+    },
+    "quality_overrides.json": {
+      "sha256": "ab8d95e90dbb870c896e65df8707d4c34032106341653c6cfe01ffb540f6d4bd",
+      "bytes": 5110
+    },
+    "review_manifest.json": {
+      "sha256": "67afee21da8434618680d8332e1400bf2d30de4e16694c9edbad5116fa39289e",
+      "bytes": 2182
+    },
+    "place_details.json": {
+      "sha256": "6236e37f9c3e9bf3c3f14abfb39f06c9e64748bfbdc8b5b493ae65dcdd24f628",
+      "bytes": 6333700
+    },
+    "city_services.json": {
+      "sha256": "cd79dbdeb222b57dc801f0a3b43e0ef15a43cc43bf9875ac388a6a9dfbf7c9e5",
+      "bytes": 164988
+    },
+    "canonical_index_manifest.json": {
+      "sha256": "aff8bfffec109ff85a8f4c300e4e2c7b62c0be903c44f6805e10d2f175ca851f",
+      "bytes": 118264
+    },
+    "vectors-dd592fbdb917130ac924ec0c.npy": {
+      "sha256": "dd592fbdb917130ac924ec0cd30f2c100a4ab4ecfc2185b1429bb402421852ff",
+      "bytes": 4216448
+    }
+  },
+  "prior_version": "afd497bafc4f4a689e3fb416661c3f7e",
+  "quality_gates": "passed",
+  "approved_removed_ids": [],
+  "approved_removed_sidecars": {}
+}

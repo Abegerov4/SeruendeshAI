@@ -8,7 +8,8 @@ LANDMARKS: list[dict] = [
     {"key": "baiterek", "label": "Байтерек", "aliases": ["байтерек", "бәйтерек", "baiterek", "bayterek"], "fallback": (51.12828, 71.43050)},
     {"key": "khan_shatyr", "label": "Хан Шатыр", "aliases": ["хан шатыр", "khan shatyr", "хан-шатыр"], "fallback": (51.13250, 71.40370)},
     {"key": "mega_silk_way", "label": "Mega Silk Way", "aliases": ["mega silk way", "мега силк вэй", "мега силк уэй", "мега силк", "mega silkway"]},
-    {"key": "expo", "label": "EXPO / Нур Алем", "aliases": ["нур алем", "нұр әлем", "nur alem", "экспо", "expo", "сфера экспо"], "prefer": "-", "prefer_cats": ("museum", "landmark", "event_venue")},
+    {"key": "expo", "label": "EXPO", "aliases": ["экспо", "expo", "экспо-2017", "expo 2017"], "prefer": "-", "prefer_cats": ("event_venue", "landmark", "museum")},
+    {"key": "nur_alem", "label": "Нур Алем (сфера EXPO)", "aliases": ["нур алем", "нұр әлем", "nur alem", "сфера экспо", "музей будущей энергии"], "prefer": "-", "prefer_cats": ("museum", "landmark"), "fallback": (51.08930, 71.41590)},
     {"key": "airport", "label": "Аэропорт Астаны (NQZ)", "aliases": ["аэропорт", "әуежай", "airport", "nqz", "аэропорту"], "fallback": (51.02220, 71.46690), "kind": "airport"},
     {"key": "nurly_zhol", "label": "Вокзал Нурлы Жол", "aliases": ["нурлы жол", "нұрлы жол", "nurly zhol"], "prefer": "station"},
     {"key": "astana_1", "label": "Вокзал Астана-1", "aliases": ["астана-1", "астана 1", "старый вокзал", "astana-1", "вокзал астана", "astana train station", "астана (станция)"], "prefer": "station"},
@@ -25,10 +26,11 @@ LANDMARKS: list[dict] = [
     {"key": "nazarbayev_university", "label": "Назарбаев Университет", "aliases": ["назарбаев университет", "nazarbayev university", "назарбаев университеті"], "prefer": "university"},
     {"key": "barys_arena", "label": "Барыс Арена", "aliases": ["барыс арена", "barys arena"], "prefer": "stadium", "prefer_cats": ("active",)},
     {"key": "astana_arena", "label": "Астана Арена", "aliases": ["астана арена", "astana arena"], "prefer": "stadium"},
-    {"key": "nurzhol", "label": "Бульвар Нуржол", "aliases": ["нуржол", "нұржол", "nurzhol", "нұржол желек жолы"], "prefer": "boulevard", "prefer_cats": ("garden", "park")},
+    {"key": "nurzhol", "label": "Бульвар Нуржол", "aliases": ["нуржол", "нұржол", "nurzhol", "нұржол желек жолы"], "prefer": "boulevard", "prefer_cats": ("garden", "park"),
+     "fallback": (51.12828, 71.43050)},  # Baiterek stands in the middle of the boulevard
     {"key": "triathlon_park", "label": "Триатлон парк", "aliases": ["триатлон парк", "triathlon park"]},
     {"key": "kazakh_eli", "label": "Монумент «Қазақ Елі»", "aliases": ["қазақ елі", "казак ели", "площадь независимости", "kazakh eli"]},
     {"key": "shabyt", "label": "Дворец творчества «Шабыт»", "aliases": ["шабыт", "shabyt"], "prefer": "-", "prefer_cats": ("arts_centre", "event_venue", "theatre", "landmark")},
-    {"key": "duman", "label": "Океанариум Думан", "aliases": ["думан", "duman"], "prefer": "-", "prefer_cats": ("zoo_aquarium", "kids_indoor", "theme_park", "mall")},
+    {"key": "duman", "label": "Ailand (бывш. Думан)", "aliases": ["думан", "duman", "ailand", "айленд", "айлэнд"], "prefer": "-", "prefer_cats": ("zoo_aquarium", "kids_indoor", "theme_park", "mall")},
     {"key": "aruzhan", "label": "ТРЦ Аружан", "aliases": ["аружан", "aruzhan"]},
 ]

@@ -1,0 +1,639 @@
+{
+  "model": "gpt-4.1-mini",
+  "cap_usd": 0.1,
+  "reserved_usd": 0.031522400000000006,
+  "actual_usd": 0.031522400000000006,
+  "attempts": [
+    {
+      "id": "28aaa740d00340868351f293e2523af5",
+      "number": 1,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.004646,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1303,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1417
+      },
+      "actual_usd": 0.0007036,
+      "settled": true
+    },
+    {
+      "id": "1a67552132d644f5ba1e5c9bb529cae5",
+      "number": 2,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.0080164,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2760,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 198,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2958
+      },
+      "actual_usd": 0.0014208,
+      "settled": true
+    },
+    {
+      "id": "894987aceae346de8af63b089b6cca0c",
+      "number": 3,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.004646,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1304,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 124,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1428
+      },
+      "actual_usd": 0.00072,
+      "settled": true
+    },
+    {
+      "id": "d5454299807e446dab59dbed4d7249a5",
+      "number": 4,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.0080304,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2698,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 255,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2953
+      },
+      "actual_usd": 0.0014872000000000002,
+      "settled": true
+    },
+    {
+      "id": "fdb399234d1d4218993b981dd8267bd4",
+      "number": 5,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.00463,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1299,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 141,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1440
+      },
+      "actual_usd": 0.0007452,
+      "settled": true
+    },
+    {
+      "id": "1b10a0de820b45e7b1126f6e1d799de5",
+      "number": 6,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.007954,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2666,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 177,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2843
+      },
+      "actual_usd": 0.0013496,
+      "settled": true
+    },
+    {
+      "id": "4cf04b343b7942268368d5b61f9849ff",
+      "number": 7,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.004646,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1303,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 111,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1414
+      },
+      "actual_usd": 0.0006988000000000001,
+      "settled": true
+    },
+    {
+      "id": "ee6cc6276bb24227a53ae44ebbbe3279",
+      "number": 8,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.0080164,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2760,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 230,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2990
+      },
+      "actual_usd": 0.001472,
+      "settled": true
+    },
+    {
+      "id": "42a68da33361474684184070fc2a5b7c",
+      "number": 9,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.004646,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1304,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 117,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1421
+      },
+      "actual_usd": 0.0007088000000000001,
+      "settled": true
+    },
+    {
+      "id": "54426fa6a1c042ea98e678489df26a00",
+      "number": 10,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.0081176,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2738,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 242,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2980
+      },
+      "actual_usd": 0.0014824,
+      "settled": true
+    },
+    {
+      "id": "308e653ded1744e2b9497480fe22d0ba",
+      "number": 11,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.00463,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1299,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 144,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1443
+      },
+      "actual_usd": 0.00075,
+      "settled": true
+    },
+    {
+      "id": "da9c1f9fbe1d4cf9a6c3c817741d01d8",
+      "number": 12,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.007954,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2666,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 233,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2899
+      },
+      "actual_usd": 0.0014392,
+      "settled": true
+    },
+    {
+      "id": "8f70974caa864d2096ba689d46ae3268",
+      "number": 13,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.0046512,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1309,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 131,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1440
+      },
+      "actual_usd": 0.0007332,
+      "settled": true
+    },
+    {
+      "id": "ebb0029016ca49e3a330d33041266bff",
+      "number": 14,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.007978,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2651,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 226,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2877
+      },
+      "actual_usd": 0.001422,
+      "settled": true
+    },
+    {
+      "id": "fdec6eac95154effb1bf2be3e7e92778",
+      "number": 15,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.004646,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1303,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1425
+      },
+      "actual_usd": 0.0007164000000000001,
+      "settled": true
+    },
+    {
+      "id": "e8e0460318344ab2972641f93bcb3202",
+      "number": 16,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.0079948,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2744,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 207,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2951
+      },
+      "actual_usd": 0.0014288000000000003,
+      "settled": true
+    },
+    {
+      "id": "67e836c0a85b401ca48199f5648d5754",
+      "number": 17,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.004646,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1304,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 115,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1419
+      },
+      "actual_usd": 0.0007056,
+      "settled": true
+    },
+    {
+      "id": "398cb1483818487cb40bffca6e3fd6ec",
+      "number": 18,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.00812,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2738,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 251,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2989
+      },
+      "actual_usd": 0.0014968000000000002,
+      "settled": true
+    },
+    {
+      "id": "ef38232c80e545ceb854be15a3914350",
+      "number": 19,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.00463,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1299,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 129,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1428
+      },
+      "actual_usd": 0.000726,
+      "settled": true
+    },
+    {
+      "id": "14f948ed225e4e5eadc6d1d1cb17be45",
+      "number": 20,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.007954,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2666,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 176,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2842
+      },
+      "actual_usd": 0.001348,
+      "settled": true
+    },
+    {
+      "id": "f16ff99c47584237a8a0a201efc76aca",
+      "number": 21,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.0046512,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1309,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 1152
+        },
+        "output_tokens": 130,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1439
+      },
+      "actual_usd": 0.0007316,
+      "settled": true
+    },
+    {
+      "id": "678180ac35ad49b39ba0adbd9feb9e48",
+      "number": 22,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.008034,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2685,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 243,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2928
+      },
+      "actual_usd": 0.0014628,
+      "settled": true
+    },
+    {
+      "id": "c6fe1a0d7ec8415686dc52224bfa3a76",
+      "number": 23,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.005100400000000001,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1526,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 162,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1688
+      },
+      "actual_usd": 0.0008695999999999999,
+      "settled": true
+    },
+    {
+      "id": "111f9196dec34e7d9c009965fba8e4d4",
+      "number": 24,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.005069199999999999,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1512,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 114,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1626
+      },
+      "actual_usd": 0.0007872,
+      "settled": true
+    },
+    {
+      "id": "f7d21690d10c40d0b5eb7244e229f662",
+      "number": 25,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.0050732,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1516,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 124,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1640
+      },
+      "actual_usd": 0.0008047999999999999,
+      "settled": true
+    },
+    {
+      "id": "6ba61242c6f9428b91d1384935426c9e",
+      "number": 26,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.0078948,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2631,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 193,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2824
+      },
+      "actual_usd": 0.0013612000000000001,
+      "settled": true
+    },
+    {
+      "id": "3a90b0140d124728b866bd395102c6d7",
+      "number": 27,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.005100400000000001,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1526,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 169,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1695
+      },
+      "actual_usd": 0.0008807999999999999,
+      "settled": true
+    },
+    {
+      "id": "c31c3a1bd6f3422e9ed90860bfd74f0c",
+      "number": 28,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.005069199999999999,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1512,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 106,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1618
+      },
+      "actual_usd": 0.0007744000000000001,
+      "settled": true
+    },
+    {
+      "id": "ae17e6d5e83e4cb6a871bbca2a39dca9",
+      "number": 29,
+      "max_output_tokens": 500,
+      "reserved_usd": 0.0050732,
+      "status": 200,
+      "usage": {
+        "input_tokens": 1516,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 124,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1640
+      },
+      "actual_usd": 0.0008047999999999999,
+      "settled": true
+    },
+    {
+      "id": "13ee5c35cb3b46498db9a96f59145854",
+      "number": 30,
+      "max_output_tokens": 1200,
+      "reserved_usd": 0.0078616,
+      "status": 200,
+      "usage": {
+        "input_tokens": 2611,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 279,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2890
+      },
+      "actual_usd": 0.0014908000000000002,
+      "settled": true
+    }
+  ],
+  "pricing_url": "https://developers.openai.com/api/docs/models/gpt-4.1-mini"
+}
