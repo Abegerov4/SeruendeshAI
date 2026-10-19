@@ -6,6 +6,7 @@ derived from the token; the bot reaches the API over localhost with the shared B
 user gets their own rate-limit budget. The token never leaves the environment and is never logged."""
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import hmac
 import logging
@@ -17,8 +18,10 @@ from app.config import get_settings
 
 log = logging.getLogger("seru.telegram")
 router = APIRouter()
-_STATE: dict = {"app": None, "secret": None}
+_STATE: dict = {"app": None, "secret": None, "watch": None}
 WEBHOOK_PATH = "/telegram/webhook"
+UPDATES = ["message", "callback_query"]
+WATCH_S = 300
 
 
 def _secret(token: str) -> str:
@@ -42,21 +45,36 @@ async def start(port: int) -> None:
         await app.initialize()
         await app.start()
         secret = _secret(token)
-        await app.bot.set_webhook(url=s.public_url.rstrip("/") + WEBHOOK_PATH, secret_token=secret,
-                                  allowed_updates=["message", "callback_query"])
+        url = s.public_url.rstrip("/") + WEBHOOK_PATH
+        await app.bot.set_webhook(url=url, secret_token=secret, allowed_updates=UPDATES)
         await app.bot.set_my_commands(tb.COMMANDS)
-        _STATE.update(app=app, secret=secret)
+        _STATE.update(app=app, secret=secret, watch=asyncio.create_task(_watch(app, url, secret)))
         log.info("telegram bot @%s is listening by webhook", app.bot.username)
     except Exception as exc:  # the website must come up even if Telegram is unreachable
         log.warning("telegram bot not started: %s", type(exc).__name__)
 
 
+async def _watch(app, url: str, secret: str) -> None:
+    """Running the bot anywhere in polling mode with the same token (`make bot`) removes the webhook, and the
+    production bot would stay silent until the next deploy. Every few minutes the webhook is checked and restored."""
+    while True:
+        await asyncio.sleep(WATCH_S)
+        try:
+            if (await app.bot.get_webhook_info()).url != url:
+                await app.bot.set_webhook(url=url, secret_token=secret, allowed_updates=UPDATES)
+                log.warning("telegram webhook was removed (a polling copy of the bot with this token?) — restored")
+        except Exception as exc:  # Telegram unreachable: try again on the next round
+            log.warning("telegram webhook check failed: %s", type(exc).__name__)
+
+
 async def stop() -> None:
     app = _STATE.get("app")
+    if (watch := _STATE.get("watch")) is not None:
+        watch.cancel()
     if app is not None:
         await app.stop()
         await app.shutdown()  # the webhook stays registered: the next start re-registers it
-        _STATE.update(app=None, secret=None)
+        _STATE.update(app=None, secret=None, watch=None)
 
 
 @router.post(WEBHOOK_PATH, include_in_schema=False)
