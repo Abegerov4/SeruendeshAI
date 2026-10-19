@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import tempfile
+import time
 import warnings
 
 MAX_BYTES = 12 * 1024 * 1024
@@ -19,6 +20,24 @@ def client():
                         config=Config(signature_version="s3v4", s3={"addressing_style": "path"},
                                       connect_timeout=5, read_timeout=30,
                                       retries={"max_attempts": 3}))
+
+
+def wait_ready(s3, attempts=60, pause=2):
+    """Wait for a signed S3 request, not just an open TCP port."""
+    from botocore.exceptions import ClientError, ConnectionError, HTTPClientError
+    for attempt in range(attempts):
+        try:
+            s3.list_buckets()
+            return
+        except ClientError as exc:
+            if exc.response.get("ResponseMetadata", {}).get("HTTPStatusCode", 0) < 500:
+                raise  # Wrong credentials/configuration must fail closed.
+            if attempt == attempts - 1:
+                raise
+        except (ConnectionError, HTTPClientError):
+            if attempt == attempts - 1:
+                raise
+        time.sleep(pause)
 
 
 def initialize(s3, bucket):
@@ -34,7 +53,7 @@ def initialize(s3, bucket):
     # Only public card images: no anonymous listing, writes or other prefixes.
     s3.put_bucket_policy(Bucket=bucket, Policy=json.dumps({
         "Version": "2012-10-17", "Statement": [{
-            "Effect": "Allow", "Principal": {"AWS": ["*"]},
+            "Effect": "Allow", "Principal": "*",
             "Action": ["s3:GetObject"], "Resource": [f"arn:aws:s3:::{bucket}/cards/*"]}]}))
 
 
@@ -102,6 +121,7 @@ def main():
     args = parser.parse_args()
     s3, bucket = client(), os.environ["S3_BUCKET"]
     if args.command == "init":
+        wait_ready(s3)
         initialize(s3, bucket)
         print("Card photo bucket ready")
     else:

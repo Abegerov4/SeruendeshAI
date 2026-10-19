@@ -87,6 +87,7 @@ def test_init_only_creates_missing_bucket_and_scopes_policy(manager):
     s3.create_bucket.assert_called_once_with(Bucket="photos")
     policy = json.loads(s3.put_bucket_policy.call_args.kwargs["Policy"])
     assert policy["Statement"][0]["Action"] == ["s3:GetObject"]
+    assert policy["Statement"][0]["Principal"] == "*"
     assert policy["Statement"][0]["Resource"] == ["arn:aws:s3:::photos/cards/*"]
     s3.reset_mock()
     s3.head_bucket.side_effect = None
@@ -95,3 +96,28 @@ def test_init_only_creates_missing_bucket_and_scopes_policy(manager):
     s3.head_bucket.side_effect = ClientError({"Error": {"Code": "403"}}, "HeadBucket")
     with pytest.raises(ClientError):
         manager.initialize(s3, "photos")
+
+
+def test_readiness_retries_startup_and_fails_on_bad_credentials(manager, monkeypatch):
+    from botocore.exceptions import ClientError, EndpointConnectionError
+    monkeypatch.setattr(manager.time, "sleep", Mock())
+    s3 = Mock()
+    s3.list_buckets.side_effect = [EndpointConnectionError(endpoint_url="http://storage"), {}]
+    manager.wait_ready(s3, attempts=2)
+    assert s3.list_buckets.call_count == 2
+    s3.reset_mock()
+    s3.list_buckets.side_effect = ClientError(
+        {"Error": {"Code": "AccessDenied"}, "ResponseMetadata": {"HTTPStatusCode": 403}}, "ListBuckets")
+    with pytest.raises(ClientError):
+        manager.wait_ready(s3)
+    assert s3.list_buckets.call_count == 1
+
+
+def test_readiness_exhaustion(manager, monkeypatch):
+    from botocore.exceptions import EndpointConnectionError
+    monkeypatch.setattr(manager.time, "sleep", Mock())
+    s3 = Mock()
+    s3.list_buckets.side_effect = EndpointConnectionError(endpoint_url="http://storage")
+    with pytest.raises(EndpointConnectionError):
+        manager.wait_ready(s3, attempts=2)
+    assert s3.list_buckets.call_count == 2

@@ -10,39 +10,33 @@ services:
       photos-init:
         condition: service_completed_successfully
 
-  minio:
-    build: ./infra/minio
+  seaweedfs:
+    image: chrislusf/seaweedfs:4.48
+    command: ["mini", "-dir=/data", "-s3.port=8333"]
     environment:
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER:?Set MINIO_ROOT_USER in .env}
-      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?Set MINIO_ROOT_PASSWORD in .env}
+      AWS_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:?Set S3_ACCESS_KEY_ID in .env}
+      AWS_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:?Set S3_SECRET_ACCESS_KEY in .env}
     ports:
-      - "127.0.0.1:9000:9000"
-      - "127.0.0.1:9001:9001"
+      - "127.0.0.1:9000:8333"
     volumes:
-      - minio-data:/data
+      - seaweedfs-data:/data
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-fsS", "http://localhost:9000/minio/health/live"]
-      interval: 5s
-      timeout: 3s
-      retries: 30
-      start_period: 15s
 
   photos-init:
     build:
       context: .
       dockerfile: infra/photos/Dockerfile
     environment: &photo-environment
-      S3_ENDPOINT_URL: http://minio:9000
-      AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:?Set MINIO_ROOT_USER in .env}
-      AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:?Set MINIO_ROOT_PASSWORD in .env}
+      S3_ENDPOINT_URL: http://seaweedfs:8333
+      AWS_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:?Set S3_ACCESS_KEY_ID in .env}
+      AWS_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:?Set S3_SECRET_ACCESS_KEY in .env}
       AWS_DEFAULT_REGION: us-east-1
       S3_BUCKET: place-photos
       CARD_PHOTOS_FILE: /state/photos.json
     command: ["init"]
     depends_on:
-      minio:
-        condition: service_healthy
+      seaweedfs:
+        condition: service_started
     volumes:
       - card-photo-manifest:/state
     restart: "no"
@@ -61,5 +55,5 @@ services:
         condition: service_completed_successfully
 
 volumes:
-  minio-data:
+  seaweedfs-data:
   card-photo-manifest:
