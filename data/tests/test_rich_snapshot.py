@@ -39,7 +39,7 @@ def test_changed_canonical_record_withholds_its_old_details_but_retains_history(
 
 
 def test_dense_fingerprint_tracks_place_data_and_reader(tmp_path):
-    from ayat_backend.app.canonical_index import policy_hashes
+    from app.canonical_index import policy_hashes
     first = policy_hashes(tmp_path)
     (tmp_path/"place_details.json").write_text('{}')
     second = policy_hashes(tmp_path)

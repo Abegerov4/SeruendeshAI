@@ -1,0 +1,197 @@
+{
+ "api_version": "1.0",
+ "request_id": "4d0a5a7d0d3a",
+ "lang": "ru",
+ "summary": "Для прогулки с ребёнком подойдут площадка поблизости или вариант в помещении на случай прохлады.",
+ "recommendations": [
+  {
+   "poi_id": "osm:w1504543670",
+   "name": "Детская площадка (Қазақ радиосы көшесі)",
+   "category": "playground",
+   "lat": 51.129179,
+   "lon": 71.415815,
+   "distance_m": 416,
+   "travel_min": 11,
+   "why": "Это детская площадка, и она ближе остальных; в прохладную ветреную погоду короткая прогулка может быть кстати.",
+   "visit_min": [
+    20,
+    40
+   ],
+   "what_to_do": "Загляните на площадку и дайте ребёнку поиграть, пока вы немного прогуляетесь рядом.",
+   "open_status": "open",
+   "open_confidence": "low",
+   "source": "poi_data",
+   "source_url": "https://www.openstreetmap.org/way/1504543670",
+   "rating": null,
+   "rank": 1,
+   "category_detail": "playground",
+   "category_label": "Детская площадка",
+   "icon": "baby",
+   "walk_distance_m": 630,
+   "travel_mode": "walk",
+   "visit_suggested_min": 25,
+   "leave_by": null,
+   "opening": {
+    "status": "always",
+    "confidence": "medium",
+    "label": "Открытая территория — часы не ограничены",
+    "raw": null,
+    "next_change": null
+   },
+   "source_label": "Данные POI",
+   "data_sources": [
+    "osm"
+   ],
+   "popularity": 0.0,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [
+    "outdoor",
+    "kids",
+    "free"
+   ],
+   "event": null,
+   "address": null,
+   "description": "Детская площадка.",
+   "description_source": "template"
+  },
+  {
+   "poi_id": "osm:w1135598209",
+   "name": "Детская площадка (Қабанбай Батыр даңғылы)",
+   "category": "playground",
+   "lat": 51.137386,
+   "lon": 71.414778,
+   "distance_m": 886,
+   "travel_min": 23,
+   "why": "Это детская площадка в помещении — подходящий вариант, если на улице прохладно.",
+   "visit_min": [
+    20,
+    40
+   ],
+   "what_to_do": "Загляните внутрь и предложите ребёнку поиграть, а затем выберите, чем заняться дальше.",
+   "open_status": "open",
+   "open_confidence": "low",
+   "source": "poi_data",
+   "source_url": "https://www.openstreetmap.org/way/1135598209",
+   "rating": null,
+   "rank": 2,
+   "category_detail": "playground",
+   "category_label": "Детская площадка",
+   "icon": "baby",
+   "walk_distance_m": 1350,
+   "travel_mode": "walk",
+   "visit_suggested_min": 25,
+   "leave_by": null,
+   "opening": {
+    "status": "always",
+    "confidence": "medium",
+    "label": "Открытая территория — часы не ограничены",
+    "raw": null,
+    "next_change": null
+   },
+   "source_label": "Данные POI",
+   "data_sources": [
+    "osm"
+   ],
+   "popularity": 0.018,
+   "features": [
+    "в помещении"
+   ],
+   "accessibility": "unknown",
+   "badges": [
+    "indoor",
+    "kids",
+    "free"
+   ],
+   "event": null,
+   "address": null,
+   "description": "Детская площадка. Удобства: в помещении.",
+   "description_source": "template"
+  }
+ ],
+ "route": null,
+ "used_context": {
+  "location_source": "gps_rounded",
+  "location_label": "~ район «Астана Опера» (округлено)",
+  "radius_m": 1125,
+  "time_budget_min": 60,
+  "mode": "walk",
+  "filters": [
+   "с ребёнком",
+   "Детская площадка",
+   "Музей",
+   "Детский игровой центр"
+  ],
+  "now": "2026-10-18T12:00:00+05:00",
+  "location": {
+   "source": "gps_rounded",
+   "label": "~ район «Астана Опера» (округлено)",
+   "lat": 51.13,
+   "lon": 71.41,
+   "precision_m": 100
+  },
+  "local_time": "12:00",
+  "weekday": "воскресенье",
+  "is_holiday": null,
+  "is_dark": false,
+  "weather": {
+   "temperature_c": 9.0,
+   "feels_like_c": 6.0,
+   "wind_ms": 5.0,
+   "precipitation": false,
+   "description": "9°C (ощущается 6°C), ветер 5 м/с",
+   "max_outdoor_min": 60,
+   "source": "demo override"
+  },
+  "speed_kmh": 3.6,
+  "party": "family_kids",
+  "parsed_from_query": {
+   "categories": [
+    "playground",
+    "museum",
+    "kids_indoor"
+   ],
+   "preferences": [
+    "playground",
+    "museum",
+    "kids_indoor"
+   ],
+   "needs": [
+    "kids"
+   ],
+   "time_budget_min": null,
+   "deadline": null,
+   "deadline_in_min": null,
+   "landmark": null,
+   "night": false,
+   "surprise": false,
+   "parser": "llm+rules (gpt-6-luna)"
+  },
+  "relaxations": [],
+  "funnel": {
+   "total": 2307,
+   "within_reach": 193,
+   "after_filters": 18,
+   "shown": 2
+  },
+  "data_sources": [
+   "OpenStreetMap (ODbL)",
+   "Wikidata (CC0)",
+   "Wikipedia (CC BY-SA)",
+   "Overture Maps (CDLA)",
+   "Ticketon / Sxodim",
+   "Open-Meteo (CC BY 4.0)"
+  ],
+  "data_built_at": "2026-10-18T18:20:55+00:00",
+  "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+ },
+ "considered": [],
+ "notes": [],
+ "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+ "ai_generated": true,
+ "llm": {
+  "mode": "llm",
+  "model": "gpt-6-luna",
+  "latency_ms": 3454
+ }
+}

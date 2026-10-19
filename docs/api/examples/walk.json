@@ -1,0 +1,188 @@
+{
+ "api_version": "1.0",
+ "request_id": "8ee56a4dd822",
+ "lang": "ru",
+ "summary": "Для прогулки на свежем воздухе выбирайте парк, а если захочется согреться — рядом есть кофейня.",
+ "recommendations": [
+  {
+   "poi_id": "osm:w1456208624",
+   "name": "Аллея мира и согласия",
+   "category": "park",
+   "lat": 51.093812,
+   "lon": 71.41695,
+   "distance_m": 853,
+   "travel_min": 18,
+   "why": "Парк подходит для неспешной прогулки в светлое время; заявленный диапазон посещения укладывается в ваш план.",
+   "visit_min": [
+    20,
+    45
+   ],
+   "what_to_do": "Пройдитесь по аллее и устройте короткую прогулку без спешки.",
+   "open_status": "open",
+   "open_confidence": "low",
+   "source": "poi_data",
+   "source_url": "https://www.openstreetmap.org/way/1456208624",
+   "rating": null,
+   "rank": 1,
+   "category_detail": "park",
+   "category_label": "Парк",
+   "icon": "trees",
+   "walk_distance_m": 1300,
+   "travel_mode": "walk",
+   "visit_suggested_min": 30,
+   "leave_by": null,
+   "opening": {
+    "status": "always",
+    "confidence": "medium",
+    "label": "Открытая территория — часы не ограничены",
+    "raw": null,
+    "next_change": null
+   },
+   "source_label": "Данные POI",
+   "data_sources": [
+    "osm"
+   ],
+   "popularity": 0.0,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [
+    "outdoor",
+    "kids",
+    "free"
+   ],
+   "event": null,
+   "address": null,
+   "description": "Парк.",
+   "description_source": "template"
+  },
+  {
+   "poi_id": "osm:n14275682079",
+   "name": "Drinkit",
+   "category": "cafe",
+   "lat": 51.089076,
+   "lon": 71.40609,
+   "distance_m": 87,
+   "travel_min": 3,
+   "why": "Drinkit совсем рядом и в помещении — удобно согреться, если ветер сделает прогулку некомфортной.",
+   "visit_min": [
+    25,
+    45
+   ],
+   "what_to_do": "Загляните на кофе и передохните после прогулки.",
+   "open_status": "open",
+   "open_confidence": "high",
+   "source": "poi_data",
+   "source_url": "https://www.openstreetmap.org/node/14275682079",
+   "rating": null,
+   "rank": 2,
+   "category_detail": "cafe",
+   "category_label": "Кофейня / кафе",
+   "icon": "coffee",
+   "walk_distance_m": 220,
+   "travel_mode": "walk",
+   "visit_suggested_min": 25,
+   "leave_by": null,
+   "opening": {
+    "status": "open",
+    "confidence": "medium",
+    "label": "Открыто до 22:00 (данные OSM)",
+    "raw": "Mo-Su 08:00-22:00",
+    "next_change": "22:00"
+   },
+   "source_label": "Данные POI",
+   "data_sources": [
+    "osm"
+   ],
+   "popularity": 0.127,
+   "features": [
+    "Wi-Fi",
+    "без курения",
+    "есть туалет"
+   ],
+   "accessibility": "unknown",
+   "badges": [
+    "indoor"
+   ],
+   "event": null,
+   "address": "Қабанбай Батыр даңғылы, 62",
+   "description": "Кофейня / кафе. Кухня: кофе. Удобства: Wi-Fi, без курения, есть туалет. Адрес: Қабанбай Батыр даңғылы, 62.",
+   "description_source": "template"
+  }
+ ],
+ "route": null,
+ "used_context": {
+  "location_source": "landmark",
+  "location_label": "Mega Silk Way",
+  "radius_m": 1757,
+  "time_budget_min": 60,
+  "mode": "walk",
+  "filters": [],
+  "now": "2026-10-18T15:00:00+05:00",
+  "location": {
+   "source": "text_landmark",
+   "label": "Mega Silk Way",
+   "lat": 51.089,
+   "lon": 71.407,
+   "precision_m": 50
+  },
+  "local_time": "15:00",
+  "weekday": "воскресенье",
+  "is_holiday": null,
+  "is_dark": false,
+  "weather": {
+   "temperature_c": 9.0,
+   "feels_like_c": 6.0,
+   "wind_ms": 5.0,
+   "precipitation": false,
+   "description": "9°C (ощущается 6°C), ветер 5 м/с",
+   "max_outdoor_min": 60,
+   "source": "demo override"
+  },
+  "speed_kmh": 4.5,
+  "party": "solo",
+  "parsed_from_query": {
+   "categories": [],
+   "preferences": [
+    "park",
+    "garden",
+    "landmark",
+    "viewpoint",
+    "museum"
+   ],
+   "needs": [],
+   "time_budget_min": 60,
+   "deadline": null,
+   "deadline_in_min": null,
+   "landmark": "Mega Silk Way",
+   "night": false,
+   "surprise": false,
+   "parser": "llm+rules (gpt-6-luna)"
+  },
+  "relaxations": [],
+  "funnel": {
+   "total": 2307,
+   "within_reach": 132,
+   "after_filters": 47,
+   "shown": 2
+  },
+  "data_sources": [
+   "OpenStreetMap (ODbL)",
+   "Wikidata (CC0)",
+   "Wikipedia (CC BY-SA)",
+   "Overture Maps (CDLA)",
+   "Ticketon / Sxodim",
+   "Open-Meteo (CC BY 4.0)"
+  ],
+  "data_built_at": "2026-10-18T18:20:55+00:00",
+  "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+ },
+ "considered": [],
+ "notes": [],
+ "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
+ "ai_generated": true,
+ "llm": {
+  "mode": "llm",
+  "model": "gpt-6-luna",
+  "latency_ms": 3603
+ }
+}

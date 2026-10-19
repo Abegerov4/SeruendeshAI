@@ -29,7 +29,7 @@ def test_delivery_smoke_preserves_real_saved_card_and_session_across_restart(tmp
     with (tmp_path / "server.log").open("w") as log:
         try:
             def start():
-                proc = subprocess.Popen([sys.executable, "-m", "uvicorn", "ayat_backend.app.main:app", "--host", "127.0.0.1", "--port", str(port)],
+                proc = subprocess.Popen([sys.executable, "-m", "uvicorn", "app.main:app", "--app-dir", "backend", "--host", "127.0.0.1", "--port", str(port)],
                                         cwd=ROOT, env=env, stdout=log, stderr=log)
                 for _ in range(200):
                     assert proc.poll() is None, "Local delivery server exited"

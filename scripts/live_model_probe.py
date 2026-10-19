@@ -122,10 +122,10 @@ async def probe(args):
                       WEATHER_ENABLED="false", READINESS_PROFILE="llm",
                       DATABASE_URL="sqlite:///" + str((args.out / "probe-accounts.db").resolve()))
     from openai import AsyncOpenAI
-    from ayat_backend.app import llm
-    from ayat_backend.app import main as application
-    from ayat_backend.app.main import app, RT
-    from ayat_backend.eval.run_eval import run_checks
+    from app import llm
+    from app import main as application
+    from app.main import app, RT
+    from backend_scenario_eval import run_checks
     from eval.run_eval import source_fingerprint, git_state, file_sha256
     import uvicorn
 

@@ -141,7 +141,9 @@ def main():
     args = parser.parse_args()
     from data.snapshot import resolve_snapshot
     from data.provenance import cached_field_evidence
-    from ayat_backend.app.team_data import load_team_snapshot
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "backend"))
+    from app.team_data import load_team_snapshot
     handle = resolve_snapshot(args.processed_dir)
     canonical = handle.path / "pois.json"
     rows = json.loads(canonical.read_bytes())

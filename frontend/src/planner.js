@@ -2,16 +2,8 @@
 // `touched` marks controls the user changed explicitly: only those override what the text says.
 export const initialContext = {
   location: 'Район Байтерека', coords: null, time: 60, transport: 'walk', kid: false, accessible: false,
-  closer: false, noCoffee: false, indoor: false, serviceId: null, touched: {time: false, transport: false},
+  closer: false, noCoffee: false, indoor: false, touched: {time: false, transport: false},
 };
-
-export function emptyPlanExplanation(plan) {
-  return plan?.summary || plan?.notes?.[0] || '';
-}
-
-export function hasPlanResults(plan) {
-  return !!(plan?.places?.some(place => !place.generated) || plan?.services?.length);
-}
 
 export function describeContextChange(prev, next) {
   if (!prev) return [];

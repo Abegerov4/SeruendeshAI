@@ -1,12 +1,12 @@
 import { useLocale, t as tr } from "./i18n";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { usePath, Link } from './navigation';
 import { Header, Footer } from './components/Layout';
 import Explore from './pages/Explore';
 import Auth from './pages/Auth';
 import Saved from './pages/Saved';
-import { loadMe, useSaved, toggleSaved } from './auth';
+import { useAuth, loadMe, fetchSaved, putSaved, deleteSaved } from './auth';
 import './design.css';
 import './life.css';
 import './motion.css';
@@ -14,12 +14,27 @@ import './details.css';
 import './scrollbars.css';
 import './planner.css';
 import './live.css';
+import './polish.css';
 
 function App() {
   const language = useLocale();
   const path = usePath();
-  const saved = useSaved();
+  const { user } = useAuth();
+  const [saved, setSaved] = useState([]);
   useEffect(() => { loadMe(); }, []);
+  useEffect(() => {  // logged in: favourites live in the account; guests keep them for this tab only
+    if (!user) return;
+    fetchSaved().then(server => setSaved(prev => {
+      const ids = new Set(server.map(p => p.id));
+      prev.filter(p => !ids.has(p.id)).forEach(p => putSaved(p).catch(() => {}));  // keep what a guest saved before logging in
+      return [...server, ...prev.filter(p => !ids.has(p.id))];
+    })).catch(() => {});
+  }, [user?.id]);
+  const toggleSaved = place => setSaved(prev => {
+    const exists = prev.some(x => x.id === place.id);
+    if (user) (exists ? deleteSaved(place.id) : putSaved(place)).catch(() => {});
+    return exists ? prev.filter(x => x.id !== place.id) : [...prev, place];
+  });
   useEffect(() => {
     if (path === '/') document.title = tr('SeruendeshAI — открой свою Астану');
     if (path === '/saved') document.title = tr('Избранное — SeruendeshAI');

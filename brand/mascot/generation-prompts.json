@@ -1,0 +1,23 @@
+{
+  "tool": "Built-in image_gen",
+  "assets": [
+    {
+      "key": "mascot",
+      "transparent_background": true,
+      "prompt": "Use case: logo-brand / stylized-concept. Create a delightful premium 3D clay mascot for SeruendeshAI, a warm city walking companion from Astana. One full-body tiny friendly steppe bird, standing upright, almost spherical pear-shaped body, soft pistachio-lime green plumage, warm ivory face and belly, tiny burnt-orange triangular beak and small orange feet, two expressive dark forest-green oval eyes with a tiny white gleam. Short rounded wings; right wing raised in a gentle welcoming wave, left wing holding strap of a small dark forest green crossbody explorer satchel. Charming adult-friendly designer toy character, understated and very beautifully art-directed, like a high-end playful travel app, not childish clutter. Small feather tuft curves like a little route arrow. Matte soft clay texture, subtle subsurface lighting, rounded tactile shapes, no fuzzy fur, no clothing except bag, no text, no logo, no surrounding scene. View three-quarter front, entire body with generous transparent margin, studio-soft warm light, naturally appealing proportions. Real transparent background, only the single mascot, isolated clean cutout. High quality 3D render."
+    },
+    {
+      "key": "coffee-story",
+      "transparent_background": false,
+      "prompt": "Use case: photorealistic-natural. Create a premium editorial travel lifestyle photograph for a friendly Astana city exploration app. Close view of a beautiful ceramic pistachio-green cup with intricate latte art on a sunlit oak cafe table next to an open small travel notebook, a folded city map with no legible text, a subtle small vase of white flowers. In the background through a large window: soft autumn trees and out-of-focus modern glass architecture, no identifiable invented venue, warm late afternoon light, quiet joy and everyday discovery. Candid film photography, rich forest-green accents, warm cream and honey tones, natural textures, delicate shadows, inviting tangible atmosphere. Wide landscape 3:2, coffee in right middle with room for overlay at lower left, aesthetically composed but not sterile stock photography. No text, no watermark, no people, no logo. This is a mood illustration, not a real cafe listing."
+    },
+    {
+      "key": "walk-story",
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "/home/yeahayat/SeruendeshAI/frontend/public/images/nurzhol.jpg"
+      ],
+      "prompt": "Use case: photorealistic-natural. Generate an original premium editorial photo inspired by the provided real photograph of Nurzhol Boulevard in Astana. Preserve its recognizable architecture and flat city landscape, with slender white lattice Baiterek and golden sphere far behind. Main scene is a human-scale stroll along tree-lined boulevard on a warm late-summer afternoon, two casually dressed friends seen from behind at middle distance laughing as they walk, elegant glass towers and Baiterek softly visible behind, dappled sunlight over landscaped planters and pale paving, abundant soft green trees, thoughtful real city textures. Not a poster or collage, not a 3D rendering, no fantasy mountains, no invented monuments, no oversaturated sky. Warm film photography, beautiful candid travel magazine atmosphere, subtle grain, gentle light, lush green and warm cream palette with golden accents. Landscape 3:2. Main subjects to right half, subtle space bottom left for website title added separately. No printed text, no logos or watermark. Clearly a newly generated architectural visualization."
+    }
+  ]
+}

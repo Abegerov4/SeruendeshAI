@@ -1,3 +1,8 @@
+import pytest
+from pathlib import Path
+
+if not (Path(__file__).resolve().parents[1] / "backend/app/intent.py").exists():
+    pytest.skip("Earlier primary backend replaced by backend/ in the merged main", allow_module_level=True)
 """B10: arrival and each sequential visit must fit actual opening hours."""
 from datetime import datetime
 

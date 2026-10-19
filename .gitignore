@@ -57,3 +57,12 @@ data/review/**/directories/*.txt
 .DS_Store
 .vscode/
 .idea/
+
+# local SQLite for accounts
+backend/.local/
+
+# local agent worktrees, logo drafts and archives
+.claude/
+output/
+brand/*.zip
+.venv-*/

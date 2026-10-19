@@ -1,0 +1,483 @@
+{
+ "api_version": "1.0",
+ "landmarks": [
+  {
+   "key": "baiterek",
+   "name": "Байтерек",
+   "lat": 51.12829,
+   "lon": 71.43045
+  },
+  {
+   "key": "khan_shatyr",
+   "name": "Хан Шатыр",
+   "lat": 51.13251,
+   "lon": 71.40387
+  },
+  {
+   "key": "mega_silk_way",
+   "name": "Mega Silk Way",
+   "lat": 51.08909,
+   "lon": 71.40733
+  },
+  {
+   "key": "expo",
+   "name": "EXPO / Нур Алем",
+   "lat": 51.09279,
+   "lon": 71.42148
+  },
+  {
+   "key": "airport",
+   "name": "Аэропорт Астаны (NQZ)",
+   "lat": 51.0222,
+   "lon": 71.4669
+  },
+  {
+   "key": "nurly_zhol",
+   "name": "Вокзал Нурлы Жол",
+   "lat": 51.11241,
+   "lon": 71.53141
+  },
+  {
+   "key": "astana_1",
+   "name": "Вокзал Астана-1",
+   "lat": 51.19535,
+   "lon": 71.40964
+  },
+  {
+   "key": "pyramid",
+   "name": "Дворец мира и согласия",
+   "lat": 51.12306,
+   "lon": 71.46362
+  },
+  {
+   "key": "hazret_sultan",
+   "name": "Мечеть Хазрет Султан",
+   "lat": 51.12543,
+   "lon": 71.47219
+  },
+  {
+   "key": "astana_opera",
+   "name": "Астана Опера",
+   "lat": 51.13545,
+   "lon": 71.41075
+  },
+  {
+   "key": "ak_orda",
+   "name": "Акорда",
+   "lat": 51.12569,
+   "lon": 71.44654
+  },
+  {
+   "key": "central_park",
+   "name": "Центральный парк",
+   "lat": 51.17548,
+   "lon": 71.4293
+  },
+  {
+   "key": "presidential_park",
+   "name": "Президентский парк",
+   "lat": 51.12483,
+   "lon": 71.45792
+  },
+  {
+   "key": "botanical_garden",
+   "name": "Ботанический сад",
+   "lat": 51.10616,
+   "lon": 71.41657
+  },
+  {
+   "key": "national_museum",
+   "name": "Национальный музей РК",
+   "lat": 51.11803,
+   "lon": 71.46936
+  },
+  {
+   "key": "keruen",
+   "name": "ТРЦ Керуен",
+   "lat": 51.12779,
+   "lon": 71.42531
+  },
+  {
+   "key": "abu_dhabi_plaza",
+   "name": "Abu Dhabi Plaza",
+   "lat": 51.12197,
+   "lon": 71.42793
+  },
+  {
+   "key": "nazarbayev_university",
+   "name": "Назарбаев Университет",
+   "lat": 51.0906,
+   "lon": 71.39799
+  },
+  {
+   "key": "barys_arena",
+   "name": "Барыс Арена",
+   "lat": 51.10882,
+   "lon": 71.39497
+  },
+  {
+   "key": "astana_arena",
+   "name": "Астана Арена",
+   "lat": 51.10823,
+   "lon": 71.40246
+  },
+  {
+   "key": "triathlon_park",
+   "name": "Триатлон парк",
+   "lat": 51.13528,
+   "lon": 71.44978
+  },
+  {
+   "key": "kazakh_eli",
+   "name": "Монумент «Қазақ Елі»",
+   "lat": 51.12211,
+   "lon": 71.46988
+  },
+  {
+   "key": "aruzhan",
+   "name": "ТРЦ Аружан",
+   "lat": 51.16025,
+   "lon": 71.48289
+  }
+ ],
+ "categories": [
+  {
+   "key": "museum",
+   "group": "culture",
+   "labels": {
+    "ru": "Музей",
+    "kk": "Мұражай",
+    "en": "Museum"
+   },
+   "icon": "museum"
+  },
+  {
+   "key": "gallery",
+   "group": "culture",
+   "labels": {
+    "ru": "Галерея",
+    "kk": "Галерея",
+    "en": "Gallery"
+   },
+   "icon": "gallery"
+  },
+  {
+   "key": "theatre",
+   "group": "culture",
+   "labels": {
+    "ru": "Театр",
+    "kk": "Театр",
+    "en": "Theatre"
+   },
+   "icon": "theatre"
+  },
+  {
+   "key": "cinema",
+   "group": "entertainment",
+   "labels": {
+    "ru": "Кинотеатр",
+    "kk": "Кинотеатр",
+    "en": "Cinema"
+   },
+   "icon": "cinema"
+  },
+  {
+   "key": "arts_centre",
+   "group": "culture",
+   "labels": {
+    "ru": "Арт-пространство",
+    "kk": "Өнер кеңістігі",
+    "en": "Arts centre"
+   },
+   "icon": "palette"
+  },
+  {
+   "key": "library",
+   "group": "quiet",
+   "labels": {
+    "ru": "Библиотека",
+    "kk": "Кітапхана",
+    "en": "Library"
+   },
+   "icon": "book"
+  },
+  {
+   "key": "landmark",
+   "group": "sight",
+   "labels": {
+    "ru": "Достопримечательность",
+    "kk": "Көрікті орын",
+    "en": "Landmark"
+   },
+   "icon": "landmark"
+  },
+  {
+   "key": "monument",
+   "group": "sight",
+   "labels": {
+    "ru": "Памятник / мемориал",
+    "kk": "Ескерткіш / мемориал",
+    "en": "Monument"
+   },
+   "icon": "monument"
+  },
+  {
+   "key": "artwork",
+   "group": "sight",
+   "labels": {
+    "ru": "Арт-объект",
+    "kk": "Арт-нысан",
+    "en": "Public art"
+   },
+   "icon": "sparkles"
+  },
+  {
+   "key": "viewpoint",
+   "group": "sight",
+   "labels": {
+    "ru": "Смотровая площадка",
+    "kk": "Көру алаңы",
+    "en": "Viewpoint"
+   },
+   "icon": "eye"
+  },
+  {
+   "key": "worship",
+   "group": "sight",
+   "labels": {
+    "ru": "Мечеть / храм",
+    "kk": "Мешіт / ғибадатхана",
+    "en": "Mosque / temple"
+   },
+   "icon": "worship"
+  },
+  {
+   "key": "park",
+   "group": "nature",
+   "labels": {
+    "ru": "Парк",
+    "kk": "Саябақ",
+    "en": "Park"
+   },
+   "icon": "trees"
+  },
+  {
+   "key": "garden",
+   "group": "nature",
+   "labels": {
+    "ru": "Сквер / сад",
+    "kk": "Гүлзар / бақ",
+    "en": "Garden / square"
+   },
+   "icon": "flower"
+  },
+  {
+   "key": "playground",
+   "group": "kids",
+   "labels": {
+    "ru": "Детская площадка",
+    "kk": "Балалар алаңы",
+    "en": "Playground"
+   },
+   "icon": "baby"
+  },
+  {
+   "key": "kids_indoor",
+   "group": "kids",
+   "labels": {
+    "ru": "Детский игровой центр",
+    "kk": "Балалар ойын орталығы",
+    "en": "Indoor play centre"
+   },
+   "icon": "baby"
+  },
+  {
+   "key": "zoo_aquarium",
+   "group": "kids",
+   "labels": {
+    "ru": "Океанариум / зоопарк",
+    "kk": "Океанариум / хайуанаттар бағы",
+    "en": "Aquarium / zoo"
+   },
+   "icon": "fish"
+  },
+  {
+   "key": "water_park",
+   "group": "kids",
+   "labels": {
+    "ru": "Аквапарк",
+    "kk": "Аквапарк",
+    "en": "Water park"
+   },
+   "icon": "waves"
+  },
+  {
+   "key": "theme_park",
+   "group": "kids",
+   "labels": {
+    "ru": "Парк аттракционов",
+    "kk": "Аттракциондар саябағы",
+    "en": "Amusement park"
+   },
+   "icon": "ferris"
+  },
+  {
+   "key": "mall",
+   "group": "shopping",
+   "labels": {
+    "ru": "Торговый центр",
+    "kk": "Сауда орталығы",
+    "en": "Mall"
+   },
+   "icon": "shopping"
+  },
+  {
+   "key": "market",
+   "group": "shopping",
+   "labels": {
+    "ru": "Рынок / базар",
+    "kk": "Базар",
+    "en": "Market"
+   },
+   "icon": "store"
+  },
+  {
+   "key": "souvenir",
+   "group": "shopping",
+   "labels": {
+    "ru": "Сувениры / книги",
+    "kk": "Кәдесыйлар / кітаптар",
+    "en": "Souvenirs / books"
+   },
+   "icon": "gift"
+  },
+  {
+   "key": "cafe",
+   "group": "food",
+   "labels": {
+    "ru": "Кофейня / кафе",
+    "kk": "Кофехана / кафе",
+    "en": "Café"
+   },
+   "icon": "coffee"
+  },
+  {
+   "key": "restaurant",
+   "group": "food",
+   "labels": {
+    "ru": "Ресторан",
+    "kk": "Мейрамхана",
+    "en": "Restaurant"
+   },
+   "icon": "utensils"
+  },
+  {
+   "key": "fast_food",
+   "group": "food",
+   "labels": {
+    "ru": "Фастфуд",
+    "kk": "Фастфуд",
+    "en": "Fast food"
+   },
+   "icon": "burger"
+  },
+  {
+   "key": "sweets",
+   "group": "food",
+   "labels": {
+    "ru": "Кондитерская / мороженое",
+    "kk": "Кондитерлік / балмұздақ",
+    "en": "Bakery / ice cream"
+   },
+   "icon": "cake"
+  },
+  {
+   "key": "bar",
+   "group": "night",
+   "labels": {
+    "ru": "Бар / паб",
+    "kk": "Бар / паб",
+    "en": "Bar / pub"
+   },
+   "icon": "beer"
+  },
+  {
+   "key": "nightclub",
+   "group": "night",
+   "labels": {
+    "ru": "Ночной клуб",
+    "kk": "Түнгі клуб",
+    "en": "Nightclub"
+   },
+   "icon": "music"
+  },
+  {
+   "key": "karaoke",
+   "group": "night",
+   "labels": {
+    "ru": "Караоке",
+    "kk": "Караоке",
+    "en": "Karaoke"
+   },
+   "icon": "mic"
+  },
+  {
+   "key": "hookah",
+   "group": "night",
+   "labels": {
+    "ru": "Кальянная",
+    "kk": "Кальянхана",
+    "en": "Hookah lounge"
+   },
+   "icon": "cloud"
+  },
+  {
+   "key": "active",
+   "group": "active",
+   "labels": {
+    "ru": "Активный отдых",
+    "kk": "Белсенді демалыс",
+    "en": "Activities & sport"
+   },
+   "icon": "activity"
+  },
+  {
+   "key": "spa",
+   "group": "relax",
+   "labels": {
+    "ru": "Баня / спа",
+    "kk": "Монша / спа",
+    "en": "Sauna / spa"
+   },
+   "icon": "spa"
+  },
+  {
+   "key": "coworking",
+   "group": "work",
+   "labels": {
+    "ru": "Коворкинг",
+    "kk": "Коворкинг",
+    "en": "Coworking"
+   },
+   "icon": "laptop"
+  },
+  {
+   "key": "event_venue",
+   "group": "culture",
+   "labels": {
+    "ru": "Площадка мероприятий",
+    "kk": "Іс-шара алаңы",
+    "en": "Event venue"
+   },
+   "icon": "ticket"
+  }
+ ],
+ "data_built_at": "2026-10-18T18:20:55+00:00",
+ "poi_count": 2307,
+ "sources": {
+  "osm": "© OpenStreetMap contributors, ODbL 1.0 (Overpass API, Astana admin boundary R3087155)",
+  "wikidata": "Wikidata, CC0",
+  "wikipedia": "Wikipedia (ru/en) intro extracts, CC BY-SA 4.0 — linked per POI",
+  "overture": "Overture Maps Foundation Places, CDLA-Permissive-2.0 / Apache-2.0 / CC0 per record"
+ }
+}

@@ -106,7 +106,7 @@ def local_runtime(directory, smtp_port=None):
            "SMTP_USER": "", "SMTP_PASSWORD": "", "READINESS_PROFILE": "template", "PUBLIC_URL": base,
            "DATABASE_URL": f"sqlite:///{directory / 'accounts.db'}", "SECRET_KEY": "private-local-smtp-test"}
     with (directory / "runtime.log").open("a") as log:
-        process = subprocess.Popen([sys.executable, "-m", "uvicorn", "ayat_backend.app.main:app", "--host", "127.0.0.1", "--port", str(port)],
+        process = subprocess.Popen([sys.executable, "-m", "uvicorn", "app.main:app", "--app-dir", "backend", "--host", "127.0.0.1", "--port", str(port)],
                                    cwd=ROOT, env=env, stdout=log, stderr=log)
         try:
             client = Client(base)
@@ -135,7 +135,8 @@ def run():
                 payload = {"token": token, "password": new_password}
                 client.request("/api/auth/password-reset/confirm", "POST", payload)
                 current = client.cookie
-                client.request("/api/auth/me", expected=401, cookie=old)
+                revoked, _ = client.request("/api/auth/me", cookie=old)  # guests (incl. a revoked session) get 200 {"user": null}
+                require(revoked == {"user": None}, "revoked session is still authenticated")
                 client.cookie = current
                 client.request("/api/auth/me")
                 client.request("/api/auth/password-reset/confirm", "POST", payload, expected=400)

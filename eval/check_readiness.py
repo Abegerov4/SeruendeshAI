@@ -19,7 +19,7 @@ COMPONENTS = {
     "backend": "backend/app/main.py", "rag": "rag/retriever.py",
     "frontend": "frontend/package.json", "dataset": "data/processed/pois.json",
 }
-AYAT_COMPONENTS = {**COMPONENTS, "backend": "ayat_backend/app/main.py", "rag": "ayat_backend/app/retrieval.py"}
+AYAT_COMPONENTS = {**COMPONENTS, "backend": "backend/app/main.py", "rag": "backend/app/retrieval.py"}
 DOCUMENTS = (
     "docs/test_scenarios.md", "docs/product_concept.md", "docs/rag_approach.md",
     "docs/ethics_privacy.md", "docs/demo_script.md",
@@ -170,8 +170,19 @@ def _fixture_poi(item: object) -> bool:
 def _ayat_evidence_errors(path: Path, root: Path, pois: Path, cases: Path, profile: str) -> list[str]:
     """Validate primary evidence independently of the secondary report contract."""
     import yaml
-    from ayat_backend.eval.run_eval import local_identity, run_checks
-    from ayat_backend.app.schemas import HealthResponse
+    import importlib.util
+    import sys
+    backend_dir = Path(__file__).resolve().parents[1] / "backend"
+    if str(backend_dir) not in sys.path:
+        sys.path.insert(0, str(backend_dir))
+    spec = importlib.util.spec_from_file_location("backend_scenario_eval", backend_dir / "eval" / "run_eval.py")
+    scenario_eval = sys.modules.get("backend_scenario_eval")
+    if scenario_eval is None:
+        scenario_eval = importlib.util.module_from_spec(spec)
+        sys.modules["backend_scenario_eval"] = scenario_eval
+        spec.loader.exec_module(scenario_eval)
+    local_identity, run_checks = scenario_eval.local_identity, scenario_eval.run_checks
+    from app.schemas import HealthResponse
 
     try:
         report = json.loads(path.read_text(encoding="utf-8"))
@@ -290,7 +301,7 @@ def check_readiness(root: Path, *, evidence: Path | None = None,
         raise ValueError("Unsupported runtime/profile")
     components = AYAT_COMPONENTS if runtime == "ayat" else COMPONENTS
     pois = _resolve(root, pois or COMPONENTS["dataset"])
-    cases = _resolve(root, cases or ("ayat_backend/eval/scenarios.yaml" if runtime == "ayat" else "eval/golden_set.json"))
+    cases = _resolve(root, cases or ("backend/eval/scenarios.yaml" if runtime == "ayat" else "eval/golden_set.json"))
     checks = []
     def check(name, status, scope, detail):
         checks.append({"name": name, "status": status, "scope": scope, "detail": detail})

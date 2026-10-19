@@ -61,7 +61,7 @@ def source_fingerprint(root: Path) -> str:
     extensions = {".py", ".js", ".ts", ".tsx", ".jsx", ".mjs", ".cjs", ".json", ".html", ".css",
                   ".scss", ".vue", ".svelte", ".toml", ".yaml", ".yml", ".md", ".txt"}
     paths = []
-    for name in ("backend", "ayat_backend", "rag", "frontend", "scripts", "runtime_support", "data/collect"):
+    for name in ("backend", "bot", "rag", "frontend", "scripts", "runtime_support", "data/collect"):
         directory = root / name
         digest.update(f"root:{name}:{directory.is_dir()}\0".encode())
         if directory.is_dir():
@@ -70,10 +70,10 @@ def source_fingerprint(root: Path) -> str:
                 paths.extend(Path(current) / name for name in files
                              if Path(name).suffix in extensions and not name.startswith(".env")
                              and (Path(current) / name).relative_to(root).as_posix() not in {
-                                 "ayat_backend/docs/EVAL_RESULTS.md", "ayat_backend/eval/results.json"})
+                                 "docs/EVAL_RESULTS.md", "backend/eval/results.json"})
     eval_sources = ("eval/run_eval.py", "eval/check_readiness.py", "eval/judge.py", "eval/validators.py", "eval/metrics.py")
     configs = ("pytest.ini", "requirements-qa.txt", "requirements-integration.txt", "pyproject.toml", "requirements.txt", "package.json",
-               "docker-compose.yml", "backend/Dockerfile", "ayat_backend/Dockerfile", "ayat_backend/uv.lock", "ayat_backend/.python-version", ".dockerignore",
+               "compose.yaml", "Dockerfile", "backend/uv.lock", "backend/.python-version", ".dockerignore",
                ".github/workflows/backend.yml", ".github/workflows/ayat-backend.yml", ".github/workflows/data-refresh.yml",
                "data/run_pipeline.py", "data/snapshot.py", "data/eligibility.py", "data/quarantine.json", "data/quality_overrides.json",
                "data/processed/field_evidence.json", "data/processed/fact_reviews.json",

@@ -15,15 +15,14 @@ const ICONS = {trees: Trees, coffee: Coffee, baby: Baby, landmark: Landmark, mon
   book: BookOpen, sparkles: Sparkles, ticket: Ticket, activity: Activity, eye: Eye, waves: Waves, fish: Fish, laptop: Laptop,
   gift: Gift, store: Store, flower: Flower2, worship: Landmark, theatre: Ticket, cinema: Ticket, cake: Coffee, ferris: Sparkles, spa: Waves};
 
-// Photos are category illustrations (never presented as the real place)
-const IMAGES = {walk: '/images/stories/walk.webp', coffee: '/images/stories/coffee.webp', city: '/images/astana-hero.webp', boulevard: '/images/nurzhol.jpg'};
-const IMAGE_BY_CATEGORY = {cafe: 'coffee', sweets: 'coffee', restaurant: 'coffee', fast_food: 'coffee', coworking: 'coffee', library: 'coffee',
-  park: 'walk', garden: 'walk', playground: 'walk', theme_park: 'walk', viewpoint: 'boulevard', landmark: 'boulevard',
-  monument: 'boulevard', artwork: 'boulevard'};
-const ICON_BY_CATEGORY = {arts_centre: 'palette', library: 'book', artwork: 'sparkles', viewpoint: 'eye', park: 'trees', garden: 'flower',
-  playground: 'baby', kids_indoor: 'baby', zoo_aquarium: 'fish', water_park: 'waves', theme_park: 'ferris', mall: 'shopping',
-  market: 'store', souvenir: 'gift', cafe: 'coffee', restaurant: 'utensils', fast_food: 'burger', sweets: 'cake',
-  bar: 'beer', nightclub: 'music', karaoke: 'mic', hookah: 'cloud', active: 'activity', coworking: 'laptop', event_venue: 'ticket'};
+// Cards show a real Wikimedia Commons photo when the place has one, otherwise a designed category cover
+// (never a photo of some other place).
+const COVER_GROUP = {park: 'green', garden: 'green', playground: 'kids', theme_park: 'kids', kids_indoor: 'kids', viewpoint: 'sights',
+  landmark: 'sights', monument: 'sights', artwork: 'sights', worship: 'sights', museum: 'culture', gallery: 'culture', theatre: 'culture',
+  cinema: 'culture', arts_centre: 'culture', event_venue: 'culture', library: 'culture', cafe: 'coffee', sweets: 'coffee', coworking: 'coffee',
+  restaurant: 'food', fast_food: 'food', market: 'food', bar: 'night', nightclub: 'night', karaoke: 'night', hookah: 'night',
+  mall: 'shop', souvenir: 'shop', active: 'active', spa: 'active', water_park: 'active', zoo_aquarium: 'kids'};
+export const coverGroup = key => COVER_GROUP[key] || 'sights';
 
 export const BADGE_LABELS = {indoor: 'В помещении', outdoor: 'На свежем воздухе', kids: 'Можно с детьми', popular: 'Знаковое место',
   hidden_gem: 'Скрытая жемчужина', event: 'Сегодня событие', night: 'Вечерний вариант', free: 'Бесплатно', ai_idea: 'Идея ИИ'};
@@ -39,9 +38,6 @@ const CONFIDENCE_TEXT = {high: 'Часы взяты из данных OSM', low:
 
 export function toPlace(r) {
   const generated = r.source === 'generated';
-  const imageKey = IMAGE_BY_CATEGORY[r.category_detail] || 'city';
-  const descriptionAttribution = Array.isArray(r.description_attribution) ? r.description_attribution : [];
-  const description = r.description_source === 'wikipedia' && !descriptionAttribution.length ? null : r.description;
   return {
     id: r.poi_id, name: r.name, category: r.category_label, categoryKey: r.category_detail,
     icon: ICONS[r.icon] || Sparkles,
@@ -53,59 +49,48 @@ export function toPlace(r) {
     openingKind: r.opening?.status, website: r.website || null,
     confidence: CONFIDENCE_TEXT[r.open_confidence] || '', openingRaw: r.opening?.raw,
     features: r.features || [], badges: r.badges || [], leaveBy: r.leave_by, event: r.event,
-    description, descriptionAttribution, descriptionSource: r.description_source, dataSources: r.data_sources || [],
-    accessibility: r.accessibility, address: r.address,
-    structuredFacts: Array.isArray(r.structured_facts) ? r.structured_facts : [],
-    menuItems: Array.isArray(r.menu_items) ? r.menu_items : [],
-    prices: Array.isArray(r.prices) ? r.prices : [],
-    image: IMAGES[imageKey], imageGenerated: true, imageNote: 'Иллюстрация категории, не фото этого места',
+    description: r.description, descriptionSource: r.description_source, dataSources: r.data_sources || [],
+    accessibility: r.accessibility, address: r.address, descriptionUrl: r.description_url || null,
+    phone: r.phone || null, instagram: r.instagram || null, cuisine: r.cuisine || [],
+    photo: r.photo || null, image: r.photo?.url || null, cover: coverGroup(r.category_detail),
+    imageNote: r.photo ? `Фото: ${r.photo.author}, ${r.photo.license}` : 'Обложка категории, не фото этого места',
   };
-}
-
-// Saved snapshots contain JSON only: restore the component and defaults required by the cards.
-export function restoreSaved(record) {
-  const p = record.data || {};
-  return {...p, id: record.poi_id, icon: ICONS[ICON_BY_CATEGORY[p.categoryKey] || p.categoryKey] || Sparkles,
-    features: Array.isArray(p.features) ? p.features : [], badges: Array.isArray(p.badges) ? p.badges : [],
-    dataSources: Array.isArray(p.dataSources) ? p.dataSources : [],
-    structuredFacts: Array.isArray(p.structuredFacts) ? p.structuredFacts : [],
-    menuItems: Array.isArray(p.menuItems) ? p.menuItems : [], prices: Array.isArray(p.prices) ? p.prices : [],
-    descriptionAttribution: Array.isArray(p.descriptionAttribution) ? p.descriptionAttribution : [],
-    description: p.descriptionSource === 'wikipedia' && !p.descriptionAttribution?.length ? null : p.description,
-    image: p.image || IMAGES[IMAGE_BY_CATEGORY[p.categoryKey] || 'city'], imageGenerated: true,
-    imageNote: 'Иллюстрация категории, не фото этого места'};
 }
 
 export function buildRequest(text, ctx, lang) {
   const body = {query: text, lang, refine: [], profile: {with_kids: !!ctx.kid, tourist: false, accessibility: !!ctx.accessible, group_size: 1}};
   if (ctx.location === MY_LOCATION && ctx.coords) body.location = {lat: roundCoord(ctx.coords.lat), lon: roundCoord(ctx.coords.lon)};
-  else body.landmark = LANDMARK_KEYS[ctx.location] || ctx.location || 'baiterek';
+  else body.landmark = LANDMARK_KEYS[ctx.location] || 'baiterek';
   // explicit UI choices win over the text; untouched defaults are left to the parser
   if (ctx.touched?.time) body.time_budget_min = ctx.time;
   if (ctx.touched?.transport) body.mode = ctx.transport;
   if (ctx.closer) body.refine.push('closer');
   if (ctx.noCoffee) body.refine.push('no_coffee');
   if (ctx.indoor) body.refine.push('indoor');
-  if (typeof ctx.serviceId === 'string' && ctx.serviceId) body.service_id = ctx.serviceId;
-  if (Array.isArray(ctx.foodRequirements) && ctx.foodRequirements.length) body.food_context = ctx.foodRequirements;
   return body;
 }
 
 export function toPlan(resp, ctx, text) {
-  const origin = resp.used_context?.location;
-  const services = Array.isArray(resp.service_results) ? resp.service_results : [];
-  // Reuse a text origin as a landmark fallback, so a new origin in the next query still wins.
-  const context = origin?.source === 'text_landmark' && origin.label?.trim() && origin.label.length <= 80
-    ? {...ctx, location: origin.label, coords: null} : {...ctx};
-  // Only one returned service is an unambiguous subject for the next question.
-  // The server decides whether service_id applies to a follow-up or a new topic.
-  context.serviceId = services.length === 1 ? services[0].id : null;
-  context.foodRequirements = resp.used_context?.parsed_from_query?.food_requirements || [];
   return {
     places: [...(resp.recommendations || []), ...(resp.ideas || [])].map(toPlace), route: resp.route, used: resp.used_context, notes: resp.notes || [],
     considered: resp.considered || [], summary: resp.summary, disclaimer: resp.disclaimer, llm: resp.llm, lang: resp.lang,
-    services, context, query: text,
+    offTopic: !!resp.off_topic, photoGuess: resp.photo_guess || null,
+    context: {...ctx}, query: text,
   };
+}
+
+// "Where am I?" from a photo: the server strips EXIF (GPS is never read), downscales and forgets the image.
+export async function recommendPhoto(file, text, ctx, lang, {signal} = {}) {
+  const form = new FormData();
+  form.append('image', file);
+  if (text) form.append('query', text);
+  form.append('lang', lang);
+  if (ctx.location !== MY_LOCATION) form.append('landmark', LANDMARK_KEYS[ctx.location] || 'baiterek');
+  const res = await fetch(`${API_BASE}/api/recommend/photo`, {method: 'POST', body: form, signal});
+  if (res.status === 429) throw Error('rate');
+  if (res.status === 413) throw Error('photo_too_large');
+  if (!res.ok) throw Error('photo-' + res.status);
+  return toPlan(await res.json(), ctx, text || '');
 }
 
 export async function recommend(text, ctx, lang, {signal} = {}) {
@@ -133,6 +118,24 @@ export function diffPlans(prev, next) {
     removed: prev.places.filter(p => !after.has(p.id) && !p.generated).map(p => p.name),
     before: planTotals(prev).total, after: planTotals(next).total,
   };
+}
+
+export function instagramUrl(handle) {
+  if (!handle) return null;
+  if (/^https?:/.test(handle)) return handle;
+  return 'https://instagram.com/' + handle.replace(/^@/, '').replace(/^(www\.)?instagram\.com\//, '');
+}
+
+export function telUrl(phone) {
+  const first = (phone || '').split(/[;,]/)[0].replace(/[^+\d]/g, '');
+  return first.length >= 6 ? 'tel:' + first : null;
+}
+
+// 2GIS opens a route on phones; OSM is the open fallback
+export function routeUrl(p, from) {
+  if (p.lat == null) return null;
+  const to = `${p.lon}%2C${p.lat}`;
+  return from ? `https://2gis.kz/astana/directions/points/${from.lon}%2C${from.lat}%7C${to}` : `https://2gis.kz/astana/geo/${to}`;
 }
 
 export function externalMapLinks(p) {

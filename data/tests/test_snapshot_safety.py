@@ -80,7 +80,7 @@ def test_explicit_reviewed_policy_sidecar_removal_is_auditable(tmp_path):
 
 
 def test_dropped_quarantine_cannot_reactivate_previously_excluded_candidates(tmp_path):
-    from ayat_backend.app.team_data import load_team_snapshot
+    from app.team_data import load_team_snapshot
     initial = artifacts(["osm:node/1", "osm:node/2", "osm:node/3"])
     for i, row in enumerate(initial["pois.json"]):
         row.update(name="Cafe " + str(i), lat=51.12, lon=71.43, source="osm", raw_tags={})

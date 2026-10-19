@@ -19,8 +19,8 @@ def postgres_client():
         pytest.skip("Disposable PostgreSQL not requested; run scripts/test_delivery_postgres.py")
     parsed = urlsplit(configured.replace("postgresql+psycopg://", "postgresql://"))
     assert parsed.hostname in {"127.0.0.1", "localhost"} and parsed.path == "/delivery", "Only the disposable local delivery database is allowed"
-    from ayat_backend.app import auth, db
-    from ayat_backend.app.config import get_settings
+    from app import auth, db
+    from app.config import get_settings
     admin = create_engine(configured.replace("postgresql://", "postgresql+psycopg://"))
     schema = "delivery_" + uuid.uuid4().hex
     with admin.begin() as conn:
@@ -50,14 +50,14 @@ def register(client):
 
 
 def insert_reset(user_id, value):
-    from ayat_backend.app import db
+    from app import db
     with db.SessionLocal.begin() as session:
         session.add(db.PasswordReset(user_id=user_id, token_hash=hashlib.sha256(value.encode()).hexdigest(),
                                      expires_at=dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=1)))
 
 
 def test_postgres_migration_preserves_existing_accounts_and_saved_cards(postgres_client):
-    from ayat_backend.app import auth, db
+    from app import auth, db
     user_id = register(postgres_client)
     assert postgres_client.put("/api/me/saved/osm:node/321", json={"data": {"name": "Existing canonical card", "lat": 51.128}}).status_code == 200
     # Simulate the pre-session/pre-throttle account schema while retaining its actual account and card.
@@ -77,7 +77,7 @@ def test_postgres_migration_preserves_existing_accounts_and_saved_cards(postgres
 
 
 def test_postgres_reset_atomicity_and_all_session_revocation(postgres_client):
-    from ayat_backend.app import auth, db
+    from app import auth, db
     uid = register(postgres_client)
     old_cookie = postgres_client.cookies.get(auth.COOKIE)
     first, second = "a" * 32, "b" * 32
@@ -98,7 +98,7 @@ def test_postgres_reset_atomicity_and_all_session_revocation(postgres_client):
 
 
 def test_postgres_logout_revokes_only_selected_session(postgres_client):
-    from ayat_backend.app import auth
+    from app import auth
     register(postgres_client)
     initial = postgres_client.cookies.get(auth.COOKIE)
     assert postgres_client.post("/api/auth/login", json={"email": "pg-delivery@example.com", "password": "long local test password"}).status_code == 200
@@ -112,8 +112,8 @@ def test_postgres_logout_revokes_only_selected_session(postgres_client):
 
 
 def test_postgres_atomic_shared_limiter_and_ttl_cleanup(postgres_client):
-    from ayat_backend.app import db
-    from ayat_backend.app.limiting import StorageLimiter
+    from app import db
+    from app.limiting import StorageLimiter
     def consume(_):
         return StorageLimiter().allow("parallel", "peer", 3, 60, now=100)
     with ThreadPoolExecutor(max_workers=8) as executor:
@@ -125,7 +125,7 @@ def test_postgres_atomic_shared_limiter_and_ttl_cleanup(postgres_client):
 
 
 def test_postgres_delete_cascades_saved_reset_and_sessions(postgres_client):
-    from ayat_backend.app import db
+    from app import db
     uid = register(postgres_client)
     insert_reset(uid, "d" * 32)
     assert postgres_client.put("/api/me/saved/osm:node/123", json={"data": {"name": "Delete with account"}}).status_code == 200

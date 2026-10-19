@@ -16,10 +16,20 @@ export default function CityMap({ places, origin, route, showRoute, setRoute, se
     : { paddingTopLeft: [40, 70], paddingBottomRight: [70, 150], maxZoom: 16 };
   useEffect(() => {
     const m = L.map(box.current, { zoomControl: false, attributionControl: true, scrollWheelZoom: true, zoomAnimation: false, markerZoomAnimation: false }).setView(ASTANA, 14);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19, className: 'osm-tiles',
-      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    // No CSS filter on the tile pane: iOS Safari may not paint filtered layers inside a rounded, clipped box
+    // (the map stayed blank on iPhones). The warm look comes from slightly transparent tiles over a cream background.
+    const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(m);
+    let failed = 0, switched = false;  // some privacy browsers strip the Referer and OSM refuses: switch to the OSM France mirror
+    osm.on('tileerror', () => {
+      if (switched || ++failed < 4) return;
+      switched = true; m.removeLayer(osm);
+      L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+        maxZoom: 19, subdomains: 'abc', attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, OSM France'
+      }).addTo(m);
+    });
+    osm.on('tileload', () => { failed = 0; });
     layers.current = L.layerGroup().addTo(m);
     map.current = m;
     if (location.search.includes('debug')) window.__seruMap = m;

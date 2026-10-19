@@ -139,7 +139,8 @@ def verify_logout(client):
     old_cookie = client.cookie
     require(old_cookie, "authentication did not set a session cookie")
     client.request("/api/auth/logout", method="POST", expected=204)
-    client.request("/api/auth/me", expected=401, cookie=old_cookie)
+    revoked, _ = client.request("/api/auth/me", cookie=old_cookie)  # guests (incl. a revoked session) get 200 {"user": null}
+    require(revoked == {"user": None}, "revoked session is still authenticated")
     client.cookie = None
 
 

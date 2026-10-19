@@ -1,5 +1,6 @@
 name: data-refresh
-# Automated re-collection of the POI dataset (OSM, Wikidata, Wikipedia, Overture, events) once a week.
+# Weekly re-collection: the team catalogue (data/run_pipeline, Aslan) and the product snapshot the API serves
+# (backend/pipeline: OSM, Overture, Wikidata, Wikipedia, CityPass layer, photos, events).
 # Opens a PR with the new snapshot so changes can be reviewed before the demo uses them.
 on:
   schedule:
@@ -21,6 +22,14 @@ jobs:
           .venv/bin/python -m pytest data/tests -q
           .venv/bin/python -m rag.evaluate eval/datasets/astana_retrieval_v2.json --mode bm25 --output-dir /tmp/refresh-eval
         env: {RAG_SEARCH_MODE: bm25}
+      - name: Product snapshot used by the API (backend/pipeline)
+        working-directory: backend
+        run: |
+          uv sync --all-groups
+          uv run python -m pipeline.cli fetch
+          uv run python -m pipeline.cli build
+          uv run python -m pipeline.cli embed --model e5-large
+          uv run python -m pipeline.cli events || true
       - uses: peter-evans/create-pull-request@v7
         with:
           branch: data-refresh

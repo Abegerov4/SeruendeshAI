@@ -1,0 +1,61 @@
+name: ci
+# One product: backend/ (API + MCP + photo) serving frontend/; team packages: rag/ (Denis), data/ + tests/ + eval/ (Aslan), bot/.
+on:
+  pull_request:
+  push:
+    branches: [main, ayat, big-data, "feature/**", "fix/**"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ""
+      LLM_ENABLED: "false"
+      EMBED_MODEL: "off"
+      WEATHER_ENABLED: "false"
+      RAG_SEARCH_MODE: bm25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv venv --python 3.12 .venv
+      - run: uv pip install --python .venv/bin/python -r requirements-integration.txt
+      - name: Backend (API, MCP, photo, accounts, team audit fixes)
+        working-directory: backend
+        run: ../.venv/bin/python -m pytest -q
+      - name: Scenario evaluation, template mode (a failed check fails the job)
+        working-directory: backend
+        env: {DATABASE_URL: "sqlite:////tmp/scenario.db"}
+        run: ../.venv/bin/python eval/run_eval.py --no-llm --out /tmp/eval.md --results-out /tmp/eval.json
+      - name: Data collection and catalogue checks (Aslan)
+        run: .venv/bin/python -m pytest data/tests -q
+      - name: Hybrid retrieval module (Denis)
+        run: .venv/bin/python -m unittest discover -s rag/tests
+      - name: Telegram bot formatting
+        run: .venv/bin/python -m pytest bot/tests -q
+      - name: QA suite with the real catalogue, guards and RAG (Aslan)
+        run: .venv/bin/python -m pytest tests --pois data/processed/pois.json --live-backend --live-rag -q
+      - name: Frozen retrieval evaluation
+        run: .venv/bin/python -m rag.evaluate eval/datasets/astana_retrieval_v2.json --mode bm25 --output-dir /tmp/retrieval
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: "22", cache: npm, cache-dependency-path: frontend/package-lock.json}
+      - run: npm ci --no-audit --no-fund
+        working-directory: frontend
+      - run: npm test && npm run build
+        working-directory: frontend
+  docker:
+    runs-on: ubuntu-latest
+    needs: [test, frontend]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: docker build --build-arg EMBED_MODEL=off -t seruendesh .
+      - run: docker run -d --name seruendesh-smoke -p 127.0.0.1:18001:8000 -e LLM_ENABLED=false -e WEATHER_ENABLED=false -e EMBED_MODEL=off -e SECRET_KEY=ci-only seruendesh
+      - run: python scripts/smoke_runtime.py --base-url http://127.0.0.1:18001 --state /tmp/smoke.json
+      - run: docker restart seruendesh-smoke
+      - run: python scripts/smoke_runtime.py --base-url http://127.0.0.1:18001 --state /tmp/smoke.json --resume
+      - if: always()
+        run: docker rm -f seruendesh-smoke

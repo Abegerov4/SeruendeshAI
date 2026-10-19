@@ -1,14 +1,10 @@
 // Accounts: session lives in an httpOnly cookie set by the API; here we only keep the public profile.
 import {useSyncExternalStore} from 'react';
-import {API_BASE, restoreSaved} from './api';
-import {createSavedSession} from './saved-session';
+import {API_BASE} from './api';
 
 let state = {user: null, ready: false};
 const listeners = new Set();
-const emit = next => {
-  if ('user' in next) savedSession.setUser(next.user?.id || null);
-  state = {...state, ...next}; listeners.forEach(fn => fn());
-};
+const emit = next => { state = {...state, ...next}; listeners.forEach(fn => fn()); };
 export function useAuth() { return useSyncExternalStore(fn => (listeners.add(fn), () => listeners.delete(fn)), () => state, () => state); }
 
 async function call(path, {method = 'GET', body} = {}) {
@@ -21,7 +17,7 @@ async function call(path, {method = 'GET', body} = {}) {
 }
 
 export async function loadMe() {
-  try { emit({user: await call('/api/auth/me'), ready: true}); }
+  try { const d = await call('/api/auth/me'); emit({user: d && 'user' in d ? d.user : d, ready: true}); }  // guests: 200 {user: null}
   catch { emit({user: null, ready: true}); }
 }
 export async function register(name, email, password, lang) { const user = await call('/api/auth/register', {method: 'POST', body: {name, email, password, lang}}); emit({user}); return user; }
@@ -34,16 +30,12 @@ export async function confirmReset(token, password) { const user = await call('/
 // saved places (server-side when logged in)
 const SNAPSHOT = ['name', 'category', 'categoryKey', 'lat', 'lon', 'address', 'why', 'action', 'url', 'image', 'status', 'distance',
   'travel', 'visit', 'visitRange', 'mode', 'features', 'badges', 'source', 'generated', 'dataSources', 'descriptionSource', 'openConfidence', 'accessibility'];
-export async function fetchSaved() { return (await call('/api/me/saved')).map(restoreSaved); }
+export async function fetchSaved() { return (await call('/api/me/saved')).map(r => ({id: r.poi_id, ...r.data})); }
 export async function putSaved(place) {
   const data = Object.fromEntries(SNAPSHOT.filter(k => place[k] !== undefined).map(k => [k, place[k]]));
   return call(`/api/me/saved/${encodeURIComponent(place.id)}`, {method: 'PUT', body: {data}});
 }
 export async function deleteSaved(id) { return call(`/api/me/saved/${encodeURIComponent(id)}`, {method: 'DELETE'}); }
-
-const savedSession = createSavedSession({fetchSaved, putSaved, deleteSaved});
-export function useSaved() { return useSyncExternalStore(savedSession.subscribe, savedSession.getSnapshot, savedSession.getSnapshot); }
-export const toggleSaved = place => savedSession.toggle(place);
 
 export const AUTH_ERRORS = {
   email_taken: 'Этот email уже зарегистрирован. Попробуй войти.',

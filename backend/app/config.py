@@ -1,82 +1,69 @@
-"""Настройки из переменных окружения (.env в корне репозитория или в backend/)."""
-import os
-from dataclasses import dataclass
-from datetime import timedelta, timezone
+from __future__ import annotations
+
 from functools import lru_cache
-from pathlib import Path
+from typing import Literal
 
-from dotenv import load_dotenv
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
-BACKEND_DIR = Path(__file__).resolve().parent.parent
-REPO_ROOT = BACKEND_DIR.parent
-
-load_dotenv(REPO_ROOT / ".env")
-load_dotenv(BACKEND_DIR / ".env")
-
-# OpenAI SDK (и эмбеддинги в rag/) читают ключ только из OPENAI_API_KEY — пробрасываем другие написания
-if not os.getenv("OPENAI_API_KEY") and (os.getenv("LLM_API_KEY") or os.getenv("openai_api_key")):
-    os.environ["OPENAI_API_KEY"] = (os.getenv("LLM_API_KEY") or os.getenv("openai_api_key") or "").strip()
-
-# Казахстан с 2024 года живёт в едином поясе UTC+5
-ASTANA_TZ = timezone(timedelta(hours=5), "Asia/Astana")
-
-# Грубые границы Астаны — координаты вне них считаем ошибкой ввода
-ASTANA_BBOX = (50.95, 71.15, 51.35, 71.75)  # south, west, north, east
+from app.paths import BACKEND_DIR, ROOT_DIR
 
 
-def _bool(name: str, default: bool) -> bool:
-    return os.getenv(name, str(default)).strip().lower() in {"1", "true", "yes", "on"}
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=(ROOT_DIR / ".env", BACKEND_DIR / ".env"), extra="ignore")
+
+    openai_api_key: str = ""
+    # generation fallback chain (first that answers wins); measured: gpt-6-luna effort=none ~2.5 s
+    llm_models: str = "gpt-6-luna,gpt-5.6-luna,gpt-4.1-mini"
+    llm_parse_model: str = "gpt-6-luna"
+    llm_service_tier: str = "fast"  # "" = default tier; applies to the first model only
+    llm_timeout_s: float = 8.0
+    parse_timeout_s: float = 3.0
+    llm_enabled: bool = True
+    llm_warmup_enabled: bool = False  # opt in: startup probes incur provider charges
+    photo_timeout_s: float = 12.0  # vision call of POST /api/recommend/photo
+    # USD per 1M tokens [input, output] for cost logging (developers.openai.com/api/docs/pricing, Oct 2026).
+    # Edit here or override with LLM_PRICES='{"model": [in, out]}'; "model@tier" = price on that service tier.
+    # A model missing from the table -> cost_usd null.
+    llm_prices: dict[str, tuple[float, float]] = {
+        "gpt-6-luna": (0.10, 0.50), "gpt-6-luna@fast": (0.20, 1.00),
+        "gpt-5.6-luna": (0.20, 1.20), "gpt-4.1-mini": (0.40, 1.60), "gpt-4o-mini": (0.15, 0.60),
+    }
+
+    embed_model: str = "e5-large"  # e5-large | e5-base | e5-small | off
+    weather_enabled: bool = True
+
+    cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173"
+    cors_origin_regex: str = r"https://.*\.(vercel\.app|netlify\.app|pages\.dev)"
+    response_cache_ttl_s: int = 600
+    flight_domestic_buffer_min: int = 120
+    flight_international_buffer_min: int = 180
+    # "у меня 2 часа перед вылетом" from a tourist almost always means free time before heading to the airport:
+    # without an explicit flight type no check-in reserve is subtracted, and the answer says so (note_flight_free_time)
+    flight_unknown_buffer_min: int = 0
+    deadline_road_uncertainty_min: int = 15
+    route_max_snap_m: int = 500
+    hours_max_age_days: int = 180
+    readiness_profile: Literal["template", "llm"] = "template"
+    provider_probe_ttl_s: int = 300
+    # accounts
+    database_url: str = ""          # Railway Postgres DATABASE_URL; empty -> local SQLite (backend/.local/app.db)
+    secret_key: str = ""            # legacy setting; sessions now use random DB-backed tokens
+    public_url: str = ""            # e.g. https://seruendesh.site (links in emails)
+    smtp_host: str = ""
+    smtp_port: int = 587
+    smtp_user: str = ""
+    smtp_password: str = ""
+    smtp_from: str = ""
+    rate_limit_per_min: int = 30
+    mcp_rate_limit_per_min: int = 30  # MCP tool calls per client per minute
+    photo_rate_limit_per_min: int = 10  # vision calls cost more
+    log_level: str = "INFO"
+
+    @property
+    def llm_chain(self) -> list[str]:
+        return [m.strip() for m in self.llm_models.split(",") if m.strip()]
 
 
-DEFAULT_PRICES = {"gpt-6.1-sol": (2.0, 10.0), "gpt-5.4-mini": (0.75, 4.5)}
-
-
-def _prices(raw: str) -> dict[str, tuple[float, float]]:
-    """LLM_PRICES='gpt-6.1-sol=2.5/10,gpt-5.4-mini=0.25/2' — цены за 1M токенов (input/output)."""
-    out = {}
-    for item in filter(None, (p.strip() for p in raw.split(","))):
-        try:
-            model, pair = item.split("=")
-            inp, outp = pair.split("/")
-            out[model.strip()] = (float(inp), float(outp))
-        except ValueError:
-            continue
-    return out
-
-
-@dataclass(frozen=True)
-class Settings:
-    llm_api_key: str | None
-    llm_base_url: str | None
-    llm_fast_model: str        # разбор запроса: быстро, temperature=0
-    llm_decision_model: str    # выбор мест и объяснение «почему»: свежая reasoning-модель
-    llm_reasoning_effort: str
-    llm_timeout_s: float
-    llm_decision_timeout_s: float
-    llm_prices: dict[str, tuple[float, float]]  # model -> ($ за 1M input, $ за 1M output)
-    cache_ttl_s: int
-    cache_max_items: int
-    mock_rag: bool
-    fixture_path: Path
-    cors_origins: list[str]
-
-
-@lru_cache
+@lru_cache(maxsize=1)
 def get_settings() -> Settings:
-    return Settings(
-        llm_api_key=(os.getenv("LLM_API_KEY") or os.getenv("OPENAI_API_KEY")
-                     or os.getenv("openai_api_key") or "").strip() or None,
-        llm_base_url=os.getenv("LLM_BASE_URL") or None,
-        llm_fast_model=os.getenv("LLM_FAST_MODEL", "gpt-5.4-mini"),
-        llm_decision_model=os.getenv("LLM_DECISION_MODEL", "gpt-6.1-sol"),
-        llm_reasoning_effort=os.getenv("LLM_REASONING_EFFORT", "low"),
-        llm_timeout_s=float(os.getenv("LLM_TIMEOUT_S", "25")),
-        llm_decision_timeout_s=float(os.getenv("LLM_DECISION_TIMEOUT_S", "8")),
-        # $ за 1M токенов input/output; значения по умолчанию сверены с расчётом стоимости в Langfuse
-        llm_prices={**DEFAULT_PRICES, **_prices(os.getenv("LLM_PRICES", ""))},
-        cache_ttl_s=int(os.getenv("CACHE_TTL_S", "900")),
-        cache_max_items=int(os.getenv("CACHE_MAX_ITEMS", "500")),
-        mock_rag=_bool("MOCK_RAG", False),
-        fixture_path=Path(os.getenv("POI_FIXTURE", BACKEND_DIR / "tests" / "fixtures" / "pois_sample.json")),
-        cors_origins=[o.strip() for o in os.getenv("CORS_ORIGINS", "*").split(",") if o.strip()],
-    )
+    return Settings()

@@ -1,5 +1,5 @@
-# Sparse local integration of both backends and the current canonical dataset.
--r backend/requirements.txt
+# Local integration of the product backend, the team catalogue and the QA suite.
+-r backend/pyproject.toml
 -r data/requirements.txt
 -r requirements-qa.txt
 pydantic-settings>=2.16

@@ -13,11 +13,11 @@ from types import SimpleNamespace
 
 import numpy as np
 
-from ayat_backend.app.store import load_store
-from ayat_backend.app.embedder import get_embedder
-from ayat_backend.app.retrieval import text_relevance
-from ayat_backend.app.geo import hav_m
-from ayat_backend.app.categories import CONTRACT_CATEGORY
+from app.store import load_store
+from app.embedder import get_embedder
+from app.retrieval import text_relevance
+from app.geo import hav_m
+from app.categories import CONTRACT_CATEGORY
 from rag.evaluate import _case, _id_index, _metrics
 from eval.run_eval import file_sha256, source_fingerprint
 

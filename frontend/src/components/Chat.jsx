@@ -1,101 +1,135 @@
 import { t as tr } from "../i18n";
-import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles } from 'lucide-react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera } from 'lucide-react';
 import { landmarks, scenarios } from '../data';
 import { MY_LOCATION } from '../api';
-import { emptyPlanExplanation } from '../planner';
 import Mascot from './Mascot';
+
 const welcome = {
   id: 0,
   role: 'assistant',
   text: 'Сәлем! Я Серу 👋 Собираю маленькие радости большого города. Чего сегодня хочется: кофе у окна, прогулки без спешки или чего-то совсем нового?'
 };
-export function ChatAnswer({count, serviceCount = 0, summary, note}) {
-  if (serviceCount) return <>{summary || note} {tr('Условия и источники — в карточках экскурсий.')}</>;
-  if (!count) return emptyPlanExplanation({summary, notes: [note]}) || tr('Подходящих мест пока нет');
-  return <>{summary} {tr('Посмотри карточки — там объясню, почему и что делать на месте.')}</>;
+
+// On phones the chat is a full-screen sheet (like a messenger): the composer sits above the keyboard,
+// the system back button closes it. On wider screens it stays a panel next to the results.
+function useSheetViewport(active, onClose) {
+  useEffect(() => {
+    if (!active) return;
+    const vv = window.visualViewport, root = document.documentElement;
+    const fit = () => { root.style.setProperty('--vvh', (vv ? vv.height : innerHeight) + 'px'); root.style.setProperty('--vvtop', (vv ? vv.offsetTop : 0) + 'px'); };
+    fit(); vv?.addEventListener('resize', fit); vv?.addEventListener('scroll', fit);
+    const overflow = document.body.style.overflow; document.body.style.overflow = 'hidden';
+    history.scrollRestoration = 'manual';
+    if (!history.state?.seruChat) history.pushState({ ...(history.state || {}), seruChat: 1 }, '');
+    const back = () => onClose();
+    addEventListener('popstate', back);
+    return () => { vv?.removeEventListener('resize', fit); vv?.removeEventListener('scroll', fit); removeEventListener('popstate', back); document.body.style.overflow = overflow; };
+  }, [active]);
 }
 
-export default function Chat({
-  onScenario,
-  requestPlan,
-  onMood,
-  location,
-  setLocation,
-  onResult,
-  onReset,
-  starter
-}) {
+export default function Chat({ requestPlan, onMood, location, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false }) {
   const [messages, setMessages] = useState([welcome]),
     [query, setQuery] = useState(''),
     [loading, setLoading] = useState(false),
-    [locationOpen, setLocationOpen] = useState(false);
-  const [error,setError]=useState('');
-  const controller=useRef(null),lastRequest=useRef(null);
-  const timer = useRef(null),
-    log = useRef(null),
-    sequence = useRef(0),
-    locationBox = useRef(null);
-  useEffect(() => () => {clearTimeout(timer.current);controller.current?.abort();}, []);
+    [locationOpen, setLocationOpen] = useState(false),
+    [error, setError] = useState('');
+  const controller = useRef(null), lastRequest = useRef(null), log = useRef(null), sequence = useRef(0), locationBox = useRef(null), input = useRef(null);
+  const asSheet = sheet && open;
+  const close = () => { if (history.state?.seruChat) history.back(); else onClose?.(); };
+  useSheetViewport(asSheet, () => onClose?.());
+  useEffect(() => () => controller.current?.abort(), []);
   useEffect(() => {
-    log.current?.scrollTo({
-      top: log.current.scrollHeight,
-      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
-    });
-  }, [messages, loading]);
+    log.current?.scrollTo({ top: log.current.scrollHeight, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  }, [messages, loading, asSheet]);
+  useLayoutEffect(() => {  // the composer grows with the text (1–5 lines) instead of being a fixed box
+    const el = input.current; if (!el) return;
+    el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 132) + 'px';
+  }, [query, asSheet]);
   useEffect(() => {
     if (!locationOpen) return;
-    const close = e => {
-      if (!locationBox.current?.contains(e.target)) setLocationOpen(false);
-    };
-    const escape = e => {
-      if (e.key === 'Escape') setLocationOpen(false);
-    };
-    document.addEventListener('pointerdown', close);
-    document.addEventListener('keydown', escape);
-    return () => {
-      document.removeEventListener('pointerdown', close);
-      document.removeEventListener('keydown', escape);
-    };
+    const closeMenu = e => { if (!locationBox.current?.contains(e.target)) setLocationOpen(false); };
+    const escape = e => { if (e.key === 'Escape') setLocationOpen(false); };
+    document.addEventListener('pointerdown', closeMenu); document.addEventListener('keydown', escape);
+    return () => { document.removeEventListener('pointerdown', closeMenu); document.removeEventListener('keydown', escape); };
   }, [locationOpen]);
+
   function append(items) {
-    setMessages(prev => [...prev, ...items.map(m => ({
-      ...m,
-      id: ++sequence.current
-    }))].slice(-20));
+    setMessages(prev => [...prev, ...items.map(m => ({ ...m, id: ++sequence.current }))].slice(-20));
   }
-  function cancel(){controller.current?.abort();setLoading(false);setError('Запрос отменён. Текст сохранён.');onMood?.('idle');}
-  async function send(text,index,override,retry=false,display){
-    if(!text.trim())return;
-    controller.current?.abort();const active=new AbortController();controller.current=active;
-    setError('');setLoading(true);setQuery(text);onMood?.('thinking');
-    if(!retry)append([{role:'user',text:display||text}]);
-    lastRequest.current={text,index,override};
-    const timeout=setTimeout(()=>{if(controller.current===active){active.abort();setLoading(false);setError('Ответ задерживается. Попробуй ещё раз.');onMood?.('idle');}},25000);
-    try{const plan=await requestPlan(text,override,active.signal);if(active.signal.aborted)return;const real=plan.places.filter(p=>!p.generated),services=plan.services||[];append([{role:'assistant',result:true,count:real.length,serviceCount:services.length,summary:plan.summary,names:[...real,...services].map(p=>p.name),note:real.length?null:plan.notes[0],template:plan.llm?.mode==='template'}]);setQuery(current=>current===text?'':current);setLoading(false);onMood?.(real.length||services.length?'happy':'idle');}
-    catch(e){if(active.signal.aborted)return;setLoading(false);if(e?.name==='AbortError'){onMood?.('idle');return;}setError(e?.message==='rate'?'Слишком много запросов. Подожди минуту и попробуй снова.':'Не удалось загрузить подборку. Текст сохранён — попробуй ещё раз.');onMood?.('idle');}
-    finally{clearTimeout(timeout);}
+  function cancel() { controller.current?.abort(); setLoading(false); setError('Запрос отменён. Текст сохранён.'); onMood?.('idle'); }
+  async function send(text, index, override, retry = false, display, photo) {
+    if (!text.trim() && !photo) return;
+    if (photo && photo.size > 8 * 1024 * 1024) { setError('Фото больше 8 МБ — выбери поменьше.'); return; }
+    controller.current?.abort(); const active = new AbortController(); controller.current = active;
+    setError(''); setLoading(true); setQuery(text); onMood?.('thinking');
+    if (!retry) append([{ role: 'user', text: display || text || tr('Где я? Вот фото'), image: photo ? URL.createObjectURL(photo) : null }]);
+    lastRequest.current = { text, index, override, photo };
+    const timeout = setTimeout(() => { if (controller.current === active) { active.abort(); setLoading(false); setError('Ответ задерживается. Попробуй ещё раз.'); onMood?.('idle'); } }, 25000);
+    try {
+      const plan = await requestPlan(text, override, active.signal, photo);
+      if (active.signal.aborted) return;
+      const real = plan.places.filter(p => !p.generated), g = plan.photoGuess;
+      const seen = g?.recognized && g.name ? tr('Похоже, это «{name}».', { name: g.name }) + ' ' : '';
+      append([{ role: 'assistant', result: true, count: real.length, summary: seen + (plan.summary || ''), names: real.map(p => p.name), note: real.length ? null : plan.notes[0] }]);
+      setQuery(current => current === text ? '' : current); setLoading(false); onMood?.(real.length ? 'happy' : 'idle');
+    } catch (e) {
+      if (active.signal.aborted) return;
+      const m = e?.message || '';
+      setLoading(false); setError(m === 'rate' ? 'Слишком много запросов. Подожди минуту и попробуй снова.' : m === 'photo_too_large' ? 'Фото больше 8 МБ — выбери поменьше.'
+        : m.startsWith('photo-') ? 'Не получилось разобрать фото. Попробуй другое или напиши ориентир.' : 'Не удалось загрузить подборку. Текст сохранён — попробуй ещё раз.'); onMood?.('idle');
+    } finally { clearTimeout(timeout); }
   }
-  useEffect(() => {
-    if (starter) send(starter.text, starter.index, starter.context, false, starter.display);
-  }, [starter]);
-  return <section className="chat-panel" id="chat-panel" aria-labelledby="chat-heading"><div className="chat-heading"><span className="chat-avatar seru-avatar"><Mascot decorative mood={loading ? 'thinking' : messages.at(-1)?.result ? 'happy' : 'wave'} /></span><div><h2 id="chat-heading">{tr("Серу на связи")}</h2><p><span />{tr("Есть идея для твоей прогулки")}</p></div><button className="chat-reset" aria-label={tr("Начать новый диалог")} title={tr("Новый диалог")} onClick={() => {
-        clearTimeout(timer.current);controller.current?.abort();setError('');
-        setLoading(false);
-        onMood?.('idle');
-        setMessages([welcome]);
-        onReset?.();
-        setQuery('');
-      }}><RotateCcw size={17} /></button></div><div className="chat-body"><div className="chat-log" ref={log} role="log" aria-label={tr("История диалога")} aria-live="polite" aria-relevant="additions"><span className="chat-date">{tr("МАЛЕНЬКОЕ ПРИКЛЮЧЕНИЕ НАЧИНАЕТСЯ ЗДЕСЬ")}</span>{messages.map(m => <div key={m.id} className={'chat-message ' + m.role}><span className="message-author">{m.role === 'assistant' ? tr('Серу · твой спутник') : tr('Ты')}</span><p>{m.role === 'user' ? m.text : m.result ? <ChatAnswer count={m.count} serviceCount={m.serviceCount} summary={m.summary} note={m.note} /> : tr(m.text)}</p>{m.result && (m.count > 0 || m.serviceCount > 0) && <button className="message-results" onClick={onResult}>{tr(m.serviceCount && !m.count ? 'Посмотреть экскурсии' : 'Посмотреть места')}<ArrowUpRight size={14} /></button>}</div>)}{loading && <div className="chat-typing" role="status"><span className="thinking-seru"><Mascot decorative mood={loading ? 'thinking' : messages.at(-1)?.result ? 'happy' : 'wave'} /></span><span className="typing-dots" aria-hidden="true"><i /><i /><i /></span>{tr("Собираю прогулку…")}</div>}</div>{(loading||error)&&<div className="request-status" role="status">{loading?<button onClick={cancel}>{tr('Отменить поиск')}</button>:<><p>{tr(error)}</p><button onClick={()=>{const r=lastRequest.current;if(r)send(r.text,r.index,r.override,true);}}>{tr('Повторить запрос')}</button></>}</div>}<div className="quick-scenarios"><span>{tr("ИЛИ НАЧНИ С НАСТРОЕНИЯ")}</span><div>{scenarios.map((s, i) => <button key={tr(s.label)} onClick={() => send(tr(s.query), i)}><s.icon size={14} />{tr(s.label)}</button>)}</div></div><form className="chat-composer" onSubmit={e => {
-        e.preventDefault();
-        if (!loading) send(query);
-      }}><div className="composer-input"><Sparkles size={19} /><textarea id="chat-input" value={query} onChange={e => setQuery(e.target.value)} onKeyDown={e => {
-            if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) {
-              e.preventDefault();
-              e.currentTarget.form.requestSubmit();
-            }
-          }} placeholder={tr("Я рядом с Байтереком. Куда заглянуть?")} aria-label={tr("Как хочешь провести время?")} rows={2} /></div><div className="composer-bottom"><div className="location-picker" ref={locationBox}><button type="button" className="location-toggle" aria-expanded={locationOpen} onClick={() => setLocationOpen(!locationOpen)}><MapPin size={13} /><span>{location === MY_LOCATION ? '📍 ' : ''}{tr(location)}</span><ChevronDown size={12} /></button>{locationOpen && <div className="location-options">{landmarks.map(l => <button type="button" key={l} onClick={() => {
-                setLocation(l);
-                setLocationOpen(false);
-              }}>{tr(l)}{l === location && <Check size={14} />}</button>)}</div>}</div><button className="send-button" type="submit" disabled={loading || !query.trim()} aria-label={tr("Подобрать места")}>{loading ? tr('Подбираю…') : tr('Найти места')}<ArrowUpRight size={17} /></button></div></form><div className="chat-note"><ShieldCheck size={12} /><span>{tr("Локация примерная, ничего не храним.")}</span></div></div></section>;
+  useEffect(() => { if (starter) send(starter.text, starter.index, starter.context, false, starter.display); }, [starter]);
+  function reset() { controller.current?.abort(); setError(''); setLoading(false); onMood?.('idle'); setMessages([welcome]); setQuery(''); }
+
+  const last = messages.at(-1);
+  if (sheet && !open) {  // phone, closed: a compact entry point that keeps the conversation state
+    return <section className="chat-launcher" id="chat-panel" aria-label={tr('Чат с Серу')}>
+      <button className="launcher-main" onClick={() => onOpen?.()}>
+        <span className="chat-avatar seru-avatar"><Mascot decorative mood={loading ? 'thinking' : last?.result ? 'happy' : 'wave'} /></span>
+        <span className="launcher-text"><strong>{tr('Спроси Серу')}</strong><span>{loading ? tr('Собираю прогулку…') : last?.result ? (last.summary || tr('Подборка готова')) : tr('Опиши, где ты и чего хочется — подберу места рядом')}</span></span>
+        <span className="launcher-go"><ArrowUp size={18} /></span>
+      </button>
+      <div className="launcher-moods">{scenarios.map((s, i) => <button key={s.label} onClick={() => { onOpen?.(); send(tr(s.query), i); }}><s.icon size={14} />{tr(s.label)}</button>)}</div>
+    </section>;
+  }
+
+  const panel = <section className={'chat-panel' + (asSheet ? ' chat-sheet' : '')} id="chat-panel" aria-labelledby="chat-heading" role={asSheet ? 'dialog' : undefined} aria-modal={asSheet || undefined}>
+    <div className="chat-heading">
+      {asSheet && <button className="sheet-close" onClick={close} aria-label={tr('Свернуть чат')}><ChevronDown size={22} /></button>}
+      <span className="chat-avatar seru-avatar"><Mascot decorative mood={loading ? 'thinking' : last?.result ? 'happy' : 'wave'} /></span>
+      <div><h2 id="chat-heading">{tr("Серу на связи")}</h2><p><span />{tr(loading ? 'Подбираю места…' : 'Есть идея для твоей прогулки')}</p></div>
+      <button className="chat-reset" aria-label={tr("Начать новый диалог")} title={tr("Новый диалог")} onClick={reset}><RotateCcw size={17} /></button>
+    </div>
+    <div className="chat-body">
+      <div className="chat-log" ref={log} role="log" aria-label={tr("История диалога")} aria-live="polite" aria-relevant="additions">
+        <span className="chat-date">{tr("МАЛЕНЬКОЕ ПРИКЛЮЧЕНИЕ НАЧИНАЕТСЯ ЗДЕСЬ")}</span>
+        {messages.map(m => <div key={m.id} className={'chat-message ' + m.role}><span className="message-author">{m.role === 'assistant' ? tr('Серу · твой спутник') : tr('Ты')}</span>
+          {m.image && <img className="message-photo" src={m.image} alt={tr('Твоё фото')} />}
+          <p>{m.role === 'user' ? m.text : m.result ? !m.count ? (m.note || tr('Подходящих мест пока нет')) : <>{m.summary} {tr('Посмотри карточки — там объясню, почему и что делать на месте.')}</> : tr(m.text)}</p>
+          {m.result && m.count > 0 && <button className="message-results" onClick={() => { if (asSheet) close(); onResult?.(); }}>{tr('Показать места')} · {m.count}<ArrowUpRight size={14} /></button>}
+        </div>)}
+        {loading && <div className="chat-typing" role="status"><span className="thinking-seru"><Mascot decorative mood="thinking" /></span><span className="typing-dots" aria-hidden="true"><i /><i /><i /></span>{tr("Собираю прогулку…")}</div>}
+      </div>
+      {(loading || error) && <div className="request-status" role="status">{loading ? <button onClick={cancel}>{tr('Отменить поиск')}</button> : <><p>{tr(error)}</p><button onClick={() => { const r = lastRequest.current; if (r) send(r.text, r.index, r.override, true, undefined, r.photo); }}>{tr('Повторить запрос')}</button></>}</div>}
+      <div className="quick-scenarios"><span>{tr("ИЛИ НАЧНИ С НАСТРОЕНИЯ")}</span><div>{scenarios.map((s, i) => <button key={s.label} onClick={() => send(tr(s.query), i)}><s.icon size={14} />{tr(s.label)}</button>)}</div></div>
+      <form className="chat-composer" onSubmit={e => { e.preventDefault(); if (!loading) send(query); }}>
+        <div className="composer-input"><Sparkles size={19} /><textarea ref={input} id="chat-input" value={query} onChange={e => setQuery(e.target.value)} onKeyDown={e => {
+          if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); e.currentTarget.form.requestSubmit(); }
+        }} placeholder={tr("Я рядом с Байтереком. Куда заглянуть?")} aria-label={tr("Как хочешь провести время?")} rows={asSheet ? 1 : 2} enterKeyHint="send" /></div>
+        <div className="composer-bottom">
+          <div className="location-picker" ref={locationBox}><button type="button" className="location-toggle" aria-expanded={locationOpen} onClick={() => setLocationOpen(!locationOpen)}><MapPin size={13} /><span>{location === MY_LOCATION ? '📍 ' : ''}{tr(location)}</span><ChevronDown size={12} /></button>
+            {locationOpen && <div className="location-options">{landmarks.map(l => <button type="button" key={l} onClick={() => { setLocation(l); setLocationOpen(false); }}>{tr(l)}{l === location && <Check size={14} />}</button>)}</div>}</div>
+          {photoEnabled && <label className="photo-button" title={tr('Где я? Отправь фото места')} aria-label={tr('Где я? Отправь фото места')}>
+            <Camera size={18} /><input type="file" accept="image/jpeg,image/png,image/webp" capture="environment" hidden disabled={loading}
+              onChange={e => { const f = e.target.files?.[0]; e.target.value = ''; if (f) send(query.trim(), undefined, undefined, false, undefined, f); }} /></label>}
+          <button className="send-button" type="submit" disabled={loading || !query.trim()} aria-label={tr("Подобрать места")}><span>{loading ? tr('Подбираю…') : tr('Найти места')}</span><ArrowUpRight size={17} /></button>
+        </div>
+      </form>
+      <div className="chat-note"><ShieldCheck size={12} /><span>{tr("Локация примерная, ничего не храним.")}</span></div>
+    </div>
+  </section>;
+  return asSheet ? <>{createPortal(panel, document.body)}<div className="chat-launcher placeholder" id="chat-panel-anchor" /></> : panel;
 }
