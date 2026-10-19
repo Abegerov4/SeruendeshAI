@@ -24,7 +24,7 @@ T: dict[str, dict[str, str]] = {
     "walk": {"ru": "пешком", "kk": "жаяу", "en": "on foot"},
     "car": {"ru": "на машине", "kk": "көлікпен", "en": "by car"},
     # summary / notes
-    "summary_nav": {"ru": "Маршрут от «{a}» до «{b}»: {d}, около {m} мин {how}. Путь показан на карте.", "kk": "«{a}» — «{b}» бағыты: {d}, шамамен {m} мин {how}. Жол картада көрсетілген.", "en": "Route from “{a}” to “{b}”: {d}, about {m} min {how}. The path is on the map."},
+    "summary_nav": {"ru": "Маршрут от «{a}» до «{b}»: {d}, около {m} мин {how}.", "kk": "«{a}» — «{b}» бағыты: {d}, шамамен {m} мин {how}.", "en": "Route from “{a}” to “{b}”: {d}, about {m} min {how}."},
     "how_walk": {"ru": "пешком", "kk": "жаяу", "en": "on foot"},
     "how_car": {"ru": "на машине", "kk": "көлікпен", "en": "by car"},
     "summary": {"ru": "Подобрал {n} {places} рядом: {names}.", "kk": "Жақын жерден {n} орын таптым: {names}.", "en": "Found {n} {places} nearby: {names}."},
