@@ -5,30 +5,30 @@
   "metadata": {
     "runtime_id": "ayat",
     "profile": "llm",
-    "timestamp_utc": "2026-10-19T09:14:58.612256+00:00",
+    "timestamp_utc": "2026-10-19T11:08:15.965869+00:00",
     "scenario_sha256": "93309298a7125e072b52304ec9ab9ede4a4c7cb2d7c0991b0a6f2e7c02795e1a",
-    "source_sha256": "21ba4b174841aa6eaf16a01fbf93aaba87783b1c33a570f5e7852bda2548f7bb",
-    "git_head": "6619fac938cf534d69b6bd173bfa1b3272334ef7",
-    "git_dirty": true,
+    "source_sha256": "4e456cb55be8fe5c421328ea53a605dfb610b32b75fc429f41889667796431a4",
+    "git_head": "98129d8f919173e0eb83ccd13ae90932fffd260f",
+    "git_dirty": false,
     "provenance_errors": [
       "Health runtime/profile/snapshot does not match local canonical identity"
     ],
     "known_ids_verified": true,
     "health": {
       "status": "ok",
-      "pois": 2286,
+      "pois": 2269,
       "llm": "ok",
       "runtime_id": "ayat",
       "readiness_profile": "template",
       "ready": true,
       "snapshot_version": "pipeline-9ad2bb38041d1287",
-      "provider_verified_at": "2026-10-19T09:14:27.116100+00:00",
-      "poi_count": 2286,
+      "provider_verified_at": "2026-10-19T11:08:00.820266+00:00",
+      "poi_count": 2269,
       "events": 140,
       "dense_retrieval": true,
       "walk_graph": true,
       "llm_configured": true,
-      "data_built_at": "2026-10-19T04:51:37+00:00"
+      "data_built_at": "2026-10-19T09:31:38+00:00"
     },
     "canonical_data_sha256": "7faaa8535efe4dc89f72918a1c0112bb42c49d22dbe0c9561f8266d7b43e9672",
     "dataset_sha256": "7faaa8535efe4dc89f72918a1c0112bb42c49d22dbe0c9561f8266d7b43e9672",
@@ -54,7 +54,7 @@
     {
       "id": "S1_mega_walk",
       "title": "Официальный: возле Mega Silk Way, прогулка 30–60 мин",
-      "ms": 280,
+      "ms": 4815,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -82,9 +82,9 @@
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "cfb2b4d53cf5",
+        "request_id": "6731cc4b802b",
         "lang": "ru",
-        "summary": "Для прогулки на полчаса — час лучше всего подойдут парки неподалёку; в прохладную ветреную погоду можно ограничиться спокойным кругом.",
+        "summary": "Для прогулки в прохладную погоду выберите парк и неспешно пройдитесь по его аллеям.",
         "recommendations": [
           {
             "poi_id": "osm:w1456208624",
@@ -94,12 +94,12 @@
             "lon": 71.41695,
             "distance_m": 853,
             "travel_min": 18,
-            "why": "Бейбітшілік пен Келісім аллеясы — парк, где можно провести неспешную прогулку на свежем воздухе.",
+            "why": "Это парк, подходящий для короткой прогулки на свежем воздухе.",
             "visit_min": [
               20,
               42
             ],
-            "what_to_do": "Пройдитесь по аллее и сделайте короткую паузу, чтобы осмотреться.",
+            "what_to_do": "Пройдитесь по аллее и устройте небольшую паузу на свежем воздухе.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
@@ -157,12 +157,12 @@
             "lon": 71.394286,
             "distance_m": 1065,
             "travel_min": 22,
-            "why": "Сквер подойдёт для ещё одной короткой прогулки, если хочется провести время в зелёной зоне.",
+            "why": "Ещё один вариант для спокойной прогулки — сквер на Столичной көшесі.",
             "visit_min": [
               20,
               38
             ],
-            "what_to_do": "Неспешно прогуляйтесь по скверу и выберите место для короткой остановки.",
+            "what_to_do": "Неспешно обойдите сквер и присмотритесь к его зелёным уголкам.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
@@ -214,7 +214,73 @@
           }
         ],
         "service_results": [],
-        "ideas": [],
+        "ideas": [
+          {
+            "poi_id": "idea-3",
+            "name": "Прогулка с наблюдением",
+            "category": "park",
+            "lat": 51.093812,
+            "lon": 71.41695,
+            "distance_m": 853,
+            "travel_min": 18,
+            "why": "Сравните, какой из двух парков приятнее для короткой передышки.",
+            "visit_min": [
+              5,
+              20
+            ],
+            "what_to_do": "Сравните, какой из двух парков приятнее для короткой передышки.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "generated",
+            "source_url": null,
+            "rating": null,
+            "website": null,
+            "rank": 3,
+            "category_detail": "idea",
+            "category_label": "Идея ИИ",
+            "icon": "sparkles",
+            "walk_distance_m": null,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 10,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Идея ИИ",
+            "data_sources": [
+              "llm"
+            ],
+            "popularity": null,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [
+              "ai_idea"
+            ],
+            "event": null,
+            "address": "Рядом с: Аллея мира и согласия",
+            "description": null,
+            "description_source": "generated",
+            "description_url": null,
+            "phone": null,
+            "instagram": null,
+            "cuisine": null,
+            "photo": null,
+            "description_attribution": [],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
+          }
+        ],
         "route": null,
         "used_context": {
           "location_source": "landmark",
@@ -242,6 +308,8 @@
             "precipitation": false,
             "description": "9°C (ощущается 6°C), ветер 5 м/с",
             "max_outdoor_min": 60,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 4.5,
@@ -255,6 +323,9 @@
               "viewpoint",
               "museum"
             ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [],
             "needs": [],
             "time_budget_min": 60,
             "food_requirements": [],
@@ -269,8 +340,8 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286,
-            "within_reach": 132,
+            "total": 2269,
+            "within_reach": 131,
             "after_filters": 11,
             "shown": 2
           },
@@ -283,32 +354,31 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [],
-        "notes": [
-          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
-        ],
+        "notes": [],
         "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
         "ai_generated": true,
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 4430,
+          "latency_ms": 4544,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 4383,
+            "output_tokens": 335,
+            "cost_usd": 0.001212
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S2_quiet_coffee_socket",
       "title": "Официальный: тихое место с кофе и розеткой рядом",
-      "ms": 272,
+      "ms": 4357,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -328,7 +398,8 @@
       },
       "items": [
         "Drinkit (Кофейня / кафе, 6 мин)",
-        "Национальная академическая библиотека Республики Казахстан (Библиотека, 6 мин)"
+        "Национальная академическая библиотека Республики Казахстан (Библиотека, 6 мин)",
+        "Rafe (Кофейня / кафе, 6 мин)"
       ],
       "route": null,
       "executed": true,
@@ -336,9 +407,9 @@
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "f2e4d869b14f",
+        "request_id": "ede097de91f8",
         "lang": "ru",
-        "summary": "Для спокойной паузы с кофе лучше всего подходит место с отмеченным Wi‑Fi; рядом также есть библиотека для более тихой обстановки.",
+        "summary": "Для кофе и спокойной работы лучше всего подойдут места с подтверждёнными удобствами или библиотечная атмосфера.",
         "recommendations": [
           {
             "poi_id": "osm:n14100100182",
@@ -348,7 +419,7 @@
             "lon": 71.429011,
             "distance_m": 264,
             "travel_min": 6,
-            "why": "В Drinkit есть Wi‑Fi и кофе, а кофейня находится рядом.",
+            "why": "В Drinkit есть Wi‑Fi и кофе, а формат кофейни подходит для короткой рабочей паузы.",
             "visit_min": [
               25,
               45
@@ -422,7 +493,7 @@
               30,
               54
             ],
-            "what_to_do": "Загляните внутрь и уточните, где можно спокойно посидеть с книгой или поработать.",
+            "what_to_do": "Найдите место для работы и спросите, где можно выпить кофе поблизости внутри библиотеки.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
@@ -437,7 +508,7 @@
             "travel_mode": "walk",
             "arrival_at": null,
             "departure_at": null,
-            "visit_suggested_min": 30,
+            "visit_suggested_min": 40,
             "leave_by": null,
             "return_min": 0,
             "opening": {
@@ -492,6 +563,69 @@
             "structured_facts": [],
             "menu_items": [],
             "prices": []
+          },
+          {
+            "poi_id": "osm:n4133854089",
+            "name": "Rafe",
+            "category": "cafe",
+            "lat": 51.129729,
+            "lon": 71.425986,
+            "distance_m": 340,
+            "travel_min": 6,
+            "why": "Кофейня / кафе: совсем рядом.",
+            "visit_min": [
+              25,
+              45
+            ],
+            "what_to_do": "Закажите кофе и попросите посадить вас в наиболее спокойном уголке.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://www.openstreetmap.org/node/4133854089",
+            "rating": null,
+            "website": null,
+            "rank": 3,
+            "category_detail": "cafe",
+            "category_label": "Кофейня / кафе",
+            "icon": "coffee",
+            "walk_distance_m": 450,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 30,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "osm"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": null,
+            "description": "Кофейня / кафе. В 350 м от «Бәйтерек».",
+            "description_source": "template",
+            "description_url": null,
+            "phone": null,
+            "instagram": null,
+            "cuisine": null,
+            "photo": null,
+            "description_attribution": [],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
           }
         ],
         "service_results": [],
@@ -527,6 +661,8 @@
             "precipitation": false,
             "description": "9°C (ощущается 6°C), ветер 5 м/с",
             "max_outdoor_min": 60,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 4.5,
@@ -541,6 +677,13 @@
               "cafe",
               "coworking",
               "library"
+            ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [
+              "Кофейня / кафе",
+              "Коворкинг",
+              "Библиотека"
             ],
             "needs": [
               "power_outlets",
@@ -559,10 +702,10 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286,
-            "within_reach": 316,
-            "after_filters": 61,
-            "shown": 2
+            "total": 2269,
+            "within_reach": 313,
+            "after_filters": 60,
+            "shown": 3
           },
           "data_sources": [
             "OpenStreetMap (ODbL)",
@@ -573,7 +716,7 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [
@@ -588,28 +731,28 @@
         ],
         "notes": [
           "Розетки в открытых данных почти не отмечены: наличие розеток стоит уточнить на месте.",
-          "«Тихое место» — оценка по типу заведения (библиотека, кофейня, сквер), шум в данных не измеряется.",
-          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+          "«Тихое место» — оценка по типу заведения (библиотека, кофейня, сквер), шум в данных не измеряется."
         ],
         "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
         "ai_generated": true,
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 4089,
+          "latency_ms": 4091,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 4587,
+            "output_tokens": 376,
+            "cost_usd": 0.001293
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S3_kids",
       "title": "Официальный: с ребёнком — площадка или интерактивный музей",
-      "ms": 264,
+      "ms": 3847,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -629,7 +772,8 @@
       },
       "items": [
         "Детская площадка (Қазақ радиосы көшесі) (Детская площадка, 11 мин)",
-        "Детская площадка (Қабанбай Батыр даңғылы) (Детская площадка, 24 мин)"
+        "Детская площадка в ЖК «Rixos Apartments (Kazakhmys)» (Детская площадка, 16 мин)",
+        "Детская площадка (Сарайшық көшесі) (Детская площадка, 24 мин)"
       ],
       "route": null,
       "executed": true,
@@ -637,9 +781,9 @@
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "6147f3169b2f",
+        "request_id": "f9b9837ce0f4",
         "lang": "ru",
-        "summary": "Для прогулки с ребёнком подойдут эти площадки; одна из них находится в помещении.",
+        "summary": "Вот несколько детских площадок для прогулки; одна из них расположена в помещении.",
         "recommendations": [
           {
             "poi_id": "osm:w1504543670",
@@ -649,12 +793,12 @@
             "lon": 71.415815,
             "distance_m": 416,
             "travel_min": 11,
-            "why": "Это детская площадка рядом с Круглой площадью, и до неё ближе всего пешком среди предложенных вариантов.",
+            "why": "Это детская площадка, до которой ближе всего добираться пешком; рядом находится Круглая Площадь.",
             "visit_min": [
               20,
               40
             ],
-            "what_to_do": "Загляните на площадку и дайте ребёнку поиграть, пока вы отдыхаете рядом.",
+            "what_to_do": "Загляните на площадку, а затем прогуляйтесь к Круглой Площади.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
@@ -669,7 +813,7 @@
             "travel_mode": "walk",
             "arrival_at": null,
             "departure_at": null,
-            "visit_suggested_min": 30,
+            "visit_suggested_min": 25,
             "leave_by": null,
             "return_min": 0,
             "opening": {
@@ -705,30 +849,93 @@
             "prices": []
           },
           {
-            "poi_id": "osm:w1135598208",
-            "name": "Детская площадка (Қабанбай Батыр даңғылы)",
+            "poi_id": "osm:w1449322330",
+            "name": "Детская площадка в ЖК «Rixos Apartments (Kazakhmys)»",
             "category": "playground",
-            "lat": 51.137805,
-            "lon": 71.415039,
-            "distance_m": 936,
-            "travel_min": 24,
-            "why": "Площадка в помещении — удобный вариант в прохладную и ветреную погоду; она рядом с Астана Опера.",
+            "lat": 51.13227,
+            "lon": 71.403346,
+            "distance_m": 528,
+            "travel_min": 16,
+            "why": "Детская площадка рядом с «Хан Шатыр» — можно совместить игру с прогулкой поблизости.",
             "visit_min": [
               20,
-              36
+              40
             ],
-            "what_to_do": "Зайдите внутрь и устройте ребёнку игровую паузу.",
+            "what_to_do": "Дайте ребёнку поиграть на площадке, а после осмотрите окрестности «Хан Шатыр».",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
-            "source_url": "https://www.openstreetmap.org/way/1135598208",
+            "source_url": "https://www.openstreetmap.org/way/1449322330",
             "rating": null,
             "website": null,
             "rank": 2,
             "category_detail": "playground",
             "category_label": "Детская площадка",
             "icon": "baby",
-            "walk_distance_m": 1400,
+            "walk_distance_m": 950,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 25,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "osm"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": null,
+            "description": "Детская площадка. Рядом с «Хан Шатыр».",
+            "description_source": "template",
+            "description_url": null,
+            "phone": null,
+            "instagram": null,
+            "cuisine": null,
+            "photo": null,
+            "description_attribution": [],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
+          },
+          {
+            "poi_id": "osm:w1135598691",
+            "name": "Детская площадка (Сарайшық көшесі)",
+            "category": "playground",
+            "lat": 51.138557,
+            "lon": 71.413136,
+            "distance_m": 976,
+            "travel_min": 24,
+            "why": "Площадка в помещении подойдёт, если на улице прохладно и ветрено.",
+            "visit_min": [
+              20,
+              36
+            ],
+            "what_to_do": "Загляните внутрь и предложите ребёнку выбрать, чем заняться на площадке.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://www.openstreetmap.org/way/1135598691",
+            "rating": null,
+            "website": null,
+            "rank": 3,
+            "category_detail": "playground",
+            "category_label": "Детская площадка",
+            "icon": "baby",
+            "walk_distance_m": 1420,
             "travel_mode": "walk",
             "arrival_at": null,
             "departure_at": null,
@@ -806,6 +1013,8 @@
             "precipitation": false,
             "description": "9°C (ощущается 6°C), ветер 5 м/с",
             "max_outdoor_min": 60,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 3.6,
@@ -820,6 +1029,13 @@
               "playground",
               "museum",
               "kids_indoor"
+            ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [
+              "Детская площадка",
+              "Музей",
+              "Детский игровой центр"
             ],
             "needs": [
               "kids"
@@ -837,10 +1053,10 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286,
-            "within_reach": 189,
+            "total": 2269,
+            "within_reach": 188,
             "after_filters": 18,
-            "shown": 2
+            "shown": 3
           },
           "data_sources": [
             "OpenStreetMap (ODbL)",
@@ -851,49 +1067,48 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [
-          {
-            "name": "Resto bar Jolly Joker",
-            "reason": "не для детей"
-          },
           {
             "name": "White Garden",
             "reason": "не для детей"
           },
           {
-            "name": "Пинта",
+            "name": "Resto bar Jolly Joker",
             "reason": "не для детей"
           },
           {
             "name": "Zima Gold",
             "reason": "не для детей"
+          },
+          {
+            "name": "Пинта",
+            "reason": "не для детей"
           }
         ],
-        "notes": [
-          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
-        ],
+        "notes": [],
         "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
         "ai_generated": true,
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 3150,
+          "latency_ms": 3502,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 4663,
+            "output_tokens": 370,
+            "cost_usd": 0.001303
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S4_tourist_flight",
       "title": "Официальный: турист, 2 часа перед вылетом",
-      "ms": 296,
+      "ms": 4581,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -913,17 +1128,18 @@
       },
       "items": [
         "Байтерек (Достопримечательность, 2 мин)",
-        "Picture Day (Галерея, 7 мин)"
+        "Круглая площадь (Астана) (Сквер / сад, 18 мин)",
+        "Жетігенші (Арт-объект, 25 мин)"
       ],
-      "route": null,
+      "route": "Мини-маршрут: Бәйтерек → Дөңгелек алаң / Круглая Площадь / Round Square → Жетігенші. Всего ≈ 103 мин (31 мин в пути + 35 мин на местах + 37 мин на дорогу обратно).",
       "executed": true,
       "http_status": 200,
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "ca7fa914508c",
+        "request_id": "4970525f6f8f",
         "lang": "ru",
-        "summary": "Перед вылетом можно увидеть символ столицы и, если останется время, заглянуть в галерею поблизости.",
+        "summary": "Мини-маршрут: Бәйтерек → Дөңгелек алаң / Круглая Площадь / Round Square → Жетігенші. Всего ≈ 103 мин (31 мин в пути + 35 мин на местах + 37 мин на дорогу обратно).",
         "recommendations": [
           {
             "poi_id": "osm:w230401645",
@@ -933,12 +1149,12 @@
             "lon": 71.430455,
             "distance_m": 45,
             "travel_min": 2,
-            "why": "Бәйтерек — монумент и смотровая башня, символ переноса столицы в Астану; для первого визита это яркая городская достопримечательность.",
+            "why": "Бәйтерек — символ переноса столицы и смотровая башня, яркая первая остановка для знакомства с Астаной.",
             "visit_min": [
               15,
-              30
+              15
             ],
-            "what_to_do": "Обойдите монумент и поднимитесь на смотровую площадку, чтобы взглянуть на город.",
+            "what_to_do": "Рассмотрите монумент снаружи, а если успеете — поднимитесь на смотровую площадку.",
             "open_status": "open",
             "open_confidence": "low",
             "source": "poi_data",
@@ -951,9 +1167,9 @@
             "icon": "landmark",
             "walk_distance_m": 110,
             "travel_mode": "walk",
-            "arrival_at": null,
-            "departure_at": null,
-            "visit_suggested_min": 20,
+            "arrival_at": "2026-10-18T14:02:00+05:00",
+            "departure_at": "2026-10-18T14:17:00+05:00",
+            "visit_suggested_min": 15,
             "leave_by": "15:10",
             "return_min": 35,
             "opening": {
@@ -1011,36 +1227,36 @@
             "prices": []
           },
           {
-            "poi_id": "ov:5a524721-3c6f-45",
-            "name": "Picture Day",
-            "category": "gallery",
-            "lat": 51.12812,
-            "lon": 71.42535,
-            "distance_m": 325,
-            "travel_min": 7,
-            "why": "Галерея Picture Day находится рядом с Бәйтерек, поэтому её удобно добавить к короткой прогулке перед вылетом.",
+            "poi_id": "ov:05a08159-b2a2-4f",
+            "name": "Круглая площадь (Астана)",
+            "category": "park",
+            "lat": 51.130733,
+            "lon": 71.414005,
+            "distance_m": 1157,
+            "travel_min": 18,
+            "why": "Круглая площадь — одна из основных достопримечательностей в центре, среди архитектурных объектов, скульптур и цветочных аллей.",
             "visit_min": [
-              30,
-              45
+              15,
+              15
             ],
-            "what_to_do": "Загляните в галерею и выберите одну работу, которая лучше всего запомнится из поездки.",
+            "what_to_do": "Пройдитесь по площади и выберите скульптурную композицию для памятного фото.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
             "source_url": null,
             "rating": null,
-            "website": "http://pictureday.kz/",
+            "website": null,
             "rank": 2,
-            "category_detail": "gallery",
-            "category_label": "Галерея",
-            "icon": "gallery",
-            "walk_distance_m": 490,
+            "category_detail": "garden",
+            "category_label": "Сквер / сад",
+            "icon": "flower",
+            "walk_distance_m": 1310,
             "travel_mode": "walk",
-            "arrival_at": null,
-            "departure_at": null,
-            "visit_suggested_min": 30,
-            "leave_by": "15:10",
-            "return_min": 35,
+            "arrival_at": "2026-10-18T14:36:00+05:00",
+            "departure_at": "2026-10-18T14:51:00+05:00",
+            "visit_suggested_min": 15,
+            "leave_by": "15:09",
+            "return_min": 36,
             "opening": {
               "status": "unknown",
               "confidence": "low",
@@ -1053,18 +1269,93 @@
             },
             "source_label": "Данные POI",
             "data_sources": [
-              "overture"
+              "overture",
+              "wikidata",
+              "wikipedia"
             ],
-            "popularity": 0.055,
+            "popularity": 0.34,
             "features": [],
             "accessibility": "unknown",
             "badges": [],
             "event": null,
-            "address": "ТРЦ Керуен, Dostyq St 9",
-            "description": "Галерея. В 350 м от «Бәйтерек». Адрес: ТРЦ Керуен, Dostyq St 9.",
+            "address": "бульвар Нуржол",
+            "description": "Круглая площадь — городская площадь, одна из основных достопримечательностей в столице Казахстана, находится в самом центре Астаны, в окружении уникальных архитектурных объектов, скульптурных композиций и цветочных аллей. Круглая площадь представляет собой архитектурный комплекс, в которых входит ря",
+            "description_source": "wikipedia",
+            "description_url": "https://ru.wikipedia.org/?curid=8795897",
+            "phone": null,
+            "instagram": null,
+            "cuisine": null,
+            "photo": null,
+            "description_attribution": [
+              {
+                "source": "wikipedia",
+                "title": "Круглая площадь (Астана)",
+                "url": "https://ru.wikipedia.org/?curid=8795897",
+                "license": "CC-BY-SA-4.0",
+                "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Wikipedia contributors",
+                "notice": "Сокращённый отрывок; исходный текст и авторы — в статье."
+              }
+            ],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
+          },
+          {
+            "poi_id": "osm:n13340040665",
+            "name": "Жетігенші",
+            "category": "monument",
+            "lat": 51.134669,
+            "lon": 71.41061,
+            "distance_m": 1543,
+            "travel_min": 25,
+            "why": "Жетігенші — небольшой арт-объект рядом с Астана Опера, подходящий для короткой остановки в маршруте.",
+            "visit_min": [
+              5,
+              5
+            ],
+            "what_to_do": "Остановитесь у арт-объекта, рассмотрите его и сделайте фото на фоне Астана Опера.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://www.openstreetmap.org/node/13340040665",
+            "rating": null,
+            "website": null,
+            "rank": 3,
+            "category_detail": "artwork",
+            "category_label": "Арт-объект",
+            "icon": "sparkles",
+            "walk_distance_m": 1830,
+            "travel_mode": "walk",
+            "arrival_at": "2026-10-18T15:01:00+05:00",
+            "departure_at": "2026-10-18T15:06:00+05:00",
+            "visit_suggested_min": 5,
+            "leave_by": "15:08",
+            "return_min": 37,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "osm"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": null,
+            "description": "Арт-объект. В 100 м от «Астана Опера».",
             "description_source": "template",
             "description_url": null,
-            "phone": "+77787882049",
+            "phone": null,
             "instagram": null,
             "cuisine": null,
             "photo": null,
@@ -1077,26 +1368,26 @@
         "service_results": [],
         "ideas": [
           {
-            "poi_id": "idea-3",
-            "name": "Символ столицы в кадре",
-            "category": "attraction",
-            "lat": 51.128288,
-            "lon": 71.430455,
-            "distance_m": 45,
-            "travel_min": 2,
-            "why": "Сделайте снимок Бәйтерек с необычного ракурса и сравните его с видом со смотровой площадки.",
+            "poi_id": "idea-4",
+            "name": "Архитектурные акценты",
+            "category": "park",
+            "lat": 51.130733,
+            "lon": 71.414005,
+            "distance_m": 1157,
+            "travel_min": 18,
+            "why": "Сравните формы монумента, зданий вокруг площади и арт-объекта — выберите самый необычный силуэт.",
             "visit_min": [
               5,
               20
             ],
-            "what_to_do": "Сделайте снимок Бәйтерек с необычного ракурса и сравните его с видом со смотровой площадки.",
+            "what_to_do": "Сравните формы монумента, зданий вокруг площади и арт-объекта — выберите самый необычный силуэт.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "generated",
             "source_url": null,
             "rating": null,
             "website": null,
-            "rank": 3,
+            "rank": 4,
             "category_detail": "idea",
             "category_label": "Идея ИИ",
             "icon": "sparkles",
@@ -1128,7 +1419,7 @@
               "ai_idea"
             ],
             "event": null,
-            "address": "Рядом с: Байтерек",
+            "address": "Рядом с: Круглая площадь (Астана)",
             "description": null,
             "description_source": "generated",
             "description_url": null,
@@ -1142,7 +1433,575 @@
             "prices": []
           }
         ],
-        "route": null,
+        "route": {
+          "order": [
+            "osm:w230401645",
+            "ov:05a08159-b2a2-4f",
+            "osm:n13340040665"
+          ],
+          "legs": [
+            {
+              "from_id": "start",
+              "to_id": "osm:w230401645",
+              "distance_m": 110,
+              "travel_min": 2,
+              "polyline": [
+                [
+                  51.128,
+                  71.43
+                ],
+                [
+                  51.127994,
+                  71.430066
+                ],
+                [
+                  51.127957,
+                  71.430148
+                ],
+                [
+                  51.127914,
+                  71.430298
+                ],
+                [
+                  51.128053,
+                  71.430371
+                ],
+                [
+                  51.128048,
+                  71.430527
+                ],
+                [
+                  51.128078,
+                  71.430664
+                ],
+                [
+                  51.128143,
+                  71.430779
+                ],
+                [
+                  51.128228,
+                  71.430843
+                ],
+                [
+                  51.128253,
+                  71.430671
+                ],
+                [
+                  51.128273,
+                  71.430545
+                ],
+                [
+                  51.128288,
+                  71.430455
+                ]
+              ],
+              "geometry": "network"
+            },
+            {
+              "from_id": "osm:w230401645",
+              "to_id": "ov:05a08159-b2a2-4f",
+              "distance_m": 1410,
+              "travel_min": 19,
+              "polyline": [
+                [
+                  51.128288,
+                  71.430455
+                ],
+                [
+                  51.128273,
+                  71.430545
+                ],
+                [
+                  51.128253,
+                  71.430671
+                ],
+                [
+                  51.128235,
+                  71.430794
+                ],
+                [
+                  51.128143,
+                  71.430779
+                ],
+                [
+                  51.128078,
+                  71.430664
+                ],
+                [
+                  51.128048,
+                  71.430527
+                ],
+                [
+                  51.128053,
+                  71.430371
+                ],
+                [
+                  51.127914,
+                  71.430317
+                ],
+                [
+                  51.127835,
+                  71.430284
+                ],
+                [
+                  51.127862,
+                  71.430109
+                ],
+                [
+                  51.127877,
+                  71.430018
+                ],
+                [
+                  51.127974,
+                  71.429406
+                ],
+                [
+                  51.128029,
+                  71.429369
+                ],
+                [
+                  51.128124,
+                  71.429321
+                ],
+                [
+                  51.128258,
+                  71.429291
+                ],
+                [
+                  51.128391,
+                  71.429298
+                ],
+                [
+                  51.12848,
+                  71.429321
+                ],
+                [
+                  51.128503,
+                  71.429155
+                ],
+                [
+                  51.128535,
+                  71.42894
+                ],
+                [
+                  51.128555,
+                  71.428807
+                ],
+                [
+                  51.128579,
+                  71.428635
+                ],
+                [
+                  51.128601,
+                  71.428485
+                ],
+                [
+                  51.128551,
+                  71.428184
+                ],
+                [
+                  51.128594,
+                  71.427916
+                ],
+                [
+                  51.128712,
+                  71.427178
+                ],
+                [
+                  51.128761,
+                  71.426851
+                ],
+                [
+                  51.128427,
+                  71.426709
+                ],
+                [
+                  51.128509,
+                  71.426441
+                ],
+                [
+                  51.128554,
+                  71.426174
+                ],
+                [
+                  51.128599,
+                  71.425903
+                ],
+                [
+                  51.128644,
+                  71.425625
+                ],
+                [
+                  51.128643,
+                  71.425438
+                ],
+                [
+                  51.128698,
+                  71.425102
+                ],
+                [
+                  51.128927,
+                  71.423785
+                ],
+                [
+                  51.12897,
+                  71.423538
+                ],
+                [
+                  51.129022,
+                  71.423293
+                ],
+                [
+                  51.129082,
+                  71.423141
+                ],
+                [
+                  51.129098,
+                  71.423026
+                ],
+                [
+                  51.129141,
+                  71.422757
+                ],
+                [
+                  51.129163,
+                  71.422471
+                ],
+                [
+                  51.129181,
+                  71.422241
+                ],
+                [
+                  51.12923,
+                  71.42194
+                ],
+                [
+                  51.129453,
+                  71.420602
+                ],
+                [
+                  51.129499,
+                  71.420342
+                ],
+                [
+                  51.129576,
+                  71.420089
+                ],
+                [
+                  51.12966,
+                  71.419837
+                ],
+                [
+                  51.129703,
+                  71.419574
+                ],
+                [
+                  51.129711,
+                  71.419288
+                ],
+                [
+                  51.129719,
+                  71.419044
+                ],
+                [
+                  51.129768,
+                  71.418757
+                ],
+                [
+                  51.129952,
+                  71.417709
+                ],
+                [
+                  51.130029,
+                  71.417738
+                ],
+                [
+                  51.1301,
+                  71.417764
+                ],
+                [
+                  51.130186,
+                  71.417796
+                ],
+                [
+                  51.130255,
+                  71.417689
+                ],
+                [
+                  51.130316,
+                  71.417595
+                ],
+                [
+                  51.130342,
+                  71.417423
+                ],
+                [
+                  51.13036,
+                  71.41732
+                ],
+                [
+                  51.130387,
+                  71.417152
+                ],
+                [
+                  51.130405,
+                  71.417039
+                ],
+                [
+                  51.130431,
+                  71.416876
+                ],
+                [
+                  51.130501,
+                  71.416443
+                ],
+                [
+                  51.130522,
+                  71.416141
+                ],
+                [
+                  51.130553,
+                  71.415942
+                ],
+                [
+                  51.130659,
+                  71.415259
+                ],
+                [
+                  51.130676,
+                  71.41517
+                ],
+                [
+                  51.130718,
+                  71.414935
+                ],
+                [
+                  51.130623,
+                  71.414864
+                ],
+                [
+                  51.130581,
+                  71.414803
+                ],
+                [
+                  51.13055,
+                  71.414734
+                ],
+                [
+                  51.130512,
+                  71.414574
+                ],
+                [
+                  51.130513,
+                  71.414451
+                ],
+                [
+                  51.130535,
+                  71.414322
+                ],
+                [
+                  51.130562,
+                  71.414246
+                ],
+                [
+                  51.130596,
+                  71.414177
+                ],
+                [
+                  51.130642,
+                  71.414131
+                ],
+                [
+                  51.130688,
+                  71.414085
+                ],
+                [
+                  51.130707,
+                  71.41408
+                ],
+                [
+                  51.130733,
+                  71.414005
+                ]
+              ],
+              "geometry": "network"
+            },
+            {
+              "from_id": "ov:05a08159-b2a2-4f",
+              "to_id": "osm:n13340040665",
+              "distance_m": 701,
+              "travel_min": 10,
+              "polyline": [
+                [
+                  51.130733,
+                  71.414005
+                ],
+                [
+                  51.130707,
+                  71.41408
+                ],
+                [
+                  51.130795,
+                  71.414055
+                ],
+                [
+                  51.130859,
+                  71.414074
+                ],
+                [
+                  51.130892,
+                  71.413847
+                ],
+                [
+                  51.130907,
+                  71.413742
+                ],
+                [
+                  51.130974,
+                  71.413773
+                ],
+                [
+                  51.131096,
+                  71.413872
+                ],
+                [
+                  51.131157,
+                  71.413948
+                ],
+                [
+                  51.131195,
+                  71.414024
+                ],
+                [
+                  51.131245,
+                  71.414154
+                ],
+                [
+                  51.131275,
+                  71.414276
+                ],
+                [
+                  51.131291,
+                  71.414393
+                ],
+                [
+                  51.131374,
+                  71.414403
+                ],
+                [
+                  51.131537,
+                  71.41443
+                ],
+                [
+                  51.131704,
+                  71.414454
+                ],
+                [
+                  51.13183,
+                  71.414466
+                ],
+                [
+                  51.132015,
+                  71.414482
+                ],
+                [
+                  51.132166,
+                  71.414502
+                ],
+                [
+                  51.132435,
+                  71.414558
+                ],
+                [
+                  51.132549,
+                  71.41452
+                ],
+                [
+                  51.132848,
+                  71.414534
+                ],
+                [
+                  51.133021,
+                  71.414563
+                ],
+                [
+                  51.133045,
+                  71.414383
+                ],
+                [
+                  51.133081,
+                  71.414186
+                ],
+                [
+                  51.133114,
+                  71.41397
+                ],
+                [
+                  51.13319,
+                  71.413994
+                ],
+                [
+                  51.133301,
+                  71.414034
+                ],
+                [
+                  51.133474,
+                  71.41294
+                ],
+                [
+                  51.13369,
+                  71.412643
+                ],
+                [
+                  51.133713,
+                  71.412498
+                ],
+                [
+                  51.133763,
+                  71.412179
+                ],
+                [
+                  51.133842,
+                  71.412224
+                ],
+                [
+                  51.13393,
+                  71.412264
+                ],
+                [
+                  51.133987,
+                  71.412125
+                ],
+                [
+                  51.134094,
+                  71.412125
+                ],
+                [
+                  51.134308,
+                  71.412197
+                ],
+                [
+                  51.134358,
+                  71.411833
+                ],
+                [
+                  51.134482,
+                  71.411085
+                ],
+                [
+                  51.134669,
+                  71.41061
+                ]
+              ],
+              "geometry": "network"
+            }
+          ],
+          "total_min": 103,
+          "back_min": 37,
+          "fits_budget": true,
+          "returns_to_start": false,
+          "summary": "Мини-маршрут: Бәйтерек → Дөңгелек алаң / Круглая Площадь / Round Square → Жетігенші. Всего ≈ 103 мин (31 мин в пути + 35 мин на местах + 37 мин на дорогу обратно)."
+        },
         "used_context": {
           "location_source": "gps_rounded",
           "location_label": "~ район «Байтерек» (округлено)",
@@ -1171,6 +2030,8 @@
             "precipitation": false,
             "description": "9°C (ощущается 6°C), ветер 5 м/с",
             "max_outdoor_min": 60,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 4.5,
@@ -1181,8 +2042,13 @@
               "landmark",
               "monument",
               "viewpoint",
-              "museum"
+              "museum",
+              "park",
+              "garden"
             ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [],
             "needs": [],
             "time_budget_min": null,
             "food_requirements": [],
@@ -1197,10 +2063,10 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286,
-            "within_reach": 546,
-            "after_filters": 362,
-            "shown": 2
+            "total": 2269,
+            "within_reach": 543,
+            "after_filters": 95,
+            "shown": 3
           },
           "data_sources": [
             "OpenStreetMap (ODbL)",
@@ -1211,52 +2077,52 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [
-          {
-            "name": "Пряник",
-            "reason": "дорога ~68 мин — не укладывается во время"
-          },
-          {
-            "name": "Grand Festival",
-            "reason": "дорога ~61 мин — не укладывается во время"
-          },
           {
             "name": "Дебют",
             "reason": "дорога ~58 мин — не укладывается во время"
           },
           {
-            "name": "Brazilia",
-            "reason": "дорога ~63 мин — не укладывается во время"
+            "name": "Chaplin Cinemas",
+            "reason": "дорога ~70 мин — не укладывается во время"
+          },
+          {
+            "name": "Kinopark",
+            "reason": "дорога ~70 мин — не укладывается во время"
+          },
+          {
+            "name": "Алматыкітап",
+            "reason": "закрыто к моменту прихода"
           }
         ],
         "notes": [
           "Учёл дедлайн: прибыть нужно не позже 15:45; запас 15 мин, дорога считается отдельно.",
           "Считаю это время свободным до выезда в аэропорт: дорогу на такси уже учёл в «выйти до». Если это время до самого вылета, лучше ехать сразу — на регистрацию нужно 2–3 часа.",
-          "Обратно до аэропорта/вокзала — на такси: время поездки учтено в «выйти до».",
-          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+          "Обратно до аэропорта/вокзала — на такси: время поездки учтено в «выйти до»."
         ],
         "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
         "ai_generated": true,
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 3811,
+          "latency_ms": 4250,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 4664,
+            "output_tokens": 459,
+            "cost_usd": 0.001392
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S5_night_unusual",
       "title": "Официальный: необычная ночная активность",
-      "ms": 274,
+      "ms": 4221,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -1275,7 +2141,9 @@
         "S scenario": true
       },
       "items": [
-        "Las Vegas Karaoke and Bar (Караоке, 8 мин)"
+        "Сарыарка (Активный отдых, 44 мин)",
+        "Ледовый дворец Алау (Активный отдых, 51 мин)",
+        "WORKOUT FITNESS & GYM (Активный отдых, 8 мин)"
       ],
       "route": null,
       "executed": true,
@@ -1283,39 +2151,39 @@
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "c55c01202c8d",
+        "request_id": "b6dcc29bafb1",
         "lang": "ru",
-        "summary": "Для необычного позднего выхода лучше всего подойдёт вечер с микрофоном в руках.",
+        "summary": "Для необычного спортивного выхода присмотритесь к велотреку и ледовой арене; перед прогулкой стоит уточнить возможность посещения.",
         "recommendations": [
           {
-            "poi_id": "ov:8fc941dc-24fb-49",
-            "name": "Las Vegas Karaoke and Bar",
-            "category": "nightlife",
-            "lat": 51.124752,
-            "lon": 71.434292,
-            "distance_m": 469,
-            "travel_min": 8,
-            "why": "Караоке рядом с Бәйтереком — более игровая альтернатива обычному бару для ночного выхода.",
+            "poi_id": "osm:w166265821",
+            "name": "Сарыарка",
+            "category": "sport",
+            "lat": 51.110037,
+            "lon": 71.407336,
+            "distance_m": 2548,
+            "travel_min": 44,
+            "why": "«Сарыарқа» — велотрек необычной формы, напоминающей шлем велогонщика; к нему добавлена ледовая арена.",
             "visit_min": [
-              60,
-              90
+              45,
+              76
             ],
-            "what_to_do": "Выберите любимую песню и устройте небольшой музыкальный баттл.",
+            "what_to_do": "Обойдите спортивное сооружение снаружи и оцените его необычный силуэт; если доступна активность на арене, попробуйте коньки.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
-            "source_url": null,
+            "source_url": "https://www.openstreetmap.org/way/166265821",
             "rating": null,
-            "website": "http://las-vegas.kz/",
+            "website": "http://velotrek.kz/index.php/en/#",
             "rank": 1,
-            "category_detail": "karaoke",
-            "category_label": "Караоке",
-            "icon": "mic",
-            "walk_distance_m": 570,
+            "category_detail": "active",
+            "category_label": "Активный отдых",
+            "icon": "activity",
+            "walk_distance_m": 3260,
             "travel_mode": "walk",
             "arrival_at": null,
             "departure_at": null,
-            "visit_suggested_min": 75,
+            "visit_suggested_min": 50,
             "leave_by": null,
             "return_min": 0,
             "opening": {
@@ -1330,20 +2198,176 @@
             },
             "source_label": "Данные POI",
             "data_sources": [
-              "overture"
+              "osm",
+              "wikidata",
+              "wikipedia"
             ],
-            "popularity": 0.055,
+            "popularity": 0.537,
             "features": [],
             "accessibility": "unknown",
-            "badges": [
-              "night"
-            ],
+            "badges": [],
             "event": null,
-            "address": "Dostyq St 18",
-            "description": "Караоке. В 500 м от «Бәйтерек». Адрес: Dostyq St 18.",
+            "address": "Қабанбай Батыр даңғылы, 45А",
+            "description": "Республиканский велотрек «Сарыарка» — спортивное сооружение в Астане, внешне напоминающее шлем велогонщика. В 2009 году в проект велотрека была добавлена ледовая арена, на которой во время зимних Азиатских игр 2011 года были проведены соревнования по шорт-треку и фигурному катанию. Республиканский в",
+            "description_source": "wikipedia",
+            "description_url": "https://ru.wikipedia.org/?curid=2917309",
+            "phone": null,
+            "instagram": null,
+            "cuisine": null,
+            "photo": {
+              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Saryarka_Velodrome_%28inside%29.JPG/960px-Saryarka_Velodrome_%28inside%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+              "width": 960,
+              "height": 640,
+              "author": "ChelseaFunNumberOne",
+              "license": "CC BY-SA 3.0",
+              "page": "https://commons.wikimedia.org/wiki/File:Saryarka_Velodrome_(inside).JPG",
+              "source": "Wikimedia Commons"
+            },
+            "description_attribution": [
+              {
+                "source": "wikipedia",
+                "title": "Сарыарка (велотрек)",
+                "url": "https://ru.wikipedia.org/?curid=2917309",
+                "license": "CC-BY-SA-4.0",
+                "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Wikipedia contributors",
+                "notice": "Сокращённый отрывок; исходный текст и авторы — в статье."
+              }
+            ],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
+          },
+          {
+            "poi_id": "osm:w166267459",
+            "name": "Ледовый дворец Алау",
+            "category": "sport",
+            "lat": 51.104878,
+            "lon": 71.405069,
+            "distance_m": 3105,
+            "travel_min": 51,
+            "why": "«Алау» — крытый конькобежный стадион, где также проходят тренировки по хоккею, шорт-треку и фигурному катанию.",
+            "visit_min": [
+              45,
+              69
+            ],
+            "what_to_do": "Уточните, можно ли посетить каток, и при возможности выйдите на лёд.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://www.openstreetmap.org/way/166267459",
+            "rating": null,
+            "website": "https://alau.info/",
+            "rank": 2,
+            "category_detail": "active",
+            "category_label": "Активный отдых",
+            "icon": "activity",
+            "walk_distance_m": 3780,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 45,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "osm",
+              "wikidata",
+              "wikipedia"
+            ],
+            "popularity": 0.56,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": "Қабанбай Батыр даңғылы, 47",
+            "description": "Ледовый Дворец «Алау» — крытый конькобежный стадион в Астане, Казахстан. Спортивный комплекс, предназначенный для организации соревнований по конькобежному спорту и организации тренировок по мини-хоккею с мячом, хоккею с шайбой, шорт-треку, кёрлингу, фигурному катанию.",
+            "description_source": "wikipedia",
+            "description_url": "https://ru.wikipedia.org/?curid=3433053",
+            "phone": "+7 7172 706-722",
+            "instagram": null,
+            "cuisine": null,
+            "photo": null,
+            "description_attribution": [
+              {
+                "source": "wikipedia",
+                "title": "Алау (ледовый дворец)",
+                "url": "https://ru.wikipedia.org/?curid=3433053",
+                "license": "CC-BY-SA-4.0",
+                "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Wikipedia contributors",
+                "notice": "Сокращённый отрывок; исходный текст и авторы — в статье."
+              }
+            ],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
+          },
+          {
+            "poi_id": "osm:n11920102369",
+            "name": "WORKOUT FITNESS & GYM",
+            "category": "sport",
+            "lat": 51.12486,
+            "lon": 71.434174,
+            "distance_m": 455,
+            "travel_min": 8,
+            "why": "WORKOUT FITNESS & GYM — вариант активного выхода рядом с «Бәйтерек», если хочется провести вечер в движении.",
+            "visit_min": [
+              45,
+              90
+            ],
+            "what_to_do": "Если удастся попасть внутрь, выберите короткую тренировку на кардио или силовых тренажёрах.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://www.openstreetmap.org/node/11920102369",
+            "rating": null,
+            "website": null,
+            "rank": 3,
+            "category_detail": "active",
+            "category_label": "Активный отдых",
+            "icon": "activity",
+            "walk_distance_m": 560,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 45,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "osm"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": null,
+            "description": "Активный отдых. В 450 м от «Бәйтерек».",
             "description_source": "template",
             "description_url": null,
-            "phone": "+77761392022",
+            "phone": null,
             "instagram": null,
             "cuisine": null,
             "photo": null,
@@ -1354,16 +2378,84 @@
           }
         ],
         "service_results": [],
-        "ideas": [],
+        "ideas": [
+          {
+            "poi_id": "idea-4",
+            "name": "Ночной силуэт",
+            "category": "sport",
+            "lat": 51.110037,
+            "lon": 71.407336,
+            "distance_m": 2548,
+            "travel_min": 44,
+            "why": "Устройте мини-фотозадание: найдите самый выразительный ракурс необычной формы велотрека.",
+            "visit_min": [
+              5,
+              20
+            ],
+            "what_to_do": "Устройте мини-фотозадание: найдите самый выразительный ракурс необычной формы велотрека.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "generated",
+            "source_url": null,
+            "rating": null,
+            "website": null,
+            "rank": 4,
+            "category_detail": "idea",
+            "category_label": "Идея ИИ",
+            "icon": "sparkles",
+            "walk_distance_m": null,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 10,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Идея ИИ",
+            "data_sources": [
+              "llm"
+            ],
+            "popularity": null,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [
+              "ai_idea"
+            ],
+            "event": null,
+            "address": "Рядом с: Сарыарка",
+            "description": null,
+            "description_source": "generated",
+            "description_url": null,
+            "phone": null,
+            "instagram": null,
+            "cuisine": null,
+            "photo": null,
+            "description_attribution": [],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
+          }
+        ],
         "route": null,
         "used_context": {
           "location_source": "gps_rounded",
           "location_label": "~ район «Байтерек» (округлено)",
-          "radius_m": 2050,
+          "radius_m": 3076,
           "time_budget_min": 120,
           "mode": "walk",
           "filters": [
-            "вечер/ночь"
+            "вечер/ночь",
+            "Активный отдых",
+            "Парк"
           ],
           "now": "2026-10-18T23:00:00+05:00",
           "location": {
@@ -1384,18 +2476,30 @@
             "precipitation": false,
             "description": "2°C (ощущается -2°C), ветер 4 м/с",
             "max_outdoor_min": 60,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 4.5,
           "party": "solo",
           "parsed_from_query": {
-            "categories": [],
+            "categories": [
+              "active",
+              "park"
+            ],
             "preferences": [
               "arts_centre",
               "gallery",
               "viewpoint",
               "active",
-              "karaoke"
+              "karaoke",
+              "park"
+            ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [
+              "Активный отдых",
+              "Парк"
             ],
             "needs": [],
             "time_budget_min": 120,
@@ -1409,12 +2513,14 @@
             "surprise": true,
             "parser": "llm+rules (gpt-6-luna)"
           },
-          "relaxations": [],
+          "relaxations": [
+            "Рядом мало вариантов — расширил радиус поиска до 3.1 км."
+          ],
           "funnel": {
-            "total": 2286,
-            "within_reach": 546,
-            "after_filters": 109,
-            "shown": 1
+            "total": 2269,
+            "within_reach": 543,
+            "after_filters": 6,
+            "shown": 3
           },
           "data_sources": [
             "OpenStreetMap (ODbL)",
@@ -1425,49 +2531,51 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [
           {
-            "name": "Kinopark",
+            "name": "The Ring",
             "reason": "закрыто к моменту прихода"
           },
           {
-            "name": "Ádemi ai",
+            "name": "Мұз айдыны",
             "reason": "закрыто к моменту прихода"
           },
           {
-            "name": "Pate",
-            "reason": "закрыто к моменту прихода"
+            "name": "Сквер (Күйші Дина көшесі)",
+            "reason": "неосвещённая открытая территория в тёмное время"
           },
           {
-            "name": "Дебют",
-            "reason": "закрыто к моменту прихода"
+            "name": "Сквер (Күйші Дина көшесі)",
+            "reason": "неосвещённая открытая территория в тёмное время"
           }
         ],
         "notes": [
-          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+          "Уже темно — парки без освещения не предлагаю, приоритет у работающих мест в оживлённых районах.",
+          "Рядом мало вариантов — расширил радиус поиска до 3.1 км."
         ],
         "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
         "ai_generated": true,
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 2863,
+          "latency_ms": 3953,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 4049,
+            "output_tokens": 448,
+            "cost_usd": 0.001258
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S6_kazakh",
       "title": "Казахский запрос: возле Байтерека, час прогулки",
-      "ms": 281,
+      "ms": 4119,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -1487,17 +2595,17 @@
       },
       "items": [
         "Экскурсия на двухэтажном автобусе Red Bus (Көрікті орын, 2 мин)",
-        "Водно-Зеленый Бульвар (Саябақ, 10 мин)"
+        "Гүлзар (Түркістан көшесі) (Гүлзар / бақ, 1 мин)"
       ],
-      "route": "Шағын маршрут: Экскурсия на двухэтажном автобусе Red Bus → Водно-Зеленый Бульвар. Барлығы ≈ 57 мин (22 мин жолда + 35 мин орындарда). Бастапқы нүктеге оралумен.",
+      "route": "Шағын маршрут: Экскурсия на двухэтажном автобусе Red Bus → Сквер (Түркістан көшесі). Барлығы ≈ 35 мин (5 мин жолда + 30 мин орындарда). Бастапқы нүктеге оралумен.",
       "executed": true,
       "http_status": 200,
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "d15bdc1c46ee",
+        "request_id": "edc15af638d7",
         "lang": "kk",
-        "summary": "Шағын маршрут: Экскурсия на двухэтажном автобусе Red Bus → Водно-Зеленый Бульвар. Барлығы ≈ 57 мин (22 мин жолда + 35 мин орындарда). Бастапқы нүктеге оралумен.",
+        "summary": "Шағын маршрут: Экскурсия на двухэтажном автобусе Red Bus → Сквер (Түркістан көшесі). Барлығы ≈ 35 мин (5 мин жолда + 30 мин орындарда). Бастапқы нүктеге оралумен.",
         "recommendations": [
           {
             "poi_id": "cp:119",
@@ -1507,12 +2615,12 @@
             "lon": 71.430444,
             "distance_m": 10,
             "travel_min": 2,
-            "why": "Red Bus экскурсиясы Бәйтерек алаңында орналасқан; серуенді осы жерден бастауға болады.",
+            "why": "Red Bus экскурсиясы Бәйтерек алаңында орналасқан, сондықтан серуенді дәл қасыңыздан бастауға болады.",
             "visit_min": [
               15,
               15
             ],
-            "what_to_do": "Екіқабатты автобустың бағыты мен экскурсияға қатысу мүмкіндігін сол жерде анықтап көріңіз.",
+            "what_to_do": "Екі қабатты автобусқа мініп, қаланы үстіңгі қабаттан тамашалаңыз.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
@@ -1563,34 +2671,34 @@
             "prices": []
           },
           {
-            "poi_id": "ov:74210037-b47a-42",
-            "name": "Водно-Зеленый Бульвар",
+            "poi_id": "osm:w258818058",
+            "name": "Гүлзар (Түркістан көшесі)",
             "category": "park",
-            "lat": 51.130486,
-            "lon": 71.425865,
-            "distance_m": 403,
-            "travel_min": 10,
-            "why": "Водно-Зеленый бульвар Бәйтерекке жақын, саябақта жаяу серуендеуге болады.",
+            "lat": 51.128173,
+            "lon": 71.431136,
+            "distance_m": 49,
+            "travel_min": 1,
+            "why": "Түркістан көшесіндегі сквер Бәйтеректің жанында, ашық ауада тынығып серуендеуге қолайлы.",
             "visit_min": [
-              20,
-              20
+              15,
+              15
             ],
-            "what_to_do": "Нұржол бойымен бульварға қарай жүріп, саябақты аралап қайтыңыз.",
+            "what_to_do": "Скверді аралап, ағаштар мен айналадағы қала көрінісін тамашалаңыз.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
-            "source_url": null,
+            "source_url": "https://www.openstreetmap.org/way/258818058",
             "rating": null,
             "website": null,
             "rank": 2,
-            "category_detail": "park",
-            "category_label": "Саябақ",
-            "icon": "trees",
-            "walk_distance_m": 720,
+            "category_detail": "garden",
+            "category_label": "Гүлзар / бақ",
+            "icon": "flower",
+            "walk_distance_m": 50,
             "travel_mode": "walk",
-            "arrival_at": "2026-10-18T16:27:00+05:00",
-            "departure_at": "2026-10-18T16:47:00+05:00",
-            "visit_suggested_min": 20,
+            "arrival_at": "2026-10-18T16:19:00+05:00",
+            "departure_at": "2026-10-18T16:34:00+05:00",
+            "visit_suggested_min": 15,
             "leave_by": null,
             "return_min": 0,
             "opening": {
@@ -1605,15 +2713,15 @@
             },
             "source_label": "POI деректері",
             "data_sources": [
-              "overture"
+              "osm"
             ],
-            "popularity": 0.018,
+            "popularity": 0.0,
             "features": [],
             "accessibility": "unknown",
             "badges": [],
             "event": null,
-            "address": "Нуржол",
-            "description": "Саябақ. «Бәйтерек» нысанынан 400 м жерде. Мекенжайы: Нуржол.",
+            "address": null,
+            "description": "Гүлзар / бақ. «Бәйтерек» жанында.",
             "description_source": "template",
             "description_url": null,
             "phone": null,
@@ -1630,18 +2738,18 @@
         "ideas": [
           {
             "poi_id": "idea-3",
-            "name": "Бульвар көрінісі",
+            "name": "Қала көрінісін іздеу",
             "category": "park",
-            "lat": 51.130486,
-            "lon": 71.425865,
-            "distance_m": 403,
-            "travel_min": 10,
-            "why": "Серуен кезінде Бәйтеректі бульвардың әр тұсынан байқап, өзіңізге ұнаған көріністі таңдаңыз.",
+            "lat": 51.128173,
+            "lon": 71.431136,
+            "distance_m": 49,
+            "travel_min": 1,
+            "why": "Серуен кезінде Бәйтеректі әр қырынан байқап, өзіңізге ұнаған көріністі таңдаңыз.",
             "visit_min": [
               5,
               20
             ],
-            "what_to_do": "Серуен кезінде Бәйтеректі бульвардың әр тұсынан байқап, өзіңізге ұнаған көріністі таңдаңыз.",
+            "what_to_do": "Серуен кезінде Бәйтеректі әр қырынан байқап, өзіңізге ұнаған көріністі таңдаңыз.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "generated",
@@ -1680,7 +2788,7 @@
               "ai_idea"
             ],
             "event": null,
-            "address": "Жанында: Водно-Зеленый Бульвар",
+            "address": "Жанында: Гүлзар (Түркістан көшесі)",
             "description": null,
             "description_source": "generated",
             "description_url": null,
@@ -1697,7 +2805,7 @@
         "route": {
           "order": [
             "cp:119",
-            "ov:74210037-b47a-42"
+            "osm:w258818058"
           ],
           "legs": [
             {
@@ -1751,9 +2859,9 @@
             },
             {
               "from_id": "cp:119",
-              "to_id": "ov:74210037-b47a-42",
-              "distance_m": 749,
-              "travel_min": 10,
+              "to_id": "osm:w258818058",
+              "distance_m": 80,
+              "travel_min": 2,
               "polyline": [
                 [
                   51.128197,
@@ -1768,213 +2876,45 @@
                   71.430371
                 ],
                 [
-                  51.128094,
-                  71.430237
+                  51.128048,
+                  71.430527
                 ],
                 [
-                  51.128162,
-                  71.430138
+                  51.128078,
+                  71.430664
                 ],
                 [
-                  51.128254,
-                  71.430084
+                  51.128143,
+                  71.430779
                 ],
                 [
-                  51.128347,
-                  71.430093
+                  51.128228,
+                  71.430843
                 ],
                 [
-                  51.128433,
-                  71.430161
+                  51.128193,
+                  71.431041
                 ],
                 [
-                  51.128498,
-                  71.430275
-                ],
-                [
-                  51.128529,
-                  71.430412
-                ],
-                [
-                  51.128524,
-                  71.43056
-                ],
-                [
-                  51.128646,
-                  71.430613
-                ],
-                [
-                  51.128748,
-                  71.430657
-                ],
-                [
-                  51.12892,
-                  71.430721
-                ],
-                [
-                  51.129027,
-                  71.430761
-                ],
-                [
-                  51.129102,
-                  71.43079
-                ],
-                [
-                  51.129218,
-                  71.430636
-                ],
-                [
-                  51.129223,
-                  71.430405
-                ],
-                [
-                  51.129219,
-                  71.43029
-                ],
-                [
-                  51.129481,
-                  71.430099
-                ],
-                [
-                  51.129786,
-                  71.429992
-                ],
-                [
-                  51.130057,
-                  71.429898
-                ],
-                [
-                  51.130602,
-                  71.429707
-                ],
-                [
-                  51.130715,
-                  71.429594
-                ],
-                [
-                  51.130517,
-                  71.429443
-                ],
-                [
-                  51.130541,
-                  71.429263
-                ],
-                [
-                  51.130669,
-                  71.42848
-                ],
-                [
-                  51.13085,
-                  71.427379
-                ],
-                [
-                  51.131103,
-                  71.425837
-                ],
-                [
-                  51.130486,
-                  71.425865
+                  51.128173,
+                  71.431136
                 ]
               ],
               "geometry": "network"
             },
             {
-              "from_id": "ov:74210037-b47a-42",
+              "from_id": "osm:w258818058",
               "to_id": "start",
-              "distance_m": 718,
-              "travel_min": 10,
+              "distance_m": 49,
+              "travel_min": 1,
               "polyline": [
                 [
-                  51.130486,
-                  71.425865
+                  51.128173,
+                  71.431136
                 ],
                 [
-                  51.131103,
-                  71.425837
-                ],
-                [
-                  51.13085,
-                  71.427379
-                ],
-                [
-                  51.130669,
-                  71.42848
-                ],
-                [
-                  51.130549,
-                  71.429216
-                ],
-                [
-                  51.130517,
-                  71.429443
-                ],
-                [
-                  51.130735,
-                  71.429533
-                ],
-                [
-                  51.130653,
-                  71.429727
-                ],
-                [
-                  51.130057,
-                  71.429898
-                ],
-                [
-                  51.129786,
-                  71.429992
-                ],
-                [
-                  51.129481,
-                  71.430099
-                ],
-                [
-                  51.129207,
-                  71.430197
-                ],
-                [
-                  51.129221,
-                  71.430368
-                ],
-                [
-                  51.129218,
-                  71.430636
-                ],
-                [
-                  51.129102,
-                  71.43079
-                ],
-                [
-                  51.129027,
-                  71.430761
-                ],
-                [
-                  51.12892,
-                  71.430721
-                ],
-                [
-                  51.128748,
-                  71.430657
-                ],
-                [
-                  51.128646,
-                  71.430613
-                ],
-                [
-                  51.128524,
-                  71.43056
-                ],
-                [
-                  51.128483,
-                  71.430702
-                ],
-                [
-                  51.12841,
-                  71.430801
-                ],
-                [
-                  51.128323,
-                  71.430847
+                  51.128193,
+                  71.431041
                 ],
                 [
                   51.128228,
@@ -1996,11 +2936,11 @@
               "geometry": "network"
             }
           ],
-          "total_min": 57,
+          "total_min": 35,
           "back_min": 0,
           "fits_budget": true,
           "returns_to_start": true,
-          "summary": "Шағын маршрут: Экскурсия на двухэтажном автобусе Red Bus → Водно-Зеленый Бульвар. Барлығы ≈ 57 мин (22 мин жолда + 35 мин орындарда). Бастапқы нүктеге оралумен."
+          "summary": "Шағын маршрут: Экскурсия на двухэтажном автобусе Red Bus → Сквер (Түркістан көшесі). Барлығы ≈ 35 мин (5 мин жолда + 30 мин орындарда). Бастапқы нүктеге оралумен."
         },
         "used_context": {
           "location_source": "landmark",
@@ -2028,6 +2968,8 @@
             "precipitation": false,
             "description": "9°C (6°C сезіледі), жел 5 м/с",
             "max_outdoor_min": 60,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 4.5,
@@ -2041,6 +2983,9 @@
               "viewpoint",
               "museum"
             ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [],
             "needs": [],
             "time_budget_min": 60,
             "food_requirements": [],
@@ -2055,9 +3000,9 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286,
-            "within_reach": 419,
-            "after_filters": 76,
+            "total": 2269,
+            "within_reach": 416,
+            "after_filters": 74,
             "shown": 2
           },
           "data_sources": [
@@ -2069,7 +3014,7 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Орналасу ~100 м-ге дейін дөңгелектенген, тек осы сұрауға қолданылады және сақталмайды. Координаттар тілдік модельге жіберілмейді."
         },
         "considered": [
@@ -2078,28 +3023,27 @@
             "reason": "барған кезде жабық"
           }
         ],
-        "notes": [
-          "Жол уақыты түзу сызық бойынша бағаланды."
-        ],
+        "notes": [],
         "disclaimer": "Жауапты ЖИ ашық деректер негізінде құрастырды (OpenStreetMap, Wikidata/Wikipedia және т.б.). Жұмыс уақыты өзгеруі мүмкін — барар алдында тексеріңіз.",
         "ai_generated": true,
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 3662,
+          "latency_ms": 3856,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 4555,
+            "output_tokens": 389,
+            "cost_usd": 0.0013
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S7_english_tourist",
       "title": "English: first time, 3 hours near Khan Shatyr",
-      "ms": 271,
+      "ms": 4649,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -2120,17 +3064,17 @@
       "items": [
         "Жетігенші (Public art, 16 мин)",
         "Bayterek (Landmark, 33 мин)",
-        "Abu Nasir Al-Farabi Mosque (Mosque / temple, 22 мин)"
+        "Lovers Park (Park, 10 мин)"
       ],
-      "route": "Mini-route: Жетігенші → Бәйтерек → Әбу Насыр әл-Фараби мешіті. Total ≈ 152 min (82 min travelling + 70 min at places). Returning to start.",
+      "route": "Mini-route: Жетігенші → Бәйтерек → Ғашықтар саябағы. Total ≈ 160 min (75 min travelling + 85 min at places). Returning to start.",
       "executed": true,
       "http_status": 200,
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "c7cb9bfb812b",
+        "request_id": "90697fd07319",
         "lang": "en",
-        "summary": "Mini-route: Жетігенші → Бәйтерек → Әбу Насыр әл-Фараби мешіті. Total ≈ 152 min (82 min travelling + 70 min at places). Returning to start.",
+        "summary": "Mini-route: Жетігенші → Бәйтерек → Ғашықтар саябағы. Total ≈ 160 min (75 min travelling + 85 min at places). Returning to start.",
         "recommendations": [
           {
             "poi_id": "osm:n13340040665",
@@ -2140,12 +3084,12 @@
             "lon": 71.41061,
             "distance_m": 528,
             "travel_min": 16,
-            "why": "Жетігенші is an art object, a small stop to add a different note to your first Astana walk.",
+            "why": "Жетігенші is an art object, a brief stop on your first visit before continuing toward the city’s landmark tower.",
             "visit_min": [
               10,
               10
             ],
-            "what_to_do": "Take a moment to look closely at the art object and capture a photo.",
+            "what_to_do": "Pause to look closely at the art object and take a photo.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
@@ -2203,12 +3147,12 @@
             "lon": 71.430455,
             "distance_m": 1913,
             "travel_min": 33,
-            "why": "Бәйтерек is a landmark and observation tower, built as a symbol of Kazakhstan’s capital move in 1997—a strong first-time city highlight.",
+            "why": "Бәйтерек is a prominent monument and observation tower, and a fitting landmark for a first-time visitor to Astana.",
             "visit_min": [
               30,
               30
             ],
-            "what_to_do": "Admire the monument’s silhouette and take a photo; if visiting the tower, look out over the city.",
+            "what_to_do": "Admire the tower’s form and, if available to visitors, take in the city view from the observation level.",
             "open_status": "open",
             "open_confidence": "low",
             "source": "poi_data",
@@ -2281,34 +3225,34 @@
             "prices": []
           },
           {
-            "poi_id": "osm:r16827715",
-            "name": "Abu Nasir Al-Farabi Mosque",
-            "category": "attraction",
-            "lat": 51.126709,
-            "lon": 71.415768,
-            "distance_m": 1051,
-            "travel_min": 22,
-            "why": "Әбу Насыр әл-Фараби мешіті stands out for its four 62-metre minarets and 43-metre main dome.",
+            "poi_id": "osm:w37884583",
+            "name": "Lovers Park",
+            "category": "park",
+            "lat": 51.131492,
+            "lon": 71.40921,
+            "distance_m": 389,
+            "travel_min": 10,
+            "why": "Ғашықтар саябағы offers a change of pace outdoors after the landmark, with mild daylight weather suited to a park stroll.",
             "visit_min": [
-              30,
-              30
+              45,
+              45
             ],
-            "what_to_do": "Take in the mosque’s exterior and notice the height of its minarets and central dome.",
+            "what_to_do": "Take a relaxed loop through the park and enjoy a short break among the greenery.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
-            "source_url": "https://www.openstreetmap.org/relation/16827715",
+            "source_url": "https://www.openstreetmap.org/way/37884583",
             "rating": null,
-            "website": "http://ummet.kz",
+            "website": null,
             "rank": 3,
-            "category_detail": "worship",
-            "category_label": "Mosque / temple",
-            "icon": "worship",
-            "walk_distance_m": 1590,
+            "category_detail": "park",
+            "category_label": "Park",
+            "icon": "trees",
+            "walk_distance_m": 700,
             "travel_mode": "walk",
-            "arrival_at": "2026-10-18T12:40:00+05:00",
-            "departure_at": "2026-10-18T13:10:00+05:00",
-            "visit_suggested_min": 30,
+            "arrival_at": "2026-10-18T12:45:00+05:00",
+            "departure_at": "2026-10-18T13:30:00+05:00",
+            "visit_suggested_min": 45,
             "leave_by": null,
             "return_min": 0,
             "opening": {
@@ -2324,28 +3268,35 @@
             "source_label": "POI data",
             "data_sources": [
               "osm",
-              "overture",
               "wikidata",
               "wikipedia"
             ],
-            "popularity": 0.743,
+            "popularity": 0.423,
             "features": [],
             "accessibility": "unknown",
             "badges": [],
             "event": null,
-            "address": "Қабанбай Батыр даңғылы, 36",
-            "description": "Абу Насыра аль-Фараби — мечеть, расположенная в Астане. До открытия мечети Хазрет Султан являлась самой большой мечетью в Казахстане и в Центральной Азии. Мечеть имеет четыре минарета высотой по 62 метра, высота главного купола 43 метра, а общая площадь равна 3930 м².",
+            "address": null,
+            "description": "Парк влюблённых или Парк молодежи — городской парк в Астане, Казахстан.",
             "description_source": "wikipedia",
-            "description_url": "https://ru.wikipedia.org/?curid=3879991",
-            "phone": "8 (7172) 44 58 48",
+            "description_url": "https://ru.wikipedia.org/?curid=9433896",
+            "phone": null,
             "instagram": null,
             "cuisine": null,
-            "photo": null,
+            "photo": {
+              "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/KazMunayGas_03.jpg/960px-KazMunayGas_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+              "width": 960,
+              "height": 640,
+              "author": "Davide Mauro",
+              "license": "CC BY-SA 4.0",
+              "page": "https://commons.wikimedia.org/wiki/File:KazMunayGas_03.jpg",
+              "source": "Wikimedia Commons"
+            },
             "description_attribution": [
               {
                 "source": "wikipedia",
-                "title": "Абу Насыра аль-Фараби (мечеть)",
-                "url": "https://ru.wikipedia.org/?curid=3879991",
+                "title": "Парк влюблённых (Астана)",
+                "url": "https://ru.wikipedia.org/?curid=9433896",
                 "license": "CC-BY-SA-4.0",
                 "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
                 "attribution": "Wikipedia contributors",
@@ -2363,7 +3314,7 @@
           "order": [
             "osm:n13340040665",
             "osm:w230401645",
-            "osm:r16827715"
+            "osm:w37884583"
           ],
           "legs": [
             {
@@ -2790,9 +3741,9 @@
             },
             {
               "from_id": "osm:w230401645",
-              "to_id": "osm:r16827715",
-              "distance_m": 1392,
-              "travel_min": 19,
+              "to_id": "osm:w37884583",
+              "distance_m": 1777,
+              "travel_min": 24,
               "polyline": [
                 [
                   51.128288,
@@ -2835,357 +3786,381 @@
                   71.430284
                 ],
                 [
-                  51.127656,
-                  71.430206
+                  51.127862,
+                  71.430109
                 ],
                 [
-                  51.127552,
-                  71.43016
+                  51.127877,
+                  71.430018
                 ],
                 [
-                  51.127473,
-                  71.430139
+                  51.127974,
+                  71.429406
                 ],
                 [
-                  51.127422,
-                  71.429936
+                  51.128029,
+                  71.429369
                 ],
                 [
-                  51.127457,
-                  71.42981
+                  51.128124,
+                  71.429321
                 ],
                 [
-                  51.127483,
-                  71.429726
+                  51.128258,
+                  71.429291
                 ],
                 [
-                  51.127563,
-                  71.429542
+                  51.128391,
+                  71.429298
                 ],
                 [
-                  51.127328,
-                  71.429237
+                  51.12848,
+                  71.429321
                 ],
                 [
-                  51.127098,
-                  71.428938
+                  51.128503,
+                  71.429155
                 ],
                 [
-                  51.126863,
-                  71.428632
+                  51.128535,
+                  71.42894
                 ],
                 [
-                  51.126461,
-                  71.428111
+                  51.128555,
+                  71.428807
                 ],
                 [
-                  51.126392,
-                  71.428085
+                  51.128579,
+                  71.428635
                 ],
                 [
-                  51.126314,
-                  71.428014
+                  51.128601,
+                  71.428485
                 ],
                 [
-                  51.126256,
-                  71.427987
+                  51.128551,
+                  71.428184
                 ],
                 [
-                  51.126294,
-                  71.427742
+                  51.128594,
+                  71.427916
                 ],
                 [
-                  51.126331,
-                  71.427515
+                  51.128712,
+                  71.427178
                 ],
                 [
-                  51.126587,
-                  71.425931
+                  51.128761,
+                  71.426851
                 ],
                 [
-                  51.126841,
-                  71.424241
+                  51.128427,
+                  71.426709
                 ],
                 [
-                  51.126872,
-                  71.424033
+                  51.128509,
+                  71.426441
                 ],
                 [
-                  51.126904,
-                  71.423822
+                  51.128554,
+                  71.426174
                 ],
                 [
-                  51.127026,
-                  71.423019
+                  51.128599,
+                  71.425903
                 ],
                 [
-                  51.127147,
-                  71.422211
+                  51.128644,
+                  71.425625
                 ],
                 [
-                  51.127308,
-                  71.421143
+                  51.128643,
+                  71.425438
                 ],
                 [
-                  51.12751,
-                  71.419868
+                  51.128698,
+                  71.425102
                 ],
                 [
-                  51.127445,
-                  71.419846
+                  51.128927,
+                  71.423785
                 ],
                 [
-                  51.127386,
-                  71.419813
+                  51.12897,
+                  71.423538
                 ],
                 [
-                  51.127411,
-                  71.419647
+                  51.129022,
+                  71.423293
                 ],
                 [
-                  51.127388,
-                  71.41951
+                  51.129082,
+                  71.423141
                 ],
                 [
-                  51.127569,
-                  71.418309
+                  51.129098,
+                  71.423026
                 ],
                 [
-                  51.127586,
-                  71.418198
+                  51.129141,
+                  71.422757
                 ],
                 [
-                  51.127608,
-                  71.418078
+                  51.129163,
+                  71.422471
                 ],
                 [
-                  51.127621,
-                  71.417976
+                  51.129181,
+                  71.422241
                 ],
                 [
-                  51.127655,
-                  71.417803
+                  51.12923,
+                  71.42194
                 ],
                 [
-                  51.127373,
+                  51.129453,
+                  71.420602
+                ],
+                [
+                  51.129499,
+                  71.420342
+                ],
+                [
+                  51.129576,
+                  71.420089
+                ],
+                [
+                  51.12966,
+                  71.419837
+                ],
+                [
+                  51.129703,
+                  71.419574
+                ],
+                [
+                  51.129711,
+                  71.419288
+                ],
+                [
+                  51.129719,
+                  71.419044
+                ],
+                [
+                  51.129768,
+                  71.418757
+                ],
+                [
+                  51.129952,
                   71.417709
                 ],
                 [
-                  51.126795,
-                  71.416628
+                  51.130029,
+                  71.417738
                 ],
                 [
-                  51.126743,
-                  71.416534
+                  51.1301,
+                  71.417764
                 ],
                 [
-                  51.126614,
-                  71.41655
+                  51.130186,
+                  71.417796
                 ],
                 [
-                  51.126488,
-                  71.416519
+                  51.130255,
+                  71.417689
                 ],
                 [
-                  51.126369,
-                  71.416435
+                  51.130316,
+                  71.417595
                 ],
                 [
-                  51.126266,
-                  71.416306
+                  51.130342,
+                  71.417423
                 ],
                 [
-                  51.12619,
-                  71.416138
+                  51.13036,
+                  71.41732
                 ],
                 [
-                  51.126169,
-                  71.41604
+                  51.130387,
+                  71.417152
                 ],
                 [
-                  51.126297,
-                  71.415876
+                  51.130405,
+                  71.417039
                 ],
                 [
-                  51.126709,
-                  71.415768
+                  51.130431,
+                  71.416876
+                ],
+                [
+                  51.130501,
+                  71.416443
+                ],
+                [
+                  51.130522,
+                  71.416141
+                ],
+                [
+                  51.130553,
+                  71.415942
+                ],
+                [
+                  51.130659,
+                  71.415259
+                ],
+                [
+                  51.130676,
+                  71.41517
+                ],
+                [
+                  51.130718,
+                  71.414935
+                ],
+                [
+                  51.130623,
+                  71.414864
+                ],
+                [
+                  51.130581,
+                  71.414803
+                ],
+                [
+                  51.13055,
+                  71.414734
+                ],
+                [
+                  51.130512,
+                  71.414574
+                ],
+                [
+                  51.130513,
+                  71.414451
+                ],
+                [
+                  51.130535,
+                  71.414322
+                ],
+                [
+                  51.130562,
+                  71.414246
+                ],
+                [
+                  51.130596,
+                  71.414177
+                ],
+                [
+                  51.130642,
+                  71.414131
+                ],
+                [
+                  51.130688,
+                  71.414085
+                ],
+                [
+                  51.130795,
+                  71.414055
+                ],
+                [
+                  51.130859,
+                  71.414074
+                ],
+                [
+                  51.130892,
+                  71.413847
+                ],
+                [
+                  51.130907,
+                  71.413742
+                ],
+                [
+                  51.130966,
+                  71.413369
+                ],
+                [
+                  51.131001,
+                  71.413163
+                ],
+                [
+                  51.131077,
+                  71.41265
+                ],
+                [
+                  51.131096,
+                  71.412488
+                ],
+                [
+                  51.131157,
+                  71.412117
+                ],
+                [
+                  51.131178,
+                  71.41198
+                ],
+                [
+                  51.131261,
+                  71.411404
+                ],
+                [
+                  51.131179,
+                  71.411371
+                ],
+                [
+                  51.131222,
+                  71.411084
+                ],
+                [
+                  51.131237,
+                  71.410988
+                ],
+                [
+                  51.131258,
+                  71.410843
+                ],
+                [
+                  51.1313,
+                  71.410567
+                ],
+                [
+                  51.131431,
+                  71.409697
+                ],
+                [
+                  51.131464,
+                  71.409481
+                ],
+                [
+                  51.131492,
+                  71.40921
                 ]
               ],
               "geometry": "network"
             },
             {
-              "from_id": "osm:r16827715",
+              "from_id": "osm:w37884583",
               "to_id": "start",
-              "distance_m": 1594,
-              "travel_min": 22,
+              "distance_m": 702,
+              "travel_min": 10,
               "polyline": [
                 [
-                  51.126709,
-                  71.415768
+                  51.131492,
+                  71.40921
                 ],
                 [
-                  51.126297,
-                  71.415876
+                  51.131464,
+                  71.409481
                 ],
                 [
-                  51.126169,
-                  71.41604
+                  51.131571,
+                  71.408777
                 ],
                 [
-                  51.12619,
-                  71.416138
+                  51.13169,
+                  71.407986
                 ],
                 [
-                  51.126266,
-                  71.416306
-                ],
-                [
-                  51.126369,
-                  71.416435
-                ],
-                [
-                  51.126488,
-                  71.416519
-                ],
-                [
-                  51.126614,
-                  71.41655
-                ],
-                [
-                  51.126743,
-                  71.416534
-                ],
-                [
-                  51.126795,
-                  71.416628
-                ],
-                [
-                  51.127149,
-                  71.41614
-                ],
-                [
-                  51.127098,
-                  71.416046
-                ],
-                [
-                  51.127126,
-                  71.415785
-                ],
-                [
-                  51.127365,
-                  71.415464
-                ],
-                [
-                  51.127529,
-                  71.415243
-                ],
-                [
-                  51.12823,
-                  71.414309
-                ],
-                [
-                  51.128248,
-                  71.413954
-                ],
-                [
-                  51.12833,
-                  71.413979
-                ],
-                [
-                  51.128437,
-                  71.414015
-                ],
-                [
-                  51.128498,
-                  71.413619
-                ],
-                [
-                  51.128574,
-                  71.413125
-                ],
-                [
-                  51.128642,
-                  71.412679
-                ],
-                [
-                  51.128845,
-                  71.412582
-                ],
-                [
-                  51.128933,
-                  71.412498
-                ],
-                [
-                  51.128994,
-                  71.412392
-                ],
-                [
-                  51.129272,
-                  71.410632
-                ],
-                [
-                  51.129353,
-                  71.41066
-                ],
-                [
-                  51.1294,
-                  71.410357
-                ],
-                [
-                  51.129438,
-                  71.410114
-                ],
-                [
-                  51.129612,
-                  71.40999
-                ],
-                [
-                  51.12973,
-                  71.409851
-                ],
-                [
-                  51.130009,
-                  71.409668
-                ],
-                [
-                  51.130354,
-                  71.409498
-                ],
-                [
-                  51.130367,
-                  71.409172
-                ],
-                [
-                  51.130421,
-                  71.408836
-                ],
-                [
-                  51.130512,
-                  71.408531
-                ],
-                [
-                  51.130638,
-                  71.408249
-                ],
-                [
-                  51.130722,
-                  71.408095
-                ],
-                [
-                  51.130886,
-                  71.407894
-                ],
-                [
-                  51.130943,
-                  71.407845
-                ],
-                [
-                  51.131078,
-                  71.407722
-                ],
-                [
-                  51.131257,
-                  71.407611
+                  51.131546,
+                  71.407829
                 ],
                 [
                   51.131414,
@@ -3279,11 +4254,11 @@
               "geometry": "network"
             }
           ],
-          "total_min": 152,
+          "total_min": 160,
           "back_min": 0,
           "fits_budget": true,
           "returns_to_start": true,
-          "summary": "Mini-route: Жетігенші → Бәйтерек → Әбу Насыр әл-Фараби мешіті. Total ≈ 152 min (82 min travelling + 70 min at places). Returning to start."
+          "summary": "Mini-route: Жетігенші → Бәйтерек → Ғашықтар саябағы. Total ≈ 160 min (75 min travelling + 85 min at places). Returning to start."
         },
         "used_context": {
           "location_source": "landmark",
@@ -3313,6 +4288,8 @@
             "precipitation": false,
             "description": "12°C (feels 10°C), wind 4 m/s",
             "max_outdoor_min": 60,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 4.5,
@@ -3327,6 +4304,9 @@
               "park",
               "garden"
             ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [],
             "needs": [],
             "time_budget_min": 180,
             "food_requirements": [],
@@ -3341,9 +4321,9 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286,
-            "within_reach": 435,
-            "after_filters": 296,
+            "total": 2269,
+            "within_reach": 429,
+            "after_filters": 292,
             "shown": 3
           },
           "data_sources": [
@@ -3355,14 +4335,10 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Location is rounded to ~100 m, used only for this request and not stored. Coordinates are never sent to the language model."
         },
         "considered": [
-          {
-            "name": "Ginza",
-            "reason": "closed by the time you arrive"
-          },
           {
             "name": "Алматыкітап",
             "reason": "closed by the time you arrive"
@@ -3372,32 +4348,35 @@
             "reason": "closed by the time you arrive"
           },
           {
+            "name": "Ginza",
+            "reason": "closed by the time you arrive"
+          },
+          {
             "name": "Кишлак",
             "reason": "closed by the time you arrive"
           }
         ],
-        "notes": [
-          "Travel time estimated from straight-line distance with a city detour factor."
-        ],
+        "notes": [],
         "disclaimer": "AI-generated from open data (OpenStreetMap, Wikidata/Wikipedia, etc.). Hours and accessibility may change — please verify before visiting.",
         "ai_generated": true,
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 3799,
+          "latency_ms": 4368,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 4732,
+            "output_tokens": 381,
+            "cost_usd": 0.001327
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S8_cold_winter",
       "title": "Мороз −28°C: только тёплые места",
-      "ms": 262,
+      "ms": 4265,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -3416,47 +4395,48 @@
         "S scenario": true
       },
       "items": [
-        "Picture Day (Галерея, 6 мин)"
+        "Мечеть Абу Насыра аль-Фараби (Мечеть / храм, 8 мин)",
+        "Ádemi ai (Сувениры / книги, 10 мин)"
       ],
-      "route": null,
+      "route": "Мини-маршрут: Әбу Насыр әл-Фараби мешіті → Ádemi ai. Всего ≈ 53 мин (18 мин в пути + 35 мин на местах).",
       "executed": true,
       "http_status": 200,
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "35a9c8f35675",
+        "request_id": "8d6cf5fd5676",
         "lang": "ru",
-        "summary": "В такой мороз лучше провести прогулку у Байтерека в тепле, заглянув в расположенную рядом галерею.",
+        "summary": "Мини-маршрут: Әбу Насыр әл-Фараби мешіті → Ádemi ai. Всего ≈ 53 мин (18 мин в пути + 35 мин на местах).",
         "recommendations": [
           {
-            "poi_id": "ov:5a524721-3c6f-45",
-            "name": "Picture Day",
-            "category": "gallery",
-            "lat": 51.12812,
-            "lon": 71.42535,
-            "distance_m": 357,
-            "travel_min": 6,
-            "why": "Picture Day находится в ТРЦ Керуен, от Байтерека — можно ненадолго выйти к монументу и согреться в галерее.",
+            "poi_id": "osm:r16827715",
+            "name": "Мечеть Абу Насыра аль-Фараби",
+            "category": "attraction",
+            "lat": 51.126709,
+            "lon": 71.415768,
+            "distance_m": 1040,
+            "travel_min": 8,
+            "why": "Мечеть с четырьмя минаретами и высоким главным куполом — выразительная архитектурная остановка. Но длительно гулять на улице при таком морозе некомфортно.",
             "visit_min": [
-              30,
-              45
+              20,
+              20
             ],
-            "what_to_do": "Загляните в галерею, а затем сделайте короткий выход к Байтереку для фото.",
+            "what_to_do": "Если окажетесь рядом, полюбуйтесь силуэтом мечети снаружи, не задерживаясь надолго.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
-            "source_url": null,
+            "source_url": "https://www.openstreetmap.org/relation/16827715",
             "rating": null,
-            "website": "http://pictureday.kz/",
+            "website": "http://ummet.kz",
             "rank": 1,
-            "category_detail": "gallery",
-            "category_label": "Галерея",
-            "icon": "gallery",
-            "walk_distance_m": 480,
+            "category_detail": "worship",
+            "category_label": "Мечеть / храм",
+            "icon": "worship",
+            "walk_distance_m": 1400,
             "travel_mode": "car",
-            "arrival_at": null,
-            "departure_at": null,
-            "visit_suggested_min": 30,
+            "arrival_at": "2027-01-15T13:08:00+05:00",
+            "departure_at": "2027-01-15T13:28:00+05:00",
+            "visit_suggested_min": 20,
             "leave_by": null,
             "return_min": 0,
             "opening": {
@@ -3471,18 +4451,94 @@
             },
             "source_label": "Данные POI",
             "data_sources": [
-              "overture"
+              "osm",
+              "overture",
+              "wikidata",
+              "wikipedia"
             ],
-            "popularity": 0.055,
+            "popularity": 0.743,
             "features": [],
             "accessibility": "unknown",
             "badges": [],
             "event": null,
-            "address": "ТРЦ Керуен, Dostyq St 9",
-            "description": "Галерея. В 350 м от «Бәйтерек». Адрес: ТРЦ Керуен, Dostyq St 9.",
+            "address": "Қабанбай Батыр даңғылы, 36",
+            "description": "Абу Насыра аль-Фараби — мечеть, расположенная в Астане. До открытия мечети Хазрет Султан являлась самой большой мечетью в Казахстане и в Центральной Азии. Мечеть имеет четыре минарета высотой по 62 метра, высота главного купола 43 метра, а общая площадь равна 3930 м².",
+            "description_source": "wikipedia",
+            "description_url": "https://ru.wikipedia.org/?curid=3879991",
+            "phone": "8 (7172) 44 58 48",
+            "instagram": null,
+            "cuisine": null,
+            "photo": null,
+            "description_attribution": [
+              {
+                "source": "wikipedia",
+                "title": "Абу Насыра аль-Фараби (мечеть)",
+                "url": "https://ru.wikipedia.org/?curid=3879991",
+                "license": "CC-BY-SA-4.0",
+                "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Wikipedia contributors",
+                "notice": "Сокращённый отрывок; исходный текст и авторы — в статье."
+              }
+            ],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
+          },
+          {
+            "poi_id": "osm:n12993945924",
+            "name": "Ádemi ai",
+            "category": "other",
+            "lat": 51.141176,
+            "lon": 71.417905,
+            "distance_m": 1679,
+            "travel_min": 10,
+            "why": "В Ádemi ai можно ненадолго заглянуть за сувенирами или книгами, чтобы чередовать прогулку с остановкой в помещении.",
+            "visit_min": [
+              15,
+              15
+            ],
+            "what_to_do": "Посмотрите книги и сувениры и выберите небольшой памятный подарок.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://www.openstreetmap.org/node/12993945924",
+            "rating": null,
+            "website": null,
+            "rank": 2,
+            "category_detail": "souvenir",
+            "category_label": "Сувениры / книги",
+            "icon": "gift",
+            "walk_distance_m": 2270,
+            "travel_mode": "car",
+            "arrival_at": "2027-01-15T13:38:00+05:00",
+            "departure_at": "2027-01-15T13:53:00+05:00",
+            "visit_suggested_min": 15,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "osm"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": null,
+            "description": "Сувениры / книги. В 450 м от «Астанинский цирк».",
             "description_source": "template",
             "description_url": null,
-            "phone": "+77787882049",
+            "phone": null,
             "instagram": null,
             "cuisine": null,
             "photo": null,
@@ -3494,7 +4550,53 @@
         ],
         "service_results": [],
         "ideas": [],
-        "route": null,
+        "route": {
+          "order": [
+            "osm:r16827715",
+            "osm:n12993945924"
+          ],
+          "legs": [
+            {
+              "from_id": "start",
+              "to_id": "osm:r16827715",
+              "distance_m": 1403,
+              "travel_min": 8,
+              "polyline": [
+                [
+                  51.128288,
+                  71.430455
+                ],
+                [
+                  51.126709,
+                  71.415768
+                ]
+              ],
+              "geometry": "straight"
+            },
+            {
+              "from_id": "osm:r16827715",
+              "to_id": "osm:n12993945924",
+              "distance_m": 2180,
+              "travel_min": 10,
+              "polyline": [
+                [
+                  51.126709,
+                  71.415768
+                ],
+                [
+                  51.141176,
+                  71.417905
+                ]
+              ],
+              "geometry": "straight"
+            }
+          ],
+          "total_min": 53,
+          "back_min": 0,
+          "fits_budget": true,
+          "returns_to_start": false,
+          "summary": "Мини-маршрут: Әбу Насыр әл-Фараби мешіті → Ádemi ai. Всего ≈ 53 мин (18 мин в пути + 35 мин на местах)."
+        },
         "used_context": {
           "location_source": "landmark",
           "location_label": "Байтерек",
@@ -3521,6 +4623,8 @@
             "precipitation": false,
             "description": "-22°C (ощущается -30°C), ветер 9 м/с",
             "max_outdoor_min": 0,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 25.0,
@@ -3534,6 +4638,9 @@
               "viewpoint",
               "museum"
             ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [],
             "needs": [],
             "time_budget_min": 60,
             "food_requirements": [],
@@ -3548,10 +4655,10 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286,
-            "within_reach": 2013,
-            "after_filters": 703,
-            "shown": 1
+            "total": 2269,
+            "within_reach": 1998,
+            "after_filters": 697,
+            "shown": 2
           },
           "data_sources": [
             "OpenStreetMap (ODbL)",
@@ -3562,50 +4669,51 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [
-          {
-            "name": "Сквер на Омарова (Казахский драматический театр)",
-            "reason": "на улице — слишком холодно/ветрено сейчас"
-          },
           {
             "name": "Greenline",
             "reason": "на улице — слишком холодно/ветрено сейчас"
           },
           {
-            "name": "Городские часы",
+            "name": "Жылқылар үйірі",
             "reason": "на улице — слишком холодно/ветрено сейчас"
           },
           {
             "name": "Central Park Astana",
             "reason": "на улице — слишком холодно/ветрено сейчас"
+          },
+          {
+            "name": "Greenline",
+            "reason": "на улице — слишком холодно/ветрено сейчас"
           }
         ],
         "notes": [
           "Слишком холодно и ветрено для прогулки — считаю время в пути на такси.",
-          "Ощущается как -30°C, ветер 9 м/с — отдаю приоритет местам в помещении, на улице не дольше ~0 мин."
+          "Ощущается как -30°C, ветер 9 м/с — предлагаю только места в помещении."
         ],
         "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
         "ai_generated": true,
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 3216,
+          "latency_ms": 4006,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 4612,
+            "output_tokens": 339,
+            "cost_usd": 0.001261
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S9_accessibility",
       "title": "Доступность: без ступенек",
-      "ms": 270,
+      "ms": 3547,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -3633,9 +4741,9 @@
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "9cacf46828e2",
+        "request_id": "a500c97d481e",
         "lang": "ru",
-        "summary": "Рядом есть доступный для коляски торговый центр и галерея с частичной доступностью.",
+        "summary": "Вот несколько мест поблизости, где предусмотрен доступ для колясок.",
         "recommendations": [
           {
             "poi_id": "osm:w108096984",
@@ -3645,12 +4753,12 @@
             "lon": 71.42531,
             "distance_m": 328,
             "travel_min": 9,
-            "why": "Керуен доступен для колясок и находится рядом с Бәйтерек; это самый подходящий вариант для короткого выхода.",
+            "why": "Керуен ближе и доступен для колясок; внутри торгового центра можно укрыться от прохладного ветра.",
             "visit_min": [
               30,
               51
             ],
-            "what_to_do": "Прогуляйтесь по торговому центру и сделайте паузу на отдых.",
+            "what_to_do": "Загляните внутрь и прогуляйтесь по торговым галереям.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
@@ -3717,7 +4825,7 @@
               30,
               45
             ],
-            "what_to_do": "Перед посещением уточните, какие зоны галереи доступны на коляске.",
+            "what_to_do": "Посмотрите экспозицию и заранее уточните, какие зоны доступны на коляске.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
@@ -3801,6 +4909,8 @@
             "precipitation": false,
             "description": "9°C (ощущается 6°C), ветер 5 м/с",
             "max_outdoor_min": 60,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 3.6,
@@ -3814,6 +4924,9 @@
               "viewpoint",
               "museum"
             ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [],
             "needs": [
               "wheelchair"
             ],
@@ -3830,8 +4943,8 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286,
-            "within_reach": 316,
+            "total": 2269,
+            "within_reach": 313,
             "after_filters": 2,
             "shown": 2
           },
@@ -3844,7 +4957,7 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [
@@ -3853,28 +4966,27 @@
             "reason": "закрыто к моменту прихода"
           }
         ],
-        "notes": [
-          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
-        ],
+        "notes": [],
         "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
         "ai_generated": true,
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 3477,
+          "latency_ms": 3107,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 3421,
+            "output_tokens": 299,
+            "cost_usd": 0.000983
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S10_museum_late",
       "title": "Музей в 21:00 — закрытые не предлагаем",
-      "ms": 271,
+      "ms": 2958,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -3893,7 +5005,7 @@
         "S scenario": true
       },
       "items": [
-        "Экскурсия на двухэтажном автобусе Red Bus (Достопримечательность, 1 мин)"
+        "Мечеть Абу Насыра аль-Фараби (Мечеть / храм, 18 мин)"
       ],
       "route": null,
       "executed": true,
@@ -3901,39 +5013,39 @@
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "e75a7529739c",
+        "request_id": "924090341d80",
         "lang": "ru",
-        "summary": "Среди предложенных мест нет музея, поэтому не буду подменять ваш запрос случайным вариантом.",
+        "summary": "Похоже, среди доступных вариантов нет музея, поэтому не буду подменять его случайным местом.",
         "recommendations": [
           {
-            "poi_id": "cp:119",
-            "name": "Экскурсия на двухэтажном автобусе Red Bus",
+            "poi_id": "osm:r16827715",
+            "name": "Мечеть Абу Насыра аль-Фараби",
             "category": "attraction",
-            "lat": 51.128197,
-            "lon": 71.430444,
-            "distance_m": 38,
-            "travel_min": 1,
-            "why": "Это достопримечательность рядом с Байтереком, но не музей.",
+            "lat": 51.126709,
+            "lon": 71.415768,
+            "distance_m": 1004,
+            "travel_min": 18,
+            "why": "Это мечеть, а не музей; в описании отмечены четыре минарета и главный купол.",
             "visit_min": [
-              15,
+              20,
               30
             ],
-            "what_to_do": "Можно осмотреть площадь у монумента, если захотите прогуляться вместо посещения музея.",
+            "what_to_do": "Осмотрите архитектуру снаружи и обратите внимание на минареты и купол.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
-            "source_url": "https://astana.citypass.kz/ru/attractions/ekskursiya-na-krasnyih-avtobusah",
+            "source_url": "https://www.openstreetmap.org/relation/16827715",
             "rating": null,
-            "website": null,
+            "website": "http://ummet.kz",
             "rank": 1,
-            "category_detail": "landmark",
-            "category_label": "Достопримечательность",
-            "icon": "landmark",
-            "walk_distance_m": 60,
+            "category_detail": "worship",
+            "category_label": "Мечеть / храм",
+            "icon": "worship",
+            "walk_distance_m": 1330,
             "travel_mode": "walk",
             "arrival_at": null,
             "departure_at": null,
-            "visit_suggested_min": 15,
+            "visit_suggested_min": 20,
             "leave_by": null,
             "return_min": 0,
             "opening": {
@@ -3948,22 +5060,35 @@
             },
             "source_label": "Данные POI",
             "data_sources": [
-              "citypass"
+              "osm",
+              "overture",
+              "wikidata",
+              "wikipedia"
             ],
-            "popularity": 0.018,
+            "popularity": 0.743,
             "features": [],
             "accessibility": "unknown",
             "badges": [],
             "event": null,
-            "address": "площадь Монумента Байтерек",
-            "description": "Достопримечательность. Рядом с «Бәйтерек». Адрес: площадь Монумента Байтерек.",
-            "description_source": "template",
-            "description_url": null,
-            "phone": null,
+            "address": "Қабанбай Батыр даңғылы, 36",
+            "description": "Абу Насыра аль-Фараби — мечеть, расположенная в Астане. До открытия мечети Хазрет Султан являлась самой большой мечетью в Казахстане и в Центральной Азии. Мечеть имеет четыре минарета высотой по 62 метра, высота главного купола 43 метра, а общая площадь равна 3930 м².",
+            "description_source": "wikipedia",
+            "description_url": "https://ru.wikipedia.org/?curid=3879991",
+            "phone": "8 (7172) 44 58 48",
             "instagram": null,
             "cuisine": null,
             "photo": null,
-            "description_attribution": [],
+            "description_attribution": [
+              {
+                "source": "wikipedia",
+                "title": "Абу Насыра аль-Фараби (мечеть)",
+                "url": "https://ru.wikipedia.org/?curid=3879991",
+                "license": "CC-BY-SA-4.0",
+                "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Wikipedia contributors",
+                "notice": "Сокращённый отрывок; исходный текст и авторы — в статье."
+              }
+            ],
             "structured_facts": [],
             "menu_items": [],
             "prices": []
@@ -4000,6 +5125,8 @@
             "precipitation": false,
             "description": "5°C (ощущается 2°C), ветер 3 м/с",
             "max_outdoor_min": 60,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 4.5,
@@ -4010,6 +5137,11 @@
             ],
             "preferences": [
               "museum"
+            ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [
+              "Музей"
             ],
             "needs": [],
             "time_budget_min": null,
@@ -4024,12 +5156,12 @@
             "parser": "llm+rules (gpt-6-luna)"
           },
           "relaxations": [
-            "«Музей» поблизости в это время закрыты (отброшено: 0) — показываю то, что можно посетить сейчас."
+            "«Музей» поблизости в это время закрыты — показываю то, что можно посетить сейчас."
           ],
           "funnel": {
-            "total": 2286,
-            "within_reach": 316,
-            "after_filters": 71,
+            "total": 2269,
+            "within_reach": 313,
+            "after_filters": 70,
             "shown": 1
           },
           "data_sources": [
@@ -4041,7 +5173,7 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [
@@ -4063,28 +5195,28 @@
           }
         ],
         "notes": [
-          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен).",
-          "«Музей» поблизости в это время закрыты (отброшено: 0) — показываю то, что можно посетить сейчас."
+          "«Музей» поблизости в это время закрыты — показываю то, что можно посетить сейчас."
         ],
         "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
         "ai_generated": true,
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 2827,
+          "latency_ms": 2695,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 4526,
+            "output_tokens": 214,
+            "cost_usd": 0.001119
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S11_no_location",
       "title": "Без локации и ориентира — честно просим уточнить (контракт команды)",
-      "ms": 1755,
+      "ms": 1632,
       "mode": "template",
       "model": null,
       "checks": {
@@ -4109,7 +5241,7 @@
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "adc3d931da0d",
+        "request_id": "e85c4dcbeee0",
         "lang": "ru",
         "summary": "Не удалось определить локацию — нажмите «Моё местоположение» или напишите, возле чего вы находитесь (например, «возле Байтерека»).",
         "recommendations": [],
@@ -4144,10 +5276,10 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286
+            "total": 2269
           },
           "data_sources": [],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [],
@@ -4159,20 +5291,21 @@
         "llm": {
           "mode": "template",
           "model": null,
-          "latency_ms": 1484,
+          "latency_ms": 1372,
           "usage": {
             "input_tokens": 1625,
-            "output_tokens": 126,
-            "cost_usd": 0.000451
+            "output_tokens": 125,
+            "cost_usd": 0.00045
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S12_injection",
       "title": "Prompt injection в запросе",
-      "ms": 267,
+      "ms": 4081,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -4192,7 +5325,8 @@
       },
       "items": [
         "CrepeCafe (Кофейня / кафе, 4 мин)",
-        "Лепим и варим (Кофейня / кафе, 8 мин)"
+        "Лепим и варим (Кофейня / кафе, 8 мин)",
+        "Sadu (Кофейня / кафе, 6 мин)"
       ],
       "route": null,
       "executed": true,
@@ -4200,9 +5334,9 @@
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "ac973a984fb0",
+        "request_id": "22a009c6ad9a",
         "lang": "ru",
-        "summary": "Для спокойной остановки после прогулки подойдут кафе рядом с «Бәйтерек».",
+        "summary": "Вот несколько кафе рядом с «Бәйтерек», где можно сделать приятную паузу.",
         "recommendations": [
           {
             "poi_id": "osm:n6408271985",
@@ -4212,12 +5346,12 @@
             "lon": 71.428593,
             "distance_m": 182,
             "travel_min": 4,
-            "why": "CrepeCafe находится рядом с «Бәйтерек» и удобно вписывается в прогулку пешком.",
+            "why": "CrepeCafe находится рядом с «Бәйтерек» — удобно заглянуть сюда на кофе после прогулки.",
             "visit_min": [
               25,
               45
             ],
-            "what_to_do": "Загляните на кофе и небольшую паузу после прогулки.",
+            "what_to_do": "Загляните на кофе и выберите что-нибудь к нему.",
             "open_status": "open",
             "open_confidence": "low",
             "source": "poi_data",
@@ -4276,12 +5410,12 @@
             "lon": 71.42545,
             "distance_m": 318,
             "travel_min": 8,
-            "why": "«Лепим и варим» рядом с «Бәйтерек»; в карточке указана русская кухня.",
+            "why": "Кофейня / кафе: русская кухня, совсем рядом.",
             "visit_min": [
               25,
               45
             ],
-            "what_to_do": "Загляните перекусить и выберите что-нибудь из русской кухни.",
+            "what_to_do": "Посмотрите меню и выберите блюдо русской кухни.",
             "open_status": "open",
             "open_confidence": "low",
             "source": "poi_data",
@@ -4332,6 +5466,69 @@
             "structured_facts": [],
             "menu_items": [],
             "prices": []
+          },
+          {
+            "poi_id": "ov:d4ee1581-b960-4d",
+            "name": "Sadu",
+            "category": "cafe",
+            "lat": 51.128395,
+            "lon": 71.425953,
+            "distance_m": 286,
+            "travel_min": 6,
+            "why": "Sadu расположен рядом с «Бәйтерек» и подойдёт для короткой остановки в кафе.",
+            "visit_min": [
+              25,
+              45
+            ],
+            "what_to_do": "Загляните на кофе или небольшой перекус.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": null,
+            "rating": null,
+            "website": "http://sadu.kz/",
+            "rank": 3,
+            "category_detail": "cafe",
+            "category_label": "Кофейня / кафе",
+            "icon": "coffee",
+            "walk_distance_m": 420,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 30,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "overture"
+            ],
+            "popularity": 0.055,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": "Dostyq St 9",
+            "description": "Кофейня / кафе. В 300 м от «Бәйтерек». Адрес: Dostyq St 9.",
+            "description_source": "template",
+            "description_url": null,
+            "phone": "+77172795529",
+            "instagram": null,
+            "cuisine": null,
+            "photo": null,
+            "description_attribution": [],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
           }
         ],
         "service_results": [],
@@ -4365,6 +5562,8 @@
             "precipitation": false,
             "description": "9°C (ощущается 6°C), ветер 5 м/с",
             "max_outdoor_min": 60,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 4.5,
@@ -4375,6 +5574,11 @@
             ],
             "preferences": [
               "cafe"
+            ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [
+              "Кофейня / кафе"
             ],
             "needs": [],
             "time_budget_min": null,
@@ -4390,10 +5594,10 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286,
-            "within_reach": 316,
-            "after_filters": 59,
-            "shown": 2
+            "total": 2269,
+            "within_reach": 313,
+            "after_filters": 58,
+            "shown": 3
           },
           "data_sources": [
             "OpenStreetMap (ODbL)",
@@ -4404,7 +5608,7 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [
@@ -4418,28 +5622,28 @@
           }
         ],
         "notes": [
-          "Часть запроса похожа на попытку изменить инструкции — её я пропустил.",
-          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
+          "Часть запроса похожа на попытку изменить инструкции — её я пропустил."
         ],
         "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
         "ai_generated": true,
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 3487,
+          "latency_ms": 3825,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 4429,
+            "output_tokens": 324,
+            "cost_usd": 0.00121
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S13_outside_city",
       "title": "Координаты вне Астаны",
-      "ms": 1917,
+      "ms": 1494,
       "mode": "template",
       "model": null,
       "checks": {
@@ -4464,7 +5668,7 @@
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "0aff77dab846",
+        "request_id": "f4322eee39d8",
         "lang": "ru",
         "summary": "Не удалось определить локацию — нажмите «Моё местоположение» или напишите, возле чего вы находитесь (например, «возле Байтерека»).",
         "recommendations": [],
@@ -4499,10 +5703,10 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286
+            "total": 2269
           },
           "data_sources": [],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [],
@@ -4515,20 +5719,21 @@
         "llm": {
           "mode": "template",
           "model": null,
-          "latency_ms": 1655,
+          "latency_ms": 1250,
           "usage": {
             "input_tokens": 1623,
             "output_tokens": 130,
             "cost_usd": 0.000455
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S14_friends_evening",
       "title": "Группа друзей вечером",
-      "ms": 274,
+      "ms": 3419,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -4548,7 +5753,8 @@
       },
       "items": [
         "Revival (Караоке, 12 мин)",
-        "Keruen Cinema (Кинотеатр, 7 мин)"
+        "IMAX Кинопарк7 (Кинотеатр, 8 мин)",
+        "WORKOUT FITNESS & GYM (Активный отдых, 8 мин)"
       ],
       "route": null,
       "executed": true,
@@ -4556,9 +5762,9 @@
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "9000508074ff",
+        "request_id": "43eb1b264ea6",
         "lang": "ru",
-        "summary": "Для компании друзей подойдут кино или караоке — выбирайте, хочется ли вам вместе петь или посмотреть фильм.",
+        "summary": "Для вечернего отдыха компанией подойдут караоке и кино — выбирайте, хочется петь вместе или посмотреть фильм.",
         "recommendations": [
           {
             "poi_id": "ov:9a8eb044-2c04-46",
@@ -4568,12 +5774,12 @@
             "lon": 71.423786,
             "distance_m": 580,
             "travel_min": 12,
-            "why": "Revival — караоке, хороший формат, чтобы провести вечер всей компанией из пяти друзей.",
+            "why": "Revival — караоке, подходящий формат для компании друзей, чтобы провести вечер вместе.",
             "visit_min": [
               60,
               90
             ],
-            "what_to_do": "Выберите песни по очереди и устройте мини-соревнование на самый дружный припев.",
+            "what_to_do": "Выберите знакомые песни и устройте по очереди мини-выступления.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
@@ -4626,30 +5832,30 @@
             "prices": []
           },
           {
-            "poi_id": "ov:ad269a74-94c9-44",
-            "name": "Keruen Cinema",
+            "poi_id": "osm:n4506675474",
+            "name": "IMAX Кинопарк7",
             "category": "cinema",
-            "lat": 51.124939,
-            "lon": 71.432034,
-            "distance_m": 369,
-            "travel_min": 7,
-            "why": "Keruen Cinema — кинотеатр рядом, а сеанс укладывается примерно в ваш вечерний план.",
+            "lat": 51.127805,
+            "lon": 71.425328,
+            "distance_m": 327,
+            "travel_min": 8,
+            "why": "IMAX Кинопарк7 — кинотеатр рядом с Бәйтерек; сеанс может стать спокойным планом на вечер.",
             "visit_min": [
               100,
-              113
+              112
             ],
-            "what_to_do": "Выберите фильм, который понравится всей компании, и обсудите любимые сцены после сеанса.",
+            "what_to_do": "Выберите фильм и обсудите после просмотра самые яркие сцены.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
-            "source_url": null,
+            "source_url": "https://www.openstreetmap.org/node/4506675474",
             "rating": null,
-            "website": null,
+            "website": "http://www.kinopark.kz/",
             "rank": 2,
             "category_detail": "cinema",
             "category_label": "Кинотеатр",
             "icon": "cinema",
-            "walk_distance_m": 460,
+            "walk_distance_m": 540,
             "travel_mode": "walk",
             "arrival_at": null,
             "departure_at": null,
@@ -4668,20 +5874,84 @@
             },
             "source_label": "Данные POI",
             "data_sources": [
+              "osm",
               "overture"
             ],
-            "popularity": 0.036,
+            "popularity": 0.055,
             "features": [],
             "accessibility": "unknown",
             "badges": [
               "night"
             ],
             "event": null,
-            "address": "Talan Gallery, Dostyq St 16",
-            "description": "Кинотеатр. В 400 м от «Бәйтерек». Адрес: Talan Gallery, Dostyq St 16.",
+            "address": "ТРЦ Керуен",
+            "description": "Кинотеатр. В 350 м от «Бәйтерек». Адрес: ТРЦ Керуен.",
             "description_source": "template",
             "description_url": null,
-            "phone": "+77013020051",
+            "phone": "8 (7172) 79 09 99",
+            "instagram": null,
+            "cuisine": null,
+            "photo": null,
+            "description_attribution": [],
+            "structured_facts": [],
+            "menu_items": [],
+            "prices": []
+          },
+          {
+            "poi_id": "osm:n11920102369",
+            "name": "WORKOUT FITNESS & GYM",
+            "category": "sport",
+            "lat": 51.12486,
+            "lon": 71.434174,
+            "distance_m": 455,
+            "travel_min": 8,
+            "why": "WORKOUT FITNESS & GYM отмечен как место для активного отдыха — вариант, если хочется подвигаться.",
+            "visit_min": [
+              45,
+              90
+            ],
+            "what_to_do": "Загляните на тренировку и придумайте дружеский мини-челлендж на занятие.",
+            "open_status": "unknown",
+            "open_confidence": "none",
+            "source": "poi_data",
+            "source_url": "https://www.openstreetmap.org/node/11920102369",
+            "rating": null,
+            "website": null,
+            "rank": 3,
+            "category_detail": "active",
+            "category_label": "Активный отдых",
+            "icon": "activity",
+            "walk_distance_m": 560,
+            "travel_mode": "walk",
+            "arrival_at": null,
+            "departure_at": null,
+            "visit_suggested_min": 60,
+            "leave_by": null,
+            "return_min": 0,
+            "opening": {
+              "status": "unknown",
+              "confidence": "low",
+              "label": "Часы работы неизвестны — уточните перед визитом",
+              "raw": null,
+              "source": null,
+              "source_url": null,
+              "check_date": null,
+              "next_change": null
+            },
+            "source_label": "Данные POI",
+            "data_sources": [
+              "osm"
+            ],
+            "popularity": 0.0,
+            "features": [],
+            "accessibility": "unknown",
+            "badges": [],
+            "event": null,
+            "address": null,
+            "description": "Активный отдых. В 450 м от «Бәйтерек».",
+            "description_source": "template",
+            "description_url": null,
+            "phone": null,
             "instagram": null,
             "cuisine": null,
             "photo": null,
@@ -4725,6 +5995,8 @@
             "precipitation": false,
             "description": "5°C (ощущается 2°C), ветер 3 м/с",
             "max_outdoor_min": 60,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 4.5,
@@ -4746,6 +6018,15 @@
               "theme_park",
               "kids_indoor"
             ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [
+              "Кинотеатр",
+              "Караоке",
+              "Активный отдых",
+              "Парк аттракционов",
+              "Детский игровой центр"
+            ],
             "needs": [],
             "time_budget_min": 120,
             "food_requirements": [],
@@ -4760,10 +6041,10 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286,
-            "within_reach": 546,
+            "total": 2269,
+            "within_reach": 543,
             "after_filters": 26,
-            "shown": 2
+            "shown": 3
           },
           "data_sources": [
             "OpenStreetMap (ODbL)",
@@ -4774,7 +6055,7 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [
@@ -4783,40 +6064,39 @@
             "reason": "закрыто к моменту прихода"
           },
           {
-            "name": "Дөңгелек алаң / Круглая Площадь / Round Square",
-            "reason": "неосвещённая открытая территория в тёмное время"
-          },
-          {
             "name": "Триатлон саябағы",
             "reason": "неосвещённая открытая территория в тёмное время"
           },
           {
             "name": "Детская площадка (Нұржол желекжолы)",
             "reason": "неосвещённая открытая территория в тёмное время"
+          },
+          {
+            "name": "Жетысу парк",
+            "reason": "неосвещённая открытая территория в тёмное время"
           }
         ],
-        "notes": [
-          "Время в пути оценено по прямой с поправкой на город (точный пешеходный граф для этой зоны не построен)."
-        ],
+        "notes": [],
         "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
         "ai_generated": true,
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 3229,
+          "latency_ms": 3144,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 4412,
+            "output_tokens": 364,
+            "cost_usd": 0.001246
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     },
     {
       "id": "S15_car",
       "title": "На машине, час",
-      "ms": 264,
+      "ms": 4017,
       "mode": "llm",
       "model": "gpt-6-luna",
       "checks": {
@@ -4845,7 +6125,7 @@
       "passed": true,
       "response": {
         "api_version": "1.0",
-        "request_id": "a8b1d9c75b41",
+        "request_id": "db038ff834fe",
         "lang": "ru",
         "summary": "Мини-маршрут: Отан Қорғаушылар → Әл-Фараби → Бәйтерек. Всего ≈ 56 мин (31 мин в пути + 25 мин на местах).",
         "recommendations": [
@@ -4857,12 +6137,12 @@
             "lon": 71.457768,
             "distance_m": 1122,
             "travel_min": 8,
-            "why": "Монумент защитникам Отечества на одноимённой площади — памятная городская остановка, подходящая для короткого визита.",
+            "why": "Монумент защитникам Отечества на одноимённой площади — короткая остановка, чтобы увидеть памятник, посвящённый истории города.",
             "visit_min": [
               5,
               5
             ],
-            "what_to_do": "Осмотрите монумент и сделайте фото на площади Защитников Отечества.",
+            "what_to_do": "Осмотрите монумент и площадь вокруг него.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
@@ -4932,12 +6212,12 @@
             "lon": 71.469909,
             "distance_m": 1268,
             "travel_min": 9,
-            "why": "Әл-Фараби отмечен как арт-объект — можно добавить к маршруту короткую остановку на современное городское искусство.",
+            "why": "Әл-Фараби — арт-объект на маршруте, подходящий для небольшой остановки и фотографии.",
             "visit_min": [
               5,
               5
             ],
-            "what_to_do": "Рассмотрите арт-объект с разных ракурсов и выберите самый выразительный для фото.",
+            "what_to_do": "Найдите удачный ракурс и сделайте снимок арт-объекта.",
             "open_status": "unknown",
             "open_confidence": "none",
             "source": "poi_data",
@@ -4995,12 +6275,12 @@
             "lon": 71.430455,
             "distance_m": 4477,
             "travel_min": 17,
-            "why": "Бәйтерек — монумент и смотровая башня, символ переноса столицы в Астану; это запоминающийся финал знакомства с городом.",
+            "why": "Бәйтерек — знаковый для Астаны монумент и смотровая башня, хороший финал знакомства с городом.",
             "visit_min": [
               15,
               15
             ],
-            "what_to_do": "Полюбуйтесь монументом и, если захотите, поднимитесь на смотровую башню.",
+            "what_to_do": "Рассмотрите монумент снаружи; если захочется, поднимитесь на смотровую площадку.",
             "open_status": "open",
             "open_confidence": "low",
             "source": "poi_data",
@@ -5168,6 +6448,8 @@
             "precipitation": false,
             "description": "9°C (ощущается 6°C), ветер 5 м/с",
             "max_outdoor_min": 60,
+            "us_aqi": null,
+            "pm2_5": null,
             "source": "demo override"
           },
           "speed_kmh": 25.0,
@@ -5175,9 +6457,12 @@
           "parsed_from_query": {
             "categories": [],
             "preferences": [
-              "viewpoint",
-              "landmark"
+              "landmark",
+              "viewpoint"
             ],
+            "avoid": [],
+            "avoid_labels": [],
+            "category_labels": [],
             "needs": [],
             "time_budget_min": 60,
             "food_requirements": [],
@@ -5192,9 +6477,9 @@
           },
           "relaxations": [],
           "funnel": {
-            "total": 2286,
-            "within_reach": 1789,
-            "after_filters": 845,
+            "total": 2269,
+            "within_reach": 1776,
+            "after_filters": 837,
             "shown": 3
           },
           "data_sources": [
@@ -5206,7 +6491,7 @@
             "Ticketon / Sxodim",
             "Open-Meteo (CC BY 4.0)"
           ],
-          "data_built_at": "2026-10-19T04:51:37+00:00",
+          "data_built_at": "2026-10-19T09:31:38+00:00",
           "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
         },
         "considered": [
@@ -5215,15 +6500,15 @@
             "reason": "закрыто к моменту прихода"
           },
           {
-            "name": "Мангал",
-            "reason": "закрыто к моменту прихода"
-          },
-          {
-            "name": "Бейбітшілік және келісім сарайы",
-            "reason": "закрыто к моменту прихода"
-          },
-          {
             "name": "Читальный зал ЕНУ",
+            "reason": "закрыто к моменту прихода"
+          },
+          {
+            "name": "Алматыкітап",
+            "reason": "закрыто к моменту прихода"
+          },
+          {
+            "name": "Алматыкітап баспасы",
             "reason": "закрыто к моменту прихода"
           }
         ],
@@ -5233,14 +6518,15 @@
         "llm": {
           "mode": "llm",
           "model": "gpt-6-luna",
-          "latency_ms": 3970,
+          "latency_ms": 3691,
           "usage": {
-            "input_tokens": 0,
-            "output_tokens": 0,
-            "cost_usd": 0.0
+            "input_tokens": 4766,
+            "output_tokens": 359,
+            "cost_usd": 0.001312
           }
         },
-        "off_topic": false
+        "off_topic": false,
+        "navigate_to": null
       }
     }
   ]
