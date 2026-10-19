@@ -105,6 +105,7 @@ T: dict[str, dict[str, str]] = {
     "desc_address": {"ru": "Адрес: {v}", "kk": "Мекенжайы: {v}", "en": "Address: {v}"},
     "note_text_origin": {"ru": "Считаю от «{name}», как ты написал (а не от геолокации).", "kk": "Сен жазғандай «{name}» нысанынан есептеймін (геолокациядан емес).", "en": "Counting from «{name}» as you wrote (not from your location)."},
     "rej_unreachable": {"ru": "не помещается в это время и маршрут", "kk": "бұл уақыт пен бағытқа сыймайды", "en": "does not fit this time and route"},
+    "note_far_walk": {"ru": "Пешком это около {m} мин — удобнее на такси или автобусе.", "kk": "Жаяу шамамен {m} мин — такси не автобуспен ыңғайлырақ.", "en": "That is about {m} min on foot — a taxi or bus is easier."},
     "note_target_missing": {"ru": "{name}: {reason}, поэтому показываю, что подходит сейчас.", "kk": "{name}: {reason}, сондықтан қазір лайық орындарды көрсетемін.", "en": "{name}: {reason}, so here is what works right now."},
     "rej_closed": {"ru": "закрыто к моменту прихода", "kk": "барған кезде жабық", "en": "closed by the time you arrive"},
     "rej_far": {"ru": "дорога ~{m} мин — не укладывается во время", "kk": "жол ~{m} мин — уақытқа сыймайды", "en": "~{m} min away — does not fit your time"},

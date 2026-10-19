@@ -152,6 +152,7 @@ def label_unnamed(pois: list[dict], context: list[dict]) -> None:
                 anchor, kind = hits[0][1]["name"], k
                 break
         stats[kind or "none"] += 1
+        p["yard"] = p["category"] == "playground" and kind == "res"  # a residential courtyard (app.store.courtyard_playground)
         if anchor:
             prep_ru = "в парке" if kind == "park" else ("в ЖК" if kind == "res" else "на")
             p["name"] = f"{base[0]} {prep_ru} «{anchor}»" if kind != "street" else f"{base[0]} ({anchor})"

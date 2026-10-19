@@ -112,6 +112,12 @@ def apply_facts(pois: list[dict], facts: dict[str, dict]) -> None:
 INDOOR_NAMES = re.compile(r"ailand|айленд|думан|happylon|хэппилон|fame city|хан шатыр|khan shatyr", re.IGNORECASE)
 
 
+def courtyard_playground(p: dict) -> bool:
+    """An unnamed playground labelled after the residential complex it stands in (pipeline.build.label_unnamed,
+    «Детская площадка в ЖК …»): a courtyard playground, often behind the complex's gate — on the map, never a pick."""
+    return p["category"] == "playground" and bool(p.get("yard") or (p.get("name_auto") and " в ЖК «" in p["name"]))
+
+
 def _richness(p: dict) -> tuple:
     return (bool(p.get("description")), bool(p.get("opening_hours")), bool(p.get("wikidata")), p.get("popularity") or 0)
 

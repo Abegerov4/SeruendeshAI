@@ -26,7 +26,7 @@ from app.i18n import t
 from app.query import Parsed
 from app.evidence import accepted_details, match_food, price_benchmarks, price_comparison_group
 from app.food import needs_meal_kitchen
-from app.store import Store, stem_tokens
+from app.store import Store, courtyard_playground, stem_tokens
 from app.textnorm import fold
 
 # default pool when the user did not ask for specific place types
@@ -56,6 +56,7 @@ class Plan:
     filters: list[str] = field(default_factory=list)
     funnel: dict[str, int] = field(default_factory=dict)
     graph_used: bool = False
+    directions: bool = False  # «маршрут до X»: the way there is the answer; X's hours are shown, not used to drop it
     outside_graph: bool = False
     estimated_ids: set = field(default_factory=set)  # POIs whose walk time is a straight-line estimate
     transit: bool = False
@@ -244,9 +245,11 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         if is_target:  # the place the user named as a destination: only hours/safety rules apply
             v, vr = visit_minutes(p["category"], plan.budget, plan.mode)
             op = opening_status(p, now + dt.timedelta(minutes=float(mins[i])), v, lang, ctx.holiday)
-            return (True, None, op) if op["ok"] else (False, t("rej_closed", lang), op)
+            return (True, None, op) if op["ok"] or plan.directions else (False, t("rej_closed", lang), op)
         if parsed.avoid and p["category"] in parsed.avoid:
             return False, None, None
+        if courtyard_playground(p):
+            return False, None, None  # a residential complex's courtyard: often gated, not where to send a family
         if exclude_keys and mins[i] <= 8 and _is_origin(p["name"], exclude_keys):
             return False, None, None  # the landmark the user is standing at is not a recommendation
         has_event = p["id"] in ev_by_poi
@@ -365,7 +368,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
             leave = ctx.now + dt.timedelta(minutes=free - back)
             c.leave_by = leave.strftime("%H:%M")
         final_opening = opening_status(p, now + dt.timedelta(minutes=c.travel_min), c.visit_min, lang, ctx.holiday)
-        if not final_opening["ok"]:
+        if not final_opening["ok"] and not (plan.directions and i in target_idx):
             rejected.append((i, t("rej_closed", lang)))
             continue
         c.opening = final_opening

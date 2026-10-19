@@ -48,6 +48,38 @@ def test_kids_never_get_bars(client):
     assert not any(i["category_detail"] in ("bar", "nightclub", "hookah") for i in d["recommendations"])
 
 
+def test_kids_get_public_places_not_courtyard_playgrounds(client):
+    # Khan Shatyr has residential-complex courtyard playgrounds within 50 m; a family is sent to public places
+    d = post(client, query="Я с ребёнком, где рядом площадка или интерактивный музей?", landmark="khan_shatyr",
+             now="2026-10-20T15:00:00+05:00")
+    names = [i["name"] for i in d["recommendations"] if i["source"] == "poi_data"]
+    assert names and not any(" в ЖК «" in n for n in names), names
+
+
+FAR_GPS = {"lat": 51.16, "lon": 71.47}  # right bank, ~6 km from Khan Shatyr
+
+
+def test_named_place_with_gps_is_the_destination_not_a_new_start(client):
+    # «мечеть Хазрет Султан» / «хочу в Хан Шатыр» from across the river: the route starts from the user
+    for q, name in (("мечеть Хазрет Султан", "хазрет султан"), ("хочу в Хан Шатыр", "хан шатыр"),
+                    ("отведи меня к Пирамиде", "дворец мира")):
+        d = post(client, query=q, location=FAR_GPS, now="2026-10-20T15:00:00+05:00")
+        assert d["used_context"]["location_source"] == "gps_rounded", q
+        first = d["recommendations"][0]
+        assert name in first["name"].lower(), (q, first["name"])
+
+
+def test_kind_of_place_inside_a_named_one_keeps_it_as_the_area(client):
+    d = post(client, query="кофейня в Mega Silk Way", location=FAR_GPS, now="2026-10-20T15:00:00+05:00")
+    assert d["used_context"]["location_label"] == "Mega Silk Way"
+
+
+def test_inflected_word_is_not_a_short_map_name(client):
+    # «в Центральном парке» must not turn into the café «Централ» as the start
+    d = post(client, query="погулять в Центральном парке", location=FAR_GPS, now="2026-10-20T15:00:00+05:00")
+    assert d["used_context"]["location_source"] == "gps_rounded"
+
+
 def test_extreme_cold_switches_to_taxi_and_indoor(client):
     d = post(client, query="погулять час", landmark="baiterek",
              weather={"temperature_c": -25, "feels_like_c": -33, "wind_ms": 10})

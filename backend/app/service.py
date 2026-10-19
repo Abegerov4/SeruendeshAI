@@ -73,7 +73,7 @@ def _strip_terms(text: str, keys: list[str]) -> str:
     return " ".join(s.split())
 
 
-def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: list[str], lang: str, hit=None):
+def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: list[str], lang: str, hit=None, dests=()):
     """Where the text says the user is > LLM landmark > rounded GPS (inside Astana) > UI landmark.
     «Я возле Хан Шатыра» wins over GPS: the user said it explicitly (and may be planning ahead)."""
     home_ref = bool(HOME_CUE.search(fold(req.query or "")))
@@ -85,6 +85,8 @@ def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: 
         notes.append(t("note_home_missing", lang))
     if not hit and parsed.landmark_text and not (home_ref and fold(parsed.landmark_text).startswith("дом")):
         hit = resolve_landmark(parsed.landmark_text, store.gazetteer)
+        if hit is not None and any(hit["name"] == g["name"] for g in dests):
+            hit = None  # the LLM read the place the user wants to go to as where they are
     if hit:
         if req.location:
             notes.append(t("note_text_origin", lang, name=hit["name"]))
@@ -95,7 +97,7 @@ def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: 
             near = min(store.gazetteer, key=lambda g: (g["lat"] - lat) ** 2 + (g["lon"] - lon) ** 2 if g["kind"] in ("landmark", "place") else 9)
             dist = float(hav_m(lat, lon, near["lat"], near["lon"]))
             lbl = {"ru": f"~ район «{near['name']}» (округлено)", "kk": f"~ «{near['name']}» маңы (дөңгелектенген)",
-                   "en": f"~ near «{near['name']}» (rounded)"}[lang] if dist < 1500 else {"ru": "~ ваша локация (округлено до 100 м)",
+                   "en": f"~ near «{near['name']}» (rounded)"}[lang] if dist < 700 else {"ru": "~ ваша локация (округлено до 100 м)",
                    "kk": "~ сіздің орналасуыңыз (100 м-ге дейін)", "en": "~ your location (rounded to 100 m)"}[lang]
             return (lat, lon), {"source": "gps_rounded", "label": lbl, "precision_m": 100}, None
         notes.append(t("note_outside_city", lang))
@@ -170,7 +172,11 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
                 location_label=info["label"],location={**info,"lat":round(origin[0],3),"lon":round(origin[1],3)})
         out["used_context"]["data_sources"] = sorted({e["source_url"] for s in services for e in s.get("evidence",[])})
         return out
-    text_hit, dest_entries = split_mentions(req.query, rt.store.gazetteer) if req.query else (None, [])
+    # with a real position a place named without «я у / возле» is where to go, not a silent new start
+    has_position = bool(req.location and in_astana(round_coord(req.location.lat), round_coord(req.location.lon))
+                        or req.home and (req.use_home or HOME_CUE.search(fold(req.query or ""))))
+    text_hit, dest_entries = split_mentions(req.query, rt.store.gazetteer, has_position,
+                                            asks_kind=lambda rest: bool(parse_rules(rest).categories)) if req.query else (None, [])
     query_wo_landmark = _strip_terms(req.query, text_hit["keys"] + [fold(text_hit["name"])]) if text_hit else req.query
     from app.food import is_food_refinement, parse_food_requirements
     nonfood_topic = any(CATEGORIES[c].group != "food" for c in rules.categories if c in CATEGORIES) or bool(
@@ -225,7 +231,7 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
         return _empty_response(rt, req, parsed, now, lang, t0, notes, t("off_topic", lang), meter[mark:], parse_model,
                                off_topic=True)
 
-    origin, origin_info, hit = _resolve_origin(req, parsed, rt.store, notes, lang, text_hit)
+    origin, origin_info, hit = _resolve_origin(req, parsed, rt.store, notes, lang, text_hit, dest_entries)
     exclude_keys: set[str] = set()
     target_ids = _target_ids(rt.store, dest_entries)
     view_decks = "view" in parsed.needs and not dest_entries
@@ -316,10 +322,27 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
     else:
         if navigate:
             plan.budget = max(plan.budget, 240)  # the trip itself is the goal; distance is shown, not used to filter
+            plan.t_max = max(plan.t_max, 120)  # the street search reaches 2 × t_max: the whole city on foot
+            plan.directions = True
         cands, considered = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, parsed, plan, ctx, lang, qvec,
                                  exclude_keys=exclude_keys, target_ids=target_ids)
         if navigate:
             cands = [c for c in cands if c.poi["id"] in target_ids][:1] or cands
+        elif dest_entries and target_ids and not any(c.poi["id"] in target_ids for c in cands):
+            # the place the user wants to go to is past a walk's reach: show the way there with its honest time
+            # instead of dropping it for whatever is near («хочу в Хан Шатыр» from across the river)
+            short = plan.budget, plan.t_max, plan.radius_m, list(plan.relaxations)
+            plan.budget, plan.t_max, plan.directions = max(plan.budget, 240), max(plan.t_max, 120), True
+            far, far_considered = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, parsed, plan, ctx, lang, qvec,
+                                       exclude_keys=exclude_keys, target_ids=target_ids)
+            far = [c for c in far if c.poi["id"] in target_ids][:1]
+            if far:
+                cands, considered, navigate = far, far_considered, True
+                if mode == "walk" and far[0].travel_min > 60:
+                    notes.append(t("note_far_walk", lang, m=int(far[0].travel_min)))
+            else:
+                plan.budget, plan.t_max, plan.radius_m, plan.relaxations = short
+                plan.directions = False
 
     route = None
     if not navigate and not (view_decks and req.want_route is None) and route_wanted(parsed, req.want_route, plan, len(cands)):

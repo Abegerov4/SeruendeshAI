@@ -436,13 +436,20 @@ def _ambiguous_spans(text: str, gazetteer: list[dict]) -> list[tuple[int, int]]:
 
 
 def _name_spans(text: str, key: str, curated: bool, blocked: list[tuple[int, int]]):
-    if key not in text:
-        return
     # Preserve local grammatical endings (e.g. «в Хилтоне») while English
     # names such as Coffee must not match a different place called Coffeeshop.
+    # A map POI keeps a short ending only («в Централе»), so the café «Централ» is not «в Центральном парке».
+    # A name ending in -а/-я also declines into its stem («к Пирамиде», «у Пирамиды»).
     inflected = curated or re.search(r"[а-яёәіңғүұқөһ]", key)
-    suffix = r"\w{0,4}(?!\w)" if inflected else r"(?!\w)"
-    for match in re.finditer(r"(?<!\w)" + re.escape(key) + suffix, text):
+    stem = bool(inflected and len(key) >= 6 and key[-1] in "ая")
+    if (key[:-1] if stem else key) not in text:
+        return
+    ending = r"\w{0,4}" if curated else r"\w{0,2}"
+    if stem:
+        pattern = re.escape(key[:-1]) + r"(?:" + key[-1] + ending + r"|[еуыи]|ой|ей|ою|ею)(?!\w)"
+    else:
+        pattern = re.escape(key) + (ending + r"(?!\w)" if inflected else r"(?!\w)")
+    for match in re.finditer(r"(?<!\w)" + pattern, text):
         a, b = match.span()
         if curated or not any(x <= a and b <= y for x, y in blocked):
             yield a, b
@@ -477,17 +484,27 @@ def landmark_mentions(text: str, gazetteer: list[dict]) -> list[dict]:
         else:
             role = ("dest" if _DEST_BEFORE.search(before) or _DEST_AFTER.search(after)
                     else "origin" if _ORIGIN_BEFORE.search(before) or _ORIGIN_AFTER.search(after) else "unknown")
-        out.append({"entry": g, "role": role, "pos": a})
+        out.append({"entry": g, "role": role, "pos": a, "end": b})
     return sorted(out, key=lambda m: m["pos"])
 
 
-def split_mentions(text: str, gazetteer: list[dict]) -> tuple[dict | None, list[dict]]:
-    """(origin gazetteer entry or None, destination entries)."""
+def split_mentions(text: str, gazetteer: list[dict], has_position: bool = False,
+                   asks_kind=None) -> tuple[dict | None, list[dict]]:
+    """(origin gazetteer entry or None, destination entries).
+    A place named without «я у / возле / от» («мечеть Хазрет Султан», «что интересного в EXPO») is where the user
+    is only when nothing else tells: with a real position (GPS or home) it is where they want to go, so the route
+    starts from them. Asking for a kind of place besides the name («кофейня в Mega Silk Way»: asks_kind(rest of
+    the text) is true) keeps it as the search area."""
     ms = landmark_mentions(text, gazetteer)
     dests = [m["entry"] for m in ms if m["role"] == "dest"]
     origin = next((m["entry"] for m in ms if m["role"] == "origin"), None)
     if origin is None:
-        origin = next((m["entry"] for m in ms if m["role"] == "unknown" and m["entry"]["kind"] not in ANCHOR_KINDS), None)
+        named = next((m for m in ms if m["role"] == "unknown" and m["entry"]["kind"] not in ANCHOR_KINDS), None)
+        s = " " + fold(text) + " "
+        if named is not None and has_position and not (asks_kind and asks_kind(s[:named["pos"]] + " " + s[named["end"]:])):
+            dests.append(named["entry"])
+        elif named is not None:
+            origin = named["entry"]
     return origin, dests
 
 

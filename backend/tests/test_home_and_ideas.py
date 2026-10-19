@@ -53,6 +53,13 @@ def test_route_ideas_are_real_routes(client):
     assert len({tuple(sorted(i["stops"])) for i in ideas}) == len(ideas)  # no two ideas with the same stops
 
 
+def test_route_ideas_without_a_start_do_not_poison_a_landmark(client):
+    # a visitor without GPS gets no walks; the next one who picks Baiterek still gets them (no shared empty cache)
+    now = "2026-10-20T16:00:00+05:00"
+    assert client.post("/api/routes/ideas", json={"lang": "ru", "now": now}).json()["ideas"] == []
+    assert client.post("/api/routes/ideas", json={"landmark": "baiterek", "lang": "ru", "now": now}).json()["ideas"]
+
+
 def test_meta_offers_a_styled_basemap_only_with_a_key(client, monkeypatch):
     assert client.get("/api/meta").json()["map"] is None
     monkeypatch.setattr(get_settings(), "maptiler_key", "abc")

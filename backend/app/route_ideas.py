@@ -53,7 +53,7 @@ def _area_key(req: IdeasRequest, lang: str, hour: int) -> str:
     elif req.location:
         where = f"g{round_coord(req.location.lat, 2)},{round_coord(req.location.lon, 2)}"
     else:
-        where = f"l{req.landmark or 'baiterek'}"
+        where = f"l{req.landmark}"
     return f"{where}|{lang}|{req.now or hour}"
 
 
@@ -99,11 +99,14 @@ async def api_route_ideas(req: IdeasRequest, request: Request):
     if rt is None:
         raise HTTPException(status_code=503, detail="starting")
     lang = req.lang or "ru"
+    if not (req.location or req.landmark or (req.home and req.use_home)):
+        return {"ideas": []}  # no start: walks are built from the user, never from a guessed landmark (and not cached)
     key = _area_key(req, lang, parse_now(req.now).hour)
     if (hit := _cache.get(key)) and time.time() - hit[0] < TTL_S:
         return {"ideas": hit[1]}
     ideas = await build_ideas(rt, req)
-    _cache[key] = (time.time(), ideas)
+    if ideas:  # an empty answer (a slow model, a closed hour) is not kept for 20 minutes
+        _cache[key] = (time.time(), ideas)
     if len(_cache) > 300:
         _cache.pop(next(iter(_cache)))
     return {"ideas": ideas}
