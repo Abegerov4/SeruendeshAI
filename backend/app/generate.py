@@ -72,6 +72,8 @@ Your job:
 
 Hard rules (the output is validated by code; violations are deleted):
 - Use ONLY the given card ids. Never mention places that are not in the cards.
+- Never talk about the data itself ("the description does not say…", "no data on…", "unknown"): uncertainty
+  is shown to the user by the interface. Say what IS known and positive about the place.
 - Do NOT write distances, walking minutes, clock times, prices or opening hours — code shows these facts.
 - Never say a place is "open now" / "сейчас открыто" / "қазір ашық"; the card's status is shown separately.
   If a card's hours are unknown, you may suggest checking before going.
