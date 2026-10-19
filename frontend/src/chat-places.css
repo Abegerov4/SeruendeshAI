@@ -53,3 +53,10 @@
 
 /* the illustration label sits under the card number, clear of the category chip */
 .place-image-wrap .concept-photo-label{top:48px;left:12px;right:auto;bottom:auto}
+
+/* voice input: sits next to the photo button; pulses while listening */
+.voice-button{margin-left:auto}
+.voice-button + .photo-button{margin-left:6px}
+.voice-button.listening{background:#174b3e;color:#f1f7df;border-color:#174b3e;animation:voice-pulse 1.2s ease-in-out infinite}
+@keyframes voice-pulse{0%,100%{box-shadow:0 0 0 0 #c6e73066}50%{box-shadow:0 0 0 6px #c6e73000}}
+@media (prefers-reduced-motion:reduce){.voice-button.listening{animation:none}}

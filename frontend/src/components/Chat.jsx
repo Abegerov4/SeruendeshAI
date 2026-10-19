@@ -1,7 +1,7 @@
-import { t as tr } from "../i18n";
+import { t as tr, getLanguage } from "../i18n";
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera, MessageCircle, Navigation, Footprints, Car, Info } from 'lucide-react';
+import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera, MessageCircle, Navigation, Footprints, Car, Info, Mic } from 'lucide-react';
 import PlaceVisual from './PlaceVisual';
 import { hoursTone, shortHours } from './PlaceCard';
 import { landmarks, scenarios } from '../data';
@@ -75,6 +75,28 @@ function ChatReasoning({ used, considered = [], notes = [] }) {
     {open && <div className="chat-why">{notes.slice(1).map(n => <p key={n}>• {n}</p>)}
       {considered.length > 0 && <p><b>{tr('Не предложил')}:</b> {considered.map(c => c.name + ' — ' + c.reason).join('; ')}</p>}</div>}
   </div>;
+}
+
+const Speech = typeof window !== 'undefined' ? (window.SpeechRecognition || window.webkitSpeechRecognition) : null;
+
+// Speak instead of typing: the words appear in the box as you talk and are sent when you stop.
+function VoiceButton({ disabled, onText, onFinal }) {
+  const [on, setOn] = useState(false), rec = useRef(null);
+  useEffect(() => () => rec.current?.abort(), []);
+  if (!Speech) return null;
+  function toggle() {
+    if (on) { rec.current?.stop(); return; }
+    const r = new Speech(); rec.current = r;
+    r.lang = { ru: 'ru-RU', kk: 'kk-KZ', en: 'en-US' }[getLanguage()] || 'ru-RU';
+    r.interimResults = true; r.maxAlternatives = 1;
+    let text = '';
+    r.onresult = e => { text = Array.from(e.results).map(x => x[0].transcript).join(' ').trim(); onText(text); };
+    r.onend = () => { setOn(false); if (text) onFinal(text); };
+    r.onerror = () => setOn(false);
+    setOn(true); r.start();
+  }
+  return <button type="button" className={'photo-button voice-button' + (on ? ' listening' : '')} disabled={disabled} onClick={toggle}
+    aria-pressed={on} aria-label={tr(on ? 'Остановить запись' : 'Сказать голосом')} title={tr(on ? 'Остановить запись' : 'Сказать голосом')}><Mic size={18} /></button>;
 }
 
 const STAGES = ['Понимаю запрос…', 'Ищу места рядом…', 'Проверяю часы работы и погоду…', 'Пишу, почему именно они…'];
@@ -188,6 +210,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
         <div className="composer-bottom">
           <div className="location-picker" ref={locationBox}><button type="button" className="location-toggle" aria-expanded={locationOpen} onClick={() => setLocationOpen(!locationOpen)}><MapPin size={13} /><span>{location === MY_LOCATION ? '📍 ' : ''}{tr(location)}</span><ChevronDown size={12} /></button>
             {locationOpen && <div className="location-options">{landmarks.map(l => <button type="button" key={l} onClick={() => { setLocation(l); setLocationOpen(false); }}>{tr(l)}{l === location && <Check size={14} />}</button>)}</div>}</div>
+          <VoiceButton disabled={loading} onText={setQuery} onFinal={text => send(text)} />
           {photoEnabled && <label className="photo-button" title={tr('Где я? Отправь фото места')} aria-label={tr('Где я? Отправь фото места')}>
             <Camera size={18} /><input type="file" accept="image/jpeg,image/png,image/webp" capture="environment" hidden disabled={loading}
               onChange={e => { const f = e.target.files?.[0]; e.target.value = ''; if (f) send(query.trim(), undefined, undefined, false, undefined, f); }} /></label>}

@@ -11,12 +11,24 @@ import PlaceVisual from '../components/PlaceVisual';
 import {PocketButton} from '../components/PwaExperience';
 import { RouteTimeline } from '../components/PlanPanel';
 import { initialContext } from '../planner';
-import { recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY_LOCATION, routeTo, inAstana, formatDistance } from '../api';
+import { recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY_LOCATION, routeTo, inAstana, formatDistance, LANDMARK_KEYS } from '../api';
 import { scenarios } from '../data';
 
 const FALLBACK_LANDMARK = 'Район Байтерека';
 
 // Geolocation is the start of every answer and route; the position is rounded to ~100 m before use
+// A link like /?q=кофе%20и%20прогулка&from=expo&now=2026-10-20T15:00 opens that request right away:
+// the chat shows it as the user's message, the answer is computed live for that place and moment.
+function urlPreset() {
+  try {
+    const u = new URLSearchParams(location.search), q = (u.get('q') || '').trim().slice(0, 300);
+    if (!q) return null;
+    const from = u.get('from'), label = Object.keys(LANDMARK_KEYS).find(k => LANDMARK_KEYS[k] === from);
+    const now = u.get('now');
+    return { q, ctx: { ...initialContext, ...(label ? { location: label, coords: null } : {}), ...(now && !isNaN(Date.parse(now)) ? { now } : {}) } };
+  } catch { return null; }
+}
+
 function locate() {
   return new Promise((resolve, reject) => {
     if (!navigator.geolocation) return reject(Object.assign(Error('unsupported'), { code: 'unsupported' }));
@@ -117,6 +129,8 @@ export default function Explore({ saved, toggleSaved }) {
   const [photoOn, setPhotoOn] = useState(false);
   useEffect(() => { fetch('/api/meta').then(r => r.json()).then(m => setPhotoOn(!!m.features?.photo)).catch(() => {}); }, []);
   useEffect(() => {  // first screen: a live answer for the default context (no chat message is faked)
+    const preset = urlPreset();
+    if (preset) { setCtx(preset.ctx); if (preset.ctx.location !== MY_LOCATION) setGeo('ok'); setStarter({ text: preset.q, context: preset.ctx, id: Date.now() }); return; }
     const ac = new AbortController();
     requestPlan(tr(scenarios[0].query), initialContext, ac.signal).catch(e => { if (!ac.signal.aborted) setLoadError('Сервер не ответил. Попробуй запрос в чате.'); });
     return () => ac.abort();

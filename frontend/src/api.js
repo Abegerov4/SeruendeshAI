@@ -73,6 +73,7 @@ export function buildRequest(text, ctx, lang) {
   if (ctx.closer) body.refine.push('closer');
   if (ctx.noCoffee) body.refine.push('no_coffee');
   if (ctx.indoor) body.refine.push('indoor');
+  if (ctx.now) body.now = ctx.now;  // a fixed moment from a shared/demo link (?now=)
   return body;
 }
 
