@@ -79,6 +79,27 @@ def run_all(model: str = "e5-large", overture: bool = True, with_graph: bool = T
         events()
 
 
+@app.command(name="chain-hours")
+def chain_hours_cmd(fetch: bool = typer.Option(True, help="Download branch lists first (else use the committed file)"),
+                    dry_run: bool = typer.Option(False, help="Only report; do not touch pois.jsonl")):
+    """Attach opening hours from chains' own branch lists to the built pois.jsonl (no OSM rebuild needed)."""
+    from pipeline import chain_hours
+    from pipeline.build import write_jsonl
+    from app.paths import MANIFEST_FILE, POIS_FILE
+    snap = chain_hours.fetch() if fetch else chain_hours.load()
+    pois = [json.loads(line) for line in POIS_FILE.open(encoding="utf-8") if line.strip()]
+    report = chain_hours.apply(pois, snap)
+    if not dry_run:
+        write_jsonl(POIS_FILE, pois)
+        chain_hours.write(report, chain_hours.REVIEW_FILE)
+        manifest = json.loads(MANIFEST_FILE.read_text())
+        manifest.setdefault("sources", {})["chain_hours"] = chain_hours.SOURCE_NOTE
+        manifest["with_opening_hours"] = sum(bool(p["opening_hours"]) for p in pois)
+        manifest["chain_hours"] = chain_hours.summary(report)
+        MANIFEST_FILE.write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n")
+    typer.echo(json.dumps(chain_hours.summary(report), ensure_ascii=False))
+
+
 @app.command()
 def overture_categories():
     """Show Overture basic_category counts for Astana (to tune the category mapping)."""

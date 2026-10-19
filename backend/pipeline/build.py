@@ -436,6 +436,11 @@ def build(osm_pois: dict, osm_context: dict, river: list, wd_items: list[dict], 
     from pipeline import team_data
     team = team_data.load()
     pois = merge_directory_layer(pois, team["directory"])
+    from pipeline import chain_hours
+    chains = chain_hours.load()
+    chain_report = chain_hours.apply(pois, chains)
+    if chains["chains"]:
+        chain_hours.write(chain_report, chain_hours.REVIEW_FILE)
     compute_popularity(pois)
     anchors = Grid([p for p in pois if not p["name_auto"] and p["category"] in ANCHOR_CATS and p["popularity"] >= 0.2])
     for p in pois:
@@ -473,7 +478,9 @@ def build(osm_pois: dict, osm_context: dict, river: list, wd_items: list[dict], 
             **({"team_bigdata": "Team collection (branch big-data, Aslan, 2026-10-18): CityPass Astana and mall directory "
                                 "facts with links (licence not specified - facts only), anchors from OSM ODbL / Overture"}
                if team["directory"] or team["anchors"] else {}),
+            **({"chain_hours": chain_hours.SOURCE_NOTE} if chains["chains"] else {}),
         },
+        **({"chain_hours": chain_hours.summary(chain_report)} if chains["chains"] else {}),
     }
     for k in ("embedding_model", "embedding_dim", "embedding_pois_sha"):  # keep embeddings valid if POIs unchanged
         if k in old:

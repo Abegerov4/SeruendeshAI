@@ -45,7 +45,7 @@
   "wikipedia": 42,
   "khanshatyr": 4
  },
- "with_opening_hours": 428,
+ "with_opening_hours": 440,
  "description_sources": {
   "template": 2243,
   "wikipedia": 42,
@@ -56,9 +56,18 @@
   "wikidata": "Wikidata, CC0",
   "wikipedia": "Wikipedia (ru/en) intro extracts, CC BY-SA 4.0 — linked per POI",
   "overture": "Overture Maps Foundation Places, CDLA-Permissive-2.0 / Apache-2.0 / CC0 per record",
-  "team_bigdata": "Team collection (branch big-data, Aslan, 2026-10-18): CityPass Astana and mall directory facts with links (licence not specified - facts only), anchors from OSM ODbL / Overture"
+  "team_bigdata": "Team collection (branch big-data, Aslan, 2026-10-18): CityPass Astana and mall directory facts with links (licence not specified - facts only), anchors from OSM ODbL / Overture",
+  "chain_hours": "Chain branch lists with dated checks: coffeeboom.kz (licence not specified - opening hours only) and AllThePlaces spiders dodo_pizza, papa_johns_kz (CC0)"
  },
  "embedding_model": "e5-large",
  "embedding_dim": 1024,
- "embedding_pois_sha": "9ad2bb38041d1287"
+ "embedding_pois_sha": "9ad2bb38041d1287",
+ "chain_hours": {
+  "branches": 87,
+  "accepted": 17,
+  "filled": 12,
+  "conflicts": 1,
+  "pending": 10,
+  "unmatched_branches": 63
+ }
 }
