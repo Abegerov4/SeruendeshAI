@@ -92,6 +92,17 @@ class DemandCount(Base):
     hits: Mapped[int] = mapped_column(Integer)
 
 
+class PlaceReport(Base):
+    """A visitor's mark on a place («было закрыто», «часы не те», 👍): a day, a place, a kind and a count.
+    No person, text, position or time of day."""
+    __tablename__ = "place_reports"
+    key: Mapped[str] = mapped_column(String(128), primary_key=True)
+    day: Mapped[str] = mapped_column(String(10), index=True)
+    poi_id: Mapped[str] = mapped_column(String(80), index=True)
+    kind: Mapped[str] = mapped_column(String(32))
+    hits: Mapped[int] = mapped_column(Integer)
+
+
 def _url() -> str:
     url = get_settings().database_url.strip()
     if not url:

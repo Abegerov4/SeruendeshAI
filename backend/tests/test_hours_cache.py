@@ -52,7 +52,8 @@ def test_repeated_schedule_evaluation_keeps_visit_and_evidence_decisions_fresh(m
 
     assert fits["ok"] is True and fits["confidence"] == "high"
     assert exceeds["ok"] is False and exceeds["status"] == "closing_soon"
-    assert holiday["confidence"] == "medium" and holiday["label"] != fits["label"]
+    # a holiday without its own PH rule: the usual hours say nothing about today
+    assert holiday["status"] == "unknown" and holiday["confidence"] == "low" and holiday["label"] != fits["label"]
     assert all(result["confidence"] == "low" for result in (stale, future, unverified, expired))
     assert calls == {"state": 1, "next_change": 1}
 

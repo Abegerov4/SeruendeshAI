@@ -75,7 +75,7 @@
  .reference-layout.mobile-view-places .place-card{flex:0 0 270px}
  .reference-layout.mobile-view-places .section-heading{display:none}
  .reference-layout.mobile-view-places .refine-chips{position:static;margin:0 0 10px}
- .reference-layout .focus-route-bar{left:20px;right:340px;bottom:82px;top:auto}
+ .reference-layout .focus-route-bar{left:20px;right:auto;bottom:82px;top:auto;transform:none;max-width:min(560px,calc(100% - 40px))}
 }
 @media(min-width:1400px){.reference-layout .explore-workspace{grid-template-columns:390px minmax(0,1fr)}.reference-layout .conversation-column{padding:28px 24px}.reference-place{width:310px}.reference-place-photo{height:190px}}
 @media(max-width:899px){

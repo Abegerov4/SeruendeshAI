@@ -2,7 +2,8 @@
 
 Rules (never claim "open" without data):
 - parsed opening_hours -> open/closing_soon/closed; confidence high only for dated source evidence,
-  otherwise low; public holidays lower it one step (the parser does not know transferred days off);
+  otherwise low; on a public holiday a schedule without its own PH rule says nothing about today: «open»
+  becomes «unknown» with the usual hours as a hint (closed stays closed, with lower confidence);
 - no hours otherwise -> "unknown", low.
 """
 from __future__ import annotations
@@ -12,6 +13,7 @@ from functools import lru_cache
 
 import opening_hours as oh
 
+from app import feedback
 from app.i18n import t
 from app.config import get_settings
 
@@ -113,6 +115,10 @@ def opening_status(poi: dict, arrive: dt.datetime, visit_min: int, lang: str, ho
     if holiday:
         conf = _DOWN[conf]
         suffix += t("oh_holiday", lang)
+    doubt = feedback.doubt(poi.get("id"), arrive.date())  # visitors' «was closed / wrong hours» marks, weak evidence
+    if doubt >= feedback.DOUBT_LOWER:
+        conf = _DOWN[conf]
+        suffix += t("oh_reported", lang)
     try:
         name, nxt = _state_at(raw, arrive)
     except Exception:
@@ -126,9 +132,17 @@ def opening_status(poi: dict, arrive: dt.datetime, visit_min: int, lang: str, ho
         nxt = next((minute + dt.timedelta(minutes=i) for i in range(1, 7 * 1440 + 1)
                     if not _calendar_open(raw, minute + dt.timedelta(minutes=i))), None)
     nxt_s = nxt.strftime("%H:%M") if isinstance(nxt, dt.datetime) else None
+    if name == "OPEN" and doubt >= feedback.DOUBT_UNKNOWN:  # marks may only lower trust, never open a closed place
+        return {"status": "unknown", "confidence": "low", "label": t("oh_reported_unknown", lang), "raw": raw,
+                "next_change": nxt_s, "ok": True}
     if raw.strip() == "24/7":
         return {"status": "open", "confidence": conf, "label": t("oh_open", lang) + " · 24/7" + suffix, "raw": raw,
                 "next_change": None, "ok": True}
+    if name == "OPEN" and holiday and "PH" not in raw:
+        usual = t("oh_open_until", lang, t=nxt_s) if nxt_s else t("oh_open", lang)
+        usual = usual[:1].lower() + usual[1:]
+        return {"status": "unknown", "confidence": "low", "label": t("oh_holiday_unknown", lang, usual=usual), "raw": raw,
+                "next_change": nxt_s, "ok": True}
     if name == "OPEN":
         end = arrive + dt.timedelta(minutes=visit_min)
         if isinstance(nxt, dt.datetime) and nxt < end:

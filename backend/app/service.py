@@ -18,7 +18,7 @@ import numpy as np
 
 from app.categories import CATEGORIES, CONTRACT_CATEGORY, label
 from app.config import get_settings
-from app.context import Context, build_context, fetch_weather, parse_now, weather_out
+from app.context import Context, build_context, fetch_weather, holiday_name, parse_now, weather_out
 from app.embedder import Embedder
 from app.evidence import accepted_details
 from app.features import cuisine_labels, describe, feature_labels
@@ -30,7 +30,7 @@ from app.llm import client as llm_client
 from app.llm import parse as llm_parse
 from app.llm import usage_begin, usage_summary
 from app.planner import plan_route, route_wanted
-from app.guards import mask_pii, strip_injection
+from app.guards import mask_location, mask_pii, strip_injection
 from app.query import (HOME_CUE, NAV_INTENT, PARSE_SYSTEM, LLMParsed, Parsed, deadline_minutes, is_off_topic, merge_llm, parse_rules,
                        resolve_landmark, split_mentions, WALK_STOPS)
 from app.retrieval import Cand, Plan, rank
@@ -109,6 +109,8 @@ def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: 
         return (hit["lat"], hit["lon"]), {"source": "text_landmark", "label": name, "precision_m": 50}, hit
     if req.location:
         lat, lon = round_coord(req.location.lat), round_coord(req.location.lon)
+        if in_astana(lat, lon) and req.location_label and req.location_label.strip():  # an address the client geocoded
+            return (lat, lon), {"source": "gps_rounded", "label": "~ " + req.location_label.strip()[:120], "precision_m": 100}, None
         if in_astana(lat, lon):
             near = min(store.gazetteer, key=lambda g: (g["lat"] - lat) ** 2 + (g["lon"] - lon) ** 2 if g["kind"] in ("landmark", "place") else 9)
             dist = float(hav_m(lat, lon, near["lat"], near["lon"]))
@@ -172,6 +174,7 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
 
     raw_query = req.query or ""
     safe_query, had_pii = mask_pii(raw_query)          # phones/emails/IINs never reach the LLM or logs
+    safe_query = mask_location(safe_query)             # nor coordinates or house/flat numbers (the street stays)
     safe_query, had_injection = strip_injection(safe_query)
     req = req.model_copy(update={"query": safe_query})
     rules = parse_rules(req.query)
@@ -476,7 +479,7 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
     if ctx.is_dark and (parsed.walk_intent or "park" in parsed.categories or with_child):
         notes.append(t("note_dark", lang))
     if ctx.holiday:
-        notes.append(t("note_holiday", lang, h=ctx.holiday))
+        notes.append(t("note_holiday", lang, h=holiday_name(ctx.now.date(), ctx.holiday, lang)))
     if with_child and now.hour >= 21:
         notes.append(t("note_child_night", lang))
     if "power_outlets" in parsed.needs:

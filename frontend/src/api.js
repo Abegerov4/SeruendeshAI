@@ -15,6 +15,14 @@ export const HOME = 'Дом';
 export function loadHome() { try { return JSON.parse(localStorage.getItem('seru.home') || 'null'); } catch { return null; } }
 export function saveHome(h) { try { h ? localStorage.setItem('seru.home', JSON.stringify(h)) : localStorage.removeItem('seru.home'); } catch { /* private mode */ } }
 const HOME_WORDS = /(?:\bот|\bиз|\bу|\bоколо|\bвозле|рядом с|недалеко от)\s+(?:моего\s+|своего\s+|нашего\s+)?дом(?:а|ом)(?![а-я])|у меня дома|(?:near|from|around|close to)\s+(?:my\s+|our\s+)?home|үйден|үйдің жанында/i;
+// an anonymous mark on a place: only the place id and the kind of mark are sent
+export async function sendFeedback(poiId, kind, lang) {
+  const res = await fetch(`${API_BASE}/api/feedback`, {method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({poi_id: poiId, kind, lang})});
+  if (!res.ok) throw Error('feedback-' + res.status);
+  return res.json();
+}
+
 export async function geocode(q) {
   const res = await fetch(`${API_BASE}/api/geocode?q=${encodeURIComponent(q)}`);
   if (!res.ok) throw Error('geocode-' + res.status);
@@ -75,7 +83,7 @@ export function toPlace(r) {
     id: r.poi_id, name: r.name, category: r.category_label, categoryKey: r.category_detail,
     iconKey: r.icon, icon: placeIcon(r.icon, r.category_detail),
     distance: formatDistance(r.walk_distance_m ?? r.distance_m), distanceM: r.walk_distance_m ?? r.distance_m,
-    travel: r.travel_min, visit: r.visit_suggested_min, visitRange: r.visit_min, mode: r.travel_mode,
+    travel: r.travel_min, visit: r.visit_suggested_min, returnMin: r.return_min || 0, visitRange: r.visit_min, mode: r.travel_mode,
     why: r.why, action: r.what_to_do, rating: r.rating,
     source: generated ? 'Идея ИИ' : 'Данные POI', generated, url: r.source_url,
     lat: r.lat, lon: r.lon, status: r.opening?.label || '', openStatus: r.open_status, openConfidence: r.open_confidence,
@@ -92,7 +100,9 @@ export function toPlace(r) {
 
 export function buildRequest(text, ctx, lang) {
   const body = {query: text, lang, refine: [], profile: {with_kids: !!ctx.kid, tourist: false, accessibility: !!ctx.accessible, group_size: 1}};
-  if (ctx.location === MY_LOCATION && ctx.coords) body.location = {lat: roundCoord(ctx.coords.lat), lon: roundCoord(ctx.coords.lon)};
+  if (ctx.address && ctx.location === ctx.address.label) {  // a typed address the geocoder found: rounded, with its label
+    body.location = {lat: roundCoord(ctx.address.lat), lon: roundCoord(ctx.address.lon)}; body.location_label = ctx.address.label.slice(0, 120);
+  } else if (ctx.location === MY_LOCATION && ctx.coords) body.location = {lat: roundCoord(ctx.coords.lat), lon: roundCoord(ctx.coords.lon)};
   else if (LANDMARK_KEYS[ctx.location]) body.landmark = LANDMARK_KEYS[ctx.location];  // no GPS and no chosen start: the API asks where the user is
   const home = loadHome();
   if (home && (ctx.location === HOME || HOME_WORDS.test(text || ''))) {
@@ -111,7 +121,7 @@ export function buildRequest(text, ctx, lang) {
 
 export function toPlan(resp, ctx, text) {
   return {
-    places: [...(resp.recommendations || []), ...(resp.ideas || [])].map(toPlace), route: resp.route, used: resp.used_context, notes: resp.notes || [],
+    places: [...(resp.recommendations || []), ...(resp.ideas || [])].map(r => ({...toPlace(r), budget: resp.used_context?.time_budget_min || ctx.time})), route: resp.route, used: resp.used_context, notes: resp.notes || [],
     considered: resp.considered || [], summary: resp.summary, disclaimer: resp.disclaimer, llm: resp.llm, lang: resp.lang,
     offTopic: !!resp.off_topic, photoGuess: resp.photo_guess || null, navigateTo: resp.navigate_to || null,
     context: {...ctx}, query: text,

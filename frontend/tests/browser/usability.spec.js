@@ -16,6 +16,7 @@ async function mockApi(page, {account=null, saved=[], failSave=false, failSearch
       json={poi_id:decodeURIComponent(path.split('/').at(-1)),data:r.request().postDataJSON().data};state.saved.push(json);
     }
     if(path==='/api/meta') json={features:{photo:false}};
+    if(path==='/api/geocode') json={results:[{label:'40, улица Кенесары',lat:51.166,lon:71.433,source:'openstreetmap'}]};
     if(path==='/api/recommend') {
       state.requests.push(r.request().postDataJSON());
       if(state.failSearch) return r.fulfill({status:503,json:{detail:'unavailable'}});
@@ -111,6 +112,19 @@ test('address entry also hides the mobile bar when the keyboard opens',async({pa
  await expect(page.locator('.mobile-app-nav')).toHaveAttribute('aria-hidden','true');
  await expect(page.locator('.chat-body [data-start-input]')).toBeVisible();
  await page.locator('.chat-body [data-start-input]').press('Enter');await expect(page.locator('.chat-places')).toBeVisible();
+});
+
+test('a typed start address is geocoded: the house number never goes into the request text',async({page})=>{
+ const state=await mockApi(page);await page.goto('/');
+ await page.locator('.map-welcome [data-start-input]').fill('Кенесары 40');await page.locator('.map-welcome [data-start-input]').press('Enter');
+ await expect(page.locator('.chat-place')).toHaveCount(2);
+ expect(state.requests[0].location).toEqual({lat:51.166,lon:71.433});expect(state.requests[0].location_label).toBe('Кенесары 40');
+ expect(state.requests[0].query).not.toContain('40');
+});
+
+test('«Откуда начнём?» can be closed',async({page})=>{
+ await mockApi(page);await page.goto('/');
+ await page.locator('.map-welcome .start-close').click();await expect(page.locator('.map-welcome')).toHaveCount(0);
 });
 
 test('denied geolocation keeps a working landmark fallback',async({page})=>{
