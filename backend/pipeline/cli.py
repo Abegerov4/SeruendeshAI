@@ -71,7 +71,7 @@ def embed(model: str = "e5-large"):
 
 @app.command()
 def events():
-    """Collect upcoming Astana events (Ticketon + Sxodim JSON-LD) and link them to POIs."""
+    """Refresh the Astana event archive (Ticketon + Sxodim), preserving history and reporting source failures."""
     from pipeline.events import collect_events
     typer.echo(collect_events())
 

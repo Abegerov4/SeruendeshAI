@@ -1,7 +1,7 @@
 import { t as tr, getLanguage, useLocale } from "../i18n";
 import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, ArrowRight, MapPin, Clock3, Footprints, Car, SlidersHorizontal, Check, MessageCircle, Map, Compass, ShieldCheck, Sparkles, ChevronDown, Baby, Accessibility, Route, LocateFixed, Navigation, X } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, MapPin, Clock3, Footprints, Car, SlidersHorizontal, Check, MessageCircle, Map, Compass, ShieldCheck, Sparkles, ChevronDown, Baby, Accessibility, Route, LocateFixed, Navigation, X, CalendarDays } from 'lucide-react';
 import RouteOverview from '../components/RouteOverview';
 import PlaceDetails from '../components/PlaceDetails';
 import Chat from '../components/Chat';
@@ -15,6 +15,7 @@ import { RouteTimeline } from '../components/PlanPanel';
 import { initialContext, forTypedMessage } from '../planner';
 import { geocode, recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY_LOCATION, routeTo, inAstana, formatDistance, LANDMARK_KEYS, routeIdeas, toPlan } from '../api';
 import { scenarios } from '../data';
+import { Link } from '../navigation';
 
 const NO_PLACES = [];
 
@@ -382,5 +383,5 @@ export default function Explore({ saved, toggleSaved }) {
           <p className="results-disclaimer">{tr("Подборку собрал Серу по открытым данным о городе. Часы работы лучше уточнить перед выходом.")}</p></section>
       </div></main>
     {detailPlace && <PlaceDetails place={detailPlace} saved={savedIds.includes(detailPlace.id)} onSave={() => toggleSaved(detailPlace)} onClose={() => setDetailPlace(null)} onMap={() => {showRouteTo(detailPlace);setDetailPlace(null);}} origin={ctx.coords && inAstana(ctx.coords) ? ctx.coords : origin} />}
-    {phone && <nav className="mobile-app-nav" aria-label={tr('Основная навигация')}>{[['chat',MessageCircle,'Чат'],['map',Map,'Карта'],['places',Compass,'Места'],['plan',Route,'План']].map(([id,Icon,label])=><button key={id} aria-current={tab===id?'page':undefined} onClick={()=>showTab(id,false)}><Icon size={21}/><span>{tr(label)}</span>{id==='places'&&real.length>0&&<i>{real.length}</i>}</button>)}</nav>}</div>;
+    {phone && <nav className="mobile-app-nav" aria-label={tr('Основная навигация')}>{[['chat',MessageCircle,'Чат'],['map',Map,'Карта'],['places',Compass,'Места'],['plan',Route,'План']].map(([id,Icon,label])=><button key={id} aria-current={tab===id?'page':undefined} onClick={()=>showTab(id,false)}><Icon size={21}/><span>{tr(label)}</span>{id==='places'&&real.length>0&&<i>{real.length}</i>}</button>)}<Link className="mobile-events-link" to="/events"><CalendarDays size={21}/><span>{tr('События')}</span></Link></nav>}</div>;
 }

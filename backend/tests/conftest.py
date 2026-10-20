@@ -11,6 +11,7 @@ for key, value in {
     "SMTP_HOST": "", "SMTP_FROM": "", "SMTP_USER": "", "SMTP_PASSWORD": "",
     "SECRET_KEY": "ayat-local-tests-only",
     # one test client makes many requests per minute
+    "EVENTS_GEOCODE": "0",  # no address lookups from tests
     "RATE_LIMIT_PER_MIN": "1000", "PHOTO_RATE_LIMIT_PER_MIN": "1000", "MCP_RATE_LIMIT_PER_MIN": "1000",
 }.items():
     os.environ[key] = value
