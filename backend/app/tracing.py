@@ -61,7 +61,10 @@ def request(name: str, *, input: Any, metadata: dict | None = None, tags: list[s
     if lf is None:
         yield _NOOP
         return
-    if lf.get_current_trace_id():
+    from opentelemetry import trace as otel_trace
+
+    # the SDK's get_current_trace_id() logs a warning on every call outside a span; read the context directly
+    if otel_trace.get_current_span().get_span_context().is_valid:
         with lf.start_as_current_observation(name=name, as_type="chain", input=input, metadata=metadata) as obs:
             yield obs
         return

@@ -197,7 +197,9 @@ async def parse(schema: type[M], system: str, user: str | list[dict], *, models:
             parsed = r.output_parsed if r is not None and err is None else None
             gen.update(output=parsed.model_dump(mode="json") if parsed is not None else None,
                        level="WARNING" if err else None, status_message=err,
-                       **(_trace_usage(model, r, kw.get("service_tier")) if r is not None else {}))
+                       # no response = nothing billed: explicit zeros, or Langfuse estimates tokens from the input
+                       **(_trace_usage(model, r, kw.get("service_tier")) if r is not None
+                          else {"usage_details": {"input": 0, "output": 0}, "cost_details": {"input": 0.0, "output": 0.0}}))
         if err == "deadline":
             break
         if parsed is not None:
