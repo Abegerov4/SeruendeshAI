@@ -7,7 +7,7 @@ import { BADGE_LABELS, routeUrl, telUrl, visitText } from '../api';
 import { TimeLedger } from './PlaceTrust';
 
 const SOURCE_NAMES = {osm: 'OpenStreetMap', wikidata: 'Wikidata', wikipedia: 'Wikipedia', overture: 'Overture Maps', ticketon: 'Ticketon', sxodim: 'Sxodim', citypass: 'CityPass Astana', khanshatyr: 'Хан Шатыр', mega_silkway: 'Mega Silk Way', llm: 'ИИ'};
-const DESC_SOURCE = {wikipedia: 'описание из Википедии', osm: 'описание из OSM', template: 'описание собрано из фактов о месте', generated: 'текст ИИ'};
+const DESC_SOURCE = {wikipedia: 'описание из Википедии', osm: 'описание из OSM', template: 'описание собрано из фактов о месте', generated: 'текст ИИ', research: 'описание по проверенным источникам', website: 'описание с сайта места'};
 
 export function TrustList({ p }) {
   const sources = [...new Set((p.dataSources || []).map(s => SOURCE_NAMES[s] || s))].join(', ');

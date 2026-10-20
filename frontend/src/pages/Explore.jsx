@@ -210,6 +210,7 @@ export default function Explore({ saved, toggleSaved }) {
   // tap on a place (chat card, details): the route from the user to it, drawn on the map
   // themed walks: computed for the current start; showing one puts its stops and route on the map
   async function fetchIdeas() {
+    setStartClosed(true);  // the chat answers with themed walks: the «Откуда начнём?» card would only be in the way
     const c = await withCoords(ctx); setCtx(c);  // the user asked: the position is requested (or refreshed) now
     if (c.location === MY_LOCATION && !c.coords) throw Error('no-start');  // no GPS and no chosen start: ask, never guess
     return routeIdeas(c, getLanguage());
@@ -285,6 +286,12 @@ export default function Explore({ saved, toggleSaved }) {
     shownLang.current = lang;
     if (plan && !loading) applyContext(ctx);
   }, [lang]);
+  // «Новый диалог»: the settings and the result on the map start over too (the chosen start stays)
+  function resetAll() {
+    const next = { ...initialContext, location: ctx.location, coords: ctx.coords, address: ctx.address };
+    setCtx(next); setAppliedKey(prefKey(next)); setPlan(null); setPrevious(null); setFocusRoute(null); setWalking(false);
+    setSelected(null); setRouteError(''); showTab('chat', false);
+  }
   function restore() { if (!previous) return; setPlan(previous); setCtx(previous.context); setSelected(previous.places.find(p => !p.generated)?.id ?? null); setPrevious(null); setResultVersion(n => n + 1); reactToSearch('idle'); }
   function showTab(next, scroll = true) {
     if (phone) { setTab(next); return; }  // phones: the chat is a full-screen sheet
@@ -339,7 +346,7 @@ export default function Explore({ saved, toggleSaved }) {
   return <div className={"explore-page map-first reference-layout mobile-view-" + tab}>
     <main className={'explore-workspace tab-' + tab}>
       <div className="conversation-column"><div className="companion-intro"><div><span className="companion-eyebrow">{tr('ТВОЙ МЕСТНЫЙ ДРУГ ')}</span><h1>{tr('Твой AI-помощник для прогулок по Астане')}</h1><p>{tr('Найдём интересные места и построим маршрут. Куда пойдём сегодня?')}</p></div><button className="companion-mascot" onClick={greet} aria-label={tr('Поговорить с Серу')}><Mascot decorative priority mood={mascotMood} key={quip}/></button><span className="companion-quip" aria-live="polite">{tr(quips[quip % quips.length])}</span></div>
-        <Chat key={chatKey} notice={<><GeoNotice state={plan?.used?.location?.source && plan.used.location.source !== 'none' && geo !== 'asking' ? 'ok' : geo} label={plan?.used?.location?.label || (ctx.location === MY_LOCATION ? null : ctx.location)} onRetry={retryGeo} />{phone && !plan && !loading && !startClosed && <StartChooser onChoose={chooseStart} onGeo={retryGeo} locating={geo==='asking'} onClose={() => setStartClosed(true)}/>}</>} onRoute={showRouteTo} onDetails={setDetailPlace} routed={focusRoute?.poi_id} onIdeas={fetchIdeas} onShowIdea={showIdea} requestPlan={requestPlan} onMood={reactToSearch} starter={starter} location={ctx.location} startLabel={!pending && ctx.location === MY_LOCATION ? plan?.used?.location?.label : null} setLocation={l => changeContext({ ...ctx, location: l, coords: l === ctx.location ? ctx.coords : null })} onResult={() => { setChatOpen(false); showTab('places'); }} photoEnabled={photoOn} tools={<FilterMenu ctx={ctx} setTime={setTime} setTransport={setTransport} update={update} pending={pending} onApply={() => applyContext(ctx)} />} sheet={false} open={true} onOpen={() => showTab('chat')} onClose={() => setChatOpen(false)} />
+        <Chat key={chatKey} notice={<><GeoNotice state={plan?.used?.location?.source && plan.used.location.source !== 'none' && geo !== 'asking' ? 'ok' : geo} label={plan?.used?.location?.label || (ctx.location === MY_LOCATION ? null : ctx.location)} onRetry={retryGeo} />{phone && !plan && !loading && !startClosed && <StartChooser onChoose={chooseStart} onGeo={retryGeo} locating={geo==='asking'} onClose={() => setStartClosed(true)}/>}</>} onRoute={showRouteTo} onDetails={setDetailPlace} routed={focusRoute?.poi_id} onIdeas={fetchIdeas} onShowIdea={showIdea} requestPlan={requestPlan} onMood={reactToSearch} starter={starter} location={ctx.location} startLabel={!pending && ctx.location === MY_LOCATION ? plan?.used?.location?.label : null} setLocation={l => changeContext({ ...ctx, location: l, coords: l === ctx.location ? ctx.coords : null })} onResult={() => { setChatOpen(false); showTab('places'); }} photoEnabled={photoOn} onReset={resetAll} tools={<FilterMenu ctx={ctx} setTime={setTime} setTransport={setTransport} update={update} pending={pending} onApply={() => applyContext(ctx)} />} sheet={false} open={true} onOpen={() => showTab('chat')} onClose={() => setChatOpen(false)} />
         <div className="seru-tip"><span className="tip-doodle" aria-hidden="true">✳</span><div><span>{tr("СОВЕТ ОТ СЕРУ")}</span><p>{tr("Лучшие планы иногда начинаются")}<br />{tr("с «а давай просто выйдем».")}</p></div><button onClick={() => startMood(Math.floor(Math.random() * scenarios.length))}>{tr("Удиви меня")}<ArrowUpRight size={14} /></button></div>
         {phone && <RouteOverview plan={plan} selected={selected} onSelect={choosePlace} loading={loading} previous={previous} onRestore={restore} onStart={startWalk}/>}
         <details className="sidebar-route" open={!phone || tab === 'plan'}><summary>{tr("ТВОЙ ПЛАН")}</summary><RouteTimeline plan={plan} previous={previous} onRestore={restore} onSelect={choosePlace} /><PocketButton plan={plan}/><button className="pocket-open" onClick={()=>window.dispatchEvent(new Event("seru-open-app"))}>{tr("Моя прогулка")} ↗</button></details><details className="context-disclosure"><summary>{tr("Что я учёл")}</summary><div className="used-context used-live"><span><ShieldCheck size={16} />{tr("Что я учёл")}</span>
