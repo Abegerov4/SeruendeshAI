@@ -35,13 +35,13 @@
 .insights-note,.insights-card .muted{font-size:12.5px;line-height:1.5;color:#748470}
 .insights-api{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:16px;font-size:13.5px;color:#62745a}
 .insights-api a{color:#174b3e;font-weight:600}
-@media (max-width:899px){
+@media (max-width:1023px){
   .insights-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
   .insights-grid{grid-template-columns:minmax(0,1fr)}
   .insights-map{height:300px}
 }
 .site-footer .footer-link{color:inherit;text-decoration:underline;text-underline-offset:3px}
-@media (max-width:899px){
+@media (max-width:1023px){
   .site-header nav .nav-insights{display:none}  /* phones: the footer link is enough, the header stays uncluttered */
   .site-footer{flex-wrap:wrap;gap:8px 16px}
   .site-footer .footer-link{order:3;flex-basis:100%}

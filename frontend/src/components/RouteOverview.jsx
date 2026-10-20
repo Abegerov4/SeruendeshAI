@@ -4,7 +4,7 @@ import PlaceVisual from './PlaceVisual';
 import {planTotals, formatDistance} from '../api';
 import {t as tr} from '../i18n';
 
-export default function RouteOverview({plan, selected, onSelect, onStart, loading, previous, onRestore}) {
+export default function RouteOverview({plan, selected, onSelect, onStart, loading, previous, onRestore, onAsk}) {
  const places=(plan?.places||[]).filter(p=>!p.generated);
  const {sequence}=planTotals(plan);
  const chosen=places.find(p=>p.id===selected)||places[0];
@@ -15,7 +15,7 @@ export default function RouteOverview({plan, selected, onSelect, onStart, loadin
  const distance=sequence ? plan.route.legs?.reduce((n,l)=>n+(l.distance_m||0),0) : null;
  return <section className="reference-route" aria-label={tr('Твой маршрут')}>
   <div className="reference-route-title"><h2>{tr(sequence?'Твой маршрут':'Места рядом')}</h2><span>{tr('Мест: {n}', {n:places.length})}</span></div>
-  {loading ? <p className="reference-route-status" role="status">{tr('Собираю прогулку…')}</p> : !places.length ? <p className="reference-route-status">{tr('Расскажи, чего хочется, — подберу места рядом.')}</p> : <>
+  {loading ? <p className="reference-route-status" role="status">{tr('Собираю прогулку…')}</p> : !places.length ? <><p className="reference-route-status">{tr('Расскажи, чего хочется, — подберу места рядом.')}</p><button className="reference-start" onClick={onAsk}>{tr('Спроси Серу')}<ArrowRight size={17}/></button></> : <>
   {!sequence && <p className="alternatives-hint">{tr('Выбери одно место — это отдельные варианты, не общий маршрут.')}</p>}
   <ol className={sequence?'is-sequence':''}>{rows.map((p,i)=><li key={p.id}><button className={selected===p.id?'selected':''} onClick={()=>onSelect(p.id)}><span className="reference-stop">{i+1}</span><span className="reference-stop-photo"><PlaceVisual place={p} illustrative/></span><span className="reference-stop-copy"><b>{p.name}</b><small>{p.category}</small></span><span className="reference-stop-time">{p.visit} {tr('мин')}</span></button></li>)}</ol>
   <div className="reference-totals"><div><Mode size={20}/><span><b>{distance>0?formatDistance(distance):tr(plan?.used?.mode==='car'?'На авто':'Пешком')}</b><small>{tr(sequence?'Расстояние':'От точки старта')}</small></span></div><div><Clock3 size={20}/><span><b>{total} {tr('мин')}</b><small>{tr(sequence?'Общее время':'Для выбранного места')}</small></span></div></div>

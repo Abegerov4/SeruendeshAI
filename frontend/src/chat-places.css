@@ -46,7 +46,7 @@
 .focus-route-bar button{flex-shrink:0;width:32px;height:32px;border-radius:10px;border:0;background:#f1f5e8;display:grid;place-items:center;cursor:pointer}
 .focus-route-bar.error{top:132px;background:#fbe8e4;color:#8a2f1d;font-size:13px}
 .focus-route{animation:none}
-@media (max-width:899px){
+@media (max-width:1023px){
   .focus-route-bar{top:12px;left:12px;right:12px;transform:none;max-width:none}
   .focus-route-bar.error{top:76px}
   .map-first .chat-message{max-width:100%}
@@ -63,7 +63,7 @@
 @media (prefers-reduced-motion:reduce){.voice-button.listening{animation:none}}
 
 /* desktop: loading placeholders keep the size of real cards in the horizontal strip */
-@media (min-width:900px){.map-first .skeleton-card{flex:0 0 300px;height:330px}}
+@media (min-width:1024px){.map-first .skeleton-card{flex:0 0 300px;height:330px}}
 
 /* «🏠 Дом» in the place list: the saved home or a small address search */
 .home-row{display:flex;align-items:stretch;gap:4px;padding:2px 2px 6px;border-bottom:1px solid #e8ede0;margin-bottom:4px}

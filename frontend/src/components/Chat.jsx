@@ -175,7 +175,7 @@ function useStage(loading) {
 // themed walks start from the user: without GPS and a chosen start Seru asks instead of guessing a landmark
 const NO_START = 'Не знаю, откуда начать: геолокация выключена. Разреши доступ к геопозиции или выбери точку старта под полем ввода — соберу маршруты от неё.';
 
-export default function Chat({ requestPlan, onMood, location, startLabel, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false, tools, onReset, onRoute, onDetails, routed, notice, onIdeas, onShowIdea }) {
+export default function Chat({ active = true, requestPlan, onMood, location, startLabel, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false, tools, onReset, onRoute, onDetails, routed, notice, onIdeas, onShowIdea }) {
   const [messages, setMessages] = useState([welcome]),
     [query, setQuery] = useState(''),
     [loading, setLoading] = useState(false),
@@ -188,17 +188,17 @@ export default function Chat({ requestPlan, onMood, location, startLabel, setLoc
   useSheetViewport(asSheet, () => onClose?.());
   useEffect(() => () => controller.current?.abort(), []);
   useEffect(() => {  // a new answer is read from its start (summary and place №1), not from its last card
-    const box = log.current; if (!box) return;
+    const box = log.current; if (!box || !active) return;
     const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
     const last = box.querySelector('.chat-message:last-of-type');
     const answer = !loading && last?.classList.contains('assistant') && (messages.at(-1)?.result || messages.at(-1)?.ideas);
     const top = answer ? box.scrollTop + last.getBoundingClientRect().top - box.getBoundingClientRect().top - 24 : box.scrollHeight;
     box.scrollTo({ top: Math.max(0, top), behavior });
-  }, [messages, loading, asSheet]);
+  }, [messages, loading, asSheet, active]);
   useLayoutEffect(() => {  // the composer grows with the text (1–5 lines) instead of being a fixed box
-    const el = input.current; if (!el) return;
+    const el = input.current; if (!el || !active) return;
     el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 132) + 'px';
-  }, [query, asSheet]);
+  }, [query, asSheet, active]);
   useEffect(() => {
     if (!locationOpen) return;
     const closeMenu = e => { if (!locationBox.current?.contains(e.target)) setLocationOpen(false); };

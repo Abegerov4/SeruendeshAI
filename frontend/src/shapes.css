@@ -16,7 +16,7 @@
 .site-header nav>a.active{background:#eef3e5}.site-header nav>a.active:after{display:none}
 .map-first .refine-chips{border-radius:14px!important;padding:7px;gap:5px}
 .map-first .refine-chips button{min-height:32px;padding:6px 11px}
-@media(max-width:899px){
+@media(max-width:1023px){
  .mobile-app-nav{left:10px;right:10px;bottom:calc(6px + env(safe-area-inset-bottom));height:56px;padding:4px;gap:4px;border:1px solid #e1e7d8;border-radius:18px;background:#fffefaf5;box-shadow:0 3px 18px #2445320c;backdrop-filter:blur(16px)}
  .mobile-app-nav button{min-height:46px;border-radius:13px;color:#788271;gap:4px;padding:4px 2px;transition:background .18s,color .18s}
  .mobile-app-nav button[aria-current=page]{background:#174b3e;color:#fff;font-weight:600;box-shadow:0 2px 4px #183d3010}

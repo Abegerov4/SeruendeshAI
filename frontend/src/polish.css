@@ -1,7 +1,7 @@
 /* Polish layer: real photos / category covers, readable type, full-screen chat on phones.
    Loaded last, so it refines the base design without rewriting it. */
 
-:root{--ink:#163e30;--ink-soft:#5d6f5a;--card:#fff;--radius:18px}
+:root{--ink:#163e30;--ink-soft:var(--muted);--card:#fff;--radius:18px}
 
 /* ---------- photo or category cover ---------- */
 .place-visual{position:absolute;inset:0;display:block;overflow:hidden}
@@ -40,7 +40,7 @@
 .place-title-row{display:flex;align-items:flex-start;gap:8px}
 .place-title-row h3{font-size:19px;line-height:1.25;letter-spacing:-.3px;margin:0;text-align:left}
 .place-title-row .new-place-badge{flex-shrink:0;margin-top:3px}
-.place-meta{font-size:12.5px;gap:14px;margin:9px 0 10px;color:#6f7f68}
+.place-meta{font-size:12.5px;gap:14px;margin:9px 0 10px;color:var(--muted)}
 .place-meta span{gap:5px}
 .card-status{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
 .hours-chip{font-size:12px;padding:5px 10px;font-weight:500}
@@ -48,7 +48,7 @@
 .hours-chip.closed{background:#fbe8e4;color:#9a3b25}
 .story-tag{font-size:12px;padding:5px 10px;border-radius:20px;background:#f3f6ea;color:#55703a}
 .place-why{font-size:14px;line-height:1.6;color:#4d5f4a;margin-bottom:12px}
-.place-why>span{font-size:11px;letter-spacing:.3px;text-transform:uppercase;color:#7c9161;margin-bottom:5px;font-weight:600}
+.place-why>span{font-size:11px;letter-spacing:.3px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;font-weight:600}
 .place-action{border-radius:12px;padding:11px 13px}
 .place-action>span{font-size:11px}
 .place-action p{font-size:13px;line-height:1.55;color:#5b6d52}
@@ -58,7 +58,7 @@
 .quick-actions a:hover{background:#e2ecc9}
 .quick-actions a:first-child{background:var(--green);color:#f1f7df}
 .quick-actions a:first-child:hover{background:#1f5640}
-.quick-actions .source{font-size:11.5px;color:#8a977c;display:inline-flex;gap:4px;align-items:center;margin-left:2px}
+.quick-actions .source{font-size:11.5px;color:var(--muted);display:inline-flex;gap:4px;align-items:center;margin-left:2px}
 .detail-toggle{font-size:12.5px;color:#4f6b3b;font-weight:500;padding:8px 2px;white-space:nowrap}
 .idea-card{background:linear-gradient(180deg,#fbfdf2,#fff)}
 .badge-row span{font-size:12px}
@@ -138,7 +138,7 @@
 /* ---------- phones ---------- */
 .chat-launcher{display:none}
 .ask-seru-fab{display:none}
-@media (max-width:899px){
+@media (max-width:1023px){
   html{-webkit-text-size-adjust:100%}
   .composer-input textarea,input,select,textarea{font-size:16px}  /* iOS zooms into smaller inputs */
   .explore-workspace{display:flex;flex-direction:column;gap:14px;align-items:stretch}
@@ -208,3 +208,8 @@
 @keyframes sheet-up{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
 @keyframes fab-in{from{transform:translateY(16px) scale(.9);opacity:0}to{transform:none;opacity:1}}
 @media (prefers-reduced-motion:reduce){.chat-sheet,.ask-seru-fab{animation:none}}
+
+/* Keep secondary filter text readable on both white and selected forest surfaces. */
+.chat-composer .filter-popover .filter-label{color:var(--muted)}
+.chat-composer .filter-popover .filter-row button small{color:var(--muted);opacity:1}
+.chat-composer .filter-popover .filter-row button.active small{color:inherit}

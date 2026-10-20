@@ -1,7 +1,7 @@
 /* One frame for every page: the reference layout (map page) set its own header and rounded card, while
    «Избранное» and «Для города» kept the older 88px header, so switching tabs moved the logo, nav and margins
    and the active tab became a tall green block. Desktop only: phones keep their own map app / bottom bar. */
-@media(min-width:900px){
+@media(min-width:1024px){
  html{overflow-y:scroll}  /* a long page’s scrollbar no longer narrows the frame: every page keeps the same width */
  body:has(.app){background:#f2f4f1}
  .app{max-width:none;margin:14px;width:calc(100% - 28px);padding:0;border-radius:22px;overflow:hidden;box-shadow:0 8px 35px #203c2407}
@@ -20,22 +20,28 @@
 }
 /* Phones: the map page is a full-screen app (white 62px bar, bottom tabs). The other pages now open with the
    same top bar (full width, same logo and buttons) and keep their section links as a second row. */
-@media(max-width:899px){
+@media(max-width:1023px){
  .app:not(.map-app){padding:0}
  .app:not(.map-app) #content{padding:0 18px}
  .app:not(.map-app) .site-footer{margin-left:18px;margin-right:18px}
  .app:not(.map-app) .site-header{min-height:62px;padding:12px 14px 6px;gap:8px;background:#fffefa;border-bottom:1px solid #e8ebe2}
  .app:not(.map-app) .site-header .brand{font-size:18px}
  .app:not(.map-app) .site-header .header-actions{gap:6px}
- .app:not(.map-app) .app-install-trigger{width:38px;height:38px}
- .app:not(.map-app) .site-header .lang-trigger{padding:8px 12px;min-height:38px}
- .app:not(.map-app) .site-header .login-link{font-size:10px;width:auto;padding:8px 12px;gap:5px;min-height:38px}
+ .app .site-header .brand{min-height:44px}
+ .app .site-header .app-install-trigger{width:44px;height:44px;min-width:44px;min-height:44px}
+ .app .site-header .lang-trigger{padding:8px 10px;min-width:44px;min-height:44px;height:44px}
+ .app .site-header .header-actions .login-link{font-size:10px;width:auto;padding:8px 10px;gap:5px;min-width:44px;min-height:44px}
+ .lang-menu [role=option],.account-dropdown :is(a,button){min-height:44px}
+ .app .site-footer .footer-link{display:flex;align-items:center;min-height:44px}
+ .auth-header .lang-trigger{min-width:44px;min-height:44px;height:44px}
+ .auth-header .brand{min-height:44px}
+ .auth-form .password-toggle{width:44px;height:44px;min-width:44px;min-height:44px}
 }
 @media(max-width:380px){
  .app:not(.map-app) .site-header{padding:14px 10px 6px}
  .app:not(.map-app) .site-header .brand{font-size:16px;gap:5px}
  .app:not(.map-app) .site-header .header-actions{gap:4px}
- .app:not(.map-app) .app-install-trigger{width:32px;height:34px}
- .app:not(.map-app) .site-header .lang-trigger{min-height:34px;padding:6px 8px}
- .app:not(.map-app) .site-header .login-link{font-size:0;width:32px;min-height:34px;padding:6px;gap:0}
+ .app .site-header .app-install-trigger{width:44px;height:44px}
+ .app .site-header .lang-trigger{min-height:44px;padding:6px 8px}
+ .app .site-header .header-actions .login-link{font-size:0;width:44px;min-height:44px;padding:6px;gap:0}
 }

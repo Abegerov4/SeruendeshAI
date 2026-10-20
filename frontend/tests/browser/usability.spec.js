@@ -108,10 +108,10 @@ test('late account response is discarded after logout',async({page})=>{
 
 test('address entry also hides the mobile bar when the keyboard opens',async({page})=>{
  await page.setViewportSize({width:390,height:844});await mockApi(page);await page.goto('/');
- await page.locator('.chat-body [data-start-input]').fill('Кенесары 40');await page.setViewportSize({width:390,height:440});
+ await page.getByRole('dialog',{name:'Откуда начнём?',exact:true}).locator('[data-start-input]').fill('Кенесары 40');await page.setViewportSize({width:390,height:440});
  await expect(page.locator('.mobile-app-nav')).toHaveAttribute('aria-hidden','true');
- await expect(page.locator('.chat-body [data-start-input]')).toBeVisible();
- await page.locator('.chat-body [data-start-input]').press('Enter');await expect(page.locator('.chat-places')).toBeVisible();
+ await expect(page.getByRole('dialog',{name:'Откуда начнём?',exact:true}).locator('[data-start-input]')).toBeVisible();
+ await page.getByRole('dialog',{name:'Откуда начнём?',exact:true}).locator('[data-start-input]').press('Enter');await expect(page.locator('.chat-places')).toBeVisible();
 });
 
 test('a typed start address is geocoded: the house number never goes into the request text',async({page})=>{

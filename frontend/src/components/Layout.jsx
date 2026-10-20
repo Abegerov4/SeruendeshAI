@@ -41,5 +41,5 @@ export function Footer() {
   return <footer className="site-footer"><Logo /><span>{tr("Меньше планирования. Больше открытий.")}</span><Link to="/insights" className="footer-link">{tr("Для города: спрос и пробелы")}</Link><span className="footer-stamp">{tr("С любовью к Астане ")}<span>✳</span></span></footer>;
 }
 export function AuthHeader() {
-  return <header className="auth-header"><Logo /><div className="auth-header-actions"><LanguageSwitcher /><Link to="/" className="back-link"><ArrowLeft size={16} /><span>{tr("Назад к городу")}</span></Link></div></header>;
+  return <header className="auth-header"><Logo /><div className="auth-header-actions"><LanguageSwitcher /><Link to="/" className="back-link" aria-label={tr("Назад к городу")}><ArrowLeft size={16} /><span>{tr("Назад к городу")}</span></Link></div></header>;
 }

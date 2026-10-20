@@ -26,7 +26,7 @@
 .filter-popover .context-apply{width:100%;margin-top:14px;justify-content:center}
 
 /* laptop: the chat fills the column, answers with their place cards stay in it */
-@media(min-width:900px){
+@media(min-width:1024px){
  .reference-layout .conversation-column{display:flex;flex-direction:column;overflow:hidden}
  .reference-layout .companion-intro,.reference-layout .seru-tip{display:none}
  .reference-layout .conversation-column>.chat-panel{flex:1;min-height:0;display:flex;flex-direction:column;margin:0;padding:0;border:0;background:transparent;box-shadow:none}
@@ -96,7 +96,7 @@
 .place-feedback small{flex-basis:100%;color:#8a2f1d}
 
 /* «Места рядом» (laptop): a scrolling column of floating cards on the right, the map stays in view */
-@media(min-width:900px){
+@media(min-width:1024px){
  .reference-layout.mobile-view-places .places-section{top:16px;right:16px;bottom:16px;left:auto;width:min(380px,44%);max-height:none;
    overflow-y:auto;overscroll-behavior:contain;padding:0 6px 0 0;pointer-events:auto;scrollbar-width:thin}
  .reference-layout.mobile-view-places .place-grid{display:flex;flex-direction:column;gap:14px;overflow:visible;padding:2px 2px 16px}
@@ -108,14 +108,40 @@
 }
 
 /* phones: «Откуда начнём?» inside the chat shrinks and scrolls; the composer always stays in view */
-@media(max-width:899px){
+@media(max-width:1023px){
  .chat-body>.start-chooser{flex:0 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain}
  .chat-body:has(>.start-chooser) .chat-log{flex:0 1 auto}
 }
-@media(max-width:899px) and (max-height:760px){
+@media(max-width:1023px) and (max-height:760px){
  .chat-body>.start-chooser{padding:12px 14px}
  .chat-body>.start-chooser>p{display:none}
  .chat-body>.start-chooser h2{font-size:18px;margin-bottom:10px}
  .chat-body>.start-chooser .start-geo{padding:10px}
  .chat-body:has(>.start-chooser) .chat-log{display:none}
+}
+
+/* Compact icons keep a full touch target, including in short landscape layouts. */
+@media(max-width:1023px){
+ .map-first .chat-reset{width:44px;height:44px;min-width:44px;min-height:44px;align-items:center;justify-content:center;flex-shrink:0}
+ .map-first .composer-inline-tools .photo-button{width:44px;height:44px;min-width:44px;min-height:44px}
+ .map-first .send-button,.filter-trigger,.filter-row button,.map-first .quick-scenarios button,.map-first .refine-chips button{min-height:44px}
+ .filter-trigger{height:44px}
+ .start-close{width:44px;height:44px}
+ .start-chooser>h2{padding-right:50px}
+ .map-first .location-options button,.map-first .home-setup input,.map-first .home-setup>div>button{min-height:44px}
+ .map-first .location-options .home-row .home-edit{width:44px;min-width:44px;flex-basis:44px}
+ .map-first .chat-place-actions button,.map-first .geo-notice button,.places-start,.chat-why-toggle{min-height:44px}
+ .map-first .focus-route-bar button,.map-first .map-controls button,.reference-layout .reference-close{width:44px;height:44px;min-width:44px;min-height:44px}
+ .map-first .map-bottom button,.reference-layout .reference-more,.reference-restore{min-height:44px}
+ .map-first .leaflet-stop{display:grid;place-items:center;width:44px!important;height:44px!important;margin-left:-22px!important;margin-top:-22px!important}
+ .map-first .leaflet-stop.selected>span{transform:none}
+ .map-first .leaflet-stop label{left:44px;top:8px}
+ .map-first .save-button,.place-feedback>button{width:44px;height:44px;min-width:44px;min-height:44px}
+ .place-title-row>button,.quick-actions a,.detail-toggle,.feedback-reasons button,.detail-before a,.detail-links a{min-width:44px;min-height:44px}
+ .place-title-row>button{display:flex;align-items:center;text-align:left}
+ .detail-actions :is(a,button),.detail-about>a,.detail-save-error button,.map-first .focus-route-bar a,.map-first .reference-all-places,.map-first .why-toggle,.map-first .empty-plan button,.map-first .seru-discovery-card button,.map-first .context-disclosure>summary,.map-first .mood-disclosure>summary,.map-first .geo-compact>summary,.map-first .chat-answer-details>summary,.map-first .message-results{min-height:44px}
+ .quick-actions{flex-wrap:wrap}
+ .place-bottom{flex-wrap:wrap}
+ .pwa-close{width:44px;height:44px}
+ .pocket-open,.connection-banner button,.update-notice button{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}
 }
