@@ -295,16 +295,15 @@ team/             роли и контракты команды
 
 | Кто | Что делал |
 |---|---|
-| **Ayat** | бэкенд RAG, конвейер данных, оценка, деплой, сведение веток |
-| **Aldiyar** ([@Abegerov4](https://github.com/Abegerov4)) | интеграция бэкенда, защита от инъекций и маскирование ПД, Telegram-бот, качество рекомендаций, трассировка Langfuse, данные Sxodim, CI и еженедельное обновление данных |
-| **Denis** | модуль гибридного поиска (`rag/`), обогащение данных из Википедии, избранное |
-| **Aslan** | QA-набор (`tests/`, `eval/`), каталог на 14 тыс. мест с происхождением и ревью (`data/`), лента событий, аудит бэкенда на 44 пункта |
-| **Codex** | интерфейс и маскот Серу |
+| **Ayat Balmagambet** | бэкенд RAG, конвейер данных, интерфейс и маскот Серу, оценка, деплой, сведение веток |
+| **Aldiyar Zhangabyl** | интеграция бэкенда, защита от инъекций и маскирование ПД, Telegram-бот, качество рекомендаций, трассировка Langfuse, данные Sxodim, CI и еженедельное обновление данных |
+| **Denis Li** | модуль гибридного поиска (`rag/`), обогащение данных из Википедии, избранное |
+| **Aslan Muratov** | QA-набор (`tests/`, `eval/`), каталог на 14 тыс. мест с происхождением и ревью (`data/`), лента событий, аудит бэкенда на 44 пункта |
 
 <details>
 <summary><b>🇬🇧 English summary</b></summary>
 
-**SeruendeshAI** is a RAG walking assistant for Astana, Kazakhstan, built for the *Build with AI* hackathon (task 1, Smart City research centre). Tell **Seru**, a little green bird, where you are, how much time you have and what you feel like. Seru suggests 1–3 places nearby with a street-graph mini-route, time on site, the reason it fits right now and what to do there. Opening hours carry a source, a date and a confidence level, and the AI never claims "open now". Data: 2,271 places from OpenStreetMap, Overture, Wikidata/Wikipedia and official sites, plus 263 events. The interface works in Russian, Kazakh and English. The user's location is rounded to ~100 m and never sent to the LLM. Live at **[seruendesh.site](https://seruendesh.site)** and in Telegram as [@SeruendeshAl_bot](https://t.me/SeruendeshAl_bot).
+**SeruendeshAI** is a RAG walking assistant for Astana, Kazakhstan, built for the *Build with AI* hackathon (task 1, Smart City research centre). Tell **Seru**, a little green bird, where you are, how much time you have and what you feel like. Seru suggests 1–3 places nearby with a street-graph mini-route, time on site, the reason it fits right now and what to do there. Opening hours carry a source, a date and a confidence level, and the AI never claims "open now". Data: 2,271 places from OpenStreetMap, Overture, Wikidata/Wikipedia and official sites, plus 263 events. The interface works in Russian, Kazakh and English. The user's location is rounded to ~100 m and never sent to the LLM. Live at **[seruendesh.site](https://seruendesh.site)** and in Telegram as [@SeruendeshAl_bot](https://t.me/SeruendeshAl_bot). Team **YeahGrinders**: Ayat Balmagambet, Aldiyar Zhangabyl, Denis Li, Aslan Muratov.
 
 </details>
 
