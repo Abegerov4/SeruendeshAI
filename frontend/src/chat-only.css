@@ -100,7 +100,7 @@
  .reference-layout.mobile-view-places .places-section{top:16px;right:16px;bottom:16px;left:auto;width:min(380px,44%);max-height:none;
    overflow-y:auto;overscroll-behavior:contain;padding:0 6px 0 0;pointer-events:auto;scrollbar-width:thin}
  .reference-layout.mobile-view-places .place-grid{display:flex;flex-direction:column;gap:14px;overflow:visible;padding:2px 2px 16px}
- .reference-layout.mobile-view-places .place-card{flex:none;width:auto}
+ .reference-layout.mobile-view-places .place-card{flex:none;width:auto;max-height:none;overflow:visible}  /* the whole card, buttons included; the column scrolls */
  .reference-layout.mobile-view-places .place-image-wrap{height:120px}
  .reference-layout.mobile-view-places .places-float-bar{position:sticky;top:0;z-index:2;margin:0 0 10px;padding:0}
  .reference-layout.mobile-view-places .places-start{margin-left:0;width:100%;justify-content:center}
