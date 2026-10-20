@@ -227,3 +227,28 @@ def test_saved_snapshot_byte_limit_counts_utf8_bytes(isolated):
     data = {'why': '界' * 2000, 'action': '界' * 2000, 'features': ['界' * 150] * 16}
     # Every individual field satisfies its character/list limit, but UTF-8 total exceeds 16 KiB.
     assert isolated.put('/api/me/saved/osm:node/123', json={'data': data}).status_code == 422
+
+
+def test_saved_details_and_photo_credits_roundtrip(isolated):
+    register(isolated)
+    snapshot = {
+        'name': 'Museum', 'categoryKey': 'museum', 'iconKey': 'landmark',
+        'description': 'An exhibition', 'descriptionUrl': 'https://example.org/about',
+        'website': 'https://example.org', 'phone': '+77170000000', 'cuisine': ['coffee'],
+        'openStatus': 'closed', 'openingKind': 'closed', 'openingRaw': 'Mo-Fr 10:00-18:00',
+        'photo': {'url': 'https://example.org/photo.jpg', 'page': 'https://example.org',
+                  'author': 'Museum', 'license': 'Website preview', 'source': 'website'},
+    }
+    result = isolated.put('/api/me/saved/test-museum', json={'data': snapshot})
+    assert result.status_code == 200, result.text
+    assert isolated.get('/api/me/saved').json()[0]['data'] == snapshot
+
+
+@pytest.mark.parametrize('data', [
+    {'photo': {'url': 'javascript:alert(1)'}},
+    {'photo': {'url': 'https://example.org/image', 'page': 'data:text/html,test'}},
+    {'website': 'javascript:alert(1)'}, {'descriptionUrl': 'https://user:pass@example.org'},
+])
+def test_saved_new_links_reject_unsafe_urls(isolated, data):
+    register(isolated)
+    assert isolated.put('/api/me/saved/test-link', json={'data': data}).status_code == 422

@@ -173,7 +173,7 @@ function useStage(loading) {
 // themed walks start from the user: without GPS and a chosen start Seru asks instead of guessing a landmark
 const NO_START = 'Не знаю, откуда начать: геолокация выключена. Разреши доступ к геопозиции или выбери точку старта под полем ввода — соберу маршруты от неё.';
 
-export default function Chat({ requestPlan, onMood, location, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false, onRoute, onDetails, routed, notice, onIdeas, onShowIdea }) {
+export default function Chat({ requestPlan, onMood, location, startLabel, setLocation, onResult, starter, sheet = false, open = true, onOpen, onClose, photoEnabled = false, onRoute, onDetails, routed, notice, onIdeas, onShowIdea }) {
   const [messages, setMessages] = useState([welcome]),
     [query, setQuery] = useState(''),
     [loading, setLoading] = useState(false),
@@ -288,7 +288,7 @@ export default function Chat({ requestPlan, onMood, location, setLocation, onRes
           if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); e.currentTarget.form.requestSubmit(); }
         }} placeholder={tr(messages.length > 1 ? "Что изменить или найти?" : "Например: кофе и прогулка на час")} aria-label={tr("Как хочешь провести время?")} rows={1} enterKeyHint="send" /></div>
         <div className="composer-bottom">
-          <div className="location-picker" ref={locationBox}><button type="button" className="location-toggle" aria-expanded={locationOpen} onClick={() => setLocationOpen(!locationOpen)}><MapPin size={13} /><span>{location === MY_LOCATION ? '📍 ' : location === HOME ? '🏠 ' : ''}{tr(location)}</span><ChevronDown size={12} /></button>
+          <div className="location-picker" ref={locationBox}><button type="button" className="location-toggle" aria-expanded={locationOpen} onClick={() => setLocationOpen(!locationOpen)}><MapPin size={13} /><span>{location === HOME ? '🏠 ' : '📍 '}{startLabel || tr(location)}</span><ChevronDown size={12} /></button>
             {locationOpen && <div className="location-options"><HomePicker onPick={() => { setLocation(HOME); setLocationOpen(false); }} />{landmarks.map(l => <button type="button" key={l} onClick={() => { setLocation(l); setLocationOpen(false); }}>{tr(l)}{l === location && <Check size={14} />}</button>)}</div>}</div>
           {(Speech || photoEnabled) && <details className="chat-tools"><summary aria-label={tr("Голос и фото")} title={tr("Голос и фото")}><Plus size={18}/></summary><div className="chat-tools-popover"><VoiceButton disabled={loading} onText={setQuery} onFinal={text => send(text)} onError={text => append([{ role: 'assistant', text }])} />
           {photoEnabled && <label className="photo-button" role="button" tabIndex={loading ? -1 : 0} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.currentTarget.querySelector('input')?.click();}}} title={tr('Где я? Отправь фото места')} aria-label={tr('Где я? Отправь фото места')}>

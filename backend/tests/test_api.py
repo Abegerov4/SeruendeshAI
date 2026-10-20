@@ -184,7 +184,10 @@ def test_normal_queries_are_never_off_topic(client):
     for q in NORMAL_QUERIES:
         d = post(client, query=q, landmark="baiterek", time_budget_min=120)
         assert d["off_topic"] is False and "Серу" not in d["summary"], q
-        assert d["recommendations"], q
+        if d["used_context"]["parsed_from_query"].get("deadline") == "flight" and d["used_context"]["time_budget_min"] == 0:
+            assert d["recommendations"] == [] and d["route"] is None
+        else:
+            assert d["recommendations"], q
 
 
 def test_llm_usage_block_is_additive(client):

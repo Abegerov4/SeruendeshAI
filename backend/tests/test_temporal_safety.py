@@ -128,7 +128,9 @@ def test_final_route_cards_use_planner_visits_even_with_fake_model(monkeypatch):
 @pytest.mark.parametrize("query,kind,flight_type,budget", [
     ("domestic flight in 2 hours", "flight", "domestic", 0),
     ("international flight in 4 hours", "flight", "international", 45),
-    ("flight in 4 hours", "flight", "unknown", 225),  # unknown type: free time before leaving (note_flight_free_time)
+    ("flight in 4 hours", "flight", "unknown", 45),  # unknown departure keeps a conservative reserve
+    ("flight in 2 hours", "flight", "unknown", 0),
+    ("у меня 2 часа перед вылетом", "flight", "unknown", 0),
     ("be at the airport in 2 hours", "airport_arrival", "unknown", 105),
     ("быть в аэропорту через 2 часа", "airport_arrival", "unknown", 105),
     ("әуежайда 2 сағаттан кейін болу керек", "airport_arrival", "unknown", 105),
@@ -276,3 +278,25 @@ def test_model_parse_cannot_overwrite_explicit_free_time_and_deadline():
                       night=False, surprise=False, search_text_ru="кофе", keywords_ru=[])
     parsed = merge_llm(rules, model)
     assert parsed.time_budget_min == 10 and parsed.deadline_in_min == 300
+
+
+@pytest.mark.parametrize('lang', ['ru', 'kk', 'en'])
+def test_alternatives_do_not_publish_model_generated_itinerary(monkeypatch, lang):
+    from app.generate import GenOut, GenPick
+    async def generated(cands, *args):
+        mapping = {f'c{i}': c for i, c in enumerate(cands[:2], 1)}
+        output = GenOut(summary='Visit both stops one after another.', picks=[
+            GenPick(cand=key, why='Start here, then visit the other place.',
+                    what_to_do='Visit Place 1 then Place 2.', visit_min=c.visit_min)
+            for key, c in mapping.items()], idea=None)
+        return output, 'mock', 1, mapping
+    monkeypatch.setattr(service, 'llm_client', lambda: object())
+    monkeypatch.setattr(service, 'generate', generated)
+    monkeypatch.setattr(service, 'validate', lambda out, *args: out)
+    rt = service.Runtime(store([poi(1), poi(2)]), None, None, None, None, None, {})
+    out = asyncio.run(service.recommend(rt, RecommendRequest(query='coffee', lang=lang,
+        location={'lat': 51.128, 'lon': 71.43}, want_route=False, now='2026-10-20T11:00:00+05:00')))
+    assert out['route'] is None and out['recommendations']
+    assert 'one after another' not in out['summary']
+    for item in out['recommendations']:
+        assert 'then' not in item['what_to_do'] and 'other place' not in item['why']

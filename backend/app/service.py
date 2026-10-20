@@ -449,6 +449,16 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
         route_out = {"order": ids, "legs": legs, "total_min": route["total_min"], "fits_budget": route["fits_budget"],
                      "returns_to_start": route["returns_to_start"], "back_min": route["back_min"], "summary": summ}
 
+    # Without a scheduled route, every recommendation is a separate choice. Use
+    # on-site actions only: model prose must not invent an unbudgeted multi-stop walk.
+    if route_out is None:
+        by_id = {c.poi["id"]: c for c in cmap.values()}
+        for item in items:
+            c = by_id.get(item["poi_id"])
+            if c:
+                item["what_to_do"] = template_todo(c, lang)
+                item["why"] = template_why(c, lang)
+
     # --- notes (transparency)
     aqi = (ctx.weather or {}).get("us_aqi") or 0
     if aqi >= 101:
@@ -492,7 +502,7 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
     considered = [c for c in considered if fold(c["name"]) not in shown]
     if poi_items:
         nm = ", ".join(it["name"] for it in poi_items)
-        summary = (route_out["summary"] if route_out else gen.summary if gen and gen.summary else
+        summary = (route_out["summary"] if route_out else
                    t("summary", lang, n=len(poi_items), places=t("place_1" if len(poi_items) == 1 else "place_2", lang), names=nm))
         if navigate and poi_items[0]["poi_id"] in target_ids and origin_info.get("label"):
             it = poi_items[0]  # «маршрут с AITU до ботсада»: say where from, where to and how far
@@ -508,6 +518,15 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
         summary = t("summary_none", lang)
     if missed:
         summary = f"{missed[0]} {summary}"
+    if not route_out and len(poi_items) > 1:
+        summary += " " + {"ru": "Выбери одно место: это отдельные варианты, не общий маршрут.",
+                          "kk": "Бір орынды таңдаңыз: бұлар жеке нұсқалар, ортақ маршрут емес.",
+                          "en": "Choose one place: these are alternatives, not a combined route."}[lang]
+    if parsed.deadline_kind == "flight" and dl is not None and plan.budget == 0 and not poi_items:
+        summary = {"ru": "До вылета слишком мало времени для прогулки с запасом на дорогу и аэропорт. Лучше направиться в аэропорт. Уточни тип рейса и время вылета, если я понял их неверно.",
+                   "kk": "Жол мен әуежайға арналған уақыт қорын ескерсек, ұшуға дейін серуендеуге уақыт аз. Әуежайға барған дұрыс. Рейс түрі мен ұшу уақытын нақтылаңыз.",
+                   "en": "There is too little time before departure for a walk plus travel and the airport buffer. Head to the airport. Clarify your flight type and departure time if I misunderstood."}[lang]
+        notes.insert(0, summary)
     plan.funnel["shown"] = len(poi_items)
 
     filters = []

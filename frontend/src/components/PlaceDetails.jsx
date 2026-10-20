@@ -9,6 +9,14 @@ import { externalMapLinks, routeUrl, telUrl, instagramUrl, visitText } from '../
 export default function PlaceDetails({ place: p, saved, onSave, onClose, onMap, origin }) {
   const dialog = useRef(null), title = useId();
   const [shared, setShared] = useState(false);
+  const [saveFailed, setSaveFailed] = useState(false), [saving, setSaving] = useState(false);
+  async function savePlace() {
+    if (saving) return;
+    setSaving(true); setSaveFailed(false);
+    try { setSaveFailed((await onSave?.()) === false); }
+    catch { setSaveFailed(true); }
+    finally { setSaving(false); }
+  }
   useEffect(() => { const previous = document.activeElement; const overflow = document.body.style.overflow; document.body.style.overflow = 'hidden'; dialog.current.showModal(); return () => { document.body.style.overflow = overflow; if (previous?.isConnected) previous.focus({ preventScroll: true }); } }, []);
   const Mode = p.mode === 'walk' ? Footprints : Car;
   const route = routeUrl(p, origin), tel = telUrl(p.phone), insta = instagramUrl(p.instagram);
@@ -47,6 +55,7 @@ export default function PlaceDetails({ place: p, saved, onSave, onClose, onMap, 
       <section className="detail-before"><h3>{tr('Перед выходом')}</h3><TrustList p={p} />{p.openingRaw && <p><small>{tr('Часы в данных:')} <code>{p.openingRaw}</code></small></p>}
         <p className="detail-links">{p.url && <a href={p.url} target="_blank" rel="noreferrer">{tr('Источник данных')} <ArrowUpRight size={14} /></a>}{externalMapLinks(p).map(l => <a key={l.label} href={l.href} target="_blank" rel="noreferrer">{l.label} <ArrowUpRight size={14} /></a>)}</p></section>
       <p className="detail-note">{tr(p.photo ? 'Время рассчитано по открытым данным; проверь часы перед визитом.' : 'Обложка — иллюстрация категории, не снимок места. Время рассчитано по открытым данным; проверь часы перед визитом.')}</p></div>
-    <div className="detail-toolbar">{onSave && <button className={'detail-save ' + (saved ? 'is-saved' : '')} aria-pressed={saved} onClick={onSave}><Heart size={18} fill={saved ? 'currentColor' : 'none'} />{tr(saved ? 'В избранном' : 'Сохранить место')}</button>}{onMap && <button className="detail-map" onClick={() => { onClose(); onMap(); }}><MapPin size={18} />{tr('Показать на карте')}</button>}</div>
+    {saveFailed && <div className="detail-save-error" role="alert"><span>{tr('Не удалось изменить избранное. Изменение отменено.')}</span><button onClick={savePlace}>{tr('Повторить')}</button></div>}
+    <div className="detail-toolbar">{onSave && <button className={'detail-save ' + (saved ? 'is-saved' : '')} aria-pressed={saved} disabled={saving} onClick={savePlace}><Heart size={18} fill={saved ? 'currentColor' : 'none'} />{tr(saved ? 'В избранном' : 'Сохранить место')}</button>}{onMap && <button className="detail-map" onClick={() => { onClose(); onMap(); }}><MapPin size={18} />{tr('Показать на карте')}</button>}</div>
   </dialog>, document.body);
 }

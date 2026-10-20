@@ -7,8 +7,8 @@ const listeners = new Set();
 const emit = next => { state = {...state, ...next}; listeners.forEach(fn => fn()); };
 export function useAuth() { return useSyncExternalStore(fn => (listeners.add(fn), () => listeners.delete(fn)), () => state, () => state); }
 
-async function call(path, {method = 'GET', body} = {}) {
-  const res = await fetch(`${API_BASE}${path}`, {method, credentials: 'include',
+async function call(path, {method = 'GET', body, signal} = {}) {
+  const res = await fetch(`${API_BASE}${path}`, {method, signal, credentials: 'include',
     headers: body ? {'Content-Type': 'application/json'} : undefined, body: body ? JSON.stringify(body) : undefined});
   if (res.status === 204) return null;
   const data = await res.json().catch(() => ({}));
@@ -29,13 +29,13 @@ export async function confirmReset(token, password) { const user = await call('/
 
 // saved places (server-side when logged in)
 const SNAPSHOT = ['iconKey', 'name', 'category', 'categoryKey', 'lat', 'lon', 'address', 'why', 'action', 'url', 'image', 'status', 'distance',
-  'travel', 'visit', 'visitRange', 'mode', 'features', 'badges', 'source', 'generated', 'dataSources', 'descriptionSource', 'openConfidence', 'accessibility'];
-export async function fetchSaved() { return (await call('/api/me/saved')).map(r => ({id: r.poi_id, ...r.data, icon: placeIcon(r.data?.iconKey, r.data?.categoryKey)})); }
-export async function putSaved(place) {
+  'travel', 'visit', 'visitRange', 'mode', 'features', 'badges', 'source', 'generated', 'dataSources', 'descriptionSource', 'openConfidence', 'accessibility', 'photo', 'description', 'descriptionUrl', 'website', 'phone', 'instagram', 'cuisine', 'openStatus', 'openingKind', 'openingRaw', 'cover'];
+export async function fetchSaved(signal) { return (await call('/api/me/saved', {signal})).map(r => ({id: r.poi_id, ...r.data, icon: placeIcon(r.data?.iconKey, r.data?.categoryKey)})); }
+export async function putSaved(place, signal) {
   const data = Object.fromEntries(SNAPSHOT.filter(k => place[k] !== undefined).map(k => [k, place[k]]));
-  return call(`/api/me/saved/${encodeURIComponent(place.id)}`, {method: 'PUT', body: {data}});
+  return call(`/api/me/saved/${encodeURIComponent(place.id)}`, {method: 'PUT', body: {data}, signal});
 }
-export async function deleteSaved(id) { return call(`/api/me/saved/${encodeURIComponent(id)}`, {method: 'DELETE'}); }
+export async function deleteSaved(id, signal) { return call(`/api/me/saved/${encodeURIComponent(id)}`, {method: 'DELETE', signal}); }
 
 export const AUTH_ERRORS = {
   email_taken: 'Этот email уже зарегистрирован. Попробуй войти.',

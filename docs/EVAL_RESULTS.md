@@ -1,5 +1,7 @@
 # Результаты автоматической оценки
 
+Исторический LLM-прогон до изменений 20 октября. Он не подтверждает качество текущих текстов и нового сценария S4. Свежие локальные проверки и задачи для повторной оценки: [передача Клоду](handoff-claude/2026-10-20/VALIDATION.md).
+
 Режим: LLM · сценариев: 15 · проверок пройдено: **170/170** · латентность p50 3364 мс, max 4979 мс
 
 Проверки: C1 schema; C2 1–3 items; C3 grounded ids; C4 time budget; C5 categories; C6 source labels; C7 language; C8 no invented hours; C9 coords rounded; C10 safety rules; C11 not closed; C12 latency<8s; S scenario.
