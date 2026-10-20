@@ -63,7 +63,7 @@ def mask_pii(text: str) -> tuple[str, bool]:
 
 _L = r"A-Za-zА-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі"
 _HOUSE = r"\d{1,3}[а-яa-z]?(?:/\d{1,3}[а-яa-z]?)?"
-_NOT_UNIT = r"(?!\s*(?:мин|час|км|м\b|метр|чел|лет|год|раз|%|тг|тенге|₸|сағ|min|h\b|hour|km|people|year))"
+_NOT_UNIT = r"(?!\s*(?:мин|час|км|м\b|метр|чел|лет|год|раз|мест|%|тг|тенге|₸|сағ|min|h\b|hour|km|people|year|place))"
 LOCATION_PATTERNS = [
     # a coordinate pair or one long decimal (51.1283, 71.4305 / 51,1283 71,4305)
     (re.compile(r"-?\b\d{1,2}[.,]\d{3,}\s*[,;]?\s*-?\d{1,3}[.,]\d{3,}\b"), "[координаты]"),
@@ -80,14 +80,32 @@ _NEAR_NO = re.compile(r"(\b(?:возле|около|рядом с|у|на|от|�
                       + _HOUSE + r")\b" + _NOT_UNIT)
 
 
+# Astana's streets as people type them (stems: «Кабанбай батыра», «Достыка», «Туран»): a number right after one is a
+# house number even without «улица» / «дом»
+_STREETS = ("кабанбай", "достык", "туран", "сыганак", "кенесары", "мангилик ел", "мәңгілік ел", "республики", "абая", "сарыарка",
+            "бейбитшилик", "байтурсынов", "сейфуллин", "иманов", "ауэзов", "кошкарбаев", "улы дала", "ұлы дала", "туркестан",
+            "кунаев", "акмешит", "орынбор", "жумабаев", "пушкин", "богенбай", "победы", "женис", "сауран", "хусейн бен талал",
+            "тауелсиздик", "тәуелсіздік", "валиханов", "петров", "момышулы", "жубанов", "аль-фараби", "косшыгулулы", "шаймерден",
+            "отырар", "кордай", "бокейхан", "алихан бокейхан", "керей", "жанибек", "есиль", "сыкым", "керуен", "азербаева",
+            "тлендиев", "куйши дина", "иманбаева", "желтоксан", "ташенов", "акжол", "габдуллин", "мухамедханов", "сарайшык",
+            "бухар жырау", "кайым мухамедханов", "жансугуров", "бигельдинов", "ткачев")
+_STREET_HOUSE = re.compile(r"(\b(?:" + "|".join(re.escape(x) for x in _STREETS)
+                           + r")[" + _L + r"]*(?:\s+[" + _L + r"]+)?\s*(?:улиц\w*|көшесі|просп\w*|даңғылы)?,?\s+(?:д\.?\s*|дом\s*)?)("
+                           + _HOUSE + r")\b" + _NOT_UNIT, re.I)
+# «мой адрес: Достык 5», «живу на … 53»: whatever number follows is a house number
+_SAID_ADDRESS = re.compile(r"(\b(?:адрес\w*|мекенжай\w*|address|живу|тұрамын|live)\b[:\s]+(?:на|в|по|at|on)?\s*[" + _L
+                           + r"\-\. ,]{2,40}?)(" + _HOUSE + r")\b" + _NOT_UNIT, re.I)
+
+
 def mask_location(text: str) -> str:
     """Hide exact positions before the LLM: coordinates, house and flat numbers. Street and place names stay,
     so the start can still be found; the street-level position is what we keep anyway (~100 m)."""
     out = text or ""
     for pattern, label in LOCATION_PATTERNS:
         out = pattern.sub(label, out)
-    out = _STREET_NO.sub(lambda m: m[1] + "[дом]", out)
-    return _NEAR_NO.sub(lambda m: m[1] + "[дом]", out)
+    for pattern in (_SAID_ADDRESS, _STREET_HOUSE, _STREET_NO, _NEAR_NO):
+        out = pattern.sub(lambda m: m[1] + "[дом]", out)
+    return out
 
 
 def looks_like_injection(text: str) -> bool:

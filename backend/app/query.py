@@ -415,7 +415,12 @@ _GENERIC = {"парк", "сквер", "кафе", "музей", "бар", "ре�
             "cafe", "museum", "детская площадка", "площадка", "рынок", "базар", "сад", "центр", "дом", "тц", "трц",
             # common words that are also names of hotels/clinics in the team anchors ("Я турист" is not hotel "Турист")
             "турист", "tourist", "университет", "university", "ночлег", "капитал", "capital", "отель", "hotel",
-            "хостел", "hostel", "гостиница", "больница", "поликлиника", "hospital", "акимат", "министерство"}
+            "хостел", "hostel", "гостиница", "больница", "поликлиника", "hospital", "акимат", "министерство",
+            # category words that some venues use as their whole name («Coffee», «Пицца»): a wish, not a place
+            "coffee", "кофе", "кофейня", "coffee shop", "restaurant", "кинотеатр", "cinema", "pizza", "пицца", "sushi", "суши",
+            "burger", "бургер", "fitness", "фитнес", "gym", "karaoke", "караоке", "кальянная", "hookah", "lounge", "bakery",
+            "пекарня", "кондитерская", "столовая", "canteen", "gallery", "галерея", "mall", "market", "garden", "square",
+            "кафе-бар", "food", "еда", "шашлык", "шаурма", "донер", "doner", "lounge bar", "spa", "спа", "сауна", "баня"}
 # origin-only anchors (hotels, universities, clinics, offices) count as the start only with an explicit cue
 ANCHOR_KINDS = {"hotel", "university", "hospital", "government"}
 
@@ -466,7 +471,8 @@ def _name_spans(text: str, key: str, curated: bool, blocked: list[tuple[int, int
     stem = bool(inflected and len(key) >= 6 and key[-1] in "ая")
     if (key[:-1] if stem else key) not in text:
         return
-    ending = r"\w{0,4}" if curated else r"\w{0,2}"
+    # a short curated name takes only a short ending: «мега» matches «мегой» spelled out, never «мегафон» / «мегаполис»
+    ending = r"\w{0,4}" if curated and len(key) >= 6 else r"\w{0,2}"
     if stem:
         pattern = re.escape(key[:-1]) + r"(?:" + key[-1] + ending + r"|[еуыи]|ой|ей|ою|ею)(?!\w)"
     else:

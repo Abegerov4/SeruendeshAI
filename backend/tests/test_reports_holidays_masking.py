@@ -31,13 +31,17 @@ def mark(kind, days_ago=0, hits=1):
     ("кофе, я на 51.1283, 71.4305", "51.1283", "кофе"),
     ("кофе возле ул. Кенесары, д. 40, кв 12", "12", "Кенесары"),
     ("пр. Мангилик Ел 55/4 рядом кофе", "55/4", "Мангилик Ел"),
+    ("я живу на Кабанбай батыра 53, что рядом?", "53", "Кабанбай"),
+    ("мой адрес: Достык 5", "5", "Достык"),
+    ("кофе возле Туран 37", "37", "Туран"),
+    ("Сыганак 18 рядом парк", "18", "Сыганак"),
 ])
 def test_exact_positions_are_masked_but_the_street_stays(text, hidden, kept):
     out = mask_location(text)
     assert hidden not in out and kept in out
 
 
-@pytest.mark.parametrize("text", ["у меня 40 минут", "на 2 часа у Байтерека", "Я у EXPO 2017, хочу что-то на 1-2 часа",
+@pytest.mark.parametrize("text", ["у меня 40 минут", "у Байтерека 3 места покажи", "на Туран 2 часа погулять", "на 2 часа у Байтерека", "Я у EXPO 2017, хочу что-то на 1-2 часа",
                                   "Мне 25 лет, хочу в музей", "с ребёнком 5 лет", "прогулка на 30 мин возле Хан Шатыра"])
 def test_times_ages_and_names_with_numbers_are_not_masked(text):
     assert mask_location(text) == text
@@ -102,3 +106,17 @@ def test_feedback_counts_once_per_client_and_place(client, monkeypatch):
     for _ in range(2):
         assert client.post("/api/feedback", json={"poi_id": poi, "kind": "closed", "lang": "ru"}).status_code == 200
     assert stored == [(poi, "closed")]
+
+
+def test_task_scenario_one_gets_a_mini_route(client):
+    """«Mega Silk Way, прогуляться 30–60 минут»: when a loop back does not fit, a one-way walk is offered and named."""
+    r = client.post("/api/recommend", json={"query": "Я сейчас возле Mega Silk Way, хочу прогуляться 30–60 минут — что посоветуете?",
+                                            "lang": "ru", "now": "2026-10-20T15:00:00"}).json()
+    assert r.get("route") and r["route"]["total_min"] <= 60 and len(r["recommendations"]) >= 2
+
+
+def test_start_label_and_clipped_description_read_well():
+    from app.service import _clip
+    text = "Площадь окружена зданиями, в которых входит ряд министерств и ведомств, а также торговые центры и рестораны"
+    out = _clip(text, 60)
+    assert out.endswith("…") and not out[:-1].endswith(" ") and len(out) <= 61

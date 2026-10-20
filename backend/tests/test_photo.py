@@ -70,7 +70,8 @@ def test_recognised_photo_runs_the_normal_flow(client, monkeypatch):
     assert d["recommendations"] and d["used_context"]["location_label"].startswith("Байтерек")
     assert "Байтерек" in d["notes"][0] and any("EXIF" in n for n in d["notes"])
     assert max(seen["size"]) == 1024  # the LLM only ever sees the downscaled, re-encoded copy
-    assert 27 <= len(seen["places"]) <= 27 + 40 and "baiterek" in seen["places"]
+    # 29 curated landmarks (27 built + «Мега Центр», «Азия Парк» from app.aliases) and at most 40 places nearby
+    assert 29 <= len(seen["places"]) <= 29 + 40 and "baiterek" in seen["places"]
     assert any(p["kind"] == "poi" for p in seen["places"].values())
 
 

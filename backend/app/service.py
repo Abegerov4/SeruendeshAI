@@ -115,9 +115,10 @@ def _resolve_origin(req: RecommendRequest, parsed: Parsed, store: Store, notes: 
         if in_astana(lat, lon):
             near = min(store.gazetteer, key=lambda g: (g["lat"] - lat) ** 2 + (g["lon"] - lon) ** 2 if g["kind"] in ("landmark", "place") else 9)
             dist = float(hav_m(lat, lon, near["lat"], near["lon"]))
-            lbl = {"ru": f"~ район «{near['name']}» (округлено)", "kk": f"~ «{near['name']}» маңы (дөңгелектенген)",
-                   "en": f"~ near «{near['name']}» (rounded)"}[lang] if dist < 700 else {"ru": "~ ваша локация (округлено до 100 м)",
-                   "kk": "~ сіздің орналасуыңыз (100 м-ге дейін)", "en": "~ your location (rounded to 100 m)"}[lang]
+            nn = entry_name(store, near, lang)  # the landmark in the answer's language, not as mapped
+            lbl = {"ru": f"~ район «{nn}» (округлено)", "kk": f"~ «{nn}» маңы (шамамен)",
+                   "en": f"~ near «{nn}» (rounded)"}[lang] if dist < 700 else {"ru": "~ ваша локация (округлено до 100 м)",
+                   "kk": "~ сіздің орныңыз (шамамен 100 м)", "en": "~ your location (rounded to 100 m)"}[lang]
             return (lat, lon), {"source": "gps_rounded", "label": lbl, "precision_m": 100}, None
         notes.append(t("note_outside_city", lang))
     if req.landmark:
@@ -341,10 +342,13 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
         plan.deadline_min, plan.deadline_buffer = dl, buf
         plan.deadline_back_target = (back["lat"], back["lon"]) if back else origin
         plan.budget = budget = max(0, min(free_budget if free_budget is not None else 10 ** 6, dl - buf))
-        notes.append(t("note_deadline", lang, t=(now + dt.timedelta(minutes=dl - buf)).strftime("%H:%M"), m=buf))
-        if parsed.deadline_kind == "flight":
-            notes.append(t("note_flight_assumption", lang, m=predeparture, kind=parsed.flight_type) if predeparture
-                         else t("note_flight_free_time", lang))
+        by = (now + dt.timedelta(minutes=dl - buf)).strftime("%H:%M")
+        if parsed.deadline_kind == "flight" and not predeparture:  # flight type unknown: one note says how the time is read
+            notes.append(t("note_flight_free_time", lang, t=by, m=buf))
+        else:
+            notes.append(t("note_deadline", lang, t=by, m=buf))
+            if parsed.deadline_kind == "flight":
+                notes.append(t("note_flight_assumption", lang, m=predeparture, kind=parsed.flight_type))
         if mode == "walk" and back and float(hav_m(origin[0], origin[1], back["lat"], back["lon"])) > 6000:
             notes.append(t("note_taxi_back", lang))
     refine = set(req.refine or [])
@@ -424,8 +428,12 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
     route = None
     if not navigate and not (view_decks and req.want_route is None) and route_wanted(parsed, req.want_route, plan, len(cands)):
         returns = parsed.walk_intent and mode == "walk" and dl is None
-        route = plan_route(cands, plan, ctx, rt.drive_graph if plan.mode == "car" else rt.graph, rt.store.river, lang,
-                           returns=returns)
+        route_graph = rt.drive_graph if plan.mode == "car" else rt.graph
+        route = plan_route(cands, plan, ctx, route_graph, rt.store.river, lang, returns=returns)
+        if route is None and returns:  # a loop does not fit the time: a one-way walk does, and the answer says so
+            route = plan_route(cands, plan, ctx, route_graph, rt.store.river, lang, returns=False)
+            if route is not None:
+                notes.append(t("note_route_one_way", lang))
 
     # --- generation (LLM) with validation, else templates
     gen: GenOut | None = None
@@ -514,6 +522,15 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
                 others = [x["name"] for x in items if x is not item] + [display_name(o.poi, "ru") for o in cmap.values() if o is not c]
                 item["why"] = strip_itinerary(item["why"], others) or template_why(c, lang)
                 item["what_to_do"] = strip_itinerary(item["what_to_do"], others) or template_todo(c, lang)
+
+    if route_out is not None and not route.get("returns_to_start"):
+        # a one-way walk: the model must not promise «затем вернитесь к старту»
+        for item in items:
+            for f in ("why", "what_to_do"):
+                if item.get(f):
+                    item[f] = _BACK_TO_START.sub("", item[f]).strip(" ,;") or item[f]
+                    if item[f] and item[f][-1] not in ".!?…":
+                        item[f] += "."
 
     # --- notes (transparency)
     aqi = (ctx.weather or {}).get("us_aqi") or 0
@@ -676,10 +693,25 @@ def _contract_open(op: dict) -> tuple[str, str]:
     return "unknown", "none"
 
 
+_BACK_TO_START = re.compile(r"[,;]?\s*(?:\bа\s+)?(?:\b(?:затем|потом|после этого|и)\s+)?(?:\b(?:можно|стоит)\s+)?\b(?:вернуться|вернитесь|"
+                            r"возвращайтесь|вернёмся|идите обратно|обратно)\b[^.!?]*|[,;]?\s*(?:then\s+)?(?:head|walk|go)\s+back\b[^.!?]*|"
+                            r"[,;]?\s*(?:then\s+)?return\s+to\b[^.!?]*|[,;]?\s*кейін\s+[^.!?]*қайт\w*[^.!?]*", re.I)
+
+
+def _clip(text: str, n: int) -> str:
+    """Cut at a sentence end (or else a word boundary) instead of mid-word: «…в которых входит ря»."""
+    text = text.strip()
+    if len(text) <= n:
+        return text
+    head = text[:n]
+    end = max(head.rfind(". "), head.rfind("! "), head.rfind("? "))
+    return head[:end + 1] if end >= n // 2 else head[:head.rfind(" ")].rstrip(",;:—- ") + "…"
+
+
 def _description_publication(p: dict, lang: str) -> tuple[str | None, list[dict]]:
     """Publish source narrative only with its own matching article attribution."""
     from urllib.parse import unquote, urlsplit
-    text = (p.get("description") or "")[:300] or None
+    text = _clip(p.get("description") or "", 300) or None
     if not text:
         return None, []
     if p.get("description_kind") == "research":  # our own words from a cited source (pipeline.place_facts)

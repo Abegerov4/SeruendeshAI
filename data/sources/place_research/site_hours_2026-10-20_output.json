@@ -1,0 +1,233 @@
+[
+ {
+  "poi_id": "osm:n11898122969",
+  "name": "Стумари",
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_source": [
+   "https://stumari.kz/"
+  ],
+  "hours_note": "ПН-ВС 12:00 - 00:00",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "osm:n12041597269",
+  "name": "RIBAMBELLE",
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_source": [
+   "https://ribambelle.kz/"
+  ],
+  "hours_note": "ПН-ВС: с 10:00 до 22:00",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "osm:n12917116702",
+  "name": "Рыба пила",
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_source": [
+   "https://ribapila.kz/"
+  ],
+  "hours_note": "Пн-Вс | 12:00 - 00:00",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "osm:n13681674667",
+  "name": "Лето",
+  "opening_hours": "12:00-02:00",
+  "hours_source": [
+   "https://white.kz/contacts/"
+  ],
+  "hours_note": "12:00-02:00",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "osm:n1843876240",
+  "name": "Фархи",
+  "opening_hours": "Mo-Su 11:00-00:00",
+  "hours_source": [
+   "https://arqa-qz.com/contacts"
+  ],
+  "hours_note": "Ежедневно с 11:00 до 00:00",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "osm:n4387005493",
+  "name": "Eagilik - Books & Coffee",
+  "opening_hours": "Tu-Sa 10:00-21:00; Su 14:00-21:00",
+  "hours_source": [
+   "http://www.eagilik.com/index.php/ru/"
+  ],
+  "hours_note": "Вт-Сб: 10:00-21:00 Вс: 14:00-21:00 Пн: выходной",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "osm:n4946926823",
+  "name": "Эсмиральда",
+  "opening_hours": "Mo-Su 12:00-21:00",
+  "hours_source": [
+   "http://esmeralda.kz"
+  ],
+  "hours_note": "Режим работы: ежедневно с 12:00 до 21:00 без выходных.",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "osm:n6408267786",
+  "name": "Ferrum",
+  "opening_hours": "Su-Th 08:00-24:00; Fr-Sa 08:00-02:00",
+  "hours_source": [
+   "http://ferrum.kz/contacts/"
+  ],
+  "hours_note": "Вскр-Чт c 8:00 до 24:00, Пт-Сб с 8:00 до 2:00",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "osm:w242016673",
+  "name": "Central Market",
+  "opening_hours": "Mo-Su 10:00-20:00",
+  "hours_source": [
+   "https://www.centralmarket.asia/"
+  ],
+  "hours_note": "10:00 - 20:00 ежедневно БЕЗ ВЫХОДНЫХ",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "ov:0efdd753-0fd6-48",
+  "name": "Rabiya",
+  "opening_hours": "Su-Th 11:00-01:00; Fr-Sa 11:00-02:00",
+  "hours_source": [
+   "http://rabiya.kz/"
+  ],
+  "hours_note": "Время работы: вс-чт: 11.00-01.00; пт-сб: 11.00-02.00",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "ov:340a2dc0-b2df-4e",
+  "name": "BAO Noodles and Sushi Bar",
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_source": [
+   "https://baofood.kz/about"
+  ],
+  "hours_note": "часы сети: Мы работаем ежедневно с 10.00 до 23.00.",
+  "confidence": "medium",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "ov:43b39731-2660-49",
+  "name": "Узбечка №1",
+  "opening_hours": "Mo-Su 11:00-23:00",
+  "hours_source": [
+   "https://uzbechka1.kz/"
+  ],
+  "hours_note": "часы сети: Часы Пн—Вс 11:00 — 23:00",
+  "confidence": "medium",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "ov:6d25989f-69ad-45",
+  "name": "Grammy",
+  "opening_hours": "Mo-Su 18:00-06:00",
+  "hours_source": [
+   "https://grammy.kz/"
+  ],
+  "hours_note": "РЕЖИМ РАБОТЫ: с 18:00 до 06:00",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "ov:89f835a6-db9d-47",
+  "name": "Trattoria.kz - Пиццерия - Доставка еды",
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_source": [
+   "https://trattoria.kz/"
+  ],
+  "hours_note": "часы сети: Ежедневно для Вас с 10:00 до 22:00",
+  "confidence": "medium",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "ov:8daa7993-90ad-48",
+  "name": "Argun",
+  "opening_hours": "Mo-Su 11:00-23:00",
+  "hours_source": [
+   "https://argun-kafe.kz/contact"
+  ],
+  "hours_note": "Режим работы: ПН-ВС 11:00 - 23:00",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "ov:a96bd2cc-d580-47",
+  "name": "Pecanta Cafe Light",
+  "opening_hours": "Mo-Su 08:00-23:00",
+  "hours_source": [
+   "https://pecanta.kamiqr.com/menu/basic"
+  ],
+  "hours_note": "Работаем с 8:00 до 23:00",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "ov:b3a101bc-fe08-43",
+  "name": "Узбечка 1",
+  "opening_hours": "Mo-Su 11:00-23:00",
+  "hours_source": [
+   "https://uzbechka1.kz/"
+  ],
+  "hours_note": "часы сети: Часы Пн—Вс 11:00 — 23:00",
+  "confidence": "medium",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "ov:bab52916-a374-4f",
+  "name": "Movie Room",
+  "opening_hours": "10:00-02:00",
+  "hours_source": [
+   "https://movieroom.kz/"
+  ],
+  "hours_note": "Режим работы, с 10:00 до 02:00 без выходных",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "ov:d67b3cc9-86a3-48",
+  "name": "Центральный Рынок Астаны",
+  "opening_hours": "Mo-Su 10:00-20:00",
+  "hours_source": [
+   "https://www.centralmarket.asia/"
+  ],
+  "hours_note": "10:00 - 20:00 ежедневно БЕЗ ВЫХОДНЫХ",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "ov:f666893a-8296-4e",
+  "name": "Qazaqstan Respýblıkasynyń Ulttyq mýzeıі",
+  "opening_hours": "Tu-Su 10:00-18:00",
+  "hours_source": [
+   "https://nmrk.kz/"
+  ],
+  "hours_note": "жұмыс уақыты 10:00 - 18:00 Сс-Жк Дүйсенбі-демалыс күні",
+  "confidence": "high",
+  "checked": "2026-10-20"
+ },
+ {
+  "poi_id": "ov:fe333afe-de65-45",
+  "name": "BAO Астана на Достык",
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_source": [
+   "https://baofood.kz/about"
+  ],
+  "hours_note": "часы сети: Мы работаем ежедневно с 10.00 до 23.00.",
+  "confidence": "medium",
+  "checked": "2026-10-20"
+ }
+]

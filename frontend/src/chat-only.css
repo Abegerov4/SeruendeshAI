@@ -100,9 +100,22 @@
  .reference-layout.mobile-view-places .places-section{top:16px;right:16px;bottom:16px;left:auto;width:min(380px,44%);max-height:none;
    overflow-y:auto;overscroll-behavior:contain;padding:0 6px 0 0;pointer-events:auto;scrollbar-width:thin}
  .reference-layout.mobile-view-places .place-grid{display:flex;flex-direction:column;gap:14px;overflow:visible;padding:2px 2px 16px}
- .reference-layout.mobile-view-places .place-card{flex:none;width:auto}
+ .reference-layout.mobile-view-places .place-card{flex:none;width:auto;max-height:none;overflow:visible}  /* the whole card, buttons included; the column scrolls */
  .reference-layout.mobile-view-places .place-image-wrap{height:120px}
  .reference-layout.mobile-view-places .places-float-bar{position:sticky;top:0;z-index:2;margin:0 0 10px;padding:0}
  .reference-layout.mobile-view-places .places-start{margin-left:0;width:100%;justify-content:center}
  .reference-layout.mobile-view-places .map-controls{right:calc(min(380px,44%) + 34px)}
+}
+
+/* phones: «Откуда начнём?» inside the chat shrinks and scrolls; the composer always stays in view */
+@media(max-width:899px){
+ .chat-body>.start-chooser{flex:0 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+ .chat-body:has(>.start-chooser) .chat-log{flex:0 1 auto}
+}
+@media(max-width:899px) and (max-height:760px){
+ .chat-body>.start-chooser{padding:12px 14px}
+ .chat-body>.start-chooser>p{display:none}
+ .chat-body>.start-chooser h2{font-size:18px;margin-bottom:10px}
+ .chat-body>.start-chooser .start-geo{padding:10px}
+ .chat-body:has(>.start-chooser) .chat-log{display:none}
 }

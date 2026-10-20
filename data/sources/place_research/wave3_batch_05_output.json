@@ -1,0 +1,32 @@
+[
+  {
+    "poi_id": "osm:n6404747238",
+    "name": "Ozen",
+    "opening_hours": "Mo-Su 09:00-24:00",
+    "hours_source": ["https://www.ritzcarlton.com/en/hotels/kazakhstan/astana/dining/ozen"],
+    "hours_note": "Everyday: 9:00 AM-12:00 AM",
+    "confidence": "high",
+    "checked": "2026-10-20",
+    "notes": "Lobby lounge/bar of The Ritz-Carlton, Astana (Dostyq St 16); official hotel dining page"
+  },
+  {
+    "poi_id": "osm:n4935263956",
+    "name": "Три пескаря",
+    "opening_hours": "Mo-Su 12:00-01:00",
+    "hours_source": ["http://tri-peskarya.kz/index.htm"],
+    "hours_note": "ЛЕТНЕЕ И ЗИМНЕЕ КАФЕ работает с 12:00 до 01:00",
+    "confidence": "medium",
+    "checked": "2026-10-20",
+    "notes": "Official site of the hotel complex (ул. Енлик-Кебек 11/1); days of week not stated, old static page"
+  },
+  {
+    "poi_id": "osm:w239713764",
+    "name": "Asia Park",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "hours_source": ["https://astana.asiapark.kz/ru/"],
+    "hours_note": "С 10:00 до 22:00",
+    "confidence": "medium",
+    "checked": "2026-10-20",
+    "notes": "Mall's own Astana site header (пр. Кабанбай батыра 21); days not stated explicitly, individual shops may differ"
+  }
+]

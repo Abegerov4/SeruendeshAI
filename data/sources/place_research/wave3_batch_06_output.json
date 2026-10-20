@@ -1,0 +1,12 @@
+[
+  {
+    "poi_id": "ov:0db6ee4f-63be-4a",
+    "name": "La Tartine",
+    "opening_hours": "Mo-Su 10:00-20:00",
+    "hours_source": ["http://latartine.kz/adresa"],
+    "hours_note": "Пн-Вс с 10.00 до 20.00",
+    "confidence": "high",
+    "checked": "2026-10-20",
+    "notes": "Branch Keruen City, Коргалжинское ш. 1 (official chain address page)"
+  }
+]

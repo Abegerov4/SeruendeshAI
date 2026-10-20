@@ -1,0 +1,26 @@
+[
+ {
+  "poi_id": "osm:w240873345",
+  "name": "Тәуелсіздік Сарайы",
+  "opening_hours": "Mo-Su 10:00-21:00",
+  "hours_source": [
+   "https://visitastana.kz/ru/about-city/what-to-see/dvorets-nezavisimosti/"
+  ],
+  "hours_note": "График работы: Пн – Вс (10:00 – 21:00)",
+  "confidence": "high",
+  "checked": "2026-10-20",
+  "notes": "Дворец Независимости, Проспект Тауелсиздик, 52 (портал visitastana.kz)"
+ },
+ {
+  "poi_id": "osm:n12917089240",
+  "name": "Harat's",
+  "opening_hours": "Mo-Th,Su 16:00-02:00; Fr-Sa 16:00-04:00",
+  "hours_source": [
+   "https://astana.harats.com/en/astana/"
+  ],
+  "hours_note": "пн-чт, вс 16:00-02:00 пт-сб 16:00 - 04:00",
+  "confidence": "high",
+  "checked": "2026-10-20",
+  "notes": "Harat's Pub Astana Гранд Алатау, Zheltoqsan St 2 (официальный сайт сети, страница филиала)"
+ }
+]

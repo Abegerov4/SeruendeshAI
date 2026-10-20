@@ -18,7 +18,12 @@ def test_hours_open_closed_unknown():
     assert opening_status(poi(oh="Mo-Fr 09:00-18:00"), NOW, 30, "ru", None)["status"] == "closed"
     unk = opening_status(poi(oh=None), NOW, 30, "ru", None)
     assert unk["status"] == "unknown" and unk["confidence"] == "low"
-    assert opening_status(poi("park"), NOW, 30, "ru", None)["status"] == "unknown"  # category is not hours evidence
+    # an unfenced park, a playground or a monument is an open public space; a botanical garden or zoo is not
+    assert opening_status(poi("park", name="Центральный парк"), NOW, 30, "ru", None)["status"] == "always"
+    assert opening_status(poi("playground", name="Детская площадка"), NOW, 30, "ru", None)["status"] == "always"
+    assert opening_status(poi("park", name="Ботанический сад"), NOW, 30, "ru", None)["status"] == "unknown"
+    assert opening_status(poi("garden", name="Сад"), NOW, 30, "ru", None)["status"] == "unknown"
+    assert opening_status(poi("cafe"), NOW, 30, "ru", None)["status"] == "unknown"  # category is not hours evidence
 
 
 def test_hours_closing_soon_and_holiday_downgrade():

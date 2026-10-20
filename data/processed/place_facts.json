@@ -40,33 +40,36 @@
   "website_problem": "hosting placeholder, no venue site"
  },
  "osm:w240873345": {
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "drop_website": true,
   "website_problem": "domain does not resolve (reported to carry a casino title)",
   "description_ru": "Дворец Независимости на проспекте Тәуелсіздік, 52 — трёхэтажное здание из стекла площадью около 40 тыс. м² для государственных мероприятий и конгрессов, с художественными экспозициями и залом истории Астаны.",
   "description_en": "The Palace of Independence at 52 Tauelsizdik Avenue is a three-storey glass building of about 40,000 m² that hosts state events and congresses, with art exhibitions and a floor on Astana's history.",
   "description_url": "https://ticketon.kz/en/place/dvorec-nezavisimosti",
-  "confidence": "medium"
+  "confidence": "high",
+  "opening_hours": "Mo-Su 10:00-21:00",
+  "hours_url": "https://visitastana.kz/ru/about-city/what-to-see/dvorets-nezavisimosti/",
+  "hours_note": "График работы: Пн – Вс (10:00 – 21:00)"
  },
  "osm:w230401645": {
   "description_ru": "Монумент-башня высотой 105 м (1996–2002), символ переноса столицы в Акмолу в 1997 году. В шаре диаметром 22 м — панорамный зал с позолоченным отпечатком ладони первого президента, в подземном уровне — кафе, аквариумы и фотогалерея.",
   "description_en": "A 105 m monument tower (built 1996–2002) marking the 1997 move of the capital to Akmola. Its 22 m sphere holds a panoramic hall with a gilded handprint of the first president; the underground level has a café, aquariums and a photo gallery.",
   "description_url": "https://ru.wikipedia.org/wiki/Байтерек_(монумент)",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:w1460763574": {
   "description_ru": "Мраморная стела высотой около 70 м на территории ЭКСПО, открытая 16 декабря 2016 года к 25-летию независимости. Её 25 граней символизируют годы независимости, облицовка выполнена из итальянского мрамора.",
   "description_en": "A marble stela about 70 m tall on the EXPO grounds, unveiled on 16 December 2016 for the 25th anniversary of independence. Its 25 faces stand for the years of independence; it is clad in Italian marble.",
   "description_url": "https://informburo.kz/novosti/nazarbaev-otkryl-monument-ly-dala-el-na-territorii-ekspo.html",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n13948916190": {
   "description_ru": "Музей истории железных дорог Казахстана, открытый в июне 2026 года при вокзале «Нұрлы жол»: четыре зала на 3200 м², более 250 экспонатов, настоящие локомотивы с доступом в кабину и тренажёр машиниста.",
   "description_en": "Museum of Kazakhstan's railway history, opened in June 2026 at Nurly Zhol station: four halls over 3,200 m², 250+ exhibits, real locomotives you can climb into and a train-driver simulator.",
   "description_url": "https://informburo.kz/novosti/muzei-istorii-zeleznyx-dorog-kazaxstana-otkryli-na-vokzale-v-astane",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:w762780007": {
@@ -77,56 +80,56 @@
    "kids_area": true
   },
   "features_url": "https://abudhabiplaza.info/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "ov:f156787e-136d-40": {
   "description_ru": "Сфера диаметром 80 м — бывший павильон Казахстана на ЭКСПО-2017, ныне Музей энергии будущего. На этажах 2–8 — экспозиции об энергии космоса, солнца, ветра, биомассы, кинетической энергии и воды, наверху — смотровая площадка.",
   "description_en": "The 80 m sphere that was Kazakhstan's EXPO-2017 pavilion, now the Museum of Future Energy. Floors 2–8 cover space, solar, wind, biomass, kinetic and water energy, with an observation deck at the top.",
   "description_url": "https://tengrinews.kz/culture/nur-alem-simvol-molodoy-stolitsyi-414051/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n5880883097": {
   "description_ru": "Кинотеатр сети Chaplin в ТРЦ MEGA Silk Way (пр. Кабанбай батыра, 62); при анонсе в 2016 году сеть заявляла здесь высокотехнологичный кинотеатр на 11 залов.",
   "description_en": "Chaplin chain cinema in the MEGA Silk Way mall (62 Kabanbay Batyr Ave); when announced in 2016 the chain described it as a high-tech 11-screen cinema.",
   "description_url": "https://forbes.kz/articles/chaplin_zakryil_vse_kinoteatryi_v_regionah_rk",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w549307755": {
   "description_ru": "Триумфальная арка «Мәңгілік Ел» (2011) высотой около 20 м — по метру на каждый год независимости. На крыше (21,5 м) — смотровая площадка с панорамными биноклями, внутри — выставочная галерея на 120 м².",
   "description_en": "The Mäñgilik El triumphal arch (2011), about 20 m tall, one metre per year of independence. Its roof (21.5 m) has an observation deck with panoramic binoculars, and inside is a 120 m² exhibition gallery.",
   "description_url": "https://www.wikidata.org/wiki/Q42422896",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:r16827715": {
   "description_ru": "Мечеть, открытая в 2005 году при поддержке Катара; до ноября 2021 года называлась «Нур-Астана», затем получила имя аль-Фараби. Купол высотой 43 м, четыре минарета по 62 м, вмещает до 5000 молящихся.",
   "description_en": "A mosque opened in 2005 with support from Qatar; called Nur-Astana until November 2021, when it was renamed after al-Farabi. It has a 43 m dome and four 62 m minarets and holds up to 5,000 worshippers.",
   "description_url": "https://ru.wikipedia.org/wiki/Нур-Астана_(мечеть)",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:w1460537088": {
   "description_ru": "Государственный театр мюзикла «Astana Musical», выступающий в Центральном концертном зале «Qazaqstan» (Казахконцерт) на проспекте Мангилик Ел, 10/1; в афише — мюзикл «Алдар Көсе».",
   "description_en": "Astana Musical, a state musical theatre presented by Kazakhconcert at the QAZAQSTAN Central Concert Hall, Mangilik El Ave 10/1; its bill includes the musical 'Aldar Kose'.",
   "description_url": "https://qazaqconcert.kz/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n10860197906": {
   "description_ru": "Скульптурная композиция, изображающая участников группы The Beatles, на пешеходном Арбате в районе Сарыарка; появилась летом 2018 года.",
   "description_en": "A sculpture group depicting the members of The Beatles on Astana's pedestrian Arbat in Saryarka district, installed in summer 2018.",
   "description_url": "https://newtimes.kz/obshchestvo/74155-zheleznyj-tron-i-the-beatles-poyavilis-v-astane-foto",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w37884583": {
   "description_ru": "Парк площадью около 14 га на левом берегу, между площадью Дөңгелек и ТРЦ «Хан Шатыр», открыт в 2005 году. Центр парка — большой фонтан, подаренный в 2007 году Габриэлой фон Габсбург.",
   "description_en": "A park of about 14 hectares on the left bank between Dongelek Square and Khan Shatyr, opened in 2005. Its centrepiece is a large fountain donated in 2007 by Gabriela von Habsburg.",
   "description_url": "https://en.wikipedia.org/wiki/Lovers%27_Park_(Astana)",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:w1449317673": {
@@ -136,14 +139,14 @@
   "opening_hours": "Mo-Su 10:00-02:00",
   "hours_url": "https://ticketon.kz/en/tashkent/place/nur-sultan-chaplin-khanshatyr",
   "hours_note": "ежедневно, до 02:00 следующего дня",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "ov:74210037-b47a-42": {
   "description_ru": "Пешеходный бульвар Нуржол длиной около 2,2 км в административном центре левого берега, от Ак Орды до «Хан Шатыра»; спроектирован Кисё Курокавой. Вдоль него стоят Байтерек и здания правительства и парламента.",
   "description_en": "Nurzhol, a 2.2 km pedestrian boulevard in the left-bank administrative centre running from Ak Orda to Khan Shatyr, designed by Kisho Kurokawa and lined by Baiterek and government and parliament buildings.",
   "description_url": "https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80_%D0%9D%D1%83%D1%80%D0%B6%D0%BE%D0%BB",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:w230358855": {
@@ -160,28 +163,28 @@
   "description_ru": "Национальный теннисный центр Beeline Arena в Астане; в 2026 году ITF присвоила ему «золотой статус» как центру подготовки теннисистов.",
   "description_en": "Beeline Arena is Astana's National Tennis Centre; in 2026 the ITF awarded it 'gold status' as a player-development centre.",
   "description_url": "https://bes.media/news/natsionalniy-tennisniy-tsentr-kazahstana-poluchil-zolotoy-status-itf-730bb3/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n3404172551": {
   "description_ru": "Ресторан среднеазиатской кухни, оформленный как площадь восточного кишлака с арыком и айванами; в меню плов, шурпа, манты, самса и шашлык, есть и европейские блюда.",
   "description_en": "A Central Asian restaurant styled as an Eastern village square with an irrigation channel and iwan seating; the menu has plov, shurpa, manty, samsa and shashlik, plus some European dishes.",
   "description_url": "https://kishlak.kz/astana",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "ov:233f9ff9-02f1-4f": {
   "description_ru": "Галерея искусств, открытая в 2003 году. Дважды в год проводит салоны — весенний для молодых художников и осенний для признанных мастеров; в собрании работы от реализма до авангарда и инсталляций.",
   "description_en": "An art gallery opened in 2003. It holds two salons a year, a spring one for young artists and an autumn one for established masters; the collection ranges from realism to avant-garde and installations.",
   "description_url": "https://astana.citypass.kz/en/attractions/galereya-isskustv-has-sanat",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:r18901938": {
   "description_ru": "Главная республиканская мечеть, открытая в 2022 году, — крупнейшая в Центральной Азии: купол высотой около 83 м и четыре минарета по 130 м. В 2026 году официально получила имя «Нұрсұлтан».",
   "description_en": "The Grand Republican Mosque, opened in 2022, is the largest in Central Asia, with a dome about 83 m high and four 130 m minarets. In 2026 it was officially named Nursultan Mosque.",
   "description_url": "https://en.wikipedia.org/wiki/Astana_Grand_Mosque",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:n12508539014": {
@@ -192,14 +195,14 @@
    "kids_area": true
   },
   "features_url": "https://kidburg.ru/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w734514013": {
   "description_ru": "Вытянутый линейный парк площадью около 14 га на левом берегу, обустроенный в 2017 году.",
   "description_en": "An elongated linear park of about 14 ha on the left bank, laid out in 2017.",
   "description_url": "https://www.wikidata.org/wiki/Q120868822",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n6404769888": {
@@ -216,7 +219,7 @@
   "description_ru": "Театр оперы и балета, открытый в 2013 году оперой «Биржан и Сара»; здание в неоклассическом стиле с казахскими мотивами. Большой зал на 1250 мест и камерный зал на 250 мест.",
   "description_en": "Opera and ballet house opened in 2013 with the opera 'Birzhan and Sara', in a neoclassical building with Kazakh motifs. Main Hall seats 1,250 and the Chamber Hall 250.",
   "description_url": "https://en.wikipedia.org/wiki/Astana_Opera",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:w963855443": {
@@ -230,29 +233,32 @@
    "free_entry": true
   },
   "features_url": "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n2681623412": {
   "description_ru": "Монумент на площади Независимости, открытый в 2009 году: стела высотой 91 м (отсылка к 1991 году — году независимости), окружённая колоннадой из 28 колонн; на постаменте — тематические барельефы.",
   "description_en": "A monument on Independence Square unveiled in 2009: a 91 m stele (a nod to 1991, the year of independence) ringed by a 28-column colonnade, with themed bas-reliefs on its pedestal.",
   "description_url": "https://ru.wikipedia.org/wiki/Казак_ели_(монумент)",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:w1470780026": {
   "description_ru": "Дубовая роща с аллеей рядом с театром «Астана Опера», высаженная в 2021 году: около 700 дубов и тысяча кустов сирени на участке 3,2 га.",
   "description_en": "An oak grove with an alley next to the Astana Opera theatre, planted in 2021: about 700 oaks and 1,000 lilac bushes on 3.2 ha.",
   "description_url": "https://ru.sputnik.kz/20210630/Sad-s-dubami-i-sirenyu-razbil-17491776.html",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w1449301315": {
   "description_ru": "Кофейня сети Starbucks в торгово-развлекательном центре «Хан Шатыр».",
   "description_en": "A Starbucks coffee shop inside the Khan Shatyr entertainment centre.",
   "description_url": "https://khanshatyr.com/en/food-court/kafe-restorany-i-kofeyni",
-  "checked": "2026-10-19",
-  "confidence": "medium"
+  "checked": "2026-10-20",
+  "confidence": "medium",
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://www.starbucks.com.kz/stores",
+  "hours_note": "Starbucks Хан Шатыр | 10:00-22:00 | Тұран даңғылы, 37"
  },
  "osm:n12093489321": {
   "description_ru": "Ресторан грузинской кухни сети «Дареджани» на 1-м этаже ТРЦ MEGA Silk Way: хачапури, хинкали и грузинские вина в современной подаче.",
@@ -260,14 +266,14 @@
   "description_url": "https://abr.kz/restaurant/daredzhani",
   "opening_hours": "Mo-Su 09:00-23:00",
   "hours_url": "https://abr.kz/restaurant/daredzhani",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:n4985150252": {
   "description_ru": "Многофункциональная площадка для концертов, выставок и форумов: трёхэтажное здание площадью более 43 тыс. м² с залом Grand Hall, конференц-залом и VIP-залами «Шанырак» и «Аспан».",
   "description_en": "A multipurpose venue for concerts, exhibitions and forums: a three-storey building of over 43,000 m² with a Grand Hall, a conference hall and the VIP halls Shanyrak and Aspan.",
   "description_url": "https://ticketon.kz/place/kongress-centr",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:n13397061026": {
@@ -276,26 +282,26 @@
   "description_url": "https://abr.kz/restaurant/luckee-yu",
   "opening_hours": "Mo-Su 10:00-22:00",
   "hours_url": "https://abr.kz/restaurant/luckee-yu",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:w30014040": {
   "description_ru": "Молодёжный театр «Жастар» — государственное коммунальное казённое предприятие акимата Астаны на улице Есенберлина, 10.",
   "description_en": "Zhastar Youth Theatre, a municipal theatre of the Astana city akimat on Esenberlin Street 10.",
   "description_url": "http://www.zhastar-theatre.kz/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w1460700597": {
   "status": "closed_permanently",
   "status_source": "https://bes.media/news/muzey-pod-otkritim-nebom-snosyat-v-astane-chto-poyavitsya-vmesto/",
-  "checked": "2026-10-19"
+  "checked": "2026-10-20"
  },
  "osm:n1843876259": {
   "description_ru": "Кафе сети Rafe Coffee & Food на улице Кунаева, в районе ЖК «Нурсая». В меню пицца, паста, ризотто, салаты, стейки, десерты и кофе.",
   "description_en": "A Rafe Coffee & Food cafe on Kunaev Street in the Nursaya residential complex area. The menu covers pizza, pasta, risotto, salads, steaks, desserts and coffee.",
   "description_url": "https://rafe.kz/contacts",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w166197368": {
@@ -306,7 +312,7 @@
    "free_entry": false
   },
   "features_url": "https://astana-piramida.kz/tours",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:w240860325": {
@@ -314,7 +320,7 @@
   "description_en": "Kazakhstan's national mosque, opened in 2012 on the right bank of the Yesil near the Palace of Peace and Reconciliation. Built in classical Islamic style with Kazakh ornaments, it has a 51 m main dome and four 77 m minarets and holds about 5,000 worshippers.",
   "description_url": "https://ru.wikipedia.org/wiki/Хазрет_Султан_(мечеть)",
   "checked": "2026-10-20",
-  "confidence": "low",
+  "confidence": "medium",
   "opening_hours": "Mo-Su 08:00-20:00",
   "hours_url": "https://sxodim.com/astana/place/ziret-s-ltan-stolovaya",
   "hours_note": "по данным sxodim.com (карточка от 2021-03-12)"
@@ -323,14 +329,14 @@
   "description_ru": "Кафе сети Degirmen с турецкой кухней и собственным производством; название означает «мельница». Сеть работает в Казахстане с 2010 года, этот филиал — на улице Кунаева, 14.",
   "description_en": "A branch of Degirmen, a Turkish-cuisine cafe chain with its own production; the name means 'mill'. The chain has operated in Kazakhstan since 2010; this branch is at 14 Kunaev Street.",
   "description_url": "http://degirmen.kz/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w1449317872": {
   "description_ru": "Киоск Mövenpick в зоне фуд-корта ТРЦ «Хан Шатыр».",
   "description_en": "A Mövenpick kiosk in the food-court area of the Khan Shatyr mall.",
   "description_url": "https://www.khanshatyr.com/food-court/kioski",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w460703779": {
@@ -344,14 +350,14 @@
    "kids_area": true
   },
   "features_url": "http://www.khanshatyr.com/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:n12293708057": {
   "description_ru": "Кафе-пекарня французской сети Paul: выпечка и десерты, завтраки, салаты и горячие напитки; можно поесть на месте или забрать заказ с собой.",
   "description_en": "Café-bakery of the French Paul chain offering pastries and desserts, breakfasts, salads and hot drinks, to eat in or take away.",
   "description_url": "https://paul.kz/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n6804086289": {
@@ -361,21 +367,21 @@
   "opening_hours": "Mo-Su 09:00-21:00",
   "hours_url": "https://taptatti.kz/contacts",
   "hours_note": "на сайте указан единый график для всех магазинов сети (ежедневно 09:00–21:00); в OSM было 08:00–21:30",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "cp:94": {
   "description_ru": "Прогулки на речных трамвайчиках по Есилю (Ишиму), которые проводятся с 2008 года. Посадка на набережной у Дворца школьников; маршрут проходит вдоль центральной набережной с остановками у Центрального парка, в Самале и у памятника Кенесары.",
   "description_en": "River tram trips on the Yesil (Ishim), running since 2008. Boarding is on the embankment by the Palace of Schoolchildren; the route follows the central embankment with stops at Central Park, Samal and the Kenesary monument.",
   "description_url": "https://astana.citypass.kz/ru/attractions/vodnyie-progulki-po-reke-ishim",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w243041606": {
   "description_ru": "Один из крупнейших парков Астаны (около 83 га), открыт в 2007 году: искусственные ручьи, фонтаны и клумбы, центральный фонтан в форме птицы Самрук. В 2021 году реконструирован как часть единой зелёной зоны с набережной Есиля и парком «Триатлон».",
   "description_en": "One of Astana's largest parks (about 83 ha), opened in 2007, with artificial streams, fountains and flower beds and a central fountain shaped like the mythical Samruk bird. Rebuilt in 2021 as part of one green zone with the Yesil embankment and Triathlon Park.",
   "description_url": "https://ru.wikipedia.org/wiki/Президентский_парк",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n12603493106": {
@@ -385,14 +391,14 @@
   "opening_hours": "Mo-Fr 10:00-19:00; Sa 10:00-17:00; Su off",
   "hours_url": "https://almatykitap.kz/magaziny-14/",
   "hours_note": "без перерыва; воскресенье — выходной",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n13308087157": {
   "description_ru": "Бюст румынского поэта Михая Эминеску, открытый в 2021 году; в это же время в Бухаресте открыли сквер «Казахстан» — в знак дружбы двух стран.",
   "description_en": "Bust of the Romanian poet Mihai Eminescu, unveiled in 2021 at the same time as a 'Kazakhstan' square opened in Bucharest, as a sign of friendship between the two countries.",
   "description_url": "https://forbes.kz/news/newsid_258571",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n10570377881": {
@@ -402,14 +408,14 @@
   "opening_hours": "Mo-Su 10:00-23:00",
   "hours_url": "https://greenmall.kz/ru",
   "hours_note": "часы ТРЦ и паркинга; отдельные арендаторы работают по своему графику (например, фитнес-клуб 07:00–00:00)",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w499328514": {
   "description_ru": "Крупный торгово-развлекательный центр казахстанской сети MEGA, открытый в марте 2017 года у территории EXPO-2017. Двухэтажное здание длиной около 500 м построено по концепции «город в городе» с торговыми улицами и примерно 330 магазинами.",
   "description_en": "A large shopping and entertainment centre of the Kazakh MEGA chain, opened in March 2017 next to the EXPO-2017 site. The two-storey, roughly 500 m long building follows a 'city within a city' layout with shopping streets and about 330 stores.",
   "description_url": "https://ru.wikipedia.org/wiki/MEGA_Silk-way",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w499328449": {
@@ -421,7 +427,7 @@
    "free_entry": false
   },
   "features_url": "https://astanaballet.com/ru/pages/visit",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w239954943": {
@@ -435,7 +441,7 @@
    "free_entry": false
   },
   "features_url": "https://ticketon.kz/place/kinoteatr-arsenal-astana",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "ov:f7aa608d-d733-49": {
@@ -443,7 +449,7 @@
    "kids_area": true
   },
   "features_url": "https://newtimes.kz/obshchestvo/73916-podarok-ot-semirechya-park-zhetysu-preobrazili-za-3-mlrd-tenge-k-yubileyu-astany-foto",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n4929158878": {
@@ -456,7 +462,7 @@
    "outdoor_seating": true
   },
   "features_url": "https://goodproject.kz/projects/na-kryshe/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "ov:02b07443-f084-46": {
@@ -466,35 +472,35 @@
   "opening_hours": "Tu-Sa 18:00-02:00; Su,Mo off",
   "hours_url": "https://www.marriott.com/en-us/hotels/tsesi-sheraton-astana-hotel/dining/",
   "hours_note": "выходные — воскресенье и понедельник; дресс-код smart casual",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "ov:a4d7605b-b301-4a": {
   "description_ru": "Крупнейший концертный зал страны, открытый в декабре 2009 года по проекту итальянского архитектора Манфреди Николетти. Наклонные стены из синего стекла напоминают лепестки цветка; главный зал вмещает 3500 зрителей, есть ещё два малых зала.",
   "description_en": "The country's largest concert venue, opened in December 2009 to a design by Italian architect Manfredi Nicoletti. Its inclined blue-glass walls evoke flower petals; the main hall seats 3,500 and there are two smaller halls.",
   "description_url": "https://en.wikipedia.org/wiki/Kazakhstan_Central_Concert_Hall",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:w240376692": {
   "description_ru": "Музей казахского поэта и государственного деятеля Сакена Сейфуллина в бревенчатом купеческом доме 1846 года, где он работал в 1920–30-х годах; открыт в 1988 году. В шести залах — рукописи, письма, личные вещи и пишущая машинка писателя.",
   "description_en": "A museum of Kazakh poet and statesman Saken Seifullin in an 1846 merchant's log house where he worked in the 1920s–30s; opened in 1988. Six halls show manuscripts, letters, personal belongings and his typewriter.",
   "description_url": "https://ru.wikipedia.org/wiki/Музей_Сакена_Сейфуллина",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n4113550330": {
   "description_ru": "Мемориал жертвам голода 1932–1933 годов, открытый 31 мая 2012 года на пересечении проспектов Республики и Абая. Композиция — «Стена скорби» в виде решётки юрты (кереге) и бронзовые фигуры женщины с поднятыми руками и мальчика.",
   "description_en": "A memorial to the victims of the 1932–1933 famine, unveiled on 31 May 2012 at the junction of Respublika and Abay avenues. It combines a 'Wall of Grief' shaped like a yurt lattice (kerege) with bronze figures of a woman raising her arms and a boy.",
   "description_url": "https://tengrinews.kz/kazakhstan_news/foto-nursultan-nazarbaev-otkryl-astane-monument-pamiati-215083/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "ov:ddc0afc3-dae9-46": {
   "description_ru": "Старейший православный храм Астаны: церковь, заложенная казаками Акмолинска в 1854 году, в 1900–1902 годах перестроена на нынешнем месте как пятиглавая крестообразная. С 1999 года — кафедральный собор, памятник истории и культуры местного значения.",
   "description_en": "Astana's oldest Orthodox church: founded by Akmolinsk Cossacks in 1854 and rebuilt on its current site in 1900–1902 as a five-domed, cross-shaped church. A cathedral since 1999 and a locally listed heritage monument.",
   "description_url": "https://sobor.kz/node/7152",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "ov:ad269a74-94c9-44": {
@@ -507,7 +513,7 @@
   },
   "features_url": "https://ticketon.kz/place/keruen-cinema",
   "checked": "2026-10-20",
-  "confidence": "low",
+  "confidence": "medium",
   "opening_hours": "Mo-Su 10:00-24:00",
   "hours_url": "https://sxodim.com/astana/place/keruen-cinema",
   "hours_note": "по данным sxodim.com (карточка от 2021-12-20)"
@@ -516,7 +522,7 @@
   "description_ru": "Центр семейного отдыха Ailand на шоссе Коргалжын, 2: океанариум, анимационный театр «Джунгли», экзотариум, колесо обозрения, парк аттракционов и амфитеатр «Айдуман».",
   "description_en": "Ailand family entertainment centre at Korgalzhyn Highway 2 with an oceanarium, the 'Jungle' animatronic show, an exotarium, a Ferris wheel, an amusement park and the Aiduman amphitheatre.",
   "description_url": "https://ailand.kz/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n10064384673": {
@@ -525,7 +531,7 @@
   "description_url": "https://abr.kz/restaurant/del-papa",
   "opening_hours": "Mo-Su 10:00-23:00",
   "hours_url": "https://abr.kz/restaurant/del-papa",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:n4874140222": {
@@ -534,7 +540,7 @@
   "description_url": "https://abr.kz/restaurant/daredzhani",
   "opening_hours": "Mo-Su 09:00-24:00",
   "hours_url": "https://abr.kz/restaurant/daredzhani",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:w1424109192": {
@@ -545,7 +551,7 @@
    "kids_area": true
   },
   "features_url": "https://tengrinews.kz/kazakhstan_news/katok-prud-detskie-ploschadki-novoe-obschestvennoe-596961/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:r16002498": {
@@ -557,7 +563,7 @@
   },
   "features_url": "https://ru.wikipedia.org/wiki/Парк_Жеруйык",
   "checked": "2026-10-20",
-  "confidence": "low",
+  "confidence": "medium",
   "opening_hours": "24/7",
   "hours_url": "https://sxodim.com/astana/place/park-zheruyyk",
   "hours_note": "по данным sxodim.com (карточка от 2022-03-08)"
@@ -567,7 +573,7 @@
   "description_en": "The Kazakhstan–Korea Friendship Garden opened in 2017 with funding from the Korean government. It has a Bell Tower of Friendship, a mirror pond, a flower garden and traditional Korean architecture.",
   "description_url": "https://informburo.kz/novosti/koreya-podarila-astane-sad-s-prudom-v-znak-druzhby.html",
   "checked": "2026-10-20",
-  "confidence": "low",
+  "confidence": "medium",
   "opening_hours": "24/7",
   "hours_url": "https://sxodim.com/astana/place/koreyskiy-park",
   "hours_note": "по данным sxodim.com (карточка от 2023-04-21)"
@@ -583,7 +589,7 @@
    "free_entry": false
   },
   "features_url": "https://ticketon.kz/place/nacionalnyj-muzej-rk",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:n4916363251": {
@@ -594,7 +600,7 @@
    "free_entry": false
   },
   "features_url": "https://ticketon.kz/place/astana-filarmonia",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w917348929": {
@@ -605,7 +611,7 @@
    "free_entry": false
   },
   "features_url": "https://ticketon.kz/place/teatr-im-k-kuanyshbajeva-9565",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n5126825313": {
@@ -617,7 +623,7 @@
   },
   "features_url": "https://ticketon.kz/place/astaninskiy-cirk",
   "checked": "2026-10-20",
-  "confidence": "low",
+  "confidence": "medium",
   "opening_hours": "Sa-Su 08:30-18:30",
   "hours_url": "https://sxodim.com/astana/place/stolichnyy-cirk",
   "hours_note": "по данным sxodim.com (карточка от 2022-08-09)"
@@ -630,7 +636,7 @@
    "free_entry": false
   },
   "features_url": "https://ticketon.kz/place/teatr-dramy-im-gorkogo-astana",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n2349675581": {
@@ -641,7 +647,7 @@
    "free_entry": false
   },
   "features_url": "https://ticketon.kz/en/place/teatr-kukol-v-nur-sultane",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w424923382": {
@@ -652,21 +658,21 @@
    "free_entry": true
   },
   "features_url": "https://informburo.kz/novosti/biblioteka-nazarbaeva-prevratilas-v-prezidentskij-centr-chto-tam-izmenitsya",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w166267459": {
   "description_ru": "Ледовый дворец «Алау» на проспекте Кабанбай батыра, 47 открыт в 2011 году к Азиатским играм; 400-метровая конькобежная дорожка и 7462 места, проводятся соревнования, концерты и массовые катания.",
   "description_en": "The Alau Ice Palace at 47 Kabanbay Batyr Avenue opened in 2011 for the Asian Winter Games. It has a 400 m speed-skating track and 7,462 seats, and hosts competitions, concerts and public skating.",
   "description_url": "https://ticketon.kz/place/ledovyj-dvorec-alau",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w425276242": {
   "description_ru": "Дворец единоборств имени Жаксылыка Ушкемпирова на проспекте Кабанбай батыра, 43 открыт 6 июля 2019 года; трансформируемая арена для бокса, дзюдо, борьбы, тхэквондо и гимнастики, есть фитнес-центр и бассейн.",
   "description_en": "The Zhaksylyk Ushkempirov Martial Arts Palace at 43 Kabanbay Batyr Avenue opened on 6 July 2019. Its convertible arena hosts boxing, judo, wrestling, taekwondo and gymnastics, and it has a fitness centre and pool.",
   "description_url": "https://www.jekpejek.kz/ru/about/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w1460088071": {
@@ -676,7 +682,7 @@
   "opening_hours": "Mo-Su 07:00-23:00",
   "hours_url": "https://lask.kz/ru/fitness-center-complex/grafik-raboty-fitnes-qazaqstan/",
   "hours_note": "часы фитнес-центра (тренажёрный зал и бассейн); последний понедельник месяца — санитарный день",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:n4965336822": {
@@ -686,7 +692,7 @@
   "opening_hours": "Mo-Su 10:00-22:00",
   "hours_url": "https://kazakhstan.travel/ru/attractions/450",
   "hours_note": "часы торговой галереи; рестораны, кинотеатр и каток внутри могут работать по своему графику",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "osm:w916153715": {
@@ -700,7 +706,7 @@
    "free_entry": false
   },
   "features_url": "https://reyka.kz/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "high"
  },
  "osm:n5889815192": {
@@ -710,14 +716,14 @@
   "opening_hours": "Mo-Fr 17:00-02:00; Sa,Su 12:00-02:00",
   "hours_url": "https://ticketon.kz/place/bar-chili-grill",
   "hours_note": "вход со стороны улицы Бухарбай батыра",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "ov:e65c8a39-85d8-47": {
   "description_ru": "Караоке в казахском национальном стиле на улице Достык, 4 (левый берег, у пересечения проспекта Туран и улицы Сыганак): общий зал до 90 гостей и много отдельных караоке-кабин.",
   "description_en": "Karaoke venue in Kazakh national style at 4 Dostyk Street (left bank, near Turan Avenue and Syganak Street), with a shared hall for up to 90 guests and many private karaoke rooms.",
   "description_url": "https://ariya-stepi.kz/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "ov:f7553d17-04d8-47": {
@@ -729,14 +735,14 @@
    "outdoor_seating": true
   },
   "features_url": "https://aisha-bibi.com/astana",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "ov:a75bc1c1-1527-48": {
   "description_ru": "Суши-ресторан сети Sushiman в Астане с доставкой: роллы, сеты, пицца, супы, горячие блюда, завтраки и десерты.",
   "description_en": "Astana sushi restaurant of the Sushiman chain with delivery: rolls, sets, pizza, soups, hot dishes, breakfasts and desserts.",
   "description_url": "https://sushiman.kz/",
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "confidence": "medium"
  },
  "ov:4a1e172a-2c49-42": {
@@ -770,11 +776,11 @@
   "description_url": "https://sxodim.com/astana/place/kinoteatr-arman"
  },
  "ov:bab52916-a374-4f": {
-  "opening_hours": "Mo-Su 10:00-02:00",
-  "hours_url": "http://movieroom.kz/",
-  "hours_note": "«Режим работы, с 10:00 до 02:00 без выходных»; приватный зал по бронированию",
+  "opening_hours": "10:00-02:00",
+  "hours_url": "https://movieroom.kz/",
+  "hours_note": "Режим работы, с 10:00 до 02:00 без выходных",
   "checked": "2026-10-20",
-  "confidence": "medium"
+  "confidence": "high"
  },
  "osm:n10957524588": {
   "opening_hours": "Tu-Sa 09:00-18:00",
@@ -966,11 +972,11 @@
   "confidence": "low"
  },
  "osm:n12917089240": {
-  "opening_hours": "Mo-Su 16:00-00:00",
-  "hours_url": "https://sxodim.com/astana/place/harats-pub",
-  "hours_note": "по данным sxodim.com (карточка от 2023-02-21)",
+  "opening_hours": "Mo-Th,Su 16:00-02:00; Fr-Sa 16:00-04:00",
+  "hours_url": "https://astana.harats.com/en/astana/",
+  "hours_note": "пн-чт, вс 16:00-02:00 пт-сб 16:00 - 04:00",
   "checked": "2026-10-20",
-  "confidence": "low"
+  "confidence": "high"
  },
  "ov:07c68577-7ff6-49": {
   "opening_hours": "Mo-Th 17:00-03:00; Fr-Sa 17:00-05:00; Su 12:00-23:00",
@@ -1002,10 +1008,10 @@
  },
  "ov:a96bd2cc-d580-47": {
   "opening_hours": "Mo-Su 08:00-23:00",
-  "hours_url": "https://sxodim.com/astana/place/pecanta",
-  "hours_note": "по данным sxodim.com (карточка от 2022-02-21)",
+  "hours_url": "https://pecanta.kamiqr.com/menu/basic",
+  "hours_note": "Работаем с 8:00 до 23:00",
   "checked": "2026-10-20",
-  "confidence": "low"
+  "confidence": "high"
  },
  "ov:44beee38-53ec-43": {
   "opening_hours": "Mo-Su 10:00-22:00",
@@ -1211,7 +1217,7 @@
   "description_en": "A small park with a memorial to soldiers who died in the Afghan war, the names of its veterans engraved on the monument. Benches and flower beds.",
   "description_url": "https://sxodim.com/astana/place/park-afganskoy-voyne",
   "checked": "2026-10-20",
-  "confidence": "low",
+  "confidence": "medium",
   "opening_hours": "24/7",
   "hours_url": "https://sxodim.com/astana/place/park-afganskoy-voyne",
   "hours_note": "по данным sxodim.com (карточка от 2021-08-19)"
@@ -1221,7 +1227,7 @@
   "description_en": "A family shopping centre on Nurzhol Boulevard next to Baiterek, opened in 2008, with a food court on the third floor.",
   "description_url": "https://sxodim.com/astana/place/keruen",
   "checked": "2026-10-20",
-  "confidence": "low",
+  "confidence": "medium",
   "opening_hours": "Mo-Su 10:00-22:00",
   "hours_url": "https://sxodim.com/astana/place/keruen",
   "hours_note": "по данным sxodim.com (карточка от 2021-09-19)"
@@ -1252,7 +1258,7 @@
   "description_en": "A 34,500 m² shopping and entertainment centre at Turan Avenue and Korgalzhyn Highway, opposite Central Park: shops, a supermarket, a kids' play park, a cinema and a food court.",
   "description_url": "https://sxodim.com/astana/place/keruencity",
   "checked": "2026-10-20",
-  "confidence": "low",
+  "confidence": "medium",
   "opening_hours": "Mo-Su 10:00-22:00",
   "hours_url": "https://sxodim.com/astana/place/keruencity",
   "hours_note": "по данным sxodim.com (карточка от 2021-10-14)"
@@ -1262,7 +1268,7 @@
   "description_en": "A South Korean and vegetarian café: chicken in sweet-and-spicy sauce, kimbap, soups and bungeoppang, a sweet fish-shaped rice-flour pastry.",
   "description_url": "https://sxodim.com/astana/place/peekaboo",
   "checked": "2026-10-20",
-  "confidence": "low",
+  "confidence": "medium",
   "opening_hours": "Mo-Su 12:00-22:00",
   "hours_url": "https://sxodim.com/astana/place/peekaboo",
   "hours_note": "по данным sxodim.com (карточка от 2022-12-15)"
@@ -1451,10 +1457,10 @@
  },
  "osm:n12917116702": {
   "opening_hours": "Mo-Su 12:00-00:00",
-  "hours_url": "https://sxodim.com/astana/place/ryba-pila",
-  "hours_note": "по данным sxodim.com (карточка от 2023-02-08)",
+  "hours_url": "https://ribapila.kz/",
+  "hours_note": "Пн-Вс | 12:00 - 00:00",
   "checked": "2026-10-20",
-  "confidence": "low"
+  "confidence": "high"
  },
  "ov:19a2719f-3e04-43": {
   "opening_hours": "Mo-Su 09:00-22:00",
@@ -1527,11 +1533,11 @@
   "confidence": "low"
  },
  "osm:n4387005493": {
-  "opening_hours": "Mo-Fr 11:00-20:00; Sa 10:00-18:00",
-  "hours_url": "https://sxodim.com/astana/place/eagilik-books-coffee",
-  "hours_note": "по данным sxodim.com (карточка от 2022-11-29)",
+  "opening_hours": "Tu-Sa 10:00-21:00; Su 14:00-21:00",
+  "hours_url": "http://www.eagilik.com/index.php/ru/",
+  "hours_note": "Вт-Сб: 10:00-21:00 Вс: 14:00-21:00 Пн: выходной",
   "checked": "2026-10-20",
-  "confidence": "low"
+  "confidence": "high"
  },
  "osm:n2671060738": {
   "opening_hours": "24/7",
@@ -1577,10 +1583,10 @@
  },
  "osm:w239713764": {
   "opening_hours": "Mo-Su 10:00-22:00",
-  "hours_url": "https://sxodim.com/astana/place/asia-park",
-  "hours_note": "по данным sxodim.com (карточка от 2023-03-02)",
+  "hours_url": "https://astana.asiapark.kz/ru/",
+  "hours_note": "С 10:00 до 22:00",
   "checked": "2026-10-20",
-  "confidence": "low"
+  "confidence": "medium"
  },
  "osm:w1449322354": {
   "opening_hours": "Mo-Su 11:00-22:00",
@@ -1588,5 +1594,229 @@
   "hours_note": "по данным sxodim.com (карточка от 2023-01-26)",
   "checked": "2026-10-20",
   "confidence": "low"
+ },
+ "osm:n11898122969": {
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_url": "https://stumari.kz/",
+  "hours_note": "ПН-ВС 12:00 - 00:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n12041597269": {
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://ribambelle.kz/",
+  "hours_note": "ПН-ВС: с 10:00 до 22:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n13681674667": {
+  "opening_hours": "12:00-02:00",
+  "hours_url": "https://white.kz/contacts/",
+  "hours_note": "12:00-02:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n1843876240": {
+  "opening_hours": "Mo-Su 11:00-00:00",
+  "hours_url": "https://arqa-qz.com/contacts",
+  "hours_note": "Ежедневно с 11:00 до 00:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n4946926823": {
+  "opening_hours": "Mo-Su 12:00-21:00",
+  "hours_url": "http://esmeralda.kz",
+  "hours_note": "Режим работы: ежедневно с 12:00 до 21:00 без выходных.",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n6408267786": {
+  "opening_hours": "Su-Th 08:00-24:00; Fr-Sa 08:00-02:00",
+  "hours_url": "http://ferrum.kz/contacts/",
+  "hours_note": "Вскр-Чт c 8:00 до 24:00, Пт-Сб с 8:00 до 2:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:w242016673": {
+  "opening_hours": "Mo-Su 10:00-20:00",
+  "hours_url": "https://www.centralmarket.asia/",
+  "hours_note": "10:00 - 20:00 ежедневно БЕЗ ВЫХОДНЫХ",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:0efdd753-0fd6-48": {
+  "opening_hours": "Su-Th 11:00-01:00; Fr-Sa 11:00-02:00",
+  "hours_url": "http://rabiya.kz/",
+  "hours_note": "Время работы: вс-чт: 11.00-01.00; пт-сб: 11.00-02.00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:340a2dc0-b2df-4e": {
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_url": "https://baofood.kz/about",
+  "hours_note": "часы сети: Мы работаем ежедневно с 10.00 до 23.00.",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:43b39731-2660-49": {
+  "opening_hours": "Mo-Su 11:00-23:00",
+  "hours_url": "https://uzbechka1.kz/",
+  "hours_note": "часы сети: Часы Пн—Вс 11:00 — 23:00",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:6d25989f-69ad-45": {
+  "opening_hours": "Mo-Su 18:00-06:00",
+  "hours_url": "https://grammy.kz/",
+  "hours_note": "РЕЖИМ РАБОТЫ: с 18:00 до 06:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:89f835a6-db9d-47": {
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://trattoria.kz/",
+  "hours_note": "часы сети: Ежедневно для Вас с 10:00 до 22:00",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:8daa7993-90ad-48": {
+  "opening_hours": "Mo-Su 11:00-23:00",
+  "hours_url": "https://argun-kafe.kz/contact",
+  "hours_note": "Режим работы: ПН-ВС 11:00 - 23:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:b3a101bc-fe08-43": {
+  "opening_hours": "Mo-Su 11:00-23:00",
+  "hours_url": "https://uzbechka1.kz/",
+  "hours_note": "часы сети: Часы Пн—Вс 11:00 — 23:00",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:d67b3cc9-86a3-48": {
+  "opening_hours": "Mo-Su 10:00-20:00",
+  "hours_url": "https://www.centralmarket.asia/",
+  "hours_note": "10:00 - 20:00 ежедневно БЕЗ ВЫХОДНЫХ",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:f666893a-8296-4e": {
+  "opening_hours": "Tu-Su 10:00-18:00",
+  "hours_url": "https://nmrk.kz/",
+  "hours_note": "жұмыс уақыты 10:00 - 18:00 Сс-Жк Дүйсенбі-демалыс күні",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:fe333afe-de65-45": {
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_url": "https://baofood.kz/about",
+  "hours_note": "часы сети: Мы работаем ежедневно с 10.00 до 23.00.",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "osm:n4931058926": {
+  "opening_hours": "Mo-Su 10:00-01:45",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: воскресенье - суббота 10:00 - 01:45",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:23a7b46e-d686-4d": {
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: воскресенье - суббота 10:00 - 23:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:3d7a19a4-b400-4f": {
+  "opening_hours": "Mo-Th,Su 10:00-00:45; Fr-Sa 10:00-01:45",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: вс-чт 10:00 - 00:45, пт-сб 10:00 - 01:45",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:536fa561-c38c-44": {
+  "opening_hours": "Mo-Su 10:00-23:45",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: воскресенье - суббота 10:00 - 23:45",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:5a97a4a2-0118-4f": {
+  "opening_hours": "Mo-Fr,Su 10:00-22:45; Sa 10:00-24:00",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: вс-пт 10:00 - 22:45, суббота 10:00 - 00:00",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:60482543-0503-4b": {
+  "opening_hours": "Mo-Su 10:00-00:45",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: воскресенье - суббота 10:00 - 00:45",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:8cd55cec-49a6-47": {
+  "opening_hours": "Mo-Th,Su 10:00-00:45; Fr-Sa 10:00-01:45",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: вс-чт 10:00 - 00:45, пт-сб 10:00 - 01:45",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:fe56a0eb-c9a7-48": {
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://www.starbucks.com.kz/stores",
+  "hours_note": "Starbucks Хан Шатыр | 10:00-22:00 | Тұран даңғылы, 37",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:204ec824-1291-47": {
+  "opening_hours": "Mo-Su 09:00-23:00",
+  "hours_url": "https://www.starbucks.com.kz/stores",
+  "hours_note": "Starbucks Керуен Сити | 09:00-23:00 | Кургальджинское тас жолы 1",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "osm:n3222863936": {
+  "opening_hours": "Mo-Su 09:00-14:00,14:30-19:30",
+  "hours_url": "https://www.rakhat.kz/our-addresses/company-stores/",
+  "hours_note": "Пн- Вс с 9:00 до 19:30 Перерыв: 14.00-14.30",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "osm:w166265821": {
+  "opening_hours": "Mo-Su 07:00-23:00",
+  "hours_url": "https://velotrek.kz/fitness/grafik-raboty-fitness-velotrek/",
+  "hours_note": "Фитнес орталығының жұмыс уақыты: 07:00-23:00 (Дүйсенбі-Жексенбі)",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:ee8ec287-79ae-4a": {
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://www.edagoroda.kz/",
+  "hours_note": "часы сети: МЫ РАБОТАЕМ КАЖДЫЙ ДЕНЬ с 10 до 22 часов",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "osm:n6404747238": {
+  "opening_hours": "Mo-Su 09:00-24:00",
+  "hours_url": "https://www.ritzcarlton.com/en/hotels/kazakhstan/astana/dining/ozen",
+  "hours_note": "Everyday: 9:00 AM-12:00 AM",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n4935263956": {
+  "opening_hours": "Mo-Su 12:00-01:00",
+  "hours_url": "http://tri-peskarya.kz/index.htm",
+  "hours_note": "ЛЕТНЕЕ И ЗИМНЕЕ КАФЕ работает с 12:00 до 01:00",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:0db6ee4f-63be-4a": {
+  "opening_hours": "Mo-Su 10:00-20:00",
+  "hours_url": "http://latartine.kz/adresa",
+  "hours_note": "Пн-Вс с 10.00 до 20.00",
+  "checked": "2026-10-20",
+  "confidence": "high"
  }
 }
