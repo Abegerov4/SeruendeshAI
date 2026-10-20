@@ -339,6 +339,19 @@ def strip_itinerary(text: str, other_names: list[str]) -> str:
     return kept + ("" if kept.endswith((".", "!", "?")) else ".") if len(kept) >= 15 else ""
 
 
+_ABBR = re.compile(r"(?:\b(?:пр|ул|д|г|им|пл|просп|мкр|т\.?е|т\.?к|ст|св|St|Ave|Dr|No)|\b[А-ЯA-Z])\.$")
+
+
+def _first_sentence(text: str) -> str:
+    """The first sentence, not cut at «пр.» / «ул.» / initials, and only with balanced brackets."""
+    parts, out = re.split(r"(?<=[.!?])\s+", text.strip()), ""
+    for part in parts:
+        out = (out + " " + part).strip()
+        if not _ABBR.search(out):
+            break
+    return out if out.count("(") == out.count(")") and out.count("«") == out.count("»") else ""
+
+
 def template_why(c: Cand, lang: str) -> str:
     p, cat = c.poi, CATEGORIES[c.poi["category"]]
     bits = [label(p["category"], lang)]
@@ -360,7 +373,7 @@ def template_why(c: Cand, lang: str) -> str:
     if not reasons:
         reasons.append(_W["fits"][lang])
     s = bits[0] + ": " + ", ".join(reasons[:3]) + "."
-    lead = re.split(r"(?<=[.!?])\s+", (p.get("description") or "").strip())[0]
+    lead = _first_sentence(p.get("description") or "")
     if lead and fold(lead.rstrip(".")) not in fold(s) and 20 <= len(lead) <= 140 and (lang == "ru") == bool(re.search(r"[а-яё]", lead, re.IGNORECASE)) and lang != "kk":
         s += " " + lead.rstrip(".") + "."
     return s[0].upper() + s[1:]

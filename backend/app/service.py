@@ -310,10 +310,13 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
         plan.deadline_min, plan.deadline_buffer = dl, buf
         plan.deadline_back_target = (back["lat"], back["lon"]) if back else origin
         plan.budget = budget = max(0, min(free_budget if free_budget is not None else 10 ** 6, dl - buf))
-        notes.append(t("note_deadline", lang, t=(now + dt.timedelta(minutes=dl - buf)).strftime("%H:%M"), m=buf))
-        if parsed.deadline_kind == "flight":
-            notes.append(t("note_flight_assumption", lang, m=predeparture, kind=parsed.flight_type) if predeparture
-                         else t("note_flight_free_time", lang))
+        by = (now + dt.timedelta(minutes=dl - buf)).strftime("%H:%M")
+        if parsed.deadline_kind == "flight" and not predeparture:  # flight type unknown: one note says how the time is read
+            notes.append(t("note_flight_free_time", lang, t=by, m=buf))
+        else:
+            notes.append(t("note_deadline", lang, t=by, m=buf))
+            if parsed.deadline_kind == "flight":
+                notes.append(t("note_flight_assumption", lang, m=predeparture, kind=parsed.flight_type))
         if mode == "walk" and back and float(hav_m(origin[0], origin[1], back["lat"], back["lon"])) > 6000:
             notes.append(t("note_taxi_back", lang))
     refine = set(req.refine or [])

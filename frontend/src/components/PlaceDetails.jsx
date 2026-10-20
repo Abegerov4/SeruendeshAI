@@ -22,7 +22,8 @@ export default function PlaceDetails({ place: p, saved, onSave, onClose, onMap, 
   const Mode = p.mode === 'walk' ? Footprints : Car;
   const route = routeUrl(p, origin), tel = telUrl(p.phone), insta = instagramUrl(p.instagram);
   async function share() {
-    const url = route || location.href, text = `${p.name} — ${p.why || ''}`.trim();
+    // a shared link names the place only: the route link carries the user's (rounded) position, so it is never shared
+    const url = routeUrl(p) || location.href, text = `${p.name} — ${p.why || ''}`.trim();
     try {
       if (navigator.share) await navigator.share({ title: p.name, text, url });
       else { await navigator.clipboard.writeText(`${p.name}\n${url}`); setShared(true); setTimeout(() => setShared(false), 1800); }

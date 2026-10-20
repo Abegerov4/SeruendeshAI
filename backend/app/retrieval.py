@@ -279,11 +279,11 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         op = opening_status(p, arrive, v, lang, ctx.holiday)
         if not op["ok"]:
             return False, t("rej_closed", lang), op
-        if parsed.night and ctx.is_dark and op["status"] in ("unknown",) and c.group in ("food", "shopping", "culture"):
+        if parsed.night and ctx.is_dark and op["status"] in ("unknown",) and c.group in ("food", "shopping", "culture", "active", "relax", "kids"):
             return False, t("rej_closed", lang), op
         late = arrive.hour >= 21 or arrive.hour < 8
-        if late and op["status"] == "unknown" and c.group in ("culture", "shopping", "quiet") and not c.night:
-            return False, t("rej_closed", lang), op  # museums/galleries/shops with unknown hours are almost surely closed
+        if late and op["status"] == "unknown" and c.group in ("culture", "shopping", "quiet", "active", "relax") and not c.night:
+            return False, t("rej_closed", lang), op  # museums, shops, gyms, spas with unknown hours are almost surely closed
         return True, None, op
 
     def collect(t_max: float, relaxed: bool):
@@ -496,6 +496,9 @@ def _mmr(cands: list[Cand], k: int, single_cat: bool, lam: float = 0.7) -> list[
     while rest and len(chosen) < k:
         best, best_v = None, -1e9
         for c in rest:
+            if any(c.poi["name"] == s.poi["name"] and hav_m(c.poi["lat"], c.poi["lon"], s.poi["lat"], s.poi["lon"]) < 300
+                   for s in chosen):
+                continue  # the same place mapped twice (two ids, one name, next to each other): never two equal cards
             sim = 0.0
             for s in chosen:
                 same_brand = c.poi.get("brand") and c.poi.get("brand") == s.poi.get("brand")
@@ -511,6 +514,8 @@ def _mmr(cands: list[Cand], k: int, single_cat: bool, lam: float = 0.7) -> list[
             v = lam * c.score - (1 - lam) * sim
             if v > best_v:
                 best, best_v = c, v
+        if best is None:
+            break
         chosen.append(best)
         rest.remove(best)
     return chosen

@@ -106,3 +106,16 @@
  .reference-layout.mobile-view-places .places-start{margin-left:0;width:100%;justify-content:center}
  .reference-layout.mobile-view-places .map-controls{right:calc(min(380px,44%) + 34px)}
 }
+
+/* phones: «Откуда начнём?» inside the chat shrinks and scrolls; the composer always stays in view */
+@media(max-width:899px){
+ .chat-body>.start-chooser{flex:0 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+ .chat-body:has(>.start-chooser) .chat-log{flex:0 1 auto}
+}
+@media(max-width:899px) and (max-height:760px){
+ .chat-body>.start-chooser{padding:12px 14px}
+ .chat-body>.start-chooser>p{display:none}
+ .chat-body>.start-chooser h2{font-size:18px;margin-bottom:10px}
+ .chat-body>.start-chooser .start-geo{padding:10px}
+ .chat-body:has(>.start-chooser) .chat-log{display:none}
+}

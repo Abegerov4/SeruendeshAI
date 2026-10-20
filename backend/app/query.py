@@ -405,7 +405,12 @@ _GENERIC = {"парк", "сквер", "кафе", "музей", "бар", "ре�
             "cafe", "museum", "детская площадка", "площадка", "рынок", "базар", "сад", "центр", "дом", "тц", "трц",
             # common words that are also names of hotels/clinics in the team anchors ("Я турист" is not hotel "Турист")
             "турист", "tourist", "университет", "university", "ночлег", "капитал", "capital", "отель", "hotel",
-            "хостел", "hostel", "гостиница", "больница", "поликлиника", "hospital", "акимат", "министерство"}
+            "хостел", "hostel", "гостиница", "больница", "поликлиника", "hospital", "акимат", "министерство",
+            # category words that some venues use as their whole name («Coffee», «Пицца»): a wish, not a place
+            "coffee", "кофе", "кофейня", "coffee shop", "restaurant", "кинотеатр", "cinema", "pizza", "пицца", "sushi", "суши",
+            "burger", "бургер", "fitness", "фитнес", "gym", "karaoke", "караоке", "кальянная", "hookah", "lounge", "bakery",
+            "пекарня", "кондитерская", "столовая", "canteen", "gallery", "галерея", "mall", "market", "garden", "square",
+            "кафе-бар", "food", "еда", "шашлык", "шаурма", "донер", "doner", "lounge bar", "spa", "спа", "сауна", "баня"}
 # origin-only anchors (hotels, universities, clinics, offices) count as the start only with an explicit cue
 ANCHOR_KINDS = {"hotel", "university", "hospital", "government"}
 
