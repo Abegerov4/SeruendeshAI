@@ -112,6 +112,28 @@ def apply_facts(pois: list[dict], facts: dict[str, dict]) -> None:
 INDOOR_NAMES = re.compile(r"ailand|айленд|думан|happylon|хэппилон|fame city|хан шатыр|khan shatyr", re.IGNORECASE)
 
 
+def apply_twogis(pois: list[dict], layer: dict[str, dict]) -> None:
+    """2GIS facts for the places matched to it: hours fresher than map data (researched official hours still win),
+    the rating with its count, a photo only where we have none, a phone, a website and Wi-Fi."""
+    for p in pois:
+        g = layer.get(p["id"])
+        if not g:
+            continue
+        if g.get("opening_hours") and not p.get("hours_source"):
+            p.update(opening_hours=g["opening_hours"], hours_source="2gis.kz", hours_source_url=g.get("url"),
+                     check_date=g.get("captured") or None)
+        if g.get("rating"):
+            p.update(rating=g["rating"], rating_count=g.get("rating_count"))
+        if g.get("photo") and not p.get("photo"):
+            p["photo"] = g["photo"]
+        for k in ("phone", "website"):
+            if g.get(k) and not p.get(k):
+                p[k] = g[k]
+        if g.get("wifi"):
+            p.setdefault("features", {}).setdefault("wifi", True)
+        p["sources"] = sorted(set(p.get("sources") or []) | {"2gis"})
+
+
 def display_name(p: dict, lang: str) -> str:
     """The place's name in the user's language (the map's own name:xx, else pipeline.place_names), else as mapped."""
     return (p.get("names") or {}).get(lang) or p["name"]
@@ -275,6 +297,9 @@ def load_store(embed_model: str | None = None) -> Store:
         for p in pois:
             if p.get("description_kind") == "research" and kk_text.get(p["id"]):
                 p["description_kk"] = kk_text[p["id"]]
+    gis_file = POIS_FILE.parent / "twogis_layer.json"  # pipeline.twogis: the team's 2GIS snapshot (Aslan)
+    if not canonical and gis_file.exists():
+        apply_twogis(pois, json.loads(gis_file.read_text()))
     from app.card_photos import apply_card_photos  # optional operator photos in S3 (docs/CARD_PHOTOS.md)
     apply_card_photos(pois)
     keep = _dedupe([i for i, p in enumerate(pois) if not junk_place(p) and not p.get("closed_permanently")], pois, aliases)

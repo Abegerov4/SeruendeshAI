@@ -553,6 +553,8 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
         ds.append("Overture Maps (CDLA)")
     if "team_bigdata" in rt.store.manifest.get("sources", {}):
         ds.append("CityPass Astana (факты со ссылкой)")
+    if any("2gis" in (c.poi.get("sources") or []) for c in cands):
+        ds.append("2ГИС (часы, рейтинг, фото — срез команды 19–20.10)")
     if rt.store.events:
         ds.append("Ticketon / Sxodim")
     if ctx.weather:
@@ -709,7 +711,7 @@ def _item(c: Cand, why: str, todo: str, visit: int, rank_i: int, plan: Plan, lan
         "category": CONTRACT_CATEGORY.get(p["category"], "other"), "lat": p["lat"], "lon": p["lon"],
         "distance_m": straight, "travel_min": max(1, c.travel_min), "why": why, "visit_min": vmin, "what_to_do": todo,
         "open_status": ost, "open_confidence": oconf, "source": "poi_data",
-        "source_url": url if (url or "").startswith("http") else None, "rating": None,
+        "source_url": url if (url or "").startswith("http") else None, "rating": p.get("rating"),
         "website": p.get("website") if (p.get("website") or "").startswith("http") else None,
         # extensions
         "rank": rank_i, "category_detail": p["category"], "category_label": label(p["category"], lang),
