@@ -51,3 +51,17 @@ def test_considered_lists_each_name_once():
 def test_night_activity_is_not_sport():
     assert "active" not in parse_rules("Ищу необычную ночную активность").categories
     assert "active" in parse_rules("Хочу активный отдых").categories
+
+
+def test_drinks_and_meal_names_from_the_model_are_not_menu_filters():
+    from app.food import FoodRequirement
+    from app.query import LLMParsed, merge_llm
+
+    for q, text, kind in [("beer with friends", "beer", "menu"), ("достармен сыра ішу", "сыра", "menu"),
+                          ("екеуміз кешкі ас ішетін жер", "кешкі ас", "style"), ("где поужинать", "поужинать", "style")]:
+        llm = LLMParsed.model_construct(**{**{k: None for k in LLMParsed.model_fields}, "categories": ["bar"],
+                                           "food_requirements": [FoodRequirement(kind=kind, text=text)], "avoid_categories": [],
+                                           "needs": [], "keywords_ru": [], "lang": "ru", "night": False, "surprise": False,
+                                           "tourist": False, "off_topic": False})
+        assert merge_llm(parse_rules(q), llm).food_requirements == [], q
+    assert "bar" in parse_rules("достармен сыра ішу").categories

@@ -55,7 +55,7 @@ Rules:
 - categories: place types that would satisfy the request, from the allowed keys only (they are used as soft preferences).
   Map: coffee/кофе -> cafe; kids playground -> playground; interactive museum -> museum, kids_indoor; a walk/прогулка -> park, garden, landmark, viewpoint, museum; nightlife -> bar, nightclub, karaoke, cinema; warm/indoor -> mall, museum, cafe; unusual -> arts_centre, gallery, viewpoint, active, karaoke.
 - needs: power outlet/розетка -> power_outlets; Wi-Fi -> wifi; quiet/тихо/тыныш -> quiet; stroller/wheelchair/коляска/арба -> wheelchair; with a child -> kids; warm/тепло -> warm.
-- food_requirements: preserve named dishes, price limits, home-style/canteen/cuisine and dietary requirements separately from categories. Use verbatim spans only; generic coffee/eat/cafe has no such requirement. A negated or explicitly optional wish is not mandatory.
+- food_requirements: preserve named dishes, price limits, home-style/canteen/cuisine and dietary requirements separately from categories. Use verbatim spans only; generic coffee/eat/cafe has no such requirement. A drink (beer/пиво/сыра, coffee, tea, wine) or a meal name (breakfast, lunch, dinner/ужин/кешкі ас) is a place type, never a food requirement. A negated or explicitly optional wish is not mandatory.
 - time_budget_min: "30–60 минут" -> 60; "пару часов" -> 120; "полчаса" -> 30; "1-2 сағат" -> 120.
 - "2 hours before my flight" -> deadline_kind=flight, deadline_in_min=120, time_budget_min=null.
 - "be at the airport in 2 hours" -> deadline_kind=airport_arrival, deadline_in_min=120. An airport mention without explicit arrival means flight departure.
@@ -149,7 +149,7 @@ _RULES: list[tuple[str, dict]] = [
     (r"ноч|поздн|night|late|түн", {"night": True}),
     (r"необычн|unusual|hidden|секрет|ерекше|удиви|сюрприз|surprise|необычное", {"surprise": True}),
     (r"поесть|пообед|поужин|ресторан|lunch|dinner|restaurant|тамақ|мейрамхана|покушать", {"cat": ["restaurant", "cafe"]}),
-    (r"\bбар\b|выпить(?!\s+(кофе|чай|чаю|какао|смузи|сок))|коктейл|пиво|beer|cocktail|\bpub\b|\bbar\b", {"cat": ["bar"]}),
+    (r"\bбар\b|выпить(?!\s+(кофе|чай|чаю|какао|смузи|сок))|коктейл|пиво|beer|cocktail|\bpub\b|\bbar\b|\bсыра\b", {"cat": ["bar"]}),
     (r"\bкафе\b|кафешк|\bcafe\b|кафеге|кафеде", {"cat": ["cafe"]}),
     (r"развлеч|развлекат|entertain|have fun|\bfun\b|көңіл көтер|ойын-сауық|повеселит", {"cat": ["cinema", "karaoke", "active", "theme_park", "kids_indoor"]}),
     (r"клуб|club|тусов|dance|танц", {"cat": ["nightclub"]}),
@@ -346,6 +346,13 @@ def with_walk_stops(p: Parsed) -> Parsed:
     return p
 
 
+# drinks and meal names the model sometimes returns as a "dish": as a hard menu filter they empty the answer
+GENERIC_FOOD = re.compile(
+    r"(?:пив\w*|сыра\w*|beers?|кофе|coffee|кофе ішу|ча[йя]|шай|tea|вин\w*|wine|коктейл\w*|cocktails?|"
+    r"(?:по)?завтрак\w*|(?:по)?обед\w*|(?:по)?ужин\w*|breakfast|lunch|dinner|supper|таңғы ас|түскі ас|кешкі ас|"
+    r"поесть|покушать|еда|food|тамақ|перекус\w*|snacks?)")
+
+
 def merge_llm(rules: Parsed, llm: LLMParsed | None) -> Parsed:
     if llm is None:
         return rules
@@ -353,6 +360,8 @@ def merge_llm(rules: Parsed, llm: LLMParsed | None) -> Parsed:
     p.food_requirements = list(rules.food_requirements)
     seen = {(r.kind, fold(r.text)) for r in p.food_requirements}
     for requirement in llm.food_requirements:
+        if any(GENERIC_FOOD.fullmatch(v) for v in (requirement.text.lower().strip(), fold(requirement.text))):
+            continue  # «пиво», «ужин», «кешкі ас» name a kind of place, not a dish the menu must confirm
         key = (requirement.kind, fold(requirement.text))
         if key not in seen and food_requirement_is_asserted(rules.search_text, requirement.text):
             p.food_requirements.append(requirement)

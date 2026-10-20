@@ -307,7 +307,9 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
     airport = _landmark_by_key(rt.store, "airport")
     dl = deadline_minutes(parsed, now) if parsed.deadline_kind else None
     if origin is None:
-        return _empty_response(rt, req, parsed, now, lang, t0, notes, t("ask_location", lang), meter[mark:], parse_model)
+        outside = t("note_outside_city", lang)  # the position came, it is just not in Astana: say that, once
+        return _empty_response(rt, req, parsed, now, lang, t0, [n for n in notes if n != outside],
+                               outside if outside in notes else t("ask_location", lang), meter[mark:], parse_model)
     if dl is not None and parsed.deadline_kind in ("flight", "airport_arrival") and airport and \
             float(hav_m(origin[0], origin[1], airport["lat"], airport["lon"])) < 4000 and req_mode is None:
         mode = out_mode = "car"  # nothing is walkable from the terminal
@@ -369,8 +371,12 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
             # «кофе и прогулка»: places to walk, ranked on their own (a copy of the plan: ranking writes into it)
             walk_q = dataclasses.replace(parsed, categories=list(WALK_STOPS), soft_categories=[], food_requirements=[],
                                          meal_intent=False, search_text="прогулка парк сквер набережная вид", keywords=[])
-            walk_cands, _ = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, walk_q, copy.deepcopy(plan), ctx, lang,
-                                 None, k=6, exclude_keys=exclude_keys)
+            with tracing.observe("rank-walk-stops", as_type="retriever",
+                                 input={"categories": list(WALK_STOPS), "mode": plan.mode, "budget_min": plan.budget}) as step:
+                walk_cands, _ = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, walk_q, copy.deepcopy(plan), ctx, lang,
+                                     None, k=6, exclude_keys=exclude_keys)
+                step.update(output=[{"poi_id": c.poi["id"], "name": c.poi.get("name"), "category": c.poi.get("category"),
+                                     "travel_min": c.travel_min} for c in walk_cands])
         with tracing.observe("rank-candidates", as_type="retriever",
                              input={"search_text": parsed.search_text, "categories": parsed.categories,
                                     "needs": sorted(parsed.needs), "mode": plan.mode, "budget_min": plan.budget,
@@ -392,8 +398,12 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
             # instead of dropping it for whatever is near («хочу в Хан Шатыр» from across the river)
             short = plan.budget, plan.t_max, plan.radius_m, list(plan.relaxations)
             plan.budget, plan.t_max, plan.directions = max(plan.budget, 240), max(plan.t_max, 120), True
-            far, far_considered = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, parsed, plan, ctx, lang, qvec,
-                                       exclude_keys=exclude_keys, target_ids=target_ids)
+            with tracing.observe("rank-destination", as_type="retriever",
+                                 input={"targets": sorted(target_ids), "mode": plan.mode, "budget_min": plan.budget}) as step:
+                far, far_considered = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, parsed, plan, ctx, lang, qvec,
+                                           exclude_keys=exclude_keys, target_ids=target_ids)
+                step.update(output=[{"poi_id": c.poi["id"], "name": c.poi.get("name"), "travel_min": c.travel_min}
+                                    for c in far[:5]])
             far = [c for c in far if c.poi["id"] in target_ids][:1]
             if far:
                 cands, considered, navigate = far, far_considered, True

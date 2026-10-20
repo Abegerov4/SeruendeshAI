@@ -528,10 +528,26 @@ def _considered(store: Store, rejected: list[tuple[int, str]], lang: str, n: int
     return list(out.values())
 
 
+def _name_keys(p: dict) -> set[str]:
+    return {fold(n) for n in [p["name"], *(p.get("names") or {}).values()] if n}
+
+
+def same_place(a: dict, b: dict) -> bool:
+    """One place from two sources (OSM + Overture): a shared name in any language within 300 m. Two unnamed places
+    with the same generated label («Детская площадка (аллея …)») read as one too: showing both says nothing."""
+    d = hav_m(a["lat"], a["lon"], b["lat"], b["lon"])
+    if a.get("name_auto") and b.get("name_auto") and a["name"] == b["name"] and a["category"] == b["category"]:
+        return d < 1500
+    return bool(_name_keys(a) & _name_keys(b)) and d < 300
+
+
 def _mmr(cands: list[Cand], k: int, single_cat: bool, lam: float = 0.7) -> list[Cand]:
     chosen: list[Cand] = []
     rest = cands[:60]
     while rest and len(chosen) < k:
+        rest = [c for c in rest if not any(same_place(c.poi, s.poi) for s in chosen)]
+        if not rest:
+            break
         best, best_v = None, -1e9
         for c in rest:
             sim = 0.0
