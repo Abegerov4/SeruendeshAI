@@ -63,6 +63,12 @@ class Settings(BaseSettings):
     telegram_bot_token: str = ""  # enables the Telegram bot by webhook inside this service (app/telegram.py)
     bot_api_key: str = ""  # shared secret of the Telegram bot: its users get per-user budgets instead of one shared IP
     log_level: str = "INFO"
+    # Langfuse tracing (app/tracing.py): off without both keys
+    langfuse_public_key: str = ""
+    langfuse_secret_key: str = ""
+    langfuse_base_url: str = "https://cloud.langfuse.com"
+    langfuse_environment: str = "development"  # "production" on Railway, so local runs stay out of prod dashboards
+    langfuse_enabled: bool = True
 
     @property
     def llm_chain(self) -> list[str]:

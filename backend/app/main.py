@@ -22,7 +22,7 @@ from starlette.datastructures import UploadFile
 
 from app.paths import ROOT_DIR, DRIVE_GRAPH_FILE, GRAPH_FILE
 
-from app import bot_api, geocode, insights, mcp_connector, photo, route_ideas, telegram
+from app import bot_api, geocode, insights, mcp_connector, photo, route_ideas, telegram, tracing
 from app.auth import router as auth_router
 from app.categories import CATEGORIES
 from app.config import get_settings
@@ -30,6 +30,7 @@ from app.db import db_kind, init_db
 from app.limiting import api_client_key, limiter
 from app.embedder import get_embedder
 from app.geo import load_graph
+from app.guards import mask_pii
 from app.i18n import t
 from app.llm import client as llm_client, provider_status
 from app.llm import usage_begin, usage_summary
@@ -80,6 +81,7 @@ async def lifespan(app: FastAPI):
     bot_task.cancel()
     await telegram.stop()
     await http.aclose()
+    tracing.flush()  # send the last traces before the process exits
 
 
 async def _warmup():
@@ -227,6 +229,17 @@ async def api_recommend_photo(request: Request):
         return _photo_err(415 if str(e) == "unsupported_format" else 422, str(e))
     del data
 
+    with tracing.request("recommend-photo", input={"query": mask_pii(query)[0], "photo": "[omitted]"},
+                         metadata={"lang": lang, "fallback_landmark": landmark},
+                         tags=["recommend-photo", f"channel:{channel or 'web'}"]) as root:
+        resp = await _photo_answer(jpeg, query, landmark, lang, channel)
+        root.update(output={"photo_guess": resp["photo_guess"], "summary": resp["summary"],
+                            "recommendations": [r["name"] for r in resp["recommendations"]], "llm": resp["llm"]},
+                    metadata={"request_id": resp["request_id"]})
+    return resp
+
+
+async def _photo_answer(jpeg: bytes, query: str, landmark: str | None, lang: str | None, channel: str | None) -> dict:
     rt = RT["rt"]
     meter, mark = usage_begin()
     ui_lang = lang or (detect_lang(query) if sum(ch.isalpha() for ch in query) >= 3 else "ru")

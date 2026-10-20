@@ -245,7 +245,7 @@ async def generate(cands: list[Cand], route_stops: list[Cand] | None, ctx: Conte
         "\n".join(json.dumps(card(c, k, lang), ensure_ascii=False) for k, c in cmap.items())))
     s = get_settings()
     out, model, ms = await parse(GenOut, SYSTEM_BY_CHANNEL.get(channel or "", SYSTEM), "\n".join(user),
-                                 models=s.llm_chain, timeout_s=s.llm_timeout_s)
+                                 models=s.llm_chain, timeout_s=s.llm_timeout_s, name="write-recommendations")
     return out, model, ms, cmap
 
 

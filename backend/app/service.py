@@ -16,6 +16,7 @@ from dataclasses import dataclass
 import httpx
 import numpy as np
 
+from app import tracing
 from app.categories import CATEGORIES, CONTRACT_CATEGORY, label
 from app.config import get_settings
 from app.context import Context, build_context, fetch_weather, parse_now, weather_out
@@ -148,8 +149,35 @@ def _cache_key(req: RecommendRequest, now: dt.datetime) -> str:
     return hashlib.sha1(json.dumps(d, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
+def _trace_request(req: RecommendRequest) -> tuple[dict, dict, list[str]]:
+    """(input, metadata, tags) of the trace: the masked query and settings; never the position or home."""
+    query, _ = mask_pii(req.query or "")
+    settings = {k: v for k, v in req.model_dump(mode="json", exclude={"query", "location", "home", "now", "weather"}).items()
+                if v not in (None, [], {}, False)}
+    settings["origin"] = "gps" if req.location else "landmark" if req.landmark else "home" if req.home else "none"
+    return {"query": query}, settings, ["recommend", f"channel:{req.channel or 'web'}"]
+
+
+def _trace_answer(out: dict) -> dict:
+    return {"summary": out.get("summary"), "off_topic": out.get("off_topic", False),
+            "recommendations": [{"poi_id": r["poi_id"], "name": r["name"], "category": r["category"],
+                                 "travel_min": r["travel_min"], "why": r["why"]} for r in out.get("recommendations", [])],
+            "route_stops": len((out.get("route") or {}).get("stops") or []), "notes": out.get("notes", []),
+            "llm": out.get("llm")}
+
+
 async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bool = True,
                     extra_targets: tuple[str, ...] = ()) -> dict:
+    """One recommendation request, traced to Langfuse when it is configured (app/tracing.py)."""
+    inp, meta, tags = _trace_request(req)
+    with tracing.request("recommend", input=inp, metadata=meta, tags=tags) as root:
+        out = await _recommend(rt, req, llm_parse_enabled=llm_parse_enabled, extra_targets=extra_targets)
+        root.update(output=_trace_answer(out), metadata={"request_id": out.get("request_id")})
+        return out
+
+
+async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bool = True,
+                     extra_targets: tuple[str, ...] = ()) -> dict:
     """llm_parse_enabled=False: our own fixed queries (route ideas) are fully understood by the rules.
     extra_targets: landmark keys a themed walk should lead to (they still pass hours, darkness and the budget)."""
     s = get_settings()
@@ -162,6 +190,7 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
         out = json.loads(hit[1])
         out["request_id"] = uuid.uuid4().hex[:12]
         out["llm"]["usage"] = usage_summary([])  # served from cache: nothing spent
+        tracing.update_current(metadata={"cache": "hit"})
         log.info("recommend id=%s cached tokens_in=0 tokens_out=0 cost_usd=0", out["request_id"])
         return out
 
@@ -207,7 +236,7 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
     if req.query.strip() and llm_client() is not None and llm_parse_enabled:
         llm_task = asyncio.create_task(llm_parse(LLMParsed, PARSE_SYSTEM, req.query.strip()[:500],
                                                  models=[s.llm_parse_model], timeout_s=s.parse_timeout_s,
-                                                 max_output_tokens=500))
+                                                 max_output_tokens=500, name="parse-query"))
     wx_task = asyncio.create_task(fetch_weather(rt.http)) if s.weather_enabled and not req.now else None
     emb_task = None
     if rt.embedder is not None and rt.store.emb is not None and req.query.strip():
@@ -342,8 +371,15 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
                                          meal_intent=False, search_text="прогулка парк сквер набережная вид", keywords=[])
             walk_cands, _ = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, walk_q, copy.deepcopy(plan), ctx, lang,
                                  None, k=6, exclude_keys=exclude_keys)
-        cands, considered = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, parsed, plan, ctx, lang, qvec,
-                                 exclude_keys=exclude_keys, target_ids=target_ids)
+        with tracing.observe("rank-candidates", as_type="retriever",
+                             input={"search_text": parsed.search_text, "categories": parsed.categories,
+                                    "needs": sorted(parsed.needs), "mode": plan.mode, "budget_min": plan.budget,
+                                    "t_max_min": plan.t_max, "radius_m": plan.radius_m}) as step:
+            cands, considered = rank(rt.store, rt.graph, rt.poi_nodes, rt.poi_snap, parsed, plan, ctx, lang, qvec,
+                                     exclude_keys=exclude_keys, target_ids=target_ids)
+            step.update(output=[{"poi_id": c.poi["id"], "name": c.poi.get("name"), "category": c.poi.get("category"),
+                                 "travel_min": c.travel_min, "score": round(c.score, 3)} for c in cands[:10]],
+                        metadata={"candidates": len(cands), "relaxations": list(plan.relaxations)})
         if walk_cands:
             food = [c for c in cands if CATEGORIES[c.poi["category"]].group == "food"]
             seen = {c.poi["id"] for c in food}

@@ -100,7 +100,7 @@ async def guess_place(jpeg: bytes, places: dict[str, dict], lang: str) -> tuple[
     user = [{"type": "input_text", "text": f"TARGET LANGUAGE: {lang_name}\nPLACES:\n{wrap_untrusted(listing)}"},
             {"type": "input_image", "image_url": url, "detail": "low"}]
     out, model, ms = await parse(PhotoGuessLLM, PHOTO_SYSTEM, user, models=s.llm_chain, timeout_s=s.photo_timeout_s,
-                                 max_output_tokens=200)
+                                 max_output_tokens=200, name="recognize-photo")
     if out is not None:
         out.description = strip_links(out.description or "")[:160].strip()
         if out.place_id not in places:
