@@ -1,21 +1,42 @@
-/* A fourth destination fits the shared frame; the phone walking workspace uses its bottom bar. */
+/* Shared destinations stay available while the walking workspace keeps its session in memory. */
+.walking-workspace[hidden]{display:none}
 .events-loading-page{max-width:880px;margin:48px auto;min-height:40vh;color:var(--green,#174b3e)}
-@media(min-width:900px) and (max-width:1250px){
- .app .site-header{gap:16px;padding-inline:20px}
- .app .site-header nav{gap:8px}
- .app .site-header nav>a{padding-inline:9px;white-space:nowrap}
- .app .site-header .brand{font-size:21px}
- .app .site-header .header-actions{gap:8px}
+@media(min-width:1024px) and (max-width:1399px){
+ .app .site-header,.app.map-app .site-header{gap:10px;padding-inline:16px}
+ .app .site-header nav{gap:4px;flex-shrink:0}
+ .app .site-header nav>a{padding-inline:6px;white-space:nowrap}
+ .app .site-header nav>a>svg{display:none}
+ .app .site-header .brand,.app.map-app .site-header .brand{font-size:20px;gap:8px;flex-shrink:0}
+ .app .site-header .header-actions{gap:6px;flex-shrink:0}
+ .app .site-header .login-link{gap:6px;white-space:nowrap}
+ .map-app .header-slot:not(:empty)+nav{margin-left:0}
+ .map-app .nearby-trigger{padding-inline:10px}
 }
-@media(max-width:899px){
+@media(max-width:1023px){
  .mobile-app-nav .mobile-events-link{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;position:relative;border-radius:13px;color:#526448;font-size:10px;min-width:0;min-height:44px;text-decoration:none}
  .mobile-app-nav .mobile-events-link:focus-visible{outline:2px solid #18553e;outline-offset:-2px}
  .mobile-app-nav .mobile-events-link:hover{background:#edf4dd}
 }
-@media(max-width:899px) and (max-height:550px){
- .mobile-app-nav .mobile-events-link{flex-direction:row;gap:7px;min-height:0}
+@media(max-width:1023px) and (max-height:550px){
+ .mobile-app-nav .mobile-events-link{flex-direction:row;gap:7px;min-height:44px}
+ .filter-popover{position:fixed;top:calc(var(--mobile-vt,0px) + 56px);bottom:auto;left:12px;right:12px;width:auto;max-width:480px;margin-inline:auto;max-height:calc(var(--mobile-vh,100dvh) - 136px);overflow-y:auto;overscroll-behavior:contain}
 }
 @media(max-width:380px){
  .app:not(.map-app) .site-header nav{gap:2px;justify-content:space-between;flex-wrap:wrap}
  .app:not(.map-app) .site-header nav>a{font-size:11px;gap:5px;padding-inline:6px;min-height:44px}
+}
+@media(max-width:1023px){
+ html.kb-open .filter-popover{position:fixed;top:calc(var(--mobile-vt,0px) + 12px);bottom:auto;left:12px;right:12px;width:auto;max-width:480px;margin-inline:auto;max-height:calc(var(--mobile-vh,100dvh) - 24px);overflow-y:auto;overscroll-behavior:contain}
+ .walking-workspace{height:100%}
+ .map-first .explore-workspace{height:calc(100% - 72px - env(safe-area-inset-bottom))}
+ .mobile-app-nav{position:fixed}
+ .mobile-app-nav button{color:#526448}
+ .mobile-app-nav .mobile-events-link[aria-current="page"]{background:#174b3e;color:#fff;font-weight:600}
+ .mobile-saved-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-left:auto;padding:8px 12px;color:#174b3e;background:#fffefa;border:1px solid #dce5d3;border-radius:12px;font-size:13px;text-decoration:none}
+ .mobile-saved-link:focus-visible{outline:2px solid #18553e;outline-offset:2px}
+ .mobile-saved-link span{font-variant-numeric:tabular-nums}
+ .app:not(.map-app) .site-header{height:62px;min-height:62px;padding:0 14px;flex-wrap:nowrap}
+ .app:not(.map-app) .site-header nav{display:none}
+ .app:not(.map-app) #content{padding-bottom:24px}
+ .app:not(.map-app) .site-footer{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
 }

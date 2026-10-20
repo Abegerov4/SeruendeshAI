@@ -1,7 +1,7 @@
 /* Keep route controls above the recommendation strip, not behind the cards. */
-@media(min-width:900px){.map-first .map-bottom{top:78px;bottom:auto;left:22px;right:auto}}
+@media(min-width:1024px){.map-first .map-bottom{top:78px;bottom:auto;left:22px;right:auto}}
 /* Shared pages must fit the same phone widths as the map workspace. */
-@media(max-width:899px){
+@media(max-width:1023px){
  .app:not(.map-app) .site-header{height:auto;min-height:68px;display:flex;flex-wrap:wrap;gap:10px;padding:12px 0}
  .app:not(.map-app) .site-header .brand{font-size:20px;min-width:0;margin-right:auto}
  .app:not(.map-app) .site-header .header-actions{gap:6px;min-width:0;max-width:100%;margin-left:auto}

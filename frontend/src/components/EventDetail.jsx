@@ -17,7 +17,7 @@ function formatProvenanceDate(value, language) {
   }).format(date);
 }
 
-export default function EventDetail({id, language, today, onLoaded}) {
+export default function EventDetail({id, language, today, originView, onLoaded}) {
   const [resource, setResource] = useState({id:'', event:null, pending:true, error:null});
   const [retry, setRetry] = useState(0);
   const loadedCallback = useRef(onLoaded);
@@ -45,12 +45,14 @@ export default function EventDetail({id, language, today, onLoaded}) {
   const sessions = event ? relevantSessions(event, {}, event.is_archived ? '' : today) : [];
   const publication = formatProvenanceDate(event?.announced_at, language);
   const firstSeen = formatProvenanceDate(event?.first_seen_at, language);
+  const returnToArchive = originView ? originView === 'archive' : !!event?.is_archived;
+  const returnPath = returnToArchive ? '/events/archive' : '/events';
+  const returnLabel = tr(returnToArchive ? 'К архиву событий' : 'К событиям');
 
   return <section className="events-detail">
-    <Link className="events-back" to={event?.is_archived ? '/events/archive' : '/events'}><ArrowLeft size={16} aria-hidden="true"/>{tr(event?.is_archived ? 'К архиву событий' : 'К событиям')}</Link>
-    {resource.id !== id || resource.pending ? <StateMessage kind="loading"/> : resource.error?.status === 404 ? <div className="events-state"><h1>{tr('Событие не найдено')}</h1><p>{tr('Возможно, источник удалил этот анонс. Другие события доступны в ленте.')}</p><Link className="events-primary" to="/events">{tr('К событиям')}</Link></div> : resource.error ? <StateMessage kind="error" onRetry={() => setRetry(value => value + 1)}/> : event ? <>
+    <Link className="events-back" to={returnPath}><ArrowLeft size={16} aria-hidden="true"/>{returnLabel}</Link>
+    {resource.id !== id || resource.pending ? <StateMessage kind="loading"/> : resource.error?.status === 404 ? <div className="events-state"><h1>{tr('Событие не найдено')}</h1><p>{tr('Возможно, источник удалил этот анонс. Другие события доступны в ленте.')}</p><Link className="events-primary" to={returnPath}>{returnLabel}</Link></div> : resource.error ? <StateMessage kind="error" onRetry={() => setRetry(value => value + 1)}/> : event ? <>
       <div className="events-detail-layout">
-        <EventImage event={event} detail/>
         <div className="events-detail-content">
           <h1>{event.title}</h1>
           {event.is_archived ? <p className="events-archived-label">{tr('Событие завершилось')}</p> : null}
@@ -63,6 +65,7 @@ export default function EventDetail({id, language, today, onLoaded}) {
             {primarySource ? <a className="events-primary events-detail-action" data-source={primarySource.name} href={primarySource.url} target="_blank" rel="noopener noreferrer">{tr('Открыть в {source}', {source:sourceLabel(primarySource.name)})}<ExternalLink size={16} aria-hidden="true"/></a> : null}
           </div>
         </div>
+        <EventImage event={event} detail/>
       </div>
       <div className="events-detail-body">
         {event.description ? <div className="events-detail-description">{event.description}</div> : null}

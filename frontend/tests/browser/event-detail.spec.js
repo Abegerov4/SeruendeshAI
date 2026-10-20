@@ -45,25 +45,25 @@ async function open(page, state, format, width) {
   return {image,frame:await page.locator('.events-detail-cover').boundingBox(),summary:await page.locator('.events-detail-content').boundingBox(),layout};
 }
 
-test('portrait posters sit left of the event summary on desktop and above it on smaller screens',async({page})=>{
+test('portrait posters sit left of the event summary on desktop and follow it on smaller screens',async({page})=>{
   const state=await api(page);
-  for(const width of [1440,1024,899,768,390,320]){
+  for(const width of [1440,1024,932,899,768,390,320]){
     const {frame,summary,layout}=await open(page,state,'portrait',width);
     expect(frame.width/frame.height).toBeCloseTo(9/16,2);
     expect(frame.width).toBeLessThanOrEqual(300);
-    if(width>=900){
+    if(width>=1024){
       expect(frame.width).toBeGreaterThanOrEqual(260);
       expect(frame.x+frame.width).toBeLessThan(summary.x);
       expect(Math.abs(frame.y-summary.y)).toBeLessThan(8);
     }else{
-      expect(frame.y+frame.height).toBeLessThan(summary.y);
+      expect(summary.y+summary.height).toBeLessThan(frame.y);
       expect(Math.abs(frame.x+frame.width/2-layout.x-layout.width/2)).toBeLessThan(1);
     }
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   }
 });
 
-test('landscape and very wide posters stay complete in a centered 16:9 frame above the summary',async({page})=>{
+test('landscape and very wide posters stay complete in a centered 16:9 frame with responsive priority',async({page})=>{
   const state=await api(page);
   for(const width of [1440,768,390,320]){
     for(const format of ['landscape','wide']){
@@ -71,20 +71,22 @@ test('landscape and very wide posters stay complete in a centered 16:9 frame abo
       expect(frame.width/frame.height).toBeCloseTo(16/9,2);
       expect(frame.width).toBeLessThanOrEqual(720);
       expect(Math.abs(frame.x+frame.width/2-layout.x-layout.width/2)).toBeLessThan(1);
-      expect(frame.y+frame.height).toBeLessThan(summary.y);
+      if(width>=1024) expect(frame.y+frame.height).toBeLessThan(summary.y);
+      else expect(summary.y+summary.height).toBeLessThan(frame.y);
       expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
     }
   }
 });
 
-test('square posters keep a moderate square frame above event information',async({page})=>{
+test('square posters keep a moderate square frame and follow mobile event information',async({page})=>{
   const state=await api(page);
   for(const width of [1440,768,320]){
     const {frame,summary,layout}=await open(page,state,'square',width);
     expect(frame.width/frame.height).toBeCloseTo(1,2);
     expect(frame.width).toBeLessThanOrEqual(420);
     expect(Math.abs(frame.x+frame.width/2-layout.x-layout.width/2)).toBeLessThan(1);
-    expect(frame.y+frame.height).toBeLessThan(summary.y);
+    if(width>=1024) expect(frame.y+frame.height).toBeLessThan(summary.y);
+    else expect(summary.y+summary.height).toBeLessThan(frame.y);
   }
 });
 

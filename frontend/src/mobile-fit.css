@@ -1,6 +1,6 @@
 /* Fit-and-finish for the mobile app layout (mobile-app.css): small phones, landscape, notches.
    Loaded last; only adjusts sizes, never the structure. */
-@media (max-width: 899px) {
+@media (max-width: 1023px) {
   /* scrolled tabs end above the tab bar and the home indicator */
   .map-first .discovery-column { padding-bottom: 24px; }
   .map-first.mobile-view-places .places-section { padding-bottom: 32px; }
@@ -9,10 +9,10 @@
   /* composer row: the landmark label shrinks, buttons never overlap it */
   .map-first .composer-bottom { flex-wrap: nowrap; align-items: center; }
   .map-first .location-picker { min-width: 0; flex: 1 1 auto; }
-  .map-first .location-toggle { max-width: 100%; min-height: 40px; }
+  .map-first .location-toggle { max-width: 100%; min-width: 44px; min-height: 44px; }
   .map-first .photo-button, .map-first .send-button { flex-shrink: 0; }
   /* comfortable touch targets */
-  .map-first .quick-scenarios button, .map-first .refine-chips button { min-height: 40px; }
+  .map-first .quick-scenarios button, .map-first .refine-chips button { min-height: 44px; }
   .mobile-app-nav button { min-height: 52px; }
   /* tab bar respects the side notches in landscape */
   .mobile-app-nav { padding-left: max(8px, env(safe-area-inset-left)); padding-right: max(8px, env(safe-area-inset-right)); }
@@ -28,12 +28,12 @@
 }
 
 /* phones in landscape: the conversation gets the height */
-@media (max-width: 950px) and (max-height: 500px) {
+@media (max-width: 1023px) and (max-height: 500px) {
   .map-app .site-header { height: 46px; }
   .map-app #content { height: calc(100% - 46px); }
   .map-first .explore-workspace { height: calc(100% - 50px - env(safe-area-inset-bottom)); }
   .mobile-app-nav { height: calc(50px + env(safe-area-inset-bottom)); padding-top: 3px; }
-  .mobile-app-nav button { flex-direction: row; gap: 7px; min-height: 0; }
+  .mobile-app-nav button { flex-direction: row; gap: 7px; min-height: 44px; }
   .map-first .quick-scenarios { display: none; }
   .map-first .chat-heading { min-height: 0; padding: 4px; }
   .map-first .chat-heading .chat-avatar { width: 30px; height: 30px; }
@@ -41,7 +41,7 @@
 }
 
 /* iOS keyboard: the app is pinned to the visible part of the screen; header and tab bar step aside while typing */
-@media (max-width: 899px) {
+@media (max-width: 1023px) {
   .map-app { top: var(--mobile-vt, 0px); bottom: auto; }
   html, body { overscroll-behavior: none; }
   html.kb-open .map-app .site-header, html.kb-open .mobile-app-nav { display: none; }

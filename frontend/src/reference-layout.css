@@ -23,7 +23,7 @@
 .reference-more{width:100%;min-height:42px;display:flex;align-items:center;justify-content:space-between;font-size:12px;padding:10px 14px;border:1px solid #e8ece4;border-radius:12px;background:#fafbf8}
 .reference-all-places{position:absolute;left:22px;bottom:24px;z-index:650;display:flex;align-items:center;gap:8px;border:1px solid #e0e7d8;border-radius:14px;background:#fffefa;padding:13px 16px;font-size:12px;box-shadow:0 5px 15px #183b2910}
 .reference-layout .time-selector button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}.reference-layout .time-selector b{font-size:12px}.reference-layout .time-selector small{font-size:10px;font-weight:400;opacity:.65}
-@media(min-width:900px){
+@media(min-width:1024px){
  body:has(.reference-layout){background:#f2f4f1}
  .map-app:has(.reference-layout){margin:14px;width:calc(100% - 28px);border-radius:22px;overflow:hidden;box-shadow:0 8px 35px #203c2407}
  .map-app:has(.reference-layout) .site-header{height:68px;padding:0 26px;background:#fff;border-color:#f0f1ed}
@@ -78,7 +78,7 @@
  .reference-layout .focus-route-bar{left:20px;right:auto;bottom:82px;top:auto;transform:none;max-width:min(560px,calc(100% - 40px))}
 }
 @media(min-width:1400px){.reference-layout .explore-workspace{grid-template-columns:390px minmax(0,1fr)}.reference-layout .conversation-column{padding:28px 24px}.reference-place{width:310px}.reference-place-photo{height:190px}}
-@media(max-width:899px){
+@media(max-width:1023px){
  .reference-layout .reference-route{display:none}
  .reference-layout.mobile-view-plan .reference-route{display:block}
  .reference-layout.mobile-view-plan .sidebar-route{display:none}
@@ -100,7 +100,7 @@
 .reference-stop-photo .cover-icon{width:26px;height:26px;right:10px;bottom:14px;border-radius:8px;rotate:0deg}
 .reference-stop-photo .cover-icon svg{width:16px;height:16px}
 
-@media(min-width:900px){
+@media(min-width:1024px){
  .reference-layout .reference-route{padding-top:16px}
  .reference-layout .reference-route li{padding-bottom:10px}
  .reference-layout .companion-intro{min-height:130px}

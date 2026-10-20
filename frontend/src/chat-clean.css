@@ -27,7 +27,7 @@
 .geo-compact>div>span{flex:1;min-width:180px}
 .geo-compact>div>svg{display:none}
 .chat-tools>summary:focus-visible,.chat-answer-details>summary:focus-visible,.geo-compact>summary:focus-visible{outline:2px solid #658f35;outline-offset:2px}
-@media(max-width:899px){
+@media(max-width:1023px){
  .map-first .chat-heading{padding:8px 4px;min-height:52px}
  .map-first .quick-scenarios{padding:6px 0}
  .map-first .chat-composer{margin-bottom:8px}
@@ -36,7 +36,7 @@
  .map-first .chat-place-text b{font-size:14px}
  .map-first .chat-log{padding-top:10px}
 }
-@media(min-width:900px){
+@media(min-width:1024px){
  .map-first .companion-intro{min-height:160px;padding-bottom:10px}
  .map-first .chat-panel{margin-top:12px}
 }

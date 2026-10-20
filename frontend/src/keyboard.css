@@ -1,5 +1,5 @@
 /* The composer follows the visual viewport, not the page hidden behind the iOS keyboard. */
-@media(max-width:899px){
+@media(max-width:1023px){
  .map-app{top:var(--mobile-vt,0px);bottom:auto;height:var(--mobile-vh,100dvh)}
  .mobile-app-nav{transition:transform .2s ease,opacity .16s ease;will-change:transform}
  html.kb-open .mobile-app-nav{display:flex;transform:translateY(calc(100% + 24px + env(safe-area-inset-bottom)));opacity:0;pointer-events:none}

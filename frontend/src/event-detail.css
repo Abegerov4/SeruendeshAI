@@ -24,6 +24,7 @@
 .events-detail .events-detail-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "poster" "summary";
   align-items: start;
   gap: 28px;
   width: 100%;
@@ -32,6 +33,7 @@
 }
 
 .events-detail .events-detail-cover {
+  grid-area: poster;
   position: relative;
   width: 100%;
   max-width: 720px;
@@ -94,6 +96,7 @@
 }
 
 .events-detail .events-detail-content {
+  grid-area: summary;
   min-width: 0;
 }
 
@@ -308,14 +311,34 @@
   margin: 0;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .events-detail:has(.events-detail-cover[data-orientation="portrait"][data-media="photo"]) {
     max-width: 860px;
   }
 
   .events-detail .events-detail-layout:has(.events-detail-cover[data-orientation="portrait"][data-media="photo"]) {
     grid-template-columns: 280px minmax(0, 1fr);
+    grid-template-areas: "poster summary";
     gap: 36px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .events-detail .events-detail-layout {
+    grid-template-areas: "summary" "poster";
+  }
+
+  /* Keep the whole artwork in a supporting frame after the event essentials. */
+  .events-detail .events-detail-cover[data-media="photo"] {
+    width: min(100%, calc(280px * 16 / 9), calc(40svh * 16 / 9));
+  }
+
+  .events-detail .events-detail-cover[data-orientation="portrait"] {
+    width: min(100%, calc(280px * 9 / 16), calc(40svh * 9 / 16));
+  }
+
+  .events-detail .events-detail-cover[data-orientation="square"] {
+    width: min(100%, 280px, 40svh);
   }
 }
 

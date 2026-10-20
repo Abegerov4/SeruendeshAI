@@ -1,8 +1,9 @@
 import { useLocale, t as tr } from "./i18n";
 import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { usePath, Link } from './navigation';
+import { usePath, Link, navigate } from './navigation';
 import { Header, Footer } from './components/Layout';
+import MobileNavigation from './components/MobileNavigation';
 import Explore from './pages/Explore';
 import Auth from './pages/Auth';
 import Saved from './pages/Saved';
@@ -46,6 +47,15 @@ function App() {
 function Workspace({user, ready}) {
   const language = useLocale();
   const path = usePath();
+  const walking = path === '/';
+  const [visitedWalk, setVisitedWalk] = useState(walking);
+  const [walkView, setWalkView] = useState(() => {
+    const requested = new URLSearchParams(location.search).get('view');
+    return ['chat','map','places','plan'].includes(requested) ? requested : matchMedia('(max-width:1023px)').matches ? 'chat' : 'map';
+  });
+  const [placeCount, setPlaceCount] = useState(0);
+  useEffect(() => { if (walking) setVisitedWalk(true); }, [walking]);
+  function openWalk(view) { setWalkView(view); navigate('/'); }
   const [saved, setSaved] = useState([]);
   const [saveError, setSaveError] = useState(null), [reload, setReload] = useState(0);
   const busy = useRef(false), loaded = useRef(!user);
@@ -79,6 +89,18 @@ function Workspace({user, ready}) {
   }, [path, language]);
   const authMode = { '/login': 'login', '/register': 'register', '/forgot-password': 'reset', '/reset-password': 'confirm' }[path];
   if (authMode) return <Auth key={path} mode={authMode} />;
-  return <div className={"app " + (path === "/" ? "map-app" : "")}><a className="skip-link" href="#content">{tr("Перейти к содержимому")}</a><Header path={path} savedCount={saved.length} />{saveError && <div className="saved-feedback" role="alert"><span>{tr(saveError.load ? 'Не удалось загрузить избранное.' : 'Не удалось изменить избранное. Изменение отменено.')}</span><button onClick={() => saveError.load ? setReload(n => n + 1) : toggleSaved(saveError.place)}>{tr('Повторить')}</button><button aria-label={tr('Закрыть')} onClick={() => setSaveError(null)}>×</button></div>}<div id="content">{path === '/' ? <Explore saved={saved} toggleSaved={toggleSaved} /> : path === '/saved' ? <Saved saved={saved} toggleSaved={toggleSaved} /> : path === '/insights' ? <Insights /> : path === '/events' || path.startsWith('/events/') ? <Suspense fallback={<main className="events-loading-page" role="status">{tr('Загружаем события…')}</main>}><Events path={path} /></Suspense> : <main className="not-found"><span className="section-eyebrow">{tr("404 / НЕМНОГО СВЕРНУЛИ С МАРШРУТА")}</span><h1>{tr("Здесь пока тихо.")}</h1><p>{tr("Вернёмся туда, где начинаются открытия?")}</p><Link to="/" className="primary-button">{tr("На главную ↗")}</Link></main>}</div><Footer /></div>;
+  return <div className={"app " + (walking ? "map-app" : "")}>
+    <a className="skip-link" href="#content">{tr("Перейти к содержимому")}</a>
+    <Header path={path} savedCount={saved.length} />
+    {saveError && <div className="saved-feedback" role="alert"><span>{tr(saveError.load ? 'Не удалось загрузить избранное.' : 'Не удалось изменить избранное. Изменение отменено.')}</span><button onClick={() => saveError.load ? setReload(n => n + 1) : toggleSaved(saveError.place)}>{tr('Повторить')}</button><button aria-label={tr('Закрыть')} onClick={() => setSaveError(null)}>×</button></div>}
+    <div id="content">
+      {(visitedWalk || walking) && <div className="walking-workspace" hidden={!walking}>
+        <Explore saved={saved} toggleSaved={toggleSaved} tab={walkView} setTab={setWalkView} active={walking} onPlacesCountChange={setPlaceCount} />
+      </div>}
+      {walking ? null : path === '/saved' ? <Saved saved={saved} toggleSaved={toggleSaved} /> : path === '/insights' ? <Insights /> : path === '/events' || path.startsWith('/events/') ? <Suspense fallback={<main className="events-loading-page" role="status">{tr('Загружаем события…')}</main>}><Events path={path} /></Suspense> : <main className="not-found"><span className="section-eyebrow">{tr("404 / НЕМНОГО СВЕРНУЛИ С МАРШРУТА")}</span><h1>{tr("Здесь пока тихо.")}</h1><p>{tr("Вернёмся туда, где начинаются открытия?")}</p><Link to="/" className="primary-button">{tr("На главную ↗")}</Link></main>}
+    </div>
+    <Footer />
+    <MobileNavigation path={path} view={walkView} onSelect={openWalk} count={placeCount} />
+  </div>;
 }
 createRoot(document.getElementById('root')).render(<><App /><PwaExperience /></>);

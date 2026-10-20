@@ -1,4 +1,4 @@
-import React, {useEffect, useId, useState} from 'react';
+import React, {useEffect, useId, useLayoutEffect, useRef, useState} from 'react';
 import {ArrowRight, CalendarDays, Search, SlidersHorizontal, X} from 'lucide-react';
 import {t as tr, useLocale} from '../i18n';
 import {Link} from '../navigation';
@@ -21,8 +21,9 @@ function FilterDialog({value, categories, onApply, onClose}) {
     </form>
   </EventDialog>;
 }
-function EventsFeed({view, filters, setFilters, today, setToday, language}) {
+function EventsFeed({view, filters, setFilters, today, setToday, language, onOpenEvent, active}) {
   const [dialog, setDialog] = useState(null), [offset, setOffset] = useState(0), [retry, setRetry] = useState(0);
+  useEffect(() => {if (!active) setDialog(null);}, [active]);
   const [resource, setResource] = useState({key:'',listKey:'',items:[],data:null,nextOffset:0,hasMore:false,pending:true,error:false});
   const listKey = JSON.stringify({view,...filters}), key = `${listKey}:${offset}:${retry}`;
   useEffect(() => {setOffset(0);}, [listKey]);
@@ -67,10 +68,10 @@ function EventsFeed({view, filters, setFilters, today, setToday, language}) {
       <button className={`events-quick-button events-filters-trigger ${filterCount ? 'is-selected' : ''}`} aria-haspopup="dialog" aria-expanded={dialog === 'filters'} onClick={() => setDialog('filters')}><SlidersHorizontal size={16}/>{tr('Фильтры')}{filterCount ? <span className="events-filter-count">{filterCount}</span> : null}</button>
     </div> : null}
     <div className="events-results" aria-live="polite">{!pending || items.length ? tr('Событий: {count}', {count:metadata.total ?? items.length}) : tr('Ищем события…')}</div>
-    <div className="events-list" aria-busy={pending}>{items.map(event => <EventCard key={event.id} event={event} today={today} language={language} selection={selection} archive={view === 'archive'}/>)}</div>
+    <div className="events-list" aria-busy={pending}>{items.map(event => <EventCard key={event.id} event={event} today={today} language={language} selection={selection} archive={view === 'archive'} onOpen={onOpenEvent}/>)}</div>
     {!items.length ? <StateMessage kind={pending ? 'loading' : error ? 'error' : 'empty'} onRetry={() => setRetry(retry+1)} onReset={reset}/> : error ? <div className="events-load-error" role="alert"><p>{tr('Не удалось загрузить следующие события.')}</p><button className="events-primary" onClick={() => setRetry(retry+1)}>{tr('Повторить')}</button></div> : resource.hasMore ? <div className="events-pagination"><button className="events-primary" disabled={pending} onClick={() => setOffset(resource.nextOffset)}>{tr(pending ? 'Загружаем…' : 'Показать ещё')}</button></div> : null}
-    {dialog === 'calendar' ? <EventCalendar value={selection} today={today} onClose={() => setDialog(null)} onApply={dates => {patch({date_from:dates.from,date_to:dates.to});setDialog(null);}}/> : null}
-    {dialog === 'filters' ? <FilterDialog value={filters} categories={categories} onClose={() => setDialog(null)} onApply={draft => {patch({category:draft.category,price:draft.price,source:draft.source});setDialog(null);}}/> : null}
+    {active && dialog === 'calendar' ? <EventCalendar value={selection} today={today} onClose={() => setDialog(null)} onApply={dates => {patch({date_from:dates.from,date_to:dates.to});setDialog(null);}}/> : null}
+    {active && dialog === 'filters' ? <FilterDialog value={filters} categories={categories} onClose={() => setDialog(null)} onApply={draft => {patch({category:draft.category,price:draft.price,source:draft.source});setDialog(null);}}/> : null}
   </section>;
 }
 export default function Events({path}) {
@@ -81,9 +82,28 @@ export default function Events({path}) {
   let id = '';
   if(detail) {try{id=decodeURIComponent(path.slice('/events/'.length));}catch{id=path.slice('/events/'.length);}}
   const view = archive ? 'archive' : 'upcoming';
-  const archiveTab = archive || (detail && detailKind.id === id && detailKind.archived);
+  const [lastFeedView, setLastFeedView] = useState(detail ? null : view);
+  const origins = useRef(new Map()), feedScroll = useRef({upcoming:0,archive:0});
+  const origin = detail ? origins.current.get(id) : null;
+  const feedView = detail ? lastFeedView : view;
+  const archiveTab = archive || (detail && (origin ? origin.view === 'archive' : detailKind.id === id && detailKind.archived));
+  useEffect(() => {if (!detail) setLastFeedView(view);}, [detail, view]);
+  useLayoutEffect(() => {
+    if (detail) return;
+    // Link navigation resets scroll after dispatching its route change. Restore once the retained feed is visible.
+    const top = feedScroll.current[view];
+    const frame = requestAnimationFrame(() => window.scrollTo({top,behavior:'instant'}));
+    const rememberScroll = () => {feedScroll.current[view] = window.scrollY;};
+    addEventListener('scroll', rememberScroll, {passive:true});
+    return () => {cancelAnimationFrame(frame);removeEventListener('scroll', rememberScroll);};
+  }, [path, detail, view]);
+  function rememberOrigin(event) {
+    origins.current.set(event.id, {view:feedView});
+    feedScroll.current[feedView] = window.scrollY;
+  }
   return <main className="events-page" id="events-main"><nav className="events-tabs" aria-label={tr('Раздел событий')}><Link className={!archiveTab ? 'is-active' : ''} aria-current={!archiveTab ? 'page' : undefined} to="/events">{tr('События')}</Link><Link className={archiveTab ? 'is-active' : ''} aria-current={archiveTab ? 'page' : undefined} to="/events/archive">{tr('Архив')}</Link></nav>
-    {detail ? <EventDetail key={id} id={id} language={language} today={today} onLoaded={event => setDetailKind({id,archived:event.is_archived})}/> : <EventsFeed key={view} view={view} filters={views[view]} setFilters={next => setViews(previous => ({...previous,[view]:next}))} today={today} setToday={setToday} language={language}/>}
+    {feedView ? <div hidden={detail}><EventsFeed key={feedView} view={feedView} filters={views[feedView]} setFilters={next => setViews(previous => ({...previous,[feedView]:next}))} today={today} setToday={setToday} language={language} onOpenEvent={rememberOrigin} active={!detail}/></div> : null}
+    {detail ? <EventDetail key={id} id={id} language={language} today={today} originView={origin?.view} onLoaded={event => setDetailKind({id,archived:event.is_archived})}/> : null}
     <footer className="events-footer"><Link to={archive ? '/events' : '/events/archive'}>{tr(archive ? 'Все события' : 'Архив событий')}<ArrowRight size={18}/></Link><span>{tr('Анонсы Ticketon и Sxodim')}</span></footer>
   </main>;
 }
