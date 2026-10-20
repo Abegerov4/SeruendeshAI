@@ -217,7 +217,7 @@ flowchart TD
 | 3. Описание RAG-подхода | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | 4. Тестовые сценарии и ограничения | [docs/TEST_SCENARIOS.md](docs/TEST_SCENARIOS.md), [docs/EVAL_RESULTS.md](docs/EVAL_RESULTS.md) |
 | 5. Презентация | [PDF, 15 слайдов](docs/presentation/SeruendeshAI-presentation.pdf) · [PPTX с заметками](docs/presentation/SeruendeshAI-presentation.pptx) · план и сценарий демо в [docs/PRESENTATION.md](docs/PRESENTATION.md) |
-| Демо-видео (YouTube) | **https://youtu.be/ZZ2LTLXCxg8** (2:57) · [одна страница с QR и главами](docs/presentation/SeruendeshAI-demo-video.pdf) |
+| Демо-видео (YouTube) | **https://youtu.be/ZZ2LTLXCxg8** (2:57) · [одна страница со ссылкой и QR](docs/presentation/SeruendeshAI-demo-video.pdf) |
 | 6. Этика и приватность | [docs/ETHICS_PRIVACY.md](docs/ETHICS_PRIVACY.md) |
 | Сбор данных (автоматизирован) | [docs/DATA.md](docs/DATA.md) |
 | Как выбирали стек | [docs/RESEARCH.md](docs/RESEARCH.md) |

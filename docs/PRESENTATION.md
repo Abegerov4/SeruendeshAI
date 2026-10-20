@@ -2,7 +2,7 @@
 
 ## Слайды
 
-PDF: [presentation/SeruendeshAI-presentation.pdf](presentation/SeruendeshAI-presentation.pdf), 15 слайдов, около 5:00, и [PPTX](presentation/SeruendeshAI-presentation.pptx) с заметками докладчика. Шрифты: Unbounded (заголовки), Playfair Display курсивом (акценты), Golos Text (текст), JetBrains Mono (цифры и подписи). Демо-видео: https://youtu.be/ZZ2LTLXCxg8 (одна страница со ссылкой, QR и главами: [presentation/SeruendeshAI-demo-video.pdf](presentation/SeruendeshAI-demo-video.pdf)).
+PDF: [presentation/SeruendeshAI-presentation.pdf](presentation/SeruendeshAI-presentation.pdf), 15 слайдов, около 5:00, и [PPTX](presentation/SeruendeshAI-presentation.pptx) с заметками докладчика. Шрифты: Unbounded (заголовки), Playfair Display курсивом (акценты), Golos Text (текст), JetBrains Mono (цифры и подписи). Демо-видео: https://youtu.be/ZZ2LTLXCxg8 (одна страница со ссылкой и QR: [presentation/SeruendeshAI-demo-video.pdf](presentation/SeruendeshAI-demo-video.pdf)).
 
 1. **SeruendeshAI: свободный час, своя Астана** (0:00–0:15). Свободный час в Астане: куда пойти, что успеть и как дойти. SeruendeshAI отвечает 1–3 конкретными местами — почему подходят, сколько там провести и что делать. Всё, что покажем, работает на seruendesh.site. Команда YeahGrinders.
 2. **Проблема** (0:15–0:35). Карты дают сотни точек, но не отвечают на главное: успею ли я, будет ли открыто, когда дойду, подходит ли это мне сейчас — с ребёнком, в мороз, перед рейсом.
