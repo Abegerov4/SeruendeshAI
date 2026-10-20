@@ -159,8 +159,9 @@ def _cache_key(req: RecommendRequest, now: dt.datetime) -> str:
 
 def _trace_request(req: RecommendRequest) -> tuple[dict, dict, list[str]]:
     """(input, metadata, tags) of the trace: the masked query and settings; never the position or home."""
-    query, _ = mask_pii(req.query or "")
-    settings = {k: v for k, v in req.model_dump(mode="json", exclude={"query", "location", "home", "now", "weather"}).items()
+    query = mask_location(mask_pii(req.query or "")[0])  # the same masking as before the LLM: no house numbers either
+    settings = {k: v for k, v in req.model_dump(mode="json", exclude={"query", "location", "location_label", "home", "now",
+                                                                       "weather"}).items()
                 if v not in (None, [], {}, False)}
     settings["origin"] = "gps" if req.location else "landmark" if req.landmark else "home" if req.home else "none"
     return {"query": query}, settings, ["recommend", f"channel:{req.channel or 'web'}"]

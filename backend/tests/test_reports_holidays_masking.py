@@ -120,3 +120,13 @@ def test_start_label_and_clipped_description_read_well():
     text = "Площадь окружена зданиями, в которых входит ряд министерств и ведомств, а также торговые центры и рестораны"
     out = _clip(text, 60)
     assert out.endswith("…") and not out[:-1].endswith(" ") and len(out) <= 61
+
+
+def test_quality_traces_get_no_house_number_or_typed_start():
+    from app.schemas import RecommendRequest
+    from app.service import _trace_request
+    req = RecommendRequest(query="кофе, я живу на Туран 37, +7 701 123 45 67", lang="ru",
+                           location={"lat": 51.166, "lon": 71.433}, location_label="Кенесары 40")
+    inp, settings, _ = _trace_request(req)
+    assert "37" not in inp["query"] and "701" not in inp["query"] and "Туран" in inp["query"]
+    assert "location_label" not in settings and "location" not in settings and settings["origin"] == "gps"
