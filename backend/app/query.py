@@ -461,7 +461,8 @@ def _name_spans(text: str, key: str, curated: bool, blocked: list[tuple[int, int
     stem = bool(inflected and len(key) >= 6 and key[-1] in "ая")
     if (key[:-1] if stem else key) not in text:
         return
-    ending = r"\w{0,4}" if curated else r"\w{0,2}"
+    # a short curated name takes only a short ending: «мега» matches «мегой» spelled out, never «мегафон» / «мегаполис»
+    ending = r"\w{0,4}" if curated and len(key) >= 6 else r"\w{0,2}"
     if stem:
         pattern = re.escape(key[:-1]) + r"(?:" + key[-1] + ending + r"|[еуыи]|ой|ей|ою|ею)(?!\w)"
     else:

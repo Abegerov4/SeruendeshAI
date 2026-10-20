@@ -229,6 +229,8 @@ def load_store(embed_model: str | None = None) -> Store:
         gaz = json.loads(gazetteer_file.read_text()) if gazetteer_file.exists() else []
     if not pois:
         raise ValueError("Recommendation snapshot is empty")
+    from app.aliases import apply as apply_aliases  # «я у меги», «возле шатра»: how people name the landmarks
+    apply_aliases(gaz)
     docs = [stem_tokens(poi_document(p)) for p in pois]
     emb = None
     if canonical and embed_model not in (None, "", "off", "none"):

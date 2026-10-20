@@ -477,6 +477,15 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
                 item["why"] = strip_itinerary(item["why"], others) or template_why(c, lang)
                 item["what_to_do"] = strip_itinerary(item["what_to_do"], others) or template_todo(c, lang)
 
+    if route_out is not None and not route.get("returns_to_start"):
+        # a one-way walk: the model must not promise «затем вернитесь к старту»
+        for item in items:
+            for f in ("why", "what_to_do"):
+                if item.get(f):
+                    item[f] = _BACK_TO_START.sub("", item[f]).strip(" ,;") or item[f]
+                    if item[f] and item[f][-1] not in ".!?…":
+                        item[f] += "."
+
     # --- notes (transparency)
     aqi = (ctx.weather or {}).get("us_aqi") or 0
     if aqi >= 101:
@@ -636,6 +645,11 @@ def _contract_open(op: dict) -> tuple[str, str]:
     if st == "closed":
         return "closed", "high" if conf in ("high", "medium") else "low"
     return "unknown", "none"
+
+
+_BACK_TO_START = re.compile(r"[,;]?\s*(?:\bа\s+)?(?:\b(?:затем|потом|после этого|и)\s+)?(?:\b(?:можно|стоит)\s+)?\b(?:вернуться|вернитесь|"
+                            r"возвращайтесь|вернёмся|идите обратно|обратно)\b[^.!?]*|[,;]?\s*(?:then\s+)?(?:head|walk|go)\s+back\b[^.!?]*|"
+                            r"[,;]?\s*(?:then\s+)?return\s+to\b[^.!?]*|[,;]?\s*кейін\s+[^.!?]*қайт\w*[^.!?]*", re.I)
 
 
 def _clip(text: str, n: int) -> str:
