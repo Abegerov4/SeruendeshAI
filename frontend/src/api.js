@@ -59,6 +59,14 @@ export function placeIcon(iconKey, categoryKey) {
   return ICONS[iconKey] || fallback[coverGroup(categoryKey)] || Sparkles;
 }
 
+// Account snapshots contain JSON only (React icon components cannot be stored): rebuild the presentation fields
+// for current and older saved cards — the icon, the cover group, and the AI-idea sparkle.
+export function restoreSavedPlace(row) {
+  const place = row.data || {};
+  return {...place, id: row.poi_id, cover: place.cover || coverGroup(place.categoryKey),
+    icon: place.generated ? Sparkles : placeIcon(place.iconKey || place.categoryKey, place.categoryKey)};
+}
+
 export const BADGE_LABELS = {indoor: 'В помещении', outdoor: 'На свежем воздухе', kids: 'Можно с детьми', popular: 'Знаковое место',
   hidden_gem: 'Скрытая жемчужина', event: 'Сегодня событие', night: 'Вечерний вариант', free: 'Бесплатно', ai_idea: 'Идея ИИ'};
 
