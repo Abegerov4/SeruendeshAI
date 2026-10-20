@@ -1,0 +1,402 @@
+[
+ {
+  "poi_id": "ov:adfab320-3141-4f",
+  "name": "Quartet Karaoke-bar",
+  "status": "open",
+  "opening_hours": "Mo-Su 18:00-02:00",
+  "hours_source": "https://sxodim.com/astana/place/quartet",
+  "hours_note": "по данным sxodim.com (карточка от 2022-01-12)",
+  "confidence": "low",
+  "notes": "sxodim «Quartet» 12 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:e6317716-f59a-42",
+  "name": "Брио",
+  "status": "open",
+  "opening_hours": "Mo-Su 19:00-02:00",
+  "hours_source": "https://sxodim.com/astana/place/karaoke-klub-brio",
+  "hours_note": "по данным sxodim.com (карточка от 2023-04-20)",
+  "confidence": "low",
+  "notes": "sxodim «Караокt Брио» 70 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:180a18ca-67d0-41",
+  "name": "Мята Иманова 26",
+  "status": "open",
+  "opening_hours": "Mo-Su 14:00-04:00",
+  "hours_source": "https://sxodim.com/astana/place/bar-myata-na-imanova",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-28)",
+  "confidence": "low",
+  "notes": "sxodim «Бар «Мята» на Иманова» 77 m, name score 89; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:6cbe3b4a-ff0f-49",
+  "name": "Lili Lounge Bar",
+  "status": "open",
+  "opening_hours": "Mo-Th 12:00-02:00; Fr 12:00-04:00; Sa 16:00-04:00; Su 16:00-02:00",
+  "hours_source": "https://sxodim.com/astana/place/bar-lili",
+  "hours_note": "по данным sxodim.com (карточка от 2021-12-14)",
+  "confidence": "low",
+  "notes": "sxodim «Бар «LILI»» 14 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:5c466bbc-1d1d-4b",
+  "name": "Мята Sky",
+  "status": "open",
+  "opening_hours": "Mo-Su 16:00-04:00",
+  "hours_source": "https://sxodim.com/astana/place/bar-myata-sky",
+  "hours_note": "по данным sxodim.com (карточка от 2021-09-21)",
+  "confidence": "low",
+  "notes": "sxodim «Бар «Мята sky»» 17 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:n12786677401",
+  "name": "Ноль",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-02:00",
+  "hours_source": "https://sxodim.com/astana/place/nol5",
+  "hours_note": "по данным sxodim.com (карточка от 2022-01-28)",
+  "confidence": "low",
+  "notes": "sxodim «Ноль5» 43 m, name score 89; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:n5878596085",
+  "name": "Ugly bill",
+  "status": "open",
+  "opening_hours": "Mo-Su 16:00-04:00",
+  "hours_source": "https://sxodim.com/astana/place/ugly-bill",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-11)",
+  "confidence": "low",
+  "notes": "sxodim «Ugly Bill» 13 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:n12917089240",
+  "name": "Harat's",
+  "status": "open",
+  "opening_hours": "Mo-Su 16:00-00:00",
+  "hours_source": "https://sxodim.com/astana/place/harats-pub",
+  "hours_note": "по данным sxodim.com (карточка от 2023-02-21)",
+  "confidence": "low",
+  "notes": "sxodim «Harats pub» 60 m, name score 92; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:07c68577-7ff6-49",
+  "name": "Union",
+  "status": "open",
+  "opening_hours": "Mo-Th 17:00-03:00; Fr-Sa 17:00-05:00; Su 12:00-23:00",
+  "hours_source": "https://sxodim.com/astana/place/lounge-bar-the-union",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "confidence": "low",
+  "notes": "sxodim «Lounge bar The Union» 4 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:n6443541085",
+  "name": "vzлётный",
+  "status": "open",
+  "opening_hours": "Mo-Su 16:00-02:00",
+  "hours_source": "https://sxodim.com/astana/place/restobar-vzlyotnyj",
+  "hours_note": "по данным sxodim.com (карточка от 2021-11-10)",
+  "confidence": "low",
+  "notes": "sxodim «Restobar Vzлётный» 5 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:w240909210",
+  "name": "Сарыарқа",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-24:00",
+  "hours_source": "https://sxodim.com/astana/place/grill-bar-saryarka",
+  "hours_note": "по данным sxodim.com (карточка от 2023-01-06)",
+  "confidence": "low",
+  "notes": "sxodim «Grill&Bar Сарыарка» 14 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:n12959449801",
+  "name": "Культура Диктует",
+  "status": "open",
+  "opening_hours": "Mo-Fr 08:00-22:00; Sa-Su 09:00-22:00",
+  "hours_source": "https://sxodim.com/astana/place/kultura-diktuet",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-10)",
+  "confidence": "low",
+  "notes": "sxodim «Культура Диктует» 42 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:a96bd2cc-d580-47",
+  "name": "Pecanta Cafe Light",
+  "status": "open",
+  "opening_hours": "Mo-Su 08:00-23:00",
+  "hours_source": "https://sxodim.com/astana/place/pecanta",
+  "hours_note": "по данным sxodim.com (карточка от 2022-02-21)",
+  "confidence": "low",
+  "notes": "sxodim «Pecanta» 101 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:44beee38-53ec-43",
+  "name": "Meatburg - Бургеры в Нур-Султан",
+  "status": "open",
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_source": "https://sxodim.com/astana/place/meatburg",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-28)",
+  "confidence": "low",
+  "notes": "sxodim «Meatburg» 5 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:c7c061bc-3b61-41",
+  "name": "Сундук",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-24:00",
+  "hours_source": "https://sxodim.com/astana/place/sunduk-1",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-10)",
+  "confidence": "low",
+  "notes": "sxodim «Ресторан Сундук» 54 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:n4876041621",
+  "name": "Пивоварофф",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-02:00",
+  "hours_source": "https://sxodim.com/astana/place/restoran-pivovaroff",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-10)",
+  "confidence": "low",
+  "notes": "sxodim «Ресторан «Пивоварофф»» 39 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:caa80412-fd52-44",
+  "name": "Marcello Restaurant",
+  "status": "open",
+  "opening_hours": "Mo-Su 11:00-00:00",
+  "hours_source": "https://sxodim.com/astana/place/restoran-marcello",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-13)",
+  "confidence": "low",
+  "notes": "sxodim «Ресторан «Marcello»» 18 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:e8423337-eea5-44",
+  "name": "Felice",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-22:00",
+  "hours_source": "https://sxodim.com/astana/place/restoran-felice",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-10)",
+  "confidence": "low",
+  "notes": "sxodim «Ресторан «Felice»» 5 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:45e782cd-510a-41",
+  "name": "Tom Yum House",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-01:00",
+  "hours_source": "https://sxodim.com/astana/place/tom-yum-house",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-13)",
+  "confidence": "low",
+  "notes": "sxodim «Tom Yum House» 7 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:dc873d01-2e3c-4b",
+  "name": "Бродвей Бургер на Круглой Площади",
+  "status": "open",
+  "opening_hours": "Mo-Su 11:00-00:00",
+  "hours_source": "https://sxodim.com/astana/place/brodvey-burger",
+  "hours_note": "по данным sxodim.com (карточка от 2021-06-25)",
+  "confidence": "low",
+  "notes": "sxodim «БРОДВЕЙ БУРГЕР» 40 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:a8c05741-d491-45",
+  "name": "Coffee inn",
+  "status": "open",
+  "opening_hours": "Mo-Fr 08:00-23:00; Sa-Su 09:00-23:00",
+  "hours_source": "https://sxodim.com/astana/place/coffee-inn",
+  "hours_note": "по данным sxodim.com (карточка от 2022-12-26)",
+  "confidence": "low",
+  "notes": "sxodim «Coffee inn» 20 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:w240909205",
+  "name": "Багратиони",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_source": "https://sxodim.com/astana/place/bagrationi",
+  "hours_note": "по данным sxodim.com (карточка от 2023-01-18)",
+  "confidence": "low",
+  "notes": "sxodim «Багратиони» 4 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:n12917112785",
+  "name": "Fest425",
+  "status": "open",
+  "opening_hours": "Mo-Su 16:00-04:00",
+  "hours_source": "https://sxodim.com/astana/place/fest-425",
+  "hours_note": "по данным sxodim.com (карточка от 2022-02-07)",
+  "confidence": "low",
+  "notes": "sxodim «Fest 425» 85 m, name score 93; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:0777beb8-fc25-4c",
+  "name": "Мельница",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_source": "https://sxodim.com/astana/place/melnica",
+  "hours_note": "по данным sxodim.com (карточка от 2022-10-19)",
+  "confidence": "low",
+  "notes": "sxodim «Мельница» 17 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:n12973341171",
+  "name": "Аяшка",
+  "status": "open",
+  "opening_hours": "Mo-Su 10:00-20:00",
+  "hours_source": "https://sxodim.com/astana/place/ayashka",
+  "hours_note": "по данным sxodim.com (карточка от 2021-11-11)",
+  "confidence": "low",
+  "notes": "sxodim «Аяшка» 142 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:5968eb41-78c5-47",
+  "name": "Агашки",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-24:00",
+  "hours_source": "https://sxodim.com/astana/place/beaumonde",
+  "hours_note": "по данным sxodim.com (карточка от 2022-04-21)",
+  "confidence": "low",
+  "notes": "sxodim «Агашки» 8 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:79677645-4d43-4b",
+  "name": "Ресторан WokWok kitchen",
+  "status": "open",
+  "opening_hours": "Su-Th 11:00-24:00; Fr-Sa 11:00-02:00",
+  "hours_source": "https://sxodim.com/astana/place/wok-wok-kitchen",
+  "hours_note": "по данным sxodim.com (карточка от 2021-09-10)",
+  "confidence": "low",
+  "notes": "sxodim «Wok Wok Kitchen» 8 m, name score 97; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:21d1858d-4b8a-45",
+  "name": "FIKA cafe",
+  "status": "open",
+  "opening_hours": "Mo-Su 08:00-22:00",
+  "hours_source": "https://sxodim.com/astana/place/fika",
+  "hours_note": "по данным sxodim.com (карточка от 2021-08-11)",
+  "confidence": "low",
+  "notes": "sxodim «FIKA кофе Астана» 26 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:08d94343-7744-42",
+  "name": "Sosedi",
+  "status": "open",
+  "opening_hours": "Mo-Fr 09:00-23:00; Sa-Su 09:00-00:00",
+  "hours_source": "https://sxodim.com/astana/place/sosedi-home-kitchen",
+  "hours_note": "по данным sxodim.com (карточка от 2021-08-18)",
+  "confidence": "low",
+  "notes": "sxodim «Sosedi Home Kitchen» 34 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:n5593300634",
+  "name": "Чир Chic",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_source": "https://sxodim.com/astana/place/restoran-chir-chic",
+  "hours_note": "по данным sxodim.com (карточка от 2022-10-11)",
+  "confidence": "low",
+  "notes": "sxodim «Чир-chic Астана» 110 m, name score 88; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:51315c91-bcc1-4e",
+  "name": "Ресторан \"Эпоха\"",
+  "status": "open",
+  "opening_hours": "Mo-Su 11:00-22:00",
+  "hours_source": "https://sxodim.com/astana/place/restoran-epoha",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "confidence": "low",
+  "notes": "sxodim «Ресторан \"Эпоха\"» 49 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:0a3a0b23-75f6-4f",
+  "name": "Red Pizza",
+  "status": "open",
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_source": "https://sxodim.com/astana/place/pizza-red",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "confidence": "low",
+  "notes": "sxodim «Pizza Red» 51 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:e8691389-da20-4b",
+  "name": "Ресторан \"Кафе Целинников\"",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_source": "https://sxodim.com/astana/place/kafe-tselinnikov",
+  "hours_note": "по данным sxodim.com (карточка от 2023-01-18)",
+  "confidence": "low",
+  "notes": "sxodim «Кафе Целинников» 91 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:b9ec916a-ebd3-4f",
+  "name": "Porto Verde",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_source": "https://sxodim.com/astana/place/porto-verde",
+  "hours_note": "по данным sxodim.com (карточка от 2021-09-03)",
+  "confidence": "low",
+  "notes": "sxodim «Porto Verde» 15 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:w240860325",
+  "name": "Әзірет Сұлтан мешіті",
+  "status": "open",
+  "opening_hours": "Mo-Su 08:00-20:00",
+  "hours_source": "https://sxodim.com/astana/place/ziret-s-ltan-stolovaya",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "confidence": "low",
+  "notes": "sxodim «\"Әзірет Сұлтан\" столовая» 23 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:2e7950ad-ed3c-4f",
+  "name": "Focaccia",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-22:00",
+  "hours_source": "https://sxodim.com/astana/place/focascia",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-11)",
+  "confidence": "low",
+  "notes": "sxodim «Focaсcia» 69 m, name score 88; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:n5764228295",
+  "name": "Тифлисъ",
+  "status": "open",
+  "opening_hours": "Mo-Su 11:00-22:00",
+  "hours_source": "https://sxodim.com/astana/place/restoran-tiflis",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "confidence": "low",
+  "notes": "sxodim «Ресторан «Тифлисъ»» 4 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "ov:97bcb142-f8cb-4e",
+  "name": "Чайный Клуб TEA DRUNK",
+  "status": "open",
+  "opening_hours": "Mo-Su 12:00-21:00",
+  "hours_source": "https://sxodim.com/astana/place/chajnyj-klub",
+  "hours_note": "по данным sxodim.com (карточка от 2021-09-24)",
+  "confidence": "low",
+  "notes": "sxodim «Чайный клуб» 15 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:n10585538978",
+  "name": "Kobyz Palace",
+  "status": "open",
+  "opening_hours": "Mo-Su 09:00-00:00",
+  "hours_source": "https://sxodim.com/astana/place/kobyz-palace",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "confidence": "low",
+  "notes": "sxodim «Kobyz palace» 1 m, name score 100; page opened 2026-10-20"
+ },
+ {
+  "poi_id": "osm:n4913160607",
+  "name": "Меруерт",
+  "status": "open",
+  "opening_hours": "Mo-Su 09:00-01:00",
+  "hours_source": "https://sxodim.com/astana/place/meruert",
+  "hours_note": "по данным sxodim.com (карточка от 2021-12-21)",
+  "confidence": "low",
+  "notes": "sxodim «Меруерт» 5 m, name score 100; page opened 2026-10-20"
+ }
+]

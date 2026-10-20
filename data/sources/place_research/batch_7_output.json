@@ -1,0 +1,10 @@
+[
+ {"poi_id": "osm:n2474931663", "name": "Арман 3D", "status": "open",
+  "opening_hours": "Mo-Su 10:00-02:00", "hours_source": "https://arman3d.kz/61",
+  "hours_note": "«Время работы: Ежедневно с 10:00 до 02:00» — страница кинотеатра в ТРЦ «Asia Park», Кабанбай Батыр, 21",
+  "confidence": "high", "notes": "page opened 2026-10-20 via r.jina.ai; quote checked against the page text"},
+ {"poi_id": "ov:bab52916-a374-4f", "name": "Movie Room", "status": "open",
+  "opening_hours": "Mo-Su 10:00-02:00", "hours_source": "http://movieroom.kz/",
+  "hours_note": "«Режим работы, с 10:00 до 02:00 без выходных»; приватный зал по бронированию",
+  "confidence": "medium", "notes": "page opened 2026-10-20 via r.jina.ai; private screening room, address given on booking"}
+]

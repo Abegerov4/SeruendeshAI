@@ -20,7 +20,7 @@ from app.store import OUTSIDE_ASTANA
 
 log = logging.getLogger("pipeline.place_facts")
 OUT_FILE = PROCESSED_DIR / "place_facts.json"
-CHECKED = "2026-10-19"
+CHECKED = "2026-10-20"
 BANNED = re.compile(r"2gis\.|yandex\.|google\.|goo\.gl|tripadvisor\.|restoclub\.|instagram\.|facebook\.|vk\.com|zoon\.|kudago\.", re.I)
 EXCLUDE = {"cp:121"}  # «Музей Искусств»: the researcher could not tie the description to this address
 STAGES = {"theatre", "event_venue", "arts_centre"}
