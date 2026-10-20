@@ -8,7 +8,7 @@ T: dict[str, dict[str, str]] = {
     "oh_closing_soon": {"ru": "Закроется в {t} — на месте будет ~{m} мин", "kk": "{t}-де жабылады — шамамен {m} мин бар", "en": "Closes at {t} — about {m} min on site"},
     "oh_closed_until": {"ru": "Сейчас закрыто, откроется {d} в {t}", "kk": "Қазір жабық, {d} {t}-де ашылады", "en": "Closed now, opens {d} at {t}"},
     "oh_closed": {"ru": "В это время закрыто", "kk": "Бұл уақытта жабық", "en": "Closed at this time"},
-    "oh_always": {"ru": "Открытая территория — часы не ограничены", "kk": "Ашық аумақ — уақыт шектелмеген", "en": "Open public space — no set hours"},
+    "oh_always": {"ru": "Открытая территория — вход свободный, часов работы нет", "kk": "Ашық аумақ — кіру еркін, жұмыс уақыты жоқ", "en": "Open public space — free access, no opening hours"},
     "oh_unknown": {"ru": "Часы работы неизвестны — уточните перед визитом", "kk": "Жұмыс уақыты белгісіз — алдын ала нақтылаңыз", "en": "Opening hours unknown — check before going"},
     "oh_unparsed": {"ru": "Часы указаны нестандартно: «{raw}» — уточните", "kk": "Уақыт стандартты емес: «{raw}» — нақтылаңыз", "en": "Hours listed as «{raw}» — please double-check"},
     "oh_source": {"ru": " (источник часов: {source})", "kk": " (жұмыс уақытының дереккөзі: {source})", "en": " (hours source: {source})"},

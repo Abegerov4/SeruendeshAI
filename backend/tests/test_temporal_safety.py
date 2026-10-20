@@ -51,7 +51,12 @@ def test_full_visit_must_fit_hours_including_midnight(arrive, visit, ok):
 
 
 def test_unknown_public_space_hours_and_source_labels_are_honest():
-    assert opening_status(poi(category="park", opening_hours=None), ctx().local_naive, 30, "en", None)["status"] == "unknown"
+    # an unfenced park without hours is an «open public space», never «open»: the contract still says unknown
+    park = opening_status(poi(category="park", name="City park", opening_hours=None), ctx().local_naive, 30, "en", None)
+    assert park["status"] == "always" and "open until" not in park["label"].lower()
+    assert service._contract_open(park) == ("unknown", "none")
+    gated = opening_status(poi(category="park", name="Botanical garden", opening_hours=None), ctx().local_naive, 30, "en", None)
+    assert gated["status"] == "unknown"
     op = opening_status(poi(hours_source="official", hours_source_url="https://example.org/hours"), ctx().local_naive, 30, "en", None)
     assert "OSM" not in op["label"] and "official" in op["label"].lower()
 

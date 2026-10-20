@@ -40,13 +40,16 @@
   "website_problem": "hosting placeholder, no venue site"
  },
  "osm:w240873345": {
-  "checked": "2026-10-19",
+  "checked": "2026-10-20",
   "drop_website": true,
   "website_problem": "domain does not resolve (reported to carry a casino title)",
   "description_ru": "Дворец Независимости на проспекте Тәуелсіздік, 52 — трёхэтажное здание из стекла площадью около 40 тыс. м² для государственных мероприятий и конгрессов, с художественными экспозициями и залом истории Астаны.",
   "description_en": "The Palace of Independence at 52 Tauelsizdik Avenue is a three-storey glass building of about 40,000 m² that hosts state events and congresses, with art exhibitions and a floor on Astana's history.",
   "description_url": "https://ticketon.kz/en/place/dvorec-nezavisimosti",
-  "confidence": "medium"
+  "confidence": "high",
+  "opening_hours": "Mo-Su 10:00-21:00",
+  "hours_url": "https://visitastana.kz/ru/about-city/what-to-see/dvorets-nezavisimosti/",
+  "hours_note": "График работы: Пн – Вс (10:00 – 21:00)"
  },
  "osm:w230401645": {
   "description_ru": "Монумент-башня высотой 105 м (1996–2002), символ переноса столицы в Акмолу в 1997 году. В шаре диаметром 22 м — панорамный зал с позолоченным отпечатком ладони первого президента, в подземном уровне — кафе, аквариумы и фотогалерея.",
@@ -864,5 +867,61 @@
   "hours_note": "часы сети: Мы работаем ежедневно с 10.00 до 23.00.",
   "checked": "2026-10-20",
   "confidence": "medium"
+ },
+ "osm:n3222863936": {
+  "opening_hours": "Mo-Su 09:00-14:00,14:30-19:30",
+  "hours_url": "https://www.rakhat.kz/our-addresses/company-stores/",
+  "hours_note": "Пн- Вс с 9:00 до 19:30 Перерыв: 14.00-14.30",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "osm:w166265821": {
+  "opening_hours": "Mo-Su 07:00-23:00",
+  "hours_url": "https://velotrek.kz/fitness/grafik-raboty-fitness-velotrek/",
+  "hours_note": "Фитнес орталығының жұмыс уақыты: 07:00-23:00 (Дүйсенбі-Жексенбі)",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:ee8ec287-79ae-4a": {
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://www.edagoroda.kz/",
+  "hours_note": "часы сети: МЫ РАБОТАЕМ КАЖДЫЙ ДЕНЬ с 10 до 22 часов",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "osm:n6404747238": {
+  "opening_hours": "Mo-Su 09:00-24:00",
+  "hours_url": "https://www.ritzcarlton.com/en/hotels/kazakhstan/astana/dining/ozen",
+  "hours_note": "Everyday: 9:00 AM-12:00 AM",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n4935263956": {
+  "opening_hours": "Mo-Su 12:00-01:00",
+  "hours_url": "http://tri-peskarya.kz/index.htm",
+  "hours_note": "ЛЕТНЕЕ И ЗИМНЕЕ КАФЕ работает с 12:00 до 01:00",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "osm:w239713764": {
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://astana.asiapark.kz/ru/",
+  "hours_note": "С 10:00 до 22:00",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:0db6ee4f-63be-4a": {
+  "opening_hours": "Mo-Su 10:00-20:00",
+  "hours_url": "http://latartine.kz/adresa",
+  "hours_note": "Пн-Вс с 10.00 до 20.00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n12917089240": {
+  "opening_hours": "Mo-Th,Su 16:00-02:00; Fr-Sa 16:00-04:00",
+  "hours_url": "https://astana.harats.com/en/astana/",
+  "hours_note": "пн-чт, вс 16:00-02:00 пт-сб 16:00 - 04:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
  }
 }

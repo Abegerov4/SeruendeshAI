@@ -4,11 +4,12 @@ Rules (never claim "open" without data):
 - parsed opening_hours -> open/closing_soon/closed; confidence high only for dated source evidence,
   otherwise low; on a public holiday a schedule without its own PH rule says nothing about today: «open»
   becomes «unknown» with the usual hours as a hint (closed stays closed, with lower confidence);
-- no hours otherwise -> "unknown", low.
+- no hours: a playground, a monument or an unfenced park is an «open public space» (status always); else "unknown", low.
 """
 from __future__ import annotations
 
 import datetime as dt
+import re
 from functools import lru_cache
 
 import opening_hours as oh
@@ -90,9 +91,30 @@ def _fmt_day(d: dt.datetime, ref: dt.datetime, lang: str) -> str:
     return d.strftime("%d.%m")
 
 
+OPEN_SPACE = {"playground", "monument", "artwork", "park"}
+# parks that have gates, tickets or hours of their own are not «open space» even without listed hours
+_GATED = re.compile(r"ботани|botanic|зоо|zoo|дендро|аттракцион|amusement|аквапарк|water ?park|ипподром|стадион|stadium|"
+                    r"этнопарк|ethno|сафари|контакт|keruen|хан шатыр|khan shatyr", re.I)
+
+
+_SQUARE = re.compile(r"сквер|бульвар|аллея|саябақ|гүлзар|square|boulevard|alley", re.I)  # a «garden» that is a city square
+
+
+def open_space(poi: dict) -> bool:
+    """A playground, a monument or an unfenced city park: you can come at any time, there are no opening hours."""
+    feats = poi.get("features") or {}
+    name = poi.get("name") or ""
+    kind_ok = poi.get("category") in OPEN_SPACE or (poi.get("category") == "garden" and _SQUARE.search(name))
+    return (kind_ok and not _GATED.search(name)
+            and feats.get("fee") is not True and poi.get("access") not in ("private", "customers", "no"))
+
+
 def opening_status(poi: dict, arrive: dt.datetime, visit_min: int, lang: str, holiday: str | None) -> dict:
     """arrive: naive local time (Asia/Almaty). Returns the API `Opening` dict + `ok` for filtering."""
     raw = poi.get("opening_hours")
+    if not raw and open_space(poi):  # shown as «open public space», never as «open» (the contract says unknown)
+        return {"status": "always", "confidence": "medium", "label": t("oh_always", lang), "raw": None,
+                "next_change": None, "ok": True}
     if not raw:
         return {"status": "unknown", "confidence": "low", "label": t("oh_unknown", lang), "raw": None,
                 "next_change": None, "ok": True}

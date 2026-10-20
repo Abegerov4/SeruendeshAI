@@ -1,0 +1,12 @@
+[
+  {
+    "poi_id": "ov:ee8ec287-79ae-4a",
+    "name": "Еда Города",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "hours_source": ["https://www.edagoroda.kz/"],
+    "hours_note": "часы сети: МЫ РАБОТАЕМ КАЖДЫЙ ДЕНЬ с 10 до 22 часов",
+    "confidence": "medium",
+    "checked": "2026-10-20",
+    "notes": "Branch «УЛ. САТПАЕВА, 25» is on the chain's address list; the site gives one schedule for all branches."
+  }
+]
