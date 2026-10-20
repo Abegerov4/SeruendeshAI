@@ -1,0 +1,122 @@
+[
+ {
+  "poi_id": "osm:n4931058926",
+  "name": "Hardee's",
+  "opening_hours": "Mo-Su 10:00-01:45",
+  "hours_source": [
+   "https://www.hardees.kz/stores"
+  ],
+  "hours_note": "С собой: воскресенье - суббота 10:00 - 01:45",
+  "confidence": "high",
+  "checked": "2026-10-20",
+  "notes": "Hardee's Астана | Манаса, просп. Тауелсиздик 21; блок «С собой» (доставка 10:00-23:00 не учтена)"
+ },
+ {
+  "poi_id": "ov:23a7b46e-d686-4d",
+  "name": "Hardee's",
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_source": [
+   "https://www.hardees.kz/stores"
+  ],
+  "hours_note": "С собой: воскресенье - суббота 10:00 - 23:00",
+  "confidence": "high",
+  "checked": "2026-10-20",
+  "notes": "Hardee's Астана | Хан-Шатыр, просп. Туран 37; на странице только блок «С собой»"
+ },
+ {
+  "poi_id": "ov:3d7a19a4-b400-4f",
+  "name": "Hardee's",
+  "opening_hours": "Mo-Th,Su 10:00-00:45; Fr-Sa 10:00-01:45",
+  "hours_source": [
+   "https://www.hardees.kz/stores"
+  ],
+  "hours_note": "С собой: вс-чт 10:00 - 00:45, пт-сб 10:00 - 01:45",
+  "confidence": "high",
+  "checked": "2026-10-20",
+  "notes": "Hardee's Астана | Respublika, просп. Республики 7; блок «С собой» (доставка до 23:00 не учтена)"
+ },
+ {
+  "poi_id": "ov:536fa561-c38c-44",
+  "name": "Hardee's",
+  "opening_hours": "Mo-Su 10:00-23:45",
+  "hours_source": [
+   "https://www.hardees.kz/stores"
+  ],
+  "hours_note": "С собой: воскресенье - суббота 10:00 - 23:45",
+  "confidence": "high",
+  "checked": "2026-10-20",
+  "notes": "Hardee's Астана | Керуен, улица Достык 9 (ТРЦ Keruen Mall); блок «С собой»"
+ },
+ {
+  "poi_id": "ov:5a97a4a2-0118-4f",
+  "name": "Hardee's",
+  "opening_hours": "Mo-Fr,Su 10:00-22:45; Sa 10:00-24:00",
+  "hours_source": [
+   "https://www.hardees.kz/stores"
+  ],
+  "hours_note": "С собой: вс-пт 10:00 - 22:45, суббота 10:00 - 00:00",
+  "confidence": "medium",
+  "checked": "2026-10-20",
+  "notes": "Hardee's Астана | Mega Expo, просп. Кабанбай Батыра 62; сопоставлено по координатам (в нашем адресе только plus-code)"
+ },
+ {
+  "poi_id": "ov:60482543-0503-4b",
+  "name": "Hardee's",
+  "opening_hours": "Mo-Su 10:00-00:45",
+  "hours_source": [
+   "https://www.hardees.kz/stores"
+  ],
+  "hours_note": "С собой: воскресенье - суббота 10:00 - 00:45",
+  "confidence": "high",
+  "checked": "2026-10-20",
+  "notes": "Hardee's Астана | Sauran, улица Сауран 38; блок «С собой»"
+ },
+ {
+  "poi_id": "ov:8cd55cec-49a6-47",
+  "name": "Hardee's",
+  "opening_hours": "Mo-Th,Su 10:00-00:45; Fr-Sa 10:00-01:45",
+  "hours_source": [
+   "https://www.hardees.kz/stores"
+  ],
+  "hours_note": "С собой: вс-чт 10:00 - 00:45, пт-сб 10:00 - 01:45",
+  "confidence": "medium",
+  "checked": "2026-10-20",
+  "notes": "Hardee's Астана | Seifulina, просп. Республики 34а; наш адрес 34/1; блок «С собой»"
+ },
+ {
+  "poi_id": "osm:w1449301315",
+  "name": "Starbucks",
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_source": [
+   "https://www.starbucks.com.kz/stores"
+  ],
+  "hours_note": "Starbucks Хан Шатыр | 10:00-22:00 | Тұран даңғылы, 37",
+  "confidence": "medium",
+  "checked": "2026-10-20",
+  "notes": "Список магазинов starbucks.com.kz/stores; дни недели на странице не указаны, принято ежедневно"
+ },
+ {
+  "poi_id": "ov:fe56a0eb-c9a7-48",
+  "name": "Starbucks",
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_source": [
+   "https://www.starbucks.com.kz/stores"
+  ],
+  "hours_note": "Starbucks Хан Шатыр | 10:00-22:00 | Тұран даңғылы, 37",
+  "confidence": "medium",
+  "checked": "2026-10-20",
+  "notes": "Список магазинов starbucks.com.kz/stores; дни недели на странице не указаны, принято ежедневно"
+ },
+ {
+  "poi_id": "ov:204ec824-1291-47",
+  "name": "Starbucks",
+  "opening_hours": "Mo-Su 09:00-23:00",
+  "hours_source": [
+   "https://www.starbucks.com.kz/stores"
+  ],
+  "hours_note": "Starbucks Керуен Сити | 09:00-23:00 | Кургальджинское тас жолы 1",
+  "confidence": "medium",
+  "checked": "2026-10-20",
+  "notes": "Список магазинов starbucks.com.kz/stores; дни недели на странице не указаны, принято ежедневно"
+ }
+]

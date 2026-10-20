@@ -248,8 +248,11 @@
   "description_ru": "Кофейня сети Starbucks в торгово-развлекательном центре «Хан Шатыр».",
   "description_en": "A Starbucks coffee shop inside the Khan Shatyr entertainment centre.",
   "description_url": "https://khanshatyr.com/en/food-court/kafe-restorany-i-kofeyni",
-  "checked": "2026-10-19",
-  "confidence": "medium"
+  "checked": "2026-10-20",
+  "confidence": "medium",
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://www.starbucks.com.kz/stores",
+  "hours_note": "Starbucks Хан Шатыр | 10:00-22:00 | Тұран даңғылы, 37"
  },
  "osm:n12093489321": {
   "description_ru": "Ресторан грузинской кухни сети «Дареджани» на 1-м этаже ТРЦ MEGA Silk Way: хачапури, хинкали и грузинские вина в современной подаче.",
@@ -923,5 +926,68 @@
   "hours_note": "пн-чт, вс 16:00-02:00 пт-сб 16:00 - 04:00",
   "checked": "2026-10-20",
   "confidence": "high"
+ },
+ "osm:n4931058926": {
+  "opening_hours": "Mo-Su 10:00-01:45",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: воскресенье - суббота 10:00 - 01:45",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:23a7b46e-d686-4d": {
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: воскресенье - суббота 10:00 - 23:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:3d7a19a4-b400-4f": {
+  "opening_hours": "Mo-Th,Su 10:00-00:45; Fr-Sa 10:00-01:45",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: вс-чт 10:00 - 00:45, пт-сб 10:00 - 01:45",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:536fa561-c38c-44": {
+  "opening_hours": "Mo-Su 10:00-23:45",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: воскресенье - суббота 10:00 - 23:45",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:5a97a4a2-0118-4f": {
+  "opening_hours": "Mo-Fr,Su 10:00-22:45; Sa 10:00-24:00",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: вс-пт 10:00 - 22:45, суббота 10:00 - 00:00",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:60482543-0503-4b": {
+  "opening_hours": "Mo-Su 10:00-00:45",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: воскресенье - суббота 10:00 - 00:45",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:8cd55cec-49a6-47": {
+  "opening_hours": "Mo-Th,Su 10:00-00:45; Fr-Sa 10:00-01:45",
+  "hours_url": "https://www.hardees.kz/stores",
+  "hours_note": "С собой: вс-чт 10:00 - 00:45, пт-сб 10:00 - 01:45",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:fe56a0eb-c9a7-48": {
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://www.starbucks.com.kz/stores",
+  "hours_note": "Starbucks Хан Шатыр | 10:00-22:00 | Тұран даңғылы, 37",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:204ec824-1291-47": {
+  "opening_hours": "Mo-Su 09:00-23:00",
+  "hours_url": "https://www.starbucks.com.kz/stores",
+  "hours_note": "Starbucks Керуен Сити | 09:00-23:00 | Кургальджинское тас жолы 1",
+  "checked": "2026-10-20",
+  "confidence": "medium"
  }
 }
