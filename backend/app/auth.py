@@ -75,11 +75,44 @@ Labels = Annotated[list[Annotated[str, Field(max_length=150)]], Field(max_length
 Minutes = Annotated[int, Field(ge=0, le=10080)]
 
 
+class SavedPhoto(BaseModel):
+    model_config = ConfigDict(strict=True, extra="ignore")
+    url: Annotated[str, Field(max_length=2048)]
+    page: Annotated[str, Field(max_length=2048)] | None = None
+    author: ShortText = ""
+    license: ShortText = ""
+    source: ShortText = "Wikimedia Commons"
+    width: Annotated[int, Field(ge=1, le=100000)] | None = None
+    height: Annotated[int, Field(ge=1, le=100000)] | None = None
+
+    @field_validator("url", "page")
+    @classmethod
+    def safe_url(cls, value):
+        if value is not None:
+            parts = urlsplit(value)
+            if (parts.scheme not in {"http", "https"} or not parts.hostname or parts.username or parts.password
+                    or "\\" in value or any(c.isspace() or ord(c) < 32 for c in value)):
+                raise ValueError("URL must use HTTP(S)")
+        return value
+
+
 class SavedSnapshot(BaseModel):
     model_config = ConfigDict(strict=True, extra="ignore", allow_inf_nan=False)
     name: ShortText | None = None
     category: ShortText | None = None
     categoryKey: ShortText | None = None
+    iconKey: ShortText | None = None
+    photo: SavedPhoto | None = None
+    description: LongText | None = None
+    descriptionUrl: Annotated[str, Field(max_length=2048)] | None = None
+    website: Annotated[str, Field(max_length=2048)] | None = None
+    phone: ShortText | None = None
+    instagram: ShortText | None = None
+    cuisine: Labels | None = None
+    openStatus: ShortText | None = None
+    openingKind: ShortText | None = None
+    openingRaw: ShortText | None = None
+    cover: ShortText | None = None
     lat: Annotated[float, Field(ge=-90, le=90)] | None = None
     lon: Annotated[float, Field(ge=-180, le=180)] | None = None
     address: Annotated[str, Field(max_length=1000)] | None = None
@@ -102,7 +135,7 @@ class SavedSnapshot(BaseModel):
     openConfidence: ShortText | None = None
     accessibility: ShortText | None = None
 
-    @field_validator("url", "image")
+    @field_validator("url", "image", "descriptionUrl", "website")
     @classmethod
     def _safe_url(cls, value, info):
         if value is None:

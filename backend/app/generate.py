@@ -322,6 +322,34 @@ _W = {
 }
 
 
+# A card without a route is one choice among several: model text that walks on to the next stop
+# («затем направляйтесь к стеле», «then head to …») or names another card is cut at that point.
+_ITINERARY = re.compile(
+    r"\s*(?:[,;—–-]\s*)?(?:\b(?:а|и)\s+)?(?:\bзатем\b|\bпотом\b|после этого|\bа после\b|\bпосле\s+(?:—\s*)?(?:прогуляйтесь|пройдите|загляните|дойдите)|"
+    r"\bдалее\b|по очереди|одно за другим|направляйтесь|перейдите|переходите|прогуляйтесь\s+к|дойдите\s+до|вернитесь\s+к|возвращайтесь\s+к|"
+    r"\bthen\b|\bafterwards?\b|after that|one after another|head\s+(?:on\s+|over\s+|back\s+)?to|walk\s+(?:on\s+|over\s+)?to|"
+    r"содан кейін|одан соң)", re.IGNORECASE)
+
+
+def strip_itinerary(text: str, other_names: list[str]) -> str:
+    """Cut a standalone card's text where it starts sending the user on to another place ('' if nothing is left)."""
+    if not text:
+        return text
+    cut = len(text)
+    if m := _ITINERARY.search(text):
+        cut = m.start()
+    low = text.lower()
+    for name in other_names:
+        if len(name) >= 4 and (i := low.find(name.lower())) >= 0:
+            start = max(text.rfind(". ", 0, i), text.rfind("; ", 0, i), text.rfind(", ", 0, i))
+            cut = min(cut, start + 1 if start >= 0 else 0)
+    if cut == len(text):
+        return text
+    kept = text[:cut].rstrip(" ,;:—–-")
+    kept = re.sub(r"\s+(?:а|и|and)$", "", kept, flags=re.IGNORECASE).rstrip(" ,;:—–-")
+    return kept + ("" if kept.endswith((".", "!", "?")) else ".") if len(kept) >= 15 else ""
+
+
 def template_why(c: Cand, lang: str) -> str:
     p, cat = c.poi, CATEGORIES[c.poi["category"]]
     bits = [label(p["category"], lang)]

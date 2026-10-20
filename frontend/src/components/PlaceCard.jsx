@@ -13,9 +13,9 @@ export function TrustList({ p }) {
   return <ul className="trust-list">
     <li><b>{tr('Источник')}</b><span>{p.generated ? tr('Идея ИИ без привязки к фактам') : sources || tr('Данные POI')}</span></li>
     {!p.generated && <li><b>{tr('Удобства')}</b><span className={p.features?.length ? '' : 'unknown'}>{p.features?.length ? p.features.join(', ') : tr('Не подтверждены данными')}</span></li>}
-    {!p.generated && p.accessibility && p.accessibility !== 'unknown' && <li><b>{tr('Доступность')}</b><span>{tr({yes: 'Без ступенек (по данным OSM)', limited: 'Частично доступно (OSM)', no: 'Есть ступени (OSM)'}[p.accessibility])}</span></li>}
+    {!p.generated && p.accessibility && p.accessibility !== 'unknown' && <li><b>{tr('Доступность')}</b><span>{tr({yes: 'Доступно на коляске — по данным источника', limited: 'Частично доступно на коляске — по данным источника', no: 'Недоступно на коляске — по данным источника'}[p.accessibility])}</span></li>}
     {p.descriptionSource && !p.generated && <li><b>{tr('Описание')}</b><span>{tr(DESC_SOURCE[p.descriptionSource] || p.descriptionSource)}</span></li>}
-    {p.photo && <li><b>{tr('Фото')}</b><span><a href={p.photo.page || p.photo.url} target="_blank" rel="noreferrer">{p.photo.author}</a>, {p.photo.license}, Wikimedia Commons</span></li>}
+    {p.photo && <li><b>{tr('Фото')}</b><span><a href={p.photo.page || p.photo.url} target="_blank" rel="noreferrer">{p.photo.author}</a>{p.photo.source === 'website' ? ' · ' + tr('Фото с сайта') : <> · {p.photo.license} · Wikimedia Commons</>}</span></li>}
   </ul>;
 }
 

@@ -76,3 +76,7 @@ docs/PROMPT_OPENING_HOURS.md
 
 # Local operator photo uploads (published explicitly with the photos tool).
 /photo-import/
+
+# Browser regression artifacts
+frontend/test-results/
+frontend/playwright-report/

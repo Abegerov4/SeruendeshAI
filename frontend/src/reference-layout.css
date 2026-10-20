@@ -38,15 +38,12 @@
  .reference-layout .companion-intro p{font-size:12px;line-height:1.55}
  .reference-layout .companion-mascot{width:95px;height:115px;right:-4px;top:26px}
  .reference-layout .chat-panel{margin:10px 0 0}
- .reference-layout .chat-heading,.reference-layout .chat-panel:not(.has-messages) .chat-log{display:none}
  /* themed walks («Маршруты») and three quick starts stay reachable on a laptop until the first message, as on a phone */
  .reference-layout .quick-scenarios{padding:2px 0 10px}
  .reference-layout .quick-scenarios>span{display:none}
  .reference-layout .quick-scenarios>div{display:flex;flex-wrap:wrap;gap:6px;margin:0}
  .reference-layout .quick-scenarios button{font-size:12px;padding:7px 10px;border-radius:10px}
  .reference-layout .chat-body{background:transparent;padding:0}
- .reference-layout .chat-panel.has-messages .chat-log{min-height:0;max-height:155px;margin-bottom:10px;padding:8px 0}
- .reference-layout .chat-log .chat-places,.reference-layout .chat-log .chat-answer-details,.reference-layout .chat-log .message-results{display:none}
  .reference-layout .chat-message{padding:10px 12px;max-width:100%;font-size:12px}
  .reference-layout .chat-message p{font-size:12px}
  .reference-layout .chat-composer{box-shadow:0 6px 20px #1b432908;border:1px solid #e8ece4;border-radius:16px!important;padding:12px;margin-bottom:10px}
@@ -54,7 +51,6 @@
  .reference-layout .composer-input>svg{display:none}
  .reference-layout .composer-bottom{padding-top:8px}
  .reference-layout .send-button{width:38px;height:38px;min-height:38px;border-radius:13px;padding:10px}.reference-layout .send-button>span{display:none}
- .reference-layout .chat-tools>summary{width:32px;height:34px}
  .reference-layout .location-toggle{font-size:10px}
  .reference-layout .geo-compact{font-size:10px;margin:0 0 8px;background:#f7f8f1}
  .reference-layout .geo-compact>summary{min-height:28px}
@@ -73,7 +69,7 @@
  .reference-layout .map-bottom{left:22px;top:78px;bottom:auto;right:auto}
  .reference-layout .map-top{right:340px;left:22px;top:24px}
  .reference-layout .places-section{display:none}
- .reference-layout.mobile-view-places .places-section{display:block;position:absolute;left:16px;right:16px;bottom:78px;z-index:620;background:#fffefaee;border-radius:20px;padding:14px;max-height:60%;overflow:auto;backdrop-filter:blur(12px)}
+ .reference-layout.mobile-view-places .places-section{display:block;position:absolute;left:16px;right:16px;bottom:78px;z-index:620;background:transparent;padding:4px 0 0;max-height:62%;overflow:auto;pointer-events:none}
  .reference-layout.mobile-view-places .reference-place{display:none}
  .reference-layout.mobile-view-places .place-grid{position:static;display:flex;gap:14px;overflow-x:auto;padding:4px;max-width:100%}
  .reference-layout.mobile-view-places .place-card{flex:0 0 270px}

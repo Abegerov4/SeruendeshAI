@@ -45,6 +45,9 @@ jobs:
         working-directory: frontend
       - run: npm test && npm run build
         working-directory: frontend
+      - name: Browser regressions (isolated API fixtures)
+        working-directory: frontend
+        run: npx playwright install --with-deps chromium && npm run test:browser
   docker:
     runs-on: ubuntu-latest
     needs: [test, frontend]

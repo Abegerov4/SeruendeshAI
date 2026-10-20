@@ -138,7 +138,7 @@ class Recommendation(_Out):
     open_confidence: Literal["high", "low", "none"]
     source: Literal["poi_data", "generated"] = Field(description="poi_data = collected dataset; generated = AI idea")
     source_url: str | None = Field(description="Exactly the dataset source (OSM / Wikidata / Wikipedia page) or null")
-    rating: float | None = Field(description="Always null in v1: no open rating source exists for Astana")
+    rating: float | None = Field(description="2GIS rating (1–5) when the place is matched to the team's 2GIS snapshot, else null")
     website: str | None = Field(description="The place's own website, if known")
     # --- extensions (superset of the contract)
     rank: int

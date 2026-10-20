@@ -276,3 +276,42 @@ def test_model_parse_cannot_overwrite_explicit_free_time_and_deadline():
                       night=False, surprise=False, search_text_ru="кофе", keywords_ru=[])
     parsed = merge_llm(rules, model)
     assert parsed.time_budget_min == 10 and parsed.deadline_in_min == 300
+
+
+@pytest.mark.parametrize('lang', ['ru', 'kk', 'en'])
+def test_alternatives_do_not_publish_model_generated_itinerary(monkeypatch, lang):
+    from app.generate import GenOut, GenPick
+    async def generated(cands, *args):
+        mapping = {f'c{i}': c for i, c in enumerate(cands[:2], 1)}
+        output = GenOut(summary='Visit both stops one after another.', picks=[
+            GenPick(cand=key, why='Start here, then visit the other place.',
+                    what_to_do='Visit Place 1 then Place 2.', visit_min=c.visit_min)
+            for key, c in mapping.items()], idea=None)
+        return output, 'mock', 1, mapping
+    monkeypatch.setattr(service, 'llm_client', lambda: object())
+    monkeypatch.setattr(service, 'generate', generated)
+    monkeypatch.setattr(service, 'validate', lambda out, *args: out)
+    rt = service.Runtime(store([poi(1), poi(2)]), None, None, None, None, None, {})
+    out = asyncio.run(service.recommend(rt, RecommendRequest(query='coffee', lang=lang,
+        location={'lat': 51.128, 'lon': 71.43}, want_route=False, now='2026-10-20T11:00:00+05:00')))
+    assert out['route'] is None and out['recommendations']
+    assert 'one after another' not in out['summary']
+    for item in out['recommendations']:
+        assert 'then' not in item['what_to_do'] and 'other place' not in item['why']
+
+
+@pytest.mark.parametrize("text, others, kept", [
+    ("Пройдитесь по аллее и отдохните в парке; затем можно вернуться к Mega Silk Way.", [],
+     "Пройдитесь по аллее и отдохните в парке."),
+    ("Начните с экспозиций на этажах сферы, выберите тему энергии, которая зацепит больше всего, а после прогуляйтесь "
+     "к стеле «25-ти летие Независимости»", ["25-ти летие Независимости"],
+     "Начните с экспозиций на этажах сферы, выберите тему энергии, которая зацепит больше всего."),
+    ("Обойдите мраморную стелу, рассмотрите её грани, затем завершите прогулку у сферы Nur Alem.", ["Nur Alem Museum"],
+     "Обойдите мраморную стелу, рассмотрите её грани."),
+    ("A quiet café right next to the river with big windows.", [], "A quiet café right next to the river with big windows."),
+    ("Музей в бывшем павильоне, а экспозиции об энергии обещают необычный визит.", ["Стела"],
+     "Музей в бывшем павильоне, а экспозиции об энергии обещают необычный визит."),
+])
+def test_standalone_cards_keep_the_models_words_but_not_a_walk_to_another_card(text, others, kept):
+    from app.generate import strip_itinerary
+    assert strip_itinerary(text, others) == kept
