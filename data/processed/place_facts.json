@@ -717,5 +717,152 @@
   "description_url": "https://sushiman.kz/",
   "checked": "2026-10-19",
   "confidence": "medium"
+ },
+ "osm:n11898122969": {
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_url": "https://stumari.kz/",
+  "hours_note": "ПН-ВС 12:00 - 00:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n12041597269": {
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://ribambelle.kz/",
+  "hours_note": "ПН-ВС: с 10:00 до 22:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n12917116702": {
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_url": "https://ribapila.kz/",
+  "hours_note": "Пн-Вс | 12:00 - 00:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n13681674667": {
+  "opening_hours": "12:00-02:00",
+  "hours_url": "https://white.kz/contacts/",
+  "hours_note": "12:00-02:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n1843876240": {
+  "opening_hours": "Mo-Su 11:00-00:00",
+  "hours_url": "https://arqa-qz.com/contacts",
+  "hours_note": "Ежедневно с 11:00 до 00:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n4387005493": {
+  "opening_hours": "Tu-Sa 10:00-21:00; Su 14:00-21:00",
+  "hours_url": "http://www.eagilik.com/index.php/ru/",
+  "hours_note": "Вт-Сб: 10:00-21:00 Вс: 14:00-21:00 Пн: выходной",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n4946926823": {
+  "opening_hours": "Mo-Su 12:00-21:00",
+  "hours_url": "http://esmeralda.kz",
+  "hours_note": "Режим работы: ежедневно с 12:00 до 21:00 без выходных.",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:n6408267786": {
+  "opening_hours": "Su-Th 08:00-24:00; Fr-Sa 08:00-02:00",
+  "hours_url": "http://ferrum.kz/contacts/",
+  "hours_note": "Вскр-Чт c 8:00 до 24:00, Пт-Сб с 8:00 до 2:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "osm:w242016673": {
+  "opening_hours": "Mo-Su 10:00-20:00",
+  "hours_url": "https://www.centralmarket.asia/",
+  "hours_note": "10:00 - 20:00 ежедневно БЕЗ ВЫХОДНЫХ",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:0efdd753-0fd6-48": {
+  "opening_hours": "Su-Th 11:00-01:00; Fr-Sa 11:00-02:00",
+  "hours_url": "http://rabiya.kz/",
+  "hours_note": "Время работы: вс-чт: 11.00-01.00; пт-сб: 11.00-02.00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:340a2dc0-b2df-4e": {
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_url": "https://baofood.kz/about",
+  "hours_note": "часы сети: Мы работаем ежедневно с 10.00 до 23.00.",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:43b39731-2660-49": {
+  "opening_hours": "Mo-Su 11:00-23:00",
+  "hours_url": "https://uzbechka1.kz/",
+  "hours_note": "часы сети: Часы Пн—Вс 11:00 — 23:00",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:6d25989f-69ad-45": {
+  "opening_hours": "Mo-Su 18:00-06:00",
+  "hours_url": "https://grammy.kz/",
+  "hours_note": "РЕЖИМ РАБОТЫ: с 18:00 до 06:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:89f835a6-db9d-47": {
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://trattoria.kz/",
+  "hours_note": "часы сети: Ежедневно для Вас с 10:00 до 22:00",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:8daa7993-90ad-48": {
+  "opening_hours": "Mo-Su 11:00-23:00",
+  "hours_url": "https://argun-kafe.kz/contact",
+  "hours_note": "Режим работы: ПН-ВС 11:00 - 23:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:a96bd2cc-d580-47": {
+  "opening_hours": "Mo-Su 08:00-23:00",
+  "hours_url": "https://pecanta.kamiqr.com/menu/basic",
+  "hours_note": "Работаем с 8:00 до 23:00",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:b3a101bc-fe08-43": {
+  "opening_hours": "Mo-Su 11:00-23:00",
+  "hours_url": "https://uzbechka1.kz/",
+  "hours_note": "часы сети: Часы Пн—Вс 11:00 — 23:00",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:bab52916-a374-4f": {
+  "opening_hours": "10:00-02:00",
+  "hours_url": "https://movieroom.kz/",
+  "hours_note": "Режим работы, с 10:00 до 02:00 без выходных",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:d67b3cc9-86a3-48": {
+  "opening_hours": "Mo-Su 10:00-20:00",
+  "hours_url": "https://www.centralmarket.asia/",
+  "hours_note": "10:00 - 20:00 ежедневно БЕЗ ВЫХОДНЫХ",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:f666893a-8296-4e": {
+  "opening_hours": "Tu-Su 10:00-18:00",
+  "hours_url": "https://nmrk.kz/",
+  "hours_note": "жұмыс уақыты 10:00 - 18:00 Сс-Жк Дүйсенбі-демалыс күні",
+  "checked": "2026-10-20",
+  "confidence": "high"
+ },
+ "ov:fe333afe-de65-45": {
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_url": "https://baofood.kz/about",
+  "hours_note": "часы сети: Мы работаем ежедневно с 10.00 до 23.00.",
+  "checked": "2026-10-20",
+  "confidence": "medium"
  }
 }

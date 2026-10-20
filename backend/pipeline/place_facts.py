@@ -66,7 +66,7 @@ def clean(rec: dict, poi: dict) -> dict | None:
         out["features_url"] = _urls(rec["features_sources"])[0]
     if not out:
         return None
-    out["checked"] = CHECKED
+    out["checked"] = rec.get("checked") or CHECKED  # site_hours records carry their own crawl date
     out["confidence"] = rec.get("confidence") if rec.get("confidence") in ("high", "medium", "low") else "medium"
     return out
 
