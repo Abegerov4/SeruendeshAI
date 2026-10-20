@@ -144,6 +144,8 @@ class Recommendation(_Out):
     website: str | None = Field(description="The place's own website, if known")
     # --- extensions (superset of the contract)
     rank: int
+    match: float | None = Field(None, description="Probability 0–1 that the place fits the request, from the OpenAI "
+                                "Decisions API check; null when the check did not run (no key, timeout)")
     category_detail: str = Field(description="Fine-grained category key (33 types), see GET /api/meta")
     category_label: str
     icon: str
@@ -242,6 +244,7 @@ class UsedContext(_Out):
     data_sources: list[str]
     data_built_at: str | None
     privacy: str
+    ai_check: AiCheck | None = Field(None, description="What the auxiliary Decisions API judge answered (null when it did not run)")
 
 
 class LLMUsage(_Out):
@@ -276,6 +279,22 @@ class RecommendResponse(_Out):
     navigate_to: str | None = Field(None, description="Directions request ('маршрут до …'): poi_id the client should route to right away")
 
 
+class AiCheckDrop(_Out):
+    poi_id: str
+    name: str
+    match: float = Field(description="Probability 0–1 that the place fits the request")
+
+
+class AiCheck(_Out):
+    engine: str = Field(description="The auxiliary judge: OpenAI Decisions API and its model")
+    intent: dict[str, float] = Field(default_factory=dict, description="Yes/no questions about the request "
+                                     "(with_kids, indoor, night, quiet, unusual, about_city) and their probabilities")
+    intent_applied: list[str] = Field(default_factory=list, description="Intent answers that changed the search")
+    checked: int = Field(0, description="Candidate places checked for fit")
+    latency_ms: int = Field(0, description="Time of the fit check")
+    dropped: list[AiCheckDrop] = Field(default_factory=list, description="Places left out as a clear misfit")
+
+
 class PhotoGuess(_Out):
     recognized: bool = Field(description="True when a known place was identified confidently enough to search around it")
     place_id: str | None = Field(description="Landmark key (GET /api/meta) or POI id the photo shows")
@@ -283,6 +302,8 @@ class PhotoGuess(_Out):
     name: str | None
     confidence: Literal["low", "medium", "high"]
     description: str = Field(description="Short description of the photo by the AI")
+    probability: float | None = Field(None, description="Decisions API probability for the recognised place; null "
+                                      "when it did not answer or chose a different place")
 
 
 class PhotoRecommendResponse(RecommendResponse):

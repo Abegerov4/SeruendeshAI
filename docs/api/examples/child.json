@@ -1,92 +1,49 @@
 {
  "api_version": "1.0",
- "request_id": "4d0a5a7d0d3a",
+ "request_id": "b0eb3784027d",
  "lang": "ru",
- "summary": "Для прогулки с ребёнком подойдут площадка поблизости или вариант в помещении на случай прохлады.",
+ "summary": "Серу подобрал площадки для прогулки с ребёнком — есть и вариант в помещении.",
  "recommendations": [
   {
-   "poi_id": "osm:w1504543670",
-   "name": "Детская площадка (Қазақ радиосы көшесі)",
+   "poi_id": "osm:w1135598691",
+   "name": "Детская площадка (Сарайшық көшесі)",
    "category": "playground",
-   "lat": 51.129179,
-   "lon": 71.415815,
-   "distance_m": 416,
-   "travel_min": 11,
-   "why": "Это детская площадка, и она ближе остальных; в прохладную ветреную погоду короткая прогулка может быть кстати.",
+   "lat": 51.138557,
+   "lon": 71.413136,
+   "distance_m": 976,
+   "travel_min": 24,
+   "why": "Это детская площадка в помещении — подходящий вариант для ребёнка в прохладную ветреную погоду.",
    "visit_min": [
     20,
-    40
+    36
    ],
-   "what_to_do": "Загляните на площадку и дайте ребёнку поиграть, пока вы немного прогуляетесь рядом.",
-   "open_status": "open",
-   "open_confidence": "low",
+   "what_to_do": "Начните с игры на площадке.",
+   "open_status": "unknown",
+   "open_confidence": "none",
    "source": "poi_data",
-   "source_url": "https://www.openstreetmap.org/way/1504543670",
+   "source_url": "https://www.openstreetmap.org/way/1135598691",
    "rating": null,
+   "website": null,
    "rank": 1,
+   "match": 0.84,
    "category_detail": "playground",
    "category_label": "Детская площадка",
    "icon": "baby",
-   "walk_distance_m": 630,
+   "walk_distance_m": 1420,
    "travel_mode": "walk",
+   "arrival_at": null,
+   "departure_at": null,
    "visit_suggested_min": 25,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
     "status": "always",
     "confidence": "medium",
-    "label": "Открытая территория — часы не ограничены",
+    "label": "Открытая территория — вход свободный, часов работы нет",
     "raw": null,
-    "next_change": null
-   },
-   "source_label": "Данные POI",
-   "data_sources": [
-    "osm"
-   ],
-   "popularity": 0.0,
-   "features": [],
-   "accessibility": "unknown",
-   "badges": [
-    "outdoor",
-    "kids",
-    "free"
-   ],
-   "event": null,
-   "address": null,
-   "description": "Детская площадка.",
-   "description_source": "template"
-  },
-  {
-   "poi_id": "osm:w1135598209",
-   "name": "Детская площадка (Қабанбай Батыр даңғылы)",
-   "category": "playground",
-   "lat": 51.137386,
-   "lon": 71.414778,
-   "distance_m": 886,
-   "travel_min": 23,
-   "why": "Это детская площадка в помещении — подходящий вариант, если на улице прохладно.",
-   "visit_min": [
-    20,
-    40
-   ],
-   "what_to_do": "Загляните внутрь и предложите ребёнку поиграть, а затем выберите, чем заняться дальше.",
-   "open_status": "open",
-   "open_confidence": "low",
-   "source": "poi_data",
-   "source_url": "https://www.openstreetmap.org/way/1135598209",
-   "rating": null,
-   "rank": 2,
-   "category_detail": "playground",
-   "category_label": "Детская площадка",
-   "icon": "baby",
-   "walk_distance_m": 1350,
-   "travel_mode": "walk",
-   "visit_suggested_min": 25,
-   "leave_by": null,
-   "opening": {
-    "status": "always",
-    "confidence": "medium",
-    "label": "Открытая территория — часы не ограничены",
-    "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
     "next_change": null
    },
    "source_label": "Данные POI",
@@ -99,20 +56,157 @@
    ],
    "accessibility": "unknown",
    "badges": [
-    "indoor",
-    "kids",
-    "free"
+    "indoor"
    ],
    "event": null,
    "address": null,
-   "description": "Детская площадка. Удобства: в помещении.",
-   "description_source": "template"
+   "description": "Детская площадка. Удобства: в помещении. В 400 м от «Астана Опера».",
+   "description_source": "template",
+   "description_url": null,
+   "phone": null,
+   "instagram": null,
+   "cuisine": null,
+   "photo": null,
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
+  },
+  {
+   "poi_id": "osm:w1504543670",
+   "name": "Детская площадка (Қазақ радиосы көшесі)",
+   "category": "playground",
+   "lat": 51.129179,
+   "lon": 71.415815,
+   "distance_m": 416,
+   "travel_min": 11,
+   "why": "Это детская площадка для прогулки на свежем воздухе; она особенно удобно вписывается в ваш пеший план.",
+   "visit_min": [
+    20,
+    40
+   ],
+   "what_to_do": "Предложите ребёнку выбрать игру на площадке.",
+   "open_status": "unknown",
+   "open_confidence": "none",
+   "source": "poi_data",
+   "source_url": "https://www.openstreetmap.org/way/1504543670",
+   "rating": null,
+   "website": null,
+   "rank": 2,
+   "match": 0.75,
+   "category_detail": "playground",
+   "category_label": "Детская площадка",
+   "icon": "baby",
+   "walk_distance_m": 630,
+   "travel_mode": "walk",
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 20,
+   "leave_by": null,
+   "return_min": 0,
+   "opening": {
+    "status": "always",
+    "confidence": "medium",
+    "label": "Открытая территория — вход свободный, часов работы нет",
+    "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
+    "next_change": null
+   },
+   "source_label": "Данные POI",
+   "data_sources": [
+    "osm"
+   ],
+   "popularity": 0.0,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [],
+   "event": null,
+   "address": null,
+   "description": "Детская площадка. В 200 м от «Дөңгелек алаң / Круглая Площадь / Round Square».",
+   "description_source": "template",
+   "description_url": null,
+   "phone": null,
+   "instagram": null,
+   "cuisine": null,
+   "photo": null,
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
+  },
+  {
+   "poi_id": "osm:n13947918427",
+   "name": "Детская площадка (Нұржол желекжолы)",
+   "category": "playground",
+   "lat": 51.12883,
+   "lon": 71.421929,
+   "distance_m": 843,
+   "travel_min": 19,
+   "why": "Это детская площадка на Нұржол желекжолы — ещё один вариант для семейной прогулки.",
+   "visit_min": [
+    20,
+    40
+   ],
+   "what_to_do": "Дайте ребёнку выбрать игру на площадке.",
+   "open_status": "unknown",
+   "open_confidence": "none",
+   "source": "poi_data",
+   "source_url": "https://www.openstreetmap.org/node/13947918427",
+   "rating": null,
+   "website": null,
+   "rank": 3,
+   "match": 0.7,
+   "category_detail": "playground",
+   "category_label": "Детская площадка",
+   "icon": "baby",
+   "walk_distance_m": 1100,
+   "travel_mode": "walk",
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 20,
+   "leave_by": null,
+   "return_min": 0,
+   "opening": {
+    "status": "always",
+    "confidence": "medium",
+    "label": "Открытая территория — вход свободный, часов работы нет",
+    "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
+    "next_change": null
+   },
+   "source_label": "Данные POI",
+   "data_sources": [
+    "osm"
+   ],
+   "popularity": 0.0,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [],
+   "event": null,
+   "address": null,
+   "description": "Детская площадка.",
+   "description_source": "template",
+   "description_url": null,
+   "phone": null,
+   "instagram": null,
+   "cuisine": null,
+   "photo": null,
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
   }
  ],
+ "service_results": [],
+ "ideas": [],
  "route": null,
  "used_context": {
   "location_source": "gps_rounded",
-  "location_label": "~ район «Астана Опера» (округлено)",
+  "location_label": "~ район «ТРЦ «Азия Парк»» (округлено)",
   "radius_m": 1125,
   "time_budget_min": 60,
   "mode": "walk",
@@ -125,7 +219,7 @@
   "now": "2026-10-18T12:00:00+05:00",
   "location": {
    "source": "gps_rounded",
-   "label": "~ район «Астана Опера» (округлено)",
+   "label": "~ район «ТРЦ «Азия Парк»» (округлено)",
    "lat": 51.13,
    "lon": 71.41,
    "precision_m": 100
@@ -141,6 +235,8 @@
    "precipitation": false,
    "description": "9°C (ощущается 6°C), ветер 5 м/с",
    "max_outdoor_min": 60,
+   "us_aqi": null,
+   "pm2_5": null,
    "source": "demo override"
   },
   "speed_kmh": 3.6,
@@ -156,12 +252,22 @@
     "museum",
     "kids_indoor"
    ],
+   "avoid": [],
+   "avoid_labels": [],
+   "category_labels": [
+    "Детская площадка",
+    "Музей",
+    "Детский игровой центр"
+   ],
    "needs": [
     "kids"
    ],
    "time_budget_min": null,
+   "food_requirements": [],
    "deadline": null,
    "deadline_in_min": null,
+   "flight_type": "unknown",
+   "deadline_buffer_min": 0,
    "landmark": null,
    "night": false,
    "surprise": false,
@@ -169,29 +275,69 @@
   },
   "relaxations": [],
   "funnel": {
-   "total": 2307,
-   "within_reach": 193,
-   "after_filters": 18,
-   "shown": 2
+   "total": 2271,
+   "within_reach": 190,
+   "after_filters": 12,
+   "shown": 3
   },
   "data_sources": [
    "OpenStreetMap (ODbL)",
    "Wikidata (CC0)",
    "Wikipedia (CC BY-SA)",
    "Overture Maps (CDLA)",
+   "CityPass Astana (факты со ссылкой)",
    "Ticketon / Sxodim",
    "Open-Meteo (CC BY 4.0)"
   ],
-  "data_built_at": "2026-10-18T18:20:55+00:00",
-  "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+  "data_built_at": "2026-10-19T09:31:38+00:00",
+  "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются.",
+  "ai_check": {
+   "engine": "OpenAI Decisions API · gpt-6-luna",
+   "intent": {
+    "with_kids": 0.99,
+    "indoor": 0.41,
+    "night": 0.0,
+    "quiet": 0.0,
+    "unusual": 0.04,
+    "about_city": 0.99
+   },
+   "intent_applied": [],
+   "checked": 7,
+   "latency_ms": 449,
+   "dropped": []
+  }
  },
- "considered": [],
+ "considered": [
+  {
+   "name": "White Garden",
+   "reason": "не для детей"
+  },
+  {
+   "name": "Zima Gold",
+   "reason": "не для детей"
+  },
+  {
+   "name": "Resto bar Jolly Joker",
+   "reason": "не для детей"
+  },
+  {
+   "name": "Пинта",
+   "reason": "не для детей"
+  }
+ ],
  "notes": [],
  "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
  "ai_generated": true,
  "llm": {
   "mode": "llm",
   "model": "gpt-6-luna",
-  "latency_ms": 3454
- }
+  "latency_ms": 4591,
+  "usage": {
+   "input_tokens": 7890,
+   "output_tokens": 373,
+   "cost_usd": 0.001626
+  }
+ },
+ "off_topic": false,
+ "navigate_to": null
 }

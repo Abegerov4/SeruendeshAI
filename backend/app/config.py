@@ -21,11 +21,17 @@ class Settings(BaseSettings):
     llm_enabled: bool = True
     llm_warmup_enabled: bool = False  # opt in: startup probes incur provider charges
     photo_timeout_s: float = 12.0  # vision call of POST /api/recommend/photo
+    # Decisions API (POST /v1/decisions): typed yes/no and choice answers with probabilities, no text; the
+    # assistant's auxiliary judge for intent, candidate fit and photo landmarks (app/decisions.py)
+    decisions_enabled: bool = True
+    decisions_model: str = "gpt-6-luna"
+    decisions_timeout_s: float = 2.5  # measured 0.6–0.7 s warm on our key (20.10); past this the answer goes on without it
+    decisions_fit_n: int = 10  # candidates checked for fit (the cards the writer sees)
     # USD per 1M tokens [input, output] for cost logging (developers.openai.com/api/docs/pricing, Oct 2026).
     # Edit here or override with LLM_PRICES='{"model": [in, out]}'; "model@tier" = price on that service tier.
     # A model missing from the table -> cost_usd null.
     llm_prices: dict[str, tuple[float, float]] = {
-        "gpt-6-luna": (0.10, 0.50), "gpt-6-luna@fast": (0.20, 1.00),
+        "gpt-6-luna": (0.10, 0.50), "gpt-6-luna@fast": (0.20, 1.00), "gpt-6-luna@decisions": (0.10, 0.0),
         "gpt-5.6-luna": (0.20, 1.20), "gpt-4.1-mini": (0.40, 1.60), "gpt-4o-mini": (0.15, 0.60),
     }
 

@@ -2,17 +2,22 @@ import { t as tr } from "../i18n";
 import React, { useState } from 'react';
 import PlaceDetails from './PlaceDetails';
 import PlaceVisual from './PlaceVisual';
-import { Heart, Footprints, Car, Clock3, MapPin, Sparkles, ChevronRight, Check, Navigation, Globe, Phone } from 'lucide-react';
+import { Heart, Footprints, Car, Clock3, MapPin, Sparkles, ChevronRight, Check, Navigation, Globe, Phone, Target } from 'lucide-react';
 import { BADGE_LABELS, routeUrl, telUrl, visitText } from '../api';
 import { TimeLedger } from './PlaceTrust';
 
 const SOURCE_NAMES = {osm: 'OpenStreetMap', wikidata: 'Wikidata', wikipedia: 'Wikipedia', overture: 'Overture Maps', ticketon: 'Ticketon', sxodim: 'Sxodim', citypass: 'CityPass Astana', khanshatyr: 'Хан Шатыр', mega_silkway: 'Mega Silk Way', llm: 'ИИ'};
 const DESC_SOURCE = {wikipedia: 'описание из Википедии', osm: 'описание из OSM', template: 'описание собрано из фактов о месте', generated: 'текст ИИ', research: 'описание по проверенным источникам', website: 'описание с сайта места'};
 
+// the Decisions API's probability that the place fits the request (null when the check did not run)
+export const matchPct = p => p.match == null ? null : Math.round(p.match * 100);
+export const MatchChip = ({ p }) => matchPct(p) == null ? null : <span className={'match-chip ' + (p.match >= 0.7 ? 'strong' : p.match >= 0.4 ? 'fair' : 'weak')} title={tr('Насколько место подходит под запрос — оценка OpenAI Decisions API')}><Target size={12} />{matchPct(p)}% {tr('под запрос')}</span>;
+
 export function TrustList({ p }) {
   const sources = [...new Set((p.dataSources || []).map(s => SOURCE_NAMES[s] || s))].join(', ');
   return <ul className="trust-list">
     <li><b>{tr('Источник')}</b><span>{p.generated ? tr('Идея ИИ без привязки к фактам') : sources || tr('Данные POI')}</span></li>
+    {!p.generated && matchPct(p) != null && <li><b>{tr('Совпадение с запросом')}</b><span>{matchPct(p)}% · {tr('оценка OpenAI Decisions API')}</span></li>}
     {!p.generated && p.hoursUrl && <li><b>{tr('Часы работы')}</b><span><a href={p.hoursUrl} target="_blank" rel="noreferrer">{new URL(p.hoursUrl).hostname.replace(/^www\./, '')}</a>{p.hoursChecked && <> · {tr('проверено {date}', {date: p.hoursChecked.slice(0, 10).split('-').reverse().join('.')})}</>}</span></li>}
     {!p.generated && <li><b>{tr('Удобства')}</b><span className={p.features?.length ? '' : 'unknown'}>{p.features?.length ? p.features.join(', ') : tr('Не подтверждены данными')}</span></li>}
     {!p.generated && p.accessibility && p.accessibility !== 'unknown' && <li><b>{tr('Доступность')}</b><span>{tr({yes: 'Доступно на коляске — по данным источника', limited: 'Частично доступно на коляске — по данным источника', no: 'Недоступно на коляске — по данным источника'}[p.accessibility])}</span></li>}
@@ -50,7 +55,7 @@ export default function PlaceCard({ place: p, index = 0, selected, onSelect, sav
       <div className="place-title-row"><button onClick={open} aria-haspopup="dialog"><h3>{p.name}</h3></button>{isNew && <span className="new-place-badge">{tr("Новое")}</span>}</div>
       {!p.generated && <div className="place-meta"><span><Mode size={14} />{p.distance} · {p.travel}{tr(" мин")}</span><span><Clock3 size={14} />{visitText(p)}{tr(" мин на месте")}</span></div>}
       <TimeLedger place={p} compact />
-      {!p.generated && <div className="card-status"><span className={'hours-chip ' + hoursTone(p)}><i />{shortHours(p)}</span>{tags.map(b => <span key={b} className="story-tag">{tr(BADGE_LABELS[b])}</span>)}</div>}
+      {!p.generated && <div className="card-status"><span className={'hours-chip ' + hoursTone(p)}><i />{shortHours(p)}</span><MatchChip p={p} />{tags.map(b => <span key={b} className="story-tag">{tr(BADGE_LABELS[b])}</span>)}</div>}
       <p className="place-why"><span>{tr(p.generated ? "Идея" : "Почему тебе подойдёт")}</span>{p.why}</p>
       {!p.generated && p.action && <div className="place-action"><span><Check size={12} />{tr("Что делать")}</span><p>{p.action}</p></div>}
       {(p.leaveBy || p.event) && <div className="badge-row">{p.leaveBy && <span className="leave">{tr('Выйти до')} {p.leaveBy}</span>}{p.event && <span className="event">🎟 {p.event.title} · {p.event.starts_at}</span>}</div>}

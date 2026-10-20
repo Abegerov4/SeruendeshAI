@@ -53,7 +53,7 @@ def fake_guess(place_id, confidence, seen=None):
     async def guess(jpeg_bytes, places, lang):
         if seen is not None:
             seen.update(size=Image.open(io.BytesIO(jpeg_bytes)).size, places=places)
-        return photo.PhotoGuessLLM(place_id=place_id, confidence=confidence, description="Высокая башня"), "fake"
+        return photo.PhotoGuessLLM(place_id=place_id, confidence=confidence, description="Высокая башня"), "fake", None
     return guess
 
 
@@ -66,7 +66,7 @@ def test_recognised_photo_runs_the_normal_flow(client, monkeypatch):
     assert r.status_code == 200, r.text
     d = PhotoRecommendResponse.model_validate(r.json()).model_dump()
     assert d["photo_guess"] == {"recognized": True, "place_id": "baiterek", "kind": "landmark", "name": "Байтерек",
-                                "confidence": "high", "description": "Высокая башня"}
+                                "confidence": "high", "description": "Высокая башня", "probability": None}
     assert d["recommendations"] and d["used_context"]["location_label"].startswith("Байтерек")
     assert "Байтерек" in d["notes"][0] and any("EXIF" in n for n in d["notes"])
     assert max(seen["size"]) == 1024  # the LLM only ever sees the downscaled, re-encoded copy

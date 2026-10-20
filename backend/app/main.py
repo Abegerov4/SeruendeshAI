@@ -244,7 +244,7 @@ async def _photo_answer(jpeg: bytes, query: str, landmark: str | None, lang: str
     meter, mark = usage_begin()
     ui_lang = lang or (detect_lang(query) if sum(ch.isalpha() for ch in query) >= 3 else "ru")
     places = photo.closed_set(rt.store)
-    guess, _ = await photo.guess_place(jpeg, places, ui_lang)
+    guess, _, probability = await photo.guess_place(jpeg, places, ui_lang)
     hit = places.get(guess.place_id) if guess and guess.place_id else None
     recognized = bool(hit and guess.confidence in ("medium", "high"))
     start = hit["id"] if recognized else landmark
@@ -266,7 +266,8 @@ async def _photo_answer(jpeg: bytes, query: str, landmark: str | None, lang: str
     resp["notes"].append(t("photo_privacy", lang_out))
     resp["photo_guess"] = {"recognized": recognized, "place_id": hit["id"] if hit else None,
                            "kind": hit["kind"] if hit else None, "name": shown,
-                           "confidence": guess.confidence if guess else "low", "description": guess.description if guess else ""}
+                           "confidence": guess.confidence if guess else "low", "description": guess.description if guess else "",
+                           "probability": round(probability, 2) if recognized and probability is not None else None}
     resp["llm"]["usage"] = u = usage_summary(meter[mark:])  # vision + recommendation calls
     log.info("photo id=%s recognized=%s kind=%s items=%d tokens_in=%d tokens_out=%d cost_usd=%s", resp["request_id"],
              recognized, hit["kind"] if hit else None, len(resp["recommendations"]), u["input_tokens"], u["output_tokens"],

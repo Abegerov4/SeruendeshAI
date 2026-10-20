@@ -1,92 +1,49 @@
 {
  "api_version": "1.0",
- "request_id": "f85626ccff35",
+ "request_id": "1edc81ee5b49",
  "lang": "kk",
- "summary": "Бәйтерек маңындағы серуенге саябақ пен скверді қосып, ашық ауада тынығып қайтыңыз.",
+ "summary": "Шағын маршрут: Су-Жасыл бульвары → Гүлзар (Түркістан көшесі). Барлығы ≈ 56 мин (21 мин жолда + 35 мин орындарда). Бастапқы нүктеге оралумен.",
  "recommendations": [
   {
-   "poi_id": "osm:w734514013",
-   "name": "Сызықтық саябақ",
+   "poi_id": "ov:74210037-b47a-42",
+   "name": "Су-Жасыл бульвары",
    "category": "park",
-   "lat": 51.118568,
-   "lon": 71.426647,
-   "distance_m": 1113,
-   "travel_min": 18,
-   "why": "Саябақта таза ауада серуендеуге болады; жаяу бағыт пен бір сағаттық уақытыңызға сай келеді.",
+   "lat": 51.130486,
+   "lon": 71.425865,
+   "distance_m": 403,
+   "travel_min": 10,
+   "why": "Нұржол бульвары Бәйтеректің жанынан өтіп, Ақордадан «Хан Шатырға» дейін созылады; жаяу серуенге сай.",
    "visit_min": [
     20,
-    45
+    20
    ],
-   "what_to_do": "Саябақтың ішімен асықпай жүріп, айналаға көз салыңыз.",
-   "open_status": "open",
-   "open_confidence": "low",
-   "source": "poi_data",
-   "source_url": "https://www.openstreetmap.org/way/734514013",
-   "rating": null,
-   "rank": 1,
-   "category_detail": "park",
-   "category_label": "Саябақ",
-   "icon": "trees",
-   "walk_distance_m": 1320,
-   "travel_mode": "walk",
-   "visit_suggested_min": 30,
-   "leave_by": null,
-   "opening": {
-    "status": "always",
-    "confidence": "medium",
-    "label": "Ашық аумақ — уақыт шектелмеген",
-    "raw": null,
-    "next_change": null
-   },
-   "source_label": "POI деректері",
-   "data_sources": [
-    "osm"
-   ],
-   "popularity": 0.0,
-   "features": [],
-   "accessibility": "unknown",
-   "badges": [
-    "outdoor",
-    "kids",
-    "free"
-   ],
-   "event": null,
-   "address": null,
-   "description": "Парк.",
-   "description_source": "template"
-  },
-  {
-   "poi_id": "ov:05a08159-b2a2-4f",
-   "name": "Дөңгелек алаң / Круглая Площадь / Round Square",
-   "category": "park",
-   "lat": 51.130733,
-   "lon": 71.414005,
-   "distance_m": 1180,
-   "travel_min": 19,
-   "why": "Нұржол бульварындағы сквер серуенді жалғастыруға лайық; салқын желді ескеріп, жылырақ киініңіз.",
-   "visit_min": [
-    15,
-    30
-   ],
-   "what_to_do": "Скверді аралап, ұнаған көріністі суретке түсіріңіз.",
-   "open_status": "open",
-   "open_confidence": "low",
+   "what_to_do": "Бәйтеректен бульвар бойымен жүріп, әкімшілік орталықтағы ғимараттарды тамашалаңыз; кейін Гүлзарға бұрылыңыз.",
+   "open_status": "unknown",
+   "open_confidence": "none",
    "source": "poi_data",
    "source_url": null,
    "rating": null,
-   "rank": 2,
-   "category_detail": "garden",
-   "category_label": "Гүлзар / бақ",
-   "icon": "flower",
-   "walk_distance_m": 1410,
+   "website": null,
+   "rank": 1,
+   "match": 0.79,
+   "category_detail": "park",
+   "category_label": "Саябақ",
+   "icon": "trees",
+   "walk_distance_m": 720,
    "travel_mode": "walk",
+   "arrival_at": "2026-10-18T16:10:00+05:00",
+   "departure_at": "2026-10-18T16:30:00+05:00",
    "visit_suggested_min": 20,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
     "status": "always",
     "confidence": "medium",
-    "label": "Ашық аумақ — уақыт шектелмеген",
+    "label": "Ашық аумақ — кіру еркін, жұмыс уақыты жоқ",
     "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
     "next_change": null
    },
    "source_label": "POI деректері",
@@ -96,69 +53,371 @@
    "popularity": 0.018,
    "features": [],
    "accessibility": "unknown",
-   "badges": [
-    "outdoor",
-    "free"
-   ],
+   "badges": [],
    "event": null,
-   "address": "бульвар Нуржол",
-   "description": "Сквер / сад. Адрес: бульвар Нуржол.",
-   "description_source": "template"
+   "address": "Нуржол",
+   "description": "Сол жағалаудың әкімшілік орталығындағы ұзындығы шамамен 2,2 км Нұржол жаяу жүргіншілер бульвары Ақордадан «Хан Шатырға» дейін созылады; жобасын Кисё Курокава жасаған. Бойында Бәйтерек, үкімет пен парламент ғимараттары орналасқан.",
+   "description_source": "research",
+   "description_url": "https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80_%D0%9D%D1%83%D1%80%D0%B6%D0%BE%D0%BB",
+   "phone": null,
+   "instagram": null,
+   "cuisine": null,
+   "photo": null,
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
   },
   {
-   "poi_id": "idea-3",
-   "name": "Көрініс іздеу",
+   "poi_id": "osm:w258818058",
+   "name": "Гүлзар (Түркістан көшесі)",
    "category": "park",
-   "lat": 51.130733,
-   "lon": 71.414005,
-   "distance_m": 1180,
-   "travel_min": 19,
-   "why": "Серуен бойы көзге түскен ең қызық сәулет бөлшегін тауып, суретке түсіріңіз.",
+   "lat": 51.128173,
+   "lon": 71.431136,
+   "distance_m": 49,
+   "travel_min": 1,
+   "why": "Гүлзар Бәйтеректің жанында орналасқан, сондықтан бульвардағы серуеннен кейін аялдауға ыңғайлы.",
    "visit_min": [
-    5,
-    20
+    15,
+    15
    ],
-   "what_to_do": "Серуен бойы көзге түскен ең қызық сәулет бөлшегін тауып, суретке түсіріңіз.",
+   "what_to_do": "Скверді аралап, тынығып алыңыз; серуенді осы маңда аяқтаңыз.",
    "open_status": "unknown",
    "open_confidence": "none",
-   "source": "generated",
-   "source_url": null,
+   "source": "poi_data",
+   "source_url": "https://www.openstreetmap.org/way/258818058",
    "rating": null,
-   "rank": 3,
-   "category_detail": "idea",
-   "category_label": "ЖИ идеясы",
-   "icon": "sparkles",
-   "walk_distance_m": null,
+   "website": null,
+   "rank": 2,
+   "match": 0.92,
+   "category_detail": "garden",
+   "category_label": "Гүлзар / бақ",
+   "icon": "flower",
+   "walk_distance_m": 50,
    "travel_mode": "walk",
-   "visit_suggested_min": 10,
+   "arrival_at": "2026-10-18T16:40:00+05:00",
+   "departure_at": "2026-10-18T16:55:00+05:00",
+   "visit_suggested_min": 15,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
-    "status": "unknown",
-    "confidence": "low",
-    "label": "Жұмыс уақыты белгісіз — алдын ала нақтылаңыз",
+    "status": "always",
+    "confidence": "medium",
+    "label": "Ашық аумақ — кіру еркін, жұмыс уақыты жоқ",
     "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
     "next_change": null
    },
-   "source_label": "ЖИ идеясы",
+   "source_label": "POI деректері",
    "data_sources": [
-    "llm"
+    "osm"
    ],
-   "popularity": null,
+   "popularity": 0.0,
    "features": [],
    "accessibility": "unknown",
-   "badges": [
-    "ai_idea"
-   ],
+   "badges": [],
    "event": null,
-   "address": "Жанында: Дөңгелек алаң / Круглая Площадь / Round Square",
-   "description": null,
-   "description_source": "generated"
+   "address": null,
+   "description": "Гүлзар / бақ. «Бәйтерек» жанында.",
+   "description_source": "template",
+   "description_url": null,
+   "phone": null,
+   "instagram": null,
+   "cuisine": null,
+   "photo": null,
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
   }
  ],
- "route": null,
+ "service_results": [],
+ "ideas": [],
+ "route": {
+  "order": [
+   "ov:74210037-b47a-42",
+   "osm:w258818058"
+  ],
+  "legs": [
+   {
+    "from_id": "start",
+    "to_id": "ov:74210037-b47a-42",
+    "distance_m": 718,
+    "travel_min": 10,
+    "polyline": [
+     [
+      51.128288,
+      71.430455
+     ],
+     [
+      51.128273,
+      71.430545
+     ],
+     [
+      51.128253,
+      71.430671
+     ],
+     [
+      51.128235,
+      71.430794
+     ],
+     [
+      51.128277,
+      71.430855
+     ],
+     [
+      51.128368,
+      71.430832
+     ],
+     [
+      51.128448,
+      71.430756
+     ],
+     [
+      51.128506,
+      71.430634
+     ],
+     [
+      51.128646,
+      71.430613
+     ],
+     [
+      51.128748,
+      71.430657
+     ],
+     [
+      51.12892,
+      71.430721
+     ],
+     [
+      51.129027,
+      71.430761
+     ],
+     [
+      51.129102,
+      71.43079
+     ],
+     [
+      51.129218,
+      71.430636
+     ],
+     [
+      51.129223,
+      71.430405
+     ],
+     [
+      51.129219,
+      71.43029
+     ],
+     [
+      51.129481,
+      71.430099
+     ],
+     [
+      51.129786,
+      71.429992
+     ],
+     [
+      51.130057,
+      71.429898
+     ],
+     [
+      51.130602,
+      71.429707
+     ],
+     [
+      51.130715,
+      71.429594
+     ],
+     [
+      51.130517,
+      71.429443
+     ],
+     [
+      51.130541,
+      71.429263
+     ],
+     [
+      51.130669,
+      71.42848
+     ],
+     [
+      51.13085,
+      71.427379
+     ],
+     [
+      51.131103,
+      71.425837
+     ],
+     [
+      51.130486,
+      71.425865
+     ]
+    ],
+    "geometry": "network"
+   },
+   {
+    "from_id": "ov:74210037-b47a-42",
+    "to_id": "osm:w258818058",
+    "distance_m": 705,
+    "travel_min": 10,
+    "polyline": [
+     [
+      51.130486,
+      71.425865
+     ],
+     [
+      51.131103,
+      71.425837
+     ],
+     [
+      51.13085,
+      71.427379
+     ],
+     [
+      51.130669,
+      71.42848
+     ],
+     [
+      51.130549,
+      71.429216
+     ],
+     [
+      51.130517,
+      71.429443
+     ],
+     [
+      51.130735,
+      71.429533
+     ],
+     [
+      51.130653,
+      71.429727
+     ],
+     [
+      51.130057,
+      71.429898
+     ],
+     [
+      51.129786,
+      71.429992
+     ],
+     [
+      51.129481,
+      71.430099
+     ],
+     [
+      51.129207,
+      71.430197
+     ],
+     [
+      51.129221,
+      71.430368
+     ],
+     [
+      51.129218,
+      71.430636
+     ],
+     [
+      51.129102,
+      71.43079
+     ],
+     [
+      51.129027,
+      71.430761
+     ],
+     [
+      51.12892,
+      71.430721
+     ],
+     [
+      51.128748,
+      71.430657
+     ],
+     [
+      51.128646,
+      71.430613
+     ],
+     [
+      51.1286,
+      71.430778
+     ],
+     [
+      51.128562,
+      71.430857
+     ],
+     [
+      51.128483,
+      71.430969
+     ],
+     [
+      51.128414,
+      71.431023
+     ],
+     [
+      51.128342,
+      71.431053
+     ],
+     [
+      51.128269,
+      71.431061
+     ],
+     [
+      51.128193,
+      71.431041
+     ],
+     [
+      51.128173,
+      71.431136
+     ]
+    ],
+    "geometry": "network"
+   },
+   {
+    "from_id": "osm:w258818058",
+    "to_id": "start",
+    "distance_m": 49,
+    "travel_min": 1,
+    "polyline": [
+     [
+      51.128173,
+      71.431136
+     ],
+     [
+      51.128193,
+      71.431041
+     ],
+     [
+      51.128228,
+      71.430843
+     ],
+     [
+      51.128253,
+      71.430671
+     ],
+     [
+      51.128273,
+      71.430545
+     ],
+     [
+      51.128288,
+      71.430455
+     ]
+    ],
+    "geometry": "network"
+   }
+  ],
+  "total_min": 56,
+  "back_min": 0,
+  "fits_budget": true,
+  "returns_to_start": true,
+  "summary": "Шағын маршрут: Су-Жасыл бульвары → Гүлзар (Түркістан көшесі). Барлығы ≈ 56 мин (21 мин жолда + 35 мин орындарда). Бастапқы нүктеге оралумен."
+ },
  "used_context": {
   "location_source": "landmark",
-  "location_label": "Байтерек",
+  "location_label": "Бәйтерек",
   "radius_m": 1757,
   "time_budget_min": 60,
   "mode": "walk",
@@ -166,7 +425,7 @@
   "now": "2026-10-18T16:00:00+05:00",
   "location": {
    "source": "text_landmark",
-   "label": "Байтерек",
+   "label": "Бәйтерек",
    "lat": 51.128,
    "lon": 71.43,
    "precision_m": 50
@@ -182,6 +441,8 @@
    "precipitation": false,
    "description": "9°C (6°C сезіледі), жел 5 м/с",
    "max_outdoor_min": 60,
+   "us_aqi": null,
+   "pm2_5": null,
    "source": "demo override"
   },
   "speed_kmh": 4.5,
@@ -195,20 +456,26 @@
     "viewpoint",
     "museum"
    ],
+   "avoid": [],
+   "avoid_labels": [],
+   "category_labels": [],
    "needs": [],
    "time_budget_min": 60,
+   "food_requirements": [],
    "deadline": null,
    "deadline_in_min": null,
-   "landmark": "Бәйтеректің",
+   "flight_type": "unknown",
+   "deadline_buffer_min": 0,
+   "landmark": "Бәйтеректің жанындамын",
    "night": false,
    "surprise": false,
    "parser": "llm+rules (gpt-6-luna)"
   },
   "relaxations": [],
   "funnel": {
-   "total": 2307,
-   "within_reach": 424,
-   "after_filters": 161,
+   "total": 2271,
+   "within_reach": 429,
+   "after_filters": 74,
    "shown": 2
   },
   "data_sources": [
@@ -216,23 +483,36 @@
    "Wikidata (CC0)",
    "Wikipedia (CC BY-SA)",
    "Overture Maps (CDLA)",
+   "CityPass Astana (факты со ссылкой)",
+   "Sxodim (места и часы, со ссылкой на карточку)",
    "Ticketon / Sxodim",
    "Open-Meteo (CC BY 4.0)"
   ],
-  "data_built_at": "2026-10-18T18:20:55+00:00",
-  "privacy": "Орналасу ~100 м-ге дейін дөңгелектенген, тек осы сұрауға қолданылады және сақталмайды. Координаттар тілдік модельге жіберілмейді."
+  "data_built_at": "2026-10-19T09:31:38+00:00",
+  "privacy": "Орналасу ~100 м-ге дейін дөңгелектенген, тек осы сұрауға қолданылады және сақталмайды. Координаттар тілдік модельге жіберілмейді.",
+  "ai_check": {
+   "engine": "OpenAI Decisions API · gpt-6-luna",
+   "intent": {
+    "with_kids": 0.01,
+    "indoor": 0.04,
+    "night": 0.08,
+    "quiet": 0.01,
+    "unusual": 0.24,
+    "about_city": 0.97
+   },
+   "intent_applied": [],
+   "checked": 10,
+   "latency_ms": 528,
+   "dropped": []
+  }
  },
  "considered": [
   {
+   "name": "ҚР Ұлттық академиялық кітапханасы",
+   "reason": "барған кезде жабық"
+  },
+  {
    "name": "Алматыкітап",
-   "reason": "барған кезде жабық"
-  },
-  {
-   "name": "Coffee Like",
-   "reason": "барған кезде жабық"
-  },
-  {
-   "name": "Starbucks",
    "reason": "барған кезде жабық"
   }
  ],
@@ -242,6 +522,13 @@
  "llm": {
   "mode": "llm",
   "model": "gpt-6-luna",
-  "latency_ms": 3657
- }
+  "latency_ms": 4762,
+  "usage": {
+   "input_tokens": 9305,
+   "output_tokens": 365,
+   "cost_usd": 0.001807
+  }
+ },
+ "off_topic": false,
+ "navigate_to": null
 }

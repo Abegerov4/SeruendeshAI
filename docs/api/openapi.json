@@ -335,6 +335,314 @@
     }
    }
   },
+  "/api/events": {
+   "get": {
+    "tags": [
+     "events"
+    ],
+    "summary": "Astana event announcements and archive",
+    "operationId": "list_events_api_events_get",
+    "parameters": [
+     {
+      "name": "view",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "enum": [
+        "upcoming",
+        "archive"
+       ],
+       "type": "string",
+       "default": "upcoming",
+       "title": "View"
+      }
+     },
+     {
+      "name": "q",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "maxLength": 500
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Q"
+      }
+     },
+     {
+      "name": "category",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "maxLength": 100
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Category"
+      }
+     },
+     {
+      "name": "source",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "enum": [
+          "ticketon",
+          "sxodim"
+         ],
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Source"
+      }
+     },
+     {
+      "name": "price",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "enum": [
+        "all",
+        "free",
+        "paid"
+       ],
+       "type": "string",
+       "default": "all",
+       "title": "Price"
+      }
+     },
+     {
+      "name": "date_from",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Date From"
+      }
+     },
+     {
+      "name": "date_to",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Date To"
+      }
+     },
+     {
+      "name": "month",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Month"
+      }
+     },
+     {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "minimum": 0,
+       "default": 0,
+       "title": "Offset"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 100,
+       "minimum": 1,
+       "default": 20,
+       "title": "Limit"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/EventPage"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/events/{event_id}": {
+   "get": {
+    "tags": [
+     "events"
+    ],
+    "summary": "Event details including all source links",
+    "operationId": "event_detail_api_events__event_id__get",
+    "parameters": [
+     {
+      "name": "event_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Event Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/EventOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/geocode": {
+   "get": {
+    "tags": [
+     "meta"
+    ],
+    "summary": "Find an address or place in Astana (for the saved home), rounded to ~100 m",
+    "operationId": "api_geocode_api_geocode_get",
+    "parameters": [
+     {
+      "name": "q",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Q"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/routes/ideas": {
+   "post": {
+    "tags": [
+     "recommend"
+    ],
+    "summary": "Themed walks from the user's place: 3–6 ready mini-routes",
+    "operationId": "api_route_ideas_api_routes_ideas_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/IdeasRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
   "/api/recommend": {
    "post": {
     "tags": [
@@ -360,6 +668,57 @@
         "schema": {
          "$ref": "#/components/schemas/RecommendResponse"
         }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/insights": {
+   "get": {
+    "tags": [
+     "meta"
+    ],
+    "summary": "City Insights: k-anonymous demand by ~1 km cell, intent and time",
+    "operationId": "api_insights_api_insights_get",
+    "parameters": [
+     {
+      "name": "days",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "default": 30,
+       "title": "Days"
+      }
+     },
+     {
+      "name": "lang",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "default": "ru",
+       "title": "Lang"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
        }
       }
      },
@@ -488,6 +847,43 @@
     }
    }
   },
+  "/api/route": {
+   "post": {
+    "tags": [
+     "recommend"
+    ],
+    "summary": "Route from the user (rounded GPS or a landmark) to one recommended place",
+    "operationId": "route_to_place_api_route_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/RouteRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/RouteToPlace"
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "unknown poi_id"
+     },
+     "422": {
+      "description": "no usable start (GPS outside Astana and no landmark)"
+     }
+    }
+   }
+  },
   "/api/pois": {
    "get": {
     "tags": [
@@ -568,7 +964,7 @@
     "tags": [
      "feedback"
     ],
-    "summary": "Report outdated info (closed, wrong hours). Stores only aggregated counters.",
+    "summary": "A visitor's mark on a place (closed, wrong hours, 👍). Stored as day × place × kind counters only; «closed» marks can lower trust in «open», never the other way.",
     "operationId": "api_feedback_api_feedback_post",
     "requestBody": {
      "content": {
@@ -607,6 +1003,85 @@
  },
  "components": {
   "schemas": {
+   "AiCheck": {
+    "properties": {
+     "engine": {
+      "type": "string",
+      "title": "Engine",
+      "description": "The auxiliary judge: OpenAI Decisions API and its model"
+     },
+     "intent": {
+      "additionalProperties": {
+       "type": "number"
+      },
+      "type": "object",
+      "title": "Intent",
+      "description": "Yes/no questions about the request (with_kids, indoor, night, quiet, unusual, about_city) and their probabilities"
+     },
+     "intent_applied": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Intent Applied",
+      "description": "Intent answers that changed the search"
+     },
+     "checked": {
+      "type": "integer",
+      "title": "Checked",
+      "description": "Candidate places checked for fit",
+      "default": 0
+     },
+     "latency_ms": {
+      "type": "integer",
+      "title": "Latency Ms",
+      "description": "Time of the fit check",
+      "default": 0
+     },
+     "dropped": {
+      "items": {
+       "$ref": "#/components/schemas/AiCheckDrop"
+      },
+      "type": "array",
+      "title": "Dropped",
+      "description": "Places left out as a clear misfit"
+     }
+    },
+    "type": "object",
+    "required": [
+     "engine",
+     "intent",
+     "intent_applied",
+     "checked",
+     "latency_ms",
+     "dropped"
+    ],
+    "title": "AiCheck"
+   },
+   "AiCheckDrop": {
+    "properties": {
+     "poi_id": {
+      "type": "string",
+      "title": "Poi Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "match": {
+      "type": "number",
+      "title": "Match",
+      "description": "Probability 0–1 that the place fits the request"
+     }
+    },
+    "type": "object",
+    "required": [
+     "poi_id",
+     "name",
+     "match"
+    ],
+    "title": "AiCheckDrop"
+   },
    "CategoryOut": {
     "properties": {
      "key": {
@@ -655,6 +1130,70 @@
      "reason"
     ],
     "title": "Considered"
+   },
+   "DescriptionAttribution": {
+    "properties": {
+     "source": {
+      "type": "string",
+      "const": "wikipedia",
+      "title": "Source"
+     },
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "url": {
+      "type": "string",
+      "title": "Url"
+     },
+     "license": {
+      "type": "string",
+      "const": "CC-BY-SA-4.0",
+      "title": "License"
+     },
+     "license_url": {
+      "type": "string",
+      "title": "License Url"
+     },
+     "attribution": {
+      "type": "string",
+      "title": "Attribution"
+     },
+     "notice": {
+      "type": "string",
+      "title": "Notice",
+      "description": "Indicates that the displayed text is a shortened source excerpt"
+     }
+    },
+    "type": "object",
+    "required": [
+     "source",
+     "title",
+     "url",
+     "license",
+     "license_url",
+     "attribution",
+     "notice"
+    ],
+    "title": "DescriptionAttribution"
+   },
+   "EventCategory": {
+    "properties": {
+     "value": {
+      "type": "string",
+      "title": "Value"
+     },
+     "label": {
+      "type": "string",
+      "title": "Label"
+     }
+    },
+    "type": "object",
+    "required": [
+     "value",
+     "label"
+    ],
+    "title": "EventCategory"
    },
    "EventInfo": {
     "properties": {
@@ -710,6 +1249,270 @@
     ],
     "title": "EventInfo"
    },
+   "EventOut": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "description": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Description"
+     },
+     "venue": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Venue"
+     },
+     "address": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Address"
+     },
+     "start": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Start"
+     },
+     "end": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "End"
+     },
+     "sessions": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Sessions"
+     },
+     "schedule_kind": {
+      "type": "string",
+      "enum": [
+       "continuous",
+       "sessions"
+      ],
+      "title": "Schedule Kind"
+     },
+     "price_from": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Price From"
+     },
+     "currency": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Currency"
+     },
+     "category": {
+      "type": "string",
+      "title": "Category"
+     },
+     "category_label": {
+      "type": "string",
+      "title": "Category Label"
+     },
+     "image_url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Image Url"
+     },
+     "announced_at": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Announced At"
+     },
+     "first_seen_at": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "First Seen At"
+     },
+     "sources": {
+      "items": {
+       "$ref": "#/components/schemas/EventSource"
+      },
+      "type": "array",
+      "title": "Sources"
+     },
+     "is_archived": {
+      "type": "boolean",
+      "title": "Is Archived"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "title",
+     "description",
+     "venue",
+     "address",
+     "start",
+     "end",
+     "sessions",
+     "schedule_kind",
+     "price_from",
+     "currency",
+     "category",
+     "category_label",
+     "image_url",
+     "announced_at",
+     "first_seen_at",
+     "sources",
+     "is_archived"
+    ],
+    "title": "EventOut"
+   },
+   "EventPage": {
+    "properties": {
+     "items": {
+      "items": {
+       "$ref": "#/components/schemas/EventOut"
+      },
+      "type": "array",
+      "title": "Items"
+     },
+     "total": {
+      "type": "integer",
+      "title": "Total"
+     },
+     "offset": {
+      "type": "integer",
+      "title": "Offset"
+     },
+     "limit": {
+      "type": "integer",
+      "title": "Limit"
+     },
+     "today": {
+      "type": "string",
+      "title": "Today"
+     },
+     "categories": {
+      "items": {
+       "$ref": "#/components/schemas/EventCategory"
+      },
+      "type": "array",
+      "title": "Categories"
+     },
+     "months": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Months"
+     },
+     "updated_at": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Updated At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "items",
+     "total",
+     "offset",
+     "limit",
+     "today",
+     "categories",
+     "months",
+     "updated_at"
+    ],
+    "title": "EventPage"
+   },
+   "EventSource": {
+    "properties": {
+     "name": {
+      "type": "string",
+      "enum": [
+       "ticketon",
+       "sxodim"
+      ],
+      "title": "Name"
+     },
+     "url": {
+      "type": "string",
+      "title": "Url"
+     }
+    },
+    "type": "object",
+    "required": [
+     "name",
+     "url"
+    ],
+    "title": "EventSource"
+   },
    "FeedbackRequest": {
     "properties": {
      "poi_id": {
@@ -727,6 +1530,22 @@
        "other"
       ],
       "title": "Kind"
+     },
+     "lang": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "ru",
+         "kk",
+         "en"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Lang"
      }
     },
     "type": "object",
@@ -753,6 +1572,34 @@
      "message"
     ],
     "title": "FeedbackResponse"
+   },
+   "FoodRequirement": {
+    "properties": {
+     "kind": {
+      "type": "string",
+      "enum": [
+       "menu",
+       "price",
+       "style",
+       "diet"
+      ],
+      "title": "Kind"
+     },
+     "text": {
+      "type": "string",
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Text"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "kind",
+     "text"
+    ],
+    "title": "FoodRequirement",
+    "description": "An explicit user wish, with the original input span retained for audit."
    },
    "GuestOut": {
     "properties": {
@@ -796,10 +1643,53 @@
       "type": "string",
       "enum": [
        "ok",
-       "off"
+       "off",
+       "configured",
+       "degraded"
       ],
       "title": "Llm",
-      "description": "Team contract field"
+      "description": "Configured provider is not verified readiness"
+     },
+     "runtime_id": {
+      "type": "string",
+      "title": "Runtime Id",
+      "default": "ayat"
+     },
+     "readiness_profile": {
+      "type": "string",
+      "enum": [
+       "template",
+       "llm"
+      ],
+      "title": "Readiness Profile",
+      "default": "template"
+     },
+     "ready": {
+      "type": "boolean",
+      "title": "Ready",
+      "default": false
+     },
+     "snapshot_version": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Snapshot Version"
+     },
+     "provider_verified_at": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Provider Verified At"
      },
      "poi_count": {
       "type": "integer",
@@ -838,6 +1728,11 @@
      "status",
      "pois",
      "llm",
+     "runtime_id",
+     "readiness_profile",
+     "ready",
+     "snapshot_version",
+     "provider_verified_at",
      "poi_count",
      "events",
      "dense_retrieval",
@@ -846,6 +1741,120 @@
      "data_built_at"
     ],
     "title": "HealthResponse"
+   },
+   "HomePlace": {
+    "properties": {
+     "lat": {
+      "type": "number",
+      "maximum": 90.0,
+      "minimum": -90.0,
+      "title": "Lat",
+      "description": "Latitude; the client should round to 3 decimals (~100 m)"
+     },
+     "lon": {
+      "type": "number",
+      "maximum": 180.0,
+      "minimum": -180.0,
+      "title": "Lon",
+      "description": "Longitude; the client should round to 3 decimals"
+     },
+     "label": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 120
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Label",
+      "description": "What the user typed, e.g. «Кенесары 40»"
+     }
+    },
+    "type": "object",
+    "required": [
+     "lat",
+     "lon"
+    ],
+    "title": "HomePlace",
+    "description": "The user's home as the client keeps it (device / bot memory), rounded to ~100 m. Never stored by the API."
+   },
+   "IdeasRequest": {
+    "properties": {
+     "lang": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "ru",
+         "kk",
+         "en"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Lang"
+     },
+     "location": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/LatLon"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "landmark": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 80
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Landmark"
+     },
+     "home": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/HomePlace"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "use_home": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Use Home"
+     },
+     "now": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Now"
+     }
+    },
+    "type": "object",
+    "title": "IdeasRequest"
    },
    "LLMInfo": {
     "properties": {
@@ -993,6 +2002,38 @@
     ],
     "title": "LoginIn"
    },
+   "MapTiles": {
+    "properties": {
+     "url": {
+      "type": "string",
+      "title": "Url",
+      "description": "Leaflet raster tile template ({z}/{x}/{y}, {r} for retina)"
+     },
+     "attribution": {
+      "type": "string",
+      "title": "Attribution"
+     },
+     "data_url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Data Url",
+      "description": "A calmer style for data maps (City Insights)"
+     }
+    },
+    "type": "object",
+    "required": [
+     "url",
+     "attribution",
+     "data_url"
+    ],
+    "title": "MapTiles"
+   },
    "MetaFeatures": {
     "properties": {
      "password_reset_email": {
@@ -1067,6 +2108,17 @@
      },
      "features": {
       "$ref": "#/components/schemas/MetaFeatures"
+     },
+     "map": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/MapTiles"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "description": "Styled basemap when a MapTiler key is configured; null = OpenStreetMap"
      }
     },
     "type": "object",
@@ -1077,7 +2129,8 @@
      "data_built_at",
      "poi_count",
      "sources",
-     "features"
+     "features",
+     "map"
     ],
     "title": "MetaResponse"
    },
@@ -1118,7 +2171,40 @@
        }
       ],
       "title": "Raw",
-      "description": "Original OSM opening_hours string, if any"
+      "description": "Original opening_hours string, if any"
+     },
+     "source": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Source"
+     },
+     "source_url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Source Url"
+     },
+     "check_date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Check Date"
      },
      "next_change": {
       "anyOf": [
@@ -1139,9 +2225,78 @@
      "confidence",
      "label",
      "raw",
+     "source",
+     "source_url",
+     "check_date",
      "next_change"
     ],
     "title": "Opening"
+   },
+   "Photo": {
+    "properties": {
+     "url": {
+      "type": "string",
+      "title": "Url"
+     },
+     "width": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Width"
+     },
+     "height": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Height"
+     },
+     "author": {
+      "type": "string",
+      "title": "Author"
+     },
+     "license": {
+      "type": "string",
+      "title": "License"
+     },
+     "page": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Page",
+      "description": "Commons file page (attribution link)"
+     },
+     "source": {
+      "type": "string",
+      "title": "Source",
+      "default": "Wikimedia Commons"
+     }
+    },
+    "type": "object",
+    "required": [
+     "url",
+     "width",
+     "height",
+     "author",
+     "license",
+     "page",
+     "source"
+    ],
+    "title": "Photo"
    },
    "PhotoGuess": {
     "properties": {
@@ -1201,6 +2356,18 @@
       "type": "string",
       "title": "Description",
       "description": "Short description of the photo by the AI"
+     },
+     "probability": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Probability",
+      "description": "Decisions API probability for the recognised place; null when it did not answer or chose a different place"
      }
     },
     "type": "object",
@@ -1210,7 +2377,8 @@
      "kind",
      "name",
      "confidence",
-     "description"
+     "description",
+     "probability"
     ],
     "title": "PhotoGuess"
    },
@@ -1245,6 +2413,15 @@
       "type": "array",
       "title": "Recommendations",
       "description": "1–3 places from the dataset (source=poi_data)"
+     },
+     "service_results": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "type": "array",
+      "title": "Service Results",
+      "description": "Source-bound services, routes, fares and dated departures; distinct from POIs"
      },
      "ideas": {
       "items": {
@@ -1300,6 +2477,18 @@
       "description": "The query is not about places/walks in Astana: no recommendations, see notes",
       "default": false
      },
+     "navigate_to": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Navigate To",
+      "description": "Directions request ('маршрут до …'): poi_id the client should route to right away"
+     },
      "photo_guess": {
       "$ref": "#/components/schemas/PhotoGuess"
      }
@@ -1311,6 +2500,7 @@
      "lang",
      "summary",
      "recommendations",
+     "service_results",
      "ideas",
      "route",
      "used_context",
@@ -1320,6 +2510,7 @@
      "ai_generated",
      "llm",
      "off_topic",
+     "navigate_to",
      "photo_guess"
     ],
     "title": "PhotoRecommendResponse"
@@ -1434,6 +2625,22 @@
       "title": "Lang",
       "description": "UI language; null = detect from the query"
      },
+     "channel": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "web",
+         "telegram"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Channel",
+      "description": "Client surface; `telegram` gets short chat-style texts. Facts and safety rules are the same"
+     },
      "location": {
       "anyOf": [
        {
@@ -1444,6 +2651,19 @@
        }
       ],
       "description": "Approximate user position (rounded). Server rounds again."
+     },
+     "location_label": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 120
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Location Label",
+      "description": "What the user typed for this start (an address the client geocoded, e.g. «Кенесары 40»); shown back, never sent to the LLM"
      },
      "landmark": {
       "anyOf": [
@@ -1457,6 +2677,51 @@
       ],
       "title": "Landmark",
       "description": "Landmark key or name from GET /api/meta instead of GPS"
+     },
+     "home": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/HomePlace"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "description": "Saved home; used when the text says «от дома / рядом с домом» or use_home=true"
+     },
+     "use_home": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Use Home",
+      "description": "Start from the saved home (the «🏠 Дом» choice)"
+     },
+     "service_id": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 120
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Service Id",
+      "description": "Previous service context for a relevant follow-up; a new topic takes precedence"
+     },
+     "food_context": {
+      "items": {
+       "$ref": "#/components/schemas/FoodRequirement"
+      },
+      "type": "array",
+      "maxItems": 16,
+      "title": "Food Context",
+      "description": "Previous user food requirements, reused only for an unambiguous refinement; never venue facts"
      },
      "time_budget_min": {
       "anyOf": [
@@ -1652,6 +2917,15 @@
       "title": "Recommendations",
       "description": "1–3 places from the dataset (source=poi_data)"
      },
+     "service_results": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "type": "array",
+      "title": "Service Results",
+      "description": "Source-bound services, routes, fares and dated departures; distinct from POIs"
+     },
      "ideas": {
       "items": {
        "$ref": "#/components/schemas/Recommendation"
@@ -1705,6 +2979,18 @@
       "title": "Off Topic",
       "description": "The query is not about places/walks in Astana: no recommendations, see notes",
       "default": false
+     },
+     "navigate_to": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Navigate To",
+      "description": "Directions request ('маршрут до …'): poi_id the client should route to right away"
      }
     },
     "type": "object",
@@ -1714,6 +3000,7 @@
      "lang",
      "summary",
      "recommendations",
+     "service_results",
      "ideas",
      "route",
      "used_context",
@@ -1722,7 +3009,8 @@
      "disclaimer",
      "ai_generated",
      "llm",
-     "off_topic"
+     "off_topic",
+     "navigate_to"
     ],
     "title": "RecommendResponse"
    },
@@ -1854,7 +3142,7 @@
        }
       ],
       "title": "Rating",
-      "description": "Always null in v1: no open rating source exists for Astana"
+      "description": "Rating (1–5) from an open source when known, else null"
      },
      "website": {
       "anyOf": [
@@ -1871,6 +3159,18 @@
      "rank": {
       "type": "integer",
       "title": "Rank"
+     },
+     "match": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Match",
+      "description": "Probability 0–1 that the place fits the request, from the OpenAI Decisions API check; null when the check did not run (no key, timeout)"
      },
      "category_detail": {
       "type": "string",
@@ -1906,6 +3206,30 @@
       ],
       "title": "Travel Mode"
      },
+     "arrival_at": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Arrival At",
+      "description": "Planned local arrival time for a route stop"
+     },
+     "departure_at": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Departure At",
+      "description": "Planned local departure time for a route stop"
+     },
      "visit_suggested_min": {
       "type": "integer",
       "title": "Visit Suggested Min"
@@ -1921,6 +3245,13 @@
       ],
       "title": "Leave By",
       "description": "HH:MM to leave this place to keep the user's deadline (flight etc.)"
+     },
+     "return_min": {
+      "type": "integer",
+      "minimum": 0.0,
+      "title": "Return Min",
+      "description": "Travel from this alternative to the deadline destination;0 if no deadline return",
+      "default": 0
      },
      "opening": {
       "$ref": "#/components/schemas/Opening"
@@ -2018,7 +3349,101 @@
        }
       ],
       "title": "Description Source",
-      "description": "wikipedia | osm | template | generated"
+      "description": "wikipedia | research | osm | template | generated"
+     },
+     "description_url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Description Url",
+      "description": "Where the description comes from: the Wikipedia article or the cited source page"
+     },
+     "phone": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Phone"
+     },
+     "instagram": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Instagram"
+     },
+     "cuisine": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Cuisine",
+      "description": "Cuisine labels in Russian (OSM / Overture)"
+     },
+     "photo": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Photo"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "description": "Real photo from Wikimedia Commons; null -> category cover"
+     },
+     "description_attribution": {
+      "items": {
+       "$ref": "#/components/schemas/DescriptionAttribution"
+      },
+      "type": "array",
+      "title": "Description Attribution"
+     },
+     "structured_facts": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "type": "array",
+      "title": "Structured Facts",
+      "description": "Accepted branch facts with source and validity"
+     },
+     "menu_items": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "type": "array",
+      "title": "Menu Items",
+      "description": "Published menu entries; delivery prices do not imply dine-in prices"
+     },
+     "prices": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "type": "array",
+      "title": "Prices",
+      "description": "Source-reported price/check with currency, unit and channel"
      }
     },
     "type": "object",
@@ -2040,13 +3465,17 @@
      "rating",
      "website",
      "rank",
+     "match",
      "category_detail",
      "category_label",
      "icon",
      "walk_distance_m",
      "travel_mode",
+     "arrival_at",
+     "departure_at",
      "visit_suggested_min",
      "leave_by",
+     "return_min",
      "opening",
      "source_label",
      "data_sources",
@@ -2057,7 +3486,16 @@
      "event",
      "address",
      "description",
-     "description_source"
+     "description_source",
+     "description_url",
+     "phone",
+     "instagram",
+     "cuisine",
+     "photo",
+     "description_attribution",
+     "structured_facts",
+     "menu_items",
+     "prices"
     ],
     "title": "Recommendation"
    },
@@ -2151,7 +3589,13 @@
      "total_min": {
       "type": "integer",
       "title": "Total Min",
-      "description": "Travel + visits (+ return leg if returns_to_start)"
+      "description": "Travel + fixed visits + back_min (if return travel has no leg)"
+     },
+     "back_min": {
+      "type": "integer",
+      "title": "Back Min",
+      "description": "Deadline return travel not represented by route legs",
+      "default": 0
      },
      "fits_budget": {
       "type": "boolean",
@@ -2171,6 +3615,7 @@
      "order",
      "legs",
      "total_min",
+     "back_min",
      "fits_budget",
      "returns_to_start",
      "summary"
@@ -2234,12 +3679,148 @@
     ],
     "title": "RouteLeg"
    },
+   "RouteRequest": {
+    "properties": {
+     "poi_id": {
+      "type": "string",
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Poi Id"
+     },
+     "location": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/LatLon"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "description": "Rounded GPS of the user (3 decimals); preferred origin"
+     },
+     "landmark": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 80
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Landmark",
+      "description": "Landmark key/name when GPS is unavailable"
+     },
+     "mode": {
+      "type": "string",
+      "enum": [
+       "walk",
+       "car"
+      ],
+      "title": "Mode",
+      "default": "walk"
+     }
+    },
+    "type": "object",
+    "required": [
+     "poi_id"
+    ],
+    "title": "RouteRequest",
+    "description": "A walking/driving route from the user (rounded GPS, or a landmark when GPS is off) to one place."
+   },
+   "RouteToPlace": {
+    "properties": {
+     "poi_id": {
+      "type": "string",
+      "title": "Poi Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "mode": {
+      "type": "string",
+      "enum": [
+       "walk",
+       "car"
+      ],
+      "title": "Mode"
+     },
+     "distance_m": {
+      "type": "integer",
+      "title": "Distance M"
+     },
+     "travel_min": {
+      "type": "integer",
+      "title": "Travel Min"
+     },
+     "geometry": {
+      "type": "string",
+      "enum": [
+       "network",
+       "straight"
+      ],
+      "title": "Geometry",
+      "description": "network = along the walking graph; straight = estimate"
+     },
+     "polyline": {
+      "items": {
+       "prefixItems": [
+        {
+         "type": "number"
+        },
+        {
+         "type": "number"
+        }
+       ],
+       "type": "array",
+       "maxItems": 2,
+       "minItems": 2
+      },
+      "type": "array",
+      "title": "Polyline",
+      "description": "[[lat, lon], ...] from the user to the place"
+     },
+     "origin": {
+      "$ref": "#/components/schemas/LatLon",
+      "description": "The start actually used, rounded to ~100 m"
+     },
+     "origin_source": {
+      "type": "string",
+      "enum": [
+       "gps_rounded",
+       "landmark"
+      ],
+      "title": "Origin Source"
+     },
+     "links": {
+      "additionalProperties": {
+       "type": "string"
+      },
+      "type": "object",
+      "title": "Links",
+      "description": "Turn-by-turn in external apps (2GIS, OpenStreetMap)"
+     }
+    },
+    "type": "object",
+    "required": [
+     "poi_id",
+     "name",
+     "mode",
+     "distance_m",
+     "travel_min",
+     "geometry",
+     "polyline",
+     "origin",
+     "origin_source",
+     "links"
+    ],
+    "title": "RouteToPlace"
+   },
    "SavedIn": {
     "properties": {
      "data": {
-      "additionalProperties": true,
-      "type": "object",
-      "title": "Data"
+      "$ref": "#/components/schemas/SavedSnapshot"
      }
     },
     "type": "object",
@@ -2269,6 +3850,537 @@
      "created_at"
     ],
     "title": "SavedOut"
+   },
+   "SavedPhoto": {
+    "properties": {
+     "url": {
+      "type": "string",
+      "maxLength": 2048,
+      "title": "Url"
+     },
+     "page": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 2048
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Page"
+     },
+     "author": {
+      "type": "string",
+      "maxLength": 300,
+      "title": "Author",
+      "default": ""
+     },
+     "license": {
+      "type": "string",
+      "maxLength": 300,
+      "title": "License",
+      "default": ""
+     },
+     "source": {
+      "type": "string",
+      "maxLength": 300,
+      "title": "Source",
+      "default": "Wikimedia Commons"
+     },
+     "width": {
+      "anyOf": [
+       {
+        "type": "integer",
+        "maximum": 100000.0,
+        "minimum": 1.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Width"
+     },
+     "height": {
+      "anyOf": [
+       {
+        "type": "integer",
+        "maximum": 100000.0,
+        "minimum": 1.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Height"
+     }
+    },
+    "type": "object",
+    "required": [
+     "url"
+    ],
+    "title": "SavedPhoto"
+   },
+   "SavedSnapshot": {
+    "properties": {
+     "name": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Name"
+     },
+     "category": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Category"
+     },
+     "categoryKey": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Categorykey"
+     },
+     "iconKey": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Iconkey"
+     },
+     "photo": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/SavedPhoto"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "description": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 2000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Description"
+     },
+     "descriptionUrl": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 2048
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Descriptionurl"
+     },
+     "website": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 2048
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Website"
+     },
+     "phone": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Phone"
+     },
+     "instagram": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Instagram"
+     },
+     "cuisine": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string",
+         "maxLength": 150
+        },
+        "type": "array",
+        "maxItems": 32
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Cuisine"
+     },
+     "openStatus": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Openstatus"
+     },
+     "openingKind": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Openingkind"
+     },
+     "openingRaw": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Openingraw"
+     },
+     "cover": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Cover"
+     },
+     "lat": {
+      "anyOf": [
+       {
+        "type": "number",
+        "maximum": 90.0,
+        "minimum": -90.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Lat"
+     },
+     "lon": {
+      "anyOf": [
+       {
+        "type": "number",
+        "maximum": 180.0,
+        "minimum": -180.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Lon"
+     },
+     "address": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 1000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Address"
+     },
+     "why": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 2000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Why"
+     },
+     "action": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 2000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Action"
+     },
+     "url": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 2048
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Url"
+     },
+     "image": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 2048
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Image"
+     },
+     "status": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Status"
+     },
+     "distance": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Distance"
+     },
+     "travel": {
+      "anyOf": [
+       {
+        "type": "integer",
+        "maximum": 10080.0,
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Travel"
+     },
+     "visit": {
+      "anyOf": [
+       {
+        "type": "integer",
+        "maximum": 10080.0,
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Visit"
+     },
+     "visitRange": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "integer",
+         "maximum": 10080.0,
+         "minimum": 0.0
+        },
+        "type": "array",
+        "maxItems": 2,
+        "minItems": 2
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Visitrange"
+     },
+     "mode": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Mode"
+     },
+     "features": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string",
+         "maxLength": 150
+        },
+        "type": "array",
+        "maxItems": 32
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Features"
+     },
+     "badges": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string",
+         "maxLength": 150
+        },
+        "type": "array",
+        "maxItems": 32
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Badges"
+     },
+     "source": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Source"
+     },
+     "generated": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Generated"
+     },
+     "dataSources": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string",
+         "maxLength": 150
+        },
+        "type": "array",
+        "maxItems": 32
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Datasources"
+     },
+     "descriptionSource": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Descriptionsource"
+     },
+     "openConfidence": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Openconfidence"
+     },
+     "accessibility": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Accessibility"
+     }
+    },
+    "type": "object",
+    "title": "SavedSnapshot"
    },
    "UsedContext": {
     "properties": {
@@ -2421,6 +4533,17 @@
      "privacy": {
       "type": "string",
       "title": "Privacy"
+     },
+     "ai_check": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/AiCheck"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "description": "What the auxiliary Decisions API judge answered (null when it did not run)"
      }
     },
     "type": "object",
@@ -2445,7 +4568,8 @@
      "funnel",
      "data_sources",
      "data_built_at",
-     "privacy"
+     "privacy",
+     "ai_check"
     ],
     "title": "UsedContext"
    },
@@ -2457,6 +4581,7 @@
        "gps_rounded",
        "landmark",
        "text_landmark",
+       "home",
        "none"
       ],
       "title": "Source"
@@ -2608,7 +4733,31 @@
      "max_outdoor_min": {
       "type": "integer",
       "title": "Max Outdoor Min",
-      "description": "Comfortable continuous minutes outdoors derived from feels-like/wind"
+      "description": "Comfortable continuous minutes outdoors derived from feels-like/wind/air"
+     },
+     "us_aqi": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Us Aqi",
+      "description": "US air quality index (CAMS via Open-Meteo); ≥101 shortens outdoor time"
+     },
+     "pm2_5": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Pm2 5",
+      "description": "PM2.5, µg/m³"
      },
      "source": {
       "type": "string",
@@ -2623,6 +4772,8 @@
      "precipitation",
      "description",
      "max_outdoor_min",
+     "us_aqi",
+     "pm2_5",
      "source"
     ],
     "title": "WeatherInfo"
@@ -2652,6 +4803,20 @@
       "type": "boolean",
       "title": "Precipitation",
       "default": false
+     },
+     "us_aqi": {
+      "anyOf": [
+       {
+        "type": "number",
+        "maximum": 500.0,
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Us Aqi",
+      "description": "US AQI (CAMS); optional"
      }
     },
     "type": "object",

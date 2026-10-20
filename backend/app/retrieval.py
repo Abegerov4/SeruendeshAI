@@ -87,6 +87,7 @@ class Cand:
     event: dict | None = None
     leave_by: str | None = None
     return_min: int | None = None
+    match: float | None = None  # Decisions API: probability the place fits the request (app/decisions.py)
 
 
 def visit_minutes(cat: str, budget: int, mode: str) -> tuple[int, tuple[int, int]]:

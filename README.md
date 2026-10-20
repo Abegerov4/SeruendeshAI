@@ -4,11 +4,11 @@
 
 <br>
 
-<a href="https://seruendesh.site"><img alt="Открыть seruendesh.site" src="https://img.shields.io/badge/%E2%96%B6%20%D0%9E%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8C-seruendesh.site-c6e730?style=for-the-badge&labelColor=143f30"></a> <a href="https://t.me/SeruendeshAl_bot"><img alt="Telegram-бот" src="https://img.shields.io/badge/Telegram-%40SeruendeshAl__bot-26A5E4?style=for-the-badge&logo=telegram&logoColor=white&labelColor=143f30"></a> <a href="docs/presentation/SeruendeshAI-presentation.pdf"><img alt="Презентация" src="https://img.shields.io/badge/%D0%9F%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F-PDF%20%C2%B7%2014%20%D1%81%D0%BB%D0%B0%D0%B9%D0%B4%D0%BE%D0%B2-f4f7ec?style=for-the-badge&labelColor=143f30"></a>
+<a href="https://youtu.be/ZZ2LTLXCxg8"><img alt="Видео на YouTube" src="https://img.shields.io/badge/YouTube-%D0%B4%D0%B5%D0%BC%D0%BE%202%3A57-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=143f30"></a> <a href="https://seruendesh.site"><img alt="Открыть seruendesh.site" src="https://img.shields.io/badge/%E2%96%B6%20%D0%9E%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8C-seruendesh.site-c6e730?style=for-the-badge&labelColor=143f30"></a> <a href="https://t.me/SeruendeshAl_bot"><img alt="Telegram-бот" src="https://img.shields.io/badge/Telegram-%40SeruendeshAl__bot-26A5E4?style=for-the-badge&logo=telegram&logoColor=white&labelColor=143f30"></a> <a href="docs/presentation/SeruendeshAI-presentation.pdf"><img alt="Презентация" src="https://img.shields.io/badge/%D0%9F%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F-PDF%20%C2%B7%2014%20%D1%81%D0%BB%D0%B0%D0%B9%D0%B4%D0%BE%D0%B2-f4f7ec?style=for-the-badge&labelColor=143f30"></a>
 
-<a href="https://github.com/Abegerov4/SeruendeshAI/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Abegerov4/SeruendeshAI/actions/workflows/ci.yml/badge.svg?branch=main"></a> <img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white"> <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white"> <img alt="React 19" src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black"> <img alt="OpenAI" src="https://img.shields.io/badge/LLM-OpenAI-412991?logo=openai&logoColor=white"> <img alt="Языки" src="https://img.shields.io/badge/%D1%8F%D0%B7%D1%8B%D0%BA%D0%B8-RU%20%C2%B7%20%D2%9A%D0%90%D0%97%20%C2%B7%20EN-143f30"> <img alt="Данные" src="https://img.shields.io/badge/%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-OSM%20%C2%B7%20Wikidata%20%C2%B7%20Overture-6b9a3a">
+<a href="https://github.com/Abegerov4/SeruendeshAI/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Abegerov4/SeruendeshAI/actions/workflows/ci.yml/badge.svg?branch=main"></a> <img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white"> <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white"> <img alt="React 19" src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black"> <img alt="OpenAI" src="https://img.shields.io/badge/LLM-OpenAI%20gpt--6--luna-412991?logo=openai&logoColor=white"> <img alt="Decisions API" src="https://img.shields.io/badge/%D1%81%D1%83%D0%B4%D1%8C%D1%8F-Decisions%20API-c6e730?labelColor=143f30"> <img alt="Языки" src="https://img.shields.io/badge/%D1%8F%D0%B7%D1%8B%D0%BA%D0%B8-RU%20%C2%B7%20%D2%9A%D0%90%D0%97%20%C2%B7%20EN-143f30"> <img alt="Данные" src="https://img.shields.io/badge/%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-OSM%20%C2%B7%20Wikidata%20%C2%B7%20Overture-6b9a3a">
 
-**[Демо](#-демо)** · **[Сценарии](#-попробуй-сценарии-задачи)** · **[Возможности](#-что-умеет-серу)** · **[Как работает](#%EF%B8%8F-как-это-работает)** · **[Доверие](#%EF%B8%8F-доверие-и-приватность)** · **[Для жюри](#-документы-для-жюри)** · **[Запуск](#-быстрый-старт)** · **[Команда](#-команда)**
+**[Демо](#-демо)** · **[Сценарии](#-попробуй-сценарии-задачи)** · **[Возможности](#-что-умеет-серу)** · **[Как работает](#%EF%B8%8F-как-это-работает)** · **[Две модели](#-две-модели-вместе-пишет-и-проверяет)** · **[Доверие](#%EF%B8%8F-доверие-и-приватность)** · **[Для жюри](#-документы-для-жюри)** · **[Запуск](#-быстрый-старт)** · **[Команда](#-команда)**
 
 </div>
 
@@ -24,6 +24,7 @@
 - ⏱ **сколько пробыть** и сколько времени останется в запасе;
 - 💬 **почему** оно подходит именно сейчас и **что там делать**;
 - 🕐 **часы работы** с источником, датой и степенью уверенности. Никаких «открыто сейчас» наугад;
+- 🎯 **насколько оно подходит**: каждое место проверяет вторая модель, OpenAI Decisions API, и честно ставит процент;
 - 🏷 **откуда это**: «Из базы мест» или «Идея Серу».
 
 Хакатон **Build with AI**, задача 1 от **НИЦ Smart City**: RAG-система, которая в реальном времени подсказывает, куда сходить и что сделать рядом, с учётом локации, времени, погоды и предпочтений.
@@ -41,10 +42,12 @@
 <p align="center">
   🌐 <b><a href="https://seruendesh.site">seruendesh.site</a></b> &nbsp;·&nbsp;
   🤖 <b><a href="https://t.me/SeruendeshAl_bot">@SeruendeshAl_bot</a></b> &nbsp;·&nbsp;
-  🎥 <b>видео 2:57</b>: <i>ссылка на YouTube появится после загрузки</i>
+  🎥 <b><a href="https://youtu.be/ZZ2LTLXCxg8">видео на YouTube, 2:57</a></b>
 </p>
 
-<img src="docs/readme/stats.png" width="100%" alt="2271 место в Астане · для 1096 мест известно, когда прийти · 263 события · 170 из 170 проверок · около 1500 автотестов">
+<p align="center"><a href="https://youtu.be/ZZ2LTLXCxg8"><img src="docs/readme/youtube.jpg" width="560" alt="Смотреть демо SeruendeshAI на YouTube"></a></p>
+
+<img src="docs/readme/stats.png" width="100%" alt="2271 место в Астане · для 1096 мест известно, когда прийти · 263 события · 170 из 170 проверок · около 1580 автотестов">
 
 ## 🧭 Попробуй сценарии задачи
 
@@ -71,6 +74,9 @@
 <td valign="top"><h3>✨ «Идея Серу»</h3>Творческая мини-активность, например «ночной плейлист в караоке». Помечена отдельно от фактов из базы.</td>
 <td valign="top"><h3>🌐 RU · ҚАЗ · EN</h3>Три языка: интерфейс, ответы, названия мест и описания.</td>
 <td valign="top"><h3>📱 Телефон и Telegram</h3>PWA с чатом на весь экран, голосовой ввод, режим «где я?» по фото, бот <a href="https://t.me/SeruendeshAl_bot">@SeruendeshAl_bot</a> с маршрутами.</td>
+</tr>
+<tr>
+<td colspan="3" valign="top"><h3>🎯 Вторая модель проверяет первую</h3>OpenAI <b>Decisions API</b> работает рядом с основной моделью как судья. Она понимает намерение («с ребёнком 96%, в помещении 98%»), проверяет каждое место («🎯 93% под запрос»), отсеивает явные промахи («подходит лишь на 7%») и сверяет ориентир на фото. Подробнее в разделе <a href="#-две-модели-вместе-пишет-и-проверяет">«Две модели вместе»</a>.</td>
 </tr>
 <tr>
 <td valign="top"><h3>🎟 События</h3>263 события из Ticketon и Sxodim с календарём, архивом и привязкой к местам.</td>
@@ -123,12 +129,15 @@
 flowchart TD
   Q["💬 Запрос + фильтры + локация, округлённая до ~100 м"] --> P["🧩 Разбор: правила + LLM → строгий JSON"]
   Q --> C["🌦 Контекст: погода Open-Meteo · праздники РК · темнота"]
+  Q --> J1["🎯 Decisions API: намерение — дети · в помещении · ночь · тишина"]
   P --> S["📍 Точка старта: ориентир в тексте · GPS · адрес"]
+  J1 --> S
   S --> G["🚶 Достижимость: Dijkstra по графу улиц OSM, мосты через Есиль"]
   G --> F["🛡 Жёсткие фильтры в коде: часы при прибытии · дети · доступность · мороз · рейс"]
   C --> F
   F --> R["🔎 Гибридный поиск: BM25 + e5 (RRF) → скоринг → MMR"]
-  R --> M["🗺 Мини-маршрут: перебор порядков 2–3 точек с проверкой часов"]
+  R --> J2["🎯 Decisions API: подходит ли каждое место под запрос сейчас? вероятность 0–1"]
+  J2 --> M["🗺 Мини-маршрут: перебор порядков 2–3 точек с проверкой часов"]
   M --> L["🤖 LLM выбирает 1–3 из кандидатов c1…c10, пишет «почему» и «что делать»"]
   L --> V["✅ Валидатор: только известные id; часы, числа и «открыто сейчас» не от LLM; иначе шаблон"]
   V --> A["📋 Ответ + «Что я учёл»"]
@@ -155,6 +164,20 @@ flowchart TD
 Подробно в [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Медиана ответа: 3,4 с в eval и 4,4 с на продакшене.
 
 </details>
+
+## 🎯 Две модели вместе: пишет и проверяет
+
+Серу работает с двумя режимами одной модели OpenAI `gpt-6-luna`. **Responses API** пишет: разбирает запрос в строгий JSON и объясняет выбор. **Decisions API** судит: отвечает на вопросы «да/нет» и «выбери из списка» откалиброванной вероятностью, без текста, и делает это примерно в 3 раза быстрее (0,6–0,7 с против 2,0–2,4 с на нашем ключе).
+
+| Где | Что спрашиваем | Что меняется |
+|---|---|---|
+| 🧠 **Намерение** | 6 вопросов «да/нет» параллельно с разбором: с ребёнком? в помещении? ночь? тишина? необычное? это вообще про город? | Добавляет пропущенные нужды. Если разбор не успел — заменяет его. Спасает от ложного «это не про прогулки». Времени не добавляет |
+| 🎯 **Каждое место** | «Подходит ли место под запрос и ситуацию прямо сейчас?» — до 10 карточек одним запросом за 0,2–1,1 с | Меньше 12% — место отсеивается и попадает в «Почему не другие?». От 70% — поднимается выше. Процент виден в карточке и в боте |
+| 📷 **Фото «где я?»** | «Какое из мест Астаны на фото?» — выбор из закрытого списка или «ничего из списка» | Сверяется с vision-моделью. Совпали — уверенность «высокая», судья уверен, что ничего из списка — догадке не верим |
+
+> **Пример.** «Еду с ребёнком, холодно, куда бы зайти?» у Хан Шатыра. Судья понял: с ребёнком 96%, в помещении 98%. 10 мест он проверил за 0,2 с, уличный «Парк влюблённых» получил 7% и не попал в ответ. Серу предложил Fame City, Starbucks и Chaplin Cinemas.
+
+Судья — публичная бета, поэтому каждый вызов ограничен по времени: при ошибке ответ строится как раньше. Всё, что он ответил, видно в блоке «Что я учёл» и в `used_context.ai_check`. Стоимость — около $0,0001 на запрос. Подробно в [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#3a-вспомогательный-судья-openai-decisions-api).
 
 ## 🛡️ Доверие и приватность
 
@@ -194,7 +217,7 @@ flowchart TD
 | 3. Описание RAG-подхода | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | 4. Тестовые сценарии и ограничения | [docs/TEST_SCENARIOS.md](docs/TEST_SCENARIOS.md), [docs/EVAL_RESULTS.md](docs/EVAL_RESULTS.md) |
 | 5. Презентация | [PDF, 14 слайдов](docs/presentation/SeruendeshAI-presentation.pdf) · [PPTX](docs/presentation/SeruendeshAI-presentation.pptx) · план и сценарий демо в [docs/PRESENTATION.md](docs/PRESENTATION.md) |
-| Демо-видео (YouTube) | _ссылка появится после загрузки_ |
+| Демо-видео (YouTube) | **https://youtu.be/ZZ2LTLXCxg8** (2:57) |
 | 6. Этика и приватность | [docs/ETHICS_PRIVACY.md](docs/ETHICS_PRIVACY.md) |
 | Сбор данных (автоматизирован) | [docs/DATA.md](docs/DATA.md) |
 | Как выбирали стек | [docs/RESEARCH.md](docs/RESEARCH.md) |
@@ -210,7 +233,7 @@ flowchart TD
 |---|---|
 | LLM-прогон: 15 сценариев × 12 автоматических проверок (19.10) | **170 / 170** ([EVAL_RESULTS](docs/EVAL_RESULTS.md)) |
 | Нейтральный ИИ-судья | 20 из 23 ответов без неподтверждённых утверждений |
-| Автотесты в CI на каждый push | **~1500**: бэкенд 698 · данные 361 · QA 374 · поиск 7 · бот 12 · фронтенд 30 + 31 в браузере |
+| Автотесты в CI на каждый push | **~1580**: бэкенд 711 · данные 361 · QA 374 · поиск 7 · бот 13 · фронтенд 30 + 80 в браузере |
 
 Как тестируем, описано в [docs/QA.md](docs/QA.md).
 
@@ -263,7 +286,7 @@ backend/          продукт: FastAPI (API, MCP-коннектор, режи
   app/            поиск, ранжирование, маршруты, LLM, валидатор, защиты
   pipeline/       сбор снимка, который отдаёт API (OSM, Overture, Wikidata, Wikipedia, CityPass, Sxodim, фото, граф, эмбеддинги)
   eval/           15 сценариев и харнесс оценки (проверки + LLM-as-judge)
-  tests/          698 тестов бэкенда
+  tests/          711 тестов бэкенда
 frontend/         интерфейс (React + Vite, маскот Серу)
 bot/              Telegram-бот, тонкий клиент API
 data/processed/   снимок API (pois.jsonl, газеттир, граф, эмбеддинги, манифест) и каталог команды
@@ -303,7 +326,7 @@ team/             роли и контракты команды
 <details>
 <summary><b>🇬🇧 English summary</b></summary>
 
-**SeruendeshAI** is a RAG walking assistant for Astana, Kazakhstan, built for the *Build with AI* hackathon (task 1, Smart City research centre). Tell **Seru**, a little green bird, where you are, how much time you have and what you feel like. Seru suggests 1–3 places nearby with a street-graph mini-route, time on site, the reason it fits right now and what to do there. Opening hours carry a source, a date and a confidence level, and the AI never claims "open now". Data: 2,271 places from OpenStreetMap, Overture, Wikidata/Wikipedia and official sites, plus 263 events. The interface works in Russian, Kazakh and English. The user's location is rounded to ~100 m and never sent to the LLM. Live at **[seruendesh.site](https://seruendesh.site)** and in Telegram as [@SeruendeshAl_bot](https://t.me/SeruendeshAl_bot). Team **YeahGrinders**: Ayat Balmagambet, Aldiyar Zhangabyl, Denis Li, Aslan Muratov.
+**SeruendeshAI** is a RAG walking assistant for Astana, Kazakhstan, built for the *Build with AI* hackathon (task 1, Smart City research centre). Tell **Seru**, a little green bird, where you are, how much time you have and what you feel like. Seru suggests 1–3 places nearby with a street-graph mini-route, time on site, the reason it fits right now and what to do there. Opening hours carry a source, a date and a confidence level, and the AI never claims "open now". Data: 2,271 places from OpenStreetMap, Overture, Wikidata/Wikipedia and official sites, plus 263 events. The interface works in Russian, Kazakh and English. A second model, the OpenAI Decisions API, checks the request intent, every candidate's fit and photo landmarks, with calibrated probabilities shown to the user. The user's location is rounded to ~100 m and never sent to the LLM. Live at **[seruendesh.site](https://seruendesh.site)** and in Telegram as [@SeruendeshAl_bot](https://t.me/SeruendeshAl_bot). Team **YeahGrinders**: Ayat Balmagambet, Aldiyar Zhangabyl, Denis Li, Aslan Muratov.
 
 </details>
 

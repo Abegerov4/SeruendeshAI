@@ -7,17 +7,17 @@ TEXT = {
     "ru": {"why": "Почему", "todo": "Что делать", "min": "мин", "route": "маршрут", "mini": "Мини-маршрут", "used": "Учёл",
            "no_loc": "локация не указана", "radius": "радиус {r} км", "walk": "пешком", "car": "на машине",
            "transit": "на транспорте", "open": "🟢 открыто", "closed": "🔴 закрыто", "unknown": "⚪ часы уточняйте",
-           "poi": "📍 данные POI", "idea": "✨ идея ИИ", "photo": "📷 Похоже, это <b>{name}</b>.",
+           "poi": "📍 данные POI", "idea": "✨ идея ИИ", "match": "под запрос", "photo": "📷 Похоже, это <b>{name}</b>.",
            "btn_route": "🗺 {i}. Маршрут", "btn_pin": "📍 {i}. На карте", "from": "от", "km": "км", "m": "м"},
     "kk": {"why": "Неге", "todo": "Не істеу", "min": "мин", "route": "бағыт", "mini": "Шағын бағыт", "used": "Ескердім",
            "no_loc": "орын көрсетілмеген", "radius": "радиус {r} км", "walk": "жаяу", "car": "көлікпен",
            "transit": "қоғамдық көлікпен", "open": "🟢 ашық", "closed": "🔴 жабық", "unknown": "⚪ уақытын нақтылаңыз",
-           "poi": "📍 POI деректері", "idea": "✨ ЖИ идеясы", "photo": "📷 Бұл <b>{name}</b> сияқты.",
+           "poi": "📍 POI деректері", "idea": "✨ ЖИ идеясы", "match": "сұрауға сәйкес", "photo": "📷 Бұл <b>{name}</b> сияқты.",
            "btn_route": "🗺 {i}. Бағыт", "btn_pin": "📍 {i}. Картада", "from": "бастап", "km": "км", "m": "м"},
     "en": {"why": "Why", "todo": "What to do", "min": "min", "route": "route", "mini": "Mini-route", "used": "Took into account",
            "no_loc": "no location", "radius": "radius {r} km", "walk": "on foot", "car": "by car",
            "transit": "by transit", "open": "🟢 open", "closed": "🔴 closed", "unknown": "⚪ check the hours",
-           "poi": "📍 POI data", "idea": "✨ AI idea", "photo": "📷 Looks like <b>{name}</b>.",
+           "poi": "📍 POI data", "idea": "✨ AI idea", "match": "fit", "photo": "📷 Looks like <b>{name}</b>.",
            "btn_route": "🗺 {i}. Route", "btn_pin": "📍 {i}. On the map", "from": "from", "km": "km", "m": "m"},
 }
 
@@ -81,11 +81,13 @@ def _card(i: int, r: dict, t: dict, mode: str, start: dict) -> list[str]:
     opening = (r.get("opening") or {}).get("label") or t.get(r.get("open_status") or "unknown", "")
     source = t["idea"] if r.get("source") == "generated" else t["poi"]
     visit_txt = f" (~{visit[0]}–{visit[1]} {t['min']})" if visit and visit[0] else ""
+    # the Decisions API's check of how well the place fits the request
+    match = f" · 🎯 {round(r['match'] * 100)}% {t['match']}" if isinstance(r.get("match"), (int, float)) else ""
     return [
         f"<b>{i}. {escape(r['name'])}</b>" + (f" ({dist})" if dist else ""),
         f"<i>{t['why']}:</i> {escape(r.get('why') or '')}",
         f"<i>{t['todo']}:</i> {escape(r.get('what_to_do') or '')}{visit_txt}",
-        f"{escape(opening)} · {source} · <a href=\"{route_link(r['lat'], r['lon'], start)}\">{t['route']}</a>",
+        f"{escape(opening)}{match} · {source} · <a href=\"{route_link(r['lat'], r['lon'], start)}\">{t['route']}</a>",
     ]
 
 

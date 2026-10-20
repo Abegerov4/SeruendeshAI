@@ -145,3 +145,9 @@
  .pwa-close{width:44px;height:44px}
  .pocket-open,.connection-banner button,.update-notice button{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}
 }
+
+/* Decisions API: how well a place fits the request */
+.chat-match{margin-left:6px;font-size:11px;font-weight:600;color:#3d6b2a;white-space:nowrap}
+.match-chip{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;padding:4px 7px;border-radius:6px;background:#eef5df;color:#3d6b2a}
+.match-chip.fair{background:#f4f1e3;color:#7a6a2c}
+.match-chip.weak{background:#f6ece8;color:#8a4b3a}

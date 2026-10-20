@@ -2,7 +2,7 @@ import {test, expect} from '@playwright/test';
 import {readFileSync} from 'node:fs';
 const fixture = JSON.parse(readFileSync(new URL('../../../backend/docs/api/examples/walk.json', import.meta.url)));
 const aPlace = {poi_id: 'saved-a', data: {name: 'Private place A', categoryKey: 'park', category: 'Парк', travel: 5, visit: 20}};
-async function mockApi(page, {account=null, saved=[], failSave=false, failSearch=false}={}) {
+async function mockApi(page, {account=null, saved=[], failSave=false, failSearch=false, judge=false}={}) {
   const state = {account, saved, failSave, failSearch, requests: [], writes: [], geo: 0};
   await page.addInitScript(() => {window.geoCalls=0; navigator.geolocation.getCurrentPosition=(ok,fail)=>{window.geoCalls++; if(window.geoFix) ok({coords:{...window.geoFix,accuracy:20}}); else fail({code:2});};});
   await page.route('**/api/**', async r => {
@@ -24,6 +24,7 @@ async function mockApi(page, {account=null, saved=[], failSave=false, failSearch
       json.recommendations=json.recommendations.slice(0,2);
       json.recommendations[0].travel_min=10;json.recommendations[0].visit_suggested_min=20;
       json.recommendations[1].travel_min=8;json.recommendations[1].visit_suggested_min=45;
+      if(judge){json.recommendations[0].match=0.93;json.used_context.ai_check={engine:'OpenAI Decisions API · gpt-6-luna',intent:{with_kids:0.96,indoor:0.98,night:0.05,quiet:0.1,unusual:0.1,about_city:0.95},intent_applied:['indoor'],checked:10,latency_ms:420,dropped:[{poi_id:'osm:1',name:'Парк влюбленных',match:0.07}]};json.considered=[{name:'Парк влюбленных',reason:'ИИ-проверка: подходит под запрос лишь на 7%'}];}
     }
     await r.fulfill({json});
   });
@@ -144,4 +145,17 @@ test('a typed request asks for the position and sends it; a second one within 2 
  await page.locator('#chat-input').fill('а теперь парк');await page.locator('.send-button').click();
  await expect.poll(()=>state.requests.length).toBe(2);
  expect(state.requests[1].location).toEqual({lat:51.133,lon:71.404});expect(await page.evaluate(()=>window.geoCalls)).toBe(1);
+});
+
+test('the Decisions API check shows how well each place fits and what it understood',async({page})=>{
+  await mockApi(page,{judge:true});
+  await page.goto('/');
+  await chooseStart(page);
+  await expect(page.locator('.chat-match').first()).toHaveText('🎯 93%');
+  await page.locator('.chat-answer-details summary').last().click();
+  const reasoning=page.locator('.chat-reasoning').last();
+  await expect(reasoning).toContainText('Понял: с ребёнком 96% · в помещении 98%');
+  await expect(reasoning).toContainText('ИИ-проверка (Decisions API): 10 мест за 0,4 с · отсеял 1');
+  await reasoning.locator('.chat-why-toggle').click();
+  await expect(reasoning).toContainText('Парк влюбленных — ИИ-проверка: подходит под запрос лишь на 7%');
 });

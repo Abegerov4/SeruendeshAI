@@ -3022,5 +3022,57 @@
  "проверено {date}": {
   "en": "checked {date}",
   "kk": "{date} тексерілді"
+ },
+ "под запрос": {
+  "en": "match",
+  "kk": "сұрауға"
+ },
+ "Насколько место подходит под запрос — оценка OpenAI Decisions API": {
+  "en": "How well the place fits the request — OpenAI Decisions API estimate",
+  "kk": "Орын сұрауға қаншалықты сәйкес — OpenAI Decisions API бағасы"
+ },
+ "Совпадение с запросом": {
+  "en": "Fit with the request",
+  "kk": "Сұрауға сәйкестік"
+ },
+ "оценка OpenAI Decisions API": {
+  "en": "OpenAI Decisions API estimate",
+  "kk": "OpenAI Decisions API бағасы"
+ },
+ "ИИ-проверка (Decisions API): {n} мест за {s} с": {
+  "en": "AI check (Decisions API): {n} places in {s} s",
+  "kk": "ЖИ тексеруі (Decisions API): {n} орын, {s} с"
+ },
+ "отсеял {k}": {
+  "en": "{k} left out",
+  "kk": "{k} алынып тасталды"
+ },
+ "Понял": {
+  "en": "Understood",
+  "kk": "Түсіндім"
+ },
+ "с ребёнком": {
+  "en": "with a child",
+  "kk": "баламен"
+ },
+ "в помещении": {
+  "en": "indoors",
+  "kk": "жабық орында"
+ },
+ "вечер/ночь": {
+  "en": "evening/night",
+  "kk": "кеш/түн"
+ },
+ "тихо": {
+  "en": "quiet",
+  "kk": "тыныш"
+ },
+ "необычное": {
+  "en": "unusual",
+  "kk": "ерекше"
+ },
+ "Похоже, это «{name}» ({p}%).": {
+  "en": "Looks like «{name}» ({p}%).",
+  "kk": "Бұл «{name}» сияқты ({p}%)."
  }
 }

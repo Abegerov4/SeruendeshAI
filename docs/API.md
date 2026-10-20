@@ -70,7 +70,13 @@ CORS открыт для `localhost:5173`, `127.0.0.1:5173` и доменов `*
     "speed_kmh": 4.1, "party": "solo",
     "parsed_from_query": {"categories": [], "preferences": ["park", "landmark"], "needs": [], "parser": "llm+rules (gpt-6-luna)", …},
     "relaxations": [], "funnel": {"total": 2271, "within_reach": 132, "after_filters": 48, "shown": 2},
-    "data_sources": ["OpenStreetMap (ODbL)", …], "data_built_at": "…", "privacy": "Локация округлена до ~100 м…"
+    "data_sources": ["OpenStreetMap (ODbL)", …], "data_built_at": "…", "privacy": "Локация округлена до ~100 м…",
+    // вспомогательный судья OpenAI Decisions API (null, если не запускался: нет ключа, таймаут)
+    "ai_check": {"engine": "OpenAI Decisions API · gpt-6-luna",
+                 "intent": {"with_kids": 0.96, "indoor": 0.98, "night": 0.09, "quiet": 0.08, "unusual": 0.09, "about_city": 0.9},
+                 "intent_applied": ["indoor"],            // что из намерения изменило поиск
+                 "checked": 10, "latency_ms": 217,        // сколько карточек проверено и за сколько
+                 "dropped": [{"poi_id": "osm:w37884583", "name": "Парк влюбленных", "match": 0.07}]}
   },
   "recommendations": [{
     // контракт
@@ -86,6 +92,7 @@ CORS открыт для `localhost:5173`, `127.0.0.1:5173` и доменов `*
     "rating": null,                    // открытых рейтингов по Астане нет
     // расширения
     "rank": 1, "category_detail": "park", "category_label": "Парк", "icon": "trees",
+    "match": 0.84,                     // Decisions API: вероятность, что место подходит под запрос; null без проверки
     "walk_distance_m": 1640,           // реальная длина пешего пути
     "travel_mode": "walk", "visit_suggested_min": 25,
     "leave_by": null,                  // «выйти до HH:MM» при дедлайне (рейс/поезд)
@@ -131,14 +138,15 @@ CORS открыт для `localhost:5173`, `127.0.0.1:5173` и доменов `*
 
 ## POST /api/recommend/photo
 `multipart/form-data`: `image` (JPEG/PNG/WebP, до 8 МБ, обязательно), `query?`, `landmark?` (ключ ориентира, используется, если фото не узнано), `lang?` (`ru|kk|en`).
-Фото декодируется с лимитом пикселей, EXIF (включая GPS) удаляется и не читается, картинка уменьшается до 1024 px и пересжимается в JPEG. LLM выбирает место только из закрытого списка: ориентиры из `/api/meta` и ~40 самых популярных POI. Фото не сохраняется.
+Фото декодируется с лимитом пикселей, EXIF (включая GPS) удаляется и не читается, картинка уменьшается до 1024 px и пересжимается в JPEG. LLM выбирает место только из закрытого списка: ориентиры из `/api/meta` и ~40 самых популярных POI. Параллельно OpenAI Decisions API выбирает место из того же списка с вероятностью. Если оба ответа совпали, уверенность «высокая». Если судья уверен, что на фото ничего из списка, догадке vision не верим. Фото не сохраняется.
 
 Ответ: обычный ответ `/api/recommend` плюс поле `photo_guess`:
 
 ```jsonc
 "photo_guess": {"recognized": true, "place_id": "nurzhol", "kind": "landmark",   // kind: landmark | poi | null
                 "name": "Бульвар Нуржол", "confidence": "high",                  // low | medium | high
-                "description": "Цветочная аллея и фонтаны на фоне высоток"}
+                "description": "Цветочная аллея и фонтаны на фоне высоток",
+                "probability": 0.69}                                              // Decisions API; null, если не совпал с местом
 ```
 
 Если место не узнано (или `confidence: low`) и `landmark` не передан, ответ `200` с `recommendations: []`, а в `summary`/`notes` просьба написать ориентир.

@@ -47,3 +47,12 @@ def test_answer_parts_make_one_card_per_place_with_its_buttons():
     assert first["photo"].endswith("x.jpg") and "📷 A, CC BY 4.0" in first["caption"] and len(first["caption"]) <= 1024
     assert first["buttons"][0]["url"].startswith("https://2gis.kz/") and first["buttons"][1]["callback"] == "pin:0"
     assert "Учёл:" in parts["footer"]
+
+
+def test_a_checked_place_shows_how_well_it_fits():
+    from bot.format import format_response
+    resp = {"lang": "ru", "summary": "s", "recommendations": [{"name": "Музей", "why": "w", "what_to_do": "d", "lat": 51.1, "lon": 71.4,
+            "travel_min": 5, "distance_m": 300, "visit_min": [20, 30], "source": "poi_data", "open_status": "open",
+            "opening": {"label": "Открыто до 18:00"}, "match": 0.93, "travel_mode": "walk"}],
+            "ideas": [], "notes": [], "used_context": {}, "route": None}
+    assert "🎯 93% под запрос" in format_response(resp)

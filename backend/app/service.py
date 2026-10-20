@@ -16,6 +16,7 @@ from dataclasses import dataclass
 import httpx
 import numpy as np
 
+from app import decisions as judge
 from app import tracing
 from app.categories import CATEGORIES, CONTRACT_CATEGORY, label
 from app.config import get_settings
@@ -23,7 +24,7 @@ from app.context import Context, build_context, fetch_weather, holiday_name, par
 from app.embedder import Embedder
 from app.evidence import accepted_details
 from app.features import cuisine_labels, describe, feature_labels
-from app.generate import GenOut, generate, strip_itinerary, template_todo, template_why, validate
+from app.generate import GenOut, card, context_block, generate, strip_itinerary, template_todo, template_why, validate
 from app.geo import WalkGraph, hav_m, in_astana, round_coord
 from app.i18n import t, weekday
 from app.hours import opening_status
@@ -247,6 +248,8 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
         llm_task = asyncio.create_task(llm_parse(LLMParsed, PARSE_SYSTEM, req.query.strip()[:500],
                                                  models=[s.llm_parse_model], timeout_s=s.parse_timeout_s,
                                                  max_output_tokens=500, name="parse-query"))
+    # the Decisions API's yes/no questions about the request run alongside the parse: no extra waiting
+    intent_task = asyncio.create_task(judge.intent(req.query)) if req.query.strip() and llm_parse_enabled and judge.enabled() else None
     wx_task = asyncio.create_task(fetch_weather(rt.http)) if s.weather_enabled and not req.now else None
     emb_task = None
     if rt.embedder is not None and rt.store.emb is not None and req.query.strip():
@@ -255,6 +258,8 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
     if llm_task:
         llm_parsed, parse_model, _ = await llm_task
     parsed = merge_llm(rules, llm_parsed)
+    intent_p = await intent_task if intent_task else None
+    intent_applied = apply_intent(parsed, intent_p, parse_answered=llm_parsed is not None)
     weather = await wx_task if wx_task else None
     if req.weather is not None:
         w = req.weather
@@ -277,6 +282,11 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
     # not about going somewhere in the city ("напиши код", "кто президент США"): say what Seru does instead
     place_signal = bool(rules.categories or rules.walk_intent or rules.wants_event or text_hit or dest_entries)
     off_topic = (llm_parsed.off_topic and not place_signal) if llm_parsed is not None else is_off_topic(req.query, place_signal)
+    if intent_p and "about_city" in intent_p:
+        if off_topic and intent_p["about_city"] >= 0.9:  # the judge is sure it is about the city: answer, do not refuse
+            off_topic = False
+        elif llm_parsed is None and not place_signal and intent_p["about_city"] < 0.1:
+            off_topic = True  # the parse did not answer in time; the judge is sure it is not about going anywhere
     if off_topic:
         return _empty_response(rt, req, parsed, now, lang, t0, notes, t("off_topic", lang), meter[mark:], parse_model,
                                off_topic=True)
@@ -372,6 +382,7 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
     plan.radius_m = int(plan.t_max * m_per_min / 1.28) if mode == "walk" else int(max(plan.t_max - 5, 3) * 41000 / 60 / 1.3 / 1.35)
 
     cands, considered = [], []
+    mixed = False
     if dl is not None and dl - plan.deadline_buffer < 30:
         notes.append(t("note_deadline_tight", lang))
     else:
@@ -400,6 +411,7 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
                                  "travel_min": c.travel_min, "score": round(c.score, 3)} for c in cands[:10]],
                         metadata={"candidates": len(cands), "relaxations": list(plan.relaxations)})
         if walk_cands:
+            mixed = True
             food = [c for c in cands if CATEGORIES[c.poi["category"]].group == "food"]
             seen = {c.poi["id"] for c in food}
             cands = food[:2] + [c for c in walk_cands if c.poi["id"] not in seen] + food[2:]
@@ -425,6 +437,13 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
             else:
                 plan.budget, plan.t_max, plan.radius_m, plan.relaxations = short
                 plan.directions = False
+
+    # the Decisions API checks every card against the request before the route and the text are made
+    fit_info = {"checked": 0, "dropped": [], "ms": 0}
+    if cands and not navigate and judge.enabled():
+        cands, fit_info = await check_fit(cands, req.query or "", ctx, plan, parsed, lang, keep_ids=target_ids, keep_order=mixed)
+        for c in fit_info["dropped"]:
+            considered.insert(0, {"name": display_name(c.poi, lang), "reason": t("rej_fit", lang, p=round(c.match * 100))})
 
     route = None
     if not navigate and not (view_decks and req.want_route is None) and route_wanted(parsed, req.want_route, plan, len(cands)):
@@ -646,6 +665,11 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
                               "parser": parsed.source + (f" ({parse_model})" if parse_model else "")},
         "relaxations": plan.relaxations, "funnel": plan.funnel, "data_sources": ds,
         "data_built_at": rt.store.manifest.get("built_at"), "privacy": t("privacy", lang),
+        "ai_check": ({"engine": f"OpenAI Decisions API · {s.decisions_model}",
+                      "intent": {k: round(v, 2) for k, v in (intent_p or {}).items()}, "intent_applied": intent_applied,
+                      "checked": fit_info["checked"], "latency_ms": fit_info["ms"],
+                      "dropped": [{"poi_id": c.poi["id"], "name": display_name(c.poi, lang), "match": round(c.match, 2)}
+                                  for c in fit_info["dropped"]]} if intent_p or fit_info["checked"] else None),
     }
     resp = {
         "api_version": "1.0", "request_id": uuid.uuid4().hex[:12], "lang": lang, "summary": summary,
@@ -665,6 +689,69 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
              resp["request_id"], lang, mode, plan.budget, len(items), bool(route_out), model or "template",
              resp["llm"]["latency_ms"], u["input_tokens"], u["output_tokens"], u["cost_usd"])
     return resp
+
+
+# --- the Decisions API as the auxiliary judge (app/decisions.py) -----------------------------------------
+
+INTENT_STRONG = 0.92  # the parse answered: the judge only adds what it is nearly sure the parse missed
+INTENT_ALONE = 0.8    # the parse did not answer in time: the judge's answers stand in for it
+FIT_DROP = 0.12       # «подходит на 8%»: not shown while enough other places remain
+FIT_STRONG = 0.7
+
+
+def apply_intent(parsed: Parsed, probs: dict[str, float] | None, *, parse_answered: bool) -> list[str]:
+    """Add the needs the judge is sure of and the parse missed. Never removes anything the user or the parse said;
+    night and «something unusual» change the search a lot, so they are taken only when the parse did not answer."""
+    if not probs:
+        return []
+    bar = INTENT_STRONG if parse_answered else INTENT_ALONE
+    added = []
+    for key, need in (("with_kids", "kids"), ("indoor", "indoor"), ("quiet", "quiet")):
+        if probs.get(key, 0) >= bar and need not in parsed.needs and not (need == "kids" and parsed.party == "family_kids"):
+            parsed.needs.add(need)
+            added.append(key)
+    if not parse_answered:
+        if probs.get("night", 0) >= bar and not parsed.night:
+            parsed.night = True
+            added.append("night")
+        if probs.get("unusual", 0) >= bar and not parsed.surprise:
+            parsed.surprise = True
+            added.append("unusual")
+    return added
+
+
+async def check_fit(cands: list[Cand], query: str, ctx: Context, plan: Plan, parsed: Parsed, lang: str, *,
+                    keep_ids: set[str], keep_order: bool) -> tuple[list[Cand], dict]:
+    """One yes/no question per card: «does this place fit the request right now?». Clear misfits are dropped while at
+    least three places remain (a place the user named is never dropped); strong fits move ahead of the rest, the
+    retrieval's diverse order is kept inside each group. Without an answer the cards stay as they were."""
+    top = {f"c{i + 1}": c for i, c in enumerate(cands[:get_settings().decisions_fit_n])}
+    cards = []
+    for cid, c in top.items():
+        d = card(c, cid, "ru")
+        d["desc"] = d.get("desc", "")[:140]
+        for k in ("desc_source", "popularity", "note"):
+            d.pop(k, None)
+        cards.append(d)
+    situation = "; ".join(context_block(ctx, plan, parsed, "ru").splitlines()[1:])
+    t1 = time.perf_counter()
+    probs = await judge.fit(query, situation, cards)
+    info = {"checked": 0, "dropped": [], "ms": int((time.perf_counter() - t1) * 1000)}
+    if not probs:
+        return cands, info
+    for cid, c in top.items():
+        c.match = probs.get(cid)
+    info["checked"] = sum(c.match is not None for c in top.values())
+    misfits = sorted((c for c in cands if c.match is not None and c.match < FIT_DROP and c.poi["id"] not in keep_ids),
+                     key=lambda c: c.match)
+    spare = len(cands) - min(3, len(cands))  # how many may go
+    dropped = misfits[:max(0, spare)]
+    kept = [c for c in cands if c not in dropped]
+    if not keep_order:
+        kept = [c for c in kept if (c.match or 0) >= FIT_STRONG] + [c for c in kept if (c.match or 0) < FIT_STRONG]
+    info["dropped"] = dropped
+    log.info("fit check: %d cards, dropped %d, %dms", info["checked"], len(dropped), info["ms"])
+    return kept, info
 
 
 def _badges(c: Cand, plan: Plan) -> list[str]:
@@ -796,7 +883,8 @@ def _item(c: Cand, why: str, todo: str, visit: int, rank_i: int, plan: Plan, lan
         "source_url": url if (url or "").startswith("http") else None, "rating": p.get("rating"),
         "website": p.get("website") if (p.get("website") or "").startswith("http") else None,
         # extensions
-        "rank": rank_i, "category_detail": p["category"], "category_label": label(p["category"], lang),
+        "rank": rank_i, "match": round(c.match, 2) if c.match is not None else None,
+        "category_detail": p["category"], "category_label": label(p["category"], lang),
         "icon": CATEGORIES[p["category"]].icon, "walk_distance_m": int(round(c.distance_m / 10) * 10),
         "travel_mode": out_mode, "visit_suggested_min": visit, "leave_by": c.leave_by, "return_min": c.return_min or 0,
         "opening": {**{k: c.opening.get(k) for k in ("status", "confidence", "label", "raw", "next_change")},

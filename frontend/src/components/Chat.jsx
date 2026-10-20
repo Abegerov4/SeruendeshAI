@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { TimeLedger } from './PlaceTrust';
 import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera, MessageCircle, Navigation, Footprints, Car, Info, Mic, House, Map as MapIcon, Pencil, Clock3, ArrowRight } from 'lucide-react';
 import PlaceVisual from './PlaceVisual';
-import { hoursTone, shortHours } from './PlaceCard';
+import { hoursTone, shortHours, matchPct } from './PlaceCard';
 import { landmarks, scenarios } from '../data';
 import { MY_LOCATION, HOME, loadHome, saveHome, geocode, roundCoord, visitText } from '../api';
 import Mascot from './Mascot';
@@ -42,7 +42,7 @@ function ChatPlaces({ places, route, onRoute, onDetails, routed }) {
       <button className="chat-place-main" onClick={() => onRoute?.(p)} aria-label={tr('Маршрут до места') + ': ' + p.name}>
         <span className="chat-place-thumb"><PlaceVisual place={p} /><i>{i + 1}</i></span>
         <span className="chat-place-text"><b>{p.name}</b><small>{p.category}</small>
-          <small className="chat-place-meta"><Mode size={12} />{p.distance} · {p.travel} {tr('мин')}<span className={'chat-hours ' + hoursTone(p)}>{shortHours(p)}</span></small></span>
+          <small className="chat-place-meta"><Mode size={12} />{p.distance} · {p.travel} {tr('мин')}<span className={'chat-hours ' + hoursTone(p)}>{shortHours(p)}</span>{matchPct(p) != null && <span className="chat-match" title={tr('Насколько место подходит под запрос — оценка OpenAI Decisions API')}>🎯 {matchPct(p)}%</span>}</small></span>
       </button>
       {(p.action || visitText(p)) && <div className="chat-place-plan">
         {visitText(p) && <span className="chat-place-time"><Clock3 size={12} />{visitText(p)} {tr('мин на месте')}</span>}
@@ -73,11 +73,17 @@ function ChatReasoning({ used, considered = [], notes = [] }) {
     ...(q.avoid_labels || []).map(x => '✕ ' + x),
   ].filter(Boolean);
   const funnel = f.within_reach > 0 && f.after_filters != null ? tr('Проверил {n} мест рядом → {k} подходят под условия', { n: f.within_reach, k: f.after_filters }) : null;
+  const ai = used.ai_check, INTENT = { with_kids: 'с ребёнком', indoor: 'в помещении', night: 'вечер/ночь', quiet: 'тихо', unusual: 'необычное' };
+  const understood = ai ? Object.entries(ai.intent || {}).filter(([k, v]) => INTENT[k] && v >= 0.5).map(([k, v]) => tr(INTENT[k]) + ' ' + Math.round(v * 100) + '%') : [];
+  const aiLine = ai && ai.checked > 0 ? tr('ИИ-проверка (Decisions API): {n} мест за {s} с', { n: ai.checked, s: (ai.latency_ms / 1000).toFixed(1).replace('.', ',') })
+    + (ai.dropped?.length ? ' · ' + tr('отсеял {k}', { k: ai.dropped.length }) : '') : null;
   const more = considered.length > 0 || notes.length > 0;
   return <div className="chat-reasoning">
     <span className="chat-reasoning-title">{tr('Что я учёл')}</span>
     <div className="chat-chips">{chips.map(c => <span key={c}>{c}</span>)}</div>
     {funnel && <p className="chat-funnel">{funnel}</p>}
+    {understood.length > 0 && <p className="chat-funnel">🧠 {tr('Понял')}: {understood.join(' · ')}</p>}
+    {aiLine && <p className="chat-funnel">🎯 {aiLine}</p>}
     {notes[0] && <p className="chat-funnel">💡 {notes[0]}</p>}
     {more && <button className="chat-why-toggle" aria-expanded={open} onClick={() => setOpen(!open)}>{tr(open ? 'Скрыть детали' : 'Почему не другие?')}<ChevronDown size={13} /></button>}
     {open && <div className="chat-why">{notes.slice(1).map(n => <p key={n}>• {n}</p>)}
@@ -225,7 +231,7 @@ export default function Chat({ active = true, requestPlan, onMood, location, sta
       const plan = await requestPlan(text, override, active.signal, photo);
       if (active.signal.aborted) return;
       const real = plan.places.filter(p => !p.generated), g = plan.photoGuess;
-      const seen = g?.recognized && g.name ? tr('Похоже, это «{name}».', { name: g.name }) + ' ' : '';
+      const seen = g?.recognized && g.name ? (g.probability != null ? tr('Похоже, это «{name}» ({p}%).', { name: g.name, p: Math.round(g.probability * 100) }) : tr('Похоже, это «{name}».', { name: g.name })) + ' ' : '';
       append([{ role: 'assistant', result: true, count: real.length, summary: seen + (plan.summary || ''), names: real.map(p => p.name), places: real.slice(0, 3), route: plan.route, note: real.length ? null : plan.notes[0],
         used: plan.used, considered: plan.considered, notes: plan.notes }]);
       setQuery(current => current === text ? '' : current); setLoading(false); onMood?.(real.length ? 'happy' : 'idle');

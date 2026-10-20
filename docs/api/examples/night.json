@@ -1,9 +1,147 @@
 {
  "api_version": "1.0",
- "request_id": "4231a94a0b95",
+ "request_id": "5d9ac3dc196f",
  "lang": "ru",
- "summary": "Для позднего вечера подойдут крытый бар и необычная фотопауза у символа столицы.",
+ "summary": "Серу подобрал варианты для необычного позднего выхода — от караоке до арт-объекта.",
  "recommendations": [
+  {
+   "poi_id": "ov:6d25989f-69ad-45",
+   "name": "Grammy",
+   "category": "nightlife",
+   "lat": 51.128796,
+   "lon": 71.406269,
+   "distance_m": 1658,
+   "travel_min": 27,
+   "why": "Караоке подойдёт для активного ночного выхода, а формат не сводится к обычному ужину.",
+   "visit_min": [
+    60,
+    90
+   ],
+   "what_to_do": "Выберите несколько песен для исполнения.",
+   "open_status": "open",
+   "open_confidence": "low",
+   "source": "poi_data",
+   "source_url": null,
+   "rating": null,
+   "website": "http://grammy.kz",
+   "rank": 1,
+   "match": 0.69,
+   "category_detail": "karaoke",
+   "category_label": "Караоке",
+   "icon": "mic",
+   "walk_distance_m": 1960,
+   "travel_mode": "walk",
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 60,
+   "leave_by": null,
+   "return_min": 0,
+   "opening": {
+    "status": "open",
+    "confidence": "low",
+    "label": "Открыто до 06:00 (источник часов: grammy.kz)",
+    "raw": "Mo-Su 18:00-06:00",
+    "source": "grammy.kz",
+    "source_url": "https://grammy.kz/",
+    "check_date": "2026-10-20",
+    "next_change": "06:00"
+   },
+   "source_label": "Данные POI",
+   "data_sources": [
+    "overture"
+   ],
+   "popularity": 0.055,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [
+    "night"
+   ],
+   "event": null,
+   "address": "Turan Ave 30",
+   "description": "Караоке. В 450 м от «Хан Шатыр». Адрес: Turan Ave 30.",
+   "description_source": "template",
+   "description_url": null,
+   "phone": "+77011000703",
+   "instagram": null,
+   "cuisine": null,
+   "photo": {
+    "url": "https://grammy.kz/images/interior/1.jpg",
+    "width": 2000,
+    "height": 1333,
+    "author": "grammy.kz",
+    "license": "© grammy.kz",
+    "page": "http://grammy.kz",
+    "source": "website"
+   },
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
+  },
+  {
+   "poi_id": "osm:n13340040665",
+   "name": "Жетігенші",
+   "category": "monument",
+   "lat": 51.134669,
+   "lon": 71.41061,
+   "distance_m": 1543,
+   "travel_min": 25,
+   "why": "Жетігенші — арт-объект, который добавит прогулке необычную короткую остановку.",
+   "visit_min": [
+    5,
+    10
+   ],
+   "what_to_do": "Загляните к арт-объекту и рассмотрите его с разных сторон.",
+   "open_status": "unknown",
+   "open_confidence": "none",
+   "source": "poi_data",
+   "source_url": "https://www.openstreetmap.org/node/13340040665",
+   "rating": null,
+   "website": null,
+   "rank": 2,
+   "match": 0.33,
+   "category_detail": "artwork",
+   "category_label": "Арт-объект",
+   "icon": "sparkles",
+   "walk_distance_m": 1830,
+   "travel_mode": "walk",
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 10,
+   "leave_by": null,
+   "return_min": 0,
+   "opening": {
+    "status": "always",
+    "confidence": "medium",
+    "label": "Открытая территория — вход свободный, часов работы нет",
+    "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
+    "next_change": null
+   },
+   "source_label": "Данные POI",
+   "data_sources": [
+    "osm"
+   ],
+   "popularity": 0.0,
+   "features": [],
+   "accessibility": "unknown",
+   "badges": [],
+   "event": null,
+   "address": null,
+   "description": "Арт-объект. В 100 м от «Астана Опера».",
+   "description_source": "template",
+   "description_url": null,
+   "phone": null,
+   "instagram": null,
+   "cuisine": null,
+   "photo": null,
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
+  },
   {
    "poi_id": "osm:n4199896989",
    "name": "Avtor",
@@ -12,30 +150,38 @@
    "lon": 71.43654,
    "distance_m": 456,
    "travel_min": 8,
-   "why": "Avtor — бар с круглосуточным режимом, подходящий для позднего выхода; в прохладную ветреную погоду приятно выбрать место в помещении.",
+   "why": "Avtor — бар, указанный как круглосуточный, что подходит для позднего выхода.",
    "visit_min": [
     45,
     75
    ],
-   "what_to_do": "Загляните на напиток и устройте неспешную паузу перед завершением вечера.",
+   "what_to_do": "Зайдите в бар и выберите напиток; попробуйте придумать необычную тему для разговора на вечер.",
    "open_status": "open",
-   "open_confidence": "high",
+   "open_confidence": "low",
    "source": "poi_data",
    "source_url": "https://www.openstreetmap.org/node/4199896989",
    "rating": null,
-   "rank": 1,
+   "website": null,
+   "rank": 3,
+   "match": 0.65,
    "category_detail": "bar",
    "category_label": "Бар / паб",
    "icon": "beer",
    "walk_distance_m": 580,
    "travel_mode": "walk",
-   "visit_suggested_min": 60,
+   "arrival_at": null,
+   "departure_at": null,
+   "visit_suggested_min": 45,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
     "status": "open",
-    "confidence": "medium",
-    "label": "Открыто по данным часов работы · 24/7 (данные OSM)",
+    "confidence": "low",
+    "label": "Открыто по данным часов работы · 24/7",
     "raw": "24/7",
+    "source": null,
+    "source_url": null,
+    "check_date": null,
     "next_change": null
    },
    "source_label": "Данные POI",
@@ -48,99 +194,65 @@
    ],
    "accessibility": "unknown",
    "badges": [
-    "indoor",
     "night"
    ],
    "event": null,
    "address": null,
-   "description": "Бар / паб. Удобства: круглосуточно.",
-   "description_source": "template"
-  },
+   "description": "Бар / паб. Удобства: круглосуточно. В 450 м от «Бәйтерек».",
+   "description_source": "template",
+   "description_url": null,
+   "phone": null,
+   "instagram": null,
+   "cuisine": null,
+   "photo": null,
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
+  }
+ ],
+ "service_results": [],
+ "ideas": [
   {
-   "poi_id": "osm:w230401645",
-   "name": "Байтерек",
-   "category": "attraction",
-   "lat": 51.128288,
-   "lon": 71.430455,
-   "distance_m": 45,
-   "travel_min": 2,
-   "why": "Бәйтерек — монумент и смотровая башня, ставшая символом переноса столицы; ночной визит добавит прогулке необычную точку.",
-   "visit_min": [
-    15,
-    30
-   ],
-   "what_to_do": "Остановитесь у монумента и сделайте ночное фото его силуэта.",
-   "open_status": "open",
-   "open_confidence": "low",
-   "source": "poi_data",
-   "source_url": "https://www.openstreetmap.org/way/230401645",
-   "rating": null,
-   "rank": 2,
-   "category_detail": "landmark",
-   "category_label": "Достопримечательность",
-   "icon": "landmark",
-   "walk_distance_m": 110,
-   "travel_mode": "walk",
-   "visit_suggested_min": 20,
-   "leave_by": null,
-   "opening": {
-    "status": "always",
-    "confidence": "medium",
-    "label": "Открытая территория — часы не ограничены",
-    "raw": null,
-    "next_change": null
-   },
-   "source_label": "Данные POI",
-   "data_sources": [
-    "osm",
-    "overture",
-    "wikidata",
-    "wikipedia"
-   ],
-   "popularity": 0.82,
-   "features": [],
-   "accessibility": "unknown",
-   "badges": [
-    "outdoor",
-    "popular"
-   ],
-   "event": null,
-   "address": "Нұржол желек жолы, 14",
-   "description": "«Байтере́к» — монумент и смотровая башня в столице Казахстана — Астане. Монумент был построен как символ переноса столицы Казахстана в 1997 году.",
-   "description_source": "wikipedia"
-  },
-  {
-   "poi_id": "idea-3",
-   "name": "Ночной силуэт",
-   "category": "attraction",
-   "lat": 51.128288,
-   "lon": 71.430455,
-   "distance_m": 45,
-   "travel_min": 2,
-   "why": "Сфотографируйте Бәйтерек так, чтобы его силуэт стал главным акцентом кадра.",
+   "poi_id": "idea-4",
+   "name": "Ночная мини-охота",
+   "category": "monument",
+   "lat": 51.134669,
+   "lon": 71.41061,
+   "distance_m": 1543,
+   "travel_min": 25,
+   "why": "У Жетігенші найдите необычный ракурс для снимка, а в Grammy выберите песню, которая подходит к кадру.",
    "visit_min": [
     5,
     20
    ],
-   "what_to_do": "Сфотографируйте Бәйтерек так, чтобы его силуэт стал главным акцентом кадра.",
+   "what_to_do": "У Жетігенші найдите необычный ракурс для снимка, а в Grammy выберите песню, которая подходит к кадру.",
    "open_status": "unknown",
    "open_confidence": "none",
    "source": "generated",
    "source_url": null,
    "rating": null,
-   "rank": 3,
+   "website": null,
+   "rank": 4,
+   "match": null,
    "category_detail": "idea",
    "category_label": "Идея ИИ",
    "icon": "sparkles",
    "walk_distance_m": null,
    "travel_mode": "walk",
+   "arrival_at": null,
+   "departure_at": null,
    "visit_suggested_min": 10,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
     "status": "unknown",
     "confidence": "low",
     "label": "Часы работы неизвестны — уточните перед визитом",
     "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
     "next_change": null
    },
    "source_label": "Идея ИИ",
@@ -154,9 +266,18 @@
     "ai_idea"
    ],
    "event": null,
-   "address": "Рядом с: Байтерек",
+   "address": "Рядом с: Жетігенші",
    "description": null,
-   "description_source": "generated"
+   "description_source": "generated",
+   "description_url": null,
+   "phone": null,
+   "instagram": null,
+   "cuisine": null,
+   "photo": null,
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
   }
  ],
  "route": null,
@@ -188,6 +309,8 @@
    "precipitation": false,
    "description": "2°C (ощущается -2°C), ветер 4 м/с",
    "max_outdoor_min": 60,
+   "us_aqi": null,
+   "pm2_5": null,
    "source": "demo override"
   },
   "speed_kmh": 4.5,
@@ -201,10 +324,16 @@
     "active",
     "karaoke"
    ],
+   "avoid": [],
+   "avoid_labels": [],
+   "category_labels": [],
    "needs": [],
    "time_budget_min": 120,
+   "food_requirements": [],
    "deadline": null,
    "deadline_in_min": null,
+   "flight_type": "unknown",
+   "deadline_buffer_min": 0,
    "landmark": null,
    "night": true,
    "surprise": true,
@@ -212,37 +341,54 @@
   },
   "relaxations": [],
   "funnel": {
-   "total": 2307,
-   "within_reach": 554,
-   "after_filters": 121,
-   "shown": 2
+   "total": 2271,
+   "within_reach": 558,
+   "after_filters": 106,
+   "shown": 3
   },
   "data_sources": [
    "OpenStreetMap (ODbL)",
    "Wikidata (CC0)",
    "Wikipedia (CC BY-SA)",
    "Overture Maps (CDLA)",
+   "CityPass Astana (факты со ссылкой)",
+   "Sxodim (места и часы, со ссылкой на карточку)",
    "Ticketon / Sxodim",
    "Open-Meteo (CC BY 4.0)"
   ],
-  "data_built_at": "2026-10-18T18:20:55+00:00",
-  "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+  "data_built_at": "2026-10-19T09:31:38+00:00",
+  "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются.",
+  "ai_check": {
+   "engine": "OpenAI Decisions API · gpt-6-luna",
+   "intent": {
+    "with_kids": 0.0,
+    "indoor": 0.04,
+    "night": 0.84,
+    "quiet": 0.0,
+    "unusual": 0.72,
+    "about_city": 0.85
+   },
+   "intent_applied": [],
+   "checked": 10,
+   "latency_ms": 470,
+   "dropped": []
+  }
  },
  "considered": [
   {
-   "name": "Ádemi ai",
+   "name": "Keruen Cinema",
    "reason": "закрыто к моменту прихода"
   },
   {
-   "name": "Дебют",
+   "name": "Kinopark 8 IMAX Сарыарка",
    "reason": "закрыто к моменту прихода"
   },
   {
-   "name": "Tequila bar",
+   "name": "55 PARK lane",
    "reason": "закрыто к моменту прихода"
   },
   {
-   "name": "Алматыкітап",
+   "name": "Chateau DeCanter",
    "reason": "закрыто к моменту прихода"
   }
  ],
@@ -252,6 +398,13 @@
  "llm": {
   "mode": "llm",
   "model": "gpt-6-luna",
-  "latency_ms": 3547
- }
+  "latency_ms": 5146,
+  "usage": {
+   "input_tokens": 9019,
+   "output_tokens": 420,
+   "cost_usd": 0.001815
+  }
+ },
+ "off_topic": false,
+ "navigate_to": null
 }

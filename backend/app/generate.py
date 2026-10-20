@@ -57,6 +57,8 @@ Your job:
    Without a ROUTE, return 3 picks whenever three cards are a reasonable match: people like a choice. Drop a
    card only when it clearly contradicts the query (a different kind of place than asked, something the user
    said they do not want); then 1 or 2 picks are fine — one precise match beats three random ones.
+   A card's fits_request, when present, is an independent check of how well it fits this query right now:
+   prefer cards with a high value and avoid ones below 30% unless the query asks for exactly that place.
 2. For each pick write:
    - "why": 1–2 short sentences (max ~30 words) explaining why it fits THIS user NOW. Ground every claim in
      the card (category, features, description, event) or the context (weather, time of day, kids, tourist).
@@ -206,6 +208,8 @@ def card(c: Cand, cid: str, lang: str) -> dict:
     }
     if c.event:
         d["event_soon"] = f"{c.event['title'][:80]} (starts {c.event['starts_at']})"
+    if c.match is not None:
+        d["fits_request"] = f"{round(c.match * 100)}%"
     if p.get("name_auto"):
         d["note"] = "unnamed place; name generated from the nearest street/complex"
     return d

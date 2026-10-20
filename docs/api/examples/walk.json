@@ -1,41 +1,49 @@
 {
  "api_version": "1.0",
- "request_id": "8ee56a4dd822",
+ "request_id": "ca2d4ac13ffc",
  "lang": "ru",
- "summary": "Для прогулки на свежем воздухе выбирайте парк, а если захочется согреться — рядом есть кофейня.",
+ "summary": "Мини-маршрут: 25-ти летие Независимости → Аллея мира и согласия. Всего ≈ 56 мин (21 мин в пути + 35 мин на местах).",
  "recommendations": [
   {
-   "poi_id": "osm:w1456208624",
-   "name": "Аллея мира и согласия",
-   "category": "park",
-   "lat": 51.093812,
-   "lon": 71.41695,
-   "distance_m": 853,
+   "poi_id": "osm:w1460763574",
+   "name": "25-ти летие Независимости",
+   "category": "attraction",
+   "lat": 51.093452,
+   "lon": 71.417564,
+   "distance_m": 864,
    "travel_min": 18,
-   "why": "Парк подходит для неспешной прогулки в светлое время; заявленный диапазон посещения укладывается в ваш план.",
+   "why": "На территории ЭКСПО вас ждёт мраморная стела высотой около 70 метров, посвящённая 25-летию независимости.",
    "visit_min": [
-    20,
-    45
+    15,
+    15
    ],
-   "what_to_do": "Пройдитесь по аллее и устройте короткую прогулку без спешки.",
-   "open_status": "open",
-   "open_confidence": "low",
+   "what_to_do": "Подойдите к стеле и рассмотрите её 25 граней; затем продолжите прогулку к Аллее мира и согласия.",
+   "open_status": "unknown",
+   "open_confidence": "none",
    "source": "poi_data",
-   "source_url": "https://www.openstreetmap.org/way/1456208624",
+   "source_url": "https://www.openstreetmap.org/way/1460763574",
    "rating": null,
+   "website": null,
    "rank": 1,
-   "category_detail": "park",
-   "category_label": "Парк",
-   "icon": "trees",
-   "walk_distance_m": 1300,
+   "match": 0.7,
+   "category_detail": "landmark",
+   "category_label": "Достопримечательность",
+   "icon": "landmark",
+   "walk_distance_m": 1330,
    "travel_mode": "walk",
-   "visit_suggested_min": 30,
+   "arrival_at": "2026-10-18T15:18:00+05:00",
+   "departure_at": "2026-10-18T15:33:00+05:00",
+   "visit_suggested_min": 15,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
-    "status": "always",
-    "confidence": "medium",
-    "label": "Открытая территория — часы не ограничены",
+    "status": "unknown",
+    "confidence": "low",
+    "label": "Часы работы неизвестны — уточните перед визитом",
     "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
     "next_change": null
    },
    "source_label": "Данные POI",
@@ -45,71 +53,515 @@
    "popularity": 0.0,
    "features": [],
    "accessibility": "unknown",
-   "badges": [
-    "outdoor",
-    "kids",
-    "free"
-   ],
+   "badges": [],
    "event": null,
    "address": null,
-   "description": "Парк.",
-   "description_source": "template"
+   "description": "Мраморная стела высотой около 70 м на территории ЭКСПО, открытая 16 декабря 2016 года к 25-летию независимости. Её 25 граней символизируют годы независимости, облицовка выполнена из итальянского мрамора.",
+   "description_source": "research",
+   "description_url": "https://informburo.kz/novosti/nazarbaev-otkryl-monument-ly-dala-el-na-territorii-ekspo.html",
+   "phone": null,
+   "instagram": null,
+   "cuisine": null,
+   "photo": null,
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
   },
   {
-   "poi_id": "osm:n14275682079",
-   "name": "Drinkit",
-   "category": "cafe",
-   "lat": 51.089076,
-   "lon": 71.40609,
-   "distance_m": 87,
-   "travel_min": 3,
-   "why": "Drinkit совсем рядом и в помещении — удобно согреться, если ветер сделает прогулку некомфортной.",
+   "poi_id": "osm:w1456208624",
+   "name": "Аллея мира и согласия",
+   "category": "park",
+   "lat": 51.093812,
+   "lon": 71.41695,
+   "distance_m": 853,
+   "travel_min": 18,
+   "why": "Аллея мира и согласия — парк, который подойдёт для спокойной части прогулки.",
    "visit_min": [
-    25,
-    45
+    20,
+    20
    ],
-   "what_to_do": "Загляните на кофе и передохните после прогулки.",
-   "open_status": "open",
-   "open_confidence": "high",
+   "what_to_do": "Пройдитесь по аллее.",
+   "open_status": "unknown",
+   "open_confidence": "none",
    "source": "poi_data",
-   "source_url": "https://www.openstreetmap.org/node/14275682079",
+   "source_url": "https://www.openstreetmap.org/way/1456208624",
    "rating": null,
+   "website": null,
    "rank": 2,
-   "category_detail": "cafe",
-   "category_label": "Кофейня / кафе",
-   "icon": "coffee",
-   "walk_distance_m": 220,
+   "match": 0.73,
+   "category_detail": "park",
+   "category_label": "Парк",
+   "icon": "trees",
+   "walk_distance_m": 1300,
    "travel_mode": "walk",
-   "visit_suggested_min": 25,
+   "arrival_at": "2026-10-18T15:36:00+05:00",
+   "departure_at": "2026-10-18T15:56:00+05:00",
+   "visit_suggested_min": 20,
    "leave_by": null,
+   "return_min": 0,
    "opening": {
-    "status": "open",
+    "status": "always",
     "confidence": "medium",
-    "label": "Открыто до 22:00 (данные OSM)",
-    "raw": "Mo-Su 08:00-22:00",
-    "next_change": "22:00"
+    "label": "Открытая территория — вход свободный, часов работы нет",
+    "raw": null,
+    "source": null,
+    "source_url": null,
+    "check_date": null,
+    "next_change": null
    },
    "source_label": "Данные POI",
    "data_sources": [
     "osm"
    ],
-   "popularity": 0.127,
-   "features": [
-    "Wi-Fi",
-    "без курения",
-    "есть туалет"
-   ],
+   "popularity": 0.0,
+   "features": [],
    "accessibility": "unknown",
-   "badges": [
-    "indoor"
-   ],
+   "badges": [],
    "event": null,
-   "address": "Қабанбай Батыр даңғылы, 62",
-   "description": "Кофейня / кафе. Кухня: кофе. Удобства: Wi-Fi, без курения, есть туалет. Адрес: Қабанбай Батыр даңғылы, 62.",
-   "description_source": "template"
+   "address": null,
+   "description": "Парк.",
+   "description_source": "template",
+   "description_url": null,
+   "phone": null,
+   "instagram": null,
+   "cuisine": null,
+   "photo": null,
+   "description_attribution": [],
+   "structured_facts": [],
+   "menu_items": [],
+   "prices": []
   }
  ],
- "route": null,
+ "service_results": [],
+ "ideas": [],
+ "route": {
+  "order": [
+   "osm:w1460763574",
+   "osm:w1456208624"
+  ],
+  "legs": [
+   {
+    "from_id": "start",
+    "to_id": "osm:w1460763574",
+    "distance_m": 1334,
+    "travel_min": 18,
+    "polyline": [
+     [
+      51.08909,
+      71.40733
+     ],
+     [
+      51.088358,
+      71.406978
+     ],
+     [
+      51.088335,
+      71.407133
+     ],
+     [
+      51.088303,
+      71.407292
+     ],
+     [
+      51.088262,
+      71.407445
+     ],
+     [
+      51.088233,
+      71.407566
+     ],
+     [
+      51.088203,
+      71.407668
+     ],
+     [
+      51.088135,
+      71.407917
+     ],
+     [
+      51.088067,
+      71.408159
+     ],
+     [
+      51.087997,
+      71.408401
+     ],
+     [
+      51.087967,
+      71.408524
+     ],
+     [
+      51.087946,
+      71.408638
+     ],
+     [
+      51.087922,
+      71.408889
+     ],
+     [
+      51.087892,
+      71.409148
+     ],
+     [
+      51.087879,
+      71.409264
+     ],
+     [
+      51.087863,
+      71.409394
+     ],
+     [
+      51.087841,
+      71.409568
+     ],
+     [
+      51.087813,
+      71.409786
+     ],
+     [
+      51.087864,
+      71.409897
+     ],
+     [
+      51.087879,
+      71.409988
+     ],
+     [
+      51.087921,
+      71.410581
+     ],
+     [
+      51.08799,
+      71.411438
+     ],
+     [
+      51.088044,
+      71.411599
+     ],
+     [
+      51.088108,
+      71.411674
+     ],
+     [
+      51.088179,
+      71.411683
+     ],
+     [
+      51.088261,
+      71.411644
+     ],
+     [
+      51.088421,
+      71.411568
+     ],
+     [
+      51.088581,
+      71.411491
+     ],
+     [
+      51.088718,
+      71.411438
+     ],
+     [
+      51.088813,
+      71.411393
+     ],
+     [
+      51.088832,
+      71.411588
+     ],
+     [
+      51.08885,
+      71.411751
+     ],
+     [
+      51.089027,
+      71.411697
+     ],
+     [
+      51.089207,
+      71.411659
+     ],
+     [
+      51.089375,
+      71.411636
+     ],
+     [
+      51.089493,
+      71.411636
+     ],
+     [
+      51.089691,
+      71.411644
+     ],
+     [
+      51.089758,
+      71.411656
+     ],
+     [
+      51.090057,
+      71.411736
+     ],
+     [
+      51.09024,
+      71.411812
+     ],
+     [
+      51.090382,
+      71.411873
+     ],
+     [
+      51.090519,
+      71.411957
+     ],
+     [
+      51.090599,
+      71.41201
+     ],
+     [
+      51.090765,
+      71.412144
+     ],
+     [
+      51.09084,
+      71.412211
+     ],
+     [
+      51.090961,
+      71.412331
+     ],
+     [
+      51.091053,
+      71.412422
+     ],
+     [
+      51.091171,
+      71.41256
+     ],
+     [
+      51.09127,
+      71.412682
+     ],
+     [
+      51.091408,
+      71.412873
+     ],
+     [
+      51.091587,
+      71.413155
+     ],
+     [
+      51.091721,
+      71.413376
+     ],
+     [
+      51.091881,
+      71.413648
+     ],
+     [
+      51.091961,
+      71.413784
+     ],
+     [
+      51.092143,
+      71.414075
+     ],
+     [
+      51.092543,
+      71.414717
+     ],
+     [
+      51.092647,
+      71.41485
+     ],
+     [
+      51.092852,
+      71.415102
+     ],
+     [
+      51.09303,
+      71.41532
+     ],
+     [
+      51.092961,
+      71.415473
+     ],
+     [
+      51.092922,
+      71.415771
+     ],
+     [
+      51.092926,
+      71.416031
+     ],
+     [
+      51.092967,
+      71.416275
+     ],
+     [
+      51.093027,
+      71.416508
+     ],
+     [
+      51.093136,
+      71.41671
+     ],
+     [
+      51.093207,
+      71.416817
+     ],
+     [
+      51.09325,
+      71.416878
+     ],
+     [
+      51.0933,
+      71.416939
+     ],
+     [
+      51.09333,
+      71.417053
+     ],
+     [
+      51.093349,
+      71.417145
+     ],
+     [
+      51.093357,
+      71.417251
+     ],
+     [
+      51.093407,
+      71.417378
+     ],
+     [
+      51.093464,
+      71.417351
+     ],
+     [
+      51.093552,
+      71.417366
+     ],
+     [
+      51.093594,
+      71.41748
+     ],
+     [
+      51.093594,
+      71.417603
+     ],
+     [
+      51.093559,
+      71.417686
+     ],
+     [
+      51.093498,
+      71.417763
+     ],
+     [
+      51.09343,
+      71.417732
+     ],
+     [
+      51.093395,
+      71.417641
+     ],
+     [
+      51.093394,
+      71.417615
+     ],
+     [
+      51.093452,
+      71.417564
+     ]
+    ],
+    "geometry": "network"
+   },
+   {
+    "from_id": "osm:w1460763574",
+    "to_id": "osm:w1456208624",
+    "distance_m": 160,
+    "travel_min": 3,
+    "polyline": [
+     [
+      51.093452,
+      71.417564
+     ],
+     [
+      51.093394,
+      71.417615
+     ],
+     [
+      51.09343,
+      71.417732
+     ],
+     [
+      51.093475,
+      71.417778
+     ],
+     [
+      51.093559,
+      71.417686
+     ],
+     [
+      51.09357,
+      71.417924
+     ],
+     [
+      51.093624,
+      71.418007
+     ],
+     [
+      51.093661,
+      71.418094
+     ],
+     [
+      51.093708,
+      71.418037
+     ],
+     [
+      51.093746,
+      71.417961
+     ],
+     [
+      51.093769,
+      71.41787
+     ],
+     [
+      51.093781,
+      71.41777
+     ],
+     [
+      51.093754,
+      71.417633
+     ],
+     [
+      51.093708,
+      71.417441
+     ],
+     [
+      51.093778,
+      71.417262
+     ],
+     [
+      51.093852,
+      71.417086
+     ],
+     [
+      51.093812,
+      71.41695
+     ]
+    ],
+    "geometry": "network"
+   }
+  ],
+  "total_min": 56,
+  "back_min": 0,
+  "fits_budget": true,
+  "returns_to_start": false,
+  "summary": "Мини-маршрут: 25-ти летие Независимости → Аллея мира и согласия. Всего ≈ 56 мин (21 мин в пути + 35 мин на местах)."
+ },
  "used_context": {
   "location_source": "landmark",
   "location_label": "Mega Silk Way",
@@ -136,6 +588,8 @@
    "precipitation": false,
    "description": "9°C (ощущается 6°C), ветер 5 м/с",
    "max_outdoor_min": 60,
+   "us_aqi": null,
+   "pm2_5": null,
    "source": "demo override"
   },
   "speed_kmh": 4.5,
@@ -149,10 +603,16 @@
     "viewpoint",
     "museum"
    ],
+   "avoid": [],
+   "avoid_labels": [],
+   "category_labels": [],
    "needs": [],
    "time_budget_min": 60,
+   "food_requirements": [],
    "deadline": null,
    "deadline_in_min": null,
+   "flight_type": "unknown",
+   "deadline_buffer_min": 0,
    "landmark": "Mega Silk Way",
    "night": false,
    "surprise": false,
@@ -160,9 +620,9 @@
   },
   "relaxations": [],
   "funnel": {
-   "total": 2307,
-   "within_reach": 132,
-   "after_filters": 47,
+   "total": 2271,
+   "within_reach": 130,
+   "after_filters": 14,
    "shown": 2
   },
   "data_sources": [
@@ -170,19 +630,44 @@
    "Wikidata (CC0)",
    "Wikipedia (CC BY-SA)",
    "Overture Maps (CDLA)",
+   "CityPass Astana (факты со ссылкой)",
    "Ticketon / Sxodim",
    "Open-Meteo (CC BY 4.0)"
   ],
-  "data_built_at": "2026-10-18T18:20:55+00:00",
-  "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются."
+  "data_built_at": "2026-10-19T09:31:38+00:00",
+  "privacy": "Локация округлена до ~100 м, используется только для этого запроса и не сохраняется. В языковую модель координаты не передаются.",
+  "ai_check": {
+   "engine": "OpenAI Decisions API · gpt-6-luna",
+   "intent": {
+    "with_kids": 0.1,
+    "indoor": 0.11,
+    "night": 0.1,
+    "quiet": 0.4,
+    "unusual": 0.44,
+    "about_city": 1.0
+   },
+   "intent_applied": [],
+   "checked": 10,
+   "latency_ms": 219,
+   "dropped": []
+  }
  },
  "considered": [],
- "notes": [],
+ "notes": [
+  "Петля с возвращением к старту в это время не помещается, поэтому маршрут в одну сторону: обратно — на такси или ещё одна прогулка."
+ ],
  "disclaimer": "Ответ сформирован ИИ на основе открытых данных (OpenStreetMap, Wikidata/Wikipedia и др.). Часы работы и доступность могут измениться — проверяйте перед визитом.",
  "ai_generated": true,
  "llm": {
   "mode": "llm",
   "model": "gpt-6-luna",
-  "latency_ms": 3603
- }
+  "latency_ms": 5024,
+  "usage": {
+   "input_tokens": 9183,
+   "output_tokens": 323,
+   "cost_usd": 0.001746
+  }
+ },
+ "off_topic": false,
+ "navigate_to": null
 }
