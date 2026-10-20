@@ -43,6 +43,17 @@ const COVER_GROUP = {park: 'green', garden: 'green', playground: 'kids', theme_p
   mall: 'shop', souvenir: 'shop', active: 'active', spa: 'active', water_park: 'active', zoo_aquarium: 'kids'};
 export const coverGroup = key => COVER_GROUP[key] || 'sights';
 
+// Account snapshots contain JSON only; React icon components cannot be stored.
+// Rebuild presentation fields for both current and older saved cards.
+export function restoreSavedPlace(row) {
+  const place = row.data || {};
+  const cover = coverGroup(place.categoryKey);
+  const groupIcons = {green: Trees, kids: Baby, sights: Landmark, culture: Landmark,
+    coffee: Coffee, food: Utensils, night: Moon, shop: ShoppingBag, active: Activity};
+  return {...place, id: row.poi_id, cover,
+    icon: place.generated ? Sparkles : (ICONS[place.categoryKey] || groupIcons[cover] || Sparkles)};
+}
+
 export const BADGE_LABELS = {indoor: 'В помещении', outdoor: 'На свежем воздухе', kids: 'Можно с детьми', popular: 'Знаковое место',
   hidden_gem: 'Скрытая жемчужина', event: 'Сегодня событие', night: 'Вечерний вариант', free: 'Бесплатно', ai_idea: 'Идея ИИ'};
 
