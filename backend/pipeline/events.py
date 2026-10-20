@@ -26,7 +26,8 @@ log = logging.getLogger("pipeline.events")
 DL = RAW_DIR / "events_html"
 PLACEHOLDER = (51.129547, 71.443112)
 TICKETON_LISTINGS = ["astana", "astana/theatres", "astana/museums", "astana/entertainment", "astana/concerts",
-                     "astana/children", "astana/stand-up", "astana/exhibitions"]
+                     "astana/children", "astana/stand-up", "astana/exhibitions", "astana/shows", "astana/sports",
+                     "astana/knowledge-skills"]
 
 _cj = http.cookiejar.CookieJar()  # Ticketon sits behind a Queue-it waiting room: cookies + redirects pass it
 _op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(_cj))
@@ -87,7 +88,7 @@ def _norm(d: dict, source: str, url: str | None, extra: dict | None = None) -> d
     return rec
 
 
-def collect_ticketon(max_events: int = 120) -> list[dict]:
+def collect_ticketon(max_events: int = 400) -> list[dict]:
     urls: set[str] = set()
     for page in TICKETON_LISTINGS:
         try:
@@ -183,6 +184,49 @@ def match_event_venue(event: dict, pois: list[dict]) -> dict:
     return result
 
 
+def _match_near_building(event: dict, pois: list[dict], radius_m: float = 80) -> dict:
+    """After geocoding: the one catalogue place next to that building whose name (in any of our languages) is
+    like the venue's, e.g. «Национальный музей РК» = «Qazaqstan Respýblıkasynyń Ulttyq muzeıi» / its RU name."""
+    from rag.geo import haversine_m
+    key = match_key(event.get("venue") or "")
+    if not key:
+        return event
+    near = []
+    for poi in pois:
+        if haversine_m(event["lat"], event["lon"], poi["lat"], poi["lon"]) > radius_m:
+            continue
+        names = [poi["name"], *((poi.get("names") or {}).values())]
+        score = max(fuzz.token_set_ratio(key, match_key(n)) for n in names if n)
+        if score >= 60:
+            near.append((score, poi))
+    if len(near) != 1:
+        return event
+    poi = near[0][1]
+    return {**event, "poi_id": poi["id"], "lat": poi["lat"], "lon": poi["lon"], "venue": poi["name"],
+            "match_status": "matched", "match_method": "geocoded_building_and_name"}
+
+
+def _geocode_address(address: str | None) -> tuple[float, float] | None:
+    """A venue that is not in our catalogue: its street address through OSM Nominatim (cached, 1 req/s, Astana only).
+    A bare «г. Астана» or a meeting point without a house number is not an address."""
+    if not address or not re.search(r"\d", address) or len(address) < 6:
+        return None
+    from pipeline.common import get_json
+    q = re.sub(r"\s*(?:[A-ZА-Я]\d+(?:\.\d+)?|этаж.*|\d+\s*этаж.*)$", "", address).strip(" ,")
+    try:
+        res = get_json("https://nominatim.openstreetmap.org/search", kind="nominatim", max_age_h=24 * 30, delay=1.1,
+                       params={"q": f"{q}, Астана", "format": "jsonv2", "limit": 1, "countrycodes": "kz",
+                               "viewbox": "71.20,51.30,71.75,50.95", "bounded": 1})
+    except Exception as exc:
+        log.info("geocode %s failed: %s", address, type(exc).__name__)
+        return None
+    # only a building or a venue: a street, district or city answer can be kilometres off
+    if res and res[0].get("addresstype") in ("building", "amenity", "shop", "tourism", "office", "leisure", "house") \
+            and 50.85 < float(res[0]["lat"]) < 51.36 and 71.2 < float(res[0]["lon"]) < 71.8:
+        return round(float(res[0]["lat"]), 6), round(float(res[0]["lon"]), 6)
+    return None
+
+
 def collect_events() -> dict:
     pois = [json.loads(line) for line in POIS_FILE.open(encoding="utf-8")]
     named = [p for p in pois if not p["name_auto"]]
@@ -199,6 +243,9 @@ def collect_events() -> dict:
         e = match_event_venue(e, named)
         if e["match_status"] != "matched":
             unresolved.append(e)
+            if e["lat"] is None and (g := _geocode_address(e.get("address"))):  # the venue's address, not a guess
+                e["lat"], e["lon"], e["coords_source"] = g[0], g[1], "nominatim"
+                e = _match_near_building(e, named)
         if e["lat"] is None or not (50.85 < e["lat"] < 51.36 and 71.2 < e["lon"] < 71.8):
             continue
         end = e.get("end") or (e["sessions"][-1] if e["sessions"] else e.get("start"))
