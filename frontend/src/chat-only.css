@@ -1,0 +1,66 @@
+/* The left column is only the chat; every setting sits behind one button in the composer. */
+.chat-composer{position:relative}
+.composer-input{display:flex;align-items:flex-end;gap:6px}
+.composer-input textarea{flex:1;min-width:0}
+.composer-inline-tools{display:flex;gap:2px;flex-shrink:0;padding-bottom:2px}
+.composer-inline-tools:empty{display:none}
+.map-first .composer-inline-tools .photo-button{width:32px;height:32px;min-height:32px;margin:0;border-radius:10px;background:transparent;border-color:transparent;color:#4b6a55}
+.map-first .composer-inline-tools .photo-button:hover{background:#eef3e4}
+.map-first .composer-inline-tools .voice-button.listening{background:#174b3e;color:#f1f7df}
+
+.filter-menu{flex-shrink:0}
+.filter-trigger{position:relative;display:flex;align-items:center;gap:6px;height:38px;padding:0 11px;border:1px solid #dde5d3;border-radius:12px;background:#f6f8f0;color:#1d4a3a;font-size:12px;font-weight:600;white-space:nowrap;cursor:pointer}
+.filter-trigger:hover,.filter-trigger.open{background:#e6eed8}
+.filter-trigger:focus-visible{outline:2px solid #658f35;outline-offset:2px}
+.filter-trigger>i{position:absolute;top:5px;right:5px;width:7px;height:7px;border-radius:50%;background:#7fa63a}
+.filter-popover{position:absolute;left:0;right:0;bottom:calc(100% + 8px);z-index:700;padding:14px;border:1px solid #dce5d1;border-radius:16px;background:#fff;box-shadow:0 14px 36px #173b2924;animation:filter-in .14s ease-out}
+@keyframes filter-in{from{opacity:0;transform:translateY(4px)}}
+@media(prefers-reduced-motion:reduce){.filter-popover{animation:none}}
+.filter-label{margin:0 0 7px;font-size:11px;font-weight:600;color:#6d7b6c}
+.filter-label:not(:first-child){margin-top:12px}
+.filter-row{display:flex;gap:6px}
+.filter-row button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;min-height:38px;padding:6px 8px;border:1px solid #e3e8dc;border-radius:12px;background:#fff;color:#21382e;font-size:12px;cursor:pointer}
+.filter-row button b{font-size:12px}.filter-row button small{font-size:10px;opacity:.65}
+.filter-row:first-of-type button{flex-direction:column;gap:2px;min-height:50px}
+.filter-row button.active{background:#11523e;border-color:#11523e;color:#fff}
+.filter-popover .context-apply{width:100%;margin-top:14px;justify-content:center}
+
+/* laptop: the chat fills the column, answers with their place cards stay in it */
+@media(min-width:900px){
+ .reference-layout .conversation-column{display:flex;flex-direction:column;overflow:hidden}
+ .reference-layout .companion-intro,.reference-layout .seru-tip{display:none}
+ .reference-layout .conversation-column>.chat-panel{flex:1;min-height:0;display:flex;flex-direction:column;margin:0;padding:0;border:0;background:transparent;box-shadow:none}
+ .reference-layout .chat-heading{display:flex;padding:0 0 12px;border-bottom:1px solid #eef0e9;margin-bottom:6px;background:transparent}
+ .reference-layout .chat-body{flex:1;min-height:0;display:flex;flex-direction:column}
+ .reference-layout .chat-log{flex:1;min-height:0;max-height:none;overflow-y:auto;padding:10px 2px;margin:0}
+ .reference-layout .chat-composer{margin:8px 0 0}
+
+ /* «Места рядом» in the header, next to «Прогулки» */
+ .map-app .header-slot:not(:empty){margin-left:auto}
+ .map-app .header-slot:not(:empty)+nav{margin-left:10px}
+ .nearby-trigger{display:flex;align-items:center;gap:7px;height:40px;padding:0 14px;border:1px solid #e3e8dc;border-radius:12px;background:#f6f8f1;color:#1d4a3a;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
+ .nearby-trigger:hover{background:#e9f0dd}
+ .nearby-trigger.open{background:#11523e;border-color:#11523e;color:#fff}
+ .nearby-trigger:disabled{opacity:.45;cursor:default}
+ .nearby-trigger .nav-count{margin-left:2px}
+ .nearby-trigger.open .nav-count{background:#c6e730;color:#123f31}
+
+ /* «Все места»: the cards float over the map, no panel behind them */
+ .reference-layout.mobile-view-places .places-section>*{pointer-events:auto}
+ .reference-layout.mobile-view-places .place-card{box-shadow:0 14px 34px #173b2930}
+ .reference-layout.mobile-view-places .place-grid{padding:4px 4px 14px}
+ .reference-layout.mobile-view-places .summary-line,.reference-layout.mobile-view-places .results-disclaimer{display:none}
+}
+.places-float-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.places-float-bar:empty{display:none}
+.reference-layout.mobile-view-places .places-float-bar{margin:0 4px 10px}
+.reference-layout.mobile-view-places .refine-chips{background:#fffefa;box-shadow:0 6px 18px #173b2918;padding:5px 6px}
+.places-start{display:flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;margin-left:auto;border-radius:14px;background:#0f4d3d;color:#fff;font-size:12px;font-weight:600;box-shadow:0 8px 22px #0f4d3d40;cursor:pointer}
+.places-start:hover{background:#0b3f32}
+
+/* «Приложение»: only the logo and the install button */
+.pwa-dialog.pwa-compact{width:min(340px,calc(100% - 28px));display:flex;flex-direction:column;align-items:center;gap:18px;padding:44px 28px 30px;text-align:center}
+.pwa-compact .pwa-logo{width:88px;height:88px;margin:0;border-radius:22px}
+.pwa-compact .pwa-primary{width:100%;justify-content:center}
+.pwa-compact .pwa-note{margin:0;font-size:12px;line-height:1.5;color:#5f6f60}
+.pwa-compact section{width:100%;text-align:left}

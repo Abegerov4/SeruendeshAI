@@ -29,6 +29,7 @@ import './chat-clean.css';
 import './reference-layout.css';
 import './page-frame.css';
 import './usability.css';
+import './chat-only.css';
 import {initPwa} from './pwa';
 import PwaExperience from './components/PwaExperience';
 initPwa();

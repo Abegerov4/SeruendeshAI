@@ -30,7 +30,7 @@ async function mockApi(page, {account=null, saved=[], failSave=false, failSearch
 }
 async function chooseStart(page) {
   await page.locator('.start-landmarks button').filter({hasText:'Mega Silk Way'}).first().click();
-  await expect(page.locator('.reference-route li')).toHaveCount(2);
+  await expect(page.locator('.chat-place')).toHaveCount(2);
 }
 
 test('first visit asks for a start without GPS prompt or recommendation request',async({page})=>{
@@ -39,9 +39,19 @@ test('first visit asks for a start without GPS prompt or recommendation request'
  expect(state.requests).toHaveLength(0);expect(await page.evaluate(()=>window.geoCalls)).toBe(0);
  await expect(page.getByText('Подходящих мест пока нет',{exact:true})).toHaveCount(0);
  await chooseStart(page);expect(state.requests).toHaveLength(1);expect(state.requests[0].landmark).toBe('mega_silk_way');
- await expect(page.locator('.reference-totals')).toContainText('30 мин');
- await page.locator('.reference-route li button').nth(1).click();
- await expect(page.locator('.reference-totals')).toContainText('53 мин');
+ await page.locator('.nearby-trigger').click();await expect(page.locator('.places-section .place-card')).toHaveCount(2);
+ await page.locator('.nearby-trigger').click();await expect(page.locator('.places-section .place-card').first()).toBeHidden();
+});
+
+test('duration, transport and conditions live behind one button in the composer',async({page})=>{
+ const state=await mockApi(page);await page.goto('/');await chooseStart(page);
+ await expect(page.locator('.time-selector')).toHaveCount(0);
+ await page.locator('.filter-trigger').click();
+ await page.locator('.filter-popover button').filter({hasText:'120'}).click();
+ await page.locator('.filter-popover button').filter({hasText:'С ребёнком'}).click();
+ await page.getByRole('button',{name:'Найти с этими условиями',exact:true}).click();
+ await expect(page.locator('.filter-popover')).toHaveCount(0);
+ await expect.poll(()=>state.requests.length).toBe(2);expect(state.requests[1].time_budget_min).toBe(120);
 });
 
 test('logout and account switch cannot expose or upload the previous saved places',async({page})=>{
@@ -70,7 +80,7 @@ test('a failed search can be retried without retyping',async({page})=>{
  const state=await mockApi(page,{failSearch:true});await page.goto('/');await page.locator('#chat-input').fill('кофе возле Байтерека');await page.locator('.send-button').click();
  await expect(page.getByRole('button',{name:'Повторить запрос',exact:true})).toBeVisible();
  state.failSearch=false;await page.getByRole('button',{name:'Повторить запрос',exact:true}).click();
- await expect(page.locator('.reference-route li')).toHaveCount(2);expect(state.requests).toHaveLength(2);expect(state.requests[0].query).toBe(state.requests[1].query);
+ await expect(page.locator('.chat-place')).toHaveCount(2);expect(state.requests).toHaveLength(2);expect(state.requests[0].query).toBe(state.requests[1].query);
 });
 
 test('mobile start, composer, tabs and cards remain usable at narrow widths',async({page})=>{
