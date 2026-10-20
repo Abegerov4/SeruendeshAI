@@ -746,7 +746,10 @@
   "hours_url": "https://arman3d.kz/61",
   "hours_note": "«Время работы: Ежедневно с 10:00 до 02:00» — страница кинотеатра в ТРЦ «Asia Park», Кабанбай Батыр, 21",
   "checked": "2026-10-20",
-  "confidence": "high"
+  "confidence": "medium",
+  "description_ru": "Кинотеатр казахстанской сети «Арман» в ТРЦ «Asia Park»: проекторы Christie и звук Dolby Digital.",
+  "description_en": "A cinema of the Kazakh Arman chain in the Asia Park mall, with Christie projection and Dolby Digital sound.",
+  "description_url": "https://sxodim.com/astana/place/kinoteatr-arman"
  },
  "ov:bab52916-a374-4f": {
   "opening_hours": "Mo-Su 10:00-02:00",
@@ -1177,5 +1180,68 @@
   "checked": "2026-10-20",
   "drop_website": true,
   "website_problem": "the link is a bookmaker's site, not this restaurant's (OSM import batch of FairPlay clubs)"
+ },
+ "sx:talan-towers": {
+  "description_ru": "Многофункциональный комплекс площадью 120 000 м²: офисный центр класса А, отель The Ritz-Carlton, Astana, апартаменты и торговая галерея с магазинами и ресторанами.",
+  "description_en": "A 120,000 m² mixed-use complex: a class A office centre, The Ritz-Carlton, Astana hotel, residences and a shopping gallery with shops and restaurants.",
+  "description_url": "https://sxodim.com/astana/place/talan-towers",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "osm:w258173901": {
+  "description_ru": "Небольшой сквер с мемориалом воинам, погибшим в Афганской войне: на памятнике выгравированы имена участников. Есть скамейки и цветники.",
+  "description_en": "A small park with a memorial to soldiers who died in the Afghan war, the names of its veterans engraved on the monument. Benches and flower beds.",
+  "description_url": "https://sxodim.com/astana/place/park-afganskoy-voyne",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "osm:w108096984": {
+  "description_ru": "Семейный торговый центр на бульваре Нуржол рядом с Байтереком, открыт в 2008 году; на третьем этаже — фудкорт.",
+  "description_en": "A family shopping centre on Nurzhol Boulevard next to Baiterek, opened in 2008, with a food court on the third floor.",
+  "description_url": "https://sxodim.com/astana/place/keruen",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "sx:knizhnyy-muzey": {
+  "description_ru": "Музей в Национальной академической библиотеке (открыт в 2015 году): редкие книги, древние рукописи, книги в кожаных переплётах и уголок учёного Заки Ахметова с его личной библиотекой.",
+  "description_en": "A museum inside the National Academic Library (opened in 2015): rare books, ancient manuscripts, leather-bound volumes and a corner devoted to scholar Zaki Akhmetov with his personal library.",
+  "description_url": "https://sxodim.com/astana/place/knizhnyy-muzey",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "osm:n13159240457": {
+  "description_ru": "Итальянский ресторан: пицца, паста и десерты; подходит для семейного ужина с детьми и встреч с друзьями.",
+  "description_en": "An Italian restaurant with pizza, pasta and desserts, suited to family dinners with children and meeting friends.",
+  "description_url": "https://sxodim.com/astana/place/restoran-italio",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "sx:zen": {
+  "description_ru": "Лобби-лаунж на первом этаже Talan Towers у главного входа, около 120 мест и ещё 50 в лобби-баре; проходят тематические вечера.",
+  "description_en": "A lobby lounge on the ground floor of Talan Towers by the main entrance, about 120 seats plus 50 in the lobby bar; themed evenings are held here.",
+  "description_url": "https://sxodim.com/astana/place/zen",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "osm:n10798946230": {
+  "description_ru": "Панорамный ресторан авторской кухни с открытой кухней, где гости видят работу поваров.",
+  "description_en": "A panoramic restaurant with an open kitchen where guests watch the chefs at work; contemporary signature cuisine.",
+  "description_url": "https://sxodim.com/astana/place/restoran-selfie",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "ov:218b3a27-c463-4c": {
+  "description_ru": "Торгово-развлекательный центр на 34 500 м² на пересечении проспекта Туран и Коргалжинского шоссе, напротив Центрального парка: магазины, супермаркет, детский парк, кинотеатр и фудкорт.",
+  "description_en": "A 34,500 m² shopping and entertainment centre at Turan Avenue and Korgalzhyn Highway, opposite Central Park: shops, a supermarket, a kids' play park, a cinema and a food court.",
+  "description_url": "https://sxodim.com/astana/place/keruencity",
+  "checked": "2026-10-20",
+  "confidence": "medium"
+ },
+ "osm:n14100100183": {
+  "description_ru": "Кафе южнокорейской и вегетарианской кухни: курица в остро-сладком соусе, кимпабы, супы и пуноппан — сладкая выпечка в форме рыбки из рисовой муки.",
+  "description_en": "A South Korean and vegetarian café: chicken in sweet-and-spicy sauce, kimbap, soups and bungeoppang, a sweet fish-shaped rice-flour pastry.",
+  "description_url": "https://sxodim.com/astana/place/peekaboo",
+  "checked": "2026-10-20",
+  "confidence": "medium"
  }
 }
