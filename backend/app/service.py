@@ -22,7 +22,7 @@ from app.context import Context, build_context, fetch_weather, parse_now, weathe
 from app.embedder import Embedder
 from app.evidence import accepted_details
 from app.features import cuisine_labels, describe, feature_labels
-from app.generate import GenOut, generate, template_todo, template_why, validate
+from app.generate import GenOut, generate, strip_itinerary, template_todo, template_why, validate
 from app.geo import WalkGraph, hav_m, in_astana, round_coord
 from app.i18n import t, weekday
 from app.hours import opening_status
@@ -73,6 +73,11 @@ def _strip_terms(text: str, keys: list[str]) -> str:
         if len(k) >= 3:
             s = s.replace(k, " ")
     return " ".join(s.split())
+
+
+# a summary that strings separate choices into one walk («сначала …, затем …», «one after another»)
+_ITINERARY_SUMMARY = re.compile(r"\bзатем\b|\bпотом\b|по очереди|одно за другим|\bthen\b|one after another|after that|"
+                                r"содан кейін|одан соң", re.IGNORECASE)
 
 
 def entry_name(store: Store, g: dict, lang: str) -> str:
@@ -452,12 +457,14 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
     # Without a scheduled route, every recommendation is a separate choice. Use
     # on-site actions only: model prose must not invent an unbudgeted multi-stop walk.
     if route_out is None:
+        # separate choices, not a walk: the model's own words stay, minus any «затем направляйтесь к …»
         by_id = {c.poi["id"]: c for c in cmap.values()}
         for item in items:
             c = by_id.get(item["poi_id"])
             if c:
-                item["what_to_do"] = template_todo(c, lang)
-                item["why"] = template_why(c, lang)
+                others = [x["name"] for x in items if x is not item] + [display_name(o.poi, "ru") for o in cmap.values() if o is not c]
+                item["why"] = strip_itinerary(item["why"], others) or template_why(c, lang)
+                item["what_to_do"] = strip_itinerary(item["what_to_do"], others) or template_todo(c, lang)
 
     # --- notes (transparency)
     aqi = (ctx.weather or {}).get("us_aqi") or 0
@@ -502,7 +509,8 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
     considered = [c for c in considered if fold(c["name"]) not in shown]
     if poi_items:
         nm = ", ".join(it["name"] for it in poi_items)
-        summary = (route_out["summary"] if route_out else
+        model_summary = gen.summary if gen and gen.summary and not _ITINERARY_SUMMARY.search(gen.summary) else None
+        summary = (route_out["summary"] if route_out else model_summary or
                    t("summary", lang, n=len(poi_items), places=t("place_1" if len(poi_items) == 1 else "place_2", lang), names=nm))
         if navigate and poi_items[0]["poi_id"] in target_ids and origin_info.get("label"):
             it = poi_items[0]  # «маршрут с AITU до ботсада»: say where from, where to and how far
@@ -518,10 +526,6 @@ async def recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: bo
         summary = t("summary_none", lang)
     if missed:
         summary = f"{missed[0]} {summary}"
-    if not route_out and len(poi_items) > 1:
-        summary += " " + {"ru": "Выбери одно место: это отдельные варианты, не общий маршрут.",
-                          "kk": "Бір орынды таңдаңыз: бұлар жеке нұсқалар, ортақ маршрут емес.",
-                          "en": "Choose one place: these are alternatives, not a combined route."}[lang]
     if parsed.deadline_kind == "flight" and dl is not None and plan.budget == 0 and not poi_items:
         summary = {"ru": "До вылета слишком мало времени для прогулки с запасом на дорогу и аэропорт. Лучше направиться в аэропорт. Уточни тип рейса и время вылета, если я понял их неверно.",
                    "kk": "Жол мен әуежайға арналған уақыт қорын ескерсек, ұшуға дейін серуендеуге уақыт аз. Әуежайға барған дұрыс. Рейс түрі мен ұшу уақытын нақтылаңыз.",

@@ -128,9 +128,7 @@ def test_final_route_cards_use_planner_visits_even_with_fake_model(monkeypatch):
 @pytest.mark.parametrize("query,kind,flight_type,budget", [
     ("domestic flight in 2 hours", "flight", "domestic", 0),
     ("international flight in 4 hours", "flight", "international", 45),
-    ("flight in 4 hours", "flight", "unknown", 45),  # unknown departure keeps a conservative reserve
-    ("flight in 2 hours", "flight", "unknown", 0),
-    ("у меня 2 часа перед вылетом", "flight", "unknown", 0),
+    ("flight in 4 hours", "flight", "unknown", 225),  # unknown type: free time before leaving (note_flight_free_time)
     ("be at the airport in 2 hours", "airport_arrival", "unknown", 105),
     ("быть в аэропорту через 2 часа", "airport_arrival", "unknown", 105),
     ("әуежайда 2 сағаттан кейін болу керек", "airport_arrival", "unknown", 105),
@@ -300,3 +298,20 @@ def test_alternatives_do_not_publish_model_generated_itinerary(monkeypatch, lang
     assert 'one after another' not in out['summary']
     for item in out['recommendations']:
         assert 'then' not in item['what_to_do'] and 'other place' not in item['why']
+
+
+@pytest.mark.parametrize("text, others, kept", [
+    ("Пройдитесь по аллее и отдохните в парке; затем можно вернуться к Mega Silk Way.", [],
+     "Пройдитесь по аллее и отдохните в парке."),
+    ("Начните с экспозиций на этажах сферы, выберите тему энергии, которая зацепит больше всего, а после прогуляйтесь "
+     "к стеле «25-ти летие Независимости»", ["25-ти летие Независимости"],
+     "Начните с экспозиций на этажах сферы, выберите тему энергии, которая зацепит больше всего."),
+    ("Обойдите мраморную стелу, рассмотрите её грани, затем завершите прогулку у сферы Nur Alem.", ["Nur Alem Museum"],
+     "Обойдите мраморную стелу, рассмотрите её грани."),
+    ("A quiet café right next to the river with big windows.", [], "A quiet café right next to the river with big windows."),
+    ("Музей в бывшем павильоне, а экспозиции об энергии обещают необычный визит.", ["Стела"],
+     "Музей в бывшем павильоне, а экспозиции об энергии обещают необычный визит."),
+])
+def test_standalone_cards_keep_the_models_words_but_not_a_walk_to_another_card(text, others, kept):
+    from app.generate import strip_itinerary
+    assert strip_itinerary(text, others) == kept

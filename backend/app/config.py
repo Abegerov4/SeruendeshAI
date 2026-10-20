@@ -37,9 +37,9 @@ class Settings(BaseSettings):
     response_cache_ttl_s: int = 600
     flight_domestic_buffer_min: int = 120
     flight_international_buffer_min: int = 180
-    # A departure deadline is not free time before leaving. Unknown flights use the
-    # conservative reserve until the user specifies a domestic flight or airport arrival.
-    flight_unknown_buffer_min: int = 180
+    # "у меня 2 часа перед вылетом" from a tourist almost always means free time before heading to the airport:
+    # without an explicit flight type no check-in reserve is subtracted, and the answer says so (note_flight_free_time)
+    flight_unknown_buffer_min: int = 0
     deadline_road_uncertainty_min: int = 15
     route_max_snap_m: int = 500
     hours_max_age_days: int = 180

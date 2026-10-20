@@ -35,7 +35,7 @@
     location: {lat: 51.128, lon: 71.430}
     now: "2026-10-18T14:00:00+05:00"
     weather: {temperature_c: 9, feels_like_c: 6, wind_ms: 5}
-  expect: {lang: ru, empty: true, budget_max: 0, notes_contains: ["вылет"]}
+  expect: {lang: ru, leave_by: true, notes_contains: ["аэропорт"], min_items: 1}
 
 - id: S5_night_unusual
   title: "Официальный: необычная ночная активность"
