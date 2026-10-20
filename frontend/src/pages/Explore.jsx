@@ -194,6 +194,7 @@ export default function Explore({ saved, toggleSaved }) {
   async function withCoords(c) {
     if (c.location !== MY_LOCATION) return c;
     if (c.coords && Date.now() - (c.coords.at || 0) < 120000) return c;  // fresh enough
+    setGeo('asking');
     try {
       const coords = await locate();
       if (!inAstana(coords)) { setGeo('outside'); return { ...c, coords: null }; }
@@ -209,7 +210,7 @@ export default function Explore({ saved, toggleSaved }) {
   // tap on a place (chat card, details): the route from the user to it, drawn on the map
   // themed walks: computed for the current start; showing one puts its stops and route on the map
   async function fetchIdeas() {
-    const c = ctx;
+    const c = await withCoords(ctx); setCtx(c);  // the user asked: the position is requested (or refreshed) now
     if (c.location === MY_LOCATION && !c.coords) throw Error('no-start');  // no GPS and no chosen start: ask, never guess
     return routeIdeas(c, getLanguage());
   }
@@ -234,7 +235,8 @@ export default function Explore({ saved, toggleSaved }) {
     try {
       // a typed message (no override) wins over the settings for the time / transport it states itself
       const base = override || forTypedMessage(ctx, text);
-      const c = base;  // GPS is requested only by an explicit location action, never on first render or typing.
+      // GPS is asked for when the user sends a request (never on first render), refreshed every 2 minutes as they walk
+      const c = photo ? base : await withCoords(base);
       setCtx(c);
       const next = photo ? await recommendPhoto(photo, text, c, getLanguage(), { signal }) : await recommend(text, c, getLanguage(), { signal });
       if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
