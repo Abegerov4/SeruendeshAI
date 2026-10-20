@@ -32,7 +32,7 @@ uv pip install --python .venv/bin/python -r data/requirements.txt
 - `processed/quarantined_pois.json` — исходные записи с выявленными существенными противоречиями, временно исключённые из рекомендаций. Решения и ссылки на доказательства записаны в `quality_overrides.json`; при изменении ошибочных исходных значений правило перестаёт применяться.
 - `raw/` — исходный кэш, региональный PBF и служебные отчёты; уже исключён из Git.
 - `source_research.json` — ранее проверенный каталог из 39 источников и инструментов, включая ограничения доступа. Это исследование вариантов, а не утверждение, что все перечисленные сервисы импортированы в датасет.
-- `quality_review.md`, `processed/review_sample.json`, `processed/verification.json` — проверенная выборка, обнаруженные ограничения и результаты проверок конкретного снимка данных.
+- `quality_review.md`, `review/2026-10-19-data-audit/review_sample.json`, `review/2026-10-19-data-audit/verification.json` — проверенная выборка, обнаруженные ограничения и результаты проверок конкретного снимка данных.
 
 У каждого POI есть `source_records`: первичные ID, ссылки, дата получения, релиз и лицензия, где она установлена. Поля `raw_tags`, `raw_taxonomy`, `source_refs` сохраняют дополнительные данные источников. Неизвестные часы, рейтинг, доступность и пригодность для детей остаются `null`. Популярность или уверенность Overture не превращаются в рейтинг посетителей. Часы из источников требуют разбора в `rag.hours`; неизвестный формат нельзя считать открытым заведением.
 
@@ -217,3 +217,17 @@ through `data.snapshot.publish_snapshot`; normal refreshes without a rebuilt
 matching index use BM25. Historical fixed files remain available in explicit
 `DATA_SNAPSHOT_MODE=legacy` mode. A missing sidecar cannot silently erase a prior
 quarantine/fact-review policy.
+
+## Removed snapshot versions (2026-10-20)
+
+Only the version `current` points to is served or compared on publish (`data/snapshot.py`). The seven earlier
+bundles in `processed/.snapshots/` (~575 MB) were removed from the working tree; reports in `docs/reports/` and
+`eval/runs/` that cite them stay reproducible from git history:
+
+`10dd87fc9f254f5a87374b88b0cfd349`, `4e9b6ecc5b4c455f9c0443714afb91b2`, `95972c2d4cf34fdf975b1af9b4b4efda`,
+`afd497bafc4f4a689e3fb416661c3f7e`, `b479f2445492454782a09e8d95495ae7`, `c0d3e2f710f64d399c01c97b853ca05d`,
+`d0cd7698c2c64d5fac64ffdd12351faa` — restore one with
+`git checkout 062b9b8 -- data/processed/.snapshots/<version>`.
+
+The audit sample and its verification moved to `review/2026-10-19-data-audit/` (they describe that snapshot;
+nothing reads them at run time).

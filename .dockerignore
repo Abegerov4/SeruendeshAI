@@ -35,3 +35,20 @@ data/processed/canonical_index
 data/processed/pois.json
 data/processed/pois_leisure.json
 *.pdf
+
+# data the image never copies (Dockerfile takes a fixed list from data/processed): keeps the Railway build
+# context small — the team's snapshot history alone is ~670 MB
+data/processed/.snapshots
+data/processed/current
+data/processed/canonical_index
+data/processed/pois.json
+data/processed/pois_leisure.json
+data/processed/vectors-*.npy
+data/raw
+data/sources
+data/review
+eval
+docs
+tests
+team
+*.pdf

@@ -1,7 +1,0 @@
-{
-  "checked_at": "2026-10-19",
-  "scenario_places": 30,
-  "scope": "Source-reported bounded review, not onsite verification or fresh complete collection",
-  "canonical_sha256": "803dcffdb4473abddfc97be9cab5a41bc663ee74afc67c560f1723b42f8c1e63",
-  "source_refresh_status": "Existing canonical baseline retained; source_manifest statuses preserved, no incomplete rebuild promoted."
-}

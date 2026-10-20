@@ -29,7 +29,7 @@
 - [x] 4. Implement strict normalization, boundary filtering and conservative cross-source deduplication; test invalid coordinates, same-chain different branches and co-located distinct venues before implementation.
 - [x] 5. Add selected public directory factual attributes where accessible, with explicit access/licence status; no bypassing blocked or restricted APIs. 1,275 distinct entries from 156 directory pages; 50 source-located candidates, 1,225 facts awaiting an unambiguous coordinate join. Astana-library robots exclusion respected.
 - [x] 6. Run the complete uncapped pipeline. Export `data/processed/pois.json`, provenance, collection manifest and `data/stats.md`. Final: 14,009 POIs / 2,761 leisure-category records, 598 merges, 619 boundary exclusions, 1 quarantined record. 251 source descriptions / 13,758 explicit templates; 2,083 opening-hours values. Source limitations remain explicit (`partial` coverage).
-- [x] 7. Run all collection tests plus the existing QA suite against the actual dataset; independently inspect a sample and report unmet checks. 445 passed, 51 skipped, 0 failed. All IDs unique and points inside the actual polygon. Offline rebuild is byte-identical; SHA-256 `1f815df354ad990d902d76c8676a91013f2d8288a7330e8c3b75a2666db29b74`. See `quality_review.md` and `processed/verification.json`.
+- [x] 7. Run all collection tests plus the existing QA suite against the actual dataset; independently inspect a sample and report unmet checks. 445 passed, 51 skipped, 0 failed. All IDs unique and points inside the actual polygon. Offline rebuild is byte-identical; SHA-256 `1f815df354ad990d902d76c8676a91013f2d8288a7330e8c3b75a2666db29b74`. See `quality_review.md` and `review/2026-10-19-data-audit/verification.json`.
 
 ## Verification
 
