@@ -1,0 +1,37 @@
+{
+  "verified_at": "2026-10-20",
+  "sxodim": {
+    "asset": "source-sxodim.svg",
+    "kind": "official header wordmark",
+    "source_page": "https://sxodim.com/astana",
+    "source_asset": "https://sxodim.com/app/images/sprite.svg#logo",
+    "color_source": "https://sxodim.com/build/css/app.css?id=bd53c9e0f405942e65c097be73dcfef4",
+    "colors": [
+      "#e93e2c"
+    ],
+    "viewBox": [
+      0,
+      0,
+      2571.85,
+      1242.3
+    ],
+    "transformation": "Extracted logo symbol as standalone SVG; preserved original paths and aspect ratio; froze official .impression-header .logo CSS color as root fill.",
+    "suggested_display": {
+      "width_px": 58,
+      "height_px": 28
+    },
+    "visual_verification": "Rendered with Quick Look and inspected. Red two-line SXODIM / .COM logotype."
+  },
+  "ticketon": {
+    "asset": null,
+    "kind": "styled text fallback required",
+    "official_name": "Freedom Ticketon",
+    "official_rebranding_source": "https://ticketon.kz/uralsk/freedom-ticketon-rebranding",
+    "indexed_official_preview": "https://ticketon.uz/t2/images/preview.jpg",
+    "verified_brand_description": "Official indexed rebranding text confirms green Freedom shield, retained Ticketon eye, and added Freedom name. Indexed official preview depicts black uppercase lockup with green shield and green O.",
+    "colors": null,
+    "limitation": "Normal unauthenticated requests to main Ticketon pages and indexed official preview returned HTTP403. award.ticketon.kz DNS did not resolve. No fresh source-site cache was present. No guessed, reconstructed or third-party logo asset saved.",
+    "fallback_label": "Freedom Ticketon",
+    "fallback_note": "Style as plain text; do not describe this as the exact official logo or claim precise brand hex colors."
+  }
+}

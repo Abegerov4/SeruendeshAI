@@ -1,0 +1,68 @@
+name: events-refresh
+
+# A proposed snapshot is reviewed in a PR. This job never merges or deploys it.
+on:
+  schedule:
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: events-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Install the event collector dependencies
+        run: |
+          uv venv --python 3.12 .venv
+          uv pip install --python .venv/bin/python rapidfuzz requests typer pytest pydantic-settings
+      - name: Verify archive and source parsing
+        run: |
+          PYTHONPATH=backend .venv/bin/python -m pytest backend/tests/test_events_collection.py backend/tests/test_event_identity_safety.py -q
+      - name: Refresh events and check source status
+        run: |
+          PYTHONPATH=backend .venv/bin/python -m pipeline.cli events
+          .venv/bin/python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          report = json.loads(Path("data/processed/events_refresh.json").read_text())
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write("### Event refresh\n\n```json\n" + json.dumps(report, ensure_ascii=False, indent=2) + "\n```\n")
+          if report["status"] == "failed":
+              raise SystemExit("No usable source refresh was accepted; archive retained. Inspect the source errors in the refresh report.")
+          PY
+      - name: Preserve source diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: events-refresh-diagnostics
+          path: |
+            data/processed/events_refresh.json
+            data/processed/events_unresolved.json
+          if-no-files-found: ignore
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: events-refresh
+          title: "data: refresh Astana event feed and retain archive"
+          commit-message: "data: refresh Astana event feed and retain archive"
+          body: |
+            Refreshes Ticketon and Sxodim records while retaining the existing archive and stable discovery dates.
+
+            Review `data/processed/events_refresh.json` for source failures and collection counts. Partial source failures preserve prior records; no automatic merge or deployment is performed.
+          add-paths: |
+            data/processed/events.jsonl
+            data/processed/events_refresh.json
+            data/processed/events_unresolved.json

@@ -21,7 +21,7 @@ from starlette.datastructures import UploadFile
 
 from app.paths import ROOT_DIR, DRIVE_GRAPH_FILE, GRAPH_FILE
 
-from app import bot_api, geocode, insights, mcp_connector, photo, route_ideas, telegram
+from app import bot_api, event_feed, geocode, insights, mcp_connector, photo, route_ideas, telegram
 from app import feedback as place_feedback
 from app.auth import router as auth_router
 from app.categories import CATEGORIES
@@ -105,6 +105,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 app.include_router(auth_router)
+app.include_router(event_feed.router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[o.strip() for o in settings.cors_origins.split(",") if o.strip()],

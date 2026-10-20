@@ -1,0 +1,24 @@
+{
+  "status": "partial",
+  "refreshed_at": "2026-10-20T16:07:50+05:00",
+  "events": 202,
+  "new_events": 62,
+  "updated_events": 34,
+  "retained_events": 106,
+  "rejected_events": 0,
+  "matched_to_poi": 57,
+  "sources": {
+    "ticketon": {
+      "status": "failed",
+      "collected": 0,
+      "errors": [
+        "Ordinary GET https://ticketon.kz/astana encountered redirect-loop waiting room during live inspection; access was not bypassed. Ticketon prior snapshot retained."
+      ]
+    },
+    "sxodim": {
+      "status": "ok",
+      "collected": 96,
+      "errors": []
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { useLocale, t as tr } from "./i18n";
-import React, { useEffect, useRef, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { usePath, Link } from './navigation';
 import { Header, Footer } from './components/Layout';
@@ -7,6 +7,7 @@ import Explore from './pages/Explore';
 import Auth from './pages/Auth';
 import Saved from './pages/Saved';
 import Insights from './pages/Insights';
+const Events = lazy(() => import('./pages/Events'));
 import { useAuth, loadMe, fetchSaved, putSaved, deleteSaved } from './auth';
 import './design.css';
 import './life.css';
@@ -30,6 +31,7 @@ import './reference-layout.css';
 import './page-frame.css';
 import './usability.css';
 import './chat-only.css';
+import './site-navigation.css';
 import {initPwa} from './pwa';
 import PwaExperience from './components/PwaExperience';
 initPwa();
@@ -73,9 +75,10 @@ function Workspace({user, ready}) {
     if (path === '/') document.title = tr('SeruendeshAI — открой свою Астану');
     if (path === '/saved') document.title = tr('Избранное — SeruendeshAI');
     if (path === '/insights') document.title = tr('Для города — SeruendeshAI');
+    if (path === '/events' || path.startsWith('/events/')) document.title = tr(path === '/events/archive' ? 'Архив событий — SeruendeshAI' : 'События — SeruendeshAI');
   }, [path, language]);
   const authMode = { '/login': 'login', '/register': 'register', '/forgot-password': 'reset', '/reset-password': 'confirm' }[path];
   if (authMode) return <Auth key={path} mode={authMode} />;
-  return <div className={"app " + (path === "/" ? "map-app" : "")}><a className="skip-link" href="#content">{tr("Перейти к содержимому")}</a><Header path={path} savedCount={saved.length} />{saveError && <div className="saved-feedback" role="alert"><span>{tr(saveError.load ? 'Не удалось загрузить избранное.' : 'Не удалось изменить избранное. Изменение отменено.')}</span><button onClick={() => saveError.load ? setReload(n => n + 1) : toggleSaved(saveError.place)}>{tr('Повторить')}</button><button aria-label={tr('Закрыть')} onClick={() => setSaveError(null)}>×</button></div>}<div id="content">{path === '/' ? <Explore saved={saved} toggleSaved={toggleSaved} /> : path === '/saved' ? <Saved saved={saved} toggleSaved={toggleSaved} /> : path === '/insights' ? <Insights /> : <main className="not-found"><span className="section-eyebrow">{tr("404 / НЕМНОГО СВЕРНУЛИ С МАРШРУТА")}</span><h1>{tr("Здесь пока тихо.")}</h1><p>{tr("Вернёмся туда, где начинаются открытия?")}</p><Link to="/" className="primary-button">{tr("На главную ↗")}</Link></main>}</div><Footer /></div>;
+  return <div className={"app " + (path === "/" ? "map-app" : "")}><a className="skip-link" href="#content">{tr("Перейти к содержимому")}</a><Header path={path} savedCount={saved.length} />{saveError && <div className="saved-feedback" role="alert"><span>{tr(saveError.load ? 'Не удалось загрузить избранное.' : 'Не удалось изменить избранное. Изменение отменено.')}</span><button onClick={() => saveError.load ? setReload(n => n + 1) : toggleSaved(saveError.place)}>{tr('Повторить')}</button><button aria-label={tr('Закрыть')} onClick={() => setSaveError(null)}>×</button></div>}<div id="content">{path === '/' ? <Explore saved={saved} toggleSaved={toggleSaved} /> : path === '/saved' ? <Saved saved={saved} toggleSaved={toggleSaved} /> : path === '/insights' ? <Insights /> : path === '/events' || path.startsWith('/events/') ? <Suspense fallback={<main className="events-loading-page" role="status">{tr('Загружаем события…')}</main>}><Events path={path} /></Suspense> : <main className="not-found"><span className="section-eyebrow">{tr("404 / НЕМНОГО СВЕРНУЛИ С МАРШРУТА")}</span><h1>{tr("Здесь пока тихо.")}</h1><p>{tr("Вернёмся туда, где начинаются открытия?")}</p><Link to="/" className="primary-button">{tr("На главную ↗")}</Link></main>}</div><Footer /></div>;
 }
 createRoot(document.getElementById('root')).render(<><App /><PwaExperience /></>);
