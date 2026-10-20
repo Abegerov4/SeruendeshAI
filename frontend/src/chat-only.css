@@ -49,6 +49,7 @@
  .reference-layout.mobile-view-places .places-section>*{pointer-events:auto}
  .reference-layout.mobile-view-places .place-card{box-shadow:0 14px 34px #173b2930}
  .reference-layout.mobile-view-places .place-grid{padding:4px 4px 14px}
+ .reference-layout.mobile-view-places .focus-route-bar,.reference-layout.mobile-view-places .walk-bar{display:none}  /* the cards own the map while open */
  .reference-layout.mobile-view-places .summary-line,.reference-layout.mobile-view-places .results-disclaimer{display:none}
 }
 .places-float-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
@@ -64,3 +65,44 @@
 .pwa-compact .pwa-primary{width:100%;justify-content:center}
 .pwa-compact .pwa-note{margin:0;font-size:12px;line-height:1.5;color:#5f6f60}
 .pwa-compact section{width:100%;text-align:left}
+
+/* «Откуда начнём?» can be closed */
+.start-chooser{position:relative}
+.start-close{position:absolute;top:12px;right:12px;width:34px;height:34px;display:grid;place-items:center;border:0;border-radius:11px;background:#eef3e5;color:#1e5140;cursor:pointer}
+.start-close:hover{background:#e2ebd2}
+.start-close:focus-visible{outline:2px solid #658f35;outline-offset:2px}
+.start-chooser>h2{padding-right:40px}
+.start-error{margin:8px 0 0;font-size:12px;line-height:1.45;color:#8a2f1d}
+
+/* «12 туда + 30 на месте = 42 из 60 мин» */
+.time-ledger{margin:10px 0 2px}
+.time-ledger.compact{margin:6px 0 4px}
+.ledger-bar{display:flex;height:6px;border-radius:4px;background:#e8eedf;overflow:hidden}
+.ledger-bar i{display:block;height:100%}
+.ledger-bar .go{background:#8fb174}.ledger-bar .stay{background:#174b3e}.ledger-bar .back{background:#c79a3b}
+.time-ledger p{margin:5px 0 0;font-size:12px;line-height:1.45;color:#4f6352}
+.time-ledger.compact p{font-size:11px}
+.time-ledger p b{color:#1d4a3a;font-weight:600}
+.time-ledger small{display:block;margin-top:2px;font-size:11px;color:#7b867c}
+
+/* 👍 / 👎 with a reason */
+.place-feedback{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0 4px;font-size:13px;color:#4f6352}
+.place-feedback>button{width:36px;height:36px;display:grid;place-items:center;border:1px solid #e1e8d6;border-radius:11px;background:#fff;color:#1d4a3a;cursor:pointer}
+.place-feedback>button:hover,.place-feedback>button[aria-expanded="true"]{background:#eef3e4}
+.feedback-reasons{display:flex;flex-wrap:wrap;gap:6px;flex-basis:100%}
+.feedback-reasons button{padding:7px 11px;border:1px solid #e1e8d6;border-radius:10px;background:#fff;font-size:12px;color:#21382e;cursor:pointer}
+.feedback-reasons button:hover{background:#eef3e4}
+.place-feedback.thanks{gap:6px;color:#3d6a43}
+.place-feedback small{flex-basis:100%;color:#8a2f1d}
+
+/* «Места рядом» (laptop): a scrolling column of floating cards on the right, the map stays in view */
+@media(min-width:900px){
+ .reference-layout.mobile-view-places .places-section{top:16px;right:16px;bottom:16px;left:auto;width:min(380px,44%);max-height:none;
+   overflow-y:auto;overscroll-behavior:contain;padding:0 6px 0 0;pointer-events:auto;scrollbar-width:thin}
+ .reference-layout.mobile-view-places .place-grid{display:flex;flex-direction:column;gap:14px;overflow:visible;padding:2px 2px 16px}
+ .reference-layout.mobile-view-places .place-card{flex:none;width:auto}
+ .reference-layout.mobile-view-places .place-image-wrap{height:120px}
+ .reference-layout.mobile-view-places .places-float-bar{position:sticky;top:0;z-index:2;margin:0 0 10px;padding:0}
+ .reference-layout.mobile-view-places .places-start{margin-left:0;width:100%;justify-content:center}
+ .reference-layout.mobile-view-places .map-controls{right:calc(min(380px,44%) + 34px)}
+}

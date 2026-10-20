@@ -4,7 +4,7 @@ const fixture = JSON.parse(readFileSync(new URL('../../../backend/docs/api/examp
 const aPlace = {poi_id: 'saved-a', data: {name: 'Private place A', categoryKey: 'park', category: 'Парк', travel: 5, visit: 20}};
 async function mockApi(page, {account=null, saved=[], failSave=false, failSearch=false}={}) {
   const state = {account, saved, failSave, failSearch, requests: [], writes: [], geo: 0};
-  await page.addInitScript(() => {window.geoCalls=0; navigator.geolocation.getCurrentPosition=()=>{window.geoCalls++};});
+  await page.addInitScript(() => {window.geoCalls=0; navigator.geolocation.getCurrentPosition=(ok,fail)=>{window.geoCalls++; if(window.geoFix) ok({coords:{...window.geoFix,accuracy:20}}); else fail({code:2});};});
   await page.route('**/api/**', async r => {
     const path = new URL(r.request().url()).pathname, method=r.request().method();
     let json={};
@@ -16,6 +16,7 @@ async function mockApi(page, {account=null, saved=[], failSave=false, failSearch
       json={poi_id:decodeURIComponent(path.split('/').at(-1)),data:r.request().postDataJSON().data};state.saved.push(json);
     }
     if(path==='/api/meta') json={features:{photo:false}};
+    if(path==='/api/geocode') json={results:[{label:'40, улица Кенесары',lat:51.166,lon:71.433,source:'openstreetmap'}]};
     if(path==='/api/recommend') {
       state.requests.push(r.request().postDataJSON());
       if(state.failSearch) return r.fulfill({status:503,json:{detail:'unavailable'}});
@@ -113,10 +114,34 @@ test('address entry also hides the mobile bar when the keyboard opens',async({pa
  await page.locator('.chat-body [data-start-input]').press('Enter');await expect(page.locator('.chat-places')).toBeVisible();
 });
 
+test('a typed start address is geocoded: the house number never goes into the request text',async({page})=>{
+ const state=await mockApi(page);await page.goto('/');
+ await page.locator('.map-welcome [data-start-input]').fill('Кенесары 40');await page.locator('.map-welcome [data-start-input]').press('Enter');
+ await expect(page.locator('.chat-place')).toHaveCount(2);
+ expect(state.requests[0].location).toEqual({lat:51.166,lon:71.433});expect(state.requests[0].location_label).toBe('Кенесары 40');
+ expect(state.requests[0].query).not.toContain('40');
+});
+
+test('«Откуда начнём?» can be closed',async({page})=>{
+ await mockApi(page);await page.goto('/');
+ await page.locator('.map-welcome .start-close').click();await expect(page.locator('.map-welcome')).toHaveCount(0);
+});
+
 test('denied geolocation keeps a working landmark fallback',async({page})=>{
  const state=await mockApi(page);
  await page.addInitScript(()=>{navigator.geolocation.getCurrentPosition=(_,reject)=>reject({code:1})});
  await page.goto('/');await page.locator('.start-geo').first().click();
  await expect(page.locator('.geo-denied')).toBeVisible();expect(state.requests).toHaveLength(0);
  await chooseStart(page);expect(state.requests[0].landmark).toBe('mega_silk_way');
+});
+
+test('a typed request asks for the position and sends it; a second one within 2 minutes reuses it',async({page})=>{
+ const state=await mockApi(page);await page.addInitScript(()=>{window.geoFix={latitude:51.13251,longitude:71.40387}});await page.goto('/');
+ expect(await page.evaluate(()=>window.geoCalls)).toBe(0);
+ await page.locator('#chat-input').fill('кофе рядом');await page.locator('.send-button').click();
+ await expect(page.locator('.chat-place')).toHaveCount(2);
+ expect(state.requests[0].location).toEqual({lat:51.133,lon:71.404});
+ await page.locator('#chat-input').fill('а теперь парк');await page.locator('.send-button').click();
+ await expect.poll(()=>state.requests.length).toBe(2);
+ expect(state.requests[1].location).toEqual({lat:51.133,lon:71.404});expect(await page.evaluate(()=>window.geoCalls)).toBe(1);
 });

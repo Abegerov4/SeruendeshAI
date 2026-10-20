@@ -26,7 +26,7 @@ COPY bot/__init__.py bot/telegram_bot.py bot/format.py /srv/bot/
 COPY data/processed/pois.jsonl data/processed/gazetteer.json data/processed/manifest.json data/processed/embeddings.npy \
      data/processed/walk_graph.npz data/processed/drive_graph.npz data/processed/events.jsonl data/processed/river.json \
      data/processed/astana_boundary.geojson data/processed/photos_extra.json data/processed/place_facts.json \
-     data/processed/place_names.json data/processed/place_descriptions_kk.json data/processed/twogis_layer.json data/processed/place_corrections.json /srv/data/processed/
+     data/processed/place_names.json data/processed/place_descriptions_kk.json data/processed/place_corrections.json /srv/data/processed/
 COPY --from=web /web/dist /srv/frontend/dist
 
 # embedding model baked into the image (no download at start-up); EMBED_MODEL=off skips it

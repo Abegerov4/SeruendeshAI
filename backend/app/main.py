@@ -10,7 +10,6 @@ import logging
 import os
 import time
 from pathlib import Path
-from collections import defaultdict
 from contextlib import asynccontextmanager
 
 import httpx
@@ -23,6 +22,7 @@ from starlette.datastructures import UploadFile
 from app.paths import ROOT_DIR, DRIVE_GRAPH_FILE, GRAPH_FILE
 
 from app import bot_api, geocode, insights, mcp_connector, photo, route_ideas, telegram, tracing
+from app import feedback as place_feedback
 from app.auth import router as auth_router
 from app.categories import CATEGORIES
 from app.config import get_settings
@@ -48,7 +48,6 @@ logging.basicConfig(level=settings.log_level, format="%(asctime)s %(levelname)s 
 log = logging.getLogger("app")
 RT: dict[str, Runtime] = {}
 _PHOTO_SLOTS = asyncio.Semaphore(2)
-FEEDBACK: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))  # aggregated counts only, no user data
 mcp_connector.attach(lambda: RT.get("rt"))
 
 
@@ -355,13 +354,21 @@ async def api_pois(lat: float, lon: float, radius_m: int = 1500, limit: int = 30
 
 
 @app.post("/api/feedback", response_model=FeedbackResponse, tags=["feedback"],
-          summary="Report outdated info (closed, wrong hours). Stores only aggregated counters.")
-async def api_feedback(fb: FeedbackRequest):
+          summary="A visitor's mark on a place (closed, wrong hours, 👍). Stored as day × place × kind counters only; "
+                  "«closed» marks can lower trust in «open», never the other way.")
+async def api_feedback(fb: FeedbackRequest, request: Request):
     if fb.poi_id not in RT["rt"].store.by_id:
         raise HTTPException(status_code=404, detail="Unknown poi_id")
-    FEEDBACK[fb.poi_id][fb.kind] += 1
-    log.info("feedback poi=%s kind=%s", fb.poi_id, fb.kind)
-    return FeedbackResponse(ok=True, message="Спасибо! Учтём при следующем обновлении данных.")
+    key = api_client_key(request)
+    if not limiter.allow("feedback", key, 20, 60):
+        raise HTTPException(status_code=429, detail="Too many requests, try again in a minute")
+    lang = fb.lang or "ru"
+    # one client marks one place once in 12 hours: a repeated tap is thanked but not counted again
+    if limiter.allow("feedback:" + fb.poi_id, key, 1, 12 * 3600):
+        place_feedback.record(fb.poi_id, fb.kind)
+        log.info("feedback poi=%s kind=%s", fb.poi_id, fb.kind)
+    return FeedbackResponse(ok=True, message=t("feedback_thanks_hours" if fb.kind in place_feedback.HOURS_KINDS
+                                                else "feedback_thanks", lang))
 
 
 # --- the built frontend (React/Vite) is served by the same service: one domain, no CORS -------------

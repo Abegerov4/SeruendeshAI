@@ -15,7 +15,7 @@ import snowballstemmer
 from rank_bm25 import BM25Okapi
 
 from app.categories import CATEGORIES
-from app.features import CUISINE_RU, cuisine_ru, feature_labels
+from app.features import cuisine_ru, feature_labels
 from app.paths import DATA_DIR, EMBEDDINGS_FILE, EVENTS_FILE, GAZETTEER_FILE, MANIFEST_FILE, POIS_FILE, RIVER_FILE
 from app.textnorm import fold, tokens
 
@@ -127,39 +127,6 @@ def apply_corrections(pois: list[dict], fixes: dict[str, dict]) -> None:
             p["category"] = fix["category"]
         if fix.get("names"):
             p["names"] = {**(p.get("names") or {}), **fix["names"]}
-
-
-_CUISINE_KEY = {v: k for k, v in CUISINE_RU.items()}  # «итальянская кухня» -> italian (the map's cuisine key)
-
-
-def apply_twogis(pois: list[dict], layer: dict[str, dict]) -> None:
-    """2GIS facts for the places matched to it: hours fresher than map data (researched official hours still win),
-    the rating with its count, a photo only where we have none, a phone, a website and Wi-Fi."""
-    for p in pois:
-        g = layer.get(p["id"])
-        if not g:
-            continue
-        if g.get("opening_hours") and not p.get("hours_source"):
-            p.update(opening_hours=g["opening_hours"], hours_source="2gis.kz", hours_source_url=g.get("url"),
-                     check_date=g.get("captured") or None)
-        if g.get("rating"):
-            p.update(rating=g["rating"], rating_count=g.get("rating_count"))
-        if g.get("photo") and not p.get("photo"):
-            p["photo"] = g["photo"]
-        for k in ("phone", "website"):
-            if g.get(k) and not p.get(k):
-                p[k] = g[k]
-        feats = p.setdefault("features", {})
-        if g.get("wifi"):
-            feats.setdefault("wifi", True)
-        for k in (g.get("features") or {}):  # the map's own tags win; 2GIS fills what is unknown
-            if k == "ramp":
-                feats.setdefault("wheelchair", "limited")  # a ramp at the entrance, not a verified step-free visit
-            else:
-                feats.setdefault(k, True)
-        if g.get("cuisine") and not p.get("cuisine"):
-            p["cuisine"] = ";".join(_CUISINE_KEY.get(c.lower(), c.lower()) for c in g["cuisine"])
-        p["sources"] = sorted(set(p.get("sources") or []) | {"2gis"})
 
 
 def display_name(p: dict, lang: str) -> str:
@@ -328,9 +295,6 @@ def load_store(embed_model: str | None = None) -> Store:
         for p in pois:
             if p.get("description_kind") == "research" and kk_text.get(p["id"]):
                 p["description_kk"] = kk_text[p["id"]]
-    gis_file = POIS_FILE.parent / "twogis_layer.json"  # pipeline.twogis: the team's 2GIS snapshot (Aslan)
-    if not canonical and gis_file.exists():
-        apply_twogis(pois, json.loads(gis_file.read_text()))
     from app.card_photos import apply_card_photos  # optional operator photos in S3 (docs/CARD_PHOTOS.md)
     apply_card_photos(pois)
     keep = _dedupe([i for i, p in enumerate(pois) if not junk_place(p) and not p.get("closed_permanently")

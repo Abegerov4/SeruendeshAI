@@ -19,6 +19,23 @@ log = logging.getLogger("app.context")
 TZ = ZoneInfo("Asia/Almaty")  # Astana is UTC+5 since 2024-03-01 (tzdata >= 2024a)
 CITY = LocationInfo("Astana", "KZ", "Asia/Almaty", 51.1605, 71.4460)
 _KZ = holidays.country_holidays("KZ", language="en_US", observed=True)
+_KZ_KK = holidays.country_holidays("KZ", language="kk", observed=True)
+_RU = {"New Year's Day": "Новый год", "Orthodox Christmas": "Рождество", "International Women's Day": "8 Марта",
+       "Nowruz Holiday": "Наурыз", "Kazakhstan's People Solidarity Holiday": "День единства народа Казахстана",
+       "Defender of the Fatherland Day": "День защитника Отечества", "Victory Day": "День Победы",
+       "Eid al-Adha": "Курбан айт", "Capital Day": "День столицы", "Constitution Day": "День Конституции",
+       "Republic Day": "День Республики", "Independence Day": "День Независимости"}
+
+
+def holiday_name(day: dt.date, en: str | None, lang: str) -> str | None:
+    """The holiday in the answer's language («День Республики», not «Republic Day»)."""
+    if not en or lang == "en":
+        return en
+    if lang == "kk":
+        return _KZ_KK.get(day) or en
+    base = en.replace(" (observed)", "").replace(" (estimated)", "")
+    ru = _RU.get(base, en)
+    return ru + (" (перенос)" if "(observed)" in en else "")
 _wx_cache: dict[str, tuple[float, dict | None]] = {}
 
 

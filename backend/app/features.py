@@ -24,9 +24,6 @@ FEATURE_LABELS: dict[str, tuple[str, str, str]] = {
     "power_outlets": ("есть розетки", "розеткалар бар", "power outlets"),
     "indoor": ("в помещении", "жабық орында", "indoors"),
     "toilets": ("есть туалет", "дәретхана бар", "toilets"),
-    "laptop_friendly": ("можно поработать с ноутбуком", "ноутбукпен жұмыс істеуге болады", "laptop-friendly"),
-    "live_music": ("живая музыка", "жанды музыка", "live music"),
-    "halal": ("халяль", "халал", "halal"),
 }
 
 CUISINE_RU = {

@@ -48,11 +48,10 @@ def build(overture: bool = True):
 
 
 @app.command()
-def corrections(source: str = typer.Option(None, help="2GIS export (path or git:<ref>:<path>)")):
-    """Review categories and non-places against the team's 2GIS export -> data/processed/place_corrections.json."""
+def corrections():
+    """Review categories, non-places and duplicates -> data/processed/place_corrections.json."""
     from pipeline import corrections as c
-    out = c.main(source) if source else c.main()
-    typer.echo(f"{len(out)} corrections")
+    typer.echo(f"{len(c.main())} corrections")
 
 
 @app.command()

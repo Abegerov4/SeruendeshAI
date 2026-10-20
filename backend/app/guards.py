@@ -61,6 +61,35 @@ def mask_pii(text: str) -> tuple[str, bool]:
     return out, out != (text or "")
 
 
+_L = r"A-Za-zА-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі"
+_HOUSE = r"\d{1,3}[а-яa-z]?(?:/\d{1,3}[а-яa-z]?)?"
+_NOT_UNIT = r"(?!\s*(?:мин|час|км|м\b|метр|чел|лет|год|раз|%|тг|тенге|₸|сағ|min|h\b|hour|km|people|year))"
+LOCATION_PATTERNS = [
+    # a coordinate pair or one long decimal (51.1283, 71.4305 / 51,1283 71,4305)
+    (re.compile(r"-?\b\d{1,2}[.,]\d{3,}\s*[,;]?\s*-?\d{1,3}[.,]\d{3,}\b"), "[координаты]"),
+    (re.compile(r"\b\d{2}\.\d{4,}\b"), "[координаты]"),
+    # flat, entrance, floor, office
+    (re.compile(r"\b(?:кв(?:\.|артира|\b)|подъезд|этаж|офис|apt\.?|apartment|flat|пәтер)\s*№?\s*\d{1,4}\b", re.I), "[квартира]"),
+    # «д. 40», «дом 40»
+    (re.compile(r"\b(?:д\.|дом|үй)\s*№?\s*" + _HOUSE + r"\b", re.I), "[дом]"),
+]
+# the street stays (a street is long and helps find the start), the house number goes
+_STREET_NO = re.compile(r"(\b(?:ул(?:\.|ица)?|пр(?:\.|-т|оспект|осп\.?)|б-р|бульвар|шоссе|переулок|пер\.|мкр\.?|микрорайон|"
+                        r"көшесі|даңғылы|street|st\.|avenue|ave\.?|road)\s*[" + _L + r"\-\. ]{2,40}?[,\s]+)(" + _HOUSE + r")\b" + _NOT_UNIT, re.I)
+_NEAR_NO = re.compile(r"(\b(?:возле|около|рядом с|у|на|от|из|до|жанында|near|at|from)\s+(?:[A-ZА-ЯЁӘҒҚҢӨҰҮҺІ][" + _L + r"\-]*\s?){1,3},?\s*)("
+                      + _HOUSE + r")\b" + _NOT_UNIT)
+
+
+def mask_location(text: str) -> str:
+    """Hide exact positions before the LLM: coordinates, house and flat numbers. Street and place names stay,
+    so the start can still be found; the street-level position is what we keep anyway (~100 m)."""
+    out = text or ""
+    for pattern, label in LOCATION_PATTERNS:
+        out = pattern.sub(label, out)
+    out = _STREET_NO.sub(lambda m: m[1] + "[дом]", out)
+    return _NEAR_NO.sub(lambda m: m[1] + "[дом]", out)
+
+
 def looks_like_injection(text: str) -> bool:
     return any(p.search(text or "") for p in _INJ)
 

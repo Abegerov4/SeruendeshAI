@@ -7,9 +7,9 @@ in data/sources/sxodim/. Two outputs:
 - data/sources/place_research/batch_8_output.json: hours for our places that have none (matched ≤150 m with the
   same distinctive name), fed to pipeline.place_facts like any other research wave. Cards are often years old:
   a card older than a year gives confidence «low», and the note says the card's date;
-- new places appended to data/processed/pois.jsonl (id «sx:<slug>»), only when another source confirms the place
-  still exists (Overture or the 2GIS export lists it within 150 m under the same name) or the card was updated
-  since 2024 — an old card alone may describe a closed venue. Re-run `pipeline.cli embed` afterwards.
+- new places appended to data/processed/pois.jsonl (id «sx:<slug>»), only when another open source confirms the
+  place still exists (Overture lists it within 150 m under the same name; data/raw/overture_astana.json) or the
+  card was updated since 2024 — an old card alone may describe a closed venue. Re-run `pipeline.cli embed` after.
 """
 from __future__ import annotations
 
@@ -27,8 +27,7 @@ from rapidfuzz import fuzz
 from app.categories import CATEGORIES
 from app.hours import _parse
 from app.paths import DATA_DIR, MANIFEST_FILE, POIS_FILE, PROCESSED_DIR
-from pipeline.common import write_jsonl
-from pipeline.twogis import DEFAULT_SOURCE, key, load
+from pipeline.common import name_key as key, write_jsonl
 
 log = logging.getLogger("pipeline.sxodim")
 TODAY = dt.date(2026, 10, 20)
@@ -134,9 +133,8 @@ def main(crawl: str) -> dict:
     write_jsonl(SNAPSHOT, rows)
     pois = [json.loads(line) for line in POIS_FILE.open(encoding="utf-8") if line.strip()]
     facts = json.loads((PROCESSED_DIR / "place_facts.json").read_text())
-    gis = json.loads((PROCESSED_DIR / "twogis_layer.json").read_text())
     ours = _grid(pois)
-    others = _grid(list(load(DEFAULT_SOURCE)))  # existence check only: nothing is copied from the 2GIS export
+    others: dict = {}
     ov_file = DATA_DIR / "raw" / "overture_astana.json"
     if ov_file.exists():
         for r in json.loads(ov_file.read_text()):
@@ -151,8 +149,7 @@ def main(crawl: str) -> dict:
         if (m := _near(r, ours)):
             stats["matched"] += 1
             p = m[2]
-            if oh and p["id"] not in taken and not (p.get("opening_hours") or facts.get(p["id"], {}).get("opening_hours")
-                                                   or gis.get(p["id"], {}).get("opening_hours")):
+            if oh and p["id"] not in taken and not (p.get("opening_hours") or facts.get(p["id"], {}).get("opening_hours")):
                 taken.add(p["id"])
                 batch.append({"poi_id": p["id"], "name": p["name"], "status": "open", "opening_hours": oh,
                               "hours_source": r["url"], "hours_note": f"по данным sxodim.com (карточка от {mod})",

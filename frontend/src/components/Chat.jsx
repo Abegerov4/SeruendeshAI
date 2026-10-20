@@ -1,6 +1,7 @@
 import { t as tr, getLanguage } from "../i18n";
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { TimeLedger } from './PlaceTrust';
 import { ArrowUpRight, ArrowUp, MapPin, ChevronDown, Check, ShieldCheck, RotateCcw, Sparkles, Camera, MessageCircle, Navigation, Footprints, Car, Info, Mic, House, Map as MapIcon, Pencil, Clock3, ArrowRight } from 'lucide-react';
 import PlaceVisual from './PlaceVisual';
 import { hoursTone, shortHours } from './PlaceCard';
@@ -43,11 +44,12 @@ function ChatPlaces({ places, route, onRoute, onDetails, routed }) {
         <span className="chat-place-text"><b>{p.name}</b><small>{p.category}</small>
           <small className="chat-place-meta"><Mode size={12} />{p.distance} · {p.travel} {tr('мин')}<span className={'chat-hours ' + hoursTone(p)}>{shortHours(p)}</span></small></span>
       </button>
-      {(p.action || visitText(p)) && <p className="chat-place-plan">
+      {(p.action || visitText(p)) && <div className="chat-place-plan">
         {visitText(p) && <span className="chat-place-time"><Clock3 size={12} />{visitText(p)} {tr('мин на месте')}</span>}
         {p.action && <span><b>{tr('Что делать')}:</b> {p.action}</span>}
+        {!route?.order?.length && <TimeLedger place={p} compact />}
         {leg && <span className="chat-place-next"><ArrowRight size={12} />{tr('Дальше')}: {byId[leg.to_id].name} · {leg.travel_min} {tr(p.mode === 'car' ? 'мин в пути' : 'мин пешком')}</span>}
-      </p>}
+      </div>}
       <div className="chat-place-actions">
         <button className="primary" onClick={() => onRoute?.(p)}><Navigation size={14} />{tr(routed === p.id ? 'Маршрут на карте' : 'Маршрут')}</button>
         <button onClick={() => onDetails?.(p)}><Info size={14} />{tr('Подробнее')}</button>

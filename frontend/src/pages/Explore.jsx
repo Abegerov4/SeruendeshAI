@@ -13,7 +13,7 @@ import PlaceVisual from '../components/PlaceVisual';
 import {PocketButton} from '../components/PwaExperience';
 import { RouteTimeline } from '../components/PlanPanel';
 import { initialContext, forTypedMessage } from '../planner';
-import { recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY_LOCATION, routeTo, inAstana, formatDistance, LANDMARK_KEYS, routeIdeas, toPlan } from '../api';
+import { geocode, recommend, recommendPhoto, planTotals, roundCoord, externalMapLinks, MY_LOCATION, routeTo, inAstana, formatDistance, LANDMARK_KEYS, routeIdeas, toPlan } from '../api';
 import { scenarios } from '../data';
 
 const NO_PLACES = [];
@@ -58,15 +58,23 @@ const GEO_TEXT = {
 // a network fix (no GPS) can be kilometres off: used, but the user is told and can correct it
 const COARSE_M = 1500;
 
-function StartChooser({onChoose, onGeo, locating}) {
-  const [address, setAddress] = useState('');
+function StartChooser({onChoose, onGeo, locating, onClose}) {
+  const [address, setAddress] = useState(''), [finding, setFinding] = useState(false), [notFound, setNotFound] = useState(false);
   const inputId = useId();
+  async function findAddress() {
+    if (!address.trim() || finding) return;
+    setFinding(true); setNotFound(false);
+    const ok = await onChoose(address.trim(), false);
+    setFinding(false); setNotFound(!ok);
+  }
   return <section className="start-chooser" aria-label={tr('Откуда начнём?')}>
+    {onClose && <button type="button" className="start-close" onClick={onClose} aria-label={tr('Закрыть')} title={tr('Закрыть')}><X size={18} /></button>}
     <h2>{tr('Откуда начнём?')}</h2><p>{tr('Укажи место в Астане — подберём прогулку рядом.')}</p>
     <button className="start-geo" disabled={locating} onClick={onGeo}><LocateFixed size={17}/>{tr(locating ? 'Определяю точку старта…' : 'Моё местоположение')}</button>
     <div className="start-landmarks">{['Район Байтерека', 'Mega Silk Way', 'ЭКСПО'].map(label => <button key={label} onClick={() => onChoose(label, true)}>{tr(label)}</button>)}</div>
-    <form onSubmit={e => { e.preventDefault(); if(address.trim()) onChoose(address.trim(), false); }}>
-      <label htmlFor={inputId}>{tr('Или адрес / ориентир')}</label><div><input id={inputId} data-start-input value={address} onChange={e=>setAddress(e.target.value)} maxLength={160} placeholder={tr('Например: Кенесары 40')} autoComplete="off"/><button disabled={!address.trim()} aria-label={tr('Найти места')}><ArrowRight size={18}/></button></div>
+    <form onSubmit={e => { e.preventDefault(); findAddress(); }}>
+      <label htmlFor={inputId}>{tr('Или адрес / ориентир')}</label><div><input id={inputId} data-start-input value={address} onChange={e=>{setAddress(e.target.value); setNotFound(false);}} maxLength={160} placeholder={tr('Например: Кенесары 40')} autoComplete="off" aria-invalid={notFound || undefined}/><button disabled={!address.trim() || finding} aria-label={tr('Найти места')}><ArrowRight size={18}/></button></div>
+      {notFound && <p className="start-error" role="alert">{tr('Не нашёл такой адрес в Астане. Попробуй «улица, дом» или выбери ориентир.')}</p>}
     </form>
   </section>;
 }
@@ -144,6 +152,7 @@ export default function Explore({ saved, toggleSaved }) {
   const [selected, setSelected] = useState(null), [hovered, setHovered] = useState(null), [route, setRoute] = useState(true);
   const [tab, setTab] = useState(['chat','map','places','plan'].includes(new URLSearchParams(location.search).get('view')) ? new URLSearchParams(location.search).get('view') : phone ? 'chat' : 'map'), [sheetOpen, setSheetOpen] = useState(false), [resultVersion, setResultVersion] = useState(0);
   const [mascotMood, setMascotMood] = useState('wave'), [quip, setQuip] = useState(0), [starter, setStarter] = useState(null);
+  const [startClosed, setStartClosed] = useState(false);
   const [chatKey, setChatKey] = useState(0), [geoError, setGeoError] = useState(''), [why, setWhy] = useState(false);
   const [geo, setGeo] = useState('idle'), [focusRoute, setFocusRoute] = useState(null), [detailPlace, setDetailPlace] = useState(null), [routeError, setRouteError] = useState('');
   useEffect(() => {
@@ -185,6 +194,7 @@ export default function Explore({ saved, toggleSaved }) {
   async function withCoords(c) {
     if (c.location !== MY_LOCATION) return c;
     if (c.coords && Date.now() - (c.coords.at || 0) < 120000) return c;  // fresh enough
+    setGeo('asking');
     try {
       const coords = await locate();
       if (!inAstana(coords)) { setGeo('outside'); return { ...c, coords: null }; }
@@ -200,7 +210,7 @@ export default function Explore({ saved, toggleSaved }) {
   // tap on a place (chat card, details): the route from the user to it, drawn on the map
   // themed walks: computed for the current start; showing one puts its stops and route on the map
   async function fetchIdeas() {
-    const c = ctx;
+    const c = await withCoords(ctx); setCtx(c);  // the user asked: the position is requested (or refreshed) now
     if (c.location === MY_LOCATION && !c.coords) throw Error('no-start');  // no GPS and no chosen start: ask, never guess
     return routeIdeas(c, getLanguage());
   }
@@ -225,7 +235,8 @@ export default function Explore({ saved, toggleSaved }) {
     try {
       // a typed message (no override) wins over the settings for the time / transport it states itself
       const base = override || forTypedMessage(ctx, text);
-      const c = base;  // GPS is requested only by an explicit location action, never on first render or typing.
+      // GPS is asked for when the user sends a request (never on first render), refreshed every 2 minutes as they walk
+      const c = photo ? base : await withCoords(base);
       setCtx(c);
       const next = photo ? await recommendPhoto(photo, text, c, getLanguage(), { signal }) : await recommend(text, c, getLanguage(), { signal });
       if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
@@ -250,11 +261,19 @@ export default function Explore({ saved, toggleSaved }) {
   }, []);
 
   const lastQuery = plan?.query || tr(scenarios[0].query);
-  function chooseStart(value, landmark) {
-    const next = {...ctx, location: landmark ? value : MY_LOCATION, coords: null};
+  // a landmark is a known key; a typed address goes to the geocoder (Astana only, rounded to ~100 m), never to the AI
+  async function chooseStart(value, landmark) {
+    let next;
+    if (landmark) next = {...ctx, location: value, coords: null, address: null};
+    else {
+      const hit = await geocode(value).then(r => r.find(x => inAstana(x)), () => null);
+      if (!hit) return false;
+      next = {...ctx, location: value, coords: null, address: {label: value, lat: hit.lat, lon: hit.lon}};
+    }
     setCtx(next); setGeo('ok');
-    setStarter({text: landmark ? tr('Хочу прогулку рядом') : tr('Я возле {place}. Хочу прогулку рядом.', {place: value}), context: next, id: Date.now()});
+    setStarter({text: tr('Хочу прогулку рядом'), context: next, id: Date.now()});
     showTab('chat');
+    return true;
   }
   function startMood(i) { setStarter({ index: i, text: tr(scenarios[i].query), id: Date.now() }); showTab('chat'); document.getElementById('chat-input')?.focus({ preventScroll: true }); }
   function changeContext(c) { setCtx(c); if (c.location === MY_LOCATION && !c.coords) withCoords(c).then(setCtx); }
@@ -320,7 +339,7 @@ export default function Explore({ saved, toggleSaved }) {
   return <div className={"explore-page map-first reference-layout mobile-view-" + tab}>
     <main className={'explore-workspace tab-' + tab}>
       <div className="conversation-column"><div className="companion-intro"><div><span className="companion-eyebrow">{tr('ТВОЙ МЕСТНЫЙ ДРУГ ')}</span><h1>{tr('Твой AI-помощник для прогулок по Астане')}</h1><p>{tr('Найдём интересные места и построим маршрут. Куда пойдём сегодня?')}</p></div><button className="companion-mascot" onClick={greet} aria-label={tr('Поговорить с Серу')}><Mascot decorative priority mood={mascotMood} key={quip}/></button><span className="companion-quip" aria-live="polite">{tr(quips[quip % quips.length])}</span></div>
-        <Chat key={chatKey} notice={<><GeoNotice state={plan?.used?.location?.source && plan.used.location.source !== 'none' && geo !== 'asking' ? 'ok' : geo} label={plan?.used?.location?.label || (ctx.location === MY_LOCATION ? null : ctx.location)} onRetry={retryGeo} />{phone && !plan && !loading && <StartChooser onChoose={chooseStart} onGeo={retryGeo} locating={geo==='asking'}/>}</>} onRoute={showRouteTo} onDetails={setDetailPlace} routed={focusRoute?.poi_id} onIdeas={fetchIdeas} onShowIdea={showIdea} requestPlan={requestPlan} onMood={reactToSearch} starter={starter} location={ctx.location} startLabel={!pending && ctx.location === MY_LOCATION ? plan?.used?.location?.label : null} setLocation={l => changeContext({ ...ctx, location: l, coords: l === ctx.location ? ctx.coords : null })} onResult={() => { setChatOpen(false); showTab('places'); }} photoEnabled={photoOn} tools={<FilterMenu ctx={ctx} setTime={setTime} setTransport={setTransport} update={update} pending={pending} onApply={() => applyContext(ctx)} />} sheet={false} open={true} onOpen={() => showTab('chat')} onClose={() => setChatOpen(false)} />
+        <Chat key={chatKey} notice={<><GeoNotice state={plan?.used?.location?.source && plan.used.location.source !== 'none' && geo !== 'asking' ? 'ok' : geo} label={plan?.used?.location?.label || (ctx.location === MY_LOCATION ? null : ctx.location)} onRetry={retryGeo} />{phone && !plan && !loading && !startClosed && <StartChooser onChoose={chooseStart} onGeo={retryGeo} locating={geo==='asking'} onClose={() => setStartClosed(true)}/>}</>} onRoute={showRouteTo} onDetails={setDetailPlace} routed={focusRoute?.poi_id} onIdeas={fetchIdeas} onShowIdea={showIdea} requestPlan={requestPlan} onMood={reactToSearch} starter={starter} location={ctx.location} startLabel={!pending && ctx.location === MY_LOCATION ? plan?.used?.location?.label : null} setLocation={l => changeContext({ ...ctx, location: l, coords: l === ctx.location ? ctx.coords : null })} onResult={() => { setChatOpen(false); showTab('places'); }} photoEnabled={photoOn} tools={<FilterMenu ctx={ctx} setTime={setTime} setTransport={setTransport} update={update} pending={pending} onApply={() => applyContext(ctx)} />} sheet={false} open={true} onOpen={() => showTab('chat')} onClose={() => setChatOpen(false)} />
         <div className="seru-tip"><span className="tip-doodle" aria-hidden="true">✳</span><div><span>{tr("СОВЕТ ОТ СЕРУ")}</span><p>{tr("Лучшие планы иногда начинаются")}<br />{tr("с «а давай просто выйдем».")}</p></div><button onClick={() => startMood(Math.floor(Math.random() * scenarios.length))}>{tr("Удиви меня")}<ArrowUpRight size={14} /></button></div>
         {phone && <RouteOverview plan={plan} selected={selected} onSelect={choosePlace} loading={loading} previous={previous} onRestore={restore} onStart={startWalk}/>}
         <details className="sidebar-route" open={!phone || tab === 'plan'}><summary>{tr("ТВОЙ ПЛАН")}</summary><RouteTimeline plan={plan} previous={previous} onRestore={restore} onSelect={choosePlace} /><PocketButton plan={plan}/><button className="pocket-open" onClick={()=>window.dispatchEvent(new Event("seru-open-app"))}>{tr("Моя прогулка")} ↗</button></details><details className="context-disclosure"><summary>{tr("Что я учёл")}</summary><div className="used-context used-live"><span><ShieldCheck size={16} />{tr("Что я учёл")}</span>
@@ -337,7 +356,7 @@ export default function Explore({ saved, toggleSaved }) {
       <div className="discovery-column">
         <div className="mobile-tabs" role="tablist" aria-label={tr("Разделы прогулки")}>{[{ id: 'places', icon: Compass, label: tr('Места') }, { id: 'map', icon: Map, label: tr('Карта') }].map((t, k) => <button key={t.id} role="tab" tabIndex={tab === t.id ? 0 : -1} onKeyDown={e => { if (['ArrowLeft', 'ArrowRight'].includes(e.key)) { e.preventDefault(); const next = 1 - k; showTab(next ? 'map' : 'places', false); e.currentTarget.parentElement.children[next].focus(); } }} aria-selected={tab === t.id} aria-controls={t.id + '-section'} onClick={() => showTab(t.id, false)}><t.icon size={17} />{t.label}{t.id === 'places' && <span>{real.length}</span>}</button>)}</div>
         
-        {!loading && !plan && !loadError && <div className="map-welcome"><StartChooser onChoose={chooseStart} onGeo={retryGeo} locating={geo==='asking'}/></div>}
+        {!loading && !plan && !loadError && !startClosed && <div className="map-welcome"><StartChooser onChoose={chooseStart} onGeo={retryGeo} locating={geo==='asking'} onClose={() => setStartClosed(true)}/></div>}
         {!loading && plan && !real.length && <div className="empty-plan" role="status"><h3>{tr("Подходящих мест пока нет")}</h3><p>{plan.notes?.[0] || tr("Попробуй снять ограничения или увеличить время.")}</p><button onClick={() => { const next = { ...ctx, time: Math.max(120, ctx.time), indoor: false, noCoffee: false, accessible: false, closer: false, touched: { ...ctx.touched, time: true } }; setCtx(next); applyContext(next); }}>{tr("Расширить условия")}</button></div>}
         {loadError && !loading && !plan && <div className="empty-plan" role="alert"><h3>{tr('Не получилось загрузить подборку')}</h3><p>{tr(loadError)}</p><button onClick={() => requestPlan(lastQuery).catch(() => setLoadError('Сервер не ответил. Попробуй ещё раз.'))}>{tr('Повторить')}</button></div>}
         <section className="map-section" id="map-section" aria-label={tr("Карта прогулки")}>{(!phone || tab === 'map') && <CityMap tiles={tiles} places={places} origin={origin} route={plan?.route} showRoute={route} setRoute={setRoute} selected={selected} setSelected={id => { setSelected(id); setSheetOpen(false); }} hovered={hovered} resultVersion={resultVersion} focusRoute={focusRoute} routeVisible={(route && !!plan?.route) || !!focusRoute} onToggleRoute={toggleRoute} />}

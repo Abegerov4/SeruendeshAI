@@ -62,6 +62,8 @@ class RecommendRequest(BaseModel):
     lang: Lang | None = Field(None, description="UI language; null = detect from the query")
     channel: Channel | None = Field(None, description="Client surface; `telegram` gets short chat-style texts. Facts and safety rules are the same")
     location: LatLon | None = Field(None, description="Approximate user position (rounded). Server rounds again.")
+    location_label: str | None = Field(None, max_length=120, description="What the user typed for this start (an address the "
+                                       "client geocoded, e.g. «Кенесары 40»); shown back, never sent to the LLM")
     landmark: str | None = Field(None, max_length=80, description="Landmark key or name from GET /api/meta instead of GPS")
     home: HomePlace | None = Field(None, description="Saved home; used when the text says «от дома / рядом с домом» or use_home=true")
     use_home: bool | None = Field(None, description="Start from the saved home (the «🏠 Дом» choice)")
@@ -353,6 +355,7 @@ class HealthResponse(_Out):
 class FeedbackRequest(BaseModel):
     poi_id: str = Field(max_length=64)
     kind: Literal["closed", "wrong_hours", "not_as_described", "great", "other"]
+    lang: Lang | None = None
 
 
 class FeedbackResponse(_Out):

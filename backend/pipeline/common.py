@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import re
 import time
 from pathlib import Path
 from typing import Any
@@ -101,3 +102,16 @@ def write_jsonl(path: Path, rows: list[dict]) -> None:
 def read_jsonl(path: Path) -> list[dict]:
     with path.open(encoding="utf-8") as f:
         return [json.loads(line) for line in f if line.strip()]
+
+
+# words that say what a place is, not which one: «Кофейня «София»» and «София, кофейня» are the same place
+NAME_GENERIC = re.compile(r"\b(кофейня|кофехана|кафе|cafe|coffee|ресторан|мейрамхана|restaurant|бар|bar|паб|pub|пиццерия|"
+                          r"столовая|асхана|кондитерская|пекарня|бургерная|суши|шашлычная|чайхана|караоке|кинотеатр|"
+                          r"музей|галерея|парк|сквер|тц|трц|торговый центр|магазин|салон|клуб|club|центр)\b")
+
+
+def name_key(name: str) -> str:
+    """A place name for matching across sources: «Extaz, караоке-бар» -> «extaz»."""
+    from app.textnorm import fold
+    base = fold(name.split(",")[0])
+    return " ".join(NAME_GENERIC.sub(" ", re.sub(r"[«»\"'()]", " ", base)).split())

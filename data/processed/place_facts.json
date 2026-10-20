@@ -150,8 +150,11 @@
   "description_ru": "Национальная академическая библиотека, открытая в 2004 году в пятиэтажном здании на левом берегу рядом с Байтереком. В фонде более 1,3 млн документов, в том числе коллекция арабских рукописей.",
   "description_en": "The National Academic Library, opened in 2004 in a five-storey building on the left bank near Baiterek. Its holdings exceed 1.3 million items, including a collection of Arabic manuscripts.",
   "description_url": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%B0%D0%BA%D0%B0%D0%B4%D0%B5%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD%D0%B0",
-  "checked": "2026-10-19",
-  "confidence": "medium"
+  "checked": "2026-10-20",
+  "confidence": "low",
+  "opening_hours": "Mo-Fr 10:00-18:00",
+  "hours_url": "https://sxodim.com/astana/place/nacionalnyy-centr-rukopisey-i-redkih-knig",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-07)"
  },
  "osm:n11500914669": {
   "description_ru": "Национальный теннисный центр Beeline Arena в Астане; в 2026 году ITF присвоила ему «золотой статус» как центру подготовки теннисистов.",
@@ -203,8 +206,11 @@
   "description_ru": "Кафе турецкой сети MADO: мороженое-дондурма, пахлава, кюнефе и блюда турецкой кухни; по данным сети, заведение сертифицировано как халяль.",
   "description_en": "A café of the Turkish MADO chain serving dondurma ice cream, baklava, künefe and Turkish dishes; the chain states it is halal-certified.",
   "description_url": "https://mado.kz/ru/branches/kunayev",
-  "checked": "2026-10-19",
-  "confidence": "medium"
+  "checked": "2026-10-20",
+  "confidence": "low",
+  "opening_hours": "Mo-Su 10:00-20:00",
+  "hours_url": "https://sxodim.com/astana/place/mado",
+  "hours_note": "по данным sxodim.com (карточка от 2021-08-12)"
  },
  "osm:w917478479": {
   "description_ru": "Театр оперы и балета, открытый в 2013 году оперой «Биржан и Сара»; здание в неоклассическом стиле с казахскими мотивами. Большой зал на 1250 мест и камерный зал на 250 мест.",
@@ -500,8 +506,11 @@
    "free_entry": false
   },
   "features_url": "https://ticketon.kz/place/keruen-cinema",
-  "checked": "2026-10-19",
-  "confidence": "medium"
+  "checked": "2026-10-20",
+  "confidence": "low",
+  "opening_hours": "Mo-Su 10:00-24:00",
+  "hours_url": "https://sxodim.com/astana/place/keruen-cinema",
+  "hours_note": "по данным sxodim.com (карточка от 2021-12-20)"
  },
  "osm:n10168968308": {
   "description_ru": "Центр семейного отдыха Ailand на шоссе Коргалжын, 2: океанариум, анимационный театр «Джунгли», экзотариум, колесо обозрения, парк аттракционов и амфитеатр «Айдуман».",
@@ -547,15 +556,21 @@
    "kids_area": true
   },
   "features_url": "https://ru.wikipedia.org/wiki/Парк_Жеруйык",
-  "checked": "2026-10-19",
-  "confidence": "medium"
+  "checked": "2026-10-20",
+  "confidence": "low",
+  "opening_hours": "24/7",
+  "hours_url": "https://sxodim.com/astana/place/park-zheruyyk",
+  "hours_note": "по данным sxodim.com (карточка от 2022-03-08)"
  },
  "osm:w1296051287": {
   "description_ru": "Сад дружбы «Казахстан — Корея», открытый в 2017 году на средства правительства Республики Корея; в саду есть «Колокольня дружбы», зеркальный пруд, цветник и элементы традиционной корейской архитектуры.",
   "description_en": "The Kazakhstan–Korea Friendship Garden opened in 2017 with funding from the Korean government. It has a Bell Tower of Friendship, a mirror pond, a flower garden and traditional Korean architecture.",
   "description_url": "https://informburo.kz/novosti/koreya-podarila-astane-sad-s-prudom-v-znak-druzhby.html",
-  "checked": "2026-10-19",
-  "confidence": "medium"
+  "checked": "2026-10-20",
+  "confidence": "low",
+  "opening_hours": "24/7",
+  "hours_url": "https://sxodim.com/astana/place/koreyskiy-park",
+  "hours_note": "по данным sxodim.com (карточка от 2023-04-21)"
  },
  "osm:n4894937300": {
   "description_ru": "Национальный музей Республики Казахстан на площади Независимости — крупнейший музей Центральной Азии; экспозиции охватывают историю от каменного века до наших дней, символ музея — «Золотой человек».",
@@ -601,8 +616,11 @@
    "free_entry": false
   },
   "features_url": "https://ticketon.kz/place/astaninskiy-cirk",
-  "checked": "2026-10-19",
-  "confidence": "medium"
+  "checked": "2026-10-20",
+  "confidence": "low",
+  "opening_hours": "Sa-Su 08:30-18:30",
+  "hours_url": "https://sxodim.com/astana/place/stolichnyy-cirk",
+  "hours_note": "по данным sxodim.com (карточка от 2022-08-09)"
  },
  "osm:n455447680": {
   "description_ru": "Государственный академический русский театр драмы имени М. Горького на улице Желтоксан; ведёт историю с 1899 года, имя Горького носит с 1959 года, академический статус получил в 2012 году.",
@@ -1193,14 +1211,20 @@
   "description_en": "A small park with a memorial to soldiers who died in the Afghan war, the names of its veterans engraved on the monument. Benches and flower beds.",
   "description_url": "https://sxodim.com/astana/place/park-afganskoy-voyne",
   "checked": "2026-10-20",
-  "confidence": "medium"
+  "confidence": "low",
+  "opening_hours": "24/7",
+  "hours_url": "https://sxodim.com/astana/place/park-afganskoy-voyne",
+  "hours_note": "по данным sxodim.com (карточка от 2021-08-19)"
  },
  "osm:w108096984": {
   "description_ru": "Семейный торговый центр на бульваре Нуржол рядом с Байтереком, открыт в 2008 году; на третьем этаже — фудкорт.",
   "description_en": "A family shopping centre on Nurzhol Boulevard next to Baiterek, opened in 2008, with a food court on the third floor.",
   "description_url": "https://sxodim.com/astana/place/keruen",
   "checked": "2026-10-20",
-  "confidence": "medium"
+  "confidence": "low",
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/keruen",
+  "hours_note": "по данным sxodim.com (карточка от 2021-09-19)"
  },
  "sx:knizhnyy-muzey": {
   "description_ru": "Музей в Национальной академической библиотеке (открыт в 2015 году): редкие книги, древние рукописи, книги в кожаных переплётах и уголок учёного Заки Ахметова с его личной библиотекой.",
@@ -1216,13 +1240,6 @@
   "checked": "2026-10-20",
   "confidence": "medium"
  },
- "sx:zen": {
-  "description_ru": "Лобби-лаунж на первом этаже Talan Towers у главного входа, около 120 мест и ещё 50 в лобби-баре; проходят тематические вечера.",
-  "description_en": "A lobby lounge on the ground floor of Talan Towers by the main entrance, about 120 seats plus 50 in the lobby bar; themed evenings are held here.",
-  "description_url": "https://sxodim.com/astana/place/zen",
-  "checked": "2026-10-20",
-  "confidence": "medium"
- },
  "osm:n10798946230": {
   "description_ru": "Панорамный ресторан авторской кухни с открытой кухней, где гости видят работу поваров.",
   "description_en": "A panoramic restaurant with an open kitchen where guests watch the chefs at work; contemporary signature cuisine.",
@@ -1235,13 +1252,341 @@
   "description_en": "A 34,500 m² shopping and entertainment centre at Turan Avenue and Korgalzhyn Highway, opposite Central Park: shops, a supermarket, a kids' play park, a cinema and a food court.",
   "description_url": "https://sxodim.com/astana/place/keruencity",
   "checked": "2026-10-20",
-  "confidence": "medium"
+  "confidence": "low",
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/keruencity",
+  "hours_note": "по данным sxodim.com (карточка от 2021-10-14)"
  },
  "osm:n14100100183": {
   "description_ru": "Кафе южнокорейской и вегетарианской кухни: курица в остро-сладком соусе, кимпабы, супы и пуноппан — сладкая выпечка в форме рыбки из рисовой муки.",
   "description_en": "A South Korean and vegetarian café: chicken in sweet-and-spicy sauce, kimbap, soups and bungeoppang, a sweet fish-shaped rice-flour pastry.",
   "description_url": "https://sxodim.com/astana/place/peekaboo",
   "checked": "2026-10-20",
-  "confidence": "medium"
+  "confidence": "low",
+  "opening_hours": "Mo-Su 12:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/peekaboo",
+  "hours_note": "по данным sxodim.com (карточка от 2022-12-15)"
+ },
+ "ov:65180997-3eea-42": {
+  "opening_hours": "Mo-Su 19:00-05:00",
+  "hours_url": "https://sxodim.com/astana/place/incognita",
+  "hours_note": "по данным sxodim.com (карточка от 2023-04-19)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n5890174288": {
+  "opening_hours": "Tu-Th 17:00-02:00; Fr-Sa 17:00-04:00; Su 17:00-24:00; Su off",
+  "hours_url": "https://sxodim.com/astana/place/angliyskiy-pab-fuller-s",
+  "hours_note": "по данным sxodim.com (карточка от 2021-09-22)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n1843876243": {
+  "opening_hours": "Mo-Su 12:00-02:00",
+  "hours_url": "https://sxodim.com/astana/place/garage",
+  "hours_note": "по данным sxodim.com (карточка от без даты)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:5fab6b51-aa4a-4b": {
+  "opening_hours": "Mo-Su 12:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/restoran-mangal",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:e42e768a-9a35-40": {
+  "opening_hours": "Mo-Su 11:00-01:00",
+  "hours_url": "https://sxodim.com/astana/place/sh-tandyr",
+  "hours_note": "по данным sxodim.com (карточка от 2023-02-06)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n11131442513": {
+  "opening_hours": "Mo-Su 12:00-03:00",
+  "hours_url": "https://sxodim.com/astana/place/revival",
+  "hours_note": "по данным sxodim.com (карточка от 2022-10-26)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:272a21c4-14ee-49": {
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/garo",
+  "hours_note": "по данным sxodim.com (карточка от 2022-08-11)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n5784926956": {
+  "opening_hours": "Mo-Su 11:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/rich",
+  "hours_note": "по данным sxodim.com (карточка от 2022-04-04)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n10170946745": {
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/chaleur",
+  "hours_note": "по данным sxodim.com (карточка от 2022-02-21)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:ee6f1a0e-5cef-4f": {
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/rubai",
+  "hours_note": "по данным sxodim.com (карточка от 2023-09-14)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n4909151312": {
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/kafe-buhara",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-09)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n5866018459": {
+  "opening_hours": "Mo-Su 10:00-23:30",
+  "hours_url": "https://sxodim.com/astana/place/restorannyy-kompleks-demalys",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-09)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:80268ad9-cdc0-47": {
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_url": "https://sxodim.com/astana/place/the-india-gate-astana",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-10)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:b975c770-0a62-4e": {
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/la-mia-piazza",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-09)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:3c384c16-530a-4b": {
+  "opening_hours": "Mo-Su 09:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/restoran-horoshiy-den",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-09)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:c0772127-e901-43": {
+  "opening_hours": "Mo-Su 12:00-01:00",
+  "hours_url": "https://sxodim.com/astana/place/restoran-arnau-1",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-10)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:568dbd3f-b17e-47": {
+  "opening_hours": "Mo-Su 09:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/restoran-take-eat-easy",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-10)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:dde22397-f54c-47": {
+  "opening_hours": "Mo-Su 09:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/toqash-family",
+  "hours_note": "по данным sxodim.com (карточка от 2021-11-10)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n5244218857": {
+  "opening_hours": "Mo-Su 09:30-22:00",
+  "hours_url": "https://sxodim.com/astana/place/sladkaya-skazka",
+  "hours_note": "по данным sxodim.com (карточка от 2021-12-21)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n4932039758": {
+  "opening_hours": "Mo-Fr 12:00-22:00; Sa-Su 12:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/kafe-soyuz",
+  "hours_note": "по данным sxodim.com (карточка от 2021-06-16)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n2639622505": {
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/dvorik",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-13)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:b0ffe59f-8521-4a": {
+  "opening_hours": "Mo-Fr 07:30-17:00; Sa-Su 09:00-15:00",
+  "hours_url": "https://sxodim.com/astana/place/nurba-s-espresso",
+  "hours_note": "по данным sxodim.com (карточка от 2021-05-05)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:a6daccb9-2e88-4b": {
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/line-brew-reserve",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-13)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:17c5a94e-1fdb-46": {
+  "opening_hours": "Mo-Su 12:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/la-bottega",
+  "hours_note": "по данным sxodim.com (карточка от 2022-02-24)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n5966393585": {
+  "opening_hours": "Mo-Su 10:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/lugano",
+  "hours_note": "по данным sxodim.com (карточка от 2023-02-21)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:66bcefb1-4c48-49": {
+  "opening_hours": "Mo-Su 12:00-23:00",
+  "hours_url": "https://sxodim.com/astana/place/saporito",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-11)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n12917116702": {
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/ryba-pila",
+  "hours_note": "по данным sxodim.com (карточка от 2023-02-08)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:19a2719f-3e04-43": {
+  "opening_hours": "Mo-Su 09:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/home-macaron",
+  "hours_note": "по данным sxodim.com (карточка от 2021-11-12)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:4480f9e5-5029-4a": {
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/wine-club",
+  "hours_note": "по данным sxodim.com (карточка от 2022-10-03)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:6af9525e-aebc-4c": {
+  "opening_hours": "Mo-Fr 08:00-23:00; Sa-Su 09:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/la-creme",
+  "hours_note": "по данным sxodim.com (карточка от 2022-07-26)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n12917106289": {
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/tochka-kofe",
+  "hours_note": "по данным sxodim.com (карточка от 2023-01-26)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:17c01d0f-b2ba-4b": {
+  "opening_hours": "Mo-Su 12:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/wall-street-restaurant",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:6f11d104-f2f2-41": {
+  "opening_hours": "Mo-Su 12:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/bahroma",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:6d2800ef-7cfb-47": {
+  "opening_hours": "Mo-Su 12:00-01:00",
+  "hours_url": "https://sxodim.com/astana/place/restoran-the-chef",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n12854771763": {
+  "opening_hours": "Mo-Su 12:00-23:00",
+  "hours_url": "https://sxodim.com/astana/place/qazaq-gourmet",
+  "hours_note": "по данным sxodim.com (карточка от 2021-08-27)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:dda5fe40-ea2e-4a": {
+  "opening_hours": "Mo-Su 08:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/restoran-fergana",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n6404773385": {
+  "opening_hours": "Mo-Su 10:00-23:00",
+  "hours_url": "https://sxodim.com/astana/place/ocean-basket",
+  "hours_note": "по данным sxodim.com (карточка от 2022-04-21)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n4387005493": {
+  "opening_hours": "Mo-Fr 11:00-20:00; Sa 10:00-18:00",
+  "hours_url": "https://sxodim.com/astana/place/eagilik-books-coffee",
+  "hours_note": "по данным sxodim.com (карточка от 2022-11-29)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n2671060738": {
+  "opening_hours": "24/7",
+  "hours_url": "https://sxodim.com/astana/place/set-stolovyh-izbushka",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n5181103422": {
+  "opening_hours": "Mo-Fr 09:00-18:00; Sa-Su off",
+  "hours_url": "https://sxodim.com/astana/place/espresso-bar-the-kofe",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-11)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:w240909289": {
+  "opening_hours": "Mo-Su 12:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/korean-house",
+  "hours_note": "по данным sxodim.com (карточка от 2023-01-24)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n5181104322": {
+  "opening_hours": "Mo-Su 11:00-00:00",
+  "hours_url": "https://sxodim.com/astana/place/real",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:n3215326162": {
+  "opening_hours": "Mo-Su 12:00-02:00",
+  "hours_url": "https://sxodim.com/astana/place/restoran-myasnaya-lavka",
+  "hours_note": "по данным sxodim.com (карточка от 2023-01-24)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "ov:30989b72-196e-4d": {
+  "opening_hours": "Mo-Su 11:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/restoran-mumtaz",
+  "hours_note": "по данным sxodim.com (карточка от 2021-03-12)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:w239713764": {
+  "opening_hours": "Mo-Su 10:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/asia-park",
+  "hours_note": "по данным sxodim.com (карточка от 2023-03-02)",
+  "checked": "2026-10-20",
+  "confidence": "low"
+ },
+ "osm:w1449322354": {
+  "opening_hours": "Mo-Su 11:00-22:00",
+  "hours_url": "https://sxodim.com/astana/place/fame-city",
+  "hours_note": "по данным sxodim.com (карточка от 2023-01-26)",
+  "checked": "2026-10-20",
+  "confidence": "low"
  }
 }
