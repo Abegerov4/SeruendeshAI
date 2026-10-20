@@ -34,6 +34,11 @@
   "name": "Спорт-бар \"Финал\", БК FairPlay.",
   "was": "bar"
  },
+ "osm:n2826117627": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Chalet pub",
+  "was": "bar"
+ },
  "osm:n2826119301": {
   "exclude": "betting shop / casino: not a place the assistant recommends",
   "name": "БК FairPlay",
@@ -84,11 +89,22 @@
   "name": "БК FairPlay",
   "was": "bar"
  },
+ "osm:n2826184438": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Лигалайф",
+  "was": "bar"
+ },
  "osm:n5586173121": {
   "names": {
    "ru": "Kinopark 8 IMAX Сарыарка"
   },
   "reason": "name:ru was the mall's name «Сарыарка»; the cinema is inside it"
+ },
+ "osm:w1239171353": {
+  "exclude": "duplicate of osm:w240391776 (the same museum's building, 67 m; Wikidata and official hours stay)"
+ },
+ "osm:w242016673": {
+  "exclude": "duplicate of osm:w256948787 (Central Market)"
  },
  "osm:w242346779": {
   "exclude": "betting shop / casino: not a place the assistant recommends",
@@ -100,10 +116,16 @@
   "name": "Спорт-бар \"Премьер лига\", БК FairPlay.",
   "was": "bar"
  },
+ "osm:w498977612": {
+  "exclude": "duplicate of osm:w256948787 (Central Market)"
+ },
  "ov:0c02b09a-68a0-42": {
   "exclude": "music school: not a place to visit (Overture music_venue)",
   "name": "Музыкальная Академия",
   "was": "karaoke"
+ },
+ "ov:4526660e-f803-42": {
+  "exclude": "duplicate of osm:n4902165007 (Cathedral of Our Lady of Perpetual Help)"
  },
  "ov:58c721c3-f74f-45": {
   "category": "event_venue",
@@ -116,6 +138,9 @@
   "name": "Бейбітшілік және келісім сарайы",
   "reason": "concert hall / palace / event space by name (Overture music_venue)",
   "was": "karaoke"
+ },
+ "ov:7972273c-f99e-4c": {
+  "exclude": "duplicate of osm:w240391776 (State Military History Museum, 221 m)"
  },
  "ov:7b247e4e-9153-48": {
   "category": "event_venue",
@@ -134,6 +159,11 @@
   "name": "Nomad City Hall",
   "reason": "concert hall / palace / event space by name (Overture music_venue)",
   "was": "karaoke"
+ },
+ "ov:87e49ea8-2ac2-40": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Z бар",
+  "was": "bar"
  },
  "ov:89b596fd-37ba-41": {
   "category": "event_venue",
@@ -159,8 +189,20 @@
   "reason": "concert hall / palace / event space by name (Overture music_venue)",
   "was": "karaoke"
  },
+ "ov:af3d5a41-b852-49": {
+  "exclude": "duplicate of osm:w240860325 (Hazrat Sultan Mosque, 150 m)"
+ },
+ "ov:b1bbd733-b986-4e": {
+  "exclude": "Astana Opera placed 1.2 km from the real building (osm:w917478479)"
+ },
  "ov:c5360c10-78b2-42": {
   "exclude": "duplicate of osm:n2474931663 (Arman cinema, Asia Park, same website, 60 m)"
+ },
+ "ov:ca75200e-4588-49": {
+  "exclude": "duplicate of osm:n2635598135 (ТД «Сункар», 48 m)"
+ },
+ "ov:d67b3cc9-86a3-48": {
+  "exclude": "duplicate of osm:w256948787 (Central Market)"
  },
  "ov:d8618d37-bebb-42": {
   "exclude": "duplicate of osm:n4894937300 (National Museum as «Historical Museum Astana», 194 m)"
@@ -191,11 +233,22 @@
   "reason": "concert hall / palace / event space by name (Overture music_venue)",
   "was": "karaoke"
  },
+ "ov:e91139d7-7cf8-40": {
+  "exclude": "duplicate of osm:n4902165007 (Cathedral of Our Lady of Perpetual Help)"
+ },
+ "ov:e9514b43-d87e-49": {
+  "exclude": "Hazrat Sultan Mosque placed 3.9 km from the real one (osm:w240860325)"
+ },
  "ov:eaa965ee-adf8-43": {
   "category": "event_venue",
   "name": "Конгресс-холл / Congress Hall",
   "reason": "concert hall / palace / event space by name (Overture music_venue)",
   "was": "karaoke"
+ },
+ "ov:f4379dc9-5bc6-49": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Бундеслига / Fair Play",
+  "was": "bar"
  },
  "ov:f666893a-8296-4e": {
   "exclude": "duplicate of osm:n4894937300 (National Museum, transliterated Overture name)"

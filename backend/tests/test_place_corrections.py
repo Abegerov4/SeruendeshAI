@@ -54,3 +54,10 @@ def test_twogis_features_fill_unknowns_only():
     assert a["features"]["laptop_friendly"] is True and a["features"]["wheelchair"] == "limited"  # a ramp is partial
     assert a["cuisine"] == "italian"
     assert b["features"]["wheelchair"] == "yes" and b["features"]["halal"] is True and b["cuisine"] == "georgian"
+
+
+def test_bookmaker_sports_bars_are_excluded_by_website():
+    bar = {"id": "osm:3", "name": "Лигалайф", "category": "bar", "website": "https://www.fairplay.kz/"}
+    assert corrections.decide(bar, None)["exclude"]
+    cafe = {"id": "osm:4", "name": "Panda Lamian", "category": "cafe", "website": "https://www.fairplay.kz/"}
+    assert corrections.decide(cafe, None) is None  # a café keeps its card; only the wrong link goes (link check)

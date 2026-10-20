@@ -34,6 +34,7 @@ RESTAURANT = re.compile(r"ресторан|restaurant|мейрамхана", re.
 CAFE = re.compile(r"\bкафе\b|\bcafe\b", re.I)
 BETTING = re.compile(r"\bБК\b|букмекер|betting|fonbet|фонбет|olimpbet|олимпбет|parimatch|париматч|1xbet|melbet|"
                      r"мелбет|tennisi|тенниси|casino|казино", re.I)
+BETTING_SITE = re.compile(r"fairplay\.kz|fonbet|olimpbet|parimatch|1xbet|melbet|tennisi\.kz", re.I)  # a sports bar of a bookmaker
 # 2GIS rubric -> our category, for places whose map category is in doubt
 RUBRICS = [("Караоке", "karaoke"), ("Музеи", "museum"), ("Театры", "theatre"), ("Филармония", "theatre"),
            ("Концертные залы", "event_venue"), ("Аренда концертных площадок", "event_venue"),
@@ -45,6 +46,18 @@ MANUAL = {
     "ov:d8618d37-bebb-42": {"exclude": "duplicate of osm:n4894937300 (National Museum as «Historical Museum Astana», 194 m)"},
     "ov:dd3617a1-a856-43": {"exclude": "duplicate of osm:n4894937300 (National Museum under a Turkish name, 221 m)"},
     "ov:c5360c10-78b2-42": {"exclude": "duplicate of osm:n2474931663 (Arman cinema, Asia Park, same website, 60 m)"},
+    # reviewed 2026-10-20: Overture copies of unique venues, two of them placed far from the real building
+    "ov:af3d5a41-b852-49": {"exclude": "duplicate of osm:w240860325 (Hazrat Sultan Mosque, 150 m)"},
+    "ov:e9514b43-d87e-49": {"exclude": "Hazrat Sultan Mosque placed 3.9 km from the real one (osm:w240860325)"},
+    "ov:b1bbd733-b986-4e": {"exclude": "Astana Opera placed 1.2 km from the real building (osm:w917478479)"},
+    "ov:7972273c-f99e-4c": {"exclude": "duplicate of osm:w240391776 (State Military History Museum, 221 m)"},
+    "osm:w1239171353": {"exclude": "duplicate of osm:w240391776 (the same museum's building, 67 m; Wikidata and official hours stay)"},
+    "ov:4526660e-f803-42": {"exclude": "duplicate of osm:n4902165007 (Cathedral of Our Lady of Perpetual Help)"},
+    "ov:e91139d7-7cf8-40": {"exclude": "duplicate of osm:n4902165007 (Cathedral of Our Lady of Perpetual Help)"},
+    "ov:ca75200e-4588-49": {"exclude": "duplicate of osm:n2635598135 (ТД «Сункар», 48 m)"},
+    "osm:w242016673": {"exclude": "duplicate of osm:w256948787 (Central Market)"},
+    "osm:w498977612": {"exclude": "duplicate of osm:w256948787 (Central Market)"},
+    "ov:d67b3cc9-86a3-48": {"exclude": "duplicate of osm:w256948787 (Central Market)"},
     "osm:n5586173121": {"names": {"ru": "Kinopark 8 IMAX Сарыарка"},
                         "reason": "name:ru was the mall's name «Сарыарка»; the cinema is inside it"},
 }
@@ -65,7 +78,7 @@ def _near(p: dict, records: list[dict]) -> dict | None:
 
 def decide(p: dict, gis: dict | None) -> dict | None:
     name = " ".join([p["name"], *(p.get("names") or {}).values()])
-    if BETTING.search(p["name"]):
+    if BETTING.search(p["name"]) or (BETTING_SITE.search(p.get("website") or "") and p["category"] in ("bar", "nightclub")):
         return {"exclude": "betting shop / casino: not a place the assistant recommends"}
     if p["category"] != "karaoke" or KARAOKE.search(name):
         return None
@@ -95,7 +108,7 @@ def main(source: str = DEFAULT_SOURCE) -> dict:
     for p in pois:
         if p["id"] in out:
             continue
-        doubtful = p["category"] == "karaoke" or BETTING.search(p["name"])
+        doubtful = p["category"] == "karaoke" or BETTING.search(p["name"]) or BETTING_SITE.search(p.get("website") or "")
         if doubtful and (fix := decide(p, _near(p, records) if p["category"] == "karaoke" else None)):
             out[p["id"]] = {**fix, "name": p["name"], "was": p["category"]}
     OUT_FILE.write_text(json.dumps(out, ensure_ascii=False, indent=1, sort_keys=True) + "\n")

@@ -1167,5 +1167,15 @@
   "hours_note": "по данным sxodim.com (карточка от 2021-12-21)",
   "checked": "2026-10-20",
   "confidence": "low"
+ },
+ "osm:n2826095151": {
+  "checked": "2026-10-20",
+  "drop_website": true,
+  "website_problem": "the link is a bookmaker's site, not this café's (OSM import batch of FairPlay clubs)"
+ },
+ "osm:n2826173218": {
+  "checked": "2026-10-20",
+  "drop_website": true,
+  "website_problem": "the link is a bookmaker's site, not this restaurant's (OSM import batch of FairPlay clubs)"
  }
 }
