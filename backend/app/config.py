@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     llm_parse_model: str = "gpt-6-luna"
     llm_service_tier: str = "fast"  # "" = default tier; applies to the first model only
     llm_timeout_s: float = 10.0  # the visit plan is longer than a one-line reason; the UI waits up to 25 s
-    parse_timeout_s: float = 3.0
+    parse_timeout_s: float = 4.0  # measured 1.7–2.5 s; at 3 s a cold call lost the whole understanding of the request
     llm_enabled: bool = True
     llm_warmup_enabled: bool = False  # opt in: startup probes incur provider charges
     photo_timeout_s: float = 12.0  # vision call of POST /api/recommend/photo

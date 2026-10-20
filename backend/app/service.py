@@ -25,7 +25,7 @@ from app.embedder import Embedder
 from app.evidence import accepted_details
 from app.features import cuisine_labels, describe, feature_labels
 from app.generate import GenOut, card, context_block, generate, strip_itinerary, template_todo, template_why, validate
-from app.geo import WalkGraph, hav_m, in_astana, round_coord
+from app.geo import WalkGraph, car_minutes, fallback_walk_m, hav_m, in_astana, round_coord
 from app.i18n import t, weekday
 from app.hours import opening_status
 from app.llm import client as llm_client
@@ -34,7 +34,7 @@ from app.llm import usage_begin, usage_summary
 from app.planner import plan_route, route_wanted
 from app.guards import mask_location, mask_pii, strip_injection
 from app.query import (HOME_CUE, NAV_INTENT, PARSE_SYSTEM, LLMParsed, Parsed, deadline_minutes, is_off_topic, merge_llm, parse_rules,
-                       resolve_landmark, split_mentions, WALK_STOPS)
+                       resolve_landmark, split_mentions, WALK_STOPS, find_landmark_in_text, place_candidates)
 from app.retrieval import Cand, Plan, rank
 from app.schemas import RecommendRequest
 from app.service_answers import select_services, answer_services
@@ -260,6 +260,15 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
     parsed = merge_llm(rules, llm_parsed)
     intent_p = await intent_task if intent_task else None
     intent_applied = apply_intent(parsed, intent_p, parse_answered=llm_parsed is not None)
+    # where the user wants to go, as the model read the whole sentence («маршрут до NU» -> «Nazarbayev University»),
+    # found in our base. It wins over the dictionary's guess from the words around a name («учусь в AITU» is not
+    # where they are going); with no model answer the dictionary's reading stands.
+    if parsed.destination_name or parsed.destination_text:
+        target = await find_destination(rt.store, parsed, req.query or "")
+        if target is not None and not any(_same_place(target, d) for d in dest_entries):
+            dest_entries = [target]
+        if target is not None and text_hit is not None and _same_place(target, text_hit):
+            text_hit = None  # what looked like the start is where to go
     weather = await wx_task if wx_task else None
     if req.weather is not None:
         w = req.weather
@@ -290,8 +299,17 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
     if off_topic:
         return _empty_response(rt, req, parsed, now, lang, t0, notes, t("off_topic", lang), meter[mark:], parse_model,
                                off_topic=True)
+    # «маршрут до X» to a specific place we do not have: say so instead of offering a walk somewhere else
+    # (a kind of place, «до кофейни», is not a missing destination)
+    named = parsed.destination_name or parsed.destination_text
+    if (not dest_entries and named and NAV_INTENT.search(fold(req.query or ""))
+            and not parse_rules(parsed.destination_text or parsed.destination_name or "").categories):
+        return _empty_response(rt, req, parsed, now, lang, t0, notes,
+                               t("nav_target_unknown", lang, name=(parsed.destination_text or parsed.destination_name)[:80]),
+                               meter[mark:], parse_model)
 
     origin, origin_info, hit = _resolve_origin(req, parsed, rt.store, notes, lang, text_hit, dest_entries)
+    navigate_wish = bool(NAV_INTENT.search(fold(req.query or "")))
     exclude_keys: set[str] = set()
     target_ids = _target_ids(rt.store, dest_entries)
     view_decks = "view" in parsed.needs and not dest_entries
@@ -299,6 +317,9 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
         # Astana's observation decks: Bayterek (97 m), the EXPO sphere and the top of the Pyramid
         target_ids |= _target_ids(rt.store, [g for k in VIEW_DECKS if (g := _landmark_by_key(rt.store, k))])
     navigate = bool(target_ids) and bool(NAV_INTENT.search(fold(req.query or "")))  # directions to a named place
+    # a place we know only as a point on the map (a university like NU, a hotel): directions to the point itself
+    anchor = dest_entries[0] if (not target_ids and dest_entries and NAV_INTENT.search(fold(req.query or ""))) else None
+    navigate = navigate or anchor is not None
     if extra_targets:
         target_ids |= _target_ids(rt.store, [g for k in extra_targets if (g := _landmark_by_key(rt.store, k))])
     if hit and origin_info["source"] in ("text_landmark", "landmark"):
@@ -328,8 +349,10 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
     dl = deadline_minutes(parsed, now) if parsed.deadline_kind else None
     if origin is None:
         outside = t("note_outside_city", lang)  # the position came, it is just not in Astana: say that, once
+        ask = (t("ask_start_for", lang, name=entry_name(rt.store, dest_entries[0], lang)) if dest_entries and navigate_wish
+               else t("ask_location", lang))  # «до NU» understood, the start is not: say what was understood
         return _empty_response(rt, req, parsed, now, lang, t0, [n for n in notes if n != outside],
-                               outside if outside in notes else t("ask_location", lang), meter[mark:], parse_model)
+                               outside if outside in notes else ask, meter[mark:], parse_model)
     if dl is not None and parsed.deadline_kind in ("flight", "airport_arrival") and airport and \
             float(hav_m(origin[0], origin[1], airport["lat"], airport["lon"])) < 4000 and req_mode is None:
         mode = out_mode = "car"  # nothing is walkable from the terminal
@@ -416,7 +439,12 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
             seen = {c.poi["id"] for c in food}
             cands = food[:2] + [c for c in walk_cands if c.poi["id"] not in seen] + food[2:]
             plan.max_food_stops = 1
-        if navigate:
+        if anchor is not None:
+            c = anchor_cand(rt, anchor, plan, ctx, lang)
+            cands, considered, target_ids = [c], [], {c.poi["id"]}
+            if mode == "walk" and c.travel_min > 60:
+                notes.append(t("note_far_walk", lang, m=int(c.travel_min)))
+        elif navigate:
             cands = [c for c in cands if c.poi["id"] in target_ids][:1] or cands
         elif dest_entries and target_ids and not any(c.poi["id"] in target_ids for c in cands):
             # the place the user wants to go to is past a walk's reach: show the way there with its honest time
@@ -662,6 +690,7 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
                               "deadline": parsed.deadline_kind, "deadline_in_min": dl, "flight_type": parsed.flight_type,
                               "deadline_buffer_min": plan.deadline_buffer, "landmark": parsed.landmark_text,
                               "night": parsed.night, "surprise": parsed.surprise,
+                              "destination": parsed.destination_name or parsed.destination_text,
                               "parser": parsed.source + (f" ({parse_model})" if parse_model else "")},
         "relaxations": plan.relaxations, "funnel": plan.funnel, "data_sources": ds,
         "data_built_at": rt.store.manifest.get("built_at"), "privacy": t("privacy", lang),
@@ -691,7 +720,70 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
     return resp
 
 
+# --- places known only as a point on the map (no card in the catalogue) ------------------------------------
+
+def _same_place(a: dict, b: dict) -> bool:
+    return a is b or fold(a["name"]) == fold(b["name"]) or float(hav_m(a["lat"], a["lon"], b["lat"], b["lon"])) < 300
+
+
+def anchor_id(g: dict) -> str:
+    return "lm:" + g["landmark_key"] if g.get("landmark_key") else f"pt:{g['lat']:.5f},{g['lon']:.5f}"
+
+
+def anchor_point(store: Store, pid: str) -> dict | None:
+    """{id, name, lat, lon} for an anchor id from anchor_id (POST /api/route draws the way there)."""
+    if pid.startswith("lm:"):
+        g = _landmark_by_key(store, pid[3:])
+        return {"id": pid, "name": g["name"], "lat": g["lat"], "lon": g["lon"]} if g else None
+    if pid.startswith("pt:"):
+        try:
+            lat, lon = (float(x) for x in pid[3:].split(","))
+        except ValueError:
+            return None
+        g = min(store.gazetteer, key=lambda e: float(hav_m(lat, lon, e["lat"], e["lon"])), default=None)
+        name = g["name"] if g and float(hav_m(lat, lon, g["lat"], g["lon"])) < 30 else ""
+        return {"id": pid, "name": name, "lat": lat, "lon": lon} if in_astana(lat, lon) else None
+    return None
+
+
+def anchor_cand(rt: Runtime, g: dict, plan: Plan, ctx: Context, lang: str) -> Cand:
+    """The one card of a directions answer to a place we know only as a point («маршрут до NU»): the distance
+    along the streets like any card, hours unknown (the point carries none)."""
+    lat0, lon0 = plan.origin
+    straight = float(hav_m(lat0, lon0, g["lat"], g["lon"]))
+    if plan.mode == "car":
+        dist, mins = straight * 1.35, car_minutes(straight, ctx.now.hour, ctx.snowing, plan.transit)[1]
+    else:
+        dist = None
+        if rt.graph is not None and rt.graph.covers(lat0, lon0) and rt.graph.covers(g["lat"], g["lon"]):
+            D, _, _ = rt.graph.from_source(lat0, lon0, max(straight * 3, 3000))
+            sd, si = rt.graph.snap(g["lat"], g["lon"])
+            if np.isfinite(D[int(si[0])]) and float(sd[0]) <= 500:
+                dist = float(D[int(si[0])] + sd[0])
+        if dist is None:
+            dist = fallback_walk_m(rt.store.river, lat0, lon0, g["lat"], g["lon"])
+        mins = int(np.ceil(dist / plan.m_per_min))
+    poi = {"id": anchor_id(g), "name": g["name"], "category": "landmark", "lat": g["lat"], "lon": g["lon"],
+           "sources": ["osm"], "features": {}, "names": {}, "popularity": 0.3}
+    arrive = ctx.local_naive + dt.timedelta(minutes=int(mins))
+    return Cand(idx=-1, poi=poi, distance_m=int(dist), travel_min=max(1, int(mins)), visit_min=20, visit_range=(15, 30),
+                opening=opening_status(poi, arrive, 20, lang, ctx.holiday))
+
+
 # --- the Decisions API as the auxiliary judge (app/decisions.py) -----------------------------------------
+
+async def find_destination(store: Store, parsed: Parsed, query: str) -> dict | None:
+    """The place the model says the user wants to reach («NU» -> «Nazarbayev University»), found in our base.
+    Several distinct places with a close name -> the Decisions API picks one (or says it is none of them)."""
+    exact = next((g for name in (parsed.destination_text, parsed.destination_name)
+                  if name and (g := find_landmark_in_text(name, store.gazetteer))), None)
+    cands = place_candidates(parsed.destination_name or parsed.destination_text or "", store.gazetteer)
+    if len(cands) >= 2 and cands[0][0] - cands[1][0] < 6 and judge.enabled():
+        picked, answered = await judge.pick_place(query, [g for _, g in cands])
+        if answered:
+            return picked
+    return exact or (cands[0][1] if cands else None)
+
 
 INTENT_STRONG = 0.92  # the parse answered: the judge only adds what it is nearly sure the parse missed
 INTENT_ALONE = 0.8    # the parse did not answer in time: the judge's answers stand in for it
@@ -884,7 +976,8 @@ def _item(c: Cand, why: str, todo: str, visit: int, rank_i: int, plan: Plan, lan
         "website": p.get("website") if (p.get("website") or "").startswith("http") else None,
         # extensions
         "rank": rank_i, "match": round(c.match, 2) if c.match is not None else None,
-        "category_detail": p["category"], "category_label": label(p["category"], lang),
+        "category_detail": p["category"],
+        "category_label": {"ru": "Ориентир", "kk": "Бағдар", "en": "Landmark"}[lang] if c.idx < 0 else label(p["category"], lang),
         "icon": CATEGORIES[p["category"]].icon, "walk_distance_m": int(round(c.distance_m / 10) * 10),
         "travel_mode": out_mode, "visit_suggested_min": visit, "leave_by": c.leave_by, "return_min": c.return_min or 0,
         "opening": {**{k: c.opening.get(k) for k in ("status", "confidence", "label", "raw", "next_change")},

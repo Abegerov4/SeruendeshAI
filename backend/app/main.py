@@ -40,7 +40,7 @@ from app.query import detect_lang, resolve_landmark
 from app.schemas import (RouteRequest, RouteToPlace, CategoryOut, FeedbackRequest, FeedbackResponse, HealthResponse, LandmarkOut, MetaFeatures,
                          MapTiles, MetaResponse, PhotoRecommendResponse, PoiBrief, RecommendRequest, RecommendResponse)
 from app.context import parse_now
-from app.service import Runtime, entry_name, recommend, snap_pois
+from app.service import Runtime, anchor_point, entry_name, recommend, snap_pois
 from app.store import display_name, load_store
 
 settings = get_settings()
@@ -303,9 +303,9 @@ async def route_to_place(req: RouteRequest, request: Request):
     rt = RT["rt"]
     st = rt.store
     i = st.by_id.get(req.poi_id)
-    if i is None:
+    p = st.pois[i] if i is not None else anchor_point(st, req.poi_id)  # a place known only as a point («маршрут до NU»)
+    if p is None:
         return JSONResponse({"error": "unknown_poi"}, status_code=404)
-    p = st.pois[i]
     if req.location and in_astana(req.location.lat, req.location.lon):
         origin, source = (round_coord(req.location.lat), round_coord(req.location.lon)), "gps_rounded"
     else:

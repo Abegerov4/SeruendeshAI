@@ -34,6 +34,10 @@ class LLMParsed(BaseModel):
     group_size: int | None
     tourist: bool | None
     landmark_text: str | None = Field(description="Place the user says they are near, verbatim (e.g. 'Mega Silk Way')")
+    destination_text: str | None = Field(None, description="A specific named place the user wants to get to, verbatim "
+                                         "(e.g. 'NU', 'Хан Шатыр'); null for a kind of place")
+    destination_name: str | None = Field(None, description="That place's full official name as you know it "
+                                         "('NU' -> 'Nazarbayev University'); null if not sure it is a real place in Astana")
     deadline_kind: Literal["flight", "airport_arrival", "train", "meeting"] | None
     deadline_in_min: int | None = Field(description="Minutes until the user must leave/depart, if stated")
     deadline_clock: str | None = Field(description="HH:MM of the deadline if a clock time is stated")
@@ -61,6 +65,11 @@ Rules:
 - "be at the airport in 2 hours" -> deadline_kind=airport_arrival, deadline_in_min=120. An airport mention without explicit arrival means flight departure.
 - landmark_text: ONLY the place where the user is right now ("я у X", "возле X", "X-тың жанында", "I'm at X"), copied as written.
   A place the user wants to go to ("хочу в X", "как попасть в X", "X-қа барғым келеді") is NOT landmark_text: keep it in search_text_ru.
+- destination_text: ONLY a specific named place the user wants to get to or go into ("маршрут до NU", "как попасть в Хан Шатыр",
+  "хочу в Байтерек", "route to AITU"), copied as written; null for a kind of place ("до кофейни", "в парк", "музей").
+  destination_name: that place's full official name as you know it ("NU" -> "Nazarbayev University", "ЕНУ" -> "Евразийский
+  национальный университет имени Л. Н. Гумилёва", "AITU" -> "Astana IT University", "меги" -> "Mega Silk Way"); null if you are
+  not sure it is a real place in Astana. Never invent a place.
 - night=true for late-evening/night requests ("ночью", "түнде", "late night", "последние пару часов" at night).
 - search_text_ru and keywords_ru: always in Russian, even for Kazakh/English input.
 - lang: language of the user's text (kk if it contains Kazakh words/letters).
@@ -99,6 +108,8 @@ class Parsed:
     group_size: int | None = None
     tourist: bool = False
     landmark_text: str | None = None
+    destination_text: str | None = None  # a named place to go to, as the model read it («NU»)
+    destination_name: str | None = None  # …and its official name from the model's own knowledge («Nazarbayev University»)
     deadline_kind: str | None = None
     deadline_in_min: int | None = None
     deadline_clock: str | None = None
@@ -378,6 +389,7 @@ def merge_llm(rules: Parsed, llm: LLMParsed | None) -> Parsed:
     p.group_size = llm.group_size or rules.group_size
     p.tourist = bool(llm.tourist) or rules.tourist
     p.landmark_text = llm.landmark_text or rules.landmark_text
+    p.destination_text, p.destination_name = llm.destination_text, llm.destination_name
     p.deadline_kind = rules.deadline_kind or llm.deadline_kind
     p.flight_type = rules.flight_type
     p.deadline_in_min = rules.deadline_in_min if rules.deadline_in_min is not None else llm.deadline_in_min
@@ -553,6 +565,29 @@ def find_landmark_in_text(text: str, gazetteer: list[dict]) -> dict | None:
             if best is None or score > best[0]:
                 best = (score, g)
     return best[1] if best else None
+
+
+def place_candidates(name: str, gazetteer: list[dict], k: int = 4) -> list[tuple[float, dict]]:
+    """Distinct places whose names match a free-text name (the model's official name for «NU»), best first.
+    Whole-name similarity only (a shared word like «university» is not a match); entries of one place
+    (a curated landmark and its POI) count once."""
+    from app.geo import hav_m
+    q = fold(name or "")
+    if len(q) < 3:
+        return []
+    scored = []
+    for g in gazetteer:
+        sc = max((max(fuzz.ratio(q, key), fuzz.token_sort_ratio(q, key)) for key in g["keys"] if len(key) >= 3), default=0)
+        if sc >= 85:
+            scored.append((sc + (5 if g["kind"] == "landmark" else 0), g))
+    out: list[tuple[float, dict]] = []
+    for sc, g in sorted(scored, key=lambda x: -x[0]):
+        if any(float(hav_m(g["lat"], g["lon"], h["lat"], h["lon"])) < 400 for _, h in out):
+            continue
+        out.append((sc, g))
+        if len(out) >= k:
+            break
+    return out
 
 
 def resolve_landmark(name: str, gazetteer: list[dict]) -> dict | None:
