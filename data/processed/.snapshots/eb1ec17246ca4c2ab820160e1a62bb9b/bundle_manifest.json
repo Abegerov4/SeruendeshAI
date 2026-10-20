@@ -7,8 +7,8 @@
       "bytes": 55223666
     },
     "pois_leisure.json": {
-      "sha256": "7df1f00eba850bfbe91d372640c59e15f1b43fc44e1bb080c47b534fac7202ec",
-      "bytes": 21892107
+      "sha256": "ded6574eb5b9cc2131bf67e2ecf6dad502a2c9afbb859a6ea48d68d339a5f8eb",
+      "bytes": 17721837
     },
     "source_manifest.json": {
       "sha256": "4ee22a20c31205dd78b5f470eb70aa1643c99a3aec5d883d34b90cb8b58a8019",
@@ -23,8 +23,8 @@
       "bytes": 1475490
     },
     "fact_reviews.json": {
-      "sha256": "ca9546b5fda29d706ce0178c09f103f1c2f8cf7de2adf8c71a1490d5c6f3afc7",
-      "bytes": 68171
+      "sha256": "de339a3c4032cad1c0130205126c422871e7955e80b36531795f61d5b6cb5fa4",
+      "bytes": 51811
     },
     "gazetteer.json": {
       "sha256": "9d7fa5e05f0d7f0c5658a4b36db83732bd2be7490d992048165e2d7ade9719ef",
@@ -51,8 +51,8 @@
       "bytes": 48056
     },
     "quarantine.json": {
-      "sha256": "93a5f9fcb764df2d5ba344adfd93e2043a7e42d6918a521f3c0022f929e64f0a",
-      "bytes": 7429
+      "sha256": "2bab6e3192d13daeded846f62dead0f3f36fafe7a183154337647b74b9db2dd8",
+      "bytes": 5943
     },
     "quality_overrides.json": {
       "sha256": "ab8d95e90dbb870c896e65df8707d4c34032106341653c6cfe01ffb540f6d4bd",
@@ -63,8 +63,8 @@
       "bytes": 2588
     },
     "place_details.json": {
-      "sha256": "5b67115e1e33c569babb8fe60dbf70449ee544edc80482e6298ebf50fb2a7a03",
-      "bytes": 10751053
+      "sha256": "dafa27ea450437c65efa46c252f6d76d93783e9137369c385f593242affc19d2",
+      "bytes": 6602220
     },
     "city_services.json": {
       "sha256": "cd79dbdeb222b57dc801f0a3b43e0ef15a43cc43bf9875ac388a6a9dfbf7c9e5",

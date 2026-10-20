@@ -2,8 +2,9 @@
 
 sxodim's terms allow non-commercial use with an active link to the site (intro and §7.1 of
 sxodim.com/polzovatelskoe-soglashenie); robots.txt allows crawling. Every fact taken from it keeps its page URL.
-The crawl (name, address, coordinates, the hours line and the card's dateModified) is kept as a source snapshot
-in data/sources/sxodim/. Two outputs:
+The crawl (name, address, coordinates, the hours line and the card's dateModified) is kept locally in
+data/sources/sxodim/ and is git-ignored: the terms allow using the facts with a link, not republishing sxodim's
+catalogue, so only the facts we use (each with its card URL) are in the repo. Two outputs:
 - data/sources/place_research/batch_8_output.json: hours for our places that have none (matched ≤150 m with the
   same distinctive name), fed to pipeline.place_facts like any other research wave. Cards are often years old:
   a card older than a year gives confidence «low», and the note says the card's date;

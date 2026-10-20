@@ -7438,46 +7438,8 @@
     },
     {
       "canonical_id": "osm:node/12135856708",
-      "identity": {
-        "canonical_name": "Coffee Hub",
-        "canonical_address": null,
-        "canonical_lat": 51.1639767,
-        "canonical_lon": 71.4175268,
-        "source_name": "Coffee Hub",
-        "source_address": "улица Кенесары, 24",
-        "source_lat": 51.164016,
-        "source_lon": 71.417516,
-        "source_url": "https://2gis.kz/astana/firm/70000001084483194",
-        "branch_confirmed": true,
-        "match_basis": "name_coordinates"
-      },
-      "facts": [
-        {
-          "field": "kitchen_hours",
-          "value": "Mo-Su 08:00-21:30",
-          "status": "accepted",
-          "conflict_status": "none",
-          "branch_scope": "exact",
-          "branch_confirmation": {
-            "source_name": "Coffee Hub",
-            "source_address": "улица Кенесары, 24"
-          },
-          "source": {
-            "url": "https://2gis.kz/astana/firm/70000001084483194",
-            "excerpt": "Coffee Hub; улица Кенесары, 24; кухня: пн-вс 8:00-21:30",
-            "checked_at": "2026-10-19",
-            "checked_at_datetime": "2026-10-19T06:27:24.330799+00:00",
-            "channel": "onsite",
-            "source_updated_at": "2026-03-31T14:25:37Z",
-            "firm_id": "70000001084483194",
-            "archive_path": "/Users/muratovaslan/Desktop/hackaton/.seruendeshai-worktrees/big-data/.local/food-pack-research/focused-70000001084483194.html",
-            "response_sha256": "e072376eb2abbe068805d7f1dca9a3565383cf90783b3d5caf8b0cd5ba8a42e4",
-            "extraction": "Exact accepted firm ID from public 2GIS initial state; schedule.comment explicitly states kitchen weekdays and full interval."
-          },
-          "valid_from": null,
-          "valid_to": null
-        }
-      ],
+      "identity": null,
+      "facts": [],
       "menu_items": [],
       "prices": []
     }

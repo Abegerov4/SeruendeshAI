@@ -42,6 +42,14 @@ test('API recommendation maps to a card with honest labels', () => {
   assert.equal(formatDistance(1530), '1,5 км');
 });
 
+test('researched hours keep a link to their source (sxodim asks for an active link)', () => {
+  const card = 'https://sxodim.com/astana/place/muzey';
+  const p = toPlace(rec('osm:4', {opening: {status: 'open', label: 'Открыто до 18:00', raw: 'Mo-Su 10:00-18:00', source: 'sxodim.com', source_url: card, check_date: '2023-03-07'}}));
+  assert.equal(p.hoursUrl, card);
+  assert.equal(p.hoursChecked, '2023-03-07');
+  assert.equal(toPlace(rec('osm:5', {opening: {label: 'x', source_url: 'javascript:alert(1)'}})).hoursUrl, null);
+});
+
 test('plan diff and totals use route when present, alternatives otherwise', () => {
   const a = {places: [toPlace(rec('a')), toPlace(rec('b'))], route: null};
   const b = {places: [toPlace(rec('b')), toPlace(rec('c'))], route: {total_min: 52}};

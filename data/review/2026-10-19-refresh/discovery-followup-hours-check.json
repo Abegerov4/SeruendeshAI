@@ -1,8 +1,0 @@
-{
-  "snapshot_scope": "unpublished source sidecar follow-up",
-  "checked_at": "2026-10-19T00:19:26.326416+00:00",
-  "hours_branches": 111,
-  "source_boundary_runtime_cases": 8298,
-  "mismatches": [],
-  "note": "Actual opening_status compared against union of literal raw source weekly intervals at day samples and every opening/closing boundary ±1 minute; no provider calls."
-}

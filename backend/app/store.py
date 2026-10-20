@@ -99,8 +99,12 @@ def apply_facts(pois: list[dict], facts: dict[str, dict]) -> None:
             p.update(description=f["description_ru"], description_en=f.get("description_en"), description_source="research",
                      description_kind="research", description_url=f["description_url"])
         if f.get("opening_hours"):
+            # a guide card is as fresh as its last edit, not as the day we read it; the research confidence
+            # (an old card, chain-wide hours) caps what the hours status may claim
+            card = re.search(r"карточка от (\d{4}-\d{2}-\d{2})", f.get("hours_note") or "")
             p.update(opening_hours=f["opening_hours"], hours_source=urlparse(f["hours_url"]).netloc.removeprefix("www."),
-                     hours_source_url=f["hours_url"], check_date=f["checked"], hours_note=f.get("hours_note"))
+                     hours_source_url=f["hours_url"], check_date=card[1] if card else f["checked"], hours_note=f.get("hours_note"),
+                     hours_confidence=f.get("confidence"))
         feats = p.setdefault("features", {})
         for k, v in (f.get("features") or {}).items():
             key = "free" if k == "free_entry" else k

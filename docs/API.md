@@ -15,7 +15,7 @@ npx openapi-typescript ../docs/api/openapi.json -o src/api/schema.d.ts   # TS-т
 | POST | `/api/recommend` | 1–3 рекомендации + опционально мини-маршрут |
 | POST | `/api/recommend/photo` | то же, но старт определяется по фото известного места (multipart) |
 | GET | `/api/pois?lat=&lon=&radius_m=` | POI вокруг точки для карты (кратко) |
-| GET | `/api/health` | `{"status":"ok","pois":2268,"llm":"ok", …}` |
+| GET | `/api/health` | `{"status":"ok","pois":2271,"llm":"ok", …}` |
 | GET | `/api/meta` | ориентиры для «Я возле…», категории, версия данных, `features` |
 | POST | `/api/feedback` | «место закрыто / часы неверны» (хранятся только счётчики) |
 | GET | `/api/auth/me` | текущий пользователь; гостю `200 {"user": null}` |
@@ -69,7 +69,7 @@ CORS открыт для `localhost:5173`, `127.0.0.1:5173` и доменов `*
     "weather": {"description": "9°C (ощущается 6°C), ветер 5 м/с", "max_outdoor_min": 60, "source": "Open-Meteo.com (CC BY 4.0)", …},
     "speed_kmh": 4.1, "party": "solo",
     "parsed_from_query": {"categories": [], "preferences": ["park", "landmark"], "needs": [], "parser": "llm+rules (gpt-6-luna)", …},
-    "relaxations": [], "funnel": {"total": 2268, "within_reach": 132, "after_filters": 48, "shown": 2},
+    "relaxations": [], "funnel": {"total": 2271, "within_reach": 132, "after_filters": 48, "shown": 2},
     "data_sources": ["OpenStreetMap (ODbL)", …], "data_built_at": "…", "privacy": "Локация округлена до ~100 м…"
   },
   "recommendations": [{

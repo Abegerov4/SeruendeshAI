@@ -80,3 +80,6 @@ docs/PROMPT_OPENING_HOURS.md
 # Browser regression artifacts
 frontend/test-results/
 frontend/playwright-report/
+
+# sxodim crawl: used locally, not republished (sxodim terms: use with a link, no redistribution)
+/data/sources/sxodim/

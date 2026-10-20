@@ -11,8 +11,8 @@ from data.eligibility import apply_fact_reviews
 def coordinate_review(**changes):
     return {"canonical_id": "citypass:64", "field": "coordinates",
             "value": {"lat": 51.147356, "lon": 71.414465}, "status": "accepted",
-            "source": "2gis", "source_id": "2gis:70000001028675326",
-            "source_url": "https://2gis.kz/astana/firm/70000001028675326/tab/info",
+            "source": "official_site", "source_id": "official_site:ailand",
+            "source_url": "https://example.kz/ailand/contacts",
             "checked_at": "2026-10-19", "reviewed_by": "source-review",
             "evidence_excerpt": "Ailand wheel, 65m, 36 cabins; exact branch route destination.",
             **changes}

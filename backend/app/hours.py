@@ -19,6 +19,7 @@ from app.i18n import t
 from app.config import get_settings
 
 _DOWN = {"high": "medium", "medium": "low", "low": "low"}
+_RANK = {"low": 0, "medium": 1, "high": 2}
 
 
 @lru_cache(maxsize=4096)
@@ -132,6 +133,9 @@ def opening_status(poi: dict, arrive: dt.datetime, visit_min: int, lang: str, ho
                 conf = "high"
         except ValueError:
             pass
+    cap = poi.get("hours_confidence")  # what the research said about the source: an old guide card stays low
+    if cap in _RANK and _RANK[cap] < _RANK[conf]:
+        conf = cap
     suffix = t("oh_src", lang) if source.lower() in {"osm", "openstreetmap"} else (
         t("oh_source", lang, source=source) if source else "")
     if holiday:

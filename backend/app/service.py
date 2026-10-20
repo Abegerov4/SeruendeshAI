@@ -620,8 +620,8 @@ async def _recommend(rt: Runtime, req: RecommendRequest, *, llm_parse_enabled: b
         ds.append("Overture Maps (CDLA)")
     if "team_bigdata" in rt.store.manifest.get("sources", {}):
         ds.append("CityPass Astana (факты со ссылкой)")
-    if any("2gis" in (c.poi.get("sources") or []) for c in cands):
-        ds.append("2ГИС (часы, рейтинг, фото — срез команды 19–20.10)")
+    if any("sxodim" in (c.poi.get("sources") or []) or "sxodim" in (c.poi.get("hours_source") or "") for c in cands):
+        ds.append("Sxodim (места и часы, со ссылкой на карточку)")
     if rt.store.events:
         ds.append("Ticketon / Sxodim")
     if ctx.weather:

@@ -97,6 +97,7 @@ export function toPlace(r) {
     lat: r.lat, lon: r.lon, status: r.opening?.label || '', openStatus: r.open_status, openConfidence: r.open_confidence,
     openingKind: r.opening?.status, website: r.website || null,
     confidence: CONFIDENCE_TEXT[r.open_confidence] || '', openingRaw: r.opening?.raw,
+    hoursUrl: /^https?:\/\//.test(r.opening?.source_url || '') ? r.opening.source_url : null, hoursChecked: r.opening?.check_date || null,
     features: r.features || [], badges: r.badges || [], leaveBy: r.leave_by, event: r.event,
     description: r.description, descriptionSource: r.description_source, dataSources: r.data_sources || [],
     accessibility: r.accessibility, address: r.address, descriptionUrl: r.description_url || null,
