@@ -4,7 +4,7 @@
 
 <br>
 
-<a href="https://youtu.be/ZZ2LTLXCxg8"><img alt="Видео на YouTube" src="https://img.shields.io/badge/YouTube-%D0%B4%D0%B5%D0%BC%D0%BE%202%3A57-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=143f30"></a> <a href="https://seruendesh.site"><img alt="Открыть seruendesh.site" src="https://img.shields.io/badge/%E2%96%B6%20%D0%9E%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8C-seruendesh.site-c6e730?style=for-the-badge&labelColor=143f30"></a> <a href="https://t.me/SeruendeshAl_bot"><img alt="Telegram-бот" src="https://img.shields.io/badge/Telegram-%40SeruendeshAl__bot-26A5E4?style=for-the-badge&logo=telegram&logoColor=white&labelColor=143f30"></a> <a href="docs/presentation/SeruendeshAI-presentation.pdf"><img alt="Презентация" src="https://img.shields.io/badge/%D0%9F%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F-PDF%20%C2%B7%2014%20%D1%81%D0%BB%D0%B0%D0%B9%D0%B4%D0%BE%D0%B2-f4f7ec?style=for-the-badge&labelColor=143f30"></a>
+<a href="https://youtu.be/ZZ2LTLXCxg8"><img alt="Видео на YouTube" src="https://img.shields.io/badge/YouTube-%D0%B4%D0%B5%D0%BC%D0%BE%202%3A57-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=143f30"></a> <a href="https://seruendesh.site"><img alt="Открыть seruendesh.site" src="https://img.shields.io/badge/%E2%96%B6%20%D0%9E%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8C-seruendesh.site-c6e730?style=for-the-badge&labelColor=143f30"></a> <a href="https://t.me/SeruendeshAl_bot"><img alt="Telegram-бот" src="https://img.shields.io/badge/Telegram-%40SeruendeshAl__bot-26A5E4?style=for-the-badge&logo=telegram&logoColor=white&labelColor=143f30"></a> <a href="docs/presentation/SeruendeshAI-presentation.pdf"><img alt="Презентация" src="https://img.shields.io/badge/%D0%9F%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F-PDF%20%C2%B7%2015%20%D1%81%D0%BB%D0%B0%D0%B9%D0%B4%D0%BE%D0%B2-f4f7ec?style=for-the-badge&labelColor=143f30"></a>
 
 <a href="https://github.com/Abegerov4/SeruendeshAI/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Abegerov4/SeruendeshAI/actions/workflows/ci.yml/badge.svg?branch=main"></a> <img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white"> <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white"> <img alt="React 19" src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black"> <img alt="OpenAI" src="https://img.shields.io/badge/LLM-OpenAI%20gpt--6--luna-412991?logo=openai&logoColor=white"> <img alt="Decisions API" src="https://img.shields.io/badge/%D1%81%D1%83%D0%B4%D1%8C%D1%8F-Decisions%20API-c6e730?labelColor=143f30"> <img alt="Языки" src="https://img.shields.io/badge/%D1%8F%D0%B7%D1%8B%D0%BA%D0%B8-RU%20%C2%B7%20%D2%9A%D0%90%D0%97%20%C2%B7%20EN-143f30"> <img alt="Данные" src="https://img.shields.io/badge/%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-OSM%20%C2%B7%20Wikidata%20%C2%B7%20Overture-6b9a3a">
 
@@ -76,7 +76,7 @@
 <td valign="top"><h3>📱 Телефон и Telegram</h3>PWA с чатом на весь экран, голосовой ввод, режим «где я?» по фото, бот <a href="https://t.me/SeruendeshAl_bot">@SeruendeshAl_bot</a> с маршрутами.</td>
 </tr>
 <tr>
-<td colspan="3" valign="top"><h3>🎯 Вторая модель проверяет первую</h3>OpenAI <b>Decisions API</b> работает рядом с основной моделью как судья. Она понимает намерение («с ребёнком 96%, в помещении 98%»), проверяет каждое место («🎯 93% под запрос»), отсеивает явные промахи («подходит лишь на 7%») и сверяет ориентир на фото. Подробнее в разделе <a href="#-две-модели-вместе-пишет-и-проверяет">«Две модели вместе»</a>.</td>
+<td colspan="3" valign="top"><h3>🎯 Вторая модель проверяет первую</h3>OpenAI <b>Decisions API</b> работает рядом с основной моделью как судья. Она понимает намерение («с ребёнком 96%, в помещении 98%»), проверяет каждое место («🎯 93% под запрос»), отсеивает явные промахи («подходит лишь на 7%») и показывает их в «Почему не другие?». Подробнее в разделе <a href="#-две-модели-вместе-пишет-и-проверяет">«Две модели вместе»</a>.</td>
 </tr>
 <tr>
 <td valign="top"><h3>🎟 События</h3>263 события из Ticketon и Sxodim с календарём, архивом и привязкой к местам.</td>
@@ -173,7 +173,7 @@ flowchart TD
 |---|---|---|
 | 🧠 **Намерение** | 6 вопросов «да/нет» параллельно с разбором: с ребёнком? в помещении? ночь? тишина? необычное? это вообще про город? | Добавляет пропущенные нужды. Если разбор не успел — заменяет его. Спасает от ложного «это не про прогулки». Времени не добавляет |
 | 🎯 **Каждое место** | «Подходит ли место под запрос и ситуацию прямо сейчас?» — до 10 карточек одним запросом за 0,2–1,1 с | Меньше 12% — место отсеивается и попадает в «Почему не другие?». От 70% — поднимается выше. Процент виден в карточке и в боте |
-| 📷 **Фото «где я?»** | «Какое из мест Астаны на фото?» — выбор из закрытого списка или «ничего из списка» | Сверяется с vision-моделью. Совпали — уверенность «высокая», судья уверен, что ничего из списка — догадке не верим |
+| 📷 **Фото «где я?»** | Вторая проверка ориентира на снимке: место из закрытого списка или «ничего из списка» | Если судья уверен, что на фото ничего знакомого, догадке не верим и просим написать ориентир |
 
 > **Пример.** «Еду с ребёнком, холодно, куда бы зайти?» у Хан Шатыра. Судья понял: с ребёнком 96%, в помещении 98%. 10 мест он проверил за 0,2 с, уличный «Парк влюблённых» получил 7% и не попал в ответ. Серу предложил Fame City, Starbucks и Chaplin Cinemas.
 
@@ -216,8 +216,8 @@ flowchart TD
 | 2. Демо / прототип | **https://seruendesh.site**: API + фронтенд в [`frontend/`](frontend/), удобно и с телефона (резерв: https://seruendesh-production.up.railway.app) |
 | 3. Описание RAG-подхода | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | 4. Тестовые сценарии и ограничения | [docs/TEST_SCENARIOS.md](docs/TEST_SCENARIOS.md), [docs/EVAL_RESULTS.md](docs/EVAL_RESULTS.md) |
-| 5. Презентация | [PDF, 14 слайдов](docs/presentation/SeruendeshAI-presentation.pdf) · [PPTX](docs/presentation/SeruendeshAI-presentation.pptx) · план и сценарий демо в [docs/PRESENTATION.md](docs/PRESENTATION.md) |
-| Демо-видео (YouTube) | **https://youtu.be/ZZ2LTLXCxg8** (2:57) |
+| 5. Презентация | [PDF, 15 слайдов](docs/presentation/SeruendeshAI-presentation.pdf) · [PPTX с заметками](docs/presentation/SeruendeshAI-presentation.pptx) · план и сценарий демо в [docs/PRESENTATION.md](docs/PRESENTATION.md) |
+| Демо-видео (YouTube) | **https://youtu.be/ZZ2LTLXCxg8** (2:57) · [одна страница с QR и главами](docs/presentation/SeruendeshAI-demo-video.pdf) |
 | 6. Этика и приватность | [docs/ETHICS_PRIVACY.md](docs/ETHICS_PRIVACY.md) |
 | Сбор данных (автоматизирован) | [docs/DATA.md](docs/DATA.md) |
 | Как выбирали стек | [docs/RESEARCH.md](docs/RESEARCH.md) |
