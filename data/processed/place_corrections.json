@@ -1,0 +1,203 @@
+{
+ "osm:n2726984559": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Спорт-бар \"Трибуна\", БК FairPlay.",
+  "was": "bar"
+ },
+ "osm:n2825987611": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Спорт-бар \"Итальянская серия А\", БК FairPlay",
+  "was": "bar"
+ },
+ "osm:n2826021774": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Спорт-бар \"Бундес лига\" , БК FairPlay.",
+  "was": "bar"
+ },
+ "osm:n2826051343": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Спорт-бар \"Российская Премьер лига\", БК FairPlay.",
+  "was": "bar"
+ },
+ "osm:n2826099699": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Спорт-бар \"Мундиаль\", БК FairPlay",
+  "was": "bar"
+ },
+ "osm:n2826107695": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Спорт-бар \"Барыс\" , БК FairPlay.",
+  "was": "bar"
+ },
+ "osm:n2826108958": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Спорт-бар \"Финал\", БК FairPlay.",
+  "was": "bar"
+ },
+ "osm:n2826119301": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "БК FairPlay",
+  "was": "bar"
+ },
+ "osm:n2826122423": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "\"Арена\", БК FairPlay.",
+  "was": "bar"
+ },
+ "osm:n2826123535": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "БК FairPlay",
+  "was": "bar"
+ },
+ "osm:n2826132947": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Бар \"Томпсон\", БК FairPlay.",
+  "was": "bar"
+ },
+ "osm:n2826141568": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "\"Роут Рейс\", БК FairPlay",
+  "was": "bar"
+ },
+ "osm:n2826144333": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Спорт-бар \"Голкипер\", БК FairPlay.",
+  "was": "bar"
+ },
+ "osm:n2826156184": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Кафе \"Сагжан\", БК FairPlay",
+  "was": "bar"
+ },
+ "osm:n2826160853": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "БК FairPlay",
+  "was": "bar"
+ },
+ "osm:n2826164570": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "\"Альфишави\", БК FairPlay",
+  "was": "bar"
+ },
+ "osm:n2826175082": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "БК FairPlay",
+  "was": "bar"
+ },
+ "osm:n5586173121": {
+  "names": {
+   "ru": "Kinopark 8 IMAX Сарыарка"
+  },
+  "reason": "name:ru was the mall's name «Сарыарка»; the cinema is inside it"
+ },
+ "osm:w242346779": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Спорт-бар \"Испания Премьера Дивизиона\" , БК FairPlay.",
+  "was": "bar"
+ },
+ "osm:w278179906": {
+  "exclude": "betting shop / casino: not a place the assistant recommends",
+  "name": "Спорт-бар \"Премьер лига\", БК FairPlay.",
+  "was": "bar"
+ },
+ "ov:0c02b09a-68a0-42": {
+  "exclude": "music school: not a place to visit (Overture music_venue)",
+  "name": "Музыкальная Академия",
+  "was": "karaoke"
+ },
+ "ov:58c721c3-f74f-45": {
+  "category": "event_venue",
+  "name": "TheWalls.space",
+  "reason": "concert hall / palace / event space by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:60318f3a-bd7d-43": {
+  "category": "event_venue",
+  "name": "Бейбітшілік және келісім сарайы",
+  "reason": "concert hall / palace / event space by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:7b247e4e-9153-48": {
+  "category": "event_venue",
+  "name": "Тілеп қобыз сарайы",
+  "reason": "concert hall / palace / event space by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:82e06649-182c-44": {
+  "category": "event_venue",
+  "name": "Music Hall Terrace",
+  "reason": "concert hall / palace / event space by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:85b689c2-5c0b-44": {
+  "category": "event_venue",
+  "name": "Nomad City Hall",
+  "reason": "concert hall / palace / event space by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:89b596fd-37ba-41": {
+  "category": "event_venue",
+  "name": "Казмедиа центр - Қазмедиа орталығы",
+  "reason": "concert hall / palace / event space by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:92d71710-ff90-45": {
+  "category": "event_venue",
+  "name": "Kazakhstan Central Concert Hall",
+  "reason": "concert hall / palace / event space by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:9d161938-67c7-41": {
+  "category": "event_venue",
+  "name": "Triumph space - Пространство для проведения мероприятий",
+  "reason": "concert hall / palace / event space by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:ac527f58-ec07-40": {
+  "category": "event_venue",
+  "name": "Caparol Center Astana",
+  "reason": "concert hall / palace / event space by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:c5360c10-78b2-42": {
+  "exclude": "duplicate of osm:n2474931663 (Arman cinema, Asia Park, same website, 60 m)"
+ },
+ "ov:d8618d37-bebb-42": {
+  "exclude": "duplicate of osm:n4894937300 (National Museum as «Historical Museum Astana», 194 m)"
+ },
+ "ov:dd3617a1-a856-43": {
+  "exclude": "duplicate of osm:n4894937300 (National Museum under a Turkish name, 221 m)"
+ },
+ "ov:e0e294f3-2054-46": {
+  "category": "cafe",
+  "name": "Кафе Aiwa",
+  "reason": "café by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:e2027d7d-34f1-42": {
+  "category": "event_venue",
+  "name": "Концертный Зал Астана",
+  "reason": "concert hall / palace / event space by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:e209d9cc-5615-42": {
+  "exclude": "music school: not a place to visit (Overture music_venue)",
+  "name": "Qurmangazy Music School",
+  "was": "karaoke"
+ },
+ "ov:e2f4f62b-e3b9-4c": {
+  "category": "event_venue",
+  "name": "Органный зал",
+  "reason": "concert hall / palace / event space by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:eaa965ee-adf8-43": {
+  "category": "event_venue",
+  "name": "Конгресс-холл / Congress Hall",
+  "reason": "concert hall / palace / event space by name (Overture music_venue)",
+  "was": "karaoke"
+ },
+ "ov:f666893a-8296-4e": {
+  "exclude": "duplicate of osm:n4894937300 (National Museum, transliterated Overture name)"
+ }
+}

@@ -129,6 +129,14 @@ def layer(rec: dict) -> dict:
         out["wifi"] = True
     if rec.get("average_check_text"):
         out["average_check"] = str(rec["average_check_text"])[:80]
+    # facts the 2GIS card states (true only: «unknown» is not «no»)
+    feats = {k: True for k, src in (("outdoor_seating", "terrace"), ("kids_area", "kids_area"), ("ramp", "ramp"),
+                                    ("laptop_friendly", "laptop_allowed"), ("live_music", "live_music"), ("halal", "halal"))
+             if rec.get(src) is True}
+    if feats:
+        out["features"] = feats
+    if rec.get("cuisine_names"):
+        out["cuisine"] = [str(c)[:40] for c in rec["cuisine_names"][:4]]
     return out
 
 

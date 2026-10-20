@@ -15,7 +15,7 @@ import snowballstemmer
 from rank_bm25 import BM25Okapi
 
 from app.categories import CATEGORIES
-from app.features import cuisine_ru, feature_labels
+from app.features import CUISINE_RU, cuisine_ru, feature_labels
 from app.paths import DATA_DIR, EMBEDDINGS_FILE, EVENTS_FILE, GAZETTEER_FILE, MANIFEST_FILE, POIS_FILE, RIVER_FILE
 from app.textnorm import fold, tokens
 
@@ -112,6 +112,26 @@ def apply_facts(pois: list[dict], facts: dict[str, dict]) -> None:
 INDOOR_NAMES = re.compile(r"ailand|айленд|думан|happylon|хэппилон|fame city|хан шатыр|khan shatyr", re.IGNORECASE)
 
 
+def apply_corrections(pois: list[dict], fixes: dict[str, dict]) -> None:
+    """pipeline.corrections: reviewed fixes over the snapshot — a category (Overture's «music_venue» made concert
+    halls and palaces «karaoke»), a borrowed name, or a record that is not a place to recommend (betting shops,
+    schools, a transliterated duplicate). Excluded rows are only flagged here: they leave with the junk filter,
+    which keeps the embeddings aligned."""
+    for p in pois:
+        fix = fixes.get(p["id"])
+        if not fix:
+            continue
+        if fix.get("exclude"):
+            p["excluded"] = fix["exclude"]
+        if fix.get("category") in CATEGORIES:
+            p["category"] = fix["category"]
+        if fix.get("names"):
+            p["names"] = {**(p.get("names") or {}), **fix["names"]}
+
+
+_CUISINE_KEY = {v: k for k, v in CUISINE_RU.items()}  # «итальянская кухня» -> italian (the map's cuisine key)
+
+
 def apply_twogis(pois: list[dict], layer: dict[str, dict]) -> None:
     """2GIS facts for the places matched to it: hours fresher than map data (researched official hours still win),
     the rating with its count, a photo only where we have none, a phone, a website and Wi-Fi."""
@@ -129,8 +149,16 @@ def apply_twogis(pois: list[dict], layer: dict[str, dict]) -> None:
         for k in ("phone", "website"):
             if g.get(k) and not p.get(k):
                 p[k] = g[k]
+        feats = p.setdefault("features", {})
         if g.get("wifi"):
-            p.setdefault("features", {}).setdefault("wifi", True)
+            feats.setdefault("wifi", True)
+        for k in (g.get("features") or {}):  # the map's own tags win; 2GIS fills what is unknown
+            if k == "ramp":
+                feats.setdefault("wheelchair", "limited")  # a ramp at the entrance, not a verified step-free visit
+            else:
+                feats.setdefault(k, True)
+        if g.get("cuisine") and not p.get("cuisine"):
+            p["cuisine"] = ";".join(_CUISINE_KEY.get(c.lower(), c.lower()) for c in g["cuisine"])
         p["sources"] = sorted(set(p.get("sources") or []) | {"2gis"})
 
 
@@ -247,6 +275,9 @@ def load_store(embed_model: str | None = None) -> Store:
             gaz += [g for g in json.loads(gazetteer_file.read_text()) if g.get("kind") == "landmark"]
     else:
         pois = [json.loads(line) for line in POIS_FILE.open(encoding="utf-8") if line.strip()]
+        fixes_file = POIS_FILE.parent / "place_corrections.json"  # before search documents: a category is searched
+        if fixes_file.exists():
+            apply_corrections(pois, json.loads(fixes_file.read_text()))
         meta = json.loads(MANIFEST_FILE.read_text()) if MANIFEST_FILE.exists() else {}
         gaz = json.loads(gazetteer_file.read_text()) if gazetteer_file.exists() else []
     if not pois:
@@ -302,7 +333,8 @@ def load_store(embed_model: str | None = None) -> Store:
         apply_twogis(pois, json.loads(gis_file.read_text()))
     from app.card_photos import apply_card_photos  # optional operator photos in S3 (docs/CARD_PHOTOS.md)
     apply_card_photos(pois)
-    keep = _dedupe([i for i, p in enumerate(pois) if not junk_place(p) and not p.get("closed_permanently")], pois, aliases)
+    keep = _dedupe([i for i, p in enumerate(pois) if not junk_place(p) and not p.get("closed_permanently")
+                    and not p.get("excluded")], pois, aliases)
     if len(keep) < len(pois):  # region names, addresses and the same venue mapped several times
         log.info("dropped %d junk/duplicate places", len(pois) - len(keep))
         pois, docs = [pois[i] for i in keep], [docs[i] for i in keep]

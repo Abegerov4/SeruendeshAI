@@ -553,7 +553,10 @@ def _mmr(cands: list[Cand], k: int, single_cat: bool, lam: float = 0.7) -> list[
             sim = 0.0
             for s in chosen:
                 same_brand = c.poi.get("brand") and c.poi.get("brand") == s.poi.get("brand")
-                if same_brand or c.poi["name"] == s.poi["name"]:
+                # two unnamed playgrounds read as the same card («Детская площадка (улица …)»): a second one only
+                # when there is nothing else to show
+                both_unnamed = c.poi.get("name_auto") and s.poi.get("name_auto") and c.poi["category"] == s.poi["category"]
+                if same_brand or both_unnamed or c.poi["name"] == s.poi["name"]:
                     sim = max(sim, 1.0)
                 elif not single_cat:
                     if c.poi["category"] == s.poi["category"]:

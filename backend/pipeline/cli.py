@@ -48,6 +48,14 @@ def build(overture: bool = True):
 
 
 @app.command()
+def corrections(source: str = typer.Option(None, help="2GIS export (path or git:<ref>:<path>)")):
+    """Review categories and non-places against the team's 2GIS export -> data/processed/place_corrections.json."""
+    from pipeline import corrections as c
+    out = c.main(source) if source else c.main()
+    typer.echo(f"{len(out)} corrections")
+
+
+@app.command()
 def graph(from_pickle: str = typer.Option(None, help="Use an existing osmnx graph pickle instead of Overpass"),
           network: str = typer.Option("walk", help="walk or drive")):
     """Build the walking or driving graph (osmnx, one-off) and export numpy arrays."""
