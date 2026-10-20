@@ -143,6 +143,9 @@ used and its recommendations (with the facts from its database), score:
 - why_quality (1-5): are the explanations specific, short and convincing?
 - actionability (1-5): is "what to do" concrete and useful?
 - faithful (true/false): do the texts avoid claims that contradict or go beyond the given facts?
+  Judge only factual claims about the places here; time budget and route fit belong to relevance.
+The "notes" are what the system told the user (e.g. that the requested kind of place is closed now and
+these are open alternatives); an honest open alternative with such a note is better than a closed place.
 Be strict and brief."""
 
 
@@ -167,8 +170,10 @@ def judge(sc: dict, resp: dict):
              for i in resp["recommendations"]]
     u = resp["used_context"]
     user = json.dumps({"request": sc["request"]["query"], "context": {k: u[k] for k in ("location", "local_time", "weather",
-                       "time_budget_min", "mode", "party", "filters")}, "recommendations": items,
-                       "route": (resp["route"] or {}).get("summary")}, ensure_ascii=False)
+                       "time_budget_min", "mode", "party", "filters")}, "summary": resp.get("summary"),
+                       "notes": resp.get("notes"), "recommendations": items,
+                       "route": {k: (resp["route"] or {}).get(k) for k in ("summary", "legs", "back_min", "total_min")}
+                       if resp.get("route") else None}, ensure_ascii=False)
     r = c.responses.parse(model=s.llm_parse_model, input=[{"role": "system", "content": JUDGE_SYSTEM},
                           {"role": "user", "content": user}], text_format=Verdict, store=False,
                           reasoning={"effort": "low"})

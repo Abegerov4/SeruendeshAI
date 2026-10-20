@@ -174,7 +174,8 @@ _RULES: list[tuple[str, dict]] = [
     (r"сувенир|souvenir|кәдесый|подар", {"cat": ["souvenir", "market"]}),
     (r"рынок|базар|bazaar|market", {"cat": ["market"]}),
     (r"бан[яи]|сауна|spa|спа|монша", {"cat": ["spa"]}),
-    (r"активн|подвижн|спортив|\bactive\b|sporty", {"cat": ["active", "park"]}),
+    # «активный отдых» is sport; «ночная активность» / «активность» alone is just "something to do"
+    (r"активн(?!ост)|подвижн|спортив|\bactive\b|sporty", {"cat": ["active", "park"]}),
     (r"коньк|каток|катани\w* на льду|ice[ -]?skat|ice rink|мұз айдын|конькимен", {"cat": ["active"], "kw": ["каток"]}),
     (r"боулинг|bowling|каток|ice rink|квест|escape|батут|trampoline|скалодр|climb", {"cat": ["active", "kids_indoor"]}),
     (r"океанариум|aquarium|зоопарк|zoo", {"cat": ["zoo_aquarium"]}),

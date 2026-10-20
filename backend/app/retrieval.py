@@ -31,6 +31,10 @@ from app.textnorm import fold
 
 # default pool when the user did not ask for specific place types
 DEFAULT_GROUPS = {"sight", "culture", "nature", "food", "shopping", "quiet", "entertainment"}
+# When everything of the requested kind is closed, try these related groups before "anything open":
+# a closed museum at 21:00 is better replaced by a theatre, a cinema or a lit landmark than by a mall or a café.
+RELATED_GROUPS = {"culture": ("culture", "entertainment", "sight"), "quiet": ("quiet", "culture"),
+                  "nature": ("nature", "sight"), "sight": ("sight", "culture")}
 OUTDOOR_CATS = {"park", "garden", "playground", "monument", "artwork", "theme_park"}
 NEED_LABEL = {"wifi": "Wi-Fi", "power_outlets": "розетки", "quiet": "тишина", "outdoor_seating": "веранда",
               "wheelchair": "доступность", "kids": "для детей", "free": "бесплатно"}
@@ -304,10 +308,26 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         # nothing of the requested type is available now: say so and show what is open instead
         closed_n = sum(1 for i, why in rejected if store.pois[i]["category"] in req_cats)
         plan.relaxations.append(t("note_requested_closed", lang, what=label(req_cats[0], lang), n=closed_n))
+        # when the nearest one with known hours opens: the honest answer to «хочу в музей» at night
+        for i in sorted(np.nonzero(np.isfinite(mins) & np.isin(store.cats, req_cats))[0].tolist(), key=lambda i: mins[i]):
+            op = opening_status(store.pois[i], now + dt.timedelta(minutes=float(mins[i])), 30, lang, ctx.holiday)
+            if op["status"] == "closed" and op.get("next_change"):
+                plan.relaxations.append(t("note_requested_reopens", lang, name=display_name(store.pois[i], lang),
+                                          when=op["label"].split(" · ")[0]))
+                break
         parsed.soft_categories = list(dict.fromkeys(parsed.soft_categories + req_cats))
-        req_cats, req_groups = [], set()
-        pool, rejected2 = collect(t_max, False)
-        rejected += rejected2
+        alt_groups = {g for grp in req_groups for g in RELATED_GROUPS.get(grp, ())}
+        alt_cats = [k for k, c in CATEGORIES.items() if c.group in alt_groups and k not in req_cats and not c.adult_only]
+        alt_cats.sort(key=lambda k: CATEGORIES[k].group not in req_groups)  # the same group first
+        req_cats, req_groups = alt_cats, alt_groups
+        pool = []
+        if alt_cats:
+            pool, rejected2 = collect(t_max, False)
+            rejected += rejected2
+        if not pool:
+            req_cats, req_groups = [], set()
+            pool, rejected2 = collect(t_max, False)
+            rejected += rejected2
     kinds = {r.kind for r in parsed.food_requirements}
     # soft only for a budget or a cuisine; a named dish only next to a cuisine the data confirms («грузинская, хинкали»)
     if not pool and parsed.food_requirements and "diet" not in kinds and (kinds <= {"price", "style"} or "style" in kinds):
@@ -329,8 +349,13 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
             if len(pool) >= 3:
                 break
     if plan.accessibility:
-        confirmed = [(i, op) for i, op in pool if store.pois[i].get("features", {}).get("wheelchair") in ("yes", "limited")]
-        if len(confirmed) >= 2:  # enough places with confirmed step-free access: show only those
+        access = [(i, op, store.pois[i].get("features", {}).get("wheelchair")) for i, op in pool]
+        full = [(i, op) for i, op, w in access if w == "yes"]
+        confirmed = [(i, op) for i, op, w in access if w in ("yes", "limited")]
+        if len(full) >= 2:  # enough fully step-free places: "limited" (some steps) is not «без ступенек»
+            pool = full
+            plan.filters.append("wheelchair_confirmed")
+        elif len(confirmed) >= 2:  # else places with confirmed (at least partial) step-free access
             pool = confirmed
             plan.filters.append("wheelchair_confirmed")
     plan.funnel["after_filters"] = len(pool)
@@ -379,9 +404,12 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
         closed_req = [i for i, why in rejected if why == t("rej_closed", lang) and store.pois[i]["category"] in req_cats]
         if closed_req and not any(c.poi["category"] in req_cats for c in cands) and not plan.relaxations:
             plan.relaxations.append(t("note_requested_closed", lang, what=label(req_cats[0], lang), n=len(closed_req)))
+    first_reason: dict[int, str] = {}
+    for i, why in rejected:
+        first_reason.setdefault(i, why)  # a re-collect rejects the same places again: list each once
+    rejected = list(first_reason.items())
     if not cands:
-        for i, why in sorted(rejected, key=lambda x: x[0] not in target_idx)[:4]:
-            considered.append({"name": display_name(store.pois[i], lang), "reason": why})
+        considered = _considered(store, sorted(rejected, key=lambda x: x[0] not in target_idx), lang)
         return [], considered
 
     # --- scoring
@@ -464,8 +492,7 @@ def rank(store: Store, graph: WalkGraph | None, poi_nodes, poi_snap, parsed: Par
 
     cands.sort(key=lambda c: -c.score)
     chosen = _mmr(cands, k, single_cat=len(set(req_cats)) == 1)
-    for i, why in sorted(rejected, key=lambda x: (x[0] not in target_idx, -rrf[x[0]]))[:4]:  # requested places first
-        considered.append({"name": display_name(store.pois[i], lang), "reason": why})
+    considered = _considered(store, sorted(rejected, key=lambda x: (x[0] not in target_idx, -rrf[x[0]])), lang)  # requested first
     plan.funnel["shown"] = 0
     return chosen, considered
 
@@ -488,6 +515,17 @@ def _default_prior(cat: str, parsed: Parsed, plan: Plan, ctx: Context) -> float:
     if ctx.max_outdoor_min < 60 and g == "nature":
         base -= 0.3
     return max(base, 0.1)
+
+
+def _considered(store: Store, rejected: list[tuple[int, str]], lang: str, n: int = 4) -> list[dict]:
+    """The first n rejected places for the answer, one line per shown name (unnamed squares repeat a lot)."""
+    out: dict[str, dict] = {}
+    for i, why in rejected:
+        name = display_name(store.pois[i], lang)
+        out.setdefault(name, {"name": name, "reason": why})
+        if len(out) == n:
+            break
+    return list(out.values())
 
 
 def _mmr(cands: list[Cand], k: int, single_cat: bool, lam: float = 0.7) -> list[Cand]:
