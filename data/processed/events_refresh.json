@@ -1,19 +1,31 @@
 {
-  "status": "ok",
-  "refreshed_at": "2026-10-20T18:15:34+05:00",
-  "events": 266,
-  "new_events": 64,
-  "updated_events": 169,
-  "retained_events": 33,
-  "rejected_events": 1,
+  "status": "partial",
+  "refreshed_at": "2026-10-24T22:26:22+05:00",
+  "events": 284,
+  "new_events": 18,
+  "updated_events": 75,
+  "retained_events": 191,
+  "rejected_events": 0,
   "degraded_events": 0,
-  "matched_to_poi": 91,
+  "matched_to_poi": 101,
   "sources": {
     "ticketon": {
-      "status": "ok",
-      "collected": 150,
-      "accepted": 149,
-      "errors": []
+      "status": "failed",
+      "collected": 0,
+      "accepted": 0,
+      "errors": [
+        "ticketon listing astana: HTTP Error 403: Forbidden",
+        "ticketon listing astana/theatres: HTTP Error 403: Forbidden",
+        "ticketon listing astana/museums: HTTP Error 403: Forbidden",
+        "ticketon listing astana/entertainment: HTTP Error 403: Forbidden",
+        "ticketon listing astana/concerts: HTTP Error 403: Forbidden",
+        "ticketon listing astana/children: HTTP Error 403: Forbidden",
+        "ticketon listing astana/stand-up: HTTP Error 403: Forbidden",
+        "ticketon listing astana/exhibitions: HTTP Error 403: Forbidden",
+        "ticketon listing astana/shows: HTTP Error 403: Forbidden",
+        "ticketon listing astana/sports: HTTP Error 403: Forbidden",
+        "ticketon listing astana/knowledge-skills: HTTP Error 403: Forbidden"
+      ]
     },
     "sxodim": {
       "status": "ok",
